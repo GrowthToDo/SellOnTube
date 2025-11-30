@@ -13,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'SellOnTube — Acquire customers from YouTube without recording',
   ignoreTitleTemplate: true,
 };
 ---
@@ -25,78 +25,75 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Book a Diagnostic Call',
+        href: '#', // TODO: replace with your Calendly link
       },
-      { text: 'Learn more', href: '#features' },
+      {
+        text: 'See How It Works →',
+        href: '#process', // later you can point this to a /process page
+      },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'SellOnTube Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
+      We acquire customers for your business using YouTube — without you recording a single video.
     </Fragment>
-
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      We handle strategy, scripting, on-screen talent, video creation, editing, publishing, and optimization. You get
+      qualified leads and customers — without touching a camera.
     </Fragment>
   </Hero>
 
   <!-- Note Widget ******************* -->
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+  <Note
+    title="Philosophy:"
+    description="Zero recording. End-to-end execution. You focus on your business while YouTube quietly acquires customers for you."
+  />
 
   <!-- Features Widget *************** -->
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    tagline="What we do"
+    title="Done-for-you YouTube customer acquisition"
+    subtitle="SellOnTube is a done-for-you YouTube acquisition engine. We take your expertise, turn it into high-performing videos, publish them on your channel, and optimize them for predictable customer acquisition — without requiring you to record anything."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'No recording needed',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'We handle scripting, on-screen talent, editing, and publishing — you never appear on camera.',
+        icon: 'tabler:video',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'End-to-end production',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Research, scripts, filming, thumbnails, SEO optimization, and publishing: everything done for you.',
+        icon: 'tabler:device-tv',
       },
       {
-        title: 'Best Practices',
+        title: 'Customer-focused videos',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          'Videos engineered to rank for high-intent queries and convert viewers into leads and customers.',
+        icon: 'tabler:chart-line',
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Consistent output',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
+          'High-quality monthly content that compounds in value over time.',
+        icon: 'tabler:calendar-stats',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
+        title: 'Clear ROI',
         description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
+          'Monthly insights showing rankings, leads, and conversions driven by your YouTube channel.',
+        icon: 'tabler:report-analytics',
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Strategy first',
         description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'We only proceed if our upfront analysis shows YouTube can be a profitable channel for you.',
+        icon: 'tabler:target',
       },
     ]}
   />
@@ -105,33 +102,35 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="How we think"
+    title="YouTube as a serious acquisition channel, not content for content’s sake"
     items={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Acquisition-first, not creator-first',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'We design your channel around customer acquisition and business math, not vanity metrics or entertainment.',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Compounding like SEO',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Strategic videos behave like evergreen SEO assets — they keep bringing the right people in, month after month.',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Low friction for founders',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'You don’t need to build a studio, learn scripting, or become a creator. We deliberately keep your involvement light.',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      alt: 'Strategy Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Built for founders who want customers, not a YouTube hobby
+      </h3>
+      We treat your channel like an acquisition asset that should pay for itself — not a social media side project.
     </Fragment>
 
     <Fragment slot="bg">
@@ -143,25 +142,28 @@ const metadata = {
 
   <Content
     isAfterContent
+    tagline="Who this is for"
+    title="When SellOnTube makes the most sense"
     items={[
       {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+        title: 'Search-driven businesses',
+        description:
+          'Your customers actively search online for solutions like yours — SaaS, agencies, consultants, high-ticket services, info products.',
       },
       {
-        title: 'Multiple layout possibilities',
+        title: 'Meaningful revenue per customer',
         description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+          'You make enough per customer for a serious acquisition channel to be worth investing in.',
       },
       {
-        title: 'Fully responsive design',
+        title: 'Long-term compounding mindset',
         description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+          'You understand that YouTube behaves more like SEO than ads — early results are great, but compounding is where it gets unfair.',
       },
       {
-        title: 'Integration of media',
+        title: 'You’re done DIY-ing YouTube',
         description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+          'You don’t want to experiment endlessly with freelancers or random tactics. You want a single accountable team.',
       },
     ]}
     image={{
@@ -169,7 +171,7 @@ const metadata = {
       alt: 'Blueprint Image',
     }}
   >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+    <Fragment slot="content">If you see YouTube as a growth channel, not a side project, you’re in the right place.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -181,33 +183,36 @@ const metadata = {
   <Content
     isReversed
     isAfterContent
+    tagline="What you get"
+    title="A fully managed YouTube acquisition engine"
     items={[
       {
-        title: 'Enhanced user engagement',
+        title: 'Channel strategy & planning',
         description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
+          'Positioning, messaging, topic selection, and prioritization rooted in your business goals.',
       },
       {
-        title: 'Continuous improvement',
+        title: 'End-to-end video production',
         description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
+          'On-screen talent, scripting, recording, editing, thumbnails, SEO optimization, and publishing.',
       },
       {
-        title: 'Time and resource efficiency',
+        title: 'Consistent publishing cadence',
         description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
+          'A predictable flow of videos each month, without you having to chase anyone.',
       },
       {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
+        title: 'Reporting & iteration',
+        description:
+          'Clear updates on what’s working, what’s not, and how we’re adjusting to improve performance.',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
+      alt: 'Operations Image',
     }}
   >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
+    <Fragment slot="content">You get a channel that works for you even when you’re not thinking about YouTube.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -217,29 +222,43 @@ const metadata = {
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="How SellOnTube works"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Step 1: Diagnostic call',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          'We understand your business, customers, and growth goals to determine if YouTube is a good fit.',
+        icon: 'tabler:phone',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
+        title: 'Step 2: Opportunity analysis',
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+          'We evaluate your market, competitors, and search demand to confirm that YouTube can be profitable.',
+        icon: 'tabler:search',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Step 3: Acquisition blueprint',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          'We design a YouTube strategy focused on high-intent topics that attract ready-to-buy customers.',
+        icon: 'tabler:route',
       },
       {
-        title: 'Ready!',
-        icon: 'tabler:check',
+        title: 'Step 4: End-to-end production',
+        description:
+          'We produce all your videos using our on-screen talent — you never need to record anything.',
+        icon: 'tabler:movie',
+      },
+      {
+        title: 'Step 5: Publishing & optimization',
+        description:
+          'We publish your videos, optimize titles, descriptions, and thumbnails, and track rankings and engagement.',
+        icon: 'tabler:upload',
+      },
+      {
+        title: 'Step 6: Reporting & iteration',
+        description:
+          'You receive clear reports on leads and performance while we keep iterating on what works.',
+        icon: 'tabler:chart-bar',
       },
     ]}
     image={{
@@ -251,59 +270,44 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="What we take off your plate"
+    subtitle="You don’t need a YouTube playbook, production team, or creator ambitions. We bring all of that."
+    tagline="Execution"
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
+        title: 'Strategy',
+        description: 'We decide what should be published, when, and why — aligned with your goals.',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Heros',
+        title: 'Scripting',
         description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
+          'We turn your expertise and inputs into clear, compelling scripts designed to convert.',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Call-to-Action',
+        title: 'On-screen talent',
         description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
+          'We use our own talent or formats so you never need to be on camera unless you want to.',
         icon: 'flat-color-icons:voice-presentation',
       },
       {
-        title: 'Contact',
+        title: 'Editing & packaging',
         description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
+          'We handle editing, pacing, motion, and everything needed to keep viewers watching.',
+        icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
+        title: 'SEO & optimization',
+        description:
+          'Titles, descriptions, tags, and thumbnails tuned for search and clicks — not random guesswork.',
+        icon: 'flat-color-icons:advertising',
+      },
+      {
+        title: 'Publishing & reporting',
+        description:
+          'Videos go live on your channel, and you get clear, concise performance updates.',
+        icon: 'flat-color-icons:business-contact',
       },
     ]}
   >
@@ -315,10 +319,10 @@ const metadata = {
   <!-- HighlightedPosts Widget ******* -->
 
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
+    title="Learn how to acquire customers from YouTube"
+    information={`We use the blog to break down real YouTube customer-acquisition playbooks.
+                        Expect deep dives on strategy, examples of high-performing videos, and honest breakdowns of what actually works.
+                        No fluff, no “creator tips” — just concrete lessons for founders and marketers who want customers from YouTube.
                 `}
   />
 
@@ -326,39 +330,39 @@ const metadata = {
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    subtitle="Clear answers for founders and marketers who want customers from YouTube without becoming creators."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why AstroWind?',
+        title: 'Do I need to be on camera or record anything?',
         description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+          'No. Our model is fully done-for-you. We handle scripting, on-screen talent, production, editing, and publishing. You do not need to record yourself or appear on camera unless you specifically want to.',
       },
       {
-        title: 'What do I need to start?',
+        title: 'What kind of businesses does SellOnTube work best for?',
         description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+          'We work best with businesses where customers actively search for solutions online — SaaS, agencies, consultants, high-ticket services, and info products. On the diagnostic call we evaluate if YouTube can realistically become a profitable acquisition channel for you.',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
+        title: 'How long before I start seeing results?',
         description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+          'YouTube is closer to SEO than paid ads. Some videos can start generating leads quickly, but the real power is in compounding. We aim for early traction in the first 60–90 days, with meaningful, repeatable results building over the next 6–12 months.',
       },
       {
-        title: "What's something that you don't understand?",
+        title: 'What exactly do you handle end-to-end?',
         description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+          'We handle strategy, research, scripting, filming with our own on-screen talent, editing, thumbnails, SEO optimization (titles, descriptions, tags), publishing on your channel, and ongoing performance optimization and reporting.',
       },
       {
-        title: 'What is something that you would like to try again?',
+        title: 'How do you decide if YouTube is a good fit for my business?',
         description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+          'Before we work together, we run an opportunity and ROI analysis based on your market, offer, pricing, and how your customers currently find you. If we don’t believe YouTube can be a profitable channel for you, we’ll tell you directly instead of forcing a bad fit.',
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
+        title: 'What does working together look like month to month?',
         description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          'You have a recurring content and strategy cadence with us: we align on topics, collect information from you in low-friction ways (calls, docs, existing material), and then our team handles production and publishing. Each month you receive performance updates and we refine the strategy based on what’s working.',
       },
     ]}
   />
@@ -367,10 +371,10 @@ const metadata = {
 
   <Stats
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'Founder recording time', amount: '0 hrs/month' },
+      { title: 'YouTube workload on your side', amount: 'Minimal' },
+      { title: 'Videos produced for you', amount: 'Fully managed' },
+      { title: 'Primary goal', amount: 'Predictable customers' },
     ]}
   />
 
@@ -380,20 +384,22 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Book a Diagnostic Call',
+        href: '#', // TODO: replace with Calendly
+      },
+      {
+        text: 'See the Full Process →',
+        href: '#process',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Ready to acquire customers from YouTube — without recording a single video?
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Book a diagnostic call and we’ll evaluate whether YouTube can be your most profitable customer acquisition channel
+      — completely done-for-you.
     </Fragment>
   </CallToAction>
 </Layout>
