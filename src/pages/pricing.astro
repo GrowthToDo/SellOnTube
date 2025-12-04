@@ -1,10 +1,9 @@
----
+\---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import Prices from '~/components/widgets/Pricing.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Steps from '~/components/widgets/Steps.astro';
 import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
@@ -13,231 +12,194 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
+  <!-- Hero Section -->
   <HeroText
     tagline="Pricing"
-    title="Stellar Pricing for Every Journey"
-    subtitle="Choose the perfect plan that aligns with your cosmic goals."
+    title="One plan. Built for businesses with real LTV."
+    subtitle="If your business has strong lifetime value and customers who search before buying, we turn YouTube into a profitable new acquisition channel. For $5,500/month, we build and run it end-to-end."
   />
 
-  <!-- Pricing Widget ******************* -->
+  <!-- Single Premium Pricing Card -->
+  <section class="py-10 sm:py-12">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">
+        SellOnTube Lead Engine
+      </h2>
+      <p class="mt-2 text-sm sm:text-base text-gray-600 dark:text-slate-300">
+        A complete, done-for-you YouTube acquisition system.
+      </p>
 
-  <Prices
-    title="Our prices"
-    subtitle="Only pay for what you need"
-    prices={[
-      {
-        title: 'basic',
-        subtitle: 'Optimal choice for personal use',
-        price: 29,
-        period: 'per month',
-        items: [
-          {
-            description: 'Etiam in libero, et volutpat',
-          },
-          {
-            description: 'Aenean ac nunc dolor tristique',
-          },
-          {
-            description: 'Cras scelerisque accumsan lib',
-          },
-          {
-            description: 'In hac habitasse',
-          },
-        ],
-        callToAction: {
-          target: '_blank',
-          text: 'Get started',
-          href: '#',
-        },
-      },
-      {
-        title: 'standard',
-        subtitle: 'Optimal choice for small teams',
-        price: 69,
-        period: 'Per Month',
-        items: [
-          {
-            description: 'Proin vel laoreet',
-          },
-          {
-            description: 'Ut efficitur habitasse egestas',
-          },
-          {
-            description: 'Volutpat hac curabitur',
-          },
-          {
-            description: 'Pellentesque blandit ut nibh',
-          },
-          {
-            description: 'Donec fringilla sem',
-          },
-        ],
-        callToAction: {
-          target: '_blank',
-          text: 'Get started',
-          href: '#',
-        },
-        hasRibbon: true,
-        ribbonTitle: 'popular',
-      },
-      {
-        title: 'premium',
-        subtitle: 'Optimal choice for companies',
-        price: 199,
-        period: 'Per Month',
-        items: [
-          {
-            description: 'Curabitur suscipit risus',
-          },
-          {
-            description: 'Aliquam habitasse malesuada',
-          },
-          {
-            description: 'Suspendisse sit amet blandit',
-          },
-          {
-            description: 'Suspendisse auctor blandit dui',
-          },
-        ],
-        callToAction: {
-          target: '_blank',
-          text: 'Get started',
-          href: '#',
-        },
-      },
-    ]}
-  />
+      <div
+        class="mt-8 rounded-3xl border border-slate-200 bg-white/70 shadow-sm
+               dark:bg-slate-900/70 dark:border-slate-700 text-left"
+      >
+        <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-4 sm:pb-6 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-sm font-medium uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+            Single, all-inclusive plan
+          </p>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span class="text-4xl sm:text-5xl font-bold tracking-tight">$5,500</span>
+            <span class="text-sm text-gray-600 dark:text-slate-300">per month</span>
+          </div>
+          <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-slate-300 max-w-xl">
+            We create and run a YouTube channel designed to acquire customers profitably.
+          </p>
+        </div>
 
-  <!-- Features3 Widget ************** -->
+        <div class="px-6 sm:px-8 py-6 sm:py-7">
+          <ul class="space-y-3 text-sm sm:text-base text-gray-700 dark:text-slate-200">
+            <li>• 4 videos per month: research → script → record guidance → edit → publish.</li>
+            <li>• Full YouTube SEO: keyword mapping, ranking strategy, and metadata optimisation.</li>
+            <li>• High-conversion titles, thumbnails, and hooks informed by data.</li>
+            <li>• Landing page and CTA optimisation for lead capture.</li>
+            <li>• Weekly analytics and iteration on formats, hooks, and topics.</li>
+            <li>• Channel dashboard: traffic, keyword rankings, and lead attribution.</li>
+            <li>• Every ranked video becomes a 24/7 salesperson for your business.</li>
+          </ul>
 
+          <div class="mt-8 flex justify-center">
+            <a
+              href="#book-a-diagnostic-call"
+              class="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold
+                     bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
+                     transition-colors"
+            >
+              Book a diagnostic call
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
   <Features3
-    title="Price-related features"
-    subtitle="Discover the advantages of choosing our plans"
+    title="Who benefits most from SellOnTube?"
+    subtitle="Businesses with meaningful lifetime value and customers who search before buying."
     columns={2}
     items={[
       {
-        title: 'Tiered Pricing Plans',
-        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
-        icon: 'tabler:stairs',
+        title: 'Coaching & Consulting',
+        description: 'High-ticket programs with strong margins and prospects who research problems on YouTube.',
+        icon: 'tabler:school',
       },
       {
-        title: 'Transparent Pricing',
-        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
-        icon: 'tabler:flip-vertical',
+        title: 'Agencies & DFY Services',
+        description: 'Businesses where one new client can justify months of YouTube acquisition.',
+        icon: 'tabler:briefcase',
       },
       {
-        title: 'Secure Payment Methods',
-        description: 'Secure payment gateways to protect your financial information during transactions.',
-        icon: 'tabler:shield-lock',
+        title: 'Courses & Info Products',
+        description: 'Creators selling knowledge products with low COGS and high LTV.',
+        icon: 'tabler:book',
       },
       {
-        title: 'Instant Access',
-        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
-        icon: 'tabler:accessible',
+        title: 'Software Companies',
+        description: 'B2B and B2C software products with clear search demand and scalable revenue per user.',
+        icon: 'tabler:cpu',
       },
       {
-        title: 'Upgrade Value',
-        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
-        icon: 'tabler:chevrons-up',
+        title: 'Other B2B Services',
+        description: 'Any business where one customer has significant lifetime value and a researched purchase journey.',
+        icon: 'tabler:building-community',
       },
       {
-        title: '24H support',
-        description: 'Questions answered via live chat, email or phone, every calendar day.',
-        icon: 'tabler:headset',
+        title: 'Unsure if YouTube fits?',
+        description:
+          'In our diagnostic, we map whether YouTube makes financial sense for your business. We only engage if the math works in your favour.',
+        icon: 'tabler:help-circle',
       },
     ]}
     classes={{ container: 'max-w-5xl' }}
   />
 
-  <!-- Steps Widget ****************** -->
-
+  <!-- Process Overview -->
   <Steps
-    title="A guided journey from plans to creativity"
-    tagline="simplified process"
-    isReversed={true}
+    title="How we work"
+    tagline="A proven method for turning YouTube into a revenue engine."
+    isReversed={false}
     items={[
       {
-        title: 'Explore plans',
+        title: '1. Diagnostic',
         icon: 'tabler:number-1',
+        description: 'We assess whether YouTube can become a profitable acquisition channel for your business economics.',
       },
       {
-        title: 'Select a plan',
+        title: '2. Opportunity Map',
         icon: 'tabler:number-2',
+        description: 'We map keywords, topics, and search intent that lead to qualified customer acquisition.',
       },
       {
-        title: 'Sign Up / Log In',
+        title: '3. Channel Setup',
         icon: 'tabler:number-3',
+        description: 'We design your channel, offers, CTAs, playlists, and tracking so everything converts from day one.',
       },
       {
-        title: 'Review order',
+        title: '4. Production & Publishing',
         icon: 'tabler:number-4',
+        description: 'We handle scripting, editing, thumbnails, SEO, publishing. You show up to record—we do the rest.',
       },
       {
-        title: 'Enter payment details',
+        title: '5. Optimisation',
         icon: 'tabler:number-5',
+        description: 'We run tests on thumbnails and hooks, refine topics, and enhance watch-through and conversions.',
       },
       {
-        title: 'Confirmation',
+        title: '6. Scale',
         icon: 'tabler:number-6',
-      },
-      {
-        title: 'Download and start using the template(s)',
-        icon: 'tabler:number-7',
+        description: 'We scale what works—more ranking videos, shorts, integrations, and deeper funnel optimisation.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1536816579748-4ecb3f03d72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      src: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80',
+      alt: 'SellOnTube process',
     }}
   />
 
-  <!-- FAQs Widget ******************* -->
-
+  <!-- FAQs -->
   <FAQs
     title="Pricing FAQs"
-    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
+    subtitle="Clarity for serious business owners."
     columns={1}
     items={[
       {
-        title: 'Do the plans come with customer support?',
+        title: 'Is $5,500/month suitable for my business?',
         description:
-          'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.',
+          'If your LTV meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic.',
       },
       {
-        title: 'Is there a trial period for the different plans?',
+        title: 'Do you work only with SaaS?',
         description:
-          "Unfortunately, we don't offer trial periods for the plans. However, you can check out our demo section to preview the quality of our templates.",
+          'No. We work with consulting businesses, agencies, courses, software companies, and other B2B services—as long as the economics make sense.',
       },
       {
-        title: 'Can I switch between plans?',
+        title: 'Do you do everything end-to-end?',
         description:
-          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
+          'Yes. Strategy, scripts, editing, thumbnails, SEO, publishing, and analytics. Your team simply records footage with our guidance.',
       },
       {
-        title: 'What payment methods do you accept?',
+        title: 'How fast can I expect results?',
         description:
-          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
+          'Most channels begin seeing rankings and qualified traffic within 45–90 days, with compounding results thereafter.',
       },
       {
-        title: 'Are there any hidden fees beyond the displayed cost?',
+        title: 'Is there a long-term contract?',
         description:
-          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
+          'No forced retainers. We only continue when the channel shows clear traction and financial sense.',
       },
     ]}
   />
 
-  <!-- CallToAction Widget *********** -->
-
+  <!-- CTA -->
   <CallToAction
-    title="Ready to boost your projects?"
-    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
+    id="book-a-diagnostic-call"
+    title="Wondering if YouTube can profitably acquire customers for you?"
+    subtitle="In our diagnostic, we map whether YouTube makes sense for your business. We only engage if the numbers work in your favour."
     actions={[
       {
         variant: 'primary',
-        text: 'Get started now',
-        href: '/',
+        text: 'Book a diagnostic call',
+        href: 'https://your-booking-link-here',
       },
     ]}
   />
