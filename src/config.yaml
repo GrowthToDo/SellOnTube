@@ -10,7 +10,7 @@ site:
 metadata:
   title:
     default: SellOnTube
-    template: "%s — SellOnTube"
+    template: "%s | SellOnTube"
   description: "We turn YouTube search intent into predictable leads for search-driven businesses — without you recording anything."
   robots:
     index: true
