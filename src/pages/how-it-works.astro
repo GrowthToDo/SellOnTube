@@ -1,0 +1,131 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+
+const metadata = {
+  title: 'How SellOnTube Works',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero-style intro -->
+  <section class="py-20 sm:py-24 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+        How SellOnTube turns YouTube into a customer acquisition engine
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-gray-600 dark:text-slate-300">
+        This is the end-to-end workflow we run for every client – from diagnostic to
+        compounding, search-driven videos that generate qualified leads.
+      </p>
+    </div>
+  </section>
+
+  <!-- High-level explanation block -->
+  <Content
+    isReversed
+    tagline="Overview"
+    title="A simple, repeatable system. Not random content"
+    items={[
+      {
+        title: 'Start with the math',
+        description:
+          'We first validate whether YouTube search can profitably acquire customers for your specific offer, pricing, and LTV.',
+      },
+      {
+        title: 'Build the acquisition blueprint',
+        description:
+          'We map search intent, topics, and formats that attract ready-to-buy customers instead of vanity views.',
+      },
+      {
+        title: 'Run the machine for you',
+        description:
+          'Our team handles scripting, voiceover, visuals, editing, SEO, publishing, and iteration. You review – we execute.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1596008194705-2091cd6764d4?auto=format&fit=crop&w=1400&q=80',
+      alt: 'How it works overview',
+    }}
+  >
+    <Fragment slot="content">
+      If the economics don’t make sense in the diagnostic, we don’t proceed.  
+      When they do, everything that follows is geared towards one thing: predictable,
+      search-led customer acquisition.
+    </Fragment>
+  </Content>
+
+  <!-- Step-by-step section -->
+  <Steps
+    title="Step-by-step: What working together actually looks like"
+    tagline="From first call to a compounding channel"
+    items={[
+      {
+        title: '1. Diagnostic call',
+        description:
+          'We understand your offer, pricing, LTV, and how your best customers currently find you. We stress-test whether YouTube can realistically pay for itself.',
+        icon: 'tabler:phone',
+      },
+      {
+        title: '2. Opportunity & channel blueprint',
+        description:
+          'We research search demand, map competitor content, and design a channel strategy focused on high-intent topics, not random uploads.',
+        icon: 'tabler:route',
+      },
+      {
+        title: '3. Content pipeline setup',
+        description:
+          'We define scripts, assets, and a low-friction way for you to feed us inputs (calls, docs, Looms) so the machine can run without you getting dragged into production.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: '4. Production & publishing',
+        description:
+          'Our team handles scripting, professional voiceover, editing, packaging, thumbnails, and SEO. Videos go live on your channel on a predictable cadence.',
+        icon: 'tabler:movie',
+      },
+      {
+        title: '5. Measurement & optimisation',
+        description:
+          'We track rankings, watch time, click-through, and lead flow. Hooks, titles, thumbnails, and topics are tweaked based on data – not vibes.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: '6. Scale what works',
+        description:
+          'We double down on formats and topics that generate pipeline, explore adjacent keywords, and expand into shorts and integrations when it’s justified.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1645630330301-c93f6b822106?auto=format&fit=crop&w=987&q=80',
+      alt: 'Step by step process',
+    }}
+  />
+
+  <!-- Closing CTA -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-3xl mx-auto px-4 text-center space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">
+        Want to see if this system makes sense for your numbers?
+      </h2>
+      <p class="text-base sm:text-lg text-gray-600 dark:text-slate-300">
+        The next step is simple: a diagnostic call where we run the math, look at search demand,
+        and tell you plainly whether YouTube should be part of your acquisition mix.
+      </p>
+      <div class="mt-6 flex justify-center">
+        <a
+          href="https://cal.com/gautham-8bdvdx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold
+                 bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
+                 transition-colors"
+        >
+          Book a diagnostic call
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

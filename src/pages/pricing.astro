@@ -1,4 +1,4 @@
-\---
+---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Features3 from '~/components/widgets/Features3.astro';
@@ -15,10 +15,9 @@ const metadata = {
   <!-- Hero Section -->
   <HeroText
 
-    title="One plan. Built for businesses with real LTV."
+    title="One plan. Built for high value businesses."
     subtitle="If your business has strong lifetime value and customers who search before buying, we turn YouTube into a profitable new acquisition channel. For $5,500/month, we build and run it end-to-end."
   />
-
   <!-- Single Premium Pricing Card -->
   <section class="py-10 sm:py-12">
     <div class="max-w-3xl mx-auto px-4 text-center">
@@ -113,48 +112,7 @@ const metadata = {
     classes={{ container: 'max-w-5xl' }}
   />
 
-  <!-- Process Overview -->
-  <Steps
-    title="How we work"
-    tagline="A proven method for turning YouTube into a revenue engine."
-    isReversed={false}
-    items={[
-      {
-        title: '1. Diagnostic',
-        icon: 'tabler:number-1',
-        description: 'We assess whether YouTube can become a profitable acquisition channel for your business economics.',
-      },
-      {
-        title: '2. Opportunity Map',
-        icon: 'tabler:number-2',
-        description: 'We map keywords, topics, and search intent that lead to qualified customer acquisition.',
-      },
-      {
-        title: '3. Channel Setup',
-        icon: 'tabler:number-3',
-        description: 'We design your channel, offers, CTAs, playlists, and tracking so everything converts from day one.',
-      },
-      {
-        title: '4. Production & Publishing',
-        icon: 'tabler:number-4',
-        description: 'We handle scripting, editing, thumbnails, SEO, publishing. You focus on the business.',
-      },
-      {
-        title: '5. Optimisation',
-        icon: 'tabler:number-5',
-        description: 'We run tests on thumbnails and hooks, refine topics, and enhance watch-through and conversions.',
-      },
-      {
-        title: '6. Scale',
-        icon: 'tabler:number-6',
-        description: 'We scale what works. More ranking videos, shorts, integrations, and deeper funnel optimisation.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=80',
-      alt: 'SellOnTube process',
-    }}
-  />
+  
 
   <!-- FAQs -->
   <FAQs
@@ -165,17 +123,17 @@ const metadata = {
       {
         title: 'Is $5,500/month suitable for my business?',
         description:
-          'If your LTV meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic.',
+          'If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic.',
       },
       {
         title: 'Do you work only with SaaS?',
         description:
-          'No. We work with consulting businesses, agencies, courses, software companies, and other B2B services—as long as the economics make sense.',
+          'No. We work with consulting businesses, agencies, courses, software companies, and other B2B services. As long as the economics make sense.',
       },
       {
         title: 'Do you do everything end-to-end?',
         description:
-          'Yes. Strategy, scripts, editing, thumbnails, SEO, publishing, and analytics. Your team simply records footage with our guidance.',
+          'Yes. Strategy, scripts, editing, thumbnails, SEO, publishing, and analytics. Your team simply need to give us feedback and clear our doubts.',
       },
       {
         title: 'How fast can I expect results?',
@@ -185,7 +143,7 @@ const metadata = {
       {
         title: 'Is there a long-term contract?',
         description:
-          'No forced retainers. We only continue when the channel shows clear traction and financial sense.',
+          'No forced retainers. You pay monthly and review progress. We only continue when the channel shows clear traction and positive ROI.',
       },
     ]}
   />
@@ -199,8 +157,9 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Book a diagnostic call',
-        href: 'https://your-booking-link-here',
+        href: 'https://cal.com/gautham-8bdvdx/30min?date=2025-12-31',
+        target: '_blank',
+        rel: 'noopener noreferrer',
       },
     ]}
   />
-</Layout>

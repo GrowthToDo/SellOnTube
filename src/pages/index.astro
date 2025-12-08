@@ -26,11 +26,13 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Book a Diagnostic Call',
-        href: '#',
+        href: 'https://cal.com/gautham-8bdvdx/30min?date=2025-12-31',
+        target: '_blank',
+        rel: 'noopener noreferrer',
       },
       {
         text: 'See How It Works →',
-        href: '#process',
+        href: '/how-it-works',
       },
     ]}
     image={{ src: '~/assets/images/hero-image.png', alt: 'SellOnTube Hero Image' }}
@@ -122,13 +124,13 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2070&q=80',
+      src: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=2070&q=80',
       alt: 'Strategy Image',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Built for founders who want customers, not a YouTube hobby
+        Built for businesses who want customers, not a YouTube 'presence'
       </h3>
       We treat your channel like an acquisition asset that should pay for itself.
     </Fragment>
@@ -167,7 +169,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=2194&q=80',
+      src: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2194&q=80',
       alt: 'Blueprint Image',
     }}
   >
@@ -210,7 +212,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?auto=format&fit=crop&w=2070&q=80',
+      src: 'https://images.unsplash.com/photo-1491911923017-19f90d8d7f83?auto=format&fit=crop&w=2070&q=80',
       alt: 'Operations Image',
     }}
   >
@@ -223,53 +225,6 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="How SellOnTube works"
-    items={[
-      {
-        title: 'Step 1: Diagnostic call',
-        description:
-          'We understand your business, customers, and growth goals to determine if YouTube is a good fit.',
-        icon: 'tabler:phone',
-      },
-      {
-        title: 'Step 2: Opportunity analysis',
-        description:
-          'We evaluate your market, competitors, and search demand to confirm YouTube can be profitable.',
-        icon: 'tabler:search',
-      },
-      {
-        title: 'Step 3: Acquisition blueprint',
-        description:
-          'We design a YouTube strategy focused on high-intent topics that attract ready-to-buy customers.',
-        icon: 'tabler:route',
-      },
-      {
-        title: 'Step 4: End-to-end production',
-        description:
-          'We produce all videos using crafted voiceover and visual storytelling',
-        icon: 'tabler:movie',
-      },
-      {
-        title: 'Step 5: Publishing & optimization',
-        description:
-          'We publish your videos, optimize titles, descriptions, thumbnails, and track rankings and engagement.',
-        icon: 'tabler:upload',
-      },
-      {
-        title: 'Step 6: Reporting & iteration',
-        description:
-          'You receive clear reports on leads and performance while we keep improving the engine.',
-        icon: 'tabler:chart-bar',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
 
   <!-- Features2 Widget ************** -->
 
@@ -374,13 +329,13 @@ const metadata = {
   <!-- Stats Widget ****************** -->
 
   <Stats
-  stats={[
-    { title: 'Founder recording time (per month)', amount: '0' },
-    { title: 'On-camera presence needed', amount: '0' },
-    { title: 'Videos produced per month', amount: '4' },
-    { title: 'Primary goal', amount: 'Leads' },
-  ]}
-/>
+    stats={[
+      { title: 'Founder recording time (per month)', amount: '0' },
+      { title: 'On-camera presence needed', amount: '0' },
+      { title: 'Videos produced per month', amount: '4' },
+      { title: 'Primary goal', amount: 'Leads' },
+    ]}
+  />
 
   <!-- CallToAction Widget *********** -->
 
@@ -388,12 +343,10 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Book a Diagnostic Call',
-        href: '#',
-      },
-      {
-        text: 'See the Full Process →',
-        href: '#process',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min?date=2025-12-31',
+        target: '_blank',
+        rel: 'noopener noreferrer',
       },
     ]}
   >
@@ -402,8 +355,8 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book a diagnostic call and we’ll evaluate whether YouTube can be your most profitable customer acquisition channel
-      using voiceover-driven videos - completely done-for-you.
+      Book a diagnostic call and we’ll evaluate whether YouTube can be your most profitable customer acquisition
+      channel using voiceover-driven videos - completely done-for-you.
     </Fragment>
   </CallToAction>
 </Layout>

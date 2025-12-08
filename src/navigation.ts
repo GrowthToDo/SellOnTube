@@ -2,29 +2,19 @@ import { getPermalink, getBlogPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
-    {
-      text: 'Home',
-      href: getPermalink('/'),
-    },
-    {
-      text: 'Pricing',
-      href: getPermalink('/pricing'),
-    },
-    {
-      text: 'Blog',
-      href: getBlogPermalink(),
-    },
+    { text: 'Home', href: getPermalink('/') },
+    { text: 'How It Works', href: getPermalink('/how-it-works') }, // <- ADD THIS
+    { text: 'Pricing', href: getPermalink('/pricing') },
+    { text: 'Blog', href: getBlogPermalink() },
   ],
-
   actions: [
     {
-      text: 'Book a diagnostic call',
-      href: '#', // replace with Calendly link
-      target: '_self',
+      text: 'Book a Diagnostic Call',
+      href: 'https://cal.com/gautham-8bdvdx/30min?date=2025-12-31',
+      target: '_blank',
     },
   ],
 };
-
 export const footerData = {
   links: [],
   secondaryLinks: [
