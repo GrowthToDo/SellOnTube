@@ -19,17 +19,6 @@ const {
       {SITE?.name}
     </a>
 
-    <!-- Terms & Privacy -->
-    <div class="text-sm text-muted mb-6 flex justify-center gap-3">
-      {secondaryLinks.map(({ text, href }, index) => (
-        <a
-          class="hover:underline text-muted dark:text-gray-400"
-          href={href}
-          set:html={text}
-        />
-      ))}
-    </div>
-
     <!-- Social Icons -->
     {socialLinks?.length > 0 && (
       <ul class="flex justify-center gap-4 mb-6">
