@@ -5,6 +5,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -140,47 +141,47 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Who Benefits Most ************* -->
 
-  <Content
-    isAfterContent
-    tagline="Who this is for"
-    title="When SellOnTube makes the most sense"
+  <Features3
+    title="Who benefits most from SellOnTube?"
+    subtitle="Businesses with meaningful lifetime value and customers who search before buying."
+    columns={2}
     items={[
       {
-        title: 'Search-driven businesses',
-        description:
-          'Your customers actively search online for solutions like yours - software products, agencies, courses, consultants, high-ticket services, info products.',
+        title: 'Coaching & Consulting',
+        description: 'High-ticket programs with strong margins and prospects who research problems on YouTube.',
+        icon: 'tabler:school',
       },
       {
-        title: 'Meaningful revenue per customer',
-        description:
-          'Your economics support a channel that compounds and pays for itself over time.',
+        title: 'Agencies & DFY Services',
+        description: 'Businesses where one new client can justify months of YouTube acquisition.',
+        icon: 'tabler:briefcase',
       },
       {
-        title: 'Long-term compounding mindset',
-        description:
-          'You understand that YouTube behaves like SEO. Compounding value, not instant gratification.',
+        title: 'Courses & Info Products',
+        description: 'Creators selling knowledge products with low COGS and high LTV.',
+        icon: 'tabler:book',
       },
       {
-        title: 'You’re done DIY-ing YouTube',
+        title: 'Software Companies',
+        description: 'B2B and B2C software products with clear search demand and scalable revenue per user.',
+        icon: 'tabler:cpu',
+      },
+      {
+        title: 'Other B2B Services',
+        description: 'Any business where one customer has significant lifetime value and a researched purchase journey.',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'Unsure if YouTube fits?',
         description:
-          'You don’t want freelancers, inconsistent editors, or random tactics. You want a single accountable engine.',
+          'In our diagnostic, we map whether YouTube makes financial sense for your business. We only engage if the math works in your favour.',
+        icon: 'tabler:help-circle',
       },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">
-      If you see YouTube as a growth channel, not a side project, you’re in the right place.
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
+    classes={{ container: 'max-w-5xl' }}
+  />
 
   <!-- Content Widget **************** -->
 
