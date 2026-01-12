@@ -1,7 +1,7 @@
 {
-  "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.52",
-  "description": "AstroWind: A free template using Astro 5.0 and Tailwind CSS. Astro starter theme.",
+  "name": "sellontube-website",
+  "version": "1.0.0",
+  "description": "SellOnTube - YouTube acquisition agency website. We turn YouTube search intent into predictable leads.",
   "type": "module",
   "private": true,
   "engines": {

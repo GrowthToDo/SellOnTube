@@ -1,0 +1,51 @@
+---
+/**
+ * JSON-LD Structured Data Component
+ * Adds Organization and WebSite schema for better SEO
+ */
+
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SellOnTube",
+  "url": siteUrl,
+  "logo": `${siteUrl}/favicon.svg`,
+  "description": "We turn YouTube search intent into predictable leads for search-driven businesses - without you recording anything.",
+  "sameAs": [
+    "https://twitter.com/SellOnTube"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "url": "https://cal.com/gautham-8bdvdx/30min"
+  },
+  "service": {
+    "@type": "Service",
+    "name": "YouTube Acquisition Services",
+    "description": "Done-for-you YouTube customer acquisition through voiceover-driven, search-optimized videos.",
+    "provider": {
+      "@type": "Organization",
+      "name": "SellOnTube"
+    }
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SellOnTube",
+  "url": siteUrl,
+  "description": "We turn YouTube search intent into predictable leads for search-driven businesses.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SellOnTube"
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
