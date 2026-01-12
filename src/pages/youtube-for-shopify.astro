@@ -1,0 +1,489 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Note from '~/components/widgets/Note.astro';
+
+const metadata = {
+  title: 'YouTube Marketing for Shopify Apps | SellOnTube',
+  description: 'Turn YouTube into a bottom-of-funnel acquisition channel for your Shopify app. Capture high-intent search demand and convert it into app installs, demos, and qualified signups.',
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Section -->
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a 30-min Shopify App Growth Call',
+        href: calLink,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+      {
+        text: 'See How It Works',
+        href: '#system',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2070&q=80',
+      alt: 'E-commerce customer acquisition',
+    }}
+  >
+    <Fragment slot="title">
+      Turn YouTube into a <span class="text-accent">bottom-of-funnel</span> acquisition channel for your Shopify app
+    </Fragment>
+    <Fragment slot="subtitle">
+      <span class="block mb-1 font-semibold text-primary">For Shopify App Companies</span>
+      We capture high-intent search demand on YouTube and convert it into app installs, demos, and qualified signups.
+    </Fragment>
+  </Hero>
+
+  <!-- Philosophy Note -->
+  <Note
+    title="Our Approach:"
+    description="Search-driven acquisition. Not content marketing. Not brand awareness. Demand capture."
+  />
+
+  <!-- Who This Is For (and Not For) -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-2">Fit Check</p>
+        <h2 class="text-3xl md:text-4xl font-bold">Who This Is For (and Not For)</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- This is for you if -->
+        <div class="relative rounded-2xl border-2 border-green-500/30 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-8 shadow-lg">
+          <div class="absolute -top-4 left-6">
+            <span class="inline-flex items-center gap-2 bg-green-500 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              Good Fit
+            </span>
+          </div>
+          <h3 class="text-xl font-bold text-green-800 dark:text-green-400 mb-6 mt-2">This is for you if:</h3>
+          <ul class="space-y-4">
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">You run a <strong class="text-gray-900 dark:text-white">Shopify app</strong> doing ~$10k to $100k+ MRR</span>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">Paid ads work, but <strong class="text-gray-900 dark:text-white">CAC keeps rising</strong></span>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">Installs drop the moment ad spend pauses</span>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">You want a <strong class="text-gray-900 dark:text-white">compounding acquisition channel</strong>, not another experiment</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- This is not for -->
+        <div class="relative rounded-2xl border-2 border-red-500/30 bg-gradient-to-br from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20 p-8 shadow-lg">
+          <div class="absolute -top-4 left-6">
+            <span class="inline-flex items-center gap-2 bg-red-500 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              Not a Fit
+            </span>
+          </div>
+          <h3 class="text-xl font-bold text-red-800 dark:text-red-400 mb-6 mt-2">This is <em>not</em> for:</h3>
+          <ul class="space-y-4">
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">DTC brands selling physical products</span>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">Creator-led or influencer-first strategies</span>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">Teams looking for "brand awareness" videos</span>
+            </li>
+            <li class="flex gap-4 items-start">
+              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center mt-0.5">
+                <svg class="w-3.5 h-3.5 text-red-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              </span>
+              <span class="text-gray-700 dark:text-slate-300">One-off video projects without long-term intent</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Real Problem Section -->
+  <section class="py-16 md:py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-2">The Real Problem</p>
+        <h2 class="text-3xl md:text-4xl font-bold">It's Not Your Product</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 md:p-10 border border-slate-200 dark:border-slate-700">
+          <div class="prose prose-lg dark:prose-invert max-w-none">
+            <p class="text-xl leading-relaxed">Most Shopify apps don't have a product problem.</p>
+            <p class="text-xl leading-relaxed">They have a <span class="font-bold text-primary">discovery problem</span>.</p>
+
+            <div class="my-6 pl-6 border-l-4 border-primary/50 bg-primary/5 py-4 pr-4 rounded-r-lg">
+              <p class="text-lg italic text-muted mb-0">Merchants don't wake up wanting <em>your</em> app.<br/>They wake up wanting to solve a problem.</p>
+            </div>
+
+            <p class="font-medium text-lg mb-3">They search:</p>
+            <div class="space-y-2 mb-6">
+              <div class="bg-slate-100 dark:bg-slate-700 rounded-lg px-4 py-2">
+                <code class="text-sm">"Best [category] app for Shopify"</code>
+              </div>
+              <div class="bg-slate-100 dark:bg-slate-700 rounded-lg px-4 py-2">
+                <code class="text-sm">"How to fix [problem] on Shopify"</code>
+              </div>
+              <div class="bg-slate-100 dark:bg-slate-700 rounded-lg px-4 py-2">
+                <code class="text-sm">"[Tool A] vs [Tool B]"</code>
+              </div>
+            </div>
+
+            <div class="bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-xl p-4">
+              <p class="font-semibold text-amber-900 dark:text-amber-100 mb-0">
+                If your app doesn't show up during this research phase, you lose the install, even if your product is better.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden md:block">
+          <img
+            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2070&q=80"
+            alt="Person searching on laptop"
+            class="rounded-2xl shadow-xl w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why YouTube Works Section -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-2">The Opportunity</p>
+        <h2 class="text-3xl md:text-4xl font-bold">Why YouTube (When Done Right) Works for Shopify Apps</h2>
+      </div>
+
+      <div class="bg-slate-900 rounded-2xl shadow-2xl p-8 md:p-12 text-white mb-10">
+        <p class="text-3xl md:text-4xl font-bold mb-6 text-center">YouTube is the second-largest search engine.</p>
+        <p class="text-xl md:text-2xl text-slate-300 text-center max-w-3xl mx-auto">When videos are built around <strong class="text-white">buying-intent keywords</strong>, YouTube becomes:</p>
+
+        <div class="grid sm:grid-cols-4 gap-4 mt-10">
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-4xl mb-3">🔍</div>
+            <p class="font-bold text-lg text-slate-900">Discovery</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-4xl mb-3">📚</div>
+            <p class="font-bold text-lg text-slate-900">Education</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-4xl mb-3">⚖️</div>
+            <p class="font-bold text-lg text-slate-900">Comparison</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 text-center">
+            <div class="text-4xl mb-3">🎯</div>
+            <p class="font-bold text-lg text-slate-900">Conversion</p>
+          </div>
+        </div>
+        <p class="text-center text-slate-300 mt-8 text-xl font-medium">All in one flow.</p>
+      </div>
+
+      <div class="bg-slate-100 dark:bg-slate-800 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
+        <div class="flex flex-col md:flex-row gap-8 items-center">
+          <div class="flex-1">
+            <p class="font-medium text-lg mb-4">Most teams fail because they treat YouTube like:</p>
+            <ul class="space-y-2 text-muted">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                Social media
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                Influencer marketing
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                Branding
+              </li>
+            </ul>
+          </div>
+          <div class="hidden md:block w-px h-24 bg-slate-300 dark:bg-slate-600"></div>
+          <div class="flex-1">
+            <p class="text-xl font-bold text-primary mb-2">We treat it like</p>
+            <p class="text-2xl font-bold">Search-Driven Acquisition</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The SellOnTube System -->
+  <Steps
+    id="system"
+    title="The SellOnTube System"
+    tagline="Our Process"
+    items={[
+      {
+        title: 'High-Intent Topic Discovery',
+        description: 'We identify YouTube search terms that indicate install-level intent, not curiosity.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Competitive Topic Validation',
+        description: 'We analyze what already ranks and design angles your app can realistically win.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'BoFu YouTube Content Creation',
+        description: 'Faceless, focused videos built to: match search intent, explain the problem clearly, and position your app as the solution.',
+        icon: 'tabler:video',
+      },
+      {
+        title: 'Conversion-First Distribution',
+        description: 'Every video routes viewers to the right next step: app listing, demo page, or signup flow. This is not content marketing. It\'s demand capture.',
+        icon: 'tabler:target-arrow',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2070&q=80',
+      alt: 'Data analysis and strategy',
+    }}
+    classes={{ container: 'max-w-5xl' }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Steps>
+
+  <!-- Why This Works for Shopify Apps -->
+  <Features
+    title="Why This Works Especially Well for Shopify Apps"
+    subtitle="Instead of renting traffic every month, you build assets that keep working."
+    tagline="The Advantage"
+    items={[
+      {
+        title: 'Merchants actively research',
+        description: 'Shopify merchants research before installing apps. They watch videos to understand solutions.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Search-driven categories',
+        description: 'App categories are already search-driven. People type specific queries looking for solutions.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Comparison queries convert',
+        description: 'Comparison and "best tool" queries convert well because they indicate buying intent.',
+        icon: 'tabler:git-compare',
+      },
+      {
+        title: 'Long-term influence',
+        description: 'YouTube videos influence install decisions long after publishing. They compound over time.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
+
+  <!-- About SellOnTube -->
+  <section class="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-2">About Us</p>
+        <h2 class="text-3xl md:text-4xl font-bold">SellOnTube</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="hidden md:block">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2015&q=80"
+            alt="Growth analytics dashboard"
+            class="rounded-2xl shadow-xl w-full h-auto object-cover"
+          />
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 md:p-10 border border-slate-200 dark:border-slate-700">
+          <p class="text-xl leading-relaxed mb-6">SellOnTube is a <strong>founder-led YouTube acquisition agency</strong> focused on BoFu growth.</p>
+
+          <p class="text-lg text-muted mb-6">We don't run channels for views. We build <strong class="text-foreground">search-driven YouTube funnels</strong> for SaaS and Shopify-focused products.</p>
+
+          <div class="bg-slate-50 dark:bg-slate-700/50 rounded-xl p-6">
+            <p class="font-medium mb-4">Our work is designed for teams who care about:</p>
+            <div class="flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-full font-medium">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Installs
+              </span>
+              <span class="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-full font-medium">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                Signups
+              </span>
+              <span class="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-full font-medium">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                ROI
+              </span>
+            </div>
+            <p class="mt-4 font-semibold text-lg">Not vanity metrics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement Model -->
+  <section class="py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-2">How We Work</p>
+        <h2 class="text-3xl md:text-4xl font-bold">Engagement Model</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 border border-slate-200 dark:border-slate-700">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Monthly Retainer</h3>
+          <p class="text-muted mb-4">We work on a monthly retainer because YouTube acquisition compounds over time:</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-muted">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Videos rank
+            </li>
+            <li class="flex items-center gap-2 text-muted">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Authority builds
+            </li>
+            <li class="flex items-center gap-2 text-muted">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Installs become more consistent
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 border border-slate-200 dark:border-slate-700">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Custom Pricing</h3>
+          <p class="text-muted mb-4">Pricing depends on:</p>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-muted">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              App category
+            </li>
+            <li class="flex items-center gap-2 text-muted">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Competition level
+            </li>
+            <li class="flex items-center gap-2 text-muted">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Content velocity required
+            </li>
+          </ul>
+          <p class="mt-4 font-medium">All details discussed on the strategy call.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a
+          href={calLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-semibold
+                 bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/25
+                 transition-all hover:scale-105"
+        >
+          Book a 30-min Shopify App Growth Call
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Frequently Asked Questions"
+    tagline="FAQ"
+    columns={1}
+    items={[
+      {
+        title: 'Is YouTube really bottom-of-funnel?',
+        description: 'Yes, when built around search intent, not subscribers or trends.',
+      },
+      {
+        title: 'How long until results?',
+        description: 'Early traction can appear in weeks. Compounding impact builds over months.',
+      },
+      {
+        title: 'We tried content before. Why is this different?',
+        description: 'Most content fails because it\'s not tied to buying-intent queries.',
+      },
+      {
+        title: 'Is our niche too small?',
+        description: 'Smaller niches often convert better due to lower competition.',
+      },
+      {
+        title: 'Do you handle everything?',
+        description: 'We handle strategy, research, and video creation. You provide product context and approvals.',
+      },
+      {
+        title: 'Is this a replacement for ads?',
+        description: 'No. It\'s a complementary acquisition layer that reduces long-term dependency.',
+      },
+    ]}
+    classes={{ container: 'max-w-4xl' }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
+  <!-- Final CTA -->
+  <CallToAction
+    title="If your Shopify app already works, it's time to fix discovery."
+    subtitle="Not build more features. Let's turn YouTube into a real acquisition channel."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a 30-min Shopify App Growth Call',
+        href: calLink,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+</Layout>
