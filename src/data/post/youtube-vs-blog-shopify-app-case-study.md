@@ -15,7 +15,7 @@ metadata:
   canonical: https://sellontube.com/blog/youtube-vs-blog-shopify-app-case-study
 ---
 
-I spent 12 months running a controlled experiment.
+When I was heading marketing at a Shopify app company, I spent 12 months running a controlled experiment.
 
 Same Shopify app business. Same team. Same audience.
 Two channels running in parallel: **YouTube** and **Blog**.
