@@ -60,7 +60,7 @@ apps:
 
     post:
       isEnabled: true
-      permalink: "/%slug%"
+      permalink: "/blog/%slug%"
       robots:
         index: true
 

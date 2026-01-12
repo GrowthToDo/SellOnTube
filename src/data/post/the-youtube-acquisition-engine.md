@@ -11,7 +11,7 @@ tags:
   - search-intent
   - b2b
 metadata:
-  canonical: https://sellontube.com/the-youtube-acquisition-engine
+  canonical: https://sellontube.com/blog/the-youtube-acquisition-engine
 ---
 
 Most YouTube advice is built for creators, not businesses.

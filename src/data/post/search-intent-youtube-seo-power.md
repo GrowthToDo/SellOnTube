@@ -11,7 +11,7 @@ tags:
   - search-intent
   - acquisition
 metadata:
-  canonical: https://sellontube.com/search-intent-youtube-seo-power
+  canonical: https://sellontube.com/blog/search-intent-youtube-seo-power
 ---
 
 Most people think of YouTube as a "content platform."  

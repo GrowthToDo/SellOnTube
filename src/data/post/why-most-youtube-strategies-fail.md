@@ -11,7 +11,7 @@ tags:
   - frameworks
   - marketing
 metadata:
-  canonical: https://sellontube.com/why-most-youtube-strategies-fail
+  canonical: https://sellontube.com/blog/why-most-youtube-strategies-fail
 ---
 
 Most founders who try YouTube follow the advice created for *creators*, not for *businesses*.
