@@ -1,0 +1,99 @@
+---
+// Line chart showing monthly conversion trends
+---
+
+<div class="my-8 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg">
+  <h3 class="text-xl font-bold text-center mb-4 text-gray-900 dark:text-white">Monthly Conversion Trends</h3>
+  <div class="relative" style="height: 350px;">
+    <canvas id="monthlyTrendChart"></canvas>
+  </div>
+  <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+    YouTube conversions grew every month while blog stayed flat
+  </p>
+</div>
+
+<script>
+  import { Chart, LineController, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler } from 'chart.js';
+
+  Chart.register(LineController, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler);
+
+  const ctx = document.getElementById('monthlyTrendChart') as HTMLCanvasElement;
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'],
+      datasets: [
+        {
+          label: 'YouTube',
+          data: [78, 85, 92, 98, 105, 108, 112, 118, 125, 132, 138, 142],
+          borderColor: 'rgba(255, 0, 0, 1)',
+          backgroundColor: 'rgba(255, 0, 0, 0.1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.3,
+          pointBackgroundColor: 'rgba(255, 0, 0, 1)',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        },
+        {
+          label: 'Blog',
+          data: [31, 33, 35, 34, 36, 35, 34, 33, 32, 34, 35, 29],
+          borderColor: 'rgba(59, 130, 246, 1)',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.3,
+          pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            usePointStyle: true,
+            padding: 20
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.dataset.label}: ${context.parsed.y} conversions`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 160,
+          ticks: {
+            stepSize: 20
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.1)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+</script>

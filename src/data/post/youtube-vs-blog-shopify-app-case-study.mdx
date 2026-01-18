@@ -15,6 +15,11 @@ metadata:
   canonical: https://sellontube.com/blog/youtube-vs-blog-shopify-app-case-study
 ---
 
+import ConversionComparisonChart from '~/components/charts/ConversionComparisonChart.astro';
+import MonthlyTrendChart from '~/components/charts/MonthlyTrendChart.astro';
+import ChannelBreakdownChart from '~/components/charts/ChannelBreakdownChart.astro';
+import AdvantageGrowthChart from '~/components/charts/AdvantageGrowthChart.astro';
+
 When I was heading marketing at a Shopify app company, I spent 12 months running a controlled experiment.
 
 Same Shopify app business. Same team. Same audience.
@@ -91,6 +96,8 @@ The only variable was the channel.
 
 Here's the 12-month total:
 
+<ConversionComparisonChart />
+
 | Channel | Total Conversions |
 |---------|-------------------|
 | YouTube | **1,257** |
@@ -106,6 +113,8 @@ Let me break this down month by month.
 ## Monthly Breakdown: Conversion Trends
 
 The gap wasn't just consistent-it widened over time.
+
+<MonthlyTrendChart />
 
 Here's what the monthly data looked like:
 
@@ -130,11 +139,15 @@ A few things stand out:
 2. **Blog conversions stayed flat or declined**
 3. **By May 2025, YouTube was converting at nearly 5x the rate of blog**
 
+<AdvantageGrowthChart />
+
 ---
 
 ## May 2025 Snapshot: The Channel Breakdown
 
 In the final month of the experiment, here's how all our channels performed:
+
+<ChannelBreakdownChart />
 
 | Channel | Conversions |
 |---------|-------------|

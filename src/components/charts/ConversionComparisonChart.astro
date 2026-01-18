@@ -1,0 +1,78 @@
+---
+// Bar chart comparing YouTube vs Blog total conversions
+---
+
+<div class="my-8 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-lg">
+  <h3 class="text-xl font-bold text-center mb-4 text-gray-900 dark:text-white">Total Conversions: 12-Month Results</h3>
+  <div class="relative" style="height: 300px;">
+    <canvas id="conversionComparisonChart"></canvas>
+  </div>
+  <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+    YouTube delivered <span class="font-bold text-red-600">3.25x</span> more conversions than the blog
+  </p>
+</div>
+
+<script>
+  import { Chart, BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+
+  Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+
+  const ctx = document.getElementById('conversionComparisonChart') as HTMLCanvasElement;
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['YouTube', 'Blog'],
+      datasets: [{
+        label: 'Total Conversions',
+        data: [1257, 411],
+        backgroundColor: [
+          'rgba(255, 0, 0, 0.85)',
+          'rgba(59, 130, 246, 0.85)'
+        ],
+        borderColor: [
+          'rgba(255, 0, 0, 1)',
+          'rgba(59, 130, 246, 1)'
+        ],
+        borderWidth: 2,
+        borderRadius: 8,
+        barThickness: 80
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.parsed.y.toLocaleString()} conversions`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 1400,
+          ticks: {
+            callback: function(value) {
+              return value.toLocaleString();
+            }
+          },
+          grid: {
+            color: 'rgba(0, 0, 0, 0.1)'
+          }
+        },
+        x: {
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+</script>
