@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <!-- Rounded rectangle background (YouTube-style) -->
-  <rect x="8" y="24" width="112" height="80" rx="20" ry="20" fill="#FF0000"/>
-  <!-- Play triangle -->
-  <polygon points="52,40 52,88 92,64" fill="#FFFFFF"/>
+  <!-- Circular background with gradient -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF4444"/>
+      <stop offset="100%" style="stop-color:#CC0000"/>
+    </linearGradient>
+  </defs>
+  <!-- Circle background -->
+  <circle cx="64" cy="64" r="56" fill="url(#grad)"/>
+  <!-- Play triangle (slightly offset right for optical center) -->
+  <polygon points="50,36 50,92 98,64" fill="#FFFFFF"/>
 </svg>
