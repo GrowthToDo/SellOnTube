@@ -2,22 +2,20 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
+import HeroProofPanel from '~/components/widgets/HeroProofPanel.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import CaseStudyShowcase from '~/components/widgets/CaseStudyShowcase.astro';
-import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'SellOnTube — Acquire customers from YouTube without recording',
+  title: 'SellOnTube | Acquire customers from YouTube without recording',
   ignoreTitleTemplate: true,
 };
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 ---
 
 <Layout metadata={metadata}>
@@ -27,106 +25,131 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Book a Diagnostic Call',
-        href: 'https://cal.com/gautham-8bdvdx/30min?date=2025-12-31',
+        text: 'See if YouTube can work for you',
+        href: calLink,
         target: '_blank',
         rel: 'noopener noreferrer',
       },
       {
-        text: 'See How It Works →',
+        text: 'How it works →',
         href: '/how-it-works',
       },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'SellOnTube Hero Image' }}
   >
     <Fragment slot="title">
       We acquire customers for your business through YouTube - without you recording a single video.
     </Fragment>
     <Fragment slot="subtitle">
-      We handle strategy, scripting, voiceover, visual production, editing, publishing, and optimization. You get
-      qualified leads and customers without appearing on camera or building a studio.
+      Done-for-you strategy, scripting, voiceover, production, and publishing. You get qualified leads without appearing on camera.
+    </Fragment>
+    <Fragment slot="image">
+      <HeroProofPanel />
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  <!-- Who Benefits Most ************* -->
 
-  <Note
-    title="Philosophy:"
-    description="Zero recording. End-to-end execution. Voiceover-driven, conversion-focused videos."
-  />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="What we do"
-    title="Done-for-you YouTube customer acquisition"
-    subtitle="SellOnTube is a done-for-you YouTube acquisition engine. We turn your expertise into high-performing voiceover-led videos, publish them on your channel, and optimize them for predictable customer acquisition - without requiring you to get on camera."
+  <Features3
+    title="Is this for you?"
+    subtitle="SellOnTube works best for businesses with meaningful customer lifetime value and prospects who research before buying."
+    columns={2}
     items={[
       {
-        title: 'No on-camera recording',
-        description:
-          'Our videos use crafted voiceover and purposeful visuals - not talking heads, not AI-generated templates.',
-        icon: 'tabler:video',
+        title: 'Coaching & Consulting',
+        description: 'High-ticket programs where prospects research problems on YouTube before buying.',
+        icon: 'tabler:school',
       },
       {
-        title: 'End-to-end production',
-        description:
-          'Research, scripts, voiceover, visuals, editing, thumbnails, SEO optimization, and publishing: everything done for you.',
-        icon: 'tabler:device-tv',
+        title: 'Agencies & DFY Services',
+        description: 'Businesses where one new client justifies months of acquisition investment.',
+        icon: 'tabler:briefcase',
       },
       {
-        title: 'Customer-focused videos',
-        description:
-          'Explainer-style videos engineered to rank for high-intent queries and convert viewers into leads and customers.',
-        icon: 'tabler:chart-line',
+        title: 'Courses & Info Products',
+        description: 'Knowledge products with strong margins and audiences who learn through video.',
+        icon: 'tabler:book',
       },
       {
-        title: 'Consistent output',
-        description:
-          'High-quality monthly videos that compound in value - like SEO assets.',
-        icon: 'tabler:calendar-stats',
-      },
-      {
-        title: 'Clear ROI',
-        description:
-          'Monthly insights showing rankings, leads, and conversions driven by your YouTube channel.',
-        icon: 'tabler:report-analytics',
-      },
-      {
-        title: 'Strategy first',
-        description:
-          'We only proceed if our upfront analysis shows YouTube can be a profitable channel for you.',
-        icon: 'tabler:target',
+        title: 'Software Companies',
+        description: 'B2B and B2C products with search demand and scalable revenue per user.',
+        icon: 'tabler:cpu',
       },
     ]}
+    classes={{ container: 'max-w-5xl' }}
   />
 
   <!-- Case Study Showcase *********** -->
 
   <CaseStudyShowcase />
 
-  <!-- Content Widget **************** -->
+  <!-- What We Do ******************** -->
+
+  <Features
+    id="features"
+    tagline="What we handle"
+    title="A complete YouTube acquisition engine"
+    subtitle="You focus on your business. We handle everything needed to turn YouTube into a customer acquisition channel."
+    items={[
+      {
+        title: 'Strategy & topic selection',
+        description:
+          'We identify high-intent search queries and plan content that captures demand, not just views.',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Scripting & voiceover',
+        description:
+          'Scripts designed to convert, narrated by professional voiceover artists. No camera needed.',
+        icon: 'tabler:microphone',
+      },
+      {
+        title: 'Production & editing',
+        description:
+          'Storyboarded visuals, motion graphics, and editing that keeps viewers engaged.',
+        icon: 'tabler:video',
+      },
+      {
+        title: 'SEO & publishing',
+        description:
+          'Titles, descriptions, tags, and thumbnails optimized for search. Published to your channel.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Reporting & iteration',
+        description:
+          "Clear updates on what's working and how we're adjusting to improve performance.",
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Consistent monthly output',
+        description:
+          'A predictable flow of acquisition-focused videos that compound over time.',
+        icon: 'tabler:calendar-stats',
+      },
+    ]}
+  />
+
+  <!-- How We Think ****************** -->
 
   <Content
     isReversed
-    tagline="How we think"
-    title="YouTube as a serious acquisition channel, not content for content's sake"
+    tagline="Our approach"
+    title="YouTube as acquisition, not content marketing"
     items={[
       {
-        title: 'Acquisition-first, not creator-first',
+        title: 'Acquisition-first',
         description:
-          'We design your channel around customer acquisition and business math, not entertainment or personality-driven content.',
+          'We design your channel around customer acquisition and business math, not entertainment metrics.',
       },
       {
-        title: 'Compounding like SEO',
+        title: 'Compounding returns',
         description:
-          'Strategic voiceover-led videos behave like evergreen SEO assets. They keep bringing the right people in, month after month.',
+          'Videos rank for search terms and keep bringing qualified prospects month after month.',
       },
       {
-        title: 'Low friction for founders',
+        title: 'Low founder involvement',
         description:
-          'You never need to get on camera, learn filming, or become a creator. We deliberately keep your involvement light.',
+          'You never need to get on camera, learn filming, or become a creator.',
       },
     ]}
     image={{
@@ -146,200 +169,33 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Who Benefits Most ************* -->
-
-  <Features3
-    title="Who benefits most from SellOnTube?"
-    subtitle="Businesses with meaningful lifetime value and customers who search before buying."
-    columns={2}
-    items={[
-      {
-        title: 'Coaching & Consulting',
-        description: 'High-ticket programs with strong margins and prospects who research problems on YouTube.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Agencies & DFY Services',
-        description: 'Businesses where one new client can justify months of YouTube acquisition.',
-        icon: 'tabler:briefcase',
-      },
-      {
-        title: 'Courses & Info Products',
-        description: 'Creators selling knowledge products with low COGS and high LTV.',
-        icon: 'tabler:book',
-      },
-      {
-        title: 'Software Companies',
-        description: 'B2B and B2C software products with clear search demand and scalable revenue per user.',
-        icon: 'tabler:cpu',
-      },
-      {
-        title: 'Other B2B Services',
-        description: 'Any business where one customer has significant lifetime value and a researched purchase journey.',
-        icon: 'tabler:building-community',
-      },
-      {
-        title: 'Unsure if YouTube fits?',
-        description:
-          'In our diagnostic, we map whether YouTube makes financial sense for your business. We only engage if the math works in your favour.',
-        icon: 'tabler:help-circle',
-      },
-    ]}
-    classes={{ container: 'max-w-5xl' }}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    tagline="What you get"
-    title="A fully managed YouTube acquisition engine"
-    items={[
-      {
-        title: 'Channel strategy & planning',
-        description:
-          'Positioning, messaging, topic selection, and prioritization rooted in your business goals.',
-      },
-      {
-        title: 'End-to-end video production',
-        description:
-          'Scriptwriting, professional voiceover, storyboarded visuals, editing, thumbnails, SEO optimization, and publishing.',
-      },
-      {
-        title: 'Consistent publishing cadence',
-        description:
-          'A predictable flow of acquisition-focused videos each month, without you having to chase anyone.',
-      },
-      {
-        title: 'Reporting & iteration',
-        description:
-          'Clear updates on what’s working, what’s not, and how we’re adjusting to improve performance.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1491911923017-19f90d8d7f83?auto=format&fit=crop&w=2070&q=80',
-      alt: 'Operations Image',
-    }}
-  >
-    <Fragment slot="content">
-      You get a channel that works without you ever needing to step in front of a camera.
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="What we take off your plate"
-    subtitle="You don’t need a YouTube playbook, production team, or creator ambitions. We bring all of that."
-    tagline="Execution"
-    items={[
-      {
-        title: 'Strategy',
-        description: 'We decide what should be published, when, and why - aligned with your goals.',
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Scripting',
-        description:
-          'We turn your expertise and inputs into clear, compelling scripts designed to convert.',
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Voiceover production',
-        description:
-          'Professional voiceover artists narrate your videos. Founder recordings not mandatory.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Editing & packaging',
-        description:
-          'We handle editing, pacing, motion graphics, and visuals that keep viewers engaged.',
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'SEO & optimization',
-        description:
-          'Titles, descriptions, tags, and thumbnails tuned for search and clicks - not random guesswork.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Publishing & reporting',
-        description:
-          'Videos go live on your channel, and you get clear, concise performance updates.',
-        icon: 'flat-color-icons:business-contact',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Learn how to acquire customers from YouTube"
-    information={`We use the blog to break down real YouTube customer-acquisition playbooks.
-                        Expect deep dives on strategy, examples of high-performing videos, and honest breakdowns of what actually works.
-                        No fluff, no “creator tips”. Just concrete lessons for founders and marketers who want customers from YouTube.
-                `}
-  />
-
   <!-- FAQs Widget ******************* -->
 
   <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Clear answers for founders and marketers who want customers from YouTube without becoming creators."
+    title="Common Questions"
     tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+    classes={{ container: 'max-w-4xl' }}
     items={[
       {
-        title: 'Do I need to be on camera or record anything?',
+        title: 'Do I need to be on camera?',
         description:
           'No. We use professional voiceover and visual storytelling. You never need to appear on camera unless you want to.',
       },
       {
-        title: 'What kind of businesses does SellOnTube work best for?',
+        title: 'How long before I see results?',
         description:
-          'We work best with businesses where customers actively search online for solutions - software products, agencies, consultants, high-ticket services, courses and info products. Our diagnostic call confirms whether YouTube can realistically become a profitable acquisition channel for you.',
+          'YouTube behaves like SEO. Early wins are possible, but the real value is in compounding. We aim for meaningful traction within 60-90 days.',
       },
       {
-        title: 'How long before I start seeing results?',
+        title: 'How do you know if YouTube will work for my business?',
         description:
-          'YouTube behaves like SEO. Early wins are possible, but compounding value is where it becomes unfair. We aim for meaningful traction within 60 to 90 days.',
+          'We analyse your market, offer, and search demand in a diagnostic call. If the economics don\'t support profitable acquisition, we\'ll tell you upfront.',
       },
       {
-        title: 'What exactly do you handle end-to-end?',
+        title: 'What does working together look like?',
         description:
-          'Research, scripting, voiceover, visuals, editing, thumbnails, SEO, publishing, and reporting. You focus on your business. We handle the YouTube acquisition engine.',
+          'Each month we align on topics, collect inputs from you (calls, docs), then handle full production and publishing. Your involvement stays light.',
       },
-      {
-        title: 'How do you decide if YouTube is a good fit for my business?',
-        description:
-          'We analyse your market, offer, pricing, search demand, and customer behaviour. If the economics don’t support profitable acquisition, we will tell you upfront.',
-      },
-      {
-        title: 'What does working together look like month to month?',
-        description:
-          'Each month we align on topics, collect inputs from you in low-friction ways (calls, docs), and then our team handles the full production and publishing cycle.',
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Founder recording time (per month)', amount: '0' },
-      { title: 'On-camera presence needed', amount: '0' },
-      { title: 'Videos produced per month', amount: '4' },
-      { title: 'Primary goal', amount: 'Leads' },
     ]}
   />
 
@@ -349,20 +205,19 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Book a diagnostic call',
-        href: 'https://cal.com/gautham-8bdvdx/30min?date=2025-12-31',
+        text: 'Book a free diagnostic call',
+        href: calLink,
         target: '_blank',
         rel: 'noopener noreferrer',
       },
     ]}
   >
     <Fragment slot="title">
-      Ready to acquire customers from YouTube, without appearing on camera?
+      See if YouTube can be your next acquisition channel
     </Fragment>
 
     <Fragment slot="subtitle">
-      Book a diagnostic call and we’ll evaluate whether YouTube can be your most profitable customer acquisition
-      channel using voiceover-driven videos - completely done-for-you.
+      In 30 minutes, we'll evaluate whether YouTube makes sense for your business and show you what a search-driven approach would look like.
     </Fragment>
   </CallToAction>
 </Layout>

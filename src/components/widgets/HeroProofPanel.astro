@@ -1,0 +1,149 @@
+---
+// Hero Proof Panel - Shows case study results with Chart.js graph
+---
+
+<div class="bg-slate-900 rounded-2xl p-6 md:p-8 shadow-2xl border border-slate-700/50 max-w-2xl mx-auto">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-2">
+    <span class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-red-400 uppercase bg-red-500/10 rounded-full">
+      12-Month Case Study
+    </span>
+    <div class="flex items-baseline gap-1">
+      <span class="text-3xl md:text-4xl font-black text-white">3.25</span>
+      <span class="text-xl md:text-2xl font-bold text-red-500">x</span>
+    </div>
+  </div>
+
+  <!-- Persuasive headline -->
+  <p class="text-slate-300 text-sm mb-4">
+    We ran YouTube and blog content side-by-side for a Shopify app. <span class="text-white font-medium">Same effort, same timeframe.</span>
+  </p>
+
+  <!-- Chart -->
+  <div class="relative" style="height: 200px;">
+    <canvas id="heroTrendChart"></canvas>
+  </div>
+
+  <!-- Key insight -->
+  <p class="text-center text-white font-medium text-sm mt-3 mb-3">
+    YouTube grew every month. Blog flatlined.
+  </p>
+
+  <!-- Bottom Stats -->
+  <div class="grid grid-cols-2 gap-4 pt-3 border-t border-slate-700">
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2">
+        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+        <span class="text-2xl font-bold text-white">1,257</span>
+      </div>
+      <p class="text-xs text-slate-400">YouTube conversions</p>
+    </div>
+    <div class="text-center">
+      <div class="flex items-center justify-center gap-2">
+        <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+        <span class="text-2xl font-bold text-slate-400">411</span>
+      </div>
+      <p class="text-xs text-slate-400">Blog conversions</p>
+    </div>
+  </div>
+
+  <!-- CTA line -->
+  <p class="text-center text-xs text-slate-500 mt-4">
+    By month 12, YouTube converted at <span class="text-red-400 font-semibold">5x the rate</span> of blog.
+    <a href="/blog/youtube-vs-blog-shopify-app-case-study" class="text-red-400 hover:text-red-300 underline ml-1">See the full breakdown →</a>
+  </p>
+</div>
+
+<script>
+  import { Chart, LineController, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler } from 'chart.js';
+
+  Chart.register(LineController, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, Filler);
+
+  const ctx = document.getElementById('heroTrendChart') as HTMLCanvasElement;
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["Jun '24", "Jul '24", "Aug '24", "Sep '24", "Oct '24", "Nov '24", "Dec '24", "Jan '25", "Feb '25", "Mar '25", "Apr '25", "May '25"],
+      datasets: [
+        {
+          label: 'YouTube',
+          data: [78, 85, 92, 98, 105, 108, 112, 118, 125, 132, 138, 142],
+          borderColor: 'rgba(239, 68, 68, 1)',
+          backgroundColor: 'rgba(239, 68, 68, 0.15)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: 'rgba(239, 68, 68, 1)',
+          pointBorderColor: '#1e293b',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Blog',
+          data: [31, 33, 35, 34, 36, 35, 34, 33, 32, 34, 35, 29],
+          borderColor: 'rgba(59, 130, 246, 1)',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+          pointBorderColor: '#1e293b',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        intersect: false,
+        mode: 'index'
+      },
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          backgroundColor: 'rgba(15, 23, 42, 0.9)',
+          titleColor: '#fff',
+          bodyColor: '#cbd5e1',
+          borderColor: 'rgba(255,255,255,0.1)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: function(context) {
+              return `${context.dataset.label}: ${context.parsed.y} conversions`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 160,
+          ticks: {
+            stepSize: 40,
+            color: 'rgba(148, 163, 184, 0.7)',
+            font: { size: 11 }
+          },
+          grid: {
+            color: 'rgba(148, 163, 184, 0.1)'
+          }
+        },
+        x: {
+          ticks: {
+            color: 'rgba(148, 163, 184, 0.7)',
+            font: { size: 11 }
+          },
+          grid: {
+            display: false
+          }
+        }
+      }
+    }
+  });
+</script>
