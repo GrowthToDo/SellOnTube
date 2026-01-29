@@ -12,6 +12,7 @@ import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
+import { SITE } from 'astrowind:config';
 
 export const prerender = true;
 
@@ -43,9 +44,63 @@ const metadata = merge(
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.excerpt || '',
+  "url": url,
+  "datePublished": post.publishDate ? new Date(post.publishDate).toISOString() : undefined,
+  "dateModified": post.updateDate ? new Date(post.updateDate).toISOString() : (post.publishDate ? new Date(post.publishDate).toISOString() : undefined),
+  ...(image ? { "image": typeof image === 'string' ? image : `${siteUrl}${(image as ImageMetadata).src}` } : {}),
+  ...(post.author ? { "author": { "@type": "Person", "name": post.author } } : { "author": { "@type": "Organization", "name": "SellOnTube" } }),
+  "publisher": {
+    "@type": "Organization",
+    "name": "SellOnTube",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": url
+  },
+  ...(post.readingTime ? { "timeRequired": `PT${post.readingTime}M` } : {}),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": `${siteUrl}/blog`
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": post.title,
+      "item": url
+    }
+  ]
+};
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>

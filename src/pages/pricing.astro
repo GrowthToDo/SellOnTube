@@ -8,10 +8,86 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Pricing',
+  description: 'SellOnTube pricing: $5,500/month for a done-for-you YouTube acquisition system. Strategy, scripting, production, SEO, and analytics included.',
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "SellOnTube Lead Engine",
+  "description": "A complete, done-for-you YouTube acquisition system. Strategy, scripting, voiceover, production, SEO, publishing, and analytics.",
+  "provider": {
+    "@type": "Organization",
+    "name": "SellOnTube",
+    "url": "https://sellontube.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "5500",
+    "priceCurrency": "USD",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "5500",
+      "priceCurrency": "USD",
+      "billingDuration": "P1M"
+    },
+    "url": "https://sellontube.com/pricing"
+  },
+  "serviceType": "YouTube Customer Acquisition",
+  "areaServed": "Worldwide"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is $5,500/month suitable for my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work only with SaaS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We work with consulting businesses, agencies, courses, software companies, and other B2B services. As long as the economics make sense."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you do everything end-to-end?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Strategy, scripts, editing, thumbnails, SEO, publishing, and analytics. Your team simply need to give us feedback and clear our doubts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast can I expect results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most channels begin seeing rankings and qualified traffic within 45 to 90 days, with compounding results thereafter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a long-term contract?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No forced retainers. You pay monthly and review progress. We only continue when the channel shows clear traction and positive ROI."
+      }
+    }
+  ]
 };
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero Section -->
   <HeroText
 

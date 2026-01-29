@@ -13,12 +13,53 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 const metadata = {
   title: 'SellOnTube | Acquire customers from YouTube without recording',
   ignoreTitleTemplate: true,
+  description: 'SellOnTube builds done-for-you YouTube channels that acquire customers through search — strategy, scripting, voiceover, production, and SEO, without you recording a single video.',
 };
 
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to be on camera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We use professional voiceover and visual storytelling. You never need to appear on camera unless you want to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long before I see results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "YouTube behaves like SEO. Early wins are possible, but the real value is in compounding. We aim for meaningful traction within 60-90 days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you know if YouTube will work for my business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We analyse your market, offer, and search demand in a diagnostic call. If the economics don't support profitable acquisition, we'll tell you upfront."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does working together look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each month we align on topics, collect inputs from you (calls, docs), then handle full production and publishing. Your involvement stays light."
+      }
+    }
+  ]
+};
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <!-- Hero Widget ******************* -->
 
   <Hero

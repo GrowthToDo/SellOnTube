@@ -15,9 +15,65 @@ const metadata = {
 };
 
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is YouTube really bottom-of-funnel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, when built around search intent, not subscribers or trends."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long until results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Early traction can appear in weeks. Compounding impact builds over months."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "We tried content before. Why is this different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most content fails because it's not tied to buying-intent queries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is our niche too small?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Smaller niches often convert better due to lower competition."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you handle everything?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We handle strategy, research, and video creation. You provide product context and approvals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this a replacement for ads?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It's a complementary acquisition layer that reduces long-term dependency."
+      }
+    }
+  ]
+};
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <!-- Hero Section -->
   <Hero
     actions={[
