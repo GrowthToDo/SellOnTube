@@ -25,10 +25,12 @@ const {
         {socialLinks.map(({ ariaLabel, href, icon }) => (
           <li>
             <a
-              class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 
+              class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700
                      rounded-lg p-2.5 inline-flex items-center transition"
               aria-label={ariaLabel}
               href={href}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {icon && <Icon name={icon} class="w-5 h-5" />}
             </a>
