@@ -9,6 +9,10 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 const metadata = {
   title: 'Pricing',
   description: 'SellOnTube pricing: $5,500/month for a done-for-you YouTube acquisition system. Strategy, scripting, production, SEO, and analytics included.',
+  openGraph: {
+    type: 'website',
+    images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
+  },
 };
 
 const serviceSchema = {

@@ -8,12 +8,17 @@ import Features3 from '~/components/widgets/Features3.astro';
 import CaseStudyShowcase from '~/components/widgets/CaseStudyShowcase.astro';
 import Content from '~/components/widgets/Content.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'SellOnTube | Acquire customers from YouTube without recording',
   ignoreTitleTemplate: true,
   description: 'SellOnTube builds done-for-you YouTube channels that acquire customers through search — strategy, scripting, voiceover, production, and SEO, without you recording a single video.',
+  openGraph: {
+    type: 'website',
+    images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
+  },
 };
 
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
@@ -238,6 +243,15 @@ const faqSchema = {
           'Each month we align on topics, collect inputs from you (calls, docs), then handle full production and publishing. Your involvement stays light.',
       },
     ]}
+  />
+
+  <!-- Latest Blog Posts ************* -->
+
+  <BlogLatestPosts
+    title="Latest from the blog"
+    information="Strategies and insights on YouTube customer acquisition for search-driven businesses."
+    count={3}
+    linkText="Read the full playbook"
   />
 
   <!-- CallToAction Widget *********** -->
