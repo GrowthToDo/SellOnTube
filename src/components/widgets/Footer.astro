@@ -4,6 +4,7 @@ import { SITE } from 'astrowind:config';
 import type { Props } from './Footer.astro';
 
 const {
+  links = [],
   socialLinks = [],
   secondaryLinks = [],
   footNote = '',
@@ -18,6 +19,20 @@ const {
     <a href="/" class="font-bold text-xl mb-4 block">
       {SITE?.name}
     </a>
+
+    <!-- Navigation Links -->
+    {links?.length > 0 && (
+      <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm">
+        {links.map(({ text, href }) => (
+          <a
+            class="text-muted dark:text-gray-400 hover:text-primary dark:hover:text-white transition"
+            href={href}
+          >
+            {text}
+          </a>
+        ))}
+      </nav>
+    )}
 
     <!-- Social Icons -->
     {socialLinks?.length > 0 && (

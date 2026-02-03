@@ -1,9 +1,9 @@
 ---
-publishDate: 2025-12-04T00:00:00Z
+publishDate: 2025-12-23T00:00:00Z
 author: Sathyanand
 title: "Why Most YouTube Strategies Fail - and the Acquisition-First Approach That Actually Works"
 excerpt: "Most YouTube strategies collapse because they're built for creators, not businesses. Here's the acquisition-first model that reliably turns videos into customers."
-image: https://images.unsplash.com/photo-1633613286880-dae9f126b728?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80
+image: ~/assets/images/blog/youtube-strategy.jpg
 category: YouTube Strategy
 tags:
   - youtube

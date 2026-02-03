@@ -1,9 +1,9 @@
 ---
-publishDate: 2025-12-04T00:00:00Z
+publishDate: 2025-12-25T00:00:00Z
 author: Sathyanand
 title: "The Compounding Effect: How 4 Videos a Month Can Build a Predictable Pipeline in 6 to 12 Months"
 excerpt: "Four strategic YouTube videos a month can build a predictable acquisition engine - because high-intent content compounds like SEO, not social media."
-image: https://images.unsplash.com/photo-1535231540604-72e8fbaf8cdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80
+image: ~/assets/images/blog/camera-film-reel.jpg
 category: YouTube Strategy
 tags:
   - youtube

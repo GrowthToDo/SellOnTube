@@ -1,9 +1,9 @@
 ---
-publishDate: 2025-12-04T00:00:00Z
+publishDate: 2025-12-22T00:00:00Z
 author: Sathyanand
 title: "The YouTube Acquisition Engine: A Complete Blueprint for Turning Videos into Customers"
 excerpt: "A breakdown of our end-to-end system for converting YouTube videos into predictable customer acquisition - not through entertainment, but strategic voiceover-led content."
-image: https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80
+image: ~/assets/images/blog/creative-workspace.jpg
 category: YouTube Strategy
 tags:
   - youtube
