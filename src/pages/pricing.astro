@@ -9,7 +9,7 @@ import { SITE } from 'astrowind:config';
 
 const metadata = {
   title: 'Pricing',
-  description: 'SellOnTube pricing: $5,500/month for a done-for-you YouTube acquisition system. Strategy, scripting, production, SEO, and analytics included.',
+  description: 'SellOnTube pricing: $7,000/month + applicable taxes for a done-for-you YouTube acquisition system. Strategy, scripting, production, SEO, and analytics included.',
   openGraph: {
     type: 'website',
     images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
@@ -28,11 +28,11 @@ const serviceSchema = {
   },
   "offers": {
     "@type": "Offer",
-    "price": "5500",
+    "price": "7000",
     "priceCurrency": "USD",
     "priceSpecification": {
       "@type": "UnitPriceSpecification",
-      "price": "5500",
+      "price": "7000",
       "priceCurrency": "USD",
       "billingDuration": "P1M"
     },
@@ -59,7 +59,7 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is $5,500/month suitable for my business?",
+      "name": "Is $7,000/month + taxes suitable for my business?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic."
@@ -109,7 +109,7 @@ const faqSchema = {
   <HeroText
 
     title="One plan. Built for high value businesses."
-    subtitle="If your business has strong lifetime value and customers who search before buying, we turn YouTube into a profitable new acquisition channel. For $5,500/month, we build and run it end-to-end."
+    subtitle="If your business has strong lifetime value and customers who search before buying, we turn YouTube into a profitable new acquisition channel. For $7,000/month + applicable taxes, we build and run it end-to-end."
   />
   <!-- Single Premium Pricing Card -->
   <section class="py-10 sm:py-12">
@@ -130,8 +130,8 @@ const faqSchema = {
             Single, all-inclusive plan
           </p>
           <div class="mt-3 flex items-baseline gap-2">
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight">$5,500</span>
-            <span class="text-sm text-gray-600 dark:text-slate-300">per month</span>
+            <span class="text-4xl sm:text-5xl font-bold tracking-tight">$7,000</span>
+            <span class="text-sm text-gray-600 dark:text-slate-300">per month + applicable taxes</span>
           </div>
           <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-slate-300 max-w-xl">
             We create and run a YouTube channel designed to acquire customers profitably.
@@ -214,7 +214,7 @@ const faqSchema = {
     columns={1}
     items={[
       {
-        title: 'Is $5,500/month suitable for my business?',
+        title: 'Is $7,000/month + taxes suitable for my business?',
         description:
           'If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic.',
       },
