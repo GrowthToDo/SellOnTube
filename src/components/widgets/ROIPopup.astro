@@ -1,0 +1,266 @@
+---
+// ROI Calculator Popup - triggers after 45s or on exit intent
+---
+
+<!-- Popup Overlay -->
+<div id="roi-popup-overlay" class="fixed inset-0 bg-black/50 z-50 hidden opacity-0 transition-opacity duration-300">
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <!-- Popup Modal -->
+    <div id="roi-popup-modal" class="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 transform scale-95 transition-transform duration-300">
+      <!-- Close Button -->
+      <button
+        id="roi-popup-close"
+        class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-slate-300"
+        aria-label="Close"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Popup Content -->
+      <div id="roi-popup-form-container">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+          Could YouTube work for your business?
+        </h3>
+        <p class="text-sm text-gray-600 dark:text-slate-400 mb-6">
+          Enter your numbers and we'll help you figure it out.
+        </p>
+
+        <div class="space-y-4">
+          <!-- LTV Input -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+              Customer LTV
+            </label>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-semibold text-gray-700 dark:text-slate-300">$</span>
+              <input
+                type="number"
+                id="popup-ltv"
+                placeholder="5000"
+                min="100"
+                class="w-full text-lg font-bold px-3 py-2 rounded-lg border border-slate-300
+                       dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                       focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- COGS Input -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+              COGS
+            </label>
+            <div class="flex items-center gap-2">
+              <span class="text-lg font-semibold text-gray-700 dark:text-slate-300">$</span>
+              <input
+                type="number"
+                id="popup-cogs"
+                placeholder="1500"
+                min="0"
+                class="w-full text-lg font-bold px-3 py-2 rounded-lg border border-slate-300
+                       dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                       focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- Email Input -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+              Email
+            </label>
+            <input
+              type="email"
+              id="popup-email"
+              placeholder="you@company.com"
+              class="w-full text-lg px-3 py-2 rounded-lg border border-slate-300
+                     dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                     focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            />
+          </div>
+
+          <button
+            id="popup-submit"
+            type="button"
+            onclick="handlePopupSubmit()"
+            class="w-full inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold
+                   bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
+                   transition-colors"
+          >
+            See if the math works
+          </button>
+        </div>
+
+        <p class="mt-4 text-xs text-center text-gray-400 dark:text-slate-500">
+          We'll reach out to help you figure out if YouTube makes sense.
+        </p>
+      </div>
+
+      <!-- Success State -->
+      <div id="roi-popup-success" class="hidden text-center py-4">
+        <div class="text-4xl mb-4">✓</div>
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Thanks!</h3>
+        <p class="text-sm text-gray-600 dark:text-slate-400">
+          We'll reach out to learn more about your business and help you figure out if YouTube makes sense.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    var POPUP_DELAY = 45000; // 45 seconds
+    var STORAGE_KEY = 'roi_popup_shown';
+    var popupTriggered = false;
+
+    // Check if popup was already shown/dismissed
+    function wasPopupShown() {
+      try {
+        return localStorage.getItem(STORAGE_KEY) === 'true';
+      } catch(e) {
+        return false;
+      }
+    }
+
+    function markPopupShown() {
+      try {
+        localStorage.setItem(STORAGE_KEY, 'true');
+      } catch(e) {}
+    }
+
+    function showPopup() {
+      if (popupTriggered || wasPopupShown()) return;
+      popupTriggered = true;
+
+      var overlay = document.getElementById('roi-popup-overlay');
+      var modal = document.getElementById('roi-popup-modal');
+
+      if (overlay && modal) {
+        overlay.classList.remove('hidden');
+        setTimeout(function() {
+          overlay.classList.remove('opacity-0');
+          modal.classList.remove('scale-95');
+          modal.classList.add('scale-100');
+        }, 10);
+      }
+    }
+
+    function hidePopup() {
+      var overlay = document.getElementById('roi-popup-overlay');
+      var modal = document.getElementById('roi-popup-modal');
+
+      if (overlay && modal) {
+        overlay.classList.add('opacity-0');
+        modal.classList.remove('scale-100');
+        modal.classList.add('scale-95');
+        setTimeout(function() {
+          overlay.classList.add('hidden');
+        }, 300);
+      }
+      markPopupShown();
+    }
+
+    // Time-based trigger
+    if (!wasPopupShown()) {
+      setTimeout(showPopup, POPUP_DELAY);
+    }
+
+    // Exit intent trigger
+    document.addEventListener('mouseout', function(e) {
+      if (e.clientY < 10 && !wasPopupShown()) {
+        showPopup();
+      }
+    });
+
+    // Close button
+    document.addEventListener('DOMContentLoaded', function() {
+      var closeBtn = document.getElementById('roi-popup-close');
+      var overlay = document.getElementById('roi-popup-overlay');
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', hidePopup);
+      }
+
+      // Close on overlay click (outside modal)
+      if (overlay) {
+        overlay.addEventListener('click', function(e) {
+          if (e.target === overlay || e.target.classList.contains('min-h-screen')) {
+            hidePopup();
+          }
+        });
+      }
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          hidePopup();
+        }
+      });
+    });
+
+    // Make functions globally available
+    window.hideROIPopup = hidePopup;
+  })();
+
+  function handlePopupSubmit() {
+    var ltvInput = document.getElementById('popup-ltv');
+    var cogsInput = document.getElementById('popup-cogs');
+    var emailInput = document.getElementById('popup-email');
+    var submitBtn = document.getElementById('popup-submit');
+
+    var ltv = parseFloat(ltvInput.value);
+    var cogs = parseFloat(cogsInput.value) || 0;
+    var email = emailInput.value.trim();
+
+    if (!ltv || ltv < 100) {
+      alert('Please enter a customer LTV of at least $100');
+      return;
+    }
+
+    if (cogs >= ltv) {
+      alert('COGS must be less than LTV');
+      return;
+    }
+
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Disable button
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+
+    // Submit to Google Sheets
+    fetch('https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        revenue: ltv,
+        cogs: cogs,
+        source: 'popup'
+      })
+    }).then(function() {
+      // Show success
+      document.getElementById('roi-popup-form-container').classList.add('hidden');
+      document.getElementById('roi-popup-success').classList.remove('hidden');
+
+      // Mark as shown
+      try { localStorage.setItem('roi_popup_shown', 'true'); } catch(e) {}
+
+      // Auto close after 3 seconds
+      setTimeout(function() {
+        window.hideROIPopup();
+      }, 3000);
+    }).catch(function() {
+      alert('Something went wrong. Please try again.');
+      submitBtn.textContent = 'See if the math works';
+      submitBtn.disabled = false;
+    });
+  }
+</script>
