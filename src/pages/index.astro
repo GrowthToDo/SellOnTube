@@ -61,6 +61,22 @@ const faqSchema = {
         "@type": "Answer",
         "text": "Each month we align on topics, collect inputs from you (calls, docs), then handle full production and publishing. Your involvement stays light."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you know my industry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We research deeply before we script. We study your market, competitors, and customer language. You review every script before production to ensure accuracy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if it doesn't work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We recommend a strategic review after 120 days. If the channel isn't showing traction or the economics don't justify continuing, we'll tell you. No long-term lock-in."
+      }
     }
   ]
 };
@@ -95,6 +111,28 @@ const faqSchema = {
       <HeroProofPanel />
     </Fragment>
   </Hero>
+
+  <!-- Social Proof Bar *************** -->
+  <section class="py-6 bg-slate-50 dark:bg-slate-800/50">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 text-center">
+        <div>
+          <p class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">3.25x</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">more conversions than blog content</p>
+        </div>
+        <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
+        <div>
+          <p class="text-3xl font-bold text-gray-900 dark:text-white">60-90 days</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">to meaningful traction</p>
+        </div>
+        <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
+        <div>
+          <p class="text-3xl font-bold text-gray-900 dark:text-white">No contracts</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">month-to-month, cancel anytime</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Who Benefits Most ************* -->
 
@@ -250,6 +288,16 @@ const faqSchema = {
         title: 'What does working together look like?',
         description:
           'Each month we align on topics, collect inputs from you (calls, docs), then handle full production and publishing. Your involvement stays light.',
+      },
+      {
+        title: 'How do you know my industry?',
+        description:
+          'We research deeply before we script. We study your market, competitors, and customer language. You review every script before production to ensure accuracy.',
+      },
+      {
+        title: 'What if it doesn\'t work?',
+        description:
+          'We recommend a strategic review after 120 days. If the channel isn\'t showing traction or the economics don\'t justify continuing, we\'ll tell you. No long-term lock-in.',
       },
     ]}
   />
