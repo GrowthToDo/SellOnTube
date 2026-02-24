@@ -1,0 +1,114 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  compact?: boolean;
+}
+
+const {
+  title = "Check if YouTube makes sense for you",
+  subtitle = "",
+  compact = true,
+} = Astro.props;
+---
+
+<section class="py-8 sm:py-10">
+  <div class="max-w-4xl mx-auto px-4">
+    {title && (
+      <div class="text-center mb-6">
+        <h2 class="text-xl sm:text-2xl font-bold tracking-tight dark:text-white">{title}</h2>
+        {subtitle && <p class="mt-1 text-sm text-gray-600 dark:text-slate-400">{subtitle}</p>}
+      </div>
+    )}
+
+    <div
+      class="rounded-2xl border border-slate-200 bg-white/70 shadow-sm
+             dark:bg-slate-900/70 dark:border-slate-700 p-4 sm:p-6"
+    >
+      <div class="flex flex-col sm:flex-row gap-4 items-end">
+        <!-- LTV Input -->
+        <div class="flex-1 w-full">
+          <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+            Customer LTV
+          </label>
+          <p class="text-xs text-gray-500 dark:text-slate-400 mb-2">
+            Total revenue from one customer
+          </p>
+          <div class="flex items-center gap-1">
+            <span class="text-lg font-semibold text-gray-700 dark:text-slate-300">$</span>
+            <input
+              type="number"
+              id="homepage-revenue"
+              placeholder="5000"
+              min="100"
+              class="w-full text-xl font-bold px-3 py-2 rounded-lg border border-slate-300
+                     dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                     focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- COGS Input -->
+        <div class="flex-1 w-full">
+          <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+            COGS
+          </label>
+          <p class="text-xs text-gray-500 dark:text-slate-400 mb-2">
+            Cost to deliver the service
+          </p>
+          <div class="flex items-center gap-1">
+            <span class="text-lg font-semibold text-gray-700 dark:text-slate-300">$</span>
+            <input
+              type="number"
+              id="homepage-cogs"
+              placeholder="1500"
+              min="0"
+              class="w-full text-xl font-bold px-3 py-2 rounded-lg border border-slate-300
+                     dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                     focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="w-full sm:w-auto">
+          <button
+            type="button"
+            onclick="handleCalculateROI()"
+            class="w-full sm:w-auto inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold
+                   bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
+                   transition-colors whitespace-nowrap"
+          >
+            Calculate ROI →
+          </button>
+        </div>
+      </div>
+
+      <p class="mt-3 text-xs text-center text-gray-400 dark:text-slate-500">
+        Rough estimate works. Not sure? <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600 dark:hover:text-slate-300">Book a call</a> and we'll run the numbers together.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function handleCalculateROI() {
+    var revenueInput = document.getElementById('homepage-revenue');
+    var cogsInput = document.getElementById('homepage-cogs');
+
+    var revenue = parseFloat(revenueInput.value);
+    var cogs = parseFloat(cogsInput.value) || 0;
+
+    if (!revenue || revenue < 100) {
+      alert('Please enter a customer LTV of at least $100');
+      return;
+    }
+
+    if (cogs >= revenue) {
+      alert('COGS must be less than LTV');
+      return;
+    }
+
+    window.location.href = '/calculator?revenue=' + revenue + '&cogs=' + cogs;
+  }
+</script>

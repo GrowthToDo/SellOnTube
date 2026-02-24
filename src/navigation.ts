@@ -11,7 +11,7 @@ export const headerData = {
   actions: [
     {
       text: 'Book a Diagnostic Call',
-      href: 'https://cal.com/gautham-8bdvdx/30min?date=2025-12-31',
+      href: 'https://cal.com/gautham-8bdvdx/30min',
       target: '_blank',
     },
   ],

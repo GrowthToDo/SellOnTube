@@ -1,0 +1,330 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'YouTube ROI Calculator',
+  description: 'Calculate if YouTube customer acquisition makes sense for your business. See your potential ROI in seconds.',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    title="Does YouTube make sense for your business?"
+    subtitle="Enter your numbers. See if the math works."
+  />
+
+  <section class="py-10 sm:py-12">
+    <div class="max-w-xl mx-auto px-4">
+      <div
+        class="rounded-3xl border border-slate-200 bg-white/70 shadow-sm
+               dark:bg-slate-900/70 dark:border-slate-700 p-6 sm:p-8"
+      >
+        <!-- Step 1: Input -->
+        <div id="step-input">
+          <div class="space-y-6">
+            <!-- LTV Input -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+                Customer LTV
+              </label>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">
+                Lifetime value: total revenue from an average customer
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="text-xl font-semibold text-gray-700 dark:text-slate-300">$</span>
+                <input
+                  type="number"
+                  id="revenue-input"
+                  placeholder="e.g. 5000"
+                  min="100"
+                  class="w-full text-2xl font-bold px-4 py-3 rounded-xl border border-slate-300
+                         dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                         focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                />
+              </div>
+            </div>
+
+            <!-- COGS Input -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+                COGS per customer
+              </label>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">
+                Cost of delivery: fulfillment, support, software, etc.
+              </p>
+              <div class="flex items-center gap-2">
+                <span class="text-xl font-semibold text-gray-700 dark:text-slate-300">$</span>
+                <input
+                  type="number"
+                  id="cogs-input"
+                  placeholder="e.g. 1500"
+                  min="0"
+                  class="w-full text-2xl font-bold px-4 py-3 rounded-xl border border-slate-300
+                         dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                         focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button
+            id="calculate-btn"
+            class="mt-8 w-full inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold
+                   bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
+                   transition-colors"
+          >
+            Calculate my ROI
+          </button>
+        </div>
+
+        <!-- Step 2: Results -->
+        <div id="step-results" class="hidden">
+          <!-- Gross Margin -->
+          <div class="text-center pb-6 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-slate-400 mb-1">Your gross margin per customer</p>
+            <p class="text-4xl font-bold text-gray-900 dark:text-white" id="margin-display">$3,500</p>
+            <p class="text-sm text-gray-500 dark:text-slate-400 mt-2" id="margin-math">$5,000 LTV − $1,500 COGS</p>
+          </div>
+
+          <!-- Breakeven -->
+          <div class="text-center py-6 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-slate-400 mb-1">At our pricing, you break even at</p>
+            <p class="text-4xl font-bold text-emerald-600 dark:text-emerald-400">
+              <span id="breakeven-display">2</span> customers<span class="text-lg font-normal text-gray-500">/month</span>
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-400 mt-2" id="breakeven-math">
+              $7,000/month ÷ $3,500 margin = 2 customers
+            </p>
+            <p class="text-xs text-gray-400 dark:text-slate-500 mt-1">
+              Our pricing: $7,000/month for done-for-you YouTube acquisition
+            </p>
+          </div>
+
+          <!-- Quick Math -->
+          <div class="py-6">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-left">
+              <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Quick math:</p>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">Your monthly profit at different customer volumes</p>
+              <div class="space-y-2 text-sm text-gray-600 dark:text-slate-400">
+                <p id="example-1">• <span id="ex1-customers">3</span> customers/month → <span id="ex1-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$3,500/month profit</span></p>
+                <p id="example-2">• <span id="ex2-customers">5</span> customers/month → <span id="ex2-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$10,500/month profit</span></p>
+                <p id="example-3">• <span id="ex3-customers">10</span> customers/month → <span id="ex3-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$28,000/month profit</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Capture -->
+          <div class="border-t border-slate-200 dark:border-slate-700 pt-6 mt-2">
+            <p class="text-sm text-gray-700 dark:text-slate-300 mb-4 text-center">
+              Want a thorough analysis to see if YouTube makes sense for your business?
+            </p>
+
+            <div id="email-form" class="space-y-3">
+              <input
+                type="email"
+                id="email-input"
+                placeholder="Enter your email"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300
+                       dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                       focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+              />
+              <button
+                id="get-projection-btn"
+                class="w-full inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold
+                       bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
+                       transition-colors"
+              >
+                Help me figure it out
+              </button>
+            </div>
+
+            <div id="success-message" class="hidden mt-4 text-center">
+              <p class="text-lg font-semibold text-emerald-600 dark:text-emerald-400">Thanks!</p>
+              <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">We'll reach out to learn more about your business and help you figure out if YouTube makes sense.</p>
+            </div>
+          </div>
+
+          <button
+            id="recalculate-btn"
+            class="mt-6 w-full text-sm text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-slate-200"
+          >
+            ← Try different numbers
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Prefer to talk through the numbers?"
+    subtitle="In our diagnostic, we map whether YouTube makes financial sense for your specific business."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+</Layout>
+
+<script>
+  const MONTHLY_COST = 7000;
+
+  // Elements
+  const revenueInput = document.getElementById('revenue-input') as HTMLInputElement;
+  const cogsInput = document.getElementById('cogs-input') as HTMLInputElement;
+  const calculateBtn = document.getElementById('calculate-btn');
+  const recalculateBtn = document.getElementById('recalculate-btn');
+  const stepInput = document.getElementById('step-input');
+  const stepResults = document.getElementById('step-results');
+  const emailInput = document.getElementById('email-input') as HTMLInputElement;
+  const getProjectionBtn = document.getElementById('get-projection-btn');
+  const emailForm = document.getElementById('email-form');
+  const successMessage = document.getElementById('success-message');
+
+  // Check for URL params on load
+  function checkUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    const revenue = params.get('revenue');
+    const cogs = params.get('cogs');
+
+    if (revenue) {
+      revenueInput.value = revenue;
+      cogsInput.value = cogs || '0';
+      // Auto-calculate after a brief delay to ensure DOM is ready
+      setTimeout(() => calculate(), 100);
+    }
+  }
+
+  function formatMoney(amount: number): string {
+    return '$' + Math.abs(amount).toLocaleString();
+  }
+
+  function formatProfit(amount: number): string {
+    if (amount >= 0) {
+      return '+$' + amount.toLocaleString();
+    }
+    return '-$' + Math.abs(amount).toLocaleString();
+  }
+
+  function calculate() {
+    const revenue = parseFloat(revenueInput.value);
+    const cogs = parseFloat(cogsInput.value) || 0;
+
+    if (!revenue || revenue < 100) {
+      alert('Please enter a customer LTV of at least $100');
+      return;
+    }
+
+    if (cogs >= revenue) {
+      alert('COGS must be less than LTV');
+      return;
+    }
+
+    const margin = revenue - cogs;
+    const breakeven = Math.ceil(MONTHLY_COST / margin);
+
+    // Update margin display
+    (document.getElementById('margin-display') as HTMLElement).textContent = formatMoney(margin);
+    (document.getElementById('margin-math') as HTMLElement).textContent =
+      `${formatMoney(revenue)} LTV − ${formatMoney(cogs)} COGS`;
+
+    // Update breakeven display
+    (document.getElementById('breakeven-display') as HTMLElement).textContent = breakeven.toString();
+    (document.getElementById('breakeven-math') as HTMLElement).textContent =
+      `$7,000/month ÷ ${formatMoney(margin)} margin = ${breakeven} customers`;
+
+    // Calculate examples (breakeven + 1, breakeven + 3, breakeven * 2 or more)
+    const ex1Customers = breakeven + 1;
+    const ex2Customers = breakeven + 3;
+    const ex3Customers = Math.max(breakeven + 5, breakeven * 2);
+
+    const ex1Profit = (ex1Customers * margin) - MONTHLY_COST;
+    const ex2Profit = (ex2Customers * margin) - MONTHLY_COST;
+    const ex3Profit = (ex3Customers * margin) - MONTHLY_COST;
+
+    (document.getElementById('ex1-customers') as HTMLElement).textContent = ex1Customers.toString();
+    (document.getElementById('ex2-customers') as HTMLElement).textContent = ex2Customers.toString();
+    (document.getElementById('ex3-customers') as HTMLElement).textContent = ex3Customers.toString();
+
+    (document.getElementById('ex1-profit') as HTMLElement).textContent = formatProfit(ex1Profit) + '/month';
+    (document.getElementById('ex2-profit') as HTMLElement).textContent = formatProfit(ex2Profit) + '/month';
+    (document.getElementById('ex3-profit') as HTMLElement).textContent = formatProfit(ex3Profit) + '/month';
+
+    // Show results
+    stepInput?.classList.add('hidden');
+    stepResults?.classList.remove('hidden');
+  }
+
+  function recalculate() {
+    stepResults?.classList.add('hidden');
+    stepInput?.classList.remove('hidden');
+    emailForm?.classList.remove('hidden');
+    successMessage?.classList.add('hidden');
+    revenueInput.focus();
+  }
+
+  async function submitEmail() {
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    // Disable button while submitting
+    if (getProjectionBtn) {
+      getProjectionBtn.textContent = 'Submitting...';
+      getProjectionBtn.setAttribute('disabled', 'true');
+    }
+
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          revenue: revenueInput.value,
+          cogs: cogsInput.value,
+        }),
+      });
+
+      emailForm?.classList.add('hidden');
+      successMessage?.classList.remove('hidden');
+    } catch (error) {
+      console.error('Error submitting:', error);
+      alert('Something went wrong. Please try again.');
+      if (getProjectionBtn) {
+        getProjectionBtn.textContent = 'Help me figure it out';
+        getProjectionBtn.removeAttribute('disabled');
+      }
+    }
+  }
+
+  // Event listeners
+  calculateBtn?.addEventListener('click', calculate);
+  recalculateBtn?.addEventListener('click', recalculate);
+  getProjectionBtn?.addEventListener('click', submitEmail);
+
+  revenueInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') cogsInput.focus();
+  });
+
+  cogsInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') calculate();
+  });
+
+  emailInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') submitEmail();
+  });
+
+  // Check for URL params on page load
+  checkUrlParams();
+</script>

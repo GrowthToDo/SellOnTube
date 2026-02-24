@@ -6,6 +6,7 @@ import HeroProofPanel from '~/components/widgets/HeroProofPanel.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import CaseStudyShowcase from '~/components/widgets/CaseStudyShowcase.astro';
+import ROICalculator from '~/components/widgets/ROICalculator.astro';
 import Content from '~/components/widgets/Content.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -73,14 +74,14 @@ const faqSchema = {
     actions={[
       {
         variant: 'primary',
-        text: 'See if YouTube can work for you',
+        text: 'See your profit potential',
+        href: '#roi-calculator',
+      },
+      {
+        text: 'Book a diagnostic call',
         href: calLink,
         target: '_blank',
         rel: 'noopener noreferrer',
-      },
-      {
-        text: 'How it works →',
-        href: '/how-it-works',
       },
     ]}
   >
@@ -98,8 +99,8 @@ const faqSchema = {
   <!-- Who Benefits Most ************* -->
 
   <Features3
-    title="Is this for you?"
-    subtitle="SellOnTube works best for businesses with meaningful customer lifetime value and prospects who research before buying."
+    title="YouTube acquisition works best for..."
+    subtitle="Businesses with meaningful customer lifetime value and prospects who research before buying."
     columns={2}
     items={[
       {
@@ -125,6 +126,12 @@ const faqSchema = {
     ]}
     classes={{ container: 'max-w-5xl' }}
   />
+
+  <!-- ROI Calculator **************** -->
+
+  <div id="roi-calculator">
+    <ROICalculator title="Check if the math works for your business" />
+  </div>
 
   <!-- Case Study Showcase *********** -->
 
