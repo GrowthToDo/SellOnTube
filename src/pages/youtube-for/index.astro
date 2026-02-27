@@ -1,0 +1,134 @@
+---
+import { niches } from '~/data/niches';
+import Layout from '~/layouts/PageLayout.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+
+const today = new Date();
+today.setHours(23, 59, 59, 999);
+const publishedNiches = niches.filter((n) => new Date(n.publishDate) <= today);
+
+// Shopify page is a standalone static page — always included
+const shopifyCard = {
+  slug: 'shopify',
+  name: 'Shopify App Businesses',
+  metaDescription: 'How Shopify app developers use YouTube to reach merchants during product research, evaluation, and switching decisions.',
+};
+
+const metadata = {
+  title: 'YouTube Marketing for Every Industry | SellOnTube',
+  description: `Find out exactly how YouTube drives leads for your specific business type. Detailed guides for SaaS, coaches, consultants, agencies, and ${niches.length - 4} more industries.`,
+  canonical: `${siteUrl}/youtube-for`,
+  robots: { index: true, follow: true },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "YouTube for Every Industry", "item": `${siteUrl}/youtube-for` }
+  ]
+};
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Hero -->
+  <div class="bg-slate-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
+      <div class="flex items-center justify-center gap-2 mb-6">
+        <svg class="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+        </svg>
+        <span class="text-sm font-semibold uppercase tracking-wider text-slate-400">YouTube Marketing Guides</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+        YouTube Marketing for Every Industry
+      </h1>
+      <p class="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        Every industry has a different buyer psychology, a different search behaviour, and a different reason YouTube works — or doesn't. Find yours below.
+      </p>
+      <div class="mt-6 inline-flex items-center gap-2 bg-slate-800 rounded-full px-4 py-2">
+        <span class="w-2 h-2 rounded-full bg-green-400"></span>
+        <span class="text-sm text-slate-300">{publishedNiches.length + 1} industry guides</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Shopify — standalone page, always shown -->
+      <a
+        href="/youtube-for-shopify"
+        class="group block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all duration-200"
+      >
+        <p class="text-xs font-semibold uppercase tracking-wider text-primary mb-2">YouTube for</p>
+        <h2 class="text-base font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors leading-snug">
+          {shopifyCard.name}
+        </h2>
+        <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed line-clamp-2 mb-3">
+          {shopifyCard.metaDescription}
+        </p>
+        <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary">
+          Read guide
+          <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+          </svg>
+        </span>
+      </a>
+      <!-- Data-driven niches filtered by publishDate -->
+      {publishedNiches.map((niche) => (
+        <a
+          href={`/youtube-for-${niche.slug}`}
+          class="group block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all duration-200"
+        >
+          <p class="text-xs font-semibold uppercase tracking-wider text-primary mb-2">YouTube for</p>
+          <h2 class="text-base font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors leading-snug">
+            {niche.name}
+          </h2>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed line-clamp-2 mb-3">
+            {niche.metaDescription}
+          </p>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary">
+            Read guide
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-700">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center">
+      <p class="text-xs font-semibold uppercase tracking-wider text-primary mb-3">Not sure if YouTube fits?</p>
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        We'll tell you honestly whether it's the right channel for your business
+      </h2>
+      <p class="text-gray-600 dark:text-slate-400 mb-8 leading-relaxed">
+        Book a free 30-minute diagnostic call. We'll look at your current acquisition model and give you a straight answer — including if YouTube isn't the right move yet.
+      </p>
+      <a
+        href={calLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-8 py-3.5 rounded-full hover:bg-primary/90 transition-all"
+      >
+        Book a free diagnostic call
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</Layout>

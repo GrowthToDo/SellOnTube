@@ -1,0 +1,387 @@
+---
+import { niches } from '~/data/niches';
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+export async function getStaticPaths() {
+  const today = new Date();
+  today.setHours(23, 59, 59, 999);
+  return niches
+    .filter((niche) => new Date(niche.publishDate) <= today)
+    .map((niche) => ({
+      params: { slug: niche.slug },
+      props: { niche },
+    }));
+}
+
+const { niche } = Astro.props;
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: niche.metaTitle,
+  description: niche.metaDescription,
+  canonical: `${siteUrl}/youtube-for-${niche.slug}`,
+  openGraph: {
+    type: 'article',
+    images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": `YouTube for ${niche.name}`, "item": `${siteUrl}/youtube-for-${niche.slug}` }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": niche.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": `YouTube Marketing for ${niche.name}`,
+  "provider": {
+    "@type": "Organization",
+    "name": "SellOnTube",
+    "url": siteUrl
+  },
+  "description": niche.metaDescription,
+  "audience": {
+    "@type": "Audience",
+    "audienceType": niche.name
+  }
+};
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <!-- Article Header: breadcrumb + tag + H1 only. No CTA button here. -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-16 pb-10">
+
+    <!-- Breadcrumb -->
+    <div class="flex items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-8">
+      <a href="/" class="hover:text-primary transition-colors">SellOnTube</a>
+      <span>/</span>
+      <span>YouTube for {niche.name}</span>
+    </div>
+
+    <!-- Category tag -->
+    <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-4">YouTube for {niche.shortName}</p>
+
+    <!-- H1 -->
+    <h1 class="text-4xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
+      {niche.heroTitle}
+    </h1>
+  </div>
+
+  <!-- Article Body -->
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 pb-16">
+
+    <!-- The Problem -->
+    <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-5">
+        {niche.problemHeading}
+      </h2>
+      <div class="space-y-4 mb-8">
+        {niche.problemBody.split('\n\n').map((para) => (
+          <p class="text-lg text-gray-700 dark:text-slate-300 leading-relaxed">{para}</p>
+        ))}
+      </div>
+
+      <p class="font-semibold text-gray-900 dark:text-white mb-4">Your buyers are already searching:</p>
+      <div class="space-y-2 mb-8">
+        {niche.searchExamples.map((example) => (
+          <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-3">
+            <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <code class="text-sm text-gray-800 dark:text-slate-200">{example}</code>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-400 rounded-r-xl p-5 mb-8">
+        <p class="text-amber-900 dark:text-amber-100 font-medium leading-relaxed">
+          If your business doesn't show up during this research phase, you lose the customer. The buyer moves on to whoever ranked first.
+        </p>
+      </div>
+
+      <!-- Diagram 1: How buyers actually make decisions -->
+      <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">
+          How {niche.shortName} buyers make decisions before contacting anyone
+        </p>
+        <div class="overflow-x-auto pb-1">
+          <div class="flex items-center gap-2 min-w-max">
+            {[
+              { num: '1', label: 'Has a problem', sub: 'unsure how to solve it' },
+              { num: '2', label: 'Searches YouTube', sub: 'types the specific pain' },
+              { num: '3', label: 'Watches 2-3 videos', sub: 'evaluates who understands them' },
+              { num: '4', label: 'Forms a shortlist', sub: 'before contacting anyone' },
+              { num: '5', label: 'Reaches out', sub: 'already warmed up to you' },
+            ].map((step, i) => (
+              <div class="flex items-center gap-2">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-3 text-center w-28">
+                  <p class="text-xs font-bold text-primary mb-1">{step.num}</p>
+                  <p class="text-xs font-semibold text-gray-900 dark:text-white leading-tight">{step.label}</p>
+                  <p class="text-xs text-gray-400 dark:text-slate-500 mt-1 leading-tight">{step.sub}</p>
+                </div>
+                {i < 4 && (
+                  <svg class="flex-shrink-0 w-4 h-4 text-slate-300 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-slate-600 mt-3">Step 3 is where YouTube either puts you on the shortlist or takes you out of contention.</p>
+      </div>
+    </section>
+
+    <!-- Why YouTube Works for This Niche -->
+    <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-5">
+        Why YouTube Works Especially Well for {niche.name}
+      </h2>
+      <p class="text-lg text-gray-700 dark:text-slate-300 leading-relaxed mb-8">
+        YouTube is the second-largest search engine in the world. When videos are built around buying-intent keywords, not entertainment or brand awareness, it functions as a discovery, evaluation, and conversion engine all in one place. Here's why that matters specifically for {niche.shortName}.
+      </p>
+
+      <div class="space-y-7">
+        {niche.features.map((feature) => (
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-1 rounded-full bg-primary mt-1 self-stretch min-h-[1.5rem]"></div>
+            <div>
+              <p class="font-bold text-gray-900 dark:text-white mb-2">{feature.title}</p>
+              <p class="text-gray-600 dark:text-slate-400 leading-relaxed">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Diagram 2: Content Compounding Chart -->
+      <figure class="mt-10">
+        <figcaption class="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-3">
+          What happens to your traffic when you publish consistently on YouTube vs. running ads
+        </figcaption>
+        <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 p-4 overflow-hidden">
+          <svg viewBox="0 0 580 200" role="img" aria-label="Chart showing YouTube traffic compounding over 12 months while paid ads traffic stops when spending stops" class="w-full">
+            <!-- Grid lines -->
+            <line x1="55" y1="30" x2="560" y2="30" stroke="#f1f5f9" stroke-width="1"/>
+            <line x1="55" y1="65" x2="560" y2="65" stroke="#f1f5f9" stroke-width="1"/>
+            <line x1="55" y1="100" x2="560" y2="100" stroke="#f1f5f9" stroke-width="1"/>
+            <line x1="55" y1="135" x2="560" y2="135" stroke="#f1f5f9" stroke-width="1"/>
+            <!-- Axes -->
+            <line x1="55" y1="158" x2="560" y2="158" stroke="#e2e8f0" stroke-width="1.5"/>
+            <line x1="55" y1="20" x2="55" y2="158" stroke="#e2e8f0" stroke-width="1.5"/>
+            <!-- Y axis label -->
+            <text x="18" y="92" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui,sans-serif" transform="rotate(-90 18 92)">Monthly traffic</text>
+            <!-- X axis labels -->
+            <line x1="181" y1="155" x2="181" y2="161" stroke="#cbd5e1" stroke-width="1"/>
+            <text x="181" y="174" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui,sans-serif">Month 3</text>
+            <line x1="307" y1="155" x2="307" y2="161" stroke="#cbd5e1" stroke-width="1"/>
+            <text x="307" y="174" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui,sans-serif">Month 6</text>
+            <line x1="433" y1="155" x2="433" y2="161" stroke="#cbd5e1" stroke-width="1"/>
+            <text x="433" y="174" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui,sans-serif">Month 9</text>
+            <line x1="559" y1="155" x2="559" y2="161" stroke="#cbd5e1" stroke-width="1"/>
+            <text x="559" y="174" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="system-ui,sans-serif">Month 12</text>
+            <!-- Ads / outreach spikes -->
+            <path d="M 55,157 L 97,95 L 140,157 L 181,157 L 223,97 L 265,157 L 307,157 L 349,95 L 391,157 L 433,157 L 475,97 L 517,157 L 559,157"
+              fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linejoin="round"/>
+            <!-- YouTube area fill -->
+            <path d="M 55,155 C 181,152 230,140 307,122 S 432,78 559,25 L 559,157 L 55,157 Z"
+              fill="#dc2626" opacity="0.07"/>
+            <!-- YouTube line -->
+            <path d="M 55,155 C 181,152 230,140 307,122 S 432,78 559,25"
+              fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="559" cy="25" r="4" fill="#dc2626"/>
+            <circle cx="559" cy="157" r="4" fill="#cbd5e1"/>
+          </svg>
+          <div class="flex items-center gap-6 justify-center mt-1 pb-1">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-0.5 bg-red-600 rounded"></div>
+              <span class="text-xs text-gray-500 dark:text-slate-500">YouTube (compounds with each video)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-0.5 bg-slate-300 rounded"></div>
+              <span class="text-xs text-gray-500 dark:text-slate-500">Ads / outreach (resets when you stop)</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-slate-600 mt-2">Illustrative. Actual growth depends on content quality, niche competition, and publishing consistency.</p>
+      </figure>
+    </section>
+
+    <!-- Mid-article CTA -->
+    <div class="my-4 bg-slate-900 dark:bg-slate-800 rounded-2xl p-8 text-center">
+      <p class="text-white text-xl font-semibold mb-2">Not sure if YouTube is the right channel for your business?</p>
+      <p class="text-slate-300 mb-6 leading-relaxed">
+        We'll look at your current acquisition model and tell you honestly whether YouTube fits, or where your budget would work harder.
+      </p>
+      <a
+        href={calLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded-full hover:bg-primary/90 transition-all"
+      >
+        Book a free 30-min diagnostic call
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        </svg>
+      </a>
+    </div>
+
+    <!-- The SellOnTube System -->
+    <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-5">
+        What a YouTube Strategy Looks Like for {niche.name}
+      </h2>
+      <p class="text-lg text-gray-700 dark:text-slate-300 leading-relaxed mb-8">
+        This isn't content marketing or brand awareness. Every piece of content we build is engineered around a specific buyer search query, designed to explain the problem clearly, and built to convert viewers into leads.
+      </p>
+
+      <!-- Diagram 3: 4-Step Process Visual -->
+      <div class="mb-8 overflow-x-auto pb-1">
+        <div class="flex items-stretch gap-0 min-w-max rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+          {[
+            { num: '01', title: 'Discover', icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z', color: 'bg-slate-50 dark:bg-slate-800' },
+            { num: '02', title: 'Validate', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'bg-white dark:bg-slate-900' },
+            { num: '03', title: 'Create', icon: 'M15 10l4.553-2.069A1 1 0 0121 8.854v6.292a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z', color: 'bg-slate-50 dark:bg-slate-800' },
+            { num: '04', title: 'Convert', icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6', color: 'bg-white dark:bg-slate-900' },
+          ].map((step, i) => (
+            <div class={`flex-1 ${step.color} px-5 py-4 border-r border-slate-200 dark:border-slate-700 last:border-r-0 text-center min-w-[110px]`}>
+              <svg class="w-5 h-5 text-primary mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={step.icon}/>
+              </svg>
+              <p class="text-xs font-black text-primary/40 dark:text-primary/30 mb-1">{step.num}</p>
+              <p class="text-sm font-bold text-gray-900 dark:text-white">{step.title}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        {[
+          {
+            num: '01',
+            title: 'High-Intent Topic Discovery',
+            body: `We identify YouTube search terms that signal buying-level intent for ${niche.shortName}, not curiosity or general education. Terms where the person searching is actively evaluating solutions like yours.`,
+          },
+          {
+            num: '02',
+            title: 'Competitive Topic Validation',
+            body: 'We analyse what already ranks for each topic and design content angles your business can realistically win. We avoid oversaturated queries and target the gaps where a new video can reach the top quickly.',
+          },
+          {
+            num: '03',
+            title: 'BoFu YouTube Content Creation',
+            body: 'Faceless, focused videos built to match search intent, explain the problem clearly, and position your solution as the answer. All voiceover and screen-based production. No camera required.',
+          },
+          {
+            num: '04',
+            title: 'Conversion-First Distribution',
+            body: 'Every video routes viewers to the right next step: your contact page, booking link, or signup flow. The goal is demand capture. Not audience building, not content marketing.',
+          },
+        ].map((step) => (
+          <div class="flex gap-6 items-start">
+            <span class="flex-shrink-0 text-4xl font-black text-primary/20 dark:text-primary/25 leading-none mt-1">
+              {step.num}
+            </span>
+            <div>
+              <p class="font-bold text-lg text-gray-900 dark:text-white mb-2">{step.title}</p>
+              <p class="text-gray-600 dark:text-slate-400 leading-relaxed">{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Is This Right For You -->
+    <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
+        Is This Right for You?
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <p class="font-semibold text-green-700 dark:text-green-400 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Good fit if:
+          </p>
+          <ul class="space-y-3">
+            {niche.goodFitItems.map((item) => (
+              <li class="flex gap-3 items-start text-gray-700 dark:text-slate-300">
+                <span class="text-green-500 font-bold mt-0.5 flex-shrink-0">&#10003;</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-red-600 dark:text-red-400 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            Not a fit if:
+          </p>
+          <ul class="space-y-3">
+            {niche.notFitItems.map((item) => (
+              <li class="flex gap-3 items-start text-gray-700 dark:text-slate-300">
+                <span class="text-red-400 font-bold mt-0.5 flex-shrink-0">&#10005;</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-8">
+        {niche.faqs.map((faq) => (
+          <div class="border-b border-slate-100 dark:border-slate-800 pb-8 last:border-0 last:pb-0">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-3">{faq.question}</h3>
+            <p class="text-gray-600 dark:text-slate-400 leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </article>
+
+  <!-- Final CTA -->
+  <CallToAction
+    title={niche.ctaHeading}
+    subtitle={niche.ctaSubtitle}
+    actions={[
+      {
+        variant: 'primary',
+        text: niche.ctaButtonText,
+        href: calLink,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+</Layout>
