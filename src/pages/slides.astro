@@ -1,0 +1,828 @@
+---
+// Pitch Deck Presentation - Dark Botanical Style
+// Self-contained HTML presentation for SellOnTube
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SellOnTube - Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           BASE RESET & VIEWPORT SETUP
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: #0f0f0f;
+            color: #f5f0e8;
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           SLIDE BASE STYLES
+           ======================================== */
+        .slide {
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(2rem, 5vw, 4rem);
+            position: relative;
+        }
+
+        /* ========================================
+           GRADIENT SHAPES (Background elements)
+           ======================================== */
+        .gradient-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .shape-gold {
+            background: linear-gradient(135deg, #c9a962 0%, #8b6914 100%);
+        }
+
+        .shape-rose {
+            background: linear-gradient(135deg, #d4a5a5 0%, #915f5f 100%);
+        }
+
+        .shape-terracotta {
+            background: linear-gradient(135deg, #c17f59 0%, #8b4513 100%);
+        }
+
+        /* ========================================
+           TYPOGRAPHY
+           ======================================== */
+        h1, h2, h3 {
+            font-family: 'Cormorant', serif;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+        }
+
+        h3 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+        }
+
+        p {
+            font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+            line-height: 1.7;
+            color: rgba(245, 240, 232, 0.85);
+        }
+
+        .accent {
+            color: #c9a962;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9a962, transparent);
+            margin: 1.5rem auto;
+        }
+
+        /* ========================================
+           CONTENT CONTAINERS
+           ======================================== */
+        .content {
+            text-align: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-left {
+            text-align: left;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========================================
+           CARDS & GRIDS
+           ======================================== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: rgba(245, 240, 232, 0.03);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 12px;
+            padding: clamp(1.25rem, 2vw, 1.75rem);
+            backdrop-filter: blur(10px);
+        }
+
+        .card h3 {
+            font-size: clamp(1.35rem, 2.5vw, 1.6rem);
+            margin-bottom: 0.5rem;
+            color: #c9a962;
+        }
+
+        .card p {
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
+            color: rgba(245, 240, 232, 0.7);
+        }
+
+        /* ========================================
+           STATS & METRICS
+           ======================================== */
+        .stat-large {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 700;
+            color: #c9a962;
+            line-height: 1;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: center;
+            gap: clamp(2rem, 5vw, 4rem);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 700;
+            color: #c9a962;
+        }
+
+        .stat-label {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(245, 240, 232, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+
+        /* ========================================
+           LISTS
+           ======================================== */
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            max-width: 700px;
+        }
+
+        .feature-list li {
+            padding: clamp(0.75rem, 1.5vw, 1rem) 0;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.15);
+            font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            color: #c9a962;
+            flex-shrink: 0;
+        }
+
+        /* ========================================
+           TIMELINE / STEPS
+           ======================================== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(1rem, 2vw, 2rem);
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step {
+            text-align: left;
+        }
+
+        .step-number {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: rgba(201, 169, 98, 0.3);
+            line-height: 1;
+        }
+
+        .step h3 {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            margin: 0.5rem 0;
+            color: #f5f0e8;
+        }
+
+        .step p {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: rgba(245, 240, 232, 0.6);
+        }
+
+        /* ========================================
+           COMPARISON TABLE
+           ======================================== */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(1.5rem, 3vw, 3rem);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .comparison-col h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid;
+        }
+
+        .comparison-col.youtube h3 {
+            border-color: #c9a962;
+            color: #c9a962;
+        }
+
+        .comparison-col.blog h3 {
+            border-color: rgba(245, 240, 232, 0.3);
+            color: rgba(245, 240, 232, 0.5);
+        }
+
+        /* ========================================
+           CTA BUTTON
+           ======================================== */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a962 0%, #a8893f 100%);
+            color: #0f0f0f;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+            padding: clamp(1.1rem, 2.5vw, 1.5rem) clamp(2.5rem, 5vw, 3.5rem);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
+        }
+
+        /* ========================================
+           SLIDE NUMBER
+           ======================================== */
+        .slide-number {
+            position: absolute;
+            bottom: clamp(1.5rem, 3vh, 2.5rem);
+            right: clamp(1.5rem, 3vw, 2.5rem);
+            font-size: 0.75rem;
+            color: rgba(245, 240, 232, 0.3);
+            letter-spacing: 0.1em;
+        }
+
+        /* ========================================
+           NAVIGATION
+           ======================================== */
+        .nav-dots {
+            position: fixed;
+            right: clamp(1rem, 2vw, 2rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(245, 240, 232, 0.2);
+            border: 1px solid rgba(245, 240, 232, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover,
+        .nav-dot.active {
+            background: #c9a962;
+            border-color: #c9a962;
+        }
+
+        /* ========================================
+           PRICING
+           ======================================== */
+        .price-display {
+            text-align: center;
+        }
+
+        .price {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 700;
+            color: #c9a962;
+        }
+
+        .price-period {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: rgba(245, 240, 232, 0.6);
+        }
+
+        /* ========================================
+           QUOTE STYLE
+           ======================================== */
+        .quote {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-style: italic;
+            color: rgba(245, 240, 232, 0.9);
+            max-width: 800px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           ANIMATIONS
+           ======================================== */
+        .slide .content,
+        .slide .content-left,
+        .slide .card-grid,
+        .slide .steps-grid,
+        .slide .comparison {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide.visible .content,
+        .slide.visible .content-left,
+        .slide.visible .card-grid,
+        .slide.visible .steps-grid,
+        .slide.visible .comparison {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .slide .content,
+            .slide .content-left,
+            .slide .card-grid,
+            .slide .steps-grid,
+            .slide .comparison {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Dots -->
+    <nav class="nav-dots" aria-label="Slide navigation">
+        <div class="nav-dot active" data-slide="0"></div>
+        <div class="nav-dot" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+        <div class="nav-dot" data-slide="6"></div>
+        <div class="nav-dot" data-slide="7"></div>
+        <div class="nav-dot" data-slide="8"></div>
+        <div class="nav-dot" data-slide="9"></div>
+        <div class="nav-dot" data-slide="10"></div>
+        <div class="nav-dot" data-slide="11"></div>
+        <div class="nav-dot" data-slide="12"></div>
+    </nav>
+
+    <!-- SLIDE 1: Title -->
+    <section class="slide" id="slide-0">
+        <div class="gradient-shape shape-gold" style="width: 500px; height: 500px; top: -150px; right: -150px;"></div>
+        <div class="gradient-shape shape-rose" style="width: 350px; height: 350px; bottom: -100px; left: -100px;"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.2em; color: rgba(245,240,232,0.5); margin-bottom: 1.5rem; font-size: clamp(0.75rem, 1.5vw, 0.9rem);">Introducing</p>
+            <h1>Customer Acquisition <span class="accent">Through YouTube</span></h1>
+            <div class="divider"></div>
+            <p>We acquire customers for your business through YouTube — without you recording a single video.</p>
+        </div>
+        <span class="slide-number">01 / 13</span>
+    </section>
+
+    <!-- SLIDE 2: The Problem -->
+    <section class="slide" id="slide-1">
+        <div class="gradient-shape shape-terracotta" style="width: 400px; height: 400px; top: 20%; left: -100px;"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">The Problem</p>
+            <h2>Your prospects don't wake up wanting <span class="accent">your product</span></h2>
+            <div class="divider"></div>
+            <p>They wake up wanting to solve a problem. They search YouTube: "Best app for [category]", "[Tool A] vs [Tool B]", "How to fix [problem]"</p>
+            <p style="margin-top: 1.5rem; color: #c9a962; font-weight: 500;">If you don't show up during this research phase, you lose the customer — even if your product is better.</p>
+        </div>
+        <span class="slide-number">02 / 13</span>
+    </section>
+
+    <!-- SLIDE 3: Current Reality -->
+    <section class="slide" id="slide-2">
+        <div class="gradient-shape shape-gold" style="width: 300px; height: 300px; bottom: 10%; right: -50px;"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">Current Reality</p>
+            <h2>Why most YouTube strategies <span class="accent">fail</span></h2>
+            <div class="divider"></div>
+            <ul class="feature-list" style="margin-top: 1.5rem;">
+                <li>They treat YouTube like social media, not a search engine</li>
+                <li>They chase views instead of buyer intent</li>
+                <li>They require founders to get on camera</li>
+                <li>They explain features instead of transformations</li>
+            </ul>
+        </div>
+        <span class="slide-number">03 / 13</span>
+    </section>
+
+    <!-- SLIDE 4: The Solution -->
+    <section class="slide" id="slide-3">
+        <div class="gradient-shape shape-rose" style="width: 450px; height: 450px; top: -100px; left: 50%; transform: translateX(-50%);"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">The Solution</p>
+            <h2>A done-for-you <span class="accent">YouTube Acquisition Engine</span></h2>
+            <div class="divider"></div>
+            <p>We handle strategy, scripting, voiceover, production, and publishing. You get qualified leads without appearing on camera.</p>
+            <p style="margin-top: 1.5rem; font-weight: 500;">Acquisition-first. Search-driven. Compounding returns.</p>
+        </div>
+        <span class="slide-number">04 / 13</span>
+    </section>
+
+    <!-- SLIDE 5: How It Works -->
+    <section class="slide" id="slide-4">
+        <div class="gradient-shape shape-terracotta" style="width: 350px; height: 350px; bottom: -100px; right: -100px;"></div>
+        <div class="gradient-shape shape-gold" style="width: 250px; height: 250px; top: 10%; left: 5%;"></div>
+
+        <div class="content" style="max-width: 1100px;">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">How It Works</p>
+            <h2 style="margin-bottom: 2rem;">Our 6-Stage <span class="accent">System</span></h2>
+
+            <div class="steps-grid">
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <h3>Diagnostic Call</h3>
+                    <p>Validate if YouTube can profitably acquire customers for you</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <h3>Channel Blueprint</h3>
+                    <p>Research demand, map competitors, design strategy</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <h3>Pipeline Setup</h3>
+                    <p>Define scripts, assets, and low-friction workflows</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">04</span>
+                    <h3>Production</h3>
+                    <p>Scripting, voiceover, editing, thumbnails, SEO</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">05</span>
+                    <h3>Optimization</h3>
+                    <p>Track rankings, iterate on hooks and titles</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">06</span>
+                    <h3>Scale</h3>
+                    <p>Double down on what's working</p>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">05 / 13</span>
+    </section>
+
+    <!-- SLIDE 6: What's Included -->
+    <section class="slide" id="slide-5">
+        <div class="gradient-shape shape-gold" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+
+        <div class="content" style="max-width: 1000px;">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">What's Included</p>
+            <h2 style="margin-bottom: 2rem;">Everything, <span class="accent">end-to-end</span></h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>4 Videos/Month</h3>
+                    <p>Research to publish, on a predictable cadence</p>
+                </div>
+                <div class="card">
+                    <h3>Full Production</h3>
+                    <p>Scripts, voiceover, editing, motion graphics</p>
+                </div>
+                <div class="card">
+                    <h3>YouTube SEO</h3>
+                    <p>Titles, descriptions, tags, thumbnails optimized</p>
+                </div>
+                <div class="card">
+                    <h3>Analytics</h3>
+                    <p>Rankings, watch time, lead attribution dashboard</p>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">06 / 13</span>
+    </section>
+
+    <!-- SLIDE 7: Your Involvement -->
+    <section class="slide" id="slide-6">
+        <div class="gradient-shape shape-rose" style="width: 350px; height: 350px; bottom: 10%; left: -100px;"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">Your Involvement</p>
+            <div class="stat-large">5-6</div>
+            <h2 style="margin-top: 0.5rem;">hours per month</h2>
+            <div class="divider"></div>
+            <ul class="feature-list" style="margin-top: 1.5rem;">
+                <li>One-time onboarding call</li>
+                <li>30-min weekly alignment calls</li>
+                <li>Review and approve scripts (async)</li>
+                <li>Answer occasional clarifying questions</li>
+            </ul>
+        </div>
+        <span class="slide-number">07 / 13</span>
+    </section>
+
+    <!-- SLIDE 8: Case Study -->
+    <section class="slide" id="slide-7">
+        <div class="gradient-shape shape-gold" style="width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">12-Month Case Study</p>
+            <div class="stat-large">3.25x</div>
+            <h2 style="margin-top: 0.5rem;">more conversions from YouTube vs Blog</h2>
+            <div class="divider"></div>
+
+            <div class="stat-row" style="margin-top: 2rem;">
+                <div class="stat-item">
+                    <div class="stat-number">1,257</div>
+                    <div class="stat-label">YouTube Conversions</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: rgba(245, 240, 232, 0.4);">411</div>
+                    <div class="stat-label">Blog Conversions</div>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">08 / 13</span>
+    </section>
+
+    <!-- SLIDE 9: Compounding Effect -->
+    <section class="slide" id="slide-8">
+        <div class="gradient-shape shape-terracotta" style="width: 400px; height: 400px; top: -100px; left: -100px;"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">The Compounding Effect</p>
+            <h2>Videos keep working <span class="accent">month after month</span></h2>
+            <div class="divider"></div>
+
+            <div class="comparison" style="margin-top: 2rem;">
+                <div class="comparison-col youtube">
+                    <h3>YouTube</h3>
+                    <p>Month 1: 78 conversions</p>
+                    <p style="margin-top: 0.5rem;">Month 12: <strong style="color: #c9a962;">142 conversions</strong></p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(245,240,232,0.6);">Growing every month</p>
+                </div>
+                <div class="comparison-col blog">
+                    <h3>Blog</h3>
+                    <p>Month 1: 31 conversions</p>
+                    <p style="margin-top: 0.5rem;">Month 12: 29 conversions</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(245,240,232,0.4);">Flat or declining</p>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">09 / 13</span>
+    </section>
+
+    <!-- SLIDE 10: Who It's For -->
+    <section class="slide" id="slide-9">
+        <div class="gradient-shape shape-gold" style="width: 350px; height: 350px; bottom: -100px; right: -100px;"></div>
+        <div class="gradient-shape shape-rose" style="width: 250px; height: 250px; top: 10%; left: 10%;"></div>
+
+        <div class="content" style="max-width: 1000px;">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">Who It's For</p>
+            <h2 style="margin-bottom: 2rem;">Ideal <span class="accent">clients</span></h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Coaching & Consulting</h3>
+                    <p>High-ticket programs where prospects research before buying</p>
+                </div>
+                <div class="card">
+                    <h3>Agencies & Services</h3>
+                    <p>One client justifies months of investment</p>
+                </div>
+                <div class="card">
+                    <h3>Software & SaaS</h3>
+                    <p>Products with search demand and scalable revenue</p>
+                </div>
+                <div class="card">
+                    <h3>Courses & Info Products</h3>
+                    <p>Knowledge products with strong margins</p>
+                </div>
+            </div>
+        </div>
+        <span class="slide-number">10 / 13</span>
+    </section>
+
+    <!-- SLIDE 11: Pricing -->
+    <section class="slide" id="slide-10">
+        <div class="gradient-shape shape-gold" style="width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">Pricing</p>
+
+            <div class="price-display">
+                <span class="price">$7,000</span>
+                <p class="price-period">/month + applicable taxes</p>
+            </div>
+
+            <div class="divider"></div>
+            <p style="max-width: 500px; margin: 0 auto;">Month-to-month. No long-term contracts. Cancel anytime.</p>
+            <p style="margin-top: 1.5rem; color: #c9a962; font-weight: 500;">If your customer LTV is $5,000+, you break even at just 2 customers/month.</p>
+        </div>
+        <span class="slide-number">11 / 13</span>
+    </section>
+
+    <!-- SLIDE 12: Why Now -->
+    <section class="slide" id="slide-11">
+        <div class="gradient-shape shape-terracotta" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+
+        <div class="content">
+            <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">Why Now</p>
+            <h2>The opportunity <span class="accent">gap</span></h2>
+            <div class="divider"></div>
+            <p class="quote" style="margin-top: 1.5rem;">"Most businesses make top-of-funnel content. Very few intentionally target buying-intent queries with strategic video."</p>
+            <p style="margin-top: 2rem; font-weight: 500; color: #c9a962;">Bottom-of-funnel content on YouTube has minimal competition — for now.</p>
+        </div>
+        <span class="slide-number">12 / 13</span>
+    </section>
+
+    <!-- SLIDE 13: CTA -->
+    <section class="slide" id="slide-12">
+        <div class="gradient-shape shape-gold" style="width: 500px; height: 500px; top: -150px; right: -150px;"></div>
+        <div class="gradient-shape shape-rose" style="width: 400px; height: 400px; bottom: -100px; left: -100px;"></div>
+        <div class="gradient-shape shape-terracotta" style="width: 300px; height: 300px; bottom: 20%; right: 10%;"></div>
+
+        <div class="content">
+            <h1>Ready to make YouTube your <span class="accent">acquisition channel</span>?</h1>
+            <div class="divider"></div>
+            <p>We'll analyze your market, offer, and search demand. If the economics don't support profitable acquisition, we'll tell you upfront.</p>
+            <a href="https://cal.com/gautham-8bdvdx/30min" class="cta-button" target="_blank" rel="noopener">Book a Diagnostic Call</a>
+        </div>
+        <span class="slide-number">13 / 13</span>
+    </section>
+
+    <!-- JavaScript for navigation and animations -->
+    <script>
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.dots = document.querySelectorAll('.nav-dot');
+                this.currentSlide = 0;
+                this.isScrolling = false;
+
+                this.init();
+            }
+
+            init() {
+                // Set up Intersection Observer for animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            this.updateActiveDot(Array.from(this.slides).indexOf(entry.target));
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                this.slides.forEach(slide => observer.observe(slide));
+
+                // Navigation dot clicks
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const slideIndex = parseInt(dot.dataset.slide);
+                        this.goToSlide(slideIndex);
+                    });
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        this.nextSlide();
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.prevSlide();
+                    }
+                });
+
+                // Touch support
+                let touchStartY = 0;
+                document.addEventListener('touchstart', (e) => {
+                    touchStartY = e.touches[0].clientY;
+                });
+
+                document.addEventListener('touchend', (e) => {
+                    const touchEndY = e.changedTouches[0].clientY;
+                    const diff = touchStartY - touchEndY;
+
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.prevSlide();
+                        }
+                    }
+                });
+
+                // Initialize first slide
+                this.slides[0].classList.add('visible');
+            }
+
+            updateActiveDot(index) {
+                this.currentSlide = index;
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            goToSlide(index) {
+                if (index >= 0 && index < this.slides.length) {
+                    this.slides[index].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.slides.length - 1) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 0) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+        }
+
+        // Initialize presentation
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+</body>
+</html>
