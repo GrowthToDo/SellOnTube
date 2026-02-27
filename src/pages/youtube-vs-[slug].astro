@@ -5,10 +5,11 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import { SITE } from 'astrowind:config';
 
 export async function getStaticPaths() {
-  const today = new Date();
-  today.setHours(23, 59, 59, 999);
+  // In dev: show all pages for preview. In production: apply publish schedule.
+  const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
+  cutoff.setHours(23, 59, 59, 999);
   return comparisons
-    .filter((comparison) => new Date(comparison.publishDate) <= today)
+    .filter((comparison) => new Date(comparison.publishDate) <= cutoff)
     .map((comparison) => ({
       params: { slug: comparison.slug },
       props: { comparison },

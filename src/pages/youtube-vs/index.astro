@@ -46,9 +46,9 @@ const channelLogos: Record<string, string> = {
 const genericLogoHtml = `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
 
 // Truncate verdict to first sentence for card preview
-const today = new Date();
-today.setHours(23, 59, 59, 999);
-const publishedComparisons = comparisons.filter((c) => new Date(c.publishDate) <= today);
+const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
+cutoff.setHours(23, 59, 59, 999);
+const publishedComparisons = comparisons.filter((c) => new Date(c.publishDate) <= cutoff);
 
 function firstSentence(text: string): string {
   const match = text.match(/^[^.!?]+[.!?]/);

@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 
-const today = new Date();
-today.setHours(23, 59, 59, 999);
-const publishedNiches = niches.filter((n) => new Date(n.publishDate) <= today);
+const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
+cutoff.setHours(23, 59, 59, 999);
+const publishedNiches = niches.filter((n) => new Date(n.publishDate) <= cutoff);
 
 // Shopify page is a standalone static page — always included
 const shopifyCard = {
