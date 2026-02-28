@@ -216,3 +216,5 @@ Titles, thumbnails, metadata, structure.
 Four videos a month that stack into a long-term acquisition engine.
 
 This is how you get predictable customers from YouTube, without recording anything.
+
+Not sure how this applies to your business? See our [industry-specific YouTube guides](/youtube-for/) — or compare [YouTube vs every other marketing channel](/youtube-vs/) to see where it fits in your current mix.

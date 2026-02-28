@@ -176,12 +176,14 @@ Your library becomes a durable acquisition asset, something that keeps paying di
 
 If a single customer is worth:
 
-- $1,000  
-- $5,000  
-- $10,000+  
+- $1,000
+- $5,000
+- $10,000+
 
 Then even a modest stream of monthly inbound leads generates disproportionate ROI.
 
 Four videos a month is all you need to unlock that math.
+
+The compounding effect also plays out differently depending on your industry. See how it works for [SaaS companies, agencies, consultants, coaches, and 25+ other business types](/youtube-for/).
 
 ---
