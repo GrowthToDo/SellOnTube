@@ -11,7 +11,7 @@ tags:
   - compounding
   - marketing
 metadata:
-  canonical: https://sellontube.com/blog/compounding-effect-4-videos-a-month
+  canonical: https://sellontube.com/blog/compounding-effect-four-videos-a-month
 ---
 
 Most founders underestimate how powerful YouTube becomes when you publish just **four high-intent videos every month**.
