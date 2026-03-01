@@ -20,6 +20,11 @@
   status = 301
 
 [[redirects]]
+  from = "/category/youtube-strategy"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
   from = "/homes/mobile-app"
   to = "/how-it-works"
   status = 301

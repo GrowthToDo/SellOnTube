@@ -22,3 +22,7 @@ pnpm-debug.log*
 pnpm-lock.yaml
 
 .astro
+
+# SEO data pipeline — never commit credentials or raw data
+scripts/credentials.json
+scripts/seo_data/*.json

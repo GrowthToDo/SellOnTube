@@ -25,9 +25,9 @@ metadata:
     cardType: summary_large_image
 ---
 
-You've probably heard someone say "YouTube is great for brand awareness." Maybe a marketing friend told you to "just start posting" and the results will come.
+You spent a few hundred dollars per video, a couple hours of your time, and after three months you had 2,000 subscribers and a lot of polite comments from strangers who never bought anything.
 
-So you ran some numbers. A few hundred dollars per video, a couple hours of your time, and after three months you had… 2,000 subscribers and a lot of polite comments from strangers who never bought anything.
+The advice sounded reasonable: YouTube is great for brand awareness, just start posting, the results will come.
 
 Here's the problem: you were measuring the wrong thing.
 
