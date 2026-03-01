@@ -48,5 +48,14 @@ const { language, textDirection } = I18N;
 
     <ROIPopup />
     <BasicScripts />
+    <script>
+      document.addEventListener('click', function(e) {
+        const link = (e.target as Element).closest('a[href*="cal.com"]');
+        if (link) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'close_convert_lead' });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -9,6 +9,26 @@
   to = "/youtube-roi-calculator"
   status = 301
 
+[[redirects]]
+  from = "/search-intent-youtube-seo-power"
+  to = "/blog/search-intent-youtube-seo-power"
+  status = 301
+
+[[redirects]]
+  from = "/the-youtube-acquisition-engine"
+  to = "/blog/the-youtube-acquisition-engine"
+  status = 301
+
+[[redirects]]
+  from = "/homes/mobile-app"
+  to = "/how-it-works"
+  status = 301
+
+[[redirects]]
+  from = "/landing/product"
+  to = "/"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]

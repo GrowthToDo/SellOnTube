@@ -29,7 +29,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap({
-      filter: (page) => !page.includes('/tag/'),
+      filter: (page) => !page.includes('/tag/') && !page.includes('/category/'),
     }),
     mdx(),
     icon({
