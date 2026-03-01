@@ -1,8 +1,8 @@
 ---
 publishDate: 2025-12-24T00:00:00Z
 author: Sathyanand
-title: "The Hidden Power of Search-Intent Videos: How YouTube Functions Like SEO for High-LTV Businesses"
-excerpt: "Why high-intent YouTube videos behave like SEO assets-and why this makes YouTube a powerful acquisition channel for SaaS, agencies, consultants, and other high-LTV businesses."
+title: "YouTube Search Intent: Why It Beats Blog SEO for SaaS and B2B"
+excerpt: "YouTube is a search engine, not a content platform. Why search-intent videos outperform blog SEO for SaaS companies, agencies, and consultants. And how to use this as an acquisition channel."
 image: ~/assets/images/blog/youtube-seo-mobile.jpg
 category: YouTube Strategy
 tags:
