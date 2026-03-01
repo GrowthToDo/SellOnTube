@@ -237,4 +237,4 @@ We're trying to become **the default YouTube answer** for the problems your best
 If you want that without ever sitting in front of a camera,
 that's exactly what SellOnTube is built to do.
 
-Want to see how this engine applies to your specific industry? We've built detailed guides for [SaaS, agencies, consultants, coaches, and 25+ other business types](/youtube-for/).
+Want to see how this engine applies to your specific industry? We've built detailed guides for [SaaS, agencies, consultants, coaches, and 25+ other business types](/youtube-for).

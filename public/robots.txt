@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /decapcms/
 
 Sitemap: https://sellontube.com/sitemap-index.xml

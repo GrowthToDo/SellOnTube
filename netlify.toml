@@ -3,6 +3,21 @@
   command = "npm run build"
 [build.processing.html]
   pretty_urls = false
+
+[[redirects]]
+  from = "/calculator"
+  to = "/youtube-roi-calculator"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
 [[headers]]
   for = "/_astro/*"
   [headers.values]

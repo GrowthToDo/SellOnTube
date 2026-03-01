@@ -115,7 +115,7 @@ Plug in your numbers and see whether **is YouTube marketing worth it** for your 
 
 It takes about 60 seconds, and you'll walk away with a clear picture of what YouTube could realistically return over 6 and 12 months.
 
-If the numbers look strong and you want help building a YouTube strategy that actually delivers those returns, [book a free diagnostic call with us](/contact). You can also explore how YouTube ROI works for your specific industry in our [industry guides](/youtube-for/), or see how YouTube stacks up against your current channels in our [honest comparisons](/youtube-vs/). We'll look at your business model, your current content, and tell you honestly whether YouTube is the right channel - or if your budget is better spent elsewhere.
+If the numbers look strong and you want help building a YouTube strategy that actually delivers those returns, [book a free diagnostic call with us](https://cal.com/gautham-8bdvdx/30min). You can also explore how YouTube ROI works for your specific industry in our [industry guides](/youtube-for), or see how YouTube stacks up against your current channels in our [honest comparisons](/youtube-vs). We'll look at your business model, your current content, and tell you honestly whether YouTube is the right channel - or if your budget is better spent elsewhere.
 
 ---
 

@@ -184,6 +184,6 @@ Then even a modest stream of monthly inbound leads generates disproportionate RO
 
 Four videos a month is all you need to unlock that math.
 
-The compounding effect also plays out differently depending on your industry. See how it works for [SaaS companies, agencies, consultants, coaches, and 25+ other business types](/youtube-for/).
+The compounding effect also plays out differently depending on your industry. See how it works for [SaaS companies, agencies, consultants, coaches, and 25+ other business types](/youtube-for).
 
 ---
