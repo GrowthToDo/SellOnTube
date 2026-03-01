@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
   cutoff.setHours(23, 59, 59, 999);
   return niches
-    .filter((niche) => new Date(niche.publishDate) <= cutoff)
+    .filter((niche) => new Date(niche.publishDate + 'T00:00:00+05:30') <= cutoff)
     .map((niche) => ({
       params: { slug: niche.slug },
       props: { niche },

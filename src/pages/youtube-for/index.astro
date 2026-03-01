@@ -8,7 +8,7 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 
 const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
 cutoff.setHours(23, 59, 59, 999);
-const publishedNiches = niches.filter((n) => new Date(n.publishDate) <= cutoff);
+const publishedNiches = niches.filter((n) => new Date(n.publishDate + 'T00:00:00+05:30') <= cutoff);
 
 // Shopify page is a standalone static page — always included
 const shopifyCard = {

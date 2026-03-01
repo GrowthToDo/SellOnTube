@@ -9,7 +9,7 @@ export async function getStaticPaths() {
   const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
   cutoff.setHours(23, 59, 59, 999);
   return comparisons
-    .filter((comparison) => new Date(comparison.publishDate) <= cutoff)
+    .filter((comparison) => new Date(comparison.publishDate + 'T00:00:00+05:30') <= cutoff)
     .map((comparison) => ({
       params: { slug: comparison.slug },
       props: { comparison },
