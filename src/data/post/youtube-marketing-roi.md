@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-02-27T00:00:00Z
 author: Sathyanand
-title: "How to Calculate YouTube Marketing ROI (And Why Most Businesses Get the Math Wrong)"
-excerpt: "Learn how to calculate YouTube marketing ROI using customer LTV - not views or subscribers. Free ROI calculator included."
+title: "YouTube Marketing ROI: The LTV Formula That Actually Works"
+excerpt: "YouTube ROI is not views or subscribers. The real formula uses customer LTV vs. content cost. Free calculator gives your break-even in 60 seconds."
 image: ~/assets/images/growth-analytics-dashboard.jpg
 category: YouTube Strategy
 tags:
@@ -13,7 +13,7 @@ tags:
   - ltv
 metadata:
   canonical: https://sellontube.com/blog/youtube-marketing-roi
-  description: "Learn how to calculate YouTube marketing ROI using customer LTV - not views or subscribers. Free ROI calculator included."
+  description: "YouTube ROI is not views or subscribers. The real formula uses customer LTV vs. content cost. Free calculator gives your break-even in 60 seconds."
   openGraph:
     url: https://sellontube.com/blog/youtube-marketing-roi
     siteName: SellOnTube

@@ -12,6 +12,7 @@ tags:
   - marketing
 metadata:
   canonical: https://sellontube.com/blog/why-most-youtube-strategies-fail
+  description: "Creator advice builds audiences, not customers. Here's the acquisition-first YouTube model: high-intent topics, LTV math, and content that compounds over time."
 ---
 
 Most founders who try YouTube follow the advice created for *creators*, not for *businesses*.

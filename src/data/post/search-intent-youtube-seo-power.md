@@ -12,6 +12,7 @@ tags:
   - acquisition
 metadata:
   canonical: https://sellontube.com/blog/search-intent-youtube-seo-power
+  description: "YouTube is the world's second-largest search engine. B2B companies that target high-intent queries turn views into a predictable customer pipeline without paid ads."
 ---
 
 Most people think of YouTube as a "content platform."  
