@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sellontube-seo": {
+      "command": "python",
+      "args": ["scripts/mcp_seo_server.py"]
+    }
+  }
+}
