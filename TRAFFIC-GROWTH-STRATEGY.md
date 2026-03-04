@@ -1,6 +1,34 @@
 # SellonTube — Traffic Growth Strategy
-**Mission: Increase high-quality, Google-safe organic traffic to sellontube.com.**
-*High-quality = B2B founders, SaaS operators, and service businesses actively exploring YouTube as a customer acquisition channel.*
+
+## Mission
+**Increase high-quality organic traffic to sellontube.com. Google-safe. No shortcuts.**
+
+High-quality = B2B founders, SaaS operators, and service businesses actively exploring YouTube as a customer acquisition and lead generation channel.
+
+## The Three Pillars
+
+### A. pSEO — 50 pages (in progress)
+- 29 "YouTube For [niche]" pages + 20 "YouTube Vs [channel]" pages + hub pages
+- Publishing cadence: ~4 pages/week on drip schedule (publishDate-gated)
+- Each page goes live on its scheduled date — no bulk publishing
+- Angle: YouTube as a customer acquisition channel for that specific niche/comparison
+- Action on publish: submit each new page for GSC indexing same day
+
+### B. Microtools — 7 tools planned
+- Free tools targeting YouTube-for-business searches
+- **Positioning angle: YouTube for business, acquisition, and lead generation — NOT for creators**
+- This gap is unoccupied by all existing tools (VidIQ, TubeBuddy, Kapwing all target creators)
+- Build order and full specs: `MICROTOOLS-BLOG-STRATEGY.md`
+- Tools 1–4: pure client-side JS (fast to ship, no backend cost)
+- Tools 5–7: Netlify Functions + Claude API
+
+### C. Blog — regular cadence (TBD)
+- Target: mix of high-volume keywords (reach) and high-intent keywords (conversion)
+- 6 topical clusters aligned to the site's theme — see `MICROTOOLS-BLOG-STRATEGY.md`
+- Publishing cadence: to be decided
+- Each post must target a specific validated keyword and follow the Content Quality Playbook
+
+---
 
 Last updated: 2026-03-02
 

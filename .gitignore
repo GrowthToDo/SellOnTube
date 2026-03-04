@@ -26,3 +26,6 @@ pnpm-lock.yaml
 # SEO data pipeline — never commit credentials or raw data
 scripts/credentials.json
 scripts/seo_data/*.json
+# Keyword research — ignore binary Excel files, but commit CSVs (plain text, diffable)
+research/**/*.xlsx
+research/**/*.xls
