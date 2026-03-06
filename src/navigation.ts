@@ -22,6 +22,8 @@ export const footerData = {
     { text: 'YouTube Vs', href: getPermalink('/youtube-vs') },
     { text: 'Pricing', href: getPermalink('/pricing') },
     { text: 'Blog', href: getBlogPermalink() },
+    { text: 'Privacy Policy', href: getPermalink('/privacy-policy') },
+    { text: 'Terms of Service', href: getPermalink('/terms-of-service') },
   ],
   secondaryLinks: [],
 
