@@ -1,12 +1,25 @@
 [build]
   publish = "dist"
   command = "npm run build"
+
+[functions]
+  node_bundler = "esbuild"
 [build.processing.html]
   pretty_urls = false
 
 [[redirects]]
   from = "/calculator"
-  to = "/youtube-roi-calculator"
+  to = "/tools/youtube-roi-calculator"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-roi-calculator"
+  to = "/tools/youtube-roi-calculator"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-topic-evaluator"
+  to = "/tools/youtube-topic-evaluator"
   status = 301
 
 [[redirects]]

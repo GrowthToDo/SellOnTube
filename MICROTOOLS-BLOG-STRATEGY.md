@@ -25,7 +25,7 @@ That gap is the entire opening. Every SellonTube tool should use **acquisition-f
 | 6 | YouTube Topic Idea Generator | `/youtube-topic-generator` | Netlify Function + Claude API | 3,000–7,000 | 5/5 | 4/5 |
 | 7 | YouTube Channel Description Generator | `/youtube-channel-description` | Netlify Function + Claude API | 2,000–5,000 | 4/5 | 4/5 |
 
-**Note:** The existing ROI Calculator (`/youtube-roi-calculator`) is already Tool 0. All new tools follow its architecture.
+**Note:** The existing ROI Calculator (`/tools/youtube-roi-calculator`) is already Tool 0. All new tools follow its architecture.
 
 ---
 

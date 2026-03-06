@@ -1,0 +1,808 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'YouTube Topic Evaluator: Free Buyer Intent Checker',
+  description:
+    'Paste a YouTube topic and see if it attracts buyers or just viewers. Free for B2B founders. Get a buyer intent score plus 3-5 better topic alternatives.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero -->
+  <section class="bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">5 scoring dimensions</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Instant alternatives</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+        Will this YouTube topic attract<br class="hidden sm:block" /> buyers or just viewers?
+      </h1>
+      <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Paste a topic, your target customer, and what you sell. Get a buyer intent score plus higher-converting alternatives.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div
+        id="step-input"
+        class="rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="space-y-5">
+          <div>
+            <label for="topic-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+              YouTube topic
+            </label>
+            <input
+              type="text"
+              id="topic-input"
+              placeholder="e.g. How Shopify Apps Make Money"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="customer-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+              Your target customer
+            </label>
+            <input
+              type="text"
+              id="customer-input"
+              placeholder="e.g. Shopify store owners"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="product-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+              Your product or service
+            </label>
+            <input
+              type="text"
+              id="product-input"
+              placeholder="e.g. Upsell app for Shopify"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+            />
+          </div>
+        </div>
+
+        <button
+          id="evaluate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Evaluate this topic &rarr;
+        </button>
+
+        <p id="eval-counter-label" class="mt-3 text-center text-xs text-slate-600">
+          3 free evaluations remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-slate-400">Analyzing buyer intent...</p>
+          <p class="text-xs text-slate-600">Scoring 5 dimensions</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-white mb-2">You've used your 3 free evaluations</p>
+          <p class="text-sm text-slate-400">
+            Enter your email to keep going. We'll also send you our guide on picking buyer-intent topics.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="Enter your email"
+            class="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+          />
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue evaluating
+          </button>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-400">Done. Evaluations unlocked.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div id="step-results" class="hidden max-w-2xl mx-auto px-4 mt-2">
+      <div class="rounded-2xl border border-slate-700 bg-slate-900 overflow-hidden">
+
+        <!-- Verdict -->
+        <div class="p-6 sm:p-8 text-center border-b border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Topic evaluated</p>
+          <p id="result-topic" class="text-sm font-medium text-slate-300 mb-5"></p>
+          <div id="verdict-badge" class="inline-flex items-center px-5 py-2 rounded-xl text-base font-bold mb-2"></div>
+          <p id="verdict-label" class="text-xs uppercase tracking-wider text-slate-500 mt-2"></p>
+        </div>
+
+        <!-- Score bars -->
+        <div class="p-6 sm:p-8 border-b border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-5">Dimension breakdown</p>
+          <div class="space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm text-slate-300">Buyer Intent</span>
+                <span id="badge-buyer-intent" class="text-xs font-semibold"></span>
+              </div>
+              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-buyer-intent" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm text-slate-300">Audience Relevance</span>
+                <span id="badge-audience" class="text-xs font-semibold"></span>
+              </div>
+              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-audience" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm text-slate-300">Problem Proximity</span>
+                <span id="badge-problem" class="text-xs font-semibold"></span>
+              </div>
+              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-problem" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm text-slate-300">Conversion Opportunity</span>
+                <span id="badge-conversion" class="text-xs font-semibold"></span>
+              </div>
+              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-conversion" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-sm text-slate-300">Search Intent</span>
+                <span id="badge-search-intent" class="text-xs font-semibold"></span>
+              </div>
+              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-search-intent" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Why -->
+        <div class="p-6 sm:p-8 border-b border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Why</p>
+          <div class="pl-4 border-l-2 border-emerald-500/40">
+            <p id="result-explanation" class="text-sm text-slate-300 leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Alternatives -->
+        <div class="p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Higher-converting alternatives</p>
+          <div id="alternatives-list" class="space-y-3"></div>
+        </div>
+
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-700 text-sm font-medium text-slate-400 hover:text-white hover:border-slate-500 transition-colors"
+          >
+            &larr; Evaluate another topic
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Your topics score well. Your conversion setup might not."
+    subtitle="In our diagnostic, we map your full YouTube acquisition system: topics, CTAs, and the lead path from viewer to customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-white font-semibold mb-2">Enter your topic</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Type any YouTube topic you're considering, your target customer, and what you sell.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-white font-semibold mb-2">Get your score</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">See buyer intent, audience relevance, problem proximity, conversion opportunity, and search intent scored instantly.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-white font-semibold mb-2">Use the alternatives</h3>
+          <p class="text-sm text-slate-400 leading-relaxed">Get 5 higher-converting topic alternatives built around your specific customer and product.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-14">
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How the Topic Evaluator works</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Every topic is scored across five dimensions: Buyer Intent, Audience Relevance, Problem Proximity, Conversion Opportunity, and Search Intent. These map directly to whether a viewer is likely to become a customer.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Buyer Intent checks for signal words in your topic: "best," "vs," "review," "setup," "fix," "cost." These indicate a viewer researching a decision, not satisfying curiosity. Audience Relevance checks whether the topic attracts your actual target customer or a different audience. Problem Proximity measures how close the viewer is to an active problem they need solved today.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          Conversion Opportunity is where most businesses underestimate the analysis. A topic can attract the right viewer and still have no natural moment to introduce your product. The evaluator checks whether the video's subject creates a logical opening, or forces your product into an unrelated conversation.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Buyer intent beats search volume for B2B YouTube</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A video with 200 views and 40 qualified leads is worth more than a video with 50,000 views and zero pipeline. That is not a controversial claim. Yet almost every YouTube planning framework optimises for the second outcome.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Search volume tells you how many people type a query. It says nothing about whether those people have money, a problem you solve, or any intention to buy. B2B channels that grow revenue from YouTube consistently target low-to-medium volume topics with high buyer intent over high-volume topics that attract the wrong audience.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The difference between "How Shopify Apps Make Money" and "Best Upsell Apps for Shopify Stores" is not the search volume. It is who types each query and what they do afterward.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What to do when your topic scores low</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A low Buyer Intent score almost always means the topic is framed around explanation rather than problem-solving. The fix is usually in the title. "How email marketing works" becomes "Why your email sequences aren't converting Shopify visitors." Same broad subject, completely different viewer and intent.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A low Audience Relevance score means the topic attracts the wrong people. No amount of CTA optimisation fixes this. The video needs to be replaced, not edited. Use the alternative topics the evaluator generates. They are built around your specific target customer and product.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          A weak Conversion Opportunity score is the hardest to fix in post. If the video subject has no logical moment to introduce your product, that moment will feel forced. The alternative topics solve this by starting from the buyer's problem, not the creator's idea.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // ===== SCORING ENGINE =====
+
+  const HIGH_INTENT_STRONG = [
+    'best', 'top', 'vs', 'versus', 'comparison', 'compare', 'compared to',
+    'review', 'reviews', 'rated', 'ranking', 'alternatives', 'alternative to',
+    'pricing', 'cost', 'price', 'how much', 'worth it', 'roi',
+    'return on investment', 'should i use', 'which is better',
+  ];
+
+  const HIGH_INTENT_MEDIUM = [
+    'tutorial', 'setup', 'how to', 'guide', 'step by step', 'checklist',
+    'template', 'fix', 'fixing', 'mistake', 'mistakes', 'avoid', 'increase',
+    'improve', 'optimize', 'boost', 'grow', 'strategy', 'tips', 'tactics',
+    'quick', 'fast', 'easy way', 'proven',
+  ];
+
+  const LOW_INTENT = [
+    'what is', 'what are', 'how does', 'how do', 'history of',
+    'introduction to', 'intro to', 'overview', 'explained', 'understanding',
+    'basics', 'fundamentals', 'theory', 'definition', 'meaning of',
+    'types of', 'all about', 'what does', 'who is',
+  ];
+
+  const PROBLEM_STRONG = [
+    'not working', "doesn't work", 'doesnt work', 'broken', 'fix', 'fixing',
+    'solve', 'problem', 'issue', 'error', 'failing', 'failed', 'troubleshoot',
+    'struggling', 'stuck', 'losing', 'dropping', 'declining', 'not converting',
+    'not getting', "why isn't", 'why isnt', 'why is my',
+  ];
+
+  const PROBLEM_MEDIUM = [
+    'increase', 'improve', 'optimize', 'boost', 'better', 'mistakes',
+    'avoid', 'prevent', 'pitfalls', 'challenges', 'common errors',
+    'what to do when', 'how to handle',
+  ];
+
+  function scoreBuyerIntent(topic: string): 'Low' | 'Medium' | 'High' {
+    const t = topic.toLowerCase();
+    const isStructuralLow = LOW_INTENT.some((s) => t.startsWith(s));
+    const hasStrongHigh = HIGH_INTENT_STRONG.some((s) => t.includes(s));
+    if (isStructuralLow && !hasStrongHigh) return 'Low';
+
+    let score = 0;
+    HIGH_INTENT_STRONG.forEach((s) => { if (t.includes(s)) score += 2; });
+    HIGH_INTENT_MEDIUM.forEach((s) => { if (t.includes(s)) score += 1; });
+    LOW_INTENT.forEach((s) => { if (t.includes(s)) score -= 2; });
+
+    if (score >= 2) return 'High';
+    if (score >= 0) return 'Medium';
+    return 'Low';
+  }
+
+  function scoreProblemProximity(topic: string): 'Low' | 'Medium' | 'High' {
+    const t = topic.toLowerCase();
+    let score = 0;
+    PROBLEM_STRONG.forEach((s) => { if (t.includes(s)) score += 2; });
+    PROBLEM_MEDIUM.forEach((s) => { if (t.includes(s)) score += 1; });
+    if (score >= 2) return 'High';
+    if (score >= 1) return 'Medium';
+    return 'Low';
+  }
+
+  function scoreAudienceRelevance(
+    topic: string,
+    targetCustomer: string,
+    product: string
+  ): 'Low' | 'Medium' | 'High' {
+    const t = topic.toLowerCase();
+    const stop = new Set(['for', 'the', 'a', 'an', 'and', 'or', 'of', 'in', 'at', 'by', 'to', 'is', 'are', 'with', 'your']);
+    const customerWords = targetCustomer.toLowerCase().split(/\s+/).filter((w) => w.length > 3 && !stop.has(w));
+    const productWords = product.toLowerCase().split(/\s+/).filter((w) => w.length > 3 && !stop.has(w));
+
+    let score = 0;
+    customerWords.forEach((w) => { if (t.includes(w)) score += 2; });
+    productWords.forEach((w) => { if (t.includes(w)) score += 1; });
+
+    // Builder/user mismatch
+    const builderTopic = ['how to build', 'how to create', 'how to make', 'how to develop', 'building a', 'creating a'].some((w) => t.includes(w));
+    const userCustomer = ['owner', 'manager', 'founder', 'operator', 'user', 'buyer', 'client', 'customer', 'brand'].some((w) => targetCustomer.toLowerCase().includes(w));
+    if (builderTopic && userCustomer) score -= 3;
+
+    if (score >= 2) return 'High';
+    if (score >= 1) return 'Medium';
+    return 'Low';
+  }
+
+  function scoreConversionOpportunity(
+    topic: string,
+    buyerIntent: string,
+    product: string
+  ): 'Weak' | 'Moderate' | 'Strong' {
+    if (buyerIntent === 'Low') return 'Weak';
+    const t = topic.toLowerCase();
+    const prod = product.toLowerCase();
+    const strongSignals = ['best', 'top', 'alternatives', 'vs', 'versus', 'review', 'comparison', 'pricing', 'cost'];
+    if (strongSignals.some((s) => t.includes(s))) return 'Strong';
+    const prodWords = prod.split(/\s+/).filter((w) => w.length > 3);
+    const topicHasProd = prodWords.some((w) => t.includes(w));
+    if (topicHasProd && buyerIntent === 'High') return 'Strong';
+    if (topicHasProd || buyerIntent === 'High') return 'Moderate';
+    return 'Weak';
+  }
+
+  function classifySearchIntent(topic: string): string {
+    const t = topic.toLowerCase();
+    const isStructuralLow = LOW_INTENT.some((s) => t.startsWith(s));
+    const hasHighOverride = [...HIGH_INTENT_STRONG, 'fix', 'mistake', 'problem'].some((s) => t.includes(s));
+    if (isStructuralLow && !hasHighOverride) return 'Educational';
+    if (PROBLEM_STRONG.some((s) => t.includes(s))) return 'Problem Solving';
+    if (['pricing', 'cost', 'price', 'worth it', 'should i', 'is it worth'].some((s) => t.includes(s))) return 'Purchase Decision';
+    if (['best', 'top', 'vs', 'versus', 'alternatives', 'review', 'comparison'].some((s) => t.includes(s))) return 'Tool Evaluation';
+    if (HIGH_INTENT_MEDIUM.some((s) => t.includes(s))) return 'Problem Solving';
+    return 'Research';
+  }
+
+  function generateVerdict(
+    buyerIntent: string,
+    audienceRelevance: string,
+    problemProximity: string
+  ): { label: string; acquisitionPotential: string } {
+    if (buyerIntent === 'High' && audienceRelevance !== 'Low') return { label: 'Buyer-Intent Topic', acquisitionPotential: 'High' };
+    if (buyerIntent === 'High') return { label: 'Research Topic', acquisitionPotential: 'Moderate' };
+    if (buyerIntent === 'Medium' && (audienceRelevance === 'High' || problemProximity === 'High')) return { label: 'Research Topic', acquisitionPotential: 'Moderate' };
+    if (buyerIntent === 'Medium') return { label: 'Research Topic', acquisitionPotential: 'Moderate' };
+    return { label: 'Educational Topic', acquisitionPotential: 'Low' };
+  }
+
+  function generateExplanation(
+    topic: string,
+    targetCustomer: string,
+    buyerIntent: string,
+    audienceRelevance: string,
+    problemProximity: string,
+    conversionOpportunity: string
+  ): string {
+    if (buyerIntent === 'Low') {
+      const audienceNote = audienceRelevance === 'High'
+        ? 'The subject touches your space but the framing creates no urgency or decision trigger.'
+        : 'It is also likely to attract a mixed audience rather than ' + targetCustomer + ' who are ready to act.';
+      return 'This topic is educational, not transactional. Viewers searching "' + topic + '" are exploring a concept, not evaluating options. ' + audienceNote;
+    }
+    if (buyerIntent === 'High' && audienceRelevance === 'High') {
+      const problemNote = problemProximity === 'High'
+        ? 'The urgency signal is strong. Viewers are feeling this problem right now.'
+        : 'Viewers are in evaluation mode and receptive to specific recommendations.';
+      return 'Strong buyer intent, right audience. Searchers on this topic are evaluating solutions, not exploring concepts. The subject directly targets ' + targetCustomer + '. ' + problemNote + ' Conversion opportunity is ' + conversionOpportunity.toLowerCase() + '.';
+    }
+    if (buyerIntent === 'High' && audienceRelevance === 'Medium') {
+      return 'Strong buyer intent, partial audience match. The phrasing attracts decision-makers but may pull in a broader audience than ' + targetCustomer + '. Adding more specific customer language to the title will sharpen the match.';
+    }
+    if (buyerIntent === 'High' && audienceRelevance === 'Low') {
+      return 'Strong buyer intent, wrong audience. The phrasing signals a buyer but the subject attracts a different audience than ' + targetCustomer + '. Refine the framing with customer-specific language to fix the audience match.';
+    }
+    if (buyerIntent === 'Medium') {
+      const problemNote = problemProximity === 'High'
+        ? 'The problem signal is strong, which helps.'
+        : 'No urgency signal means viewers are unlikely to act.';
+      return 'Moderate acquisition potential. The topic is framed for research, not evaluation. The right audience may find it, but they are not in decision mode. ' + problemNote + ' The alternatives below use stronger buying-signal framing for ' + targetCustomer + '.';
+    }
+    return 'Limited acquisition potential in its current form. The framing puts viewers in early-stage research, not active evaluation. Rephrasing around a specific problem or comparison will improve its ability to attract ' + targetCustomer + ' who are ready to act.';
+  }
+
+  function titleCase(str: string): string {
+    return str.split(' ').map((w) => {
+      if (w.length === 0) return w;
+      // Preserve all-caps acronyms (AOV, LTV, SaaS, B2B, etc.)
+      if (/^[A-Z]{2,}$/.test(w) || /^[A-Z][a-z][A-Z]$/.test(w)) return w;
+      return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+    }).join(' ');
+  }
+
+  function extractTopicCore(topic: string): string {
+    const stop = new Set(['how', 'what', 'is', 'are', 'does', 'do', 'the', 'a', 'an', 'for', 'to', 'in', 'of', 'on', 'at', 'by', 'and', 'or', 'but', 'best', 'top', 'my', 'your', 'our', 'why', 'when', 'which', 'make', 'makes', 'made', 'work', 'works', 'use', 'using', 'with', 'from', 'about', 'that', 'this', 'they']);
+    const words = topic.split(/\s+/).filter((w) => !stop.has(w.toLowerCase()) && w.length > 2);
+    return words.slice(0, 3).join(' ') || topic.split(' ').slice(0, 2).join(' ');
+  }
+
+  function generateAlternatives(
+    topic: string,
+    targetCustomer: string,
+    product: string
+  ): Array<{ topic: string; explanation: string }> {
+    const core = extractTopicCore(topic);
+    const productArea = titleCase(product);
+    const customer = titleCase(targetCustomer);
+    const customerSingular = customer.replace(/s$/i, '');
+
+    return [
+      {
+        topic: 'Best ' + productArea + ' for ' + customer + ' (2026 Comparison)',
+        explanation: 'Comparison and "best of" searches attract ' + customer + ' who have already decided they need a solution and are choosing which one.',
+      },
+      {
+        topic: titleCase(core) + ' Mistakes ' + customer + ' Make (And How to Fix Them)',
+        explanation: 'Problem-diagnosis topics bring in ' + customer + ' with a live issue, creating a natural moment to introduce your product as the fix.',
+      },
+      {
+        topic: 'How to Improve ' + titleCase(core) + ' as a ' + customerSingular,
+        explanation: '"How to improve" searches signal an active goal, not passive curiosity, making viewers receptive to products that accelerate that outcome.',
+      },
+      {
+        topic: productArea + ' vs. [Competitor]: Which Is Better for ' + customer + '?',
+        explanation: 'Comparison topics capture ' + customer + ' at the highest-intent stage, when they are already narrowing down specific options before a purchase decision.',
+      },
+      {
+        topic: 'Why Your ' + titleCase(core) + ' Is Not Converting (And What to Do Instead)',
+        explanation: 'Diagnostic titles attract viewers who tried something and it is not working, one of the highest-urgency search patterns.',
+      },
+    ];
+  }
+
+  // ===== INPUT CORRECTION =====
+
+  // Exact overrides: always replace regardless of distance
+  const EXACT_CORRECTIONS: Record<string, string> = {
+    'aov': 'AOV', 'ltv': 'LTV', 'cac': 'CAC', 'roi': 'ROI', 'mrr': 'MRR', 'arr': 'ARR',
+    'saas': 'SaaS', 'b2b': 'B2B', 'b2c': 'B2C', 'crm': 'CRM', 'seo': 'SEO',
+    'api': 'API', 'ui': 'UI', 'ux': 'UX', 'cto': 'CTO', 'coo': 'COO', 'cfo': 'CFO',
+  };
+
+  // Known correct spellings — fuzzy matching corrects toward these
+  const KNOWN_TERMS: string[] = [
+    // Platforms
+    'Shopify', 'WooCommerce', 'Amazon', 'WordPress', 'HubSpot', 'Salesforce',
+    'LinkedIn', 'YouTube', 'Instagram', 'Facebook', 'Twitter', 'TikTok',
+    'Stripe', 'Zapier', 'Notion', 'Slack', 'Zoom', 'Mailchimp', 'Klaviyo',
+    'Intercom', 'Zendesk', 'Webflow', 'Squarespace', 'BigCommerce', 'Magento',
+    'ActiveCampaign', 'ConvertKit', 'Typeform', 'Airtable', 'Figma', 'Canva',
+    'ClickFunnels', 'Kajabi', 'Teachable', 'Gumroad', 'Substack', 'Ghost',
+    // Roles / customer types
+    'merchants', 'merchant', 'founders', 'founder', 'agencies', 'agency',
+    'customers', 'customer', 'owners', 'owner', 'managers', 'manager',
+    'developers', 'developer', 'marketers', 'marketer', 'consultants', 'consultant',
+    'coaches', 'coach', 'freelancers', 'freelancer', 'operators', 'operator',
+    'startups', 'startup', 'businesses', 'business', 'companies', 'company',
+    'entrepreneurs', 'entrepreneur', 'executives', 'executive',
+    // Common product / service types
+    'newsletter', 'membership', 'subscription', 'software', 'application',
+    'platform', 'marketplace', 'dashboard', 'extension', 'plugin', 'integration',
+    'automation', 'analytics', 'reporting', 'checkout', 'payment', 'billing',
+    'service', 'services', 'product', 'products', 'solution', 'solutions',
+    'template', 'templates', 'course', 'courses', 'program', 'programs',
+    'tool', 'tools', 'system', 'systems', 'workflow', 'workflows',
+    // Common business / marketing words users type
+    'marketing', 'strategy', 'strategies', 'content', 'branding', 'brand',
+    'revenue', 'growth', 'pricing', 'acquisition', 'conversion', 'conversions',
+    'sales', 'leads', 'pipeline', 'funnel', 'funnels', 'traffic', 'audience',
+    'engagement', 'retention', 'onboarding', 'management', 'operations',
+    'campaign', 'campaigns', 'email', 'outreach', 'advertising',
+    'ecommerce', 'dropshipping', 'fulfillment', 'inventory', 'shipping',
+    'agency', 'consultant', 'coaching', 'clients', 'client',
+    'website', 'landing', 'homepage', 'SEO', 'copywriting',
+    'video', 'videos', 'channel', 'podcast', 'webinar',
+    'setup', 'tutorial', 'review', 'comparison', 'guide',
+  ];
+
+  function levenshtein(a: string, b: string): number {
+    const m = a.length, n = b.length;
+    const dp: number[][] = [];
+    for (let i = 0; i <= m; i++) {
+      dp[i] = [];
+      for (let j = 0; j <= n; j++) {
+        dp[i][j] = i === 0 ? j : j === 0 ? i : 0;
+      }
+    }
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        dp[i][j] = a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1]
+          : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+      }
+    }
+    return dp[m][n];
+  }
+
+  function correctWord(word: string): string {
+    if (word.length === 0) return word;
+    const lower = word.toLowerCase();
+
+    // Exact acronym overrides
+    if (EXACT_CORRECTIONS[lower]) return EXACT_CORRECTIONS[lower];
+
+    // Skip very short words and numbers
+    if (word.length <= 3 || /\d/.test(word)) return word;
+
+    // Check if already an exact match (fixes case only)
+    const exactMatch = KNOWN_TERMS.find((t) => t.toLowerCase() === lower);
+    if (exactMatch) return exactMatch;
+
+    // Fuzzy match: allow distance 1 for words 5-7 chars, distance 2 for 8+ chars
+    const maxDist = word.length >= 8 ? 2 : 1;
+    let bestMatch = '';
+    let bestDist = maxDist + 1;
+    for (const term of KNOWN_TERMS) {
+      if (Math.abs(term.length - word.length) > maxDist) continue;
+      const dist = levenshtein(lower, term.toLowerCase());
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestMatch = term;
+      }
+    }
+    return bestMatch || word;
+  }
+
+  function correctInput(input: string): string {
+    return input.split(/\s+/).map(correctWord).join(' ');
+  }
+
+  function evaluateTopic(topic: string, targetCustomer: string, product: string) {
+    const buyerIntent = scoreBuyerIntent(topic);
+    const audienceRelevance = scoreAudienceRelevance(topic, targetCustomer, product);
+    const problemProximity = scoreProblemProximity(topic);
+    const conversionOpportunity = scoreConversionOpportunity(topic, buyerIntent, product);
+    const searchIntent = classifySearchIntent(topic);
+    const verdict = generateVerdict(buyerIntent, audienceRelevance, problemProximity);
+    const explanation = generateExplanation(topic, targetCustomer, buyerIntent, audienceRelevance, problemProximity, conversionOpportunity);
+    const alternatives = generateAlternatives(topic, targetCustomer, product);
+    return { evaluation: { buyerIntent, audienceRelevance, problemProximity, conversionOpportunity, searchIntent }, verdict, explanation, alternatives };
+  }
+
+  // ===== UI LAYER =====
+
+  const RATE_LIMIT = 3;
+  const STORAGE_KEY = 'sot_topic_evals';
+
+  function getCount(): number { return parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(STORAGE_KEY, (getCount() + 1).toString()); }
+  function resetCount(): void { localStorage.setItem(STORAGE_KEY, '0'); }
+
+  function scoreToBar(value: string): { width: string; barClass: string; textClass: string } {
+    const high = ['High', 'Strong', 'Purchase Decision', 'Tool Evaluation'];
+    const med = ['Medium', 'Moderate', 'Problem Solving', 'Research'];
+    if (high.some((v) => value.includes(v))) return { width: '100%', barClass: 'bg-emerald-500', textClass: 'text-emerald-400' };
+    if (med.some((v) => value.includes(v))) return { width: '60%', barClass: 'bg-amber-500', textClass: 'text-amber-400' };
+    return { width: '20%', barClass: 'bg-rose-500', textClass: 'text-rose-400' };
+  }
+
+  function verdictStyle(potential: string): string {
+    if (potential === 'High') return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30';
+    if (potential === 'Moderate') return 'bg-amber-500/10 text-amber-400 border border-amber-500/30';
+    return 'bg-rose-500/10 text-rose-400 border border-rose-500/30';
+  }
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+  }
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('eval-counter-label') as HTMLElement;
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free evaluation remaining' : remaining + ' free evaluations remaining';
+  }
+
+  function renderResults(data: ReturnType<typeof evaluateTopic>, topic: string): void {
+    const ev = data.evaluation;
+    const verdict = data.verdict;
+
+    (document.getElementById('result-topic') as HTMLElement).textContent = topic;
+
+    const badge = document.getElementById('verdict-badge') as HTMLElement;
+    badge.textContent = verdict.acquisitionPotential + ' Acquisition Potential';
+    badge.className = 'inline-flex items-center px-5 py-2 rounded-xl text-base font-bold mb-2 ' + verdictStyle(verdict.acquisitionPotential);
+
+    (document.getElementById('verdict-label') as HTMLElement).textContent = verdict.label;
+
+    const setBar = (badgeId: string, barId: string, value: string) => {
+      const style = scoreToBar(value);
+      const badgeEl = document.getElementById(badgeId) as HTMLElement;
+      badgeEl.textContent = value;
+      badgeEl.className = 'text-xs font-semibold ' + style.textClass;
+      const barEl = document.getElementById(barId) as HTMLElement;
+      barEl.className = 'h-full rounded-full transition-all duration-700 ease-out ' + style.barClass;
+      barEl.style.width = '0%';
+      setTimeout(() => { barEl.style.width = style.width; }, 80);
+    };
+
+    setBar('badge-buyer-intent', 'bar-buyer-intent', ev.buyerIntent);
+    setBar('badge-audience', 'bar-audience', ev.audienceRelevance);
+    setBar('badge-problem', 'bar-problem', ev.problemProximity);
+    setBar('badge-conversion', 'bar-conversion', ev.conversionOpportunity);
+    setBar('badge-search-intent', 'bar-search-intent', ev.searchIntent);
+
+    (document.getElementById('result-explanation') as HTMLElement).textContent = data.explanation;
+
+    const altList = document.getElementById('alternatives-list') as HTMLElement;
+    altList.innerHTML = data.alternatives.map((a, i) =>
+      '<div class="rounded-xl border border-slate-700 bg-slate-800 p-4">' +
+        '<div class="flex items-start gap-3">' +
+          '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
+          '<div>' +
+            '<p class="text-sm font-semibold text-white mb-1">' + a.topic + '</p>' +
+            '<p class="text-xs text-slate-400 leading-relaxed">' + a.explanation + '</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    ).join('');
+  }
+
+  function evaluate(): void {
+    const topic = correctInput((document.getElementById('topic-input') as HTMLInputElement).value.trim());
+    const targetCustomer = correctInput((document.getElementById('customer-input') as HTMLInputElement).value.trim());
+    const product = correctInput((document.getElementById('product-input') as HTMLInputElement).value.trim());
+
+    if (!topic || !targetCustomer || !product) {
+      alert('Please fill in all three fields.');
+      return;
+    }
+
+    if (getCount() >= RATE_LIMIT) {
+      showStep('step-email-gate');
+      return;
+    }
+
+    showStep('step-loading');
+
+    setTimeout(() => {
+      const data = evaluateTopic(topic, targetCustomer, product);
+      incrementCount();
+      updateCounterLabel();
+      renderResults(data, topic);
+      showStep('step-results');
+    }, 700);
+  }
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(
+        'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec',
+        { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'youtube-topic-evaluator' }) }
+      );
+    } catch { /* no-cors always resolves */ }
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      resetCount();
+      updateCounterLabel();
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue evaluating';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      showStep('step-input');
+    }, 1500);
+  }
+
+  function reset(): void {
+    (document.getElementById('topic-input') as HTMLInputElement).value = '';
+    (document.getElementById('customer-input') as HTMLInputElement).value = '';
+    (document.getElementById('product-input') as HTMLInputElement).value = '';
+    showStep('step-input');
+    (document.getElementById('topic-input') as HTMLInputElement).focus();
+  }
+
+  document.getElementById('evaluate-btn')?.addEventListener('click', evaluate);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  const inputIds = ['topic-input', 'customer-input', 'product-input'];
+  inputIds.forEach((id, i) => {
+    document.getElementById(id)?.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Enter') {
+        if (i < inputIds.length - 1) {
+          (document.getElementById(inputIds[i + 1]) as HTMLInputElement)?.focus();
+        } else {
+          evaluate();
+        }
+      }
+    });
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>
