@@ -1,0 +1,173 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { SITE } from 'astrowind:config';
+
+/**
+ * PHOTOS: To add real founder photos, place images in:
+ *   src/assets/images/team/sathyanand.jpg
+ *   src/assets/images/team/gautham.jpg
+ * Then uncomment the imports below and replace the initials avatars with <img> tags.
+ *
+ * import sathyanandPhoto from '~/assets/images/team/sathyanand.jpg';
+ * import gauthamPhoto from '~/assets/images/team/gautham.jpg';
+ */
+
+const metadata = {
+  title: 'About Us',
+  description: 'Meet the founders behind SellOnTube — Sathyanand and Gautham — and learn why we built a YouTube acquisition service for B2B businesses.',
+  robots: { index: true, follow: true },
+};
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About SellOnTube",
+  "url": `${siteUrl}/about`,
+  "description": "Meet the founders of SellOnTube, a YouTube content strategy and production service for B2B businesses.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SellOnTube",
+    "url": siteUrl
+  }
+};
+
+const founders = [
+  {
+    name: 'Sathyanand S',
+    initials: 'SS',
+    role: 'Co-Founder, SellOnTube',
+    bio: 'Sathyanand brings deep expertise in content strategy and B2B growth. He helps founders turn YouTube into a systematic customer acquisition channel — not a content treadmill.',
+    linkedin: 'https://www.linkedin.com/in/sathyanands/',
+    twitter: 'https://x.com/SathyaHQ',
+    twitterHandle: '@SathyaHQ',
+  },
+  {
+    name: 'Gautham',
+    initials: 'G',
+    role: 'Co-Founder, SellOnTube',
+    bio: 'Gautham focuses on the intersection of search intent, YouTube SEO, and business outcomes. He leads the diagnostic process that determines whether YouTube can genuinely pay for itself for each client.',
+    linkedin: 'https://www.linkedin.com/in/mindcharting/',
+    twitter: 'https://x.com/MindCharting',
+    twitterHandle: '@MindCharting',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
+
+  <!-- Hero -->
+  <section class="py-20 sm:py-24 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+        About SellOnTube
+      </h1>
+      <p class="mt-5 text-base sm:text-lg text-gray-600 dark:text-slate-300 max-w-2xl mx-auto">
+        We built SellOnTube because we kept watching B2B founders waste months on YouTube with no results.
+        Not because YouTube doesn't work — because nobody was treating it as an acquisition channel.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission block -->
+  <section class="py-10 sm:py-12 bg-slate-50 dark:bg-slate-800/50">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="grid sm:grid-cols-3 gap-6 text-center">
+        <div class="p-6">
+          <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Search intent first</div>
+          <p class="text-sm text-gray-600 dark:text-slate-400">Every video starts with what your buyers are already searching — not what you want to say.</p>
+        </div>
+        <div class="p-6">
+          <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">No recording required</div>
+          <p class="text-sm text-gray-600 dark:text-slate-400">Professional voiceover, editing, and publishing. You review and approve. We handle everything else.</p>
+        </div>
+        <div class="p-6">
+          <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">Economics first</div>
+          <p class="text-sm text-gray-600 dark:text-slate-400">If the math doesn't work in the diagnostic, we don't take you on. We only proceed when YouTube can realistically pay for itself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team section -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <p class="text-sm font-medium uppercase tracking-wide text-emerald-600 dark:text-emerald-400 mb-2">The team</p>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">The people behind the work</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-8">
+        {founders.map((founder) => (
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center">
+
+            <!-- Avatar (replace this div with an <img> tag once you add photos) -->
+            <div class="w-24 h-24 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-5 flex-shrink-0">
+              <span class="text-2xl font-bold text-emerald-700 dark:text-emerald-300">{founder.initials}</span>
+            </div>
+
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">{founder.name}</h3>
+            <p class="text-sm text-emerald-600 dark:text-emerald-400 mt-1 mb-4">{founder.role}</p>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-6">{founder.bio}</p>
+
+            <!-- Social links -->
+            <div class="flex items-center gap-4 mt-auto">
+              <a
+                href={founder.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${founder.name} on LinkedIn`}
+                class="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+              </a>
+              <a
+                href={founder.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${founder.name} on X`}
+                class="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                {founder.twitterHandle}
+              </a>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-14 sm:py-16">
+    <div class="max-w-3xl mx-auto px-4 text-center space-y-4">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">
+        Want to see if YouTube makes sense for your business?
+      </h2>
+      <p class="text-base text-gray-600 dark:text-slate-300">
+        Book a diagnostic call. We'll run the numbers, look at search demand, and tell you plainly whether YouTube should be part of your acquisition mix.
+      </p>
+      <div class="mt-6 flex justify-center">
+        <a
+          href="https://cal.com/gautham-8bdvdx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold
+                 bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
+                 transition-colors"
+        >
+          Book a diagnostic call
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
