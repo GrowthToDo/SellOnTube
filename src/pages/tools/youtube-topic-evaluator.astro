@@ -212,6 +212,10 @@ const metadata = {
         <!-- Alternatives -->
         <div class="p-6 sm:p-8">
           <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Higher-converting alternatives</p>
+          <div id="alternatives-loading" class="hidden items-center gap-3 py-4">
+            <div class="w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin flex-shrink-0"></div>
+            <p class="text-xs text-slate-500">Generating alternatives...</p>
+          </div>
           <div id="alternatives-list" class="space-y-3"></div>
         </div>
 
@@ -485,21 +489,23 @@ const metadata = {
     }).join(' ');
   }
 
-  function extractTopicCore(topic: string): string {
-    const stop = new Set([
-      'how', 'what', 'is', 'are', 'does', 'do', 'the', 'a', 'an', 'for', 'to', 'in', 'of',
-      'on', 'at', 'by', 'and', 'or', 'but', 'best', 'top', 'my', 'your', 'our', 'why',
-      'when', 'which', 'make', 'makes', 'made', 'work', 'works', 'use', 'using', 'with',
-      'from', 'about', 'that', 'this', 'they',
-      // Action/modifier verbs — these describe what to do, not what the topic is about
-      'increase', 'increasing', 'improve', 'improving', 'grow', 'growing', 'boost', 'boosting',
-      'maximize', 'maximizing', 'build', 'building', 'scale', 'scaling', 'get', 'getting',
-      'create', 'creating', 'start', 'starting', 'drive', 'driving', 'generate', 'generating',
-      'reduce', 'reducing', 'fix', 'fixing', 'solve', 'solving', 'avoid', 'avoiding',
-      'optimize', 'optimizing', 'manage', 'managing', 'run', 'running',
-    ]);
-    const words = topic.split(/\s+/).filter((w) => !stop.has(w.toLowerCase()) && w.length > 2);
-    return words.slice(0, 2).join(' ') || topic.split(' ').slice(0, 2).join(' ');
+  // Strip leading question/framing patterns to expose the content noun phrase
+  function getTopicSubject(topic: string): string {
+    const patterns = [
+      /^how to\s+/i, /^how\s+/i,
+      /^what is\s+/i, /^what are\s+/i, /^what\s+/i,
+      /^why\s+/i, /^when\s+/i, /^which\s+/i,
+      /^should i\s+/i, /^should you\s+/i,
+      /^is it\s+/i, /^can i\s+/i, /^do i\s+/i,
+      /^the best\s+/i, /^the\s+/i, /^a\s+/i,
+    ];
+    let t = topic.trim();
+    for (const p of patterns) {
+      const stripped = t.replace(p, '');
+      if (stripped.length >= 4 && stripped !== t) { t = stripped; break; }
+    }
+    // Truncate to ~5 words to keep title templates readable
+    return t.split(/\s+/).slice(0, 5).join(' ').trim();
   }
 
   // Trim a product label: split at first preposition, take first N words
@@ -516,38 +522,102 @@ const metadata = {
     return words.slice(-maxWords).join(' ');
   }
 
+  // Score-driven: which alternatives appear depends on which dimensions are actually weak
   function generateAlternatives(
     topic: string,
     targetCustomer: string,
-    product: string
-  ): Array<{ topic: string; explanation: string }> {
-    const core = extractTopicCore(topic);
-    const productArea = titleCase(trimProduct(product, 4));
+    product: string,
+    scores: { buyerIntent: string; audienceRelevance: string; problemProximity: string; conversionOpportunity: string }
+  ): Array<{ topic: string; explanation: string; fixes: string }> {
+    const subject = titleCase(getTopicSubject(topic));
     const customer = titleCase(trimCustomer(targetCustomer, 3));
-    const customerSingular = customer.replace(/s$/i, '');
+    const productShort = titleCase(trimProduct(product, 3));
 
-    return [
-      {
-        topic: 'Best ' + productArea + ' for ' + customer + ' (2026 Comparison)',
-        explanation: 'Comparison and "best of" searches attract ' + customer + ' who have already decided they need a solution and are choosing which one.',
-      },
-      {
-        topic: titleCase(core) + ' Mistakes ' + customer + ' Make (And How to Fix Them)',
-        explanation: 'Problem-diagnosis topics bring in ' + customer + ' with a live issue, creating a natural moment to introduce your product as the fix.',
-      },
-      {
-        topic: 'How to Improve ' + titleCase(core) + ' as a ' + customerSingular,
-        explanation: '"How to improve" searches signal an active goal, not passive curiosity, making viewers receptive to products that accelerate that outcome.',
-      },
-      {
-        topic: productArea + ' vs. [Competitor]: Which Is Better for ' + customer + '?',
-        explanation: 'Comparison topics capture ' + customer + ' at the highest-intent stage, when they are already narrowing down specific options before a purchase decision.',
-      },
-      {
-        topic: 'Why Your ' + titleCase(core) + ' Is Not Converting (And What to Do Instead)',
-        explanation: 'Diagnostic titles attract viewers who tried something and it is not working, one of the highest-urgency search patterns.',
-      },
-    ];
+    const pool: Array<{ topic: string; explanation: string; fixes: string; weight: number }> = [];
+
+    // Fix Low/Medium Buyer Intent
+    if (scores.buyerIntent !== 'High') {
+      const w = scores.buyerIntent === 'Low' ? 3 : 1;
+      pool.push({
+        topic: 'Best ' + productShort + ' for ' + customer + ': ' + new Date().getFullYear() + ' Comparison',
+        explanation: 'Comparison topics find ' + customer + ' who already know they need a solution and are picking which one — the highest-intent position in any purchase journey.',
+        fixes: 'Buyer Intent',
+        weight: w,
+      });
+      pool.push({
+        topic: 'Is ' + subject + ' Worth It for ' + customer + '?',
+        explanation: '"Worth it" framing targets viewers actively weighing a commitment. Same subject as your original topic, completely different viewer mindset.',
+        fixes: 'Buyer Intent',
+        weight: w - 1,
+      });
+    }
+
+    // Fix Low/Medium Audience Relevance
+    if (scores.audienceRelevance !== 'High') {
+      const w = scores.audienceRelevance === 'Low' ? 3 : 1;
+      pool.push({
+        topic: subject + ' for ' + customer + ': What Actually Works',
+        explanation: 'Adding "' + customer + '" to the title makes the video self-selecting — the right viewers click in, the wrong ones don\'t. This improves watch-time signals and subscriber quality.',
+        fixes: 'Audience Relevance',
+        weight: w,
+      });
+    }
+
+    // Fix Low/Medium Problem Proximity
+    if (scores.problemProximity !== 'High') {
+      const w = scores.problemProximity === 'Low' ? 3 : 1;
+      pool.push({
+        topic: 'Why ' + customer + ' Get ' + subject + ' Wrong (And the Fix)',
+        explanation: 'Diagnosis framing attracts viewers already experiencing this problem — the highest urgency state. "(And the Fix)" signals the video delivers a solution, not just an explanation.',
+        fixes: 'Problem Proximity',
+        weight: w,
+      });
+      pool.push({
+        topic: 'The ' + subject + ' Mistake Costing ' + customer + ' Revenue',
+        explanation: 'Framing around a measurable consequence (revenue) makes the cost of inaction concrete, putting viewers in an active problem-solving mindset before they even click.',
+        fixes: 'Problem Proximity',
+        weight: w - 1,
+      });
+    }
+
+    // Fix Weak/Moderate Conversion Opportunity
+    if (scores.conversionOpportunity !== 'Strong') {
+      const w = scores.conversionOpportunity === 'Weak' ? 2 : 1;
+      pool.push({
+        topic: productShort + ' vs. [Competitor]: Which Is Right for ' + customer + '?',
+        explanation: 'Head-to-head comparisons put your product at the center of the conversation at the exact moment viewers are narrowing their shortlist — right before a purchase decision.',
+        fixes: 'Conversion Opportunity',
+        weight: w,
+      });
+    }
+
+    // Fallback: always have at least one strong reframe available
+    pool.push({
+      topic: subject + ': A ' + customer + ' Guide to Getting It Right',
+      explanation: '"Getting it right" framing combines solution-seeking with audience specificity, attracting ' + customer + ' who are past awareness and ready to act on practical advice.',
+      fixes: 'Multiple',
+      weight: 0,
+    });
+
+    // Sort by weight, pick top 3 without repeating the same fixes category
+    pool.sort((a, b) => b.weight - a.weight);
+    const seen = new Set<string>();
+    const result: Array<{ topic: string; explanation: string; fixes: string }> = [];
+    for (const c of pool) {
+      if (result.length >= 3) break;
+      const key = c.fixes.split(' ')[0];
+      if (seen.has(key)) continue;
+      seen.add(key);
+      result.push({ topic: c.topic, explanation: c.explanation, fixes: c.fixes });
+    }
+    // Fill to 3 if deduplication left gaps
+    for (const c of pool) {
+      if (result.length >= 3) break;
+      if (!result.find((r) => r.topic === c.topic)) {
+        result.push({ topic: c.topic, explanation: c.explanation, fixes: c.fixes });
+      }
+    }
+    return result;
   }
 
   // ===== INPUT CORRECTION =====
@@ -655,7 +725,8 @@ const metadata = {
     const searchIntent = classifySearchIntent(topic);
     const verdict = generateVerdict(buyerIntent, audienceRelevance, problemProximity);
     const explanation = generateExplanation(topic, targetCustomer, buyerIntent, audienceRelevance, problemProximity, conversionOpportunity);
-    const alternatives = generateAlternatives(topic, targetCustomer, product);
+    const scores = { buyerIntent, audienceRelevance, problemProximity, conversionOpportunity };
+    const alternatives = generateAlternatives(topic, targetCustomer, product, scores);
     return { evaluation: { buyerIntent, audienceRelevance, problemProximity, conversionOpportunity, searchIntent }, verdict, explanation, alternatives };
   }
 
@@ -727,18 +798,55 @@ const metadata = {
 
     (document.getElementById('result-explanation') as HTMLElement).textContent = data.explanation;
 
+    // Show spinner while AI alternatives load
+    const altLoading = document.getElementById('alternatives-loading') as HTMLElement;
     const altList = document.getElementById('alternatives-list') as HTMLElement;
-    altList.innerHTML = data.alternatives.map((a, i) =>
+    altLoading.style.display = 'flex';
+    altList.innerHTML = '';
+  }
+
+  function renderAlternatives(alternatives: Array<{ topic: string; explanation: string; fixes: string }>): void {
+    const altLoading = document.getElementById('alternatives-loading') as HTMLElement;
+    const altList = document.getElementById('alternatives-list') as HTMLElement;
+    altLoading.style.display = 'none';
+    altList.innerHTML = alternatives.map((a, i) =>
       '<div class="rounded-xl border border-slate-700 bg-slate-800 p-4">' +
         '<div class="flex items-start gap-3">' +
           '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
-          '<div>' +
+          '<div class="min-w-0">' +
+            '<span class="text-[10px] font-semibold uppercase tracking-wider text-emerald-500/60 mb-1.5 block">↑ ' + a.fixes + '</span>' +
             '<p class="text-sm font-semibold text-white mb-1">' + a.topic + '</p>' +
             '<p class="text-xs text-slate-400 leading-relaxed">' + a.explanation + '</p>' +
           '</div>' +
         '</div>' +
       '</div>'
     ).join('');
+  }
+
+  async function fetchAlternatives(
+    topic: string,
+    targetCustomer: string,
+    product: string,
+    scores: { buyerIntent: string; audienceRelevance: string; problemProximity: string; conversionOpportunity: string },
+    fallback: Array<{ topic: string; explanation: string; fixes: string }>
+  ): Promise<void> {
+    try {
+      const res = await fetch('/api/generate-alternatives', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic, targetCustomer, product, scores }),
+      });
+      if (!res.ok) throw new Error('API error');
+      const data = await res.json();
+      if (Array.isArray(data?.alternatives) && data.alternatives.length > 0) {
+        renderAlternatives(data.alternatives);
+        return;
+      }
+      throw new Error('Empty response');
+    } catch {
+      // Fall back to client-side alternatives silently
+      renderAlternatives(fallback);
+    }
   }
 
   function evaluate(): void {
@@ -764,6 +872,7 @@ const metadata = {
       updateCounterLabel();
       renderResults(data, topic);
       showStep('step-results');
+      fetchAlternatives(topic, targetCustomer, product, data.evaluation, data.alternatives);
     }, 700);
   }
 
