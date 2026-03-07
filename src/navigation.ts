@@ -18,7 +18,7 @@ export const headerData = {
 export const footerData = {
   linkGroups: [
     {
-      title: 'Product',
+      title: 'SellonTube',
       links: [
         { text: 'How It Works', href: getPermalink('/how-it-works') },
         { text: 'Pricing', href: getPermalink('/pricing') },
@@ -28,13 +28,13 @@ export const footerData = {
     {
       title: 'Free Tools',
       links: [
-        { text: 'YouTube Tools', href: getPermalink('/tools') },
         { text: 'ROI Calculator', href: getPermalink('/tools/youtube-roi-calculator') },
         { text: 'Topic Evaluator', href: getPermalink('/tools/youtube-topic-evaluator') },
+        { text: 'All Tools', href: getPermalink('/tools') },
       ],
     },
     {
-      title: 'Explore',
+      title: 'Resources',
       links: [
         { text: 'YouTube For', href: getPermalink('/youtube-for') },
         { text: 'YouTube Vs', href: getPermalink('/youtube-vs') },
