@@ -2044,4 +2044,71 @@ export const niches: Niche[] = [
     ctaSubtitle: "Let's build the content that brings them to yours.",
     ctaButtonText: 'Book a 30-min Marketplace Growth Call',
   },
+  {
+    slug: 'small-business',
+    publishDate: '2026-03-16',
+    name: 'Small Businesses',
+    shortName: 'Small Business',
+    metaTitle: 'YouTube Marketing for Small Business | SellOnTube',
+    metaDescription: 'Turn YouTube into a customer acquisition channel for your small business. Reach buyers who are already searching for what you offer and convert them without ad spend.',
+    heroTitle: 'Turn YouTube into a customer acquisition channel for your small business',
+    heroSubtitle: 'We build YouTube content that shows up when your ideal customers are searching for what you do. By the time they contact you, they already know your business, trust your expertise, and have decided you are worth talking to.',
+    problemHeading: "Your Ideal Customers Are Searching Before They Buy",
+    problemBody: "Most small business owners assume YouTube is for big brands or full-time creators. It is not. It is a search engine, and your ideal customers are using it to research buying decisions right now.\n\nThey are searching for the service you offer, the problem you solve, the product you sell. If you are not showing up in those searches, someone else is. And that someone else is building familiarity and trust with your potential customers before you ever get a chance to make an impression.\n\nSmall businesses have an inherent advantage on YouTube that most do not use: specificity. A local accountant explaining tax strategy for e-commerce sellers, a home services company walking through what a roof inspection actually involves, a specialty retailer reviewing the products they carry — these are not generic videos. They attract exactly the right person at exactly the right moment. Most small businesses have no YouTube presence at all, which means the search results your customers are using are largely unclaimed.",
+    searchExamples: ['"best accountant for small business near me"', '"how does [your service] actually work"', '"is [your product/service] worth it"'],
+    goodFitItems: ['Clear service area or defined customer niche', 'Average customer value of $500 or more', 'Willing to appear on camera or use voiceover-led formats', 'Committed to consistent content over 6+ months'],
+    notFitItems: ['Businesses with no defined customer profile', 'Pure commodity plays competing only on price', 'Businesses wanting immediate results in under 60 days', 'Owners unwilling to invest in quality production'],
+    whyItWorks: ['Customers research before they buy — YouTube is where that happens', 'Specificity beats size — small businesses can out-niche large brands', 'Trust is built before contact — inbound leads are warmer', 'High search volume with low competition in most local and niche categories'],
+    features: [
+      { title: 'Reach customers during the research phase', description: 'Before a customer picks up the phone or fills out a contact form, they watch videos. They look for someone who clearly understands their situation and knows what they are doing. A well-made video that answers the question they are already asking puts your business in front of them at exactly the right moment — before any competitor has had a chance to make an impression.', icon: 'tabler:search' },
+      { title: 'Specificity is your competitive advantage', description: 'Large brands produce broad content. You can produce content that is highly specific to your customer, your geography, and your niche. A video about tax planning for Shopify sellers, roof inspections in [your city], or what to look for when buying [your product category] competes with almost nothing and attracts exactly the right person. Specificity is not a constraint for a small business — it is the strategy.', icon: 'tabler:target-arrow' },
+      { title: 'Inbound leads who already trust you', description: 'A lead from YouTube is different from a cold enquiry. The viewer has spent 5 to 10 minutes watching you explain something clearly, demonstrate competence, and show how you think. By the time they contact you, the trust-building work is done. Conversion rates on YouTube-attributed leads are significantly higher than cold outbound or paid acquisition.', icon: 'tabler:heart-handshake' },
+      { title: 'Content that keeps working', description: 'A video you publish today will still be surfacing in search results two years from now. Unlike paid ads that stop the moment you stop paying, or social posts that disappear in hours, YouTube content compounds. A small business with 20 well-targeted videos has 20 assets working in parallel around the clock — each one finding customers and sending them to you.', icon: 'tabler:trending-up' },
+    ],
+    faqs: [
+      { question: 'Do I need to be on camera?', answer: 'No. Many of the most effective small business YouTube channels use voiceover-led formats with screen recordings, product footage, or location footage. The content and clarity matter more than whether the owner appears on screen.' },
+      { question: 'How long does it take to see results?', answer: 'Most small businesses see meaningful search traffic within 3 to 6 months for niche-specific content, and 6 to 12 months for broader terms. The timeline depends on how competitive the search terms are and how consistently content is published.' },
+      { question: 'What kinds of small businesses work best?', answer: 'Service businesses with a defined customer profile, local businesses with clear geographic focus, and specialty retailers with knowledgeable customers tend to see the strongest results. The key factor is whether your ideal customer searches before they buy.' },
+      { question: 'How much content do we need?', answer: 'Starting with four well-targeted videos per month is enough to build momentum. Quality and targeting matter more than volume. Four videos that each rank for a specific search query outperform twenty generic videos every time.' },
+    ],
+    topicExamples: [
+      'what to look for when hiring a [your service] company',
+      'how much does [your service] cost and what affects the price',
+      'common mistakes small business owners make with [relevant topic]',
+      '[your service] explained — what the process actually looks like',
+      'how to choose the right [your product/service] for your situation',
+      'questions to ask before you hire a [your service] provider',
+    ],
+    industryFaqs: [
+      {
+        question: 'Can a small business realistically compete on YouTube against larger brands?',
+        answer: 'Yes — and in many categories, small businesses have a structural advantage. Large brands produce broad content optimised for wide audiences. A small business can produce highly specific content for a narrow audience — a particular geography, a particular customer type, a particular problem — where larger brands do not bother to compete. Specificity wins in search, and specificity is easier for a small business to execute than it is for a large one.',
+      },
+      {
+        question: 'What is the minimum budget to make YouTube work for a small business?',
+        answer: 'The primary investment is production consistency, not budget size. A small business publishing four focused, well-optimised videos per month with a clear call to action will outperform a business spending more but publishing irregularly or without a search strategy. The content has to answer real questions your customers are asking — that is a research and positioning investment more than a production budget question.',
+      },
+      {
+        question: 'How do we convert YouTube viewers into paying customers?',
+        answer: 'Every video should end with a single, specific call to action tied to the next step in your buying process — book a consultation, get a quote, visit the store, download a guide. The description should include that link prominently. For local businesses, the description should also include your service area and contact details. The conversion happens off YouTube — the video creates intent and sends the viewer to you ready to act.',
+      },
+    ],
+    commonMistakes: [
+      {
+        title: 'Producing content about the business instead of content for the customer',
+        description: 'Videos about company history, team introductions, and awards do not rank and do not convert. The customer is not searching for those things. They are searching for answers to their own questions. Content that answers those questions earns search placement and builds trust simultaneously. Content about the business itself does neither.',
+      },
+      {
+        title: 'Publishing without a keyword strategy',
+        description: 'The difference between a video that gets found and one that does not is usually not production quality — it is whether anyone is searching for the topic. Small businesses often produce content based on what they think is interesting rather than what their customers are actually searching for. Keyword research before production is not optional. It determines whether the content can earn traffic at all.',
+      },
+      {
+        title: 'Giving up before the compounding effect kicks in',
+        description: 'YouTube results are not linear. The first two to three months often show modest results as videos accumulate watch time and search signals. Businesses that quit at month two never see the payoff that arrives at month six. Consistency over the first six months is the single most important variable in whether a small business YouTube channel succeeds.',
+      },
+    ],
+    ctaHeading: 'Your customers are searching for what you do on YouTube right now.',
+    ctaSubtitle: 'Book a 30-minute call. We will look at your business, identify the searches your ideal customers are making, and tell you honestly whether YouTube is the right acquisition channel for you.',
+    ctaButtonText: 'Book a 30-min Small Business Growth Call',
+  },
 ];
