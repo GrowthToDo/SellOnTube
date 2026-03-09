@@ -11,9 +11,144 @@ export interface Comparison {
   channelBWins: { title: string; description: string }[];
   bottomLine: string;
   faqs: { question: string; answer: string }[];
+  relatedLinks?: { text: string; href: string }[];
 }
 
 export const comparisons: Comparison[] = [
+  {
+    slug: 'facebook',
+    publishDate: '2026-03-09',
+    channelB: 'Facebook',
+    audience: 'Businesses',
+    metaTitle: 'YouTube vs Facebook for Business Marketing: Which Builds Long-Term Growth? | SellOnTube',
+    metaDescription: 'YouTube vs Facebook for business compared. YouTube wins on search intent and compounding organic reach. Facebook wins on community and retargeting. See which fits your stage.',
+    heroTitle: 'YouTube vs Facebook for Business: Which Actually Builds Long-Term Growth?',
+    verdict: 'Facebook reaches a large audience quickly. YouTube captures buyers who are actively searching for solutions. For businesses building a sustainable acquisition channel without constant paid spend, YouTube compounds in ways Facebook organic no longer can. Facebook Page organic reach has declined from 16% in 2012 to under 2% today. YouTube search rankings do not expire.',
+    youtubeWins: [
+      {
+        title: 'Search intent instead of interruption',
+        description: "YouTube captures buyers mid-research. Someone typing 'best CRM for small agencies' or 'how to choose a financial advisor' is telling you exactly what they need and when they need it. Facebook shows content to people who were doing something else entirely. That gap in intent is why YouTube visitors convert at higher rates: they arrived because they were looking, not because an algorithm placed you in their path.",
+      },
+      {
+        title: 'Organic reach that does not decay',
+        description: 'Facebook Page organic reach has been declining since 2012. Today, most business posts reach fewer than 2% of followers without paid promotion. YouTube search rankings work differently: a well-optimised video keeps appearing in search results for months and years after publication. The reach is not dependent on an algorithm deciding to show your post today. It is determined by relevance to a query that keeps getting searched.',
+      },
+      {
+        title: 'A content library that compounds',
+        description: 'Every YouTube video you publish adds a searchable asset to your library. Video 10 helps video 1 rank better through topical authority. Video 20 brings new searchers to videos 5 and 12. Facebook posts have a peak reach window of roughly 6 hours. After that, they are functionally invisible. One model builds equity over time; the other requires constant reinvestment just to stay visible.',
+      },
+      {
+        title: 'Trust built through depth',
+        description: 'A buyer who watches 15 minutes of you explaining your methodology, handling objections, and walking through real examples arrives at the first conversation with a level of familiarity that no Facebook post can produce. That pre-built trust reduces sales cycle length and increases close rates, particularly for high-consideration purchases where the buyer needs to believe in your approach before they will talk to you.',
+      },
+    ],
+    channelBWins: [
+      {
+        title: 'Groups and community management',
+        description: 'Facebook Groups remain one of the more effective tools for building an engaged professional community. The discussion format, member management, and notification system make Groups genuinely useful for businesses that want ongoing conversation with their audience rather than one-way content delivery. YouTube comments do not replicate this dynamic.',
+      },
+      {
+        title: 'Events and local business presence',
+        description: 'Facebook Events still drive meaningful registrations for webinars, workshops, and local business activity. The RSVP mechanic, reminder notifications, and integration with local discovery make Facebook the most practical platform for event-driven businesses. YouTube has no equivalent events infrastructure.',
+      },
+      {
+        title: 'Retargeting warm audiences',
+        description: "Facebook's advertising infrastructure, including the Pixel and Custom Audiences, lets you re-engage website visitors, email subscribers, and video viewers with tailored messages. This retargeting capability has no direct equivalent in YouTube organic content. For businesses already generating web traffic from other sources, Facebook retargeting is a genuinely efficient way to convert warm leads.",
+      },
+    ],
+    bottomLine: 'Build YouTube as your primary organic acquisition channel. Use Facebook for community management, event promotion, and retargeting the warm audience your YouTube content creates. The businesses getting the most from both channels treat them as complementary: YouTube brings in buyers through search, Facebook keeps them engaged until they convert. If you are choosing where to invest your first content marketing hours, YouTube compounds. Facebook requires constant posting to maintain any presence.',
+    faqs: [
+      {
+        question: 'Is YouTube or Facebook better for organic business content in 2025?',
+        answer: 'YouTube, by a significant margin for most businesses. Facebook organic reach for Pages has declined to under 2%, meaning the vast majority of your followers never see your posts without paid promotion. YouTube organic search traffic compounds over time: a video published today keeps driving visitors in month 12, 18, and 24. If organic reach matters to your content strategy, YouTube is the more reliable long-term investment.',
+      },
+      {
+        question: 'Does Facebook still work for business marketing without paid ads?',
+        answer: 'Selectively. Facebook Groups can still generate meaningful engagement if you build a genuine community rather than a broadcast channel. Facebook Events work well for local and live-stream promotion. Facebook Pages used purely for content broadcast are largely ineffective without paid support. The honest position is that Facebook organic is a community and retention tool in 2025, not a new customer acquisition tool.',
+      },
+      {
+        question: 'Can I repurpose my YouTube content on Facebook?',
+        answer: "Yes, and this is worth doing systematically. Upload shorter clips natively to Facebook rather than sharing YouTube links, since Facebook's algorithm suppresses external links. Use YouTube videos as the source asset and cut Facebook-optimised clips of 60 to 90 seconds for Reels. The primary production effort goes into YouTube; Facebook gets derivative content that costs little additional time. This approach reaches both platforms without doubling your production workload.",
+      },
+      {
+        question: 'Which is better for B2B vs B2C businesses?',
+        answer: "For B2B, YouTube is the clearer choice. Business decision-makers research on YouTube when evaluating vendors, software, and service providers. Facebook's professional use case has largely migrated to LinkedIn. For B2C, both can work, but the answer depends on your product. Consumer goods with a strong visual story do well on Facebook and Instagram. Service businesses and considered purchases tend to convert better from YouTube, where buyers have done their research before reaching out.",
+      },
+    ],
+    relatedLinks: [
+      { text: 'YouTube ROI Calculator', href: '/tools/youtube-roi-calculator' },
+      { text: 'How to Calculate YouTube Marketing ROI', href: '/blog/youtube-marketing-roi' },
+      { text: 'YouTube vs Instagram for Business', href: '/youtube-vs-instagram' },
+      { text: 'YouTube Marketing for Your Industry', href: '/youtube-for' },
+    ],
+  },
+  {
+    slug: 'instagram',
+    publishDate: '2026-03-09',
+    channelB: 'Instagram',
+    audience: 'Businesses',
+    metaTitle: 'YouTube vs Instagram for Business: Which Channel Drives More Customers? | SellOnTube',
+    metaDescription: 'YouTube vs Instagram for business compared. YouTube wins on search intent and long-form trust. Instagram wins on visual discovery and brand building. Here is how to choose.',
+    heroTitle: 'YouTube vs Instagram for Business: Which Channel Actually Drives Customers?',
+    verdict: 'Instagram builds visual brand recognition fast. YouTube converts buyers who are already searching for a solution. For businesses where the purchase decision involves research, including most B2B, professional services, and high-ticket products, YouTube outperforms Instagram on customer acquisition. Instagram plays a strong supporting role for brand visibility and audience retention once buyers have already found you.',
+    youtubeWins: [
+      {
+        title: 'Buyers search YouTube, not Instagram',
+        description: "When someone has a specific problem and wants to solve it, they go to YouTube. They type 'how to choose an accountant for my startup' or 'best marketing strategy for SaaS companies' and watch videos made by people who understand their situation. Instagram is where people go to be inspired, entertained, or updated on accounts they follow. The platform mode is different, and that difference determines whether a visitor is in buying mode when they find you.",
+      },
+      {
+        title: 'Content lifespan measured in years, not hours',
+        description: 'An Instagram post reaches most of its audience within 48 hours of publication. After that, it is largely invisible without a paid boost. A YouTube video ranking for a relevant search query delivers traffic in month 6, month 12, and month 24 from a single production investment. For businesses with limited content budgets, the compounding return on YouTube means each hour spent producing content keeps working long after the equivalent Instagram post has been forgotten.',
+      },
+      {
+        title: 'Depth of trust that converts',
+        description: 'A prospect who watches 12 minutes of you explaining your process, handling real objections, and showing your methodology in practice arrives with a level of familiarity that 50 Instagram posts cannot build. For high-consideration purchases, that depth matters. The conversion rates on YouTube-sourced leads tend to be higher because the buyer has already evaluated whether you understand their situation before they contact you.',
+      },
+      {
+        title: 'B2B and high-ticket buyer behaviour',
+        description: "Business decision-makers use YouTube for professional research. They search for software comparisons, methodology explanations, vendor evaluations, and case studies. Instagram is part of their personal life, not their professional research process. For B2B companies and high-ticket service providers, being discoverable on YouTube places you in front of buyers during their decision-making process, not during their leisure scroll.",
+      },
+    ],
+    channelBWins: [
+      {
+        title: 'Visual product and brand discovery',
+        description: "For visually-led products including fashion, food, physical goods, interior design, and anything where the aesthetic is the value proposition, Instagram's discovery surface is genuinely strong. The visual format, shopping integrations, and Explore algorithm surface products to new audiences in ways YouTube's search-first model does not replicate for purely visual categories.",
+      },
+      {
+        title: 'Lower production barrier for consistent output',
+        description: 'A Reel can be filmed and published in under an hour. A polished YouTube video requires scripting, filming, and editing that often takes a full day or more. For businesses that need to maintain consistent content output with limited time and budget, Instagram is a real practical advantage. The production cost per piece of content is significantly lower, which matters for early-stage businesses.',
+      },
+      {
+        title: 'Younger audience and early-career professional reach',
+        description: 'If your buyers are primarily Gen Z or early Millennials, Instagram is increasingly where professional decisions begin. Younger professionals discover brands, build vendor shortlists, and form initial opinions on Instagram before doing deeper research elsewhere. For businesses whose ideal customer profile skews younger, ignoring Instagram means missing the awareness stage of their buyer journey.',
+      },
+    ],
+    bottomLine: 'For customer acquisition, choose YouTube. For brand visibility and audience retention with the buyers YouTube has already attracted, Instagram is the strongest complement. The pairing works well: YouTube brings buyers to your brand through search intent, Instagram keeps them engaged through visual storytelling until they are ready to convert. If your budget allows only one serious content investment, YouTube builds a compounding acquisition asset. Instagram builds an audience that requires constant fresh content to stay engaged.',
+    faqs: [
+      {
+        question: 'Is YouTube or Instagram better for getting business clients?',
+        answer: "YouTube, for most B2B and high-ticket service providers. A prospective client who found you by searching 'how to structure a consulting engagement' or 'best YouTube strategy for SaaS companies' and watched 10 minutes of your content is already halfway through their buying decision before they contact you. An Instagram follower who likes your posts is at the awareness stage. The quality of inbound from YouTube is structurally different, and that difference shows up in close rates.",
+      },
+      {
+        question: 'How much production time does each platform require?',
+        answer: 'Instagram is significantly faster. A well-crafted Reel takes 30 to 90 minutes from filming to posting. A quality YouTube video typically requires 4 to 8 hours from scripting through editing, sometimes more for highly produced content. The production investment in YouTube is front-loaded: once a video is ranked and generating traffic, it requires no ongoing maintenance. Instagram requires consistent new content to maintain any reach at all.',
+      },
+      {
+        question: 'Should I repurpose my YouTube content on Instagram?',
+        answer: 'Yes. This is the most efficient content structure for most businesses. Produce the full-length video for YouTube first, then cut 30 to 60 second clips for Instagram Reels. The YouTube video does the acquisition and trust-building work. The Instagram clips maintain brand visibility with the audience YouTube has already introduced you to. You get the compounding returns of YouTube and the daily visibility of Instagram without doubling your production time.',
+      },
+      {
+        question: 'Which platform is better for service businesses vs product businesses?',
+        answer: 'Service businesses typically perform better on YouTube. Clients buying services are buying expertise and trust, and a 12-minute video demonstrates both more effectively than any visual post. Product businesses have more flexibility: physical products with a strong visual identity often do well on Instagram, while products that require explanation or comparison, including software and complex physical goods, tend to convert better from YouTube.',
+      },
+    ],
+    relatedLinks: [
+      { text: 'YouTube ROI Calculator', href: '/tools/youtube-roi-calculator' },
+      { text: 'How to Calculate YouTube Marketing ROI', href: '/blog/youtube-marketing-roi' },
+      { text: 'YouTube vs Facebook for Business', href: '/youtube-vs-facebook' },
+      { text: 'YouTube for Coaches', href: '/youtube-for-coaches' },
+    ],
+  },
   {
     slug: 'linkedin-for-b2b',
     publishDate: '2026-04-20',

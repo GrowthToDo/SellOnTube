@@ -38,6 +38,11 @@
   status = 301
 
 [[redirects]]
+  from = "/youtube-vs-linkedin-for-b2b"
+  to = "/youtube-vs/linkedin-for-b2b"
+  status = 301
+
+[[redirects]]
   from = "/homes/mobile-app"
   to = "/how-it-works"
   status = 301
