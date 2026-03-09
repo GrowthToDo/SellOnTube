@@ -65,7 +65,7 @@ const breadcrumbSchema = {
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       <!-- Shopify — standalone page, always shown -->
       <a
-        href="/youtube-for-shopify"
+        href="/youtube-for/shopify"
         class="group block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all duration-200"
       >
         <p class="text-xs font-semibold uppercase tracking-wider text-primary mb-2">YouTube for</p>
@@ -85,7 +85,7 @@ const breadcrumbSchema = {
       <!-- Data-driven niches filtered by publishDate -->
       {publishedNiches.map((niche) => (
         <a
-          href={`/youtube-for-${niche.slug}`}
+          href={`/youtube-for/${niche.slug}`}
           class="group block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-5 hover:border-primary hover:shadow-lg transition-all duration-200"
         >
           <p class="text-xs font-semibold uppercase tracking-wider text-primary mb-2">YouTube for</p>

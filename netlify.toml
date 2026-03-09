@@ -38,8 +38,13 @@
   status = 301
 
 [[redirects]]
-  from = "/youtube-vs-linkedin-for-b2b"
-  to = "/youtube-vs/linkedin-for-b2b"
+  from = "/youtube-vs-:slug"
+  to = "/youtube-vs/:slug"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-for-:slug"
+  to = "/youtube-for/:slug"
   status = 301
 
 [[redirects]]

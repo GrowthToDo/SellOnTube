@@ -23,7 +23,7 @@ const siteUrl = SITE.site || 'https://sellontube.com';
 const metadata = {
   title: comparison.metaTitle,
   description: comparison.metaDescription,
-  canonical: `${siteUrl}/youtube-vs-${comparison.slug}`,
+  canonical: `${siteUrl}/youtube-vs/${comparison.slug}`,
   openGraph: {
     type: 'article',
     images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
@@ -36,7 +36,7 @@ const breadcrumbSchema = {
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
     { "@type": "ListItem", "position": 2, "name": "YouTube Vs", "item": `${siteUrl}/youtube-vs` },
-    { "@type": "ListItem", "position": 3, "name": `YouTube vs ${comparison.channelB}`, "item": `${siteUrl}/youtube-vs-${comparison.slug}` }
+    { "@type": "ListItem", "position": 3, "name": `YouTube vs ${comparison.channelB}`, "item": `${siteUrl}/youtube-vs/${comparison.slug}` }
   ]
 };
 
