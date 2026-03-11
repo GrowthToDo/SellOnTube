@@ -93,7 +93,7 @@ export default async (request: Request) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         contents: [{ parts: [{ text: buildPrompt(topic.trim(), targetCustomer.trim(), product.trim(), scores) }] }],
-        generationConfig: { responseMimeType: 'application/json', temperature: 0.7, maxOutputTokens: 800 },
+        generationConfig: { responseMimeType: 'application/json', temperature: 0.7, maxOutputTokens: 2048 },
       }),
     });
 
