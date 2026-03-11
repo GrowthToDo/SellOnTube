@@ -68,9 +68,13 @@ export default async (request: Request) => {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  // Accept either GEMINI_API_KEY or GOOGLE_API_KEY
+  const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
   if (!apiKey) {
-    return new Response(JSON.stringify({ error: 'API key not configured' }), { status: 500, headers });
+    return new Response(
+      JSON.stringify({ error: 'API key not configured. Set GEMINI_API_KEY in Netlify env vars.' }),
+      { status: 500, headers }
+    );
   }
 
   try {
@@ -97,10 +101,13 @@ export default async (request: Request) => {
       const errText = await geminiRes.text();
       console.error('Gemini API error:', geminiRes.status, errText);
       if (geminiRes.status === 429) {
-        // Free tier limit hit — surface this to the frontend so it can show a user-facing message
         return new Response(JSON.stringify({ error: 'quota_exceeded', debug: errText }), { status: 429, headers });
       }
-      return new Response(JSON.stringify({ error: 'AI service unavailable' }), { status: 502, headers });
+      // Use 503 instead of 502 — Cloudflare intercepts 502 and hides the real error body
+      return new Response(
+        JSON.stringify({ error: 'AI service unavailable', geminiStatus: geminiRes.status, detail: errText.slice(0, 500) }),
+        { status: 503, headers }
+      );
     }
 
     const geminiData = await geminiRes.json();
@@ -114,7 +121,10 @@ export default async (request: Request) => {
     return new Response(JSON.stringify(result), { status: 200, headers });
   } catch (error) {
     console.error('generate-alternatives error:', error);
-    return new Response(JSON.stringify({ error: 'Generation failed' }), { status: 500, headers });
+    return new Response(
+      JSON.stringify({ error: 'Generation failed', detail: String(error) }),
+      { status: 500, headers }
+    );
   }
 };
 
