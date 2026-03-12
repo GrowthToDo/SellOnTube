@@ -31,6 +31,7 @@ export const footerData = {
         { text: 'ROI Calculator', href: getPermalink('/tools/youtube-roi-calculator') },
         { text: 'Topic Evaluator', href: getPermalink('/tools/youtube-topic-evaluator') },
         { text: 'Video Ideas Generator', href: getPermalink('/tools/youtube-video-ideas-generator') },
+        { text: 'Transcript Generator', href: getPermalink('/tools/youtube-transcript-generator') },
         { text: 'All Tools', href: getPermalink('/tools') },
       ],
     },
