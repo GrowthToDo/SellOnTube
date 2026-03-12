@@ -8,8 +8,8 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import { SITE } from 'astrowind:config';
 
 const metadata = {
-  title: 'YouTube Channel Management Pricing: $7,000/Month, Done for You',
-  description: 'Full-service YouTube marketing for B2B businesses. 4 videos/month: strategy, SEO, scripting, production. $7,000/month, no long-term contract.',
+  title: 'YouTube Channel Management Pricing: $6,000/Month, Done for You',
+  description: 'Full-service YouTube marketing for B2B businesses. 4 videos/month: strategy, SEO, scripting, production. $6,000/month, no long-term contract.',
   openGraph: {
     type: 'website',
     images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
@@ -28,11 +28,11 @@ const serviceSchema = {
   },
   "offers": {
     "@type": "Offer",
-    "price": "7000",
+    "price": "6000",
     "priceCurrency": "USD",
     "priceSpecification": {
       "@type": "UnitPriceSpecification",
-      "price": "7000",
+      "price": "6000",
       "priceCurrency": "USD",
       "billingDuration": "P1M"
     },
@@ -59,10 +59,10 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is $7,000/month + taxes suitable for my business?",
+      "name": "Is $6,000/month + taxes suitable for my business?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic."
+        "text": "If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic. Note: Rate increases to $7,000/month starting April 30, 2026."
       }
     },
     {
@@ -109,11 +109,17 @@ const faqSchema = {
   <HeroText
 
     title="One plan. Built for high value businesses."
-    subtitle="If your business has strong lifetime value and customers who search before buying, we turn YouTube into a profitable new acquisition channel. For $7,000/month + applicable taxes, we build and run it end-to-end."
+    subtitle="If your business has strong lifetime value and customers who search before buying, we turn YouTube into a profitable new acquisition channel. For $6,000/month + applicable taxes, we build and run it end-to-end."
   />
   <!-- Single Premium Pricing Card -->
   <section class="py-10 sm:py-12">
     <div class="max-w-3xl mx-auto px-4 text-center">
+      <!-- Limited Capacity Alert -->
+      <div class="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span class="text-sm font-medium text-red-800 dark:text-red-300">Limited Capacity: Only 2 of 4 client spots remaining</span>
+      </div>
+
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">
         SellOnTube Lead Engine
       </h2>
@@ -123,19 +129,69 @@ const faqSchema = {
 
       <div
         class="mt-8 rounded-3xl border border-slate-200 bg-white/70 shadow-sm
-               dark:bg-slate-900/70 dark:border-slate-700 text-left"
+               dark:bg-slate-900/70 dark:border-slate-700 text-left relative"
       >
+        <!-- Special Rate Ribbon -->
+        <div class="absolute right-[-5px] top-[-5px] z-10 h-[100px] w-[100px] overflow-hidden text-right">
+          <span class="absolute top-[19px] right-[-21px] block w-full rotate-45 bg-orange-600 text-center text-[10px] font-bold uppercase leading-5 text-white shadow-[0_3px_10px_-5px_rgba(0,0,0,0.3)] before:absolute before:left-0 before:top-full before:z-[-1] before:border-[3px] before:border-r-transparent before:border-b-transparent before:border-l-orange-700 before:border-t-orange-700 before:content-[''] after:absolute after:right-0 after:top-full after:z-[-1] after:border-[3px] after:border-l-transparent after:border-b-transparent after:border-r-orange-700 after:border-t-orange-700 after:content-['']">
+            SPECIAL RATE
+          </span>
+        </div>
+
         <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-4 sm:pb-6 border-b border-slate-200 dark:border-slate-700">
           <p class="text-sm font-medium uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
             Single, all-inclusive plan
           </p>
-          <div class="mt-3 flex items-baseline gap-2">
-            <span class="text-4xl sm:text-5xl font-bold tracking-tight">$7,000</span>
-            <span class="text-sm text-gray-600 dark:text-slate-300">per month + applicable taxes</span>
+
+          <!-- Price with strikethrough and new rate notice -->
+          <div class="mt-3">
+            <div class="flex items-baseline gap-3">
+              <div class="flex items-baseline gap-2">
+                <span class="text-4xl sm:text-5xl font-bold tracking-tight">$6,000</span>
+                <span class="text-sm text-gray-600 dark:text-slate-300">per month + applicable taxes</span>
+              </div>
+            </div>
+            <div class="mt-2 inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-orange-600 dark:text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span class="text-xs font-medium text-orange-800 dark:text-orange-300">New rate starting April 30, 2026: $7,000/month</span>
+            </div>
           </div>
-          <p class="mt-3 text-sm sm:text-base text-gray-600 dark:text-slate-300 max-w-xl">
+
+          <!-- Special Rate Countdown -->
+          <div class="mt-4 p-4 rounded-lg bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border border-orange-200 dark:border-orange-800">
+            <div class="flex items-center justify-between gap-4 flex-wrap">
+              <div>
+                <p class="text-sm font-semibold text-orange-900 dark:text-orange-200">1 Priority Spot at $6,000/month</p>
+                <p class="text-xs text-orange-700 dark:text-orange-300 mt-0.5">Special rate expires in:</p>
+              </div>
+              <div id="countdown" class="flex gap-2 text-center">
+                <div class="bg-white dark:bg-slate-800 rounded px-3 py-2 min-w-[60px]">
+                  <div class="text-2xl font-bold text-orange-600 dark:text-orange-400" id="days">--</div>
+                  <div class="text-xs text-gray-600 dark:text-slate-400">Days</div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded px-3 py-2 min-w-[60px]">
+                  <div class="text-2xl font-bold text-orange-600 dark:text-orange-400" id="hours">--</div>
+                  <div class="text-xs text-gray-600 dark:text-slate-400">Hours</div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 rounded px-3 py-2 min-w-[60px]">
+                  <div class="text-2xl font-bold text-orange-600 dark:text-orange-400" id="minutes">--</div>
+                  <div class="text-xs text-gray-600 dark:text-slate-400">Mins</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-4 text-sm sm:text-base text-gray-600 dark:text-slate-300 max-w-xl">
             We create and run a YouTube channel designed to acquire customers profitably.
           </p>
+
+          <!-- Qualification Criteria Notice -->
+          <div class="mt-4 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+            <p class="text-xs text-blue-900 dark:text-blue-200">
+              <span class="font-semibold">Qualification required:</span> We only partner with businesses where our diagnostic confirms YouTube can profitably drive customer acquisition. Acceptance based on LTV, market fit, and strategic alignment.
+            </p>
+          </div>
+
           <p class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
             Month-to-month. Cancel anytime.
@@ -153,6 +209,19 @@ const faqSchema = {
             <li>• Every ranked video becomes a 24/7 salesperson for your business.</li>
           </ul>
 
+          <!-- 24-Hour Booking Bonus -->
+          <div class="mt-6 p-4 rounded-lg bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-2 border-emerald-300 dark:border-emerald-700">
+            <div class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
+              <div>
+                <p class="text-sm font-semibold text-emerald-900 dark:text-emerald-200">Limited Time Bonus</p>
+                <p class="text-xs text-emerald-800 dark:text-emerald-300 mt-1">
+                  <span class="font-medium">Book your diagnostic call within 24 hours</span> and receive a complimentary <span class="font-semibold">Premium YouTube SEO Competitive Analysis</span> ($1,200 value) — a deep-dive audit of your top 3 competitors' YouTube strategies, keyword gaps, and ranking opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div class="mt-8 flex justify-center">
             <a
               href="#book-a-diagnostic-call"
@@ -160,13 +229,48 @@ const faqSchema = {
                      bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
                      transition-colors"
             >
-              Book a diagnostic call
+              Apply for a diagnostic call
             </a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Countdown Timer Script -->
+  <script is:inline>
+    function updateCountdown() {
+      // Set target date to 7 days from now (you can change this to a specific date)
+      const now = new Date().getTime();
+      const targetDate = now + (7 * 24 * 60 * 60 * 1000); // 7 days from now
+
+      // Update countdown every second
+      const interval = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+
+        if (distance < 0) {
+          clearInterval(interval);
+          document.getElementById('countdown').innerHTML = '<div class="text-red-600 font-semibold">Offer Expired</div>';
+        }
+      }, 1000);
+    }
+
+    // Run on page load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateCountdown);
+    } else {
+      updateCountdown();
+    }
+  </script>
 
   <!-- Who This Is For -->
   <Features3
@@ -218,9 +322,9 @@ const faqSchema = {
     columns={1}
     items={[
       {
-        title: 'Is $7,000/month + taxes suitable for my business?',
+        title: 'Is $6,000/month + taxes suitable for my business?',
         description:
-          'If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic.',
+          'If the total revenue you generate from a customer meaningfully exceeds your acquisition costs and your customers research on YouTube, the economics are typically positive. We validate this in the diagnostic. Note: Rate increases to $7,000/month starting April 30, 2026.',
       },
       {
         title: 'Do you work only with SaaS?',
