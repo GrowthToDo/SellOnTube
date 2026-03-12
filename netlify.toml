@@ -38,6 +38,16 @@
   status = 301
 
 [[redirects]]
+  from = "/youtube-topics"
+  to = "/youtube-video-ideas"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-topics/:slug"
+  to = "/youtube-video-ideas/:slug"
+  status = 301
+
+[[redirects]]
   from = "/youtube-vs-:slug"
   to = "/youtube-vs/:slug"
   status = 301

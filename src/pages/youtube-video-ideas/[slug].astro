@@ -28,7 +28,7 @@ const relatedTopics = getRelatedTopics(topic.relatedTopicSlugs);
 const metadata = {
   title: topic.metaTitle,
   description: topic.metaDescription,
-  canonical: `${siteUrl}/youtube-topics/${topic.slug}`,
+  canonical: `${siteUrl}/youtube-video-ideas/${topic.slug}`,
   openGraph: {
     type: 'article',
     images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
@@ -40,8 +40,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
-    { "@type": "ListItem", "position": 2, "name": "YouTube Topic Library", "item": `${siteUrl}/youtube-topics` },
-    { "@type": "ListItem", "position": 3, "name": topic.title, "item": `${siteUrl}/youtube-topics/${topic.slug}` },
+    { "@type": "ListItem", "position": 2, "name": "YouTube Topic Library", "item": `${siteUrl}/youtube-video-ideas` },
+    { "@type": "ListItem", "position": 3, "name": topic.title, "item": `${siteUrl}/youtube-video-ideas/${topic.slug}` },
   ]
 };
 
@@ -66,7 +66,7 @@ const badgeColor = industryColors[topic.industry] ?? 'bg-slate-100 dark:bg-slate
     <div class="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-slate-400 mb-8">
       <a href="/" class="hover:text-primary transition-colors">SellOnTube</a>
       <span>/</span>
-      <a href="/youtube-topics" class="hover:text-primary transition-colors">YouTube Topic Library</a>
+      <a href="/youtube-video-ideas" class="hover:text-primary transition-colors">YouTube Topic Library</a>
       <span>/</span>
       <span class="text-gray-700 dark:text-slate-300">{topic.title}</span>
     </div>
@@ -278,7 +278,7 @@ const badgeColor = industryColors[topic.industry] ?? 'bg-slate-100 dark:bg-slate
         <div class="grid sm:grid-cols-2 gap-3">
           {relatedTopics.map((related) => (
             <a
-              href={`/youtube-topics/${related.slug}`}
+              href={`/youtube-video-ideas/${related.slug}`}
               class="group block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 hover:border-primary hover:shadow-md transition-all duration-200"
             >
               <p class="text-xs font-semibold uppercase tracking-wider text-primary mb-1.5">{related.industryLabel}</p>
@@ -303,7 +303,7 @@ const badgeColor = industryColors[topic.industry] ?? 'bg-slate-100 dark:bg-slate
         {topic.title} is one of {topics.length} buyer-intent topic categories in the SellOnTube library. Browse the full set organised by business type.
       </p>
       <a
-        href="/youtube-topics"
+        href="/youtube-video-ideas"
         class="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
       >
         View all {topics.length} topic categories

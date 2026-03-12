@@ -38,7 +38,7 @@ export const footerData = {
       links: [
         { text: 'YouTube For', href: getPermalink('/youtube-for') },
         { text: 'YouTube Vs', href: getPermalink('/youtube-vs') },
-        { text: 'YouTube Topics', href: getPermalink('/youtube-topics') },
+        { text: 'YouTube Video Ideas', href: getPermalink('/youtube-video-ideas') },
         { text: 'Blog', href: getBlogPermalink() },
       ],
     },
