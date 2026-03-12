@@ -12,88 +12,88 @@ const metadata = {
 <Layout metadata={metadata}>
 
   <!-- Hero -->
-  <section class="bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <div class="flex flex-wrap justify-center gap-2 mb-6">
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">5 video ideas</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Buyer intent only</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
         Find YouTube Video Ideas That<br class="hidden sm:block" /> Attract Buyers (Not Just Viewers)
       </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
         Enter your product or service and get 5 buyer-intent YouTube video ideas: the kind that drive leads and customers, not just views.
       </p>
     </div>
   </section>
 
   <!-- Tool -->
-  <section class="bg-slate-950 pb-20">
+  <section class="bg-white dark:bg-slate-950 pb-20">
     <div id="tool-container" class="max-w-xl mx-auto px-4">
 
       <!-- Step: Input -->
-      <div id="step-input" class="rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8">
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
         <div class="space-y-5">
 
           <div>
-            <label for="product-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label for="product-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               Your product or service
             </label>
             <input
               type="text"
               id="product-input"
               placeholder="e.g. Shopify upsell app, LLC formation service"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
               aria-describedby="product-error"
             />
-            <p id="product-error" class="hidden mt-1.5 text-xs text-rose-400" role="alert"></p>
+            <p id="product-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           </div>
 
           <div>
-            <label for="url-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label for="url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               Link to your product page
             </label>
             <input
               type="url"
               id="url-input"
               placeholder="https://yourwebsite.com/product"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
               aria-describedby="url-error"
             />
-            <p id="url-error" class="hidden mt-1.5 text-xs text-rose-400" role="alert"></p>
+            <p id="url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           </div>
 
           <div>
-            <label for="customer-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label for="customer-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               Your target customer
             </label>
             <input
               type="text"
               id="customer-input"
               placeholder="e.g. Shopify store owners, SaaS founders"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
               aria-describedby="customer-error"
             />
-            <p id="customer-error" class="hidden mt-1.5 text-xs text-rose-400" role="alert"></p>
+            <p id="customer-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           </div>
 
           <div>
-            <label for="problem-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label for="problem-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               Problem your product solves
             </label>
             <textarea
               id="problem-input"
               rows="3"
               placeholder="e.g. Low average order value, slow customer acquisition"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors resize-none"
               aria-describedby="problem-error"
             ></textarea>
-            <p id="problem-error" class="hidden mt-1.5 text-xs text-rose-400" role="alert"></p>
+            <p id="problem-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           </div>
 
         </div>
@@ -101,12 +101,12 @@ const metadata = {
         <button
           id="generate-btn"
           class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
-                 bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
         >
           Generate My Video Ideas &rarr;
         </button>
 
-        <p id="ideas-counter-label" class="mt-3 text-center text-xs text-slate-600">
+        <p id="ideas-counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
           3 free generations remaining
         </p>
       </div>
@@ -114,23 +114,23 @@ const metadata = {
       <!-- Step: Loading -->
       <div
         id="step-loading"
-        class="hidden rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8 text-center"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
       >
         <div class="flex flex-col items-center gap-4 py-10">
           <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-          <p class="text-sm font-medium text-slate-400">Generating your video ideas...</p>
-          <p class="text-xs text-slate-600">Tailoring to your audience</p>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Generating your video ideas...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">Tailoring to your audience</p>
         </div>
       </div>
 
       <!-- Step: Email Gate -->
       <div
         id="step-email-gate"
-        class="hidden rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
       >
         <div class="text-center mb-6">
-          <p class="text-base font-semibold text-white mb-2">You've used your 3 free generations</p>
-          <p class="text-sm text-slate-400">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free generations</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
             Enter your business email to keep generating ideas. It's free.
           </p>
         </div>
@@ -139,22 +139,22 @@ const metadata = {
             type="email"
             id="gate-email"
             placeholder="your@company.com"
-            class="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                    focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
             aria-describedby="gate-email-error"
           />
-          <p id="gate-email-error" class="hidden text-xs text-rose-400" role="alert"></p>
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           <button
             id="gate-submit-btn"
             class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
-                   bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
           >
             Continue Generating
           </button>
-          <p class="text-center text-xs text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
         </div>
         <div id="gate-success" class="hidden text-center mt-4">
-          <p class="text-sm font-semibold text-emerald-400">Done. Generating your ideas now...</p>
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Generating your ideas now...</p>
         </div>
       </div>
 
@@ -167,30 +167,30 @@ const metadata = {
       role="status"
       aria-live="polite"
     >
-      <div class="rounded-2xl border border-slate-700 bg-slate-900 overflow-hidden">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
 
         <!-- Header -->
-        <div class="p-6 sm:p-8 border-b border-slate-700/60">
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">5 buyer-intent ideas for</p>
-          <p id="result-product" tabindex="-1" class="text-sm font-semibold text-white"></p>
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">5 buyer-intent ideas for</p>
+          <p id="result-product" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
         </div>
 
         <!-- Ideas list -->
-        <div class="p-6 sm:p-8 border-b border-slate-700/60">
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Your video ideas</p>
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-4">Your video ideas</p>
           <div id="ideas-list" class="space-y-3"></div>
         </div>
 
         <!-- Inline CTA -->
-        <div class="p-6 sm:p-8 border-b border-slate-700/60 bg-emerald-500/5">
-          <p class="text-sm font-medium text-slate-300 mb-1">Want help turning these ideas into a full YouTube strategy?</p>
-          <p class="text-xs text-slate-500 mb-4">Book a free diagnostic call with SellonTube.</p>
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Want help turning these ideas into a full YouTube strategy?</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Book a free diagnostic call with SellonTube.</p>
           <a
             id="results-cta"
             href="https://cal.com/gautham-8bdvdx/30min"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
           >
             Book a free diagnostic call &rarr;
           </a>
@@ -200,7 +200,7 @@ const metadata = {
         <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
           <button
             id="reset-btn"
-            class="w-full py-3 rounded-xl border border-slate-700 text-sm font-medium text-slate-400 hover:text-white hover:border-slate-500 transition-colors"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
           >
             &larr; Generate more ideas
           </button>
@@ -225,24 +225,24 @@ const metadata = {
   />
 
   <!-- How it works -->
-  <section class="py-16 sm:py-20 bg-slate-950">
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
     <div class="max-w-4xl mx-auto px-4">
-      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 text-center mb-10">How it works</p>
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
         <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">1</div>
-          <h3 class="text-white font-semibold mb-2">Enter your details</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">Tell us what you sell, who buys it, and what problem it solves. Four fields. Under a minute.</p>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your details</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Tell us what you sell, who buys it, and what problem it solves. Four fields. Under a minute.</p>
         </div>
         <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">2</div>
-          <h3 class="text-white font-semibold mb-2">Generate in seconds</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">AI generates 5 buyer-intent video ideas tailored to your product, customer, and the problem you solve.</p>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Generate in seconds</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI generates 5 buyer-intent video ideas tailored to your product, customer, and the problem you solve.</p>
         </div>
         <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">3</div>
-          <h3 class="text-white font-semibold mb-2">Use what converts</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">Copy the ideas that fit. Every one is designed to attract decision-stage buyers, not just curious viewers.</p>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Use what converts</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Copy the ideas that fit. Every one is designed to attract decision-stage buyers, not just curious viewers.</p>
         </div>
       </div>
     </div>
@@ -393,13 +393,13 @@ const metadata = {
     list.innerHTML = ideas.map((idea, i) => {
       const escaped = idea.replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       return (
-        '<div class="rounded-xl border border-slate-700 bg-slate-800 p-4">' +
+        '<div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">' +
           '<div class="flex items-start gap-3">' +
-            '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
+            '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
             '<div class="min-w-0 flex-1">' +
-              '<p class="text-sm font-semibold text-white mb-3" data-idea-text="' + escaped + '"></p>' +
+              '<p class="text-sm font-semibold text-gray-900 dark:text-white mb-3" data-idea-text="' + escaped + '"></p>' +
               '<div class="flex items-center justify-end">' +
-                '<button class="copy-btn text-xs border border-slate-600 rounded-lg px-3 py-1.5 text-slate-400 hover:border-emerald-500/50 hover:text-emerald-400 transition-colors" data-index="' + i + '">' +
+                '<button class="copy-btn text-xs border border-slate-200 dark:border-slate-600 rounded-lg px-3 py-1.5 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" data-index="' + i + '">' +
                   'Copy' +
                 '</button>' +
               '</div>' +
@@ -419,10 +419,10 @@ const metadata = {
       btn.addEventListener('click', () => {
         navigator.clipboard.writeText(ideas[i]).then(() => {
           btn.textContent = 'Copied!';
-          (btn as HTMLElement).classList.add('text-emerald-400', 'border-emerald-500/50');
+          (btn as HTMLElement).classList.add('text-emerald-600', 'dark:text-emerald-400', 'border-emerald-500/50');
           setTimeout(() => {
             btn.textContent = 'Copy';
-            (btn as HTMLElement).classList.remove('text-emerald-400', 'border-emerald-500/50');
+            (btn as HTMLElement).classList.remove('text-emerald-600', 'dark:text-emerald-400', 'border-emerald-500/50');
           }, 1500);
         });
         window.dataLayer = window.dataLayer || [];

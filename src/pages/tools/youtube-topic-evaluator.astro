@@ -12,67 +12,67 @@ const metadata = {
 <Layout metadata={metadata}>
 
   <!-- Hero -->
-  <section class="bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <div class="flex flex-wrap justify-center gap-2 mb-6">
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">5 scoring dimensions</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Instant alternatives</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
         Will this YouTube topic attract<br class="hidden sm:block" /> buyers or just viewers?
       </h1>
-      <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
         Paste a topic, your target customer, and what you sell. Get a buyer intent score plus higher-converting alternatives.
       </p>
     </div>
   </section>
 
   <!-- Tool -->
-  <section class="bg-slate-950 pb-20">
+  <section class="bg-white dark:bg-slate-950 pb-20">
     <div id="tool-container" class="max-w-xl mx-auto px-4">
 
       <!-- Step: Input -->
       <div
         id="step-input"
-        class="rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8"
+        class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
       >
         <div class="space-y-5">
           <div>
-            <label for="topic-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label for="topic-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               YouTube topic
             </label>
             <input
               type="text"
               id="topic-input"
               placeholder="e.g. How Shopify Apps Make Money"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label for="customer-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label for="customer-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               Your target customer
             </label>
             <input
               type="text"
               id="customer-input"
               placeholder="e.g. Shopify store owners"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
             />
           </div>
 
           <div>
-            <label for="product-input" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+            <label for="product-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
               Your product or service
             </label>
             <input
               type="text"
               id="product-input"
               placeholder="e.g. Upsell app for Shopify"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
             />
           </div>
@@ -81,12 +81,12 @@ const metadata = {
         <button
           id="evaluate-btn"
           class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
-                 bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
         >
           Evaluate this topic &rarr;
         </button>
 
-        <p id="eval-counter-label" class="mt-3 text-center text-xs text-slate-600">
+        <p id="eval-counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
           3 free evaluations remaining
         </p>
       </div>
@@ -94,23 +94,23 @@ const metadata = {
       <!-- Step: Loading -->
       <div
         id="step-loading"
-        class="hidden rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8 text-center"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
       >
         <div class="flex flex-col items-center gap-4 py-10">
           <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-          <p class="text-sm font-medium text-slate-400">Analyzing buyer intent...</p>
-          <p class="text-xs text-slate-600">Scoring 5 dimensions</p>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Analyzing buyer intent...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">Scoring 5 dimensions</p>
         </div>
       </div>
 
       <!-- Step: Email Gate -->
       <div
         id="step-email-gate"
-        class="hidden rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
       >
         <div class="text-center mb-6">
-          <p class="text-base font-semibold text-white mb-2">You've used your 3 free evaluations</p>
-          <p class="text-sm text-slate-400">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free evaluations</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
             Enter your email to keep going. We'll also send you our guide on picking buyer-intent topics.
           </p>
         </div>
@@ -119,19 +119,19 @@ const metadata = {
             type="email"
             id="gate-email"
             placeholder="Enter your email"
-            class="w-full px-4 py-3 rounded-xl border border-slate-700 bg-slate-800 text-white placeholder-slate-500
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                    focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
           />
           <button
             id="gate-submit-btn"
             class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
-                   bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
           >
             Continue evaluating
           </button>
         </div>
         <div id="gate-success" class="hidden text-center mt-4">
-          <p class="text-sm font-semibold text-emerald-400">Done. Evaluations unlocked.</p>
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Evaluations unlocked.</p>
         </div>
       </div>
 
@@ -139,82 +139,82 @@ const metadata = {
 
     <!-- Step: Results (wider) -->
     <div id="step-results" class="hidden max-w-2xl mx-auto px-4 mt-2">
-      <div class="rounded-2xl border border-slate-700 bg-slate-900 overflow-hidden">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
 
         <!-- Verdict -->
-        <div class="p-6 sm:p-8 text-center border-b border-slate-700/60">
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Topic evaluated</p>
-          <p id="result-topic" class="text-sm font-medium text-slate-300 mb-5"></p>
+        <div class="p-6 sm:p-8 text-center border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Topic evaluated</p>
+          <p id="result-topic" class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-5"></p>
           <div id="verdict-badge" class="inline-flex items-center px-5 py-2 rounded-xl text-base font-bold mb-2"></div>
-          <p id="verdict-label" class="text-xs uppercase tracking-wider text-slate-500 mt-2"></p>
+          <p id="verdict-label" class="text-xs uppercase tracking-wider text-gray-400 dark:text-slate-500 mt-2"></p>
         </div>
 
         <!-- Score bars -->
-        <div class="p-6 sm:p-8 border-b border-slate-700/60">
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-5">Dimension breakdown</p>
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-5">Dimension breakdown</p>
           <div class="space-y-4">
             <div>
               <div class="flex items-center justify-between mb-1.5">
-                <span class="text-sm text-slate-300">Buyer Intent</span>
+                <span class="text-sm text-gray-700 dark:text-slate-300">Buyer Intent</span>
                 <span id="badge-buyer-intent" class="text-xs font-semibold"></span>
               </div>
-              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                <div id="bar-buyer-intent" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              <div class="h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-buyer-intent" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-300 dark:bg-slate-700" style="width:0%"></div>
               </div>
             </div>
             <div>
               <div class="flex items-center justify-between mb-1.5">
-                <span class="text-sm text-slate-300">Audience Relevance</span>
+                <span class="text-sm text-gray-700 dark:text-slate-300">Audience Relevance</span>
                 <span id="badge-audience" class="text-xs font-semibold"></span>
               </div>
-              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                <div id="bar-audience" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              <div class="h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-audience" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-300 dark:bg-slate-700" style="width:0%"></div>
               </div>
             </div>
             <div>
               <div class="flex items-center justify-between mb-1.5">
-                <span class="text-sm text-slate-300">Problem Proximity</span>
+                <span class="text-sm text-gray-700 dark:text-slate-300">Problem Proximity</span>
                 <span id="badge-problem" class="text-xs font-semibold"></span>
               </div>
-              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                <div id="bar-problem" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              <div class="h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-problem" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-300 dark:bg-slate-700" style="width:0%"></div>
               </div>
             </div>
             <div>
               <div class="flex items-center justify-between mb-1.5">
-                <span class="text-sm text-slate-300">Conversion Opportunity</span>
+                <span class="text-sm text-gray-700 dark:text-slate-300">Conversion Opportunity</span>
                 <span id="badge-conversion" class="text-xs font-semibold"></span>
               </div>
-              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                <div id="bar-conversion" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              <div class="h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-conversion" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-300 dark:bg-slate-700" style="width:0%"></div>
               </div>
             </div>
             <div>
               <div class="flex items-center justify-between mb-1.5">
-                <span class="text-sm text-slate-300">Search Intent</span>
+                <span class="text-sm text-gray-700 dark:text-slate-300">Search Intent</span>
                 <span id="badge-search-intent" class="text-xs font-semibold"></span>
               </div>
-              <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                <div id="bar-search-intent" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-700" style="width:0%"></div>
+              <div class="h-1.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div id="bar-search-intent" class="h-full rounded-full transition-all duration-700 ease-out bg-slate-300 dark:bg-slate-700" style="width:0%"></div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Why -->
-        <div class="p-6 sm:p-8 border-b border-slate-700/60">
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Why</p>
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Why</p>
           <div class="pl-4 border-l-2 border-emerald-500/40">
-            <p id="result-explanation" class="text-sm text-slate-300 leading-relaxed"></p>
+            <p id="result-explanation" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed"></p>
           </div>
         </div>
 
         <!-- Alternatives -->
         <div class="p-6 sm:p-8">
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">Higher-converting alternatives</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-4">Higher-converting alternatives</p>
           <div id="alternatives-loading" class="hidden items-center gap-3 py-4">
             <div class="w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin flex-shrink-0"></div>
-            <p class="text-xs text-slate-500">Generating alternatives...</p>
+            <p class="text-xs text-gray-400 dark:text-slate-500">Generating alternatives...</p>
           </div>
           <div id="alternatives-list" class="space-y-3"></div>
         </div>
@@ -222,7 +222,7 @@ const metadata = {
         <div class="px-6 pb-6 sm:px-8 sm:pb-8">
           <button
             id="reset-btn"
-            class="w-full py-3 rounded-xl border border-slate-700 text-sm font-medium text-slate-400 hover:text-white hover:border-slate-500 transition-colors"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
           >
             &larr; Evaluate another topic
           </button>
@@ -247,24 +247,24 @@ const metadata = {
   />
 
   <!-- How it works -->
-  <section class="py-16 sm:py-20 bg-slate-950">
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
     <div class="max-w-4xl mx-auto px-4">
-      <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 text-center mb-10">How it works</p>
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
         <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">1</div>
-          <h3 class="text-white font-semibold mb-2">Enter your topic</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">Type any YouTube topic you're considering, your target customer, and what you sell.</p>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your topic</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Type any YouTube topic you're considering, your target customer, and what you sell.</p>
         </div>
         <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">2</div>
-          <h3 class="text-white font-semibold mb-2">Get your score</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">See buyer intent, audience relevance, problem proximity, conversion opportunity, and search intent scored instantly.</p>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get your score</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">See buyer intent, audience relevance, problem proximity, conversion opportunity, and search intent scored instantly.</p>
         </div>
         <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-bold mb-4">3</div>
-          <h3 class="text-white font-semibold mb-2">Use the alternatives</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">Get 5 higher-converting topic alternatives built around your specific customer and product.</p>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Use the alternatives</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Get 5 higher-converting topic alternatives built around your specific customer and product.</p>
         </div>
       </div>
     </div>
@@ -810,13 +810,13 @@ const metadata = {
     const altList = document.getElementById('alternatives-list') as HTMLElement;
     altLoading.style.display = 'none';
     altList.innerHTML = alternatives.map((a, i) =>
-      '<div class="rounded-xl border border-slate-700 bg-slate-800 p-4">' +
+      '<div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">' +
         '<div class="flex items-start gap-3">' +
-          '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
+          '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
           '<div class="min-w-0">' +
             '<span class="text-[10px] font-semibold uppercase tracking-wider text-emerald-500/60 mb-1.5 block">↑ ' + a.fixes + '</span>' +
-            '<p class="text-sm font-semibold text-white mb-1">' + a.topic + '</p>' +
-            '<p class="text-xs text-slate-400 leading-relaxed">' + a.explanation + '</p>' +
+            '<p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">' + a.topic + '</p>' +
+            '<p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed">' + a.explanation + '</p>' +
           '</div>' +
         '</div>' +
       '</div>'
@@ -828,9 +828,9 @@ const metadata = {
     const altList = document.getElementById('alternatives-list') as HTMLElement;
     altLoading.style.display = 'none';
     altList.innerHTML =
-      '<div class="rounded-xl border border-slate-700/50 bg-slate-800/40 p-5 text-center">' +
-        '<p class="text-sm font-medium text-slate-300">' + message + '</p>' +
-        '<p class="text-xs text-slate-500 mt-1">' + subtext + '</p>' +
+      '<div class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-slate-50 dark:bg-slate-800/40 p-5 text-center">' +
+        '<p class="text-sm font-medium text-gray-700 dark:text-slate-300">' + message + '</p>' +
+        '<p class="text-xs text-gray-400 dark:text-slate-500 mt-1">' + subtext + '</p>' +
       '</div>';
   }
 
