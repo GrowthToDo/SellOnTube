@@ -1,0 +1,714 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'YouTube Transcript Generator -- Free, Instant, No Signup | SellonTube',
+  description:
+    'Get clean transcripts from any YouTube video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights. Free tool by SellonTube.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Free, fast, and no signup required</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        YouTube Transcript Generator
+      </h1>
+      <p class="text-gray-700 dark:text-slate-300 text-lg sm:text-xl font-semibold max-w-2xl mx-auto mb-4">
+        Study competitor videos. Create SEO-friendly content that converts.
+      </p>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-3">
+        Get clean transcripts and AI-powered summaries from any YouTube video in seconds. Analyze competitors, discover content gaps, and plan BoFu YouTube videos that actually drive conversions.
+      </p>
+      <p class="text-gray-500 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+        Ideal for marketers, GTM teams, and agencies focused on creating high-converting BoFu content.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="mb-5">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-1">Get Started</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">Paste any YouTube video URL below to generate an instant transcript and summary</p>
+        </div>
+        <div class="space-y-5">
+
+          <div>
+            <label for="url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              YouTube video URL
+            </label>
+            <input
+              type="url"
+              id="url-input"
+              placeholder="https://www.youtube.com/watch?v=..."
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="url-error"
+            />
+            <p id="url-error" class="hidden mt-1.5 text-xs text-rose-500 dark:text-rose-400" role="alert"></p>
+          </div>
+
+        </div>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate transcript &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free transcripts remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Extracting transcript...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This usually takes a few seconds</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free transcripts</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep generating transcripts. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-500 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Generating
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-500 dark:text-emerald-400">Done. Extracting your transcript now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-3xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Transcript for</p>
+              <p id="result-video-id" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button
+                id="copy-full-btn"
+                class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+              >
+                Copy Full Transcript
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- View toggle -->
+        <div class="px-6 sm:px-8 pt-5 flex gap-2">
+          <button
+            id="view-clean-btn"
+            class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 transition-colors"
+          >
+            Clean Text
+          </button>
+          <button
+            id="view-timestamps-btn"
+            class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-gray-500 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-500 hover:text-gray-700 dark:hover:text-white transition-colors"
+          >
+            With Timestamps
+          </button>
+        </div>
+
+        <!-- Clean transcript view -->
+        <div id="transcript-clean" class="p-6 sm:p-8">
+          <div id="transcript-text" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap max-h-[32rem] overflow-y-auto scrollbar-thin"></div>
+        </div>
+
+        <!-- Timestamped transcript view -->
+        <div id="transcript-timestamps" class="hidden p-6 sm:p-8">
+          <div id="transcript-segments" class="space-y-2 max-h-[32rem] overflow-y-auto scrollbar-thin"></div>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Want help turning competitor insights into a YouTube strategy?</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Book a free diagnostic call with SellonTube.</p>
+          <a
+            id="results-cta"
+            href="https://cal.com/gautham-8bdvdx/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Book a free diagnostic call &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-300 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-700 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Generate another transcript
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Transcripts are research. A strategy converts."
+    subtitle="In our diagnostic, we map your full YouTube acquisition system: topics, CTAs, and the lead path from viewer to customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">How It Works</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste the YouTube link</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400">into the box above.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Click generate</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400">We fetch and transcribe the video.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Download the transcript</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400">or copy it for analysis.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">4</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get the AI summary</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400">to spot patterns and insights instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Benefits -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">Key Benefits: Why Use SellonTube's Youtube Transcript Generator?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Study competitors easily</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Analyze scripts, hooks, and keyword usage.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">AI-powered summaries</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Extract key insights without watching hours of video</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Improve your own videos</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Learn what works and apply it to your SEO strategy.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Clean, accurate transcripts</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Better than YouTube's messy auto captions.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">100% free tool</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Unlimited transcripts and summaries.</p>
+        </div>
+
+      </div>
+
+      <p class="mt-8 text-center text-base sm:text-lg text-gray-500 dark:text-slate-400">
+        Built for marketers and GTM engineers to analyze competitor videos and grow conversions with YouTube SEO.
+      </p>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">Use Cases</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Competitor Research</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">See how top channels script their videos and identify keyword-rich phrases.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Video Script Writing</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">You can use these transcripts as inspiration to create high-performing YouTube content.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">SEO Optimization</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Spot titles, hooks, and CTAs that drive engagement.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Content Analysis</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">You can quickly study long webinars, product demos, or interviews without watching them end-to-end.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">FAQ</h2>
+      <div class="space-y-5">
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Is it free?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. SellonTube's YouTube Transcript Generator is 100% free, with unlimited usage.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Is it legal?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">We only work with public YouTube videos. Please respect copyright and fair use when analyzing competitor content.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">How accurate is it?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Cleaner and more structured than YouTube auto captions, though minor errors may occur.</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">How long does it take?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Most transcripts + summaries are ready in under a minute.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_transcript_count';
+  const EMAIL_KEY = 'sot_transcript_email_submitted';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STATE =====
+
+  let transcriptSegments: Array<{ text: string; start: number; duration: number }> = [];
+  let fullTranscriptText = '';
+  let currentView: 'clean' | 'timestamps' = 'clean';
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-video-id');
+      heading?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited transcripts unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free transcript remaining' : remaining + ' free transcripts remaining';
+  }
+
+  // ===== VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const error = document.getElementById(fieldId.replace('-input', '-error'));
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const error = document.getElementById(fieldId.replace('-input', '-error'));
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function isValidYouTubeUrl(url: string): boolean {
+    return /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|shorts\/|embed\/|v\/)|youtu\.be\/)[\w-]+/.test(url);
+  }
+
+  // ===== TIMESTAMP FORMATTING =====
+
+  function formatTimestamp(seconds: number): string {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+    if (h > 0) {
+      return h + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  // ===== VIEW TOGGLE =====
+
+  function setView(view: 'clean' | 'timestamps'): void {
+    currentView = view;
+    const cleanEl = document.getElementById('transcript-clean');
+    const tsEl = document.getElementById('transcript-timestamps');
+    const cleanBtn = document.getElementById('view-clean-btn');
+    const tsBtn = document.getElementById('view-timestamps-btn');
+
+    const activeClasses = ['bg-emerald-500/10', 'border-emerald-500/20', 'text-emerald-600', 'dark:text-emerald-400'];
+    const inactiveClasses = ['border-slate-300', 'dark:border-slate-700', 'text-gray-500', 'dark:text-slate-400'];
+
+    if (view === 'clean') {
+      cleanEl?.classList.remove('hidden');
+      tsEl?.classList.add('hidden');
+      activeClasses.forEach(c => cleanBtn?.classList.add(c));
+      inactiveClasses.forEach(c => cleanBtn?.classList.remove(c));
+      inactiveClasses.forEach(c => tsBtn?.classList.add(c));
+      activeClasses.forEach(c => tsBtn?.classList.remove(c));
+    } else {
+      cleanEl?.classList.add('hidden');
+      tsEl?.classList.remove('hidden');
+      activeClasses.forEach(c => tsBtn?.classList.add(c));
+      inactiveClasses.forEach(c => tsBtn?.classList.remove(c));
+      inactiveClasses.forEach(c => cleanBtn?.classList.add(c));
+      activeClasses.forEach(c => cleanBtn?.classList.remove(c));
+    }
+  }
+
+  // ===== RENDER RESULTS =====
+
+  function renderTranscript(videoId: string, segments: Array<{ text: string; start: number; duration: number }>): void {
+    transcriptSegments = segments;
+    fullTranscriptText = segments.map((s) => s.text).join(' ');
+
+    // Video ID label
+    const label = document.getElementById('result-video-id');
+    if (label) label.textContent = videoId;
+
+    // Clean text view
+    const textEl = document.getElementById('transcript-text');
+    if (textEl) textEl.textContent = fullTranscriptText;
+
+    // Timestamped view
+    const segmentsEl = document.getElementById('transcript-segments');
+    if (segmentsEl) {
+      segmentsEl.innerHTML = segments.map((seg) => {
+        const ts = formatTimestamp(seg.start);
+        return (
+          '<div class="flex items-start gap-3 py-1.5">' +
+            '<span class="flex-shrink-0 text-xs font-mono text-emerald-600/70 dark:text-emerald-400/70 mt-0.5 w-14 text-right">' + ts + '</span>' +
+            '<p class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed" data-seg-text></p>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Set text safely (XSS)
+      segmentsEl.querySelectorAll('[data-seg-text]').forEach((el, i) => {
+        (el as HTMLElement).textContent = segments[i].text;
+      });
+    }
+
+    setView('clean');
+  }
+
+  // ===== COPY =====
+
+  function copyText(text: string, btnEl: HTMLElement): void {
+    navigator.clipboard.writeText(text).then(() => {
+      const original = btnEl.textContent;
+      btnEl.textContent = 'Copied!';
+      btnEl.classList.add('text-emerald-400', 'border-emerald-500/50');
+      setTimeout(() => {
+        btnEl.textContent = original;
+        btnEl.classList.remove('text-emerald-400', 'border-emerald-500/50');
+      }, 1500);
+    });
+  }
+
+  // ===== API CALL =====
+
+  async function fetchTranscript(url: string): Promise<void> {
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/get-transcript', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate transcript \u2192';
+        showFieldError('url-input', 'Service is at capacity. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'transcript-generator', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error('Something went wrong. Please try again in a moment.');
+      }
+
+      const data = await res.json();
+
+      // API returns { status, data: { video_id, transcript: [...] } }
+      const segments = data.data?.transcript || data.transcript || [];
+
+      if (!Array.isArray(segments) || segments.length === 0) {
+        throw new Error('No transcript found. The video may not have captions available.');
+      }
+
+      // Normalize segments: API uses start_ms/end_ms, convert to start (seconds) and duration
+      const normalized = segments.map((seg: any) => ({
+        text: seg.text || '',
+        start: seg.start != null ? Number(seg.start) : Number(seg.start_ms || 0) / 1000,
+        duration: seg.duration != null ? Number(seg.duration) : (Number(seg.end_ms || 0) - Number(seg.start_ms || 0)) / 1000,
+      }));
+
+      const videoId = data.data?.video_id || data.videoId || data.video_id || '';
+
+      renderTranscript(videoId, normalized);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'transcript-generator' });
+
+    } catch (err) {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Generate transcript \u2192';
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      showFieldError('url-input', message);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'transcript-generator', reason: 'api_error' });
+    }
+  }
+
+  // ===== GENERATE =====
+
+  async function generate(): Promise<void> {
+    const urlInput = document.getElementById('url-input') as HTMLInputElement;
+    const url = urlInput.value.trim();
+
+    if (!url) {
+      showFieldError('url-input', 'Please enter a YouTube URL.');
+      return;
+    }
+
+    if (!isValidYouTubeUrl(url)) {
+      showFieldError('url-input', 'Please enter a valid YouTube URL (e.g. https://www.youtube.com/watch?v=...)');
+      return;
+    }
+
+    clearFieldError('url-input');
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'transcript-generator' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'transcript-generator' });
+
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Extracting...';
+    showStep('step-loading');
+
+    await fetchTranscript(url);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-transcript-generator' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'transcript-generator' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Generating';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      generate();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('url-input') as HTMLInputElement).value = '';
+    clearFieldError('url-input');
+    showStep('step-input');
+    (document.getElementById('url-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Generate transcript \u2192';
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'transcript-generator' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('generate-btn')?.addEventListener('click', generate);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+  document.getElementById('view-clean-btn')?.addEventListener('click', () => setView('clean'));
+  document.getElementById('view-timestamps-btn')?.addEventListener('click', () => setView('timestamps'));
+
+  document.getElementById('copy-full-btn')?.addEventListener('click', function () {
+    copyText(fullTranscriptText, this as HTMLElement);
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'transcript_copied', tool: 'transcript-generator' });
+  });
+
+  // Enter key submits
+  document.getElementById('url-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      generate();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>
