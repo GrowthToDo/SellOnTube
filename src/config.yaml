@@ -44,6 +44,8 @@ header:
       href: "/pricing"
     - text: "Blog"
       href: "/blog"
+    - text: "Free Tools"
+      href: "/tools"
 
   actions:
     - text: "Book a Diagnostic Call"
