@@ -11,6 +11,8 @@ import Content from '~/components/widgets/Content.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import StickyEmailCapture from '~/components/widgets/StickyEmailCapture.astro';
+import FloatingEmailCapture from '~/components/widgets/FloatingEmailCapture.astro';
 
 import dataVisualizationScreen from '~/assets/images/data-visualization-screen.jpg';
 
@@ -167,7 +169,7 @@ const faqSchema = {
 
   <!-- ROI Calculator **************** -->
 
-  <div id="roi-calculator">
+  <div id="roi-calculator" class="bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
     <ROICalculator title="Check if the math works for your business" />
   </div>
 
@@ -332,4 +334,10 @@ const faqSchema = {
       In 30 minutes, we'll evaluate whether YouTube makes sense for your business and show you what a search-driven approach would look like.
     </Fragment>
   </CallToAction>
+
+  <!-- Sticky Email Capture Bar -->
+  <!-- <StickyEmailCapture /> -->
+
+  <!-- Floating Action Button -->
+  <FloatingEmailCapture />
 </Layout>

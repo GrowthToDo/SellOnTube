@@ -38,7 +38,7 @@ const metadata = {
                   type="number"
                   id="revenue-input"
                   placeholder="e.g. 5000"
-                  min="100"
+                  min="0"
                   class="w-full text-2xl font-bold px-4 py-3 rounded-xl border border-slate-300
                          dark:border-slate-600 dark:bg-slate-800 dark:text-white
                          focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
@@ -81,51 +81,67 @@ const metadata = {
 
         <!-- Step 2: Results -->
         <div id="step-results" class="hidden">
-          <!-- Gross Margin -->
-          <div class="text-center pb-6 border-b border-slate-200 dark:border-slate-700">
-            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-slate-400 mb-1">Your gross margin per customer</p>
-            <p class="text-4xl font-bold text-gray-900 dark:text-white" id="margin-display">$3,500</p>
-            <p class="text-sm text-gray-500 dark:text-slate-400 mt-2" id="margin-math">$5,000 LTV − $1,500 COGS</p>
-          </div>
-
-          <!-- Breakeven -->
-          <div class="text-center py-6 border-b border-slate-200 dark:border-slate-700">
-            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-slate-400 mb-1">At our pricing, you break even at</p>
-            <p class="text-4xl font-bold text-emerald-600 dark:text-emerald-400">
-              <span id="breakeven-display">2</span> customers<span class="text-lg font-normal text-gray-500">/month</span>
+          <!-- Breakeven (Main Result) -->
+          <div class="text-center pb-8">
+            <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-slate-400 mb-2">You break even at</p>
+            <p class="text-5xl sm:text-6xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">
+              <span id="breakeven-display">2</span> <span class="text-2xl sm:text-3xl">customers/month</span>
             </p>
-            <p class="text-sm text-gray-500 dark:text-slate-400 mt-2" id="breakeven-math">
-              $7,000/month ÷ $3,500 margin = 2 customers
-            </p>
-            <p class="text-xs text-gray-400 dark:text-slate-500 mt-1">
+            <p class="text-xs text-gray-400 dark:text-slate-500">
               Our pricing: $7,000/month for done-for-you YouTube acquisition
             </p>
+            <p class="text-xs text-gray-400 dark:text-slate-500 mt-3" id="breakeven-math">
+              $7,000/month ÷ $3,500 margin = 2 customers
+            </p>
           </div>
 
-          <!-- Quick Math -->
-          <div class="py-6">
-            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-left">
-              <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Quick math:</p>
-              <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">Your monthly profit at different customer volumes</p>
-              <div class="space-y-2 text-sm text-gray-600 dark:text-slate-400">
-                <p id="example-1">• <span id="ex1-customers">3</span> customers/month → <span id="ex1-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$3,500/month profit</span></p>
-                <p id="example-2">• <span id="ex2-customers">5</span> customers/month → <span id="ex2-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$10,500/month profit</span></p>
-                <p id="example-3">• <span id="ex3-customers">10</span> customers/month → <span id="ex3-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$28,000/month profit</span></p>
-              </div>
+          <!-- Gross Margin (De-emphasized) -->
+          <div class="pb-6 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs text-gray-400 dark:text-slate-500 text-center">
+              Your gross margin: <span id="margin-display" class="font-medium text-gray-600 dark:text-slate-300">$3,500</span> <span id="margin-math" class="text-gray-400 dark:text-slate-500">($5,000 LTV − $1,500 COGS)</span>
+            </p>
+          </div>
+
+          <!-- Channel Validation CTA -->
+          <div class="py-6 border-b border-slate-200 dark:border-slate-700">
+            <div class="text-center mb-4">
+              <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                But here's what really matters:
+              </p>
+              <p class="text-sm text-gray-600 dark:text-slate-400">
+                The economics work if you can get the customers. The real question: <span class="font-medium text-gray-900 dark:text-white">are people actively searching for solutions like yours on YouTube?</span>
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700">
+              <p class="text-xs font-medium text-gray-700 dark:text-slate-300 mb-2">We'll analyze:</p>
+              <ul class="text-xs text-gray-600 dark:text-slate-400 space-y-1">
+                <li>• Search volume for keywords in your space</li>
+                <li>• Existing demand and competition</li>
+                <li>• Whether YouTube is a viable acquisition channel for your product</li>
+              </ul>
             </div>
           </div>
 
-          <!-- Email Capture -->
-          <div class="border-t border-slate-200 dark:border-slate-700 pt-6 mt-2">
-            <p class="text-sm text-gray-700 dark:text-slate-300 mb-4 text-center">
-              Want a thorough analysis to see if YouTube makes sense for your business?
+          <!-- Email & Product URL Capture -->
+          <div class="pt-6">
+            <p class="text-sm font-medium text-gray-900 dark:text-white mb-4 text-center">
+              Get your free keyword & demand analysis
             </p>
 
             <div id="email-form" class="space-y-3">
               <input
                 type="email"
                 id="email-input"
-                placeholder="Enter your email"
+                placeholder="Your email"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300
+                       dark:border-slate-600 dark:bg-slate-800 dark:text-white
+                       focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+              />
+              <input
+                type="url"
+                id="product-url-input"
+                placeholder="Your product/website URL"
                 class="w-full px-4 py-3 rounded-xl border border-slate-300
                        dark:border-slate-600 dark:bg-slate-800 dark:text-white
                        focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
@@ -136,13 +152,26 @@ const metadata = {
                        bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
                        transition-colors"
               >
-                Help me figure it out
+                Analyze my product's YouTube potential
               </button>
             </div>
 
             <div id="success-message" class="hidden mt-4 text-center">
               <p class="text-lg font-semibold text-emerald-600 dark:text-emerald-400">Thanks!</p>
-              <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">We'll reach out to learn more about your business and help you figure out if YouTube makes sense.</p>
+              <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">We'll analyze the keyword demand in your space and reach out with our findings.</p>
+            </div>
+          </div>
+
+          <!-- Quick Math -->
+          <div class="py-6 border-t border-slate-200 dark:border-slate-700 mt-6">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-left">
+              <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Quick math:</p>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">Your monthly profit at different customer volumes</p>
+              <div class="space-y-2 text-sm text-gray-600 dark:text-slate-400">
+                <p id="example-1">• <span id="ex1-customers">3</span> customers/month → <span id="ex1-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$3,500/month profit</span></p>
+                <p id="example-2">• <span id="ex2-customers">5</span> customers/month → <span id="ex2-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$10,500/month profit</span></p>
+                <p id="example-3">• <span id="ex3-customers">10</span> customers/month → <span id="ex3-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$28,000/month profit</span></p>
+              </div>
             </div>
           </div>
 
@@ -183,6 +212,7 @@ const metadata = {
   const stepInput = document.getElementById('step-input');
   const stepResults = document.getElementById('step-results');
   const emailInput = document.getElementById('email-input') as HTMLInputElement;
+  const productUrlInput = document.getElementById('product-url-input') as HTMLInputElement;
   const getProjectionBtn = document.getElementById('get-projection-btn');
   const emailForm = document.getElementById('email-form');
   const successMessage = document.getElementById('success-message');
@@ -216,8 +246,8 @@ const metadata = {
     const revenue = parseFloat(revenueInput.value);
     const cogs = parseFloat(cogsInput.value) || 0;
 
-    if (!revenue || revenue < 100) {
-      alert('Please enter a customer LTV of at least $100');
+    if (!revenue || revenue <= 0) {
+      alert('Please enter a valid customer LTV');
       return;
     }
 
@@ -229,15 +259,15 @@ const metadata = {
     const margin = revenue - cogs;
     const breakeven = Math.ceil(MONTHLY_COST / margin);
 
-    // Update margin display
-    (document.getElementById('margin-display') as HTMLElement).textContent = formatMoney(margin);
-    (document.getElementById('margin-math') as HTMLElement).textContent =
-      `${formatMoney(revenue)} LTV − ${formatMoney(cogs)} COGS`;
-
     // Update breakeven display
     (document.getElementById('breakeven-display') as HTMLElement).textContent = breakeven.toString();
     (document.getElementById('breakeven-math') as HTMLElement).textContent =
       `$7,000/month ÷ ${formatMoney(margin)} margin = ${breakeven} customers`;
+
+    // Update margin display (de-emphasized)
+    (document.getElementById('margin-display') as HTMLElement).textContent = formatMoney(margin);
+    (document.getElementById('margin-math') as HTMLElement).textContent =
+      `(${formatMoney(revenue)} LTV − ${formatMoney(cogs)} COGS)`;
 
     // Calculate examples (breakeven + 1, breakeven + 3, breakeven * 2 or more)
     const ex1Customers = breakeven + 1;
@@ -271,8 +301,15 @@ const metadata = {
 
   async function submitEmail() {
     const email = emailInput.value.trim();
+    const productUrl = productUrlInput.value.trim();
+
     if (!email || !email.includes('@')) {
       alert('Please enter a valid email address');
+      return;
+    }
+
+    if (!productUrl) {
+      alert('Please enter your product URL');
       return;
     }
 
@@ -291,8 +328,10 @@ const metadata = {
         },
         body: JSON.stringify({
           email,
+          productUrl,
           revenue: revenueInput.value,
           cogs: cogsInput.value,
+          source: 'roi-calculator'
         }),
       });
 
@@ -302,7 +341,7 @@ const metadata = {
       console.error('Error submitting:', error);
       alert('Something went wrong. Please try again.');
       if (getProjectionBtn) {
-        getProjectionBtn.textContent = 'Help me figure it out';
+        getProjectionBtn.textContent = 'Analyze my product\'s YouTube potential';
         getProjectionBtn.removeAttribute('disabled');
       }
     }
@@ -322,6 +361,10 @@ const metadata = {
   });
 
   emailInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') productUrlInput?.focus();
+  });
+
+  productUrlInput?.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') submitEmail();
   });
 

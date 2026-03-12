@@ -1,0 +1,258 @@
+---
+// Sticky bottom bar for email capture
+---
+
+<div id="sticky-email-bar" class="fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300">
+  <!-- Collapsed State -->
+  <div id="bar-collapsed" class="bg-gradient-to-r from-emerald-600 to-emerald-700 dark:from-emerald-700 dark:to-emerald-800 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex-1">
+          <p class="text-white font-semibold text-sm sm:text-base">
+            We'll tell you straight: YouTube will work for your business - or it won't. <span class="text-emerald-200">Only <span id="bar-spots-remaining">4</span> free analyses left (normally $199/ea)</span>
+          </p>
+        </div>
+        <button
+          id="expand-bar-btn"
+          class="shrink-0 bg-white text-emerald-700 hover:bg-emerald-50 font-semibold px-4 sm:px-6 py-2.5 rounded-full text-sm transition-colors whitespace-nowrap"
+        >
+          Get my analysis →
+        </button>
+        <button
+          id="close-bar-btn"
+          class="shrink-0 text-white/80 hover:text-white ml-2"
+          aria-label="Close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expanded State -->
+  <div id="bar-expanded" class="hidden bg-white dark:bg-slate-900 border-t-2 border-emerald-600 shadow-2xl">
+    <div class="max-w-4xl mx-auto px-4 py-6">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">
+            We'll tell you straight: YouTube will work for your business - or it won't.
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 mb-1">
+            We'll do a thorough analysis of your niche and search demand.
+          </p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">
+            Stop guessing. Get the answer.
+          </p>
+        </div>
+        <button
+          id="collapse-bar-btn"
+          class="text-gray-400 hover:text-gray-600 dark:hover:text-slate-300 ml-2"
+          aria-label="Minimize"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="sticky-form" class="space-y-3">
+        <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg px-4 py-2 mb-3">
+          <p class="text-sm font-medium text-amber-900 dark:text-amber-200">
+            ⚠️ Only <span id="bar-spots-remaining-expanded" class="font-bold">4</span> free analyses left (normally $199/ea)
+          </p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <input
+            type="email"
+            id="sticky-email-input"
+            placeholder="Your email"
+            class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+          />
+          <input
+            type="url"
+            id="sticky-product-url-input"
+            placeholder="Your product/website URL"
+            class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+          />
+        </div>
+        <button
+          id="sticky-submit-btn"
+          class="w-full sm:w-auto inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-semibold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors"
+        >
+          Get my free analysis
+        </button>
+      </div>
+
+      <div id="sticky-success" class="hidden text-center py-4">
+        <p class="text-lg font-semibold text-emerald-600 dark:text-emerald-400">Thanks!</p>
+        <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">
+          We'll analyze the keyword demand in your space and reach out with our findings.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    var STORAGE_KEY = 'sticky_bar_dismissed';
+    var SCROLL_THRESHOLD = 800; // Show after scrolling 800px
+
+    var stickyBar = document.getElementById('sticky-email-bar');
+    var barCollapsed = document.getElementById('bar-collapsed');
+    var barExpanded = document.getElementById('bar-expanded');
+    var expandBtn = document.getElementById('expand-bar-btn');
+    var collapseBtn = document.getElementById('collapse-bar-btn');
+    var closeBtn = document.getElementById('close-bar-btn');
+    var submitBtn = document.getElementById('sticky-submit-btn');
+    var emailInput = document.getElementById('sticky-email-input');
+    var productUrlInput = document.getElementById('sticky-product-url-input');
+    var stickyForm = document.getElementById('sticky-form');
+    var stickySuccess = document.getElementById('sticky-success');
+    var barSpotsEl = document.getElementById('bar-spots-remaining');
+    var barSpotsExpandedEl = document.getElementById('bar-spots-remaining-expanded');
+
+    var barVisible = false;
+
+    // Calculate spots remaining based on day of month
+    function getSpotsRemaining() {
+      var today = new Date();
+      var dayOfMonth = today.getDate();
+
+      if (dayOfMonth <= 7) return 4;
+      if (dayOfMonth <= 14) return 3;
+      if (dayOfMonth <= 21) return 2;
+      return 1; // Days 22-31
+    }
+
+    // Update spots remaining display
+    function updateSpotsDisplay() {
+      var spots = getSpotsRemaining();
+      if (barSpotsEl) barSpotsEl.textContent = spots;
+      if (barSpotsExpandedEl) barSpotsExpandedEl.textContent = spots;
+    }
+
+    // Initialize spots display
+    updateSpotsDisplay();
+
+    // Check if bar was dismissed
+    function wasDismissed() {
+      try {
+        return localStorage.getItem(STORAGE_KEY) === 'true';
+      } catch(e) {
+        return false;
+      }
+    }
+
+    function markDismissed() {
+      try {
+        localStorage.setItem(STORAGE_KEY, 'true');
+      } catch(e) {}
+    }
+
+    // Show/hide bar based on scroll
+    function handleScroll() {
+      if (wasDismissed()) return;
+
+      var scrolled = window.scrollY || window.pageYOffset;
+
+      if (scrolled > SCROLL_THRESHOLD && !barVisible) {
+        stickyBar.classList.remove('translate-y-full');
+        barVisible = true;
+      } else if (scrolled <= SCROLL_THRESHOLD && barVisible) {
+        stickyBar.classList.add('translate-y-full');
+        barVisible = false;
+      }
+    }
+
+    // Expand bar to show form
+    function expandBar() {
+      barCollapsed.classList.add('hidden');
+      barExpanded.classList.remove('hidden');
+    }
+
+    // Collapse bar to minimal state
+    function collapseBar() {
+      barExpanded.classList.add('hidden');
+      barCollapsed.classList.remove('hidden');
+    }
+
+    // Close/dismiss bar
+    function closeBar() {
+      stickyBar.classList.add('translate-y-full');
+      markDismissed();
+      barVisible = false;
+    }
+
+    // Submit form
+    function submitForm() {
+      var email = emailInput.value.trim();
+      var productUrl = productUrlInput.value.trim();
+
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+      }
+
+      if (!productUrl) {
+        alert('Please enter your product URL');
+        return;
+      }
+
+      // Disable button
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+
+      // Submit to Google Sheets
+      fetch('https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          productUrl: productUrl,
+          source: 'sticky-bar'
+        })
+      }).then(function() {
+        stickyForm.classList.add('hidden');
+        stickySuccess.classList.remove('hidden');
+
+        // Auto-close after 3 seconds
+        setTimeout(function() {
+          closeBar();
+        }, 3000);
+      }).catch(function() {
+        alert('Something went wrong. Please try again.');
+        submitBtn.textContent = 'Get my free analysis';
+        submitBtn.disabled = false;
+      });
+    }
+
+    // Event listeners
+    if (expandBtn) expandBtn.addEventListener('click', expandBar);
+    if (collapseBtn) collapseBtn.addEventListener('click', collapseBar);
+    if (closeBtn) closeBtn.addEventListener('click', closeBar);
+    if (submitBtn) submitBtn.addEventListener('click', submitForm);
+
+    // Keyboard navigation
+    if (emailInput) {
+      emailInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') productUrlInput.focus();
+      });
+    }
+    if (productUrlInput) {
+      productUrlInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') submitForm();
+      });
+    }
+
+    // Initialize scroll handler
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial scroll position
+
+    // Start hidden below viewport
+    stickyBar.classList.add('translate-y-full');
+  })();
+</script>

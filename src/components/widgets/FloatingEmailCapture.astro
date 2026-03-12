@@ -1,0 +1,280 @@
+---
+// Floating Action Button for email capture
+---
+
+<div id="fab-container" class="fixed bottom-6 right-6 z-40 transition-all duration-300">
+  <!-- FAB Button (Collapsed State) -->
+  <button
+    id="fab-button"
+    class="group relative bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center gap-3 px-6 py-4"
+    aria-label="Will YouTube work for you?"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span class="font-semibold whitespace-nowrap text-sm sm:text-base">Will YouTube work for you?</span>
+
+    <!-- Pulse animation -->
+    <span class="absolute inset-0 rounded-full bg-emerald-400 opacity-0 group-hover:opacity-20 animate-ping"></span>
+  </button>
+
+  <!-- Expanded Card (Form State) -->
+  <div
+    id="fab-card"
+    class="hidden absolute bottom-0 right-0 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 w-[380px] max-w-[calc(100vw-3rem)]"
+  >
+    <!-- Card Header -->
+    <div class="bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-t-2xl px-6 py-4 flex items-start justify-between">
+      <div class="flex-1">
+        <h3 class="text-white font-bold text-lg mb-2">
+          We'll tell you straight: YouTube will work for your business - or it won't.
+        </h3>
+        <p class="text-emerald-100 text-sm mb-1">
+          We'll do a thorough analysis of your niche and search demand.
+        </p>
+        <p class="text-emerald-100 text-sm">
+          Stop guessing. Get the answer.
+        </p>
+      </div>
+      <button
+        id="fab-close-btn"
+        class="text-white/80 hover:text-white transition-colors ml-2"
+        aria-label="Close"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Card Body -->
+    <div class="p-6">
+      <div id="fab-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="fab-email-input"
+            placeholder="you@company.com"
+            class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
+            Product URL
+          </label>
+          <input
+            type="url"
+            id="fab-product-url-input"
+            placeholder="https://yourproduct.com"
+            class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 dark:bg-slate-800 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+          />
+        </div>
+
+        <div class="pt-2">
+          <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg px-3 py-2 mb-3">
+            <p class="text-xs font-medium text-amber-900 dark:text-amber-200">
+              ⚠️ Only <span id="spots-remaining" class="font-bold">4</span> free analyses left (normally $199/ea)
+            </p>
+          </div>
+          <button
+            id="fab-submit-btn"
+            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+          >
+            Get my free analysis
+          </button>
+        </div>
+      </div>
+
+      <div id="fab-success" class="hidden text-center py-4">
+        <div class="text-5xl mb-3">✓</div>
+        <p class="text-lg font-semibold text-emerald-600 dark:text-emerald-400">Thanks!</p>
+        <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">
+          We'll analyze the keyword demand in your space and reach out with our findings.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    var STORAGE_KEY = 'fab_dismissed';
+    var SCROLL_THRESHOLD = 100; // Show after scrolling 100px (set low for testing)
+
+    var fabContainer = document.getElementById('fab-container');
+    var fabButton = document.getElementById('fab-button');
+    var fabCard = document.getElementById('fab-card');
+    var fabCloseBtn = document.getElementById('fab-close-btn');
+    var fabSubmitBtn = document.getElementById('fab-submit-btn');
+    var fabEmailInput = document.getElementById('fab-email-input');
+    var fabProductUrlInput = document.getElementById('fab-product-url-input');
+    var fabForm = document.getElementById('fab-form');
+    var fabSuccess = document.getElementById('fab-success');
+    var spotsRemainingEl = document.getElementById('spots-remaining');
+
+    var fabVisible = false;
+    var cardOpen = false;
+
+    // Calculate spots remaining based on day of month
+    function getSpotsRemaining() {
+      var today = new Date();
+      var dayOfMonth = today.getDate();
+
+      if (dayOfMonth <= 7) return 4;
+      if (dayOfMonth <= 14) return 3;
+      if (dayOfMonth <= 21) return 2;
+      return 1; // Days 22-31
+    }
+
+    // Update spots remaining display
+    function updateSpotsDisplay() {
+      var spots = getSpotsRemaining();
+      if (spotsRemainingEl) {
+        spotsRemainingEl.textContent = spots;
+      }
+    }
+
+    // Initialize spots display
+    updateSpotsDisplay();
+
+    // Check if FAB was dismissed
+    function wasDismissed() {
+      try {
+        return localStorage.getItem(STORAGE_KEY) === 'true';
+      } catch(e) {
+        return false;
+      }
+    }
+
+    function markDismissed() {
+      try {
+        localStorage.setItem(STORAGE_KEY, 'true');
+      } catch(e) {}
+    }
+
+    // Show/hide FAB based on scroll
+    function handleScroll() {
+      if (wasDismissed()) return;
+
+      var scrolled = window.scrollY || window.pageYOffset;
+
+      if (scrolled > SCROLL_THRESHOLD && !fabVisible) {
+        fabContainer.classList.remove('translate-y-32', 'opacity-0');
+        fabVisible = true;
+      } else if (scrolled <= SCROLL_THRESHOLD && fabVisible && !cardOpen) {
+        fabContainer.classList.add('translate-y-32', 'opacity-0');
+        fabVisible = false;
+      }
+    }
+
+    // Open card
+    function openCard() {
+      fabButton.classList.add('hidden');
+      fabCard.classList.remove('hidden');
+      cardOpen = true;
+      // Focus first input
+      setTimeout(function() {
+        fabEmailInput.focus();
+      }, 100);
+    }
+
+    // Close card
+    function closeCard() {
+      fabCard.classList.add('hidden');
+      fabButton.classList.remove('hidden');
+      cardOpen = false;
+      // Reset form
+      fabForm.classList.remove('hidden');
+      fabSuccess.classList.add('hidden');
+      fabEmailInput.value = '';
+      fabProductUrlInput.value = '';
+    }
+
+    // Dismiss FAB completely
+    function dismissFab() {
+      fabContainer.classList.add('translate-y-32', 'opacity-0');
+      markDismissed();
+      fabVisible = false;
+      cardOpen = false;
+    }
+
+    // Submit form
+    function submitForm() {
+      var email = fabEmailInput.value.trim();
+      var productUrl = fabProductUrlInput.value.trim();
+
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address');
+        return;
+      }
+
+      if (!productUrl) {
+        alert('Please enter your product URL');
+        return;
+      }
+
+      // Disable button
+      fabSubmitBtn.textContent = 'Submitting...';
+      fabSubmitBtn.disabled = true;
+
+      // Submit to Google Sheets
+      fetch('https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          productUrl: productUrl,
+          source: 'fab'
+        })
+      }).then(function() {
+        fabForm.classList.add('hidden');
+        fabSuccess.classList.remove('hidden');
+
+        // Auto-close after 3 seconds
+        setTimeout(function() {
+          dismissFab();
+        }, 3000);
+      }).catch(function() {
+        alert('Something went wrong. Please try again.');
+        fabSubmitBtn.textContent = 'Get my free analysis';
+        fabSubmitBtn.disabled = false;
+      });
+    }
+
+    // Event listeners
+    if (fabButton) fabButton.addEventListener('click', openCard);
+    if (fabCloseBtn) fabCloseBtn.addEventListener('click', dismissFab);
+    if (fabSubmitBtn) fabSubmitBtn.addEventListener('click', submitForm);
+
+    // Keyboard navigation
+    if (fabEmailInput) {
+      fabEmailInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') fabProductUrlInput.focus();
+      });
+    }
+    if (fabProductUrlInput) {
+      fabProductUrlInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') submitForm();
+      });
+    }
+
+    // Close card when clicking outside
+    document.addEventListener('click', function(e) {
+      if (cardOpen && !fabCard.contains(e.target) && !fabButton.contains(e.target)) {
+        closeCard();
+      }
+    });
+
+    // Initialize scroll handler
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial scroll position
+
+    // Start hidden
+    fabContainer.classList.add('translate-y-32', 'opacity-0');
+  })();
+</script>

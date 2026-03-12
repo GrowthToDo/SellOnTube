@@ -15,9 +15,9 @@ const {
 <section class="py-8 sm:py-10">
   <div class="max-w-4xl mx-auto px-4">
     {title && (
-      <div class="text-center mb-6">
-        <h2 class="text-xl sm:text-2xl font-bold tracking-tight dark:text-white">{title}</h2>
-        {subtitle && <p class="mt-1 text-sm text-gray-600 dark:text-slate-400">{subtitle}</p>}
+      <div class="text-center mb-8">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight dark:text-white">{title}</h2>
+        {subtitle && <p class="mt-2 text-base text-gray-600 dark:text-slate-400">{subtitle}</p>}
       </div>
     )}
 
@@ -40,7 +40,7 @@ const {
               type="number"
               id="homepage-revenue"
               placeholder="5000"
-              min="100"
+              min="0"
               class="w-full text-xl font-bold px-3 py-2 rounded-lg border border-slate-300
                      dark:border-slate-600 dark:bg-slate-800 dark:text-white
                      focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
@@ -99,8 +99,8 @@ const {
     var revenue = parseFloat(revenueInput.value);
     var cogs = parseFloat(cogsInput.value) || 0;
 
-    if (!revenue || revenue < 100) {
-      alert('Please enter a customer LTV of at least $100');
+    if (!revenue || revenue <= 0) {
+      alert('Please enter a valid customer LTV');
       return;
     }
 
@@ -109,6 +109,6 @@ const {
       return;
     }
 
-    window.location.href = '/youtube-roi-calculator?revenue=' + revenue + '&cogs=' + cogs;
+    window.location.href = '/tools/youtube-roi-calculator?revenue=' + revenue + '&cogs=' + cogs;
   }
 </script>
