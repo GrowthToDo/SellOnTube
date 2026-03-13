@@ -3,7 +3,7 @@ export interface Topic {
   publishDate: string;
   industry: 'saas' | 'agencies' | 'consultants' | 'coaches' | 'b2b-services' | 'artists' | 'authors' | 'animators' | 'beauty-and-fashion' | 'business' | 'video-editors' | 'real-estate-agents' | 'fitness' | 'mental-health' | 'lifestyle' | 'musicians' | 'make-money' | 'photographers' | 'small-business';
   industryLabel: string;
-  industryHubSlug: string; // maps to /youtube-for-[slug]
+  industryHubSlug: string; // maps to /youtube-for/[slug]
   title: string; // short label, e.g. "Comparison Videos"
   metaTitle: string;
   metaDescription: string;

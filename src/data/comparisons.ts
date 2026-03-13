@@ -146,7 +146,7 @@ export const comparisons: Comparison[] = [
       { text: 'YouTube ROI Calculator', href: '/tools/youtube-roi-calculator' },
       { text: 'How to Calculate YouTube Marketing ROI', href: '/blog/youtube-marketing-roi' },
       { text: 'YouTube vs Facebook for Business', href: '/youtube-vs/facebook' },
-      { text: 'YouTube for Coaches', href: '/youtube-for-coaches' },
+      { text: 'YouTube for Coaches', href: '/youtube-for/coaches' },
     ],
   },
   {
