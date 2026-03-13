@@ -3,7 +3,13 @@ publishDate: 2026-03-11T00:00:00Z
 author: Sathyanand
 title: "YouTube Marketing Strategy for Businesses: What Actually Drives Pipeline"
 excerpt: "Most YouTube marketing strategies are content calendars with a plan attached. Here is what a strategy that connects videos to revenue actually looks like, step by step."
-image: ~/assets/images/blog/youtube-strategy.jpg
+image: ~/assets/images/blog/youtube-marketing-strategy-feature.jpg
+image_alt: "Red and white square illustration — youtube marketing strategy | SellonTube"
+featuredImageCredit: "Alexander Shatov on Unsplash"
+featuredImageCreditUrl: "https://unsplash.com/photos/red-and-white-square-illustration-niUkImZcSP8"
+featuredImageWidth: 1200
+featuredImageHeight: 630
+featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAGQAAAQUAAAAAAAAAAAAAAAAAAAECAwQF/8QAGRAAAwEBAQAAAAAAAAAAAAAAAAECEQNB/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAZEQACAwEAAAAAAAAAAAAAAAAAAQIREiH/2gAMAwEAAhEDEQA/AMTnKdYybtziZ2WVw1v0buxxcc9QmAOARI//2Q=="
 category: YouTube Strategy
 tags:
   - youtube-marketing-strategy

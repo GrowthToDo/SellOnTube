@@ -22,6 +22,13 @@ export interface Post {
   excerpt?: string;
   /**  */
   image?: ImageMetadata | string;
+  image_alt?: string;
+  featuredImageCaption?: string;
+  featuredImageCredit?: string;
+  featuredImageCreditUrl?: string;
+  featuredImageWidth?: number;
+  featuredImageHeight?: number;
+  featuredImagePlaceholder?: string;
 
   /**  */
   category?: Taxonomy;

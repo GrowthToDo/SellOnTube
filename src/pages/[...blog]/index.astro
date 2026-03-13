@@ -55,7 +55,13 @@ const blogPostingSchema = {
   "url": url,
   "datePublished": post.publishDate ? new Date(post.publishDate).toISOString() : undefined,
   "dateModified": post.updateDate ? new Date(post.updateDate).toISOString() : (post.publishDate ? new Date(post.publishDate).toISOString() : undefined),
-  ...(image ? { "image": typeof image === 'string' ? image : `${siteUrl}${(image as ImageMetadata).src}` } : {}),
+  ...(image ? { "image": {
+    "@type": "ImageObject",
+    "url": typeof image === 'string' ? image : `${siteUrl}${(image as ImageMetadata).src}`,
+    "width": post.featuredImageWidth || 1200,
+    "height": post.featuredImageHeight || 630,
+    "caption": post.featuredImageCaption || post.image_alt || post.title
+  } } : {}),
   ...(post.author ? { "author": { "@type": "Person", "name": post.author } } : { "author": { "@type": "Organization", "name": "SellOnTube" } }),
   "publisher": {
     "@type": "Organization",
@@ -101,7 +107,7 @@ const breadcrumbSchema = {
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <SinglePost post={{ ...post, image: image }} url={url}>
+  <SinglePost post={{ ...post, image: image, image_alt: post.image_alt, featuredImageCredit: post.featuredImageCredit, featuredImageCreditUrl: post.featuredImageCreditUrl }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>
   <ToBlogLink />
