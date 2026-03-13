@@ -3,13 +3,7 @@ publishDate: 2025-12-23T00:00:00Z
 author: Sathyanand
 title: "YouTube Strategy for Business: The Acquisition-First Approach"
 excerpt: "Most YouTube strategies fail because they're built for creators, not buyers. The acquisition-first model targets high-intent queries and converts viewers into customers."
-image: ~/assets/images/blog/why-most-youtube-strategies-fail-feature.jpg
-image_alt: "A red and white play button on a white card — youtube strategy business | SellonTube"
-featuredImageCredit: "Kelly Sikkema on Unsplash"
-featuredImageCreditUrl: "https://unsplash.com/photos/a-red-and-white-play-button-on-a-white-card-cl0CBmInJ3A"
-featuredImageWidth: 1200
-featuredImageHeight: 630
-featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIDAQT/xAAbEAACAwEBAQAAAAAAAAAAAAAAAQIDESEEMf/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AJUeZSjp0Vwil0nS2ocZmvfplTvEwEAD/9k="
+image: ~/assets/images/blog/youtube-strategy.jpg
 category: YouTube Strategy
 tags:
   - youtube

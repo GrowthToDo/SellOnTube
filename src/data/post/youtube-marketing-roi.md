@@ -3,13 +3,7 @@ publishDate: 2026-02-27T00:00:00Z
 author: Sathyanand
 title: "YouTube Marketing ROI: Formula, Real Case Study Data + Free Calculator"
 excerpt: "YouTube drove 3.25x more conversions than blogging in our 12-month case study. Here's the exact ROI formula, real benchmarks by business type, and a free calculator for your numbers."
-image: ~/assets/images/blog/youtube-marketing-roi-feature.jpg
-image_alt: "Brown wooden table — youtube marketing roi | SellonTube"
-featuredImageCredit: "Annie Spratt on Unsplash"
-featuredImageCreditUrl: "https://unsplash.com/photos/brown-wooden-table-yapMf-nr0RI"
-featuredImageWidth: 1200
-featuredImageHeight: 630
-featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUCAwT/xAAcEAACAgMBAQAAAAAAAAAAAAAAAQIDBCFBFDH/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AE7wrHwg8KxcHkfhRa9iCjzTA2yewAx//9k="
+image: ~/assets/images/growth-analytics-dashboard.jpg
 category: YouTube Strategy
 tags:
   - youtube-roi

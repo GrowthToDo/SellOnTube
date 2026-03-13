@@ -3,13 +3,7 @@ publishDate: 2026-03-04T00:00:00Z
 author: Sathyanand
 title: "YouTube Marketing for B2B: How to Generate Leads From Your Channel"
 excerpt: "Most B2B companies treat YouTube like a creator platform and get creator results: subscribers, not clients. Here is what a YouTube channel built for B2B lead generation actually looks like."
-image: ~/assets/images/blog/youtube-marketing-b2b-feature.jpg
-image_alt: "Youtube logo on a backlit keyboard — youtube marketing b2b leads | SellonTube"
-featuredImageCredit: "Zulfugar Karimov on Unsplash"
-featuredImageCreditUrl: "https://unsplash.com/photos/youtube-logo-on-a-backlit-keyboard-B9klYJqQ4DU"
-featuredImageWidth: 1200
-featuredImageHeight: 630
-featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwb/xAAaEAADAAMBAAAAAAAAAAAAAAAAAQIhERIx/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AM6neB5uGtdKCUA6dAKAH//Z"
+image: ~/assets/images/blog/marketing-team.jpg
 category: YouTube Strategy
 tags:
   - youtube-marketing

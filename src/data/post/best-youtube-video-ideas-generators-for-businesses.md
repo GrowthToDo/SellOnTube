@@ -4,12 +4,12 @@ author: Sathyanand
 title: "The 14 Best YouTube Video Ideas Generators for Businesses in 2026"
 excerpt: "Most YouTube video idea generators were built for creators chasing views. This list is for businesses chasing customers. 14 tools ranked by how well they serve business channels."
 image: ~/assets/images/blog/best-youtube-video-ideas-generators-for-businesses-feature.jpg
-image_alt: "A white cube with a red arrow on a red background — youtube video ideas generator | SellonTube"
-featuredImageCredit: "Rubaitul Azad on Unsplash"
-featuredImageCreditUrl: "https://unsplash.com/photos/a-white-cube-with-a-red-arrow-on-a-red-background-nnFBEYTt77E"
+image_alt: "Colorful sticky notes scattered on a white board — brainstorming sticky notes | SellonTube"
+featuredImageCredit: "Akinyemi Gbadamosi on Unsplash"
+featuredImageCreditUrl: "https://unsplash.com/photos/colorful-sticky-notes-scattered-on-a-white-board-OBOoohXBrD8"
 featuredImageWidth: 1200
 featuredImageHeight: 630
-featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEEAv/EABoQAAMBAQEBAAAAAAAAAAAAAAABEQIDEyH/xAAXAQADAQAAAAAAAAAAAAAAAAACAwQF/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAERAv/aAAwDAQACEQMRAD8AgUqpZ5898qn9ImazppSk5a+hXktKNoBADMv/2Q=="
+featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEAv/EABsQAAMAAgMAAAAAAAAAAAAAAAABEQIDBBNh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEBAQADAAAAAAAAAAAAAAAAABEBAiH/2gAMAwEAAhEDEQA/AL9Wnwf1VDsEobSUM517VqHLi10C5oBR/9k="
 category: Tools & Resources
 tags:
   - youtube

@@ -3,13 +3,7 @@ publishDate: 2025-12-22T00:00:00Z
 author: Sathyanand
 title: "YouTube for Customer Acquisition: The System That Replaces Paid Ads"
 excerpt: "YouTube works as a B2B acquisition channel when you treat it as search, not social. Here's the end-to-end system: search-led topics, voiceover videos, leads that compound without ad spend."
-image: ~/assets/images/blog/the-youtube-acquisition-engine-feature.jpg
-image_alt: "A red and white square button with an arrow — youtube customer acquisition | SellonTube"
-featuredImageCredit: "Sunny Hassan on Unsplash"
-featuredImageCreditUrl: "https://unsplash.com/photos/a-red-and-white-square-button-with-an-arrow-sBT2nuSe8bY"
-featuredImageWidth: 1200
-featuredImageHeight: 630
-featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAaEAEBAAIDAAAAAAAAAAAAAAABAAIRAxIx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDayENkvHk5ukr6ADwil6xPER//2Q=="
+image: ~/assets/images/blog/creative-workspace.jpg
 category: YouTube Strategy
 tags:
   - youtube
