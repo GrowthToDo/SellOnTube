@@ -42,6 +42,9 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+
+  /** Optional tool CTA slug to show above the booking CTA */
+  toolCta?: string;
 }
 
 export interface Taxonomy {
