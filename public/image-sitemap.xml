@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://sellontube.com/blog/compounding-effect-four-videos-a-month/</loc>
+    <image:image>
+      <image:loc>https://sellontube.com/_astro/camera-film-reel.jpg</image:loc>
+      <image:title>The Compounding Effect: How 4 Videos a Month Can Build a Predictable Pipeline in 6 to 12 Months</image:title>
+      <image:caption>The Compounding Effect: How 4 Videos a Month Can Build a Predictable Pipeline in 6 to 12 Months</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sellontube.com/blog/search-intent-youtube-seo-power/</loc>
+    <image:image>
+      <image:loc>https://sellontube.com/_astro/youtube-seo-mobile.jpg</image:loc>
+      <image:title>YouTube Search Intent: Why It Beats Blog SEO for SaaS and B2B</image:title>
+      <image:caption>YouTube Search Intent: Why It Beats Blog SEO for SaaS and B2B</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sellontube.com/blog/the-youtube-acquisition-engine/</loc>
+    <image:image>
+      <image:loc>https://sellontube.com/_astro/creative-workspace.jpg</image:loc>
+      <image:title>YouTube for Customer Acquisition: The System That Replaces Paid Ads</image:title>
+      <image:caption>YouTube for Customer Acquisition: The System That Replaces Paid Ads</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sellontube.com/blog/why-most-youtube-strategies-fail/</loc>
+    <image:image>
+      <image:loc>https://sellontube.com/_astro/youtube-strategy.jpg</image:loc>
+      <image:title>YouTube Strategy for Business: The Acquisition-First Approach</image:title>
+      <image:caption>YouTube Strategy for Business: The Acquisition-First Approach</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sellontube.com/blog/youtube-marketing-roi/</loc>
+    <image:image>
+      <image:loc>https://sellontube.com/_astro/growth-analytics-dashboard.jpg</image:loc>
+      <image:title>YouTube Marketing ROI: Formula, Real Case Study Data + Free Calculator</image:title>
+      <image:caption>YouTube Marketing ROI: Formula, Real Case Study Data + Free Calculator</image:caption>
+    </image:image>
+  </url>
+</urlset>

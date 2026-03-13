@@ -3,7 +3,13 @@ publishDate: 2025-12-24T00:00:00Z
 author: Sathyanand
 title: "YouTube Search Intent: Why It Beats Blog SEO for SaaS and B2B"
 excerpt: "YouTube is a search engine, not a content platform. Why search-intent videos outperform blog SEO for SaaS companies, agencies, and consultants. And how to use this as an acquisition channel."
-image: ~/assets/images/blog/youtube-seo-mobile.jpg
+image: ~/assets/images/blog/search-intent-youtube-seo-power-feature.jpg
+image_alt: "Youtube application screengrab — youtube search intent seo | SellonTube"
+featuredImageCredit: "Christian Wiediger on Unsplash"
+featuredImageCreditUrl: "https://unsplash.com/photos/youtube-application-screengrab-NmGzVG5Wsg8"
+featuredImageWidth: 1200
+featuredImageHeight: 630
+featuredImagePlaceholder: "data:image/jpeg;base64,/9j/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMCBAX/xAAaEAADAAMBAAAAAAAAAAAAAAAAAQMCERIy/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDZyTNLorVSuE2xV+QKuRTuwE5W930Ar//Z"
 category: YouTube Strategy
 tags:
   - youtube
