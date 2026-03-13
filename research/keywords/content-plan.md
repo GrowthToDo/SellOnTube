@@ -199,16 +199,20 @@ saas, coaches, agencies, consultants, b2b-companies, course-creators, financial-
 | W1 | Mar 11 ✅ | YouTube Marketing Strategy for Businesses | `youtube marketing strategy` | 500 | 4 |
 | W2 | Mar 18 | YouTube Lead Generation: Turn Viewers Into Booked Calls (No Ads) | `youtube lead gen` | 500 | 12 |
 | W2.5 | Mar 10 ✅ | How to Create a YouTube Business Channel That Attracts Clients | `create a company youtube channel` | 50,000 | 3 |
-| W3 | Mar 25 | **OPEN SLOT** — pull next post forward or use as buffer week | — | — | — |
-| W4 | Apr 1 | YouTube Content Strategy for Businesses: The Revenue-First Framework | `youtube content strategy` | 500 | 5 |
-| W5 | Apr 8 | YouTube Video Marketing for Business: What Actually Works in 2026 | `youtube video marketing` | 500 | 2 |
-| W6 | Apr 15 | How to Plan a YouTube Marketing Campaign That Generates Pipeline | `youtube marketing campaign` | 500 | 0 |
-| W7 | Apr 22 | YouTube Growth Strategy: How Businesses Build Compounding Channels | `youtube growth strategy` | 500 | 17 |
-| W8 | Apr 29 | YouTube SEO for Business: How to Rank Videos Your Buyers Are Actually Searching | `youtube seo strategy` | 500 | 3 |
-| W9 | May 6 | YouTube Channel Strategy: Build for Acquisition, Not the Algorithm | `youtube channel strategy` | 500 | 13 |
-| W10 | May 13 | YouTube Shorts for Business: How B2B Teams Use Short-Form Video for Pipeline | `youtube shorts for business` | 50 | 15 |
-| W11 | May 20 | Using YouTube for Business: The Complete 2026 Playbook | `using youtube for business` | 500 | 2 |
-| W12 | May 27 | B2B YouTube Strategy: What Works When You're Selling to Other Businesses | `b2b youtube strategy` | 50 | — |
+| W3 | Mar 25 | YouTube Video Ideas for Business: 50+ High-Intent Topics That Attract Buyers | `youtube video ideas` | 50,000 | — |
+| W4 | Apr 1 | Best YouTube Video Ideas Generators for Business in 2026 | `best youtube video ideas generator` | 500 | — |
+| W5 | Apr 8 | How to Use a YouTube Video Ideas Generator to Plan Business Content | `youtube video ideas generator` | 500 | — |
+| W6 | Apr 15 | The Ultimate Guide to YouTube Video Ideas for Business Growth | `youtube video ideas for business` | 50 | — |
+| W7 | Apr 22 | 7 YouTube Video Idea Mistakes That Kill Your Business Channel | `youtube video ideas mistakes` | — | — |
+| W8 | Apr 29 | YouTube Content Strategy for Businesses: The Revenue-First Framework | `youtube content strategy` | 500 | 5 |
+| W9 | May 6 | YouTube Video Marketing for Business: What Actually Works in 2026 | `youtube video marketing` | 500 | 2 |
+| W10 | May 13 | How to Plan a YouTube Marketing Campaign That Generates Pipeline | `youtube marketing campaign` | 500 | 0 |
+| W11 | May 20 | YouTube Growth Strategy: How Businesses Build Compounding Channels | `youtube growth strategy` | 500 | 17 |
+| W12 | May 27 | YouTube SEO for Business: How to Rank Videos Your Buyers Are Actually Searching | `youtube seo strategy` | 500 | 3 |
+| W13 | Jun 3 | YouTube Channel Strategy: Build for Acquisition, Not the Algorithm | `youtube channel strategy` | 500 | 13 |
+| W14 | Jun 10 | YouTube Shorts for Business: How B2B Teams Use Short-Form Video for Pipeline | `youtube shorts for business` | 50 | 15 |
+| W15 | Jun 17 | Using YouTube for Business: The Complete 2026 Playbook | `using youtube for business` | 500 | 2 |
+| W16 | Jun 24 | B2B YouTube Strategy: What Works When You're Selling to Other Businesses | `b2b youtube strategy` | 50 | — |
 
 ---
 
@@ -219,16 +223,43 @@ saas, coaches, agencies, consultants, b2b-companies, course-creators, financial-
 - Secondary: `lead gen youtube` (500, KD 12), `youtube lead gen` (500, KD 12), `youtube for lead generation` (50, KD 7), `lead generation through youtube` (50), `how to get clients from youtube` (50), `youtube customer acquisition` (no vol — high ICP intent)
 - CTA: Book a call. This post has the clearest path to DFY service conversion.
 
-**Mar 25 — YouTube Business Channel Setup**
-- `create a company youtube channel` (50,000 SV, KD 3) is the single biggest volume opportunity in the entire list. A how-to guide with a clear B2B angle ("set up for client acquisition, not subscribers") should rank fast.
-- Secondary keywords: `set up company youtube channel` (5K SV, KD 23), `create youtube channel for business` (500, KD 30), `youtube business channel` (500, KD 6), `company youtube channel` (500, KD 3), `brand youtube channel` (500, KD 5)
-- This post will also capture the long-tail setup cluster: "setting up a youtube business channel", "open youtube account for business", etc.
+**Mar 25 — YouTube Video Ideas for Business**
+- Primary: `youtube video ideas` (50,000 SV), `video suggestions for youtube` (50,000 SV) — tied for highest-volume keywords in the entire list
+- Secondary: `youtube content ideas` (5K), `youtube ideas` (5K), `youtube shorts ideas` (5K), `trending youtube topics` (5K), `good youtube video ideas` (5K), `best video ideas for youtube` (5K)
+- Long-tail: `youtube video ideas for business` (50), `small business youtube video ideas` (50), `business youtube video ideas` (50), `youtube topic ideas` (500)
+- Angle: Not random creator ideas — structured video ideas mapped to buyer journey stages (awareness → consideration → decision). Each idea tied to a business outcome.
+- CTA: Link to the YouTube Video Ideas Generator microtool (`/tools/youtube-video-ideas-generator`) — "Generate personalised buyer-intent video ideas for your business"
+- This post creates a topical authority bridge between the microtool (Tool 5) and the broader content strategy cluster
 
-**Apr 8 — YouTube Video Marketing**
+**Apr 1 — Best YouTube Video Ideas Generators for Business**
+- Listicle/comparison format: review 5–7 tools (including SellonTube's own generator) that help businesses find video ideas
+- Secondary: `ai youtube idea generator` (50), `youtube video idea generator ai` (50), `content idea generator for youtube` (50)
+- Angle: Not creator-focused "trending ideas" tools — tools that surface buyer-intent topics. Evaluate each on business relevance, not virality.
+- CTA: Position SellonTube's generator as the only B2B-focused option → link to `/tools/youtube-video-ideas-generator`
+
+**Apr 8 — How to Use a YouTube Video Ideas Generator**
+- How-to/tutorial format: step-by-step guide on using an ideas generator to plan a quarter of business content
+- Secondary: `youtube topic generator` (50), `youtube video topic generator` (50), `youtube channel idea generator` (50)
+- Angle: Walk through the process — input your ICP, map ideas to funnel stages, build a 90-day content calendar from the output
+- CTA: "Try it yourself" → link to `/tools/youtube-video-ideas-generator`
+
+**Apr 15 — Ultimate Guide to YouTube Video Ideas for Business**
+- Pillar content: comprehensive resource covering idea generation frameworks, content pillars, seasonal planning, competitor analysis, and repurposing strategies
+- Secondary: `business youtube video ideas` (50), `small business youtube video ideas` (50), `educational video ideas for youtube` (50)
+- Angle: The definitive guide a business owner bookmarks — covers why most businesses pick the wrong topics, how to align ideas with revenue goals, and how to never run out of ideas
+- Internal links: hub page linking to W3 (50+ ideas), W4 (best generators), W5 (how-to), W7 (mistakes) — establishes topical authority cluster
+
+**Apr 22 — YouTube Video Idea Mistakes That Kill Your Business Channel**
+- Mistakes/anti-pattern format: 7 common errors businesses make when choosing video topics
+- Examples: chasing trending topics with no buyer intent, copying competitors without understanding their funnel, ignoring search data, making videos for peers instead of prospects
+- Angle: Contrarian — shows what NOT to do, which builds trust and positions SellonTube as the strategic alternative
+- CTA: "Avoid these mistakes — generate buyer-intent ideas instead" → link to `/tools/youtube-video-ideas-generator`
+
+**May 6 — YouTube Video Marketing**
 - Also targets: `youtube video marketing services` (500, KD 1) — bridge to agency CTA
 - Secondary: `youtube marketing online` (50), `youtube marketing content` (50)
 
-**Apr 29 — YouTube SEO for Business**
+**May 27 — YouTube SEO for Business**
 - Primary: `youtube seo strategy` (500, KD 3). Explicitly scoped for businesses — angle: optimize videos so B2B buyers find them, not how to grow subscribers.
 - Do NOT target `youtube seo tips`, `youtube seo best practices`, `youtube seo optimization tips`, `youtube seo guidelines` — these attract creators, not B2B buyers. They are parked below.
 
@@ -271,7 +302,9 @@ saas, coaches, agencies, consultants, b2b-companies, course-creators, financial-
 |---|---|---|---|
 | `youtube seo` | 50,000 | 15 | Blog (Apr 29 post, secondary) |
 | `youtube seo optimization` | 50,000 | 15 | Blog (Apr 29 post, secondary) |
-| `create a company youtube channel` | 50,000 | 3 | Blog Mar 25 ⬅ biggest opportunity |
+| `youtube video ideas` | 50,000 | — | Blog Mar 25 + Tool 5 ⬅ biggest opportunity |
+| `video suggestions for youtube` | 50,000 | — | Blog Mar 25 + Tool 5 |
+| `create a company youtube channel` | 50,000 | 3 | Blog Mar 10 ✅ |
 | `youtube keyword tool` | 50,000 | 0 | Tool 3 — keyword research tool |
 | `title generator for youtube` | 50,000 | 0 | Tool 4 — title generator |
 | `youtube title generator` | 50,000 | 0 | Tool 4 — title generator |
@@ -289,8 +322,8 @@ saas, coaches, agencies, consultants, b2b-companies, course-creators, financial-
 | `youtube ai tool` | 5,000 | 16 | Tool 2 |
 | `ai tools for youtube` | 5,000 | 36 | Tool 2 |
 | `best ai tools for youtube` | 5,000 | 38 | Tool 2 |
-| `set up company youtube channel` | 5,000 | 23 | Blog Mar 25 |
-| `startup youtube` | 5,000 | 1 | Blog Mar 25 / pSEO startup-founders |
+| `set up company youtube channel` | 5,000 | 23 | Blog Mar 10 ✅ |
+| `startup youtube` | 5,000 | 1 | Blog Mar 10 ✅ / pSEO startup-founders |
 | `free youtube transcript generator` | 5,000 | 18 | Existing post ✓ |
 | `youtube script generator` | 5,000 | 5 | Tool 2 |
 

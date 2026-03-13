@@ -103,6 +103,29 @@ const { post, url } = Astro.props;
 
     {post.author && <AuthorBio authorKey={post.author} />}
 
+    {post.toolCta === 'video-ideas-generator' && (
+      <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-12 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20 border border-primary/20 dark:border-primary/30 p-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div class="flex-1">
+            <p class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Generate video ideas for your business</p>
+            <p class="text-muted dark:text-slate-400 text-sm leading-relaxed">
+              Stop guessing which topics to cover. The Video Ideas Generator creates buyer-intent video ideas tailored to your product, audience, and competitive landscape — free.
+            </p>
+          </div>
+          <a
+            href="/tools/youtube-video-ideas-generator"
+            class="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white font-semibold px-5 py-2.5 rounded-full hover:bg-primary/90 transition-all text-sm whitespace-nowrap"
+            data-cta="video-ideas-generator"
+          >
+            Try it free
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    )}
+
     <!-- Internal links CTA -->
     <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-12 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-8 text-center">
       <p class="text-lg font-semibold mb-2">Could YouTube work for your business?</p>
@@ -119,4 +142,12 @@ const { post, url } = Astro.props;
       </div>
     </div>
   </article>
+
+  <script>
+    document.querySelectorAll('[data-cta="video-ideas-generator"]').forEach((el) => {
+      el.addEventListener('click', () => {
+        window.dataLayer?.push({ event: 'tool_cta_click', tool_name: 'video-ideas-generator', cta_location: 'blog-post' });
+      });
+    });
+  </script>
 </section>
