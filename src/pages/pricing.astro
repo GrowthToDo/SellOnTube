@@ -239,11 +239,10 @@ const faqSchema = {
   </section>
 
   <!-- Countdown Timer Script -->
-  <script is:inline>
+  <script is:inline define:vars={{ rateIncreaseDate: PRICING.rateIncreaseDate }}>
     function updateCountdown() {
-      // Set target date to 7 days from now (you can change this to a specific date)
-      const now = new Date().getTime();
-      const targetDate = now + (7 * 24 * 60 * 60 * 1000); // 7 days from now
+      // Set specific target date: April 30, 2026 at 11:59 PM
+      const targetDate = new Date(rateIncreaseDate + ' 23:59:59').getTime();
 
       // Update countdown every second
       const interval = setInterval(function() {
