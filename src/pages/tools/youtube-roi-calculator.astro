@@ -131,6 +131,11 @@ const metadata = {
             </p>
 
             <div id="email-form" class="space-y-3">
+              <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl px-4 py-2.5">
+                <p class="text-xs font-medium text-amber-900 dark:text-amber-200 text-center">
+                  ⚠️ Only <span id="spots-remaining" class="font-bold">4</span> free analyses left (normally $199)
+                </p>
+              </div>
               <input
                 type="email"
                 id="email-input"
@@ -206,17 +211,40 @@ const metadata = {
   const MONTHLY_COST = monthlyServiceCost;
 
   // Elements
-  const revenueInput = document.getElementById('revenue-input') as HTMLInputElement;
-  const cogsInput = document.getElementById('cogs-input') as HTMLInputElement;
+  const revenueInput = document.getElementById('revenue-input');
+  const cogsInput = document.getElementById('cogs-input');
   const calculateBtn = document.getElementById('calculate-btn');
   const recalculateBtn = document.getElementById('recalculate-btn');
   const stepInput = document.getElementById('step-input');
   const stepResults = document.getElementById('step-results');
-  const emailInput = document.getElementById('email-input') as HTMLInputElement;
-  const productUrlInput = document.getElementById('product-url-input') as HTMLInputElement;
+  const emailInput = document.getElementById('email-input');
+  const productUrlInput = document.getElementById('product-url-input');
   const getProjectionBtn = document.getElementById('get-projection-btn');
   const emailForm = document.getElementById('email-form');
   const successMessage = document.getElementById('success-message');
+  const spotsRemainingEl = document.getElementById('spots-remaining');
+
+  // Calculate spots remaining based on day of month
+  function getSpotsRemaining() {
+    const today = new Date();
+    const dayOfMonth = today.getDate();
+
+    if (dayOfMonth <= 7) return 4;
+    if (dayOfMonth <= 14) return 3;
+    if (dayOfMonth <= 21) return 2;
+    return 1; // Days 22-31
+  }
+
+  // Update spots remaining display
+  function updateSpotsDisplay() {
+    const spots = getSpotsRemaining();
+    if (spotsRemainingEl) {
+      spotsRemainingEl.textContent = spots;
+    }
+  }
+
+  // Initialize spots display
+  updateSpotsDisplay();
 
   // Check for URL params on load
   function checkUrlParams() {
@@ -232,11 +260,11 @@ const metadata = {
     }
   }
 
-  function formatMoney(amount: number): string {
+  function formatMoney(amount) {
     return '$' + Math.abs(amount).toLocaleString();
   }
 
-  function formatProfit(amount: number): string {
+  function formatProfit(amount) {
     if (amount >= 0) {
       return '+$' + amount.toLocaleString();
     }
@@ -244,52 +272,65 @@ const metadata = {
   }
 
   function calculate() {
-    const revenue = parseFloat(revenueInput.value);
-    const cogs = parseFloat(cogsInput.value) || 0;
+    try {
+      console.log('Calculate function called');
+      console.log('revenueInput.value:', revenueInput?.value);
+      console.log('cogsInput.value:', cogsInput?.value);
 
-    if (!revenue || revenue <= 0) {
-      alert('Please enter a valid customer LTV');
-      return;
+      const revenue = parseFloat(revenueInput.value);
+      const cogs = parseFloat(cogsInput.value) || 0;
+
+      console.log('Parsed revenue:', revenue);
+      console.log('Parsed cogs:', cogs);
+
+      if (!revenue || revenue <= 0) {
+        alert('Please enter a valid customer LTV');
+        return;
+      }
+
+      if (cogs >= revenue) {
+        alert('COGS must be less than LTV');
+        return;
+      }
+
+      const margin = revenue - cogs;
+      const breakeven = Math.ceil(MONTHLY_COST / margin);
+
+      // Update breakeven display
+      document.getElementById('breakeven-display').textContent = breakeven.toString();
+      document.getElementById('breakeven-math').textContent =
+        `${formatMoney(MONTHLY_COST)}/month ÷ ${formatMoney(margin)} margin = ${breakeven} customers`;
+
+      // Update margin display (de-emphasized)
+      document.getElementById('margin-display').textContent = formatMoney(margin);
+      document.getElementById('margin-math').textContent =
+        `(${formatMoney(revenue)} LTV − ${formatMoney(cogs)} COGS)`;
+
+      // Calculate examples (breakeven + 1, breakeven + 3, breakeven * 2 or more)
+      const ex1Customers = breakeven + 1;
+      const ex2Customers = breakeven + 3;
+      const ex3Customers = Math.max(breakeven + 5, breakeven * 2);
+
+      const ex1Profit = (ex1Customers * margin) - MONTHLY_COST;
+      const ex2Profit = (ex2Customers * margin) - MONTHLY_COST;
+      const ex3Profit = (ex3Customers * margin) - MONTHLY_COST;
+
+      document.getElementById('ex1-customers').textContent = ex1Customers.toString();
+      document.getElementById('ex2-customers').textContent = ex2Customers.toString();
+      document.getElementById('ex3-customers').textContent = ex3Customers.toString();
+
+      document.getElementById('ex1-profit').textContent = formatProfit(ex1Profit) + '/month';
+      document.getElementById('ex2-profit').textContent = formatProfit(ex2Profit) + '/month';
+      document.getElementById('ex3-profit').textContent = formatProfit(ex3Profit) + '/month';
+
+      // Show results
+      stepInput?.classList.add('hidden');
+      stepResults?.classList.remove('hidden');
+      console.log('Results displayed successfully');
+    } catch (error) {
+      console.error('Error in calculate function:', error);
+      alert('An error occurred. Check the console for details.');
     }
-
-    if (cogs >= revenue) {
-      alert('COGS must be less than LTV');
-      return;
-    }
-
-    const margin = revenue - cogs;
-    const breakeven = Math.ceil(MONTHLY_COST / margin);
-
-    // Update breakeven display
-    (document.getElementById('breakeven-display') as HTMLElement).textContent = breakeven.toString();
-    (document.getElementById('breakeven-math') as HTMLElement).textContent =
-      `${formatMoney(MONTHLY_COST)}/month ÷ ${formatMoney(margin)} margin = ${breakeven} customers`;
-
-    // Update margin display (de-emphasized)
-    (document.getElementById('margin-display') as HTMLElement).textContent = formatMoney(margin);
-    (document.getElementById('margin-math') as HTMLElement).textContent =
-      `(${formatMoney(revenue)} LTV − ${formatMoney(cogs)} COGS)`;
-
-    // Calculate examples (breakeven + 1, breakeven + 3, breakeven * 2 or more)
-    const ex1Customers = breakeven + 1;
-    const ex2Customers = breakeven + 3;
-    const ex3Customers = Math.max(breakeven + 5, breakeven * 2);
-
-    const ex1Profit = (ex1Customers * margin) - MONTHLY_COST;
-    const ex2Profit = (ex2Customers * margin) - MONTHLY_COST;
-    const ex3Profit = (ex3Customers * margin) - MONTHLY_COST;
-
-    (document.getElementById('ex1-customers') as HTMLElement).textContent = ex1Customers.toString();
-    (document.getElementById('ex2-customers') as HTMLElement).textContent = ex2Customers.toString();
-    (document.getElementById('ex3-customers') as HTMLElement).textContent = ex3Customers.toString();
-
-    (document.getElementById('ex1-profit') as HTMLElement).textContent = formatProfit(ex1Profit) + '/month';
-    (document.getElementById('ex2-profit') as HTMLElement).textContent = formatProfit(ex2Profit) + '/month';
-    (document.getElementById('ex3-profit') as HTMLElement).textContent = formatProfit(ex3Profit) + '/month';
-
-    // Show results
-    stepInput?.classList.add('hidden');
-    stepResults?.classList.remove('hidden');
   }
 
   function recalculate() {
@@ -348,8 +389,17 @@ const metadata = {
     }
   }
 
+  // Debug logging
+  console.log('Calculator script loaded');
+  console.log('calculateBtn:', calculateBtn);
+  console.log('revenueInput:', revenueInput);
+  console.log('cogsInput:', cogsInput);
+
   // Event listeners
-  calculateBtn?.addEventListener('click', calculate);
+  calculateBtn?.addEventListener('click', () => {
+    console.log('Calculate button clicked!');
+    calculate();
+  });
   recalculateBtn?.addEventListener('click', recalculate);
   getProjectionBtn?.addEventListener('click', submitEmail);
 
