@@ -309,7 +309,7 @@ const metadata = {
           A low Audience Relevance score means the video idea attracts the wrong people. No amount of CTA optimisation fixes this. The video needs to be replaced, not edited. Use the alternative video ideas the evaluator generates. They are built around your specific target customer and product.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          A weak Conversion Opportunity score is the hardest to fix in post. If the video subject has no logical moment to introduce your product, that moment will feel forced. The alternative topics solve this by starting from the buyer's problem, not the creator's idea.
+          A weak Conversion Opportunity score is the hardest to fix in post. If the video subject has no logical moment to introduce your product, that moment will feel forced. The alternative video ideas solve this by starting from the buyer's problem, not the creator's idea.
         </p>
       </div>
 
@@ -438,11 +438,11 @@ const metadata = {
     audienceRelevance: string,
     problemProximity: string
   ): { label: string; acquisitionPotential: string } {
-    if (buyerIntent === 'High' && audienceRelevance !== 'Low') return { label: 'Buyer-Intent Topic', acquisitionPotential: 'High' };
-    if (buyerIntent === 'High') return { label: 'Research Topic', acquisitionPotential: 'Moderate' };
-    if (buyerIntent === 'Medium' && (audienceRelevance === 'High' || problemProximity === 'High')) return { label: 'Research Topic', acquisitionPotential: 'Moderate' };
-    if (buyerIntent === 'Medium') return { label: 'Research Topic', acquisitionPotential: 'Moderate' };
-    return { label: 'Educational Topic', acquisitionPotential: 'Low' };
+    if (buyerIntent === 'High' && audienceRelevance !== 'Low') return { label: 'Buyer-Intent Video Idea', acquisitionPotential: 'High' };
+    if (buyerIntent === 'High') return { label: 'Research Video Idea', acquisitionPotential: 'Moderate' };
+    if (buyerIntent === 'Medium' && (audienceRelevance === 'High' || problemProximity === 'High')) return { label: 'Research Video Idea', acquisitionPotential: 'Moderate' };
+    if (buyerIntent === 'Medium') return { label: 'Research Video Idea', acquisitionPotential: 'Moderate' };
+    return { label: 'Educational Video Idea', acquisitionPotential: 'Low' };
   }
 
   function generateExplanation(
@@ -457,7 +457,7 @@ const metadata = {
       const audienceNote = audienceRelevance === 'High'
         ? 'The subject touches your space but the framing creates no urgency or decision trigger.'
         : 'It is also likely to attract a mixed audience rather than ' + targetCustomer + ' who are ready to act.';
-      return 'This topic is educational, not transactional. Viewers searching "' + topic + '" are exploring a concept, not evaluating options. ' + audienceNote;
+      return 'This video idea is educational, not transactional. Viewers searching "' + topic + '" are exploring a concept, not evaluating options. ' + audienceNote;
     }
     if (buyerIntent === 'High' && audienceRelevance === 'High') {
       const problemNote = problemProximity === 'High'
