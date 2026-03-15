@@ -3,9 +3,9 @@ import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'YouTube Topic Evaluator: Free Buyer Intent Checker',
+  title: 'YouTube Video Idea Evaluator | Free Buyer Intent Checker',
   description:
-    'Paste a YouTube topic and see if it attracts buyers or just viewers. Free for B2B founders. Get a buyer intent score plus 3-5 better topic alternatives.',
+    'Enter any YouTube video idea and find out if it targets buyers or browsers. Free buyer intent scoring for B2B founders. Get a score plus 3–5 better video ideas.',
 };
 ---
 
@@ -20,10 +20,10 @@ const metadata = {
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
-        Will this YouTube topic attract<br class="hidden sm:block" /> buyers or just viewers?
+        Will this YouTube video idea attract<br class="hidden sm:block" /> buyers or just viewers?
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Paste a topic, your target customer, and what you sell. Get a buyer intent score plus higher-converting alternatives.
+        Paste a YouTube video idea, your target customer, and what you sell. Get a buyer intent score plus higher-converting video ideas.
       </p>
     </div>
   </section>
@@ -40,7 +40,7 @@ const metadata = {
         <div class="space-y-5">
           <div>
             <label for="topic-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
-              YouTube topic
+              YouTube video idea
             </label>
             <input
               type="text"
@@ -83,7 +83,7 @@ const metadata = {
           class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
                  bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
         >
-          Evaluate this topic &rarr;
+          Evaluate this video idea &rarr;
         </button>
 
         <p id="eval-counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
@@ -111,7 +111,7 @@ const metadata = {
         <div class="text-center mb-6">
           <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free evaluations</p>
           <p class="text-sm text-gray-500 dark:text-slate-400">
-            Enter your email to keep going. We'll also send you our guide on picking buyer-intent topics.
+            Enter your email to keep going. We'll also send you our guide on picking buyer-intent video ideas.
           </p>
         </div>
         <div id="gate-form" class="space-y-3">
@@ -143,7 +143,7 @@ const metadata = {
 
         <!-- Verdict -->
         <div class="p-6 sm:p-8 text-center border-b border-slate-200 dark:border-slate-700/60">
-          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Topic evaluated</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Video idea evaluated</p>
           <p id="result-topic" class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-5"></p>
           <div id="verdict-badge" class="inline-flex items-center px-5 py-2 rounded-xl text-base font-bold mb-2"></div>
           <p id="verdict-label" class="text-xs uppercase tracking-wider text-gray-400 dark:text-slate-500 mt-2"></p>
@@ -224,7 +224,7 @@ const metadata = {
             id="reset-btn"
             class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
           >
-            &larr; Evaluate another topic
+            &larr; Evaluate another video idea
           </button>
         </div>
 
@@ -233,7 +233,7 @@ const metadata = {
   </section>
 
   <CallToAction
-    title="Your topics score well. Your conversion setup might not."
+    title="Your video ideas score well. Your conversion setup might not."
     subtitle="In our diagnostic, we map your full YouTube acquisition system: topics, CTAs, and the lead path from viewer to customer."
     actions={[
       {
@@ -253,8 +253,8 @@ const metadata = {
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your topic</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Type any YouTube topic you're considering, your target customer, and what you sell.</p>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your video idea</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Type any YouTube video idea you're considering, your target customer, and what you sell.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
@@ -264,7 +264,7 @@ const metadata = {
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
           <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Use the alternatives</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Get 5 higher-converting topic alternatives built around your specific customer and product.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Get 5 higher-converting video idea alternatives built around your specific customer and product.</p>
         </div>
       </div>
     </div>
@@ -275,12 +275,12 @@ const metadata = {
     <div class="max-w-2xl mx-auto px-4 space-y-14">
 
       <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How the Topic Evaluator works</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How the Video Idea Evaluator works</h2>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
           Every topic is scored across five dimensions: Buyer Intent, Audience Relevance, Problem Proximity, Conversion Opportunity, and Search Intent. These map directly to whether a viewer is likely to become a customer.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          Buyer Intent checks for signal words in your topic: "best," "vs," "review," "setup," "fix," "cost." These indicate a viewer researching a decision, not satisfying curiosity. Audience Relevance checks whether the topic attracts your actual target customer or a different audience. Problem Proximity measures how close the viewer is to an active problem they need solved today.
+          Buyer Intent checks for signal words in your video idea: "best," "vs," "review," "setup," "fix," "cost." These indicate a viewer researching a decision, not satisfying curiosity. Audience Relevance checks whether the video idea attracts your actual target customer or a different audience. Problem Proximity measures how close the viewer is to an active problem they need solved today.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
           Conversion Opportunity is where most businesses underestimate the analysis. A topic can attract the right viewer and still have no natural moment to introduce your product. The evaluator checks whether the video's subject creates a logical opening, or forces your product into an unrelated conversation.
@@ -301,12 +301,12 @@ const metadata = {
       </div>
 
       <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What to do when your topic scores low</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What to do when your video idea scores low</h2>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          A low Buyer Intent score almost always means the topic is framed around explanation rather than problem-solving. The fix is usually in the title. "How email marketing works" becomes "Why your email sequences aren't converting Shopify visitors." Same broad subject, completely different viewer and intent.
+          A low Buyer Intent score almost always means the video idea is framed around explanation rather than problem-solving. The fix is usually in the title. "How email marketing works" becomes "Why your email sequences aren't converting Shopify visitors." Same broad subject, completely different viewer and intent.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          A low Audience Relevance score means the topic attracts the wrong people. No amount of CTA optimisation fixes this. The video needs to be replaced, not edited. Use the alternative topics the evaluator generates. They are built around your specific target customer and product.
+          A low Audience Relevance score means the video idea attracts the wrong people. No amount of CTA optimisation fixes this. The video needs to be replaced, not edited. Use the alternative video ideas the evaluator generates. They are built around your specific target customer and product.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
           A weak Conversion Opportunity score is the hardest to fix in post. If the video subject has no logical moment to introduce your product, that moment will feel forced. The alternative topics solve this by starting from the buyer's problem, not the creator's idea.
@@ -463,7 +463,7 @@ const metadata = {
       const problemNote = problemProximity === 'High'
         ? 'The urgency signal is strong. Viewers are feeling this problem right now.'
         : 'Viewers are in evaluation mode and receptive to specific recommendations.';
-      return 'Strong buyer intent, right audience. Searchers on this topic are evaluating solutions, not exploring concepts. The subject directly targets ' + targetCustomer + '. ' + problemNote + ' Conversion opportunity is ' + conversionOpportunity.toLowerCase() + '.';
+      return 'Strong buyer intent, right audience. Searchers on this video idea are evaluating solutions, not exploring concepts. The subject directly targets ' + targetCustomer + '. ' + problemNote + ' Conversion opportunity is ' + conversionOpportunity.toLowerCase() + '.';
     }
     if (buyerIntent === 'High' && audienceRelevance === 'Medium') {
       return 'Strong buyer intent, partial audience match. The phrasing attracts decision-makers but may pull in a broader audience than ' + targetCustomer + '. Adding more specific customer language to the title will sharpen the match.';
@@ -475,7 +475,7 @@ const metadata = {
       const problemNote = problemProximity === 'High'
         ? 'The problem signal is strong, which helps.'
         : 'No urgency signal means viewers are unlikely to act.';
-      return 'Moderate acquisition potential. The topic is framed for research, not evaluation. The right audience may find it, but they are not in decision mode. ' + problemNote + ' The alternatives below use stronger buying-signal framing for ' + targetCustomer + '.';
+      return 'Moderate acquisition potential. The video idea is framed for research, not evaluation. The right audience may find it, but they are not in decision mode. ' + problemNote + ' The alternatives below use stronger buying-signal framing for ' + targetCustomer + '.';
     }
     return 'Limited acquisition potential in its current form. The framing puts viewers in early-stage research, not active evaluation. Rephrasing around a specific problem or comparison will improve its ability to attract ' + targetCustomer + ' who are ready to act.';
   }
@@ -907,7 +907,7 @@ const metadata = {
     try {
       await fetch(
         'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec',
-        { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'youtube-topic-evaluator' }) }
+        { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'youtube-video-ideas-evaluator' }) }
       );
     } catch { /* no-cors always resolves */ }
 
