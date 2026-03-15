@@ -19,7 +19,12 @@
 
 [[redirects]]
   from = "/youtube-topic-evaluator"
-  to = "/tools/youtube-topic-evaluator"
+  to = "/tools/youtube-video-ideas-evaluator"
+  status = 301
+
+[[redirects]]
+  from = "/tools/youtube-topic-evaluator"
+  to = "/tools/youtube-video-ideas-evaluator"
   status = 301
 
 [[redirects]]
