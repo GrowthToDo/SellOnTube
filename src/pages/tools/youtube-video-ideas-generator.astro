@@ -351,7 +351,7 @@ const metadata = {
 
   function validateInputs(): boolean {
     const product = (document.getElementById('product-input') as HTMLInputElement).value.trim();
-    const url = (document.getElementById('url-input') as HTMLInputElement).value.trim();
+    let url = (document.getElementById('url-input') as HTMLInputElement).value.trim();
     const customer = (document.getElementById('customer-input') as HTMLInputElement).value.trim();
     const problem = (document.getElementById('problem-input') as HTMLTextAreaElement).value.trim();
 
@@ -362,8 +362,13 @@ const metadata = {
       valid = false;
     } else { clearFieldError('product-input'); }
 
-    if (!url || (!url.startsWith('http://') && !url.startsWith('https://'))) {
-      showFieldError('url-input', 'Please enter a valid URL starting with https://');
+    // Auto-prepend https:// if user typed a bare domain
+    if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'https://' + url;
+      (document.getElementById('url-input') as HTMLInputElement).value = url;
+    }
+    if (!url) {
+      showFieldError('url-input', 'Please enter your product page URL.');
       valid = false;
     } else { clearFieldError('url-input'); }
 
