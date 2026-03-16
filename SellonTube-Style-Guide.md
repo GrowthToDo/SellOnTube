@@ -190,3 +190,131 @@ The first sentence is the most important line of the post. Never waste it on a g
 **Good:** "Your Shopify store has 4,000 email subscribers and a 2% open rate. That's 3,920 people ignoring you every week."
 
 The reader should feel something in the first sentence. Curiosity, recognition, or a slight sting. If the first line is skippable, the rest of the post probably will be too.
+
+---
+
+## Content Structure & Formatting Reference
+
+These structural and formatting patterns define how SellonTube blog posts should be built. They apply to every post. The goal: a business owner should be able to skim in 90 seconds and leave with a clear mental model. A careful reader should feel they got something they couldn't find anywhere else.
+
+### 1. Open with a real problem scenario — not a definition
+
+The first 2-3 sentences drop the reader into a specific, recognisable situation. No warm-up. No "YouTube SEO is important because...".
+
+Good pattern: "You optimised your video title. You added tags. You wrote a 200-word description. Six weeks later: 34 views, 28 of them yours."
+
+### 2. Case studies over hypotheticals
+
+Every major claim should be anchored by a real example with at least one specific number. Not "a Shopify store we worked with" — but "a Shopify app client generated 1,257 conversions from YouTube in 12 months, compared to 411 from their blog in the same period." If you don't have a real number, describe the pattern honestly with "in our experience" or "we've seen this pattern with..." Never invent statistics.
+
+### 3. Bold callout lines to surface key insights
+
+After landing a key point in a section, pull the core insight onto its own bolded line. This stops skimmers.
+
+Examples:
+- "**The bottleneck is not production. It is keyword selection.**"
+- "**Most channels optimise for the algorithm. The ones that convert optimise for the buyer.**"
+
+Use 2-3 per post maximum. If every section has one, they lose their impact.
+
+### 4. Before/after comparison blocks for mindset shifts
+
+When explaining a shift in thinking or approach, use this exact format:
+
+**What most channels do:** [1-2 sentences on the default behaviour]
+**What actually works:** [1-2 sentences on the better approach]
+
+No prose paragraphs inside these blocks. Keep them tight.
+
+### 5. ✅ / ❌ decision blocks for choices the reader has to make
+
+When the content involves a genuine decision, format it as:
+
+✅ **Do this when:** [specific condition] — [1-sentence explanation]
+❌ **Skip this when:** [specific condition] — [1-sentence explanation]
+
+Only use this format when there is a real either/or decision. Do not use it to dress up a list of tips.
+
+### 6. Numbered step frameworks for any process
+
+When teaching a process, use Step 1 / Step 2 / Step 3 with H3 headings — not bullet points. Each step gets:
+- A bolded action label
+- 2-4 sentences of explanation
+- One concrete example or specific observation from SellonTube's work
+
+### 7. Horizontal rules between major H2 sections
+
+Use `---` between H2 sections to create visual breathing room. Required on any post over 800 words.
+
+### 8. Short paragraphs + white space
+
+Maximum 3 sentences per paragraph in body copy. One-sentence paragraphs are encouraged for emphasis. Never stack two dense paragraphs back-to-back without a callout, list, or visual break between them.
+
+### 9. Close with "What to do this week" — never a summary
+
+The final section is a numbered list of 5-7 specific micro-actions the reader can take in the next 7 days. After the list: one final sentence. Make it sharp and true, not motivational.
+
+Never close with a summary, a restatement of main points, or a vague CTA like "Start today" or "The only question is: are you ready?"
+
+**The benchmark test:** Before finishing any post, ask: could a reader screenshot one section and share it as a standalone insight on LinkedIn? If yes, the structure is right. If the post only works as a whole and no single section stands alone, it needs more work.
+
+This formatting system is not for decoration. Do not use ✅/❌ lists for content that reads fine as prose. Do not bold things just to break up monotony. Every formatting choice should make the content easier to act on, not just easier to scan.
+
+### 10. Key Takeaways as the first H2 — mandatory on posts over 1,000 words
+
+Place a "Key Takeaways" H2 immediately after the intro. 5-6 bullet points. Each one must be a standalone insight, not a preview of what the post covers. A reader who only reads this section should leave with real value.
+
+Good: "YouTube videos targeting 'how-to' queries outperform brand videos 3:1 for organic traffic."
+Bad: "This post explains the difference between search-optimised and brand videos."
+
+Google frequently pulls this section for featured results and sitelinks. Do not waste it on navigation copy.
+
+### 11. Quick Answer block for direct-answer queries
+
+For posts targeting a "what is X" or "how does X work" query, add a short blockquote or callout immediately after the H1 (before the intro paragraph). 2-3 sentences. Answer the question directly. No "in this post we'll explore" — just the answer.
+
+This competes for Google's position zero. The problem scenario intro that follows is still the hook; the Quick Answer block is purely for search intent. Only use it for queries with a clear, concise answer. Don't force it onto posts where the answer is genuinely "it depends."
+
+### 12. Comparison tables as a content and keyword device
+
+Tables are not just formatting — they are SEO assets. Each table row can surface in search for a different long-tail query. Use tables for:
+
+- **Phase | What to do | Why it works** — process and framework posts
+- **Tool | Best for | Key limitation** — roundup and comparison posts
+- **Industry | Problem | How YouTube solves it** — use case posts
+- **Role | Recommended approach | Reasoning** — decision framework posts
+
+Column headers must be specific. "Step | Description" is not a table — it is a list in disguise. Each column header should be independently meaningful.
+
+### 13. "How to Choose" section for comparison and roundup posts
+
+Any post that reviews tools, strategies, or options should include a dedicated "How to Choose [X]" H2 section. This captures high-intent "which X is right for me" queries that most posts miss.
+
+Structure it as a table or ✅/❌ decision blocks with role, need, or scenario breakdowns. This is one of the highest-converting sections on any comparison post.
+
+### 14. Sources section — cite every external stat
+
+Any post that references an external statistic must end with a "Sources" section (after the FAQ, before the CTA). List each cited source with: source name, what it says, and year.
+
+Never leave a stat uncited. If you cannot cite it, either remove it or attribute it honestly ("in our experience" / "based on clients we've worked with"). A cited post signals E-E-A-T to Google and earns more links than an uncited one.
+
+### 15. Industry and use case tables
+
+For any post with broad applicability, add an "Industry Use Cases" or "Who This Works For" section structured as a table:
+
+| Industry | Specific problem | How YouTube addresses it |
+|----------|-----------------|--------------------------|
+
+Each row targets a different niche long-tail query and shows Google the post has topical depth. Cap it at 5-7 rows — enough to be useful, not so many it becomes a filler list.
+
+### 16. Consistent sub-structure for listicle items
+
+When writing a "best X" or "top N tools/strategies" post, every list item must use the same H3 sub-structure. Decide the structure before writing and apply it throughout. Recommended structure:
+
+**[Name] — [one-line positioning]**
+- Best for: [specific use case]
+- Key advantage: [what makes it stand out]
+- Key limitation: [honest tradeoff]
+- Verdict: [one sentence]
+
+Consistent structure makes posts scannable, signals quality to Google, and helps readers compare items quickly. Inconsistent depth across items is a quality signal Google notices.
