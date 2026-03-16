@@ -53,13 +53,18 @@
   status = 301
 
 [[redirects]]
-  from = "/youtube-vs-:slug"
-  to = "/youtube-vs/:slug"
+  from = "/youtube-vs"
+  to = "/youtube-vs/"
   status = 301
 
 [[redirects]]
-  from = "/youtube-for-:slug"
-  to = "/youtube-for/:slug"
+  from = "/youtube-vs-*"
+  to = "/youtube-vs/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-for-*"
+  to = "/youtube-for/:splat"
   status = 301
 
 [[redirects]]
