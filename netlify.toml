@@ -93,4 +93,4 @@
 
 # IndexNow: ping search engines after production deploy to trigger fast indexing
 [context.production]
-  command = "npm run build && node scripts/indexnow-ping.js"
+  command = "npm run build && (node scripts/indexnow-ping.js || true)"
