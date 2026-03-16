@@ -90,3 +90,7 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# IndexNow: ping search engines after production deploy to trigger fast indexing
+[context.production]
+  command = "npm run build && node scripts/indexnow-ping.js"
