@@ -133,3 +133,17 @@ Two distinct cases — never give blanket advice:
 - Exact word count targets
 - E-E-A-T as a direct ranking factor (it's a quality framework, not a signal)
 - Keywords in domain name (minimal impact)
+
+---
+
+## SEO Craft: Additional Rules
+
+### Featured snippet targeting
+
+One section per post should be written as a direct, concise answer (40-60 words) to the target keyword question. No preamble. Just the answer. Google pulls these as featured snippets. Structure it as a short paragraph or a clean numbered list.
+
+**Placement matters:** For "what is X" or "how does X work" queries, position this as a Quick Answer callout immediately after the H1 and before the intro paragraph. For other post types, it can be the Key Takeaways section's opening bullet or a standalone mid-post callout. Either way, the answer must be complete and useful without requiring the surrounding context.
+
+### Video + blog pairing
+
+For any post targeting a keyword where YouTube videos already rank in Google's top 10, note this in the post brief. These posts should be built with the assumption that a companion video will eventually be created for the same keyword. Write the post so the H2 headings could double as a video chapter structure.

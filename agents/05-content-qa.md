@@ -57,6 +57,31 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Content speaks to B2B founders/operators, not hobbyist creators
 - [ ] Where YouTube tactics are discussed, they're framed as business tools (leads, revenue, acquisition) — not vanity metrics (subscribers, views)
 
+**Content structure & formatting**
+- [ ] Post opens with a real problem scenario (specific situation), NOT a definition or warm-up
+- [ ] Every major claim is anchored by a real example with at least one specific number — no hypotheticals disguised as examples
+- [ ] Bold callout lines used sparingly (2-3 max per post) — each one pulls a genuine key insight onto its own line, not just breaks up monotony
+- [ ] Before/after comparison blocks (`**What most channels do:** / **What actually works:**`) are tight — no prose inside them
+- [ ] ✅/❌ decision blocks used only for real either/or decisions — not as a styled list of tips
+- [ ] Process content uses numbered H3 steps, not bullet points
+- [ ] `---` horizontal rules present between H2 sections on any post over 800 words
+- [ ] No paragraph exceeds 3 sentences in body copy
+- [ ] Post closes with "What to do this week" (numbered list of 5-7 micro-actions + one final sentence) — NOT a summary, NOT a restatement, NOT a vague CTA
+- [ ] Benchmark test: at least one section can stand alone as a shareable insight (screenshot test)
+- [ ] Posts over 1,000 words have a "Key Takeaways" H2 immediately after the intro — 5-6 standalone insights, not navigation bullets
+- [ ] Key Takeaways section opens with (or includes) the direct answer to the title query
+- [ ] For "what is X" / "how does X work" queries: Quick Answer callout is present before or at the top of the intro (position zero target)
+- [ ] Comparison and roundup posts include a "How to Choose [X]" H2 section
+- [ ] Any external statistics are cited — Sources section present at the end of the post
+- [ ] Listicle items (if present) all follow the same H3 sub-structure throughout (Best for / Key advantage / Key limitation / Verdict)
+- [ ] Comparison tables use specific column headers — not "Step | Description" but e.g., "Tool | Best for | Key limitation"
+- [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
+
+**SEO craft**
+- [ ] At least one section is written as a 40-60 word direct answer to the target keyword question (featured snippet candidate) — no preamble, just the answer
+- [ ] Featured snippet answer is correctly placed: top of post (Quick Answer block) for direct-answer queries, Key Takeaways opening bullet for all others
+- [ ] If YouTube videos rank in Google's top 10 for this keyword: confirm it was noted in the outline and that H2 headings could double as video chapter titles
+
 ### Step 3 — Output QA report
 
 ```
