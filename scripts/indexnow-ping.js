@@ -3,7 +3,7 @@
 // Run: node scripts/indexnow-ping.js
 // Env: INDEXNOW_KEY (required), SITE_URL (default: https://sellontube.com)
 
-const https = require('https');
+import https from 'https';
 
 const key = process.env.INDEXNOW_KEY;
 const siteUrl = process.env.SITE_URL || 'https://sellontube.com';
