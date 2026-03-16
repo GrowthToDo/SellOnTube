@@ -1,0 +1,258 @@
+SELLONTUBE — /youtube-for/ SLUG AUDIT LOG
+Generated: 2026-03-16
+Auditor: Sub-Agent 5 — Redirect & Slug Manager
+Primary keyword context: youtube marketing strategy
+URL structure decision: STAY with /youtube-for/[niche] — NO URL migrations
+=========================================================================
+
+AUDIT SCOPE
+-----------
+Source file: src/data/niches.ts (29 slugs)
+Standalone pages: src/pages/youtube-for/shopify.astro (1 additional slug)
+Total slugs reviewed: 30
+
+EVALUATION CRITERIA (all three must be true to recommend a change)
+-------------------------------------------------------------------
+1. The current slug has a specific, fixable SEO problem (not just "could be shorter")
+2. The new slug is meaningfully better for keyword targeting
+3. The change is worth the redirect cost
+
+=========================================================================
+SLUG-BY-SLUG DECISIONS
+=========================================================================
+
+REVIEWED — NO CHANGE: /youtube-for/saas
+Reason: Lowercase, hyphen-free (single word), concise. "SaaS" is the exact industry term
+searchers use. No stop words. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/coaches
+Reason: Lowercase, single word, no stop words. "coaches" is the natural searcher term
+(e.g. "youtube for coaches"). No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/agencies
+Reason: Lowercase, single word, no stop words. Clean and keyword-relevant. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/consultants
+Reason: Lowercase, single word, no stop words. Matches search pattern "youtube for consultants"
+exactly. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/b2b-companies
+Reason: Lowercase, hyphen-separated, no stop words. "b2b-companies" is a clear, specific
+descriptor. An alternative like "b2b" would lose specificity. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/course-creators
+Reason: Lowercase, hyphen-separated, no stop words. "course-creators" is the industry-standard
+term searchers use. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/financial-advisors
+Reason: Lowercase, hyphen-separated, no stop words. "financial-advisors" is the exact
+professional category term. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/law-firms
+Reason: Lowercase, hyphen-separated. "law" is not a removable stop word here — it is part of
+the compound noun "law firms". No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/real-estate
+Reason: Lowercase, hyphen-separated. "real-estate" is the canonical industry noun — not a
+stop word construction. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/marketing-agencies
+Reason: Lowercase, hyphen-separated, no stop words. Provides useful specificity over
+/youtube-for/agencies and targets a distinct keyword cluster. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/software-companies
+Reason: Lowercase, hyphen-separated, no stop words. "software-companies" is the natural search
+term. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/fintech-companies
+Reason: Lowercase, hyphen-separated, no stop words. "fintech" is the accepted industry term.
+No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/hr-software
+Reason: Lowercase, hyphen-separated, no stop words. "hr-software" correctly identifies the
+niche. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/edtech-companies
+Reason: Lowercase, hyphen-separated, no stop words. "edtech" is the accepted industry
+abbreviation. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/cybersecurity-companies
+Reason: Lowercase, hyphen-separated, no stop words. Longer slug is warranted — "cybersecurity"
+is the searcher term. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/accountants
+Reason: Lowercase, single word, no stop words. Clean and directly keyword-matched. No SEO
+problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/insurance-agents
+Reason: Lowercase, hyphen-separated, no stop words. "insurance-agents" is the professional
+category term searchers use. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/mortgage-brokers
+Reason: Lowercase, hyphen-separated, no stop words. "mortgage-brokers" is the exact
+professional category. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/recruiting-firms
+Reason: Lowercase, hyphen-separated, no stop words. "recruiting-firms" is precise and
+keyword-relevant. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/management-consultants
+Reason: Lowercase, hyphen-separated, no stop words. "management" is not a removable stop word —
+it disambiguates from /youtube-for/consultants and targets a distinct keyword cluster. No SEO
+problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/business-coaches
+Reason: Lowercase, hyphen-separated, no stop words. "business" disambiguates from
+/youtube-for/coaches and /youtube-for/life-coaches. Targets a distinct searcher segment.
+No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/life-coaches
+Reason: Lowercase, hyphen-separated, no stop words. "life" disambiguates from
+/youtube-for/coaches and /youtube-for/business-coaches. Targets a distinct segment.
+No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/professional-services
+Reason: Lowercase, hyphen-separated, no stop words. "professional-services" is a broad but
+legitimate industry category with its own search demand. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/startup-founders
+Reason: Lowercase, hyphen-separated, no stop words. "startup-founders" is the exact audience
+term. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/ecommerce
+Reason: Lowercase, single word, no stop words. "ecommerce" is the canonical spelling used in
+search. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/healthcare-practices
+Reason: Lowercase, hyphen-separated, no stop words. "healthcare-practices" is the appropriate
+professional category. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/dental-practices
+Reason: Lowercase, hyphen-separated, no stop words. "dental-practices" precisely identifies
+the niche. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/subscription-businesses
+Reason: Lowercase, hyphen-separated, no stop words. "subscription-businesses" targets a
+specific recurring-revenue business model segment. No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/marketplaces
+Reason: Lowercase, single word, no stop words. Clean and keyword-relevant. No SEO problem
+to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/small-business
+Reason: Lowercase, hyphen-separated. "small" is not removable — it is the defining modifier
+of the compound noun "small business". High search volume term (youtube for small business).
+No SEO problem to fix.
+
+---
+
+REVIEWED — NO CHANGE: /youtube-for/shopify
+Reason: Standalone page (src/pages/youtube-for/shopify.astro). Lowercase, single word.
+"shopify" is the exact brand term. No SEO problem to fix.
+
+=========================================================================
+REDIRECT AUDIT
+=========================================================================
+
+WILDCARD REDIRECT CHECK: /youtube-for-:slug → /youtube-for/:slug
+Status: ALREADY EXISTS in netlify.toml (line 61-63)
+Entry:
+  [[redirects]]
+  from = "/youtube-for-:slug"
+  to = "/youtube-for/:slug"
+  status = 301
+Action: NO CHANGE NEEDED
+
+---
+
+WILDCARD REDIRECT CHECK: /youtube-marketing-strategy/:slug → /youtube-for/:slug
+Status: NOT PRESENT in netlify.toml
+Assessment: No evidence this URL pattern was ever used on the site or linked externally.
+No Astro pages exist at /youtube-marketing-strategy/. Adding a redirect for a pattern
+that has never existed would be speculative and adds noise to netlify.toml.
+Action: NOT ADDED — no SEO reason to add (pattern was never live)
+
+---
+
+OTHER /youtube-for/ REDIRECTS ALREADY IN netlify.toml: NONE
+No individual /youtube-for/[slug] redirects exist or are needed.
+
+=========================================================================
+SUMMARY
+=========================================================================
+
+Total slugs reviewed:       30
+Slug changes made:           0
+Redirects added:             0
+
+Existing redirects covering /youtube-for/ URLs:
+  /youtube-for-:slug  →  /youtube-for/:slug  (301, line 61, netlify.toml)
+  — This wildcard handles any legacy flat-pattern links cleanly.
+
+All 30 /youtube-for/ slugs pass SEO best practice checks:
+  ✓ All lowercase
+  ✓ All use hyphens (no underscores, no spaces)
+  ✓ No removable stop words that would meaningfully improve any slug
+  ✓ All concise and keyword-relevant for their target niche
+  ✓ No slug change meets the 3-condition decision rule
+
+No netlify.toml modifications required.
+=========================================================================

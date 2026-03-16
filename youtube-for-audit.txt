@@ -1,0 +1,66 @@
+=== EXISTING PAGES ===
+/youtube-for/saas — SaaS Companies
+/youtube-for/coaches — Coaches
+/youtube-for/agencies — Agencies
+/youtube-for/consultants — Consultants
+/youtube-for/b2b-companies — B2B Companies
+/youtube-for/course-creators — Course Creators
+/youtube-for/financial-advisors — Financial Advisors
+/youtube-for/law-firms — Law Firms
+/youtube-for/real-estate — Real Estate Professionals
+/youtube-for/marketing-agencies — Marketing Agencies
+/youtube-for/software-companies — Software Companies
+/youtube-for/fintech-companies — Fintech Companies
+/youtube-for/hr-software — HR Software Companies
+/youtube-for/edtech-companies — EdTech Companies
+/youtube-for/cybersecurity-companies — Cybersecurity Companies
+/youtube-for/accountants — Accounting Firms
+/youtube-for/insurance-agents — Insurance Agents
+/youtube-for/mortgage-brokers — Mortgage Brokers
+/youtube-for/recruiting-firms — Recruiting Firms
+/youtube-for/management-consultants — Management Consultants
+/youtube-for/business-coaches — Business Coaches
+/youtube-for/life-coaches — Life Coaches
+/youtube-for/professional-services — Professional Services Firms
+/youtube-for/startup-founders — Startups and Founders
+/youtube-for/ecommerce — E-commerce Businesses
+/youtube-for/healthcare-practices — Healthcare Practices
+/youtube-for/dental-practices — Dental Practices
+/youtube-for/subscription-businesses — Subscription Businesses
+/youtube-for/marketplaces — Marketplace Businesses
+/youtube-for/small-business — Small Businesses
+/youtube-for/shopify — [standalone .astro page, no niches.ts entry]
+
+=== MISSING FROM TARGET LIST ===
+/youtube-for/agency
+/youtube-for/ecommerce (NOTE: slug exists as 'ecommerce' — covered; 'shopify' exists as standalone .astro — covered)
+/youtube-for/realtors
+/youtube-for/health
+/youtube-for/healthcare (NOTE: closest match is 'healthcare-practices' — partial match only)
+/youtube-for/doctors
+/youtube-for/personal-injury-lawyers
+/youtube-for/non-profits
+/youtube-for/startups (NOTE: closest match is 'startup-founders' — partial match only)
+/youtube-for/hair-salon
+/youtube-for/medical-devices
+
+=== TARGET NICHES ALREADY COVERED ===
+saas — matched (slug: saas)
+ecommerce — matched (slug: ecommerce)
+shopify — matched (standalone page: src/pages/youtube-for/shopify.astro)
+small-business — matched (slug: small-business)
+real-estate — matched (slug: real-estate)
+healthcare — PARTIAL MATCH ONLY (slug: healthcare-practices — not the same as 'healthcare')
+b2b — PARTIAL MATCH ONLY (slug: b2b-companies — not the same as 'b2b')
+coaches — matched (slug: coaches)
+startups — PARTIAL MATCH ONLY (slug: startup-founders — not the same as 'startups')
+
+=== UNMATCHED TARGET NICHES (require new pages) ===
+agency          → no match (closest: agencies — different slug)
+realtors        → no match
+health          → no match (closest: healthcare-practices — different slug and scope)
+doctors         → no match
+personal-injury-lawyers → no match
+non-profits     → no match
+hair-salon      → no match
+medical-devices → no match
