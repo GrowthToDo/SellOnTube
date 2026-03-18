@@ -34,75 +34,7 @@ Last updated: 2026-03-02
 
 ---
 
-## Current Baseline (90-day snapshot, as of 2026-03-02)
-
-| Metric | Value |
-|---|---|
-| Total sessions (90d) | 74 |
-| Organic search sessions | 6 (8.1%) |
-| Direct sessions | 63 (85.1%) |
-| Organic search clicks (GSC) | 8 |
-| Total GSC impressions | ~280 |
-| pSEO pages live | 0 (drip starts Mar 2) |
-| Blog posts indexed | ~6 |
-
-**Diagnosis:** The site is essentially invisible. Traffic is almost entirely direct (team/founder). The SEO foundation is solid, but there is almost no content volume and near-zero backlinks — the two things Google needs before it trusts a site.
-
----
-
-## What the Data Shows
-
-### Pages ranking but getting zero clicks
-
-These pages have Google attention but are losing the click. The title or snippet is not compelling enough.
-
-| Page | Impressions | Avg Position | Clicks |
-|---|---|---|---|
-| `/blog/youtube-vs-blog-shopify-app-case-study` | 33 | 7.1 | 0 |
-| `/pricing` | 27 | 2.9 | 0 |
-| `/blog/youtube-marketing-roi` | 16 | 3.8 | 0 |
-| `/blog/search-intent-youtube-seo-power` | 6 | 4.7 | 0 |
-| `/blog/why-most-youtube-strategies-fail` | 3 | 3.7 | 0 |
-
-**Root cause:** Position 3–7 with 0 clicks = the SERP snippet (title + meta description) is not earning the click even when the ranking is there. This is the fastest-payoff fix in the whole plan — no new content needed.
-
-### Legacy URLs wasting crawl equity
-
-These are WordPress artifact URLs still indexed in Google. They generate impressions for junk or misdirected queries. They dilute the site's topical authority signal.
-
-| URL | Impressions | Avg Position | Action |
-|---|---|---|---|
-| `/search-intent-youtube-seo-power` | 23 | 35.2 | 301 → `/blog/search-intent-youtube-seo-power` |
-| `/landing/product` | 9 | 4.6 | GSC Removals (WordPress junk) |
-| `/category/youtube-strategy` | 8 | 4.0 | Check if redirect needed or GSC removal |
-| `/homes/mobile-app` | 7 | 3.3 | GSC Removals (WordPress junk) |
-| `/the-youtube-acquisition-engine` | 3 | 7.0 | 301 → `/blog/the-youtube-acquisition-engine` |
-
-### What is not showing in GSC yet
-
-- pSEO pages (29 YouTube For + 20 YouTube Vs) — none visible yet (drip just starting)
-- ROI calculator — showing only on `/calculator` redirect, not the canonical
-- Most blog posts — indexed but no impressions = targeting keywords with too little search volume or too high competition
-
----
-
 ## Growth Levers, Prioritised
-
-### Lever 1 — Fix CTR on pages already ranking *(highest ROI, zero new content needed)*
-
-For every page with >5 impressions and 0 clicks: rewrite the title tag and meta description.
-Goals:
-- Title: primary keyword in first 3 words, specific benefit or number, under 60 chars
-- Meta: 120–155 chars, one specific claim, one implicit question the reader is asking
-- No filler openers ("The Hidden Power of...", "Why Most...", "A guide to...")
-
-**Immediate targets:**
-1. `/blog/youtube-vs-blog-shopify-app-case-study` (33 impressions, pos 7)
-2. `/pricing` (27 impressions, pos 2.9) — title currently "Pricing | SellOnTube"
-3. `/blog/youtube-marketing-roi` (16 impressions, pos 3.8)
-4. `/blog/search-intent-youtube-seo-power` (6 impressions, pos 4.7)
-
----
 
 ### Lever 2 — Clean up legacy index pollution *(1-2 hours, frees crawl budget)*
 
@@ -132,20 +64,14 @@ Rules:
 
 ### Lever 4 — Blog: publish toward keyword clusters with real search demand *(mid-term)*
 
-Current blog posts are ranking but for low-volume or vague queries. Before writing any new post, validate the keyword:
+Before writing any new post, validate the keyword:
 - Is there actual search demand? (Use GSC impressions data over time as proxy; use Google Autocomplete and related searches for intent signals)
-- Is the intent commercial or informational? (Prefer informational that leads to commercial intent — readers who are educating themselves before buying)
+- Is the intent commercial or informational? (Prefer informational that leads to commercial intent)
 - Does it fit the ICP? (B2B SaaS founders, operators at SMBs with $1M+ revenue, businesses that sell high-ticket services)
 
-**Keyword clusters to target (based on site positioning):**
-- `youtube for [niche]` long-tail — covered by pSEO
-- `youtube vs [channel]` comparisons — covered by pSEO
-- YouTube B2B marketing strategy (informational, high-intent)
-- YouTube ROI / payback period (calculator page, supporting posts)
-- Faceless YouTube / YouTube without recording (brand differentiator)
-- Case studies: real numbers from YouTube customer acquisition
+**Keyword clusters and post list:** See `MICROTOOLS-BLOG-STRATEGY.md` Part 2 — 6 clusters fully mapped with post titles.
 
-**Cadence:** 2 posts/month minimum. Quality over quantity — each post must target a specific, validated keyword and meet the Content Quality Playbook standard.
+**Cadence:** 1 post/week, hard ceiling 2/week. Quality over quantity — each post must target a specific, validated keyword and meet the Content Quality Playbook standard.
 
 ---
 
@@ -173,15 +99,9 @@ This is the #1 constraint on organic growth. Without backlinks, Google has littl
 
 ### Lever 6 — Distribution (non-SEO traffic that builds brand authority) *(ongoing)*
 
-Google's Helpful Content system rewards sites with real brand signals — people searching for you directly, links from real sites, social mentions. Distribution is not just about traffic, it feeds into Google's trust model.
+Google's Helpful Content system rewards real brand signals — direct searches, links from real sites, social mentions. Distribution feeds into Google's trust model, not just traffic volume.
 
-**Recommended channels (pick 2, commit to them):**
-
-1. **LinkedIn** — The ICP (B2B founders, operators) is heavily on LinkedIn. Short-form posts with specific insights from the blog or case studies. Link back to site in comments or first reply (not in post body — LinkedIn suppresses outbound links in posts).
-
-2. **Newsletter** — A short weekly/biweekly email. Even 200 subscribers is a meaningful brand signal if they open and click. It also becomes a launch amplifier for new blog posts and calculator improvements.
-
-3. **YouTube** (ironic, but appropriate) — Short-form clips or video essays about B2B YouTube strategy. The brand itself should be demonstrating what it sells. Even 3–5 videos builds authority and earns backlinks.
+See `SellonTube-Content-Quality-Playbook.md` Section 7 for recommended channels, repurposing strategy, and the underutilized channel mapping framework. Pick 2 channels and commit — don't spread thin.
 
 ---
 
@@ -191,39 +111,8 @@ From the audit, several P1/P2 items remain unresolved. These are not traffic dri
 
 | Item | Impact | Status |
 |---|---|---|
-| Pricing page title: "Pricing | SellOnTube" → "YouTube Acquisition Pricing \| SellOnTube" | CTR on brand searches | Pending |
-| Author schema missing `url`/`sameAs` in BlogPosting | E-E-A-T signal | Pending |
-| `sameAs` in Org schema missing YouTube + LinkedIn | E-E-A-T signal | Pending |
-| Blog hero image alt = `post.excerpt` (wrong) | Crawl quality | Pending |
-| `lastmod` dates missing from sitemap | Crawl efficiency | Pending |
-
----
-
-## Execution Order
-
-**Week 1 (now):**
-- [ ] Fix CTR: rewrite titles + meta descriptions for the 4 zero-click ranked pages
-- [ ] Fix legacy redirects: add 301s for moved blog posts in `netlify.toml`
-- [ ] Fix pricing page title tag
-- [ ] Submit `/blog/youtube-vs-blog-shopify-app-case-study` for GSC indexing (highest impressions)
-
-**Week 2:**
-- [ ] GSC Removals: request removal of `/homes/mobile-app` and `/landing/product`
-- [ ] Fix author schema (`url` + `sameAs` for Gautham)
-- [ ] Fix `sameAs` in Org schema (add YouTube + LinkedIn)
-- [ ] Start pSEO GSC submission routine as pages drip live
-
-**Month 1:**
-- [ ] Publish 2 new blog posts targeting validated keywords
-- [ ] Identify 3 B2B marketing publications for guest post outreach
-- [ ] Publish one original data piece (linkable asset)
-- [ ] Set up newsletter (even just a Beehiiv or ConvertKit free tier)
-
-**Month 2–3:**
-- [ ] 2+ guest posts published and live
-- [ ] First pSEO pages accumulating impressions — assess which need content depth improvements
-- [ ] ROI calculator: add embed code, pitch to 5 newsletters as a free tool
-- [ ] LinkedIn posting cadence established (3x/week)
+| Author schema missing `url`/`sameAs` in BlogPosting | E-E-A-T signal | **Fixed** — LinkedIn URL added to BlogPosting schema |
+| `lastmod` dates missing from sitemap | Crawl efficiency | **Fixed** — `lastmod: new Date()` added to sitemap config |
 
 ---
 

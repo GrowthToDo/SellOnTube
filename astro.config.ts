@@ -31,6 +31,7 @@ export default defineConfig({
     }),
     sitemap({
       filter: (page) => !page.includes('/tag/') && !page.includes('/category/'),
+      lastmod: new Date(),
     }),
     mdx(),
     icon({

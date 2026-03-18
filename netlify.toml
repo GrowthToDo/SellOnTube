@@ -53,6 +53,16 @@
   status = 301
 
 [[redirects]]
+  from = "/blog/2"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-for"
+  to = "/youtube-for/"
+  status = 301
+
+[[redirects]]
   from = "/youtube-vs"
   to = "/youtube-vs/"
   status = 301

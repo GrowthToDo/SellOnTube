@@ -70,17 +70,6 @@ Read this before any SEO decision. These rules override general SEO defaults.
 
 ---
 
-## Title + Excerpt Checklist (blog posts)
-
-Before approving or publishing any post, verify:
-1. Title does not open with generic filler
-2. Title does not use insider jargon the reader wouldn't search
-3. Excerpt does not start with "A practical guide..." or "This post covers..."
-4. Excerpt has at least one specific claim, number, or hook
-5. Grep excerpt for broken em-dashes (hyphen surrounded by word chars with no spaces)
-
----
-
 ## GSC Legacy URL Triage
 
 Two distinct cases — never give blanket advice:
@@ -116,34 +105,3 @@ Two distinct cases — never give blanket advice:
 
 ---
 
-## What Google Actually Uses (from official guide)
-
-- Title tag + page headings → title link in SERP
-- Meta description → snippet (you write it, Google may or may not use it)
-- Alt text → image understanding
-- Internal links → crawl discovery
-- Canonical tag → duplicate content resolution
-- robots.txt / noindex → crawl/index control
-- Sitemaps → crawl coverage (optional but helpful)
-
-## What Google Does NOT Use
-
-- Keywords meta tag (ignored completely)
-- Heading order for ranking (matters for accessibility, not ranking)
-- Exact word count targets
-- E-E-A-T as a direct ranking factor (it's a quality framework, not a signal)
-- Keywords in domain name (minimal impact)
-
----
-
-## SEO Craft: Additional Rules
-
-### Featured snippet targeting
-
-One section per post should be written as a direct, concise answer (40-60 words) to the target keyword question. No preamble. Just the answer. Google pulls these as featured snippets. Structure it as a short paragraph or a clean numbered list.
-
-**Placement matters:** For "what is X" or "how does X work" queries, position this as a Quick Answer callout immediately after the H1 and before the intro paragraph. For other post types, it can be the Key Takeaways section's opening bullet or a standalone mid-post callout. Either way, the answer must be complete and useful without requiring the surrounding context.
-
-### Video + blog pairing
-
-For any post targeting a keyword where YouTube videos already rank in Google's top 10, note this in the post brief. These posts should be built with the assumption that a companion video will eventually be created for the same keyword. Write the post so the H2 headings could double as a video chapter structure.

@@ -62,7 +62,7 @@ const blogPostingSchema = {
     "height": post.featuredImageHeight || 630,
     "caption": post.featuredImageCaption || post.image_alt || post.title
   } } : {}),
-  ...(post.author ? { "author": { "@type": "Person", "name": post.author } } : { "author": { "@type": "Organization", "name": "SellOnTube" } }),
+  ...(post.author ? { "author": { "@type": "Person", "name": post.author, "url": "https://www.linkedin.com/in/sathyanands/", "sameAs": ["https://www.linkedin.com/in/sathyanands/"] } } : { "author": { "@type": "Organization", "name": "SellOnTube" } }),
   "publisher": {
     "@type": "Organization",
     "name": "SellOnTube",

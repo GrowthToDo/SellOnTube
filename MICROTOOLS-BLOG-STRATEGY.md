@@ -187,48 +187,6 @@ Google's Helpful Content system flags the **ratio of low-quality to high-quality
 
 ---
 
-### 6-Month Post Calendar (March–August 2026)
-
-**March 2026**
-1. "YouTube ROI for SaaS: What a $12k/Year Channel Realistically Returns" (Cluster 1)
-2. "YouTube SEO for Business: A Non-Creator's Guide to Ranking for Buyer Queries" (Cluster 3 pillar)
-3. "YouTube for Agencies: How to Use Video to Win Clients Who Are Already Evaluating You" (Cluster 4)
-4. Launch: YouTube Channel Audit tool (`/youtube-channel-audit`)
-
-**April 2026**
-1. "How to Find YouTube Topics Your Competitors Are Not Covering" (Cluster 2)
-2. "How to Write YouTube Titles That Rank for Buyer-Intent Queries" (Cluster 3)
-3. "YouTube vs. LinkedIn for B2B Lead Generation: Which One Compounds Faster?" (Cluster 5)
-4. "YouTube for SaaS: The 3 Video Types That Drive Demo Requests" (Cluster 4)
-
-**May 2026**
-1. "YouTube vs. Paid Ads for B2B: A Cost-Per-Lead Comparison With Real Numbers" (Cluster 1)
-2. "The Difference Between Trending YouTube Topics and High-Intent Topics" (Cluster 2)
-3. "YouTube Video Descriptions That Work: Templates for B2B and SaaS" (Cluster 3)
-4. "We Analysed 50 B2B YouTube Channels. Here Is What the Successful Ones Do Differently." (Cluster 6)
-
-**June 2026**
-1. "How Much Does a YouTube Customer Acquisition Channel Actually Cost to Run?" (Cluster 1)
-2. "How to Map Your Product Features to YouTube Search Queries" (Cluster 2)
-3. "YouTube for Consultants: Why 'Personal Brand' Is the Wrong Frame" (Cluster 4)
-4. "YouTube vs. Podcast for Customer Acquisition" (Cluster 5)
-
-**July 2026**
-1. "When YouTube Does Not Work for Customer Acquisition (And What to Do Instead)" (Cluster 1)
-2. "YouTube Chapters and Timestamps: The Hidden SEO Signal Most Business Channels Ignore" (Cluster 3)
-3. "YouTube for E-Commerce: The Bottom-of-Funnel Content Mix That Drives Purchase Decisions" (Cluster 4)
-4. "6 Months, 24 Videos, 14 Enterprise Leads: A B2B YouTube Channel Performance Breakdown" (Cluster 6)
-
-**August 2026**
-1. "The Break-Even Math: How Many Clients Do You Need to Justify YouTube?" (Cluster 1)
-2. "5 Topic Research Mistakes B2B Companies Make on YouTube" (Cluster 2)
-3. "YouTube Thumbnail Strategy for Business Channels: Not Clickbait, But Not Boring" (Cluster 3)
-4. "YouTube vs. Cold Outreach: Why One Scales and One Doesn't" (Cluster 5)
-
-**By August 2026:** 40 total posts across 6 tightly clustered sub-topics + 7 tools live + 49 pSEO pages on drip = a site with genuine topical depth.
-
----
-
 ### AI Writing Without AI Fingerprints — 5 Rules
 
 1. **Start every post with a first-person or observational hook.** Something structurally impossible for AI to generate without human input. "Last month, one of our clients closed a $40k contract from a YouTube lead. The video had 340 views."
