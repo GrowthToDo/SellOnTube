@@ -46,6 +46,23 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Every major claim has supporting specificity (stat, example, or concrete detail)
 - [ ] No section exists purely as padding — each section earns its place
 
+**Intro copywriting (Fix #11)**
+- [ ] Opens with a specific, recognisable scenario — not a generic statement
+- [ ] Bullets in intro (if used) are specific and emotional — not generic lists
+- [ ] Every paragraph connects to the previous via cause and effect — no topic shifts
+- [ ] No "Understand that", "Deeply internalize", or preachy openers
+- [ ] No "leverage" used as a verb anywhere in the post
+- [ ] "we" or "I" is consistent throughout — never switches mid-post
+- [ ] Intro closes with a specific promise of what the reader will get
+- [ ] Intro is 80-120 words maximum
+
+**Sentence structure and conversational tone (Fix #12)**
+- [ ] No "most businesses", "many companies", "most marketers" — replace with "you" or "your"
+- [ ] Long compound sentences are broken into short ones — full stops over commas and "and"
+- [ ] Fragments used deliberately for emphasis ("Not on its own." / "It doesn't work.") — max 2 per section
+- [ ] Assumptions are punctured directly, not preached at the reader ("you need to understand", "it's important to realise" are banned)
+- [ ] Every paragraph reads like something Sathya would say on a client call — not a consultant writing a report
+
 **Frontmatter**
 - [ ] `publishDate` is present and correctly formatted (YYYY-MM-DD)
 - [ ] `excerpt` is present
@@ -64,6 +81,9 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Bold callout lines used sparingly (2-3 max per post) — each one pulls a genuine key insight onto its own line, not just breaks up monotony
 - [ ] Before/after comparison blocks (`**What most channels do:** / **What actually works:**`) are tight — no prose inside them
 - [ ] ✅/❌ decision blocks used only for real either/or decisions — not as a styled list of tips
+- [ ] ✅/❌ emotional signal bullets used correctly — ❌ for failures/wrong approaches, ✅ for correct actions/positive signals, plain bullets for neutral items
+- [ ] ✅ and ❌ never mixed in the same bullet list unless the contrast is the point
+- [ ] ✅/❌ never used decoratively — only when the positive/negative signal adds meaning
 - [ ] Process content uses numbered H3 steps, not bullet points
 - [ ] `---` horizontal rules present between H2 sections on any post over 800 words
 - [ ] No paragraph exceeds 3 sentences in body copy

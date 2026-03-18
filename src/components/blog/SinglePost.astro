@@ -5,6 +5,7 @@ import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
 import AuthorBio from '~/components/blog/AuthorBio.astro';
+import { authors } from '~/data/authors';
 
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
@@ -17,6 +18,7 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
+const authorData = post.author ? authors[post.author] : null;
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -34,8 +36,19 @@ const { post, url } = Astro.props;
             post.author && (
               <>
                 {' '}
-                · <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-                <span class="inline-block">{post.author}</span>
+                ·{' '}
+                {authorData?.photo ? (
+                  <Image
+                    src={authorData.photo}
+                    alt={authorData.photoAlt}
+                    width={20}
+                    height={20}
+                    class="w-5 h-5 rounded-full object-cover object-top inline-block -mt-0.5"
+                  />
+                ) : (
+                  <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
+                )}
+                {' '}<span class="inline-block">{authorData?.name ?? post.author}</span>
               </>
             )
           }
@@ -66,7 +79,7 @@ const { post, url } = Astro.props;
         {post.title}
       </h1>
       <p
-        class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify"
+        class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400"
       >
         {post.excerpt}
       </p>
