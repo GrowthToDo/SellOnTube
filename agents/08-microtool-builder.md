@@ -66,6 +66,56 @@ Layout (metadata) →
 
 ---
 
+## Tool Viability Assessment
+
+Run this before building any new tool — and periodically to re-evaluate existing tools.
+
+### Step 1 — Pre-build gate (4 questions)
+
+Answer all four before proceeding. If any answer is "no", stop and discuss with the user before building.
+
+1. **Real pain point?** Does this solve a genuine problem the ICP actually has — not just a nice-to-have?
+2. **Search demand?** Is there evidence people search for this type of tool? (Check `master_keywords_cleaned.csv` — look for `search_intent: tool` keywords with >500/month volume)
+3. **Sustainable to build?** Can it be built and maintained without ongoing complexity that outweighs the value?
+4. **Credible path to product?** Does the tool output naturally lead the user toward booking a call or hiring SellonTube?
+
+### Step 2 — Viability scorecard
+
+Rate each factor 1–10. Total score above 25 = proceed. Below 25 = reconsider or redesign.
+
+| Factor | Score (1–10) | Notes |
+|---|---|---|
+| Search demand | | Keyword volume + intent match |
+| Audience alignment | | How closely it matches ICP pain |
+| Build feasibility | | Complexity vs. maintenance burden |
+| Link potential | | Would other sites reference or link to this? |
+| **Total** | **/40** | |
+
+**Threshold:** 25+ = build it. 20–24 = redesign the angle. Below 20 = skip or defer.
+
+### Step 3 — Lead capture decision
+
+SellonTube's default is **ungated** (maximum reach, SEO-friendly). Deviate only with a clear reason.
+
+| Option | When to use |
+|---|---|
+| **Ungated** (default) | Tool is simple, SEO reach is the primary goal, low friction matters |
+| **Partial gate** | High-value output (e.g. detailed report, PDF) — show summary free, gate the full output |
+| **Full gate** | Only if the tool has significant standalone value and lead capture is the primary goal |
+
+Document the gate decision in the SEO architecture table (Phase 3) before building.
+
+### Periodic re-evaluation
+
+Existing tools should be re-scored against this scorecard when:
+- A tool has been live for 3+ months with no meaningful traffic or leads
+- A better-fit tool idea emerges that might replace it
+- The ICP or product positioning shifts
+
+Current tools to re-evaluate: see `MICROTOOLS-BLOG-STRATEGY.md` for the full pipeline list.
+
+---
+
 ## Execution Phases
 
 ### Phase 1: Parse the Spec
@@ -241,6 +291,11 @@ Before showing the user the finished file, run these checks:
 - [ ] Zero creator framing (no "views", "subscribers", "growth", "audience building" as goals)
 - [ ] Tool output is framed in acquisition terms (leads, clients, revenue, pipeline, LTV, CAC)
 - [ ] Differentiation from creator tools is explicit in the methodology copy
+
+**CRO checks:**
+- [ ] 5-second test: does the H1 + subtitle immediately communicate what the tool does and who it's for — without reading anything else?
+- [ ] Trust signals present: at least one of — a specific outcome claim, a client result, or a methodology note that signals the tool was built on real expertise (not just a fun calculator)
+- [ ] Friction check: the email gate asks for the minimum required (email only, no name/company/phone). Any additional field must have a clear reason. Mobile layout reviewed — inputs are large enough to tap, buttons are thumb-friendly
 
 **Style Guide (grep the file for these before finishing):**
 - [ ] No em-dashes: `—`

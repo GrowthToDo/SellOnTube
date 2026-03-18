@@ -9,26 +9,52 @@ This playbook is the quality benchmark for every blog post published on selontub
 
 Every blog post must serve a business purpose. The goal isn't page views — it's attracting the right readers, earning their trust, and positioning SellonTube as the obvious choice when they're ready to hire.
 
-### The Business Potential Score
+### The Priority Score
 
-Before writing any post, rate the topic 0-3:
+Every keyword in `research/keywords/sot_master.csv` has a `priority_score` (0–100), auto-calculated by `scripts/build_sot_master.py`. Agent 03 uses this score to recommend the next post. Higher score = write this first.
 
-- **3 — Your service is the solution.** The post teaches a principle, but executing it well requires SellonTube's help. *Example: "How to Build a YouTube Content Strategy That Drives Shopify Sales"*
-- **2 — Your service fits naturally.** The topic relates to what you do and you can reference your approach without forcing it. *Example: "5 Email Sequences Every Shopify Store Needs"*
-- **1 — Tangential.** Useful for your audience, but a stretch to connect to your services. *Example: "How to Price Your Shopify Products"*
-- **0 — No connection.** Don't write it.
+**Formula (four dimensions):**
 
-Prioritize 2s and 3s. A blog full of 3s feels like a sales pitch. A blog full of 1s generates traffic but no leads. The sweet spot: mostly 2s with regular 3s mixed in.
+**1. Business potential (0–40pts)** — derived from `cluster`:
+
+| Tier | Clusters | Points |
+|---|---|---|
+| Core | `youtube_seo`, `youtube_lead_gen`, `b2b`, `youtube_keyword_research` | 40 |
+| Adjacent | `youtube_marketing`, `youtube_analytics`, `youtube_growth_strategy`, `youtube_automation`, `youtube_title_generator`, `youtube_video_ideas`, `youtube_tools_software` | 28 |
+| Broad | `youtube_general`, `youtube_shorts_strategy`, `youtube_transcription_captions`, `video_marketing_general` | 14 |
+| Excluded | `video_production`, `youtube_ads` | 0 |
+| pSEO | `pseo_for`, `pseo_vs` | scored separately — not subject to blog priority score |
+
+**2. Content-market fit (0–30pts)** — derived from `intent`:
+- `commercial` / `transactional` → 30pts
+- `informational` → 21pts
+- `technical` → 15pts
+
+**3. Search potential (0–20pts)** — derived from `search_volume` + `keyword_difficulty`:
+- Volume score: `min(search_volume / 50000, 1) × 10` (capped at 50k)
+- Difficulty score: `((100 − keyword_difficulty) / 100) × 10`
+- Total: volume score + difficulty score
+
+**4. Resource cost (0–10pts)** — derived from `content_type`:
+- `pseo` → 10pts (templated, low effort)
+- `blog` → 7pts (medium effort)
+- `tool` → 4pts (high build effort)
+
+**Tiebreaker:** When two keywords have equal `priority_score`, prefer the higher `cpc_inr` — higher CPC signals stronger commercial intent.
+
+**Note:** `build_sot_master.py` must be updated to calculate and write `priority_score` as a column. This is a separate technical task. Until implemented, Agent 03 applies the formula manually when recommending the next post.
 
 ### The Funnel Mix
 
-Your 2-3 posts per week should cover different stages:
+**Cadence: 1 post per week. Hard maximum: 2 posts in any 7-day window.** SellonTube is a new, low-authority site — a burst of posts risks Google flagging thin content. Before scheduling any post, count how many fall in the same 7-day window across `src/data/post/`. If adding the new post would push any window above 2, stop and flag it.
 
-**Top of funnel (1-2 per week):** Broad, keyword-driven educational content. Attracts new visitors through search. *Examples: "What Is YouTube SEO?", "5 Content Marketing Mistakes New Shopify Stores Make"*
+Posts should cover different funnel stages across the month:
 
-**Middle of funnel (1 per week):** Connects the reader's problem to SellonTube's expertise. Shows how to think, not just what to do. *Examples: "Why Your YouTube Shorts Get Views But Don't Drive Sales", "The Content Strategy Most Shopify Apps Get Wrong"*
+**Top of funnel (most weeks):** Broad, keyword-driven educational content. Attracts new visitors through search. *Examples: "What Is YouTube SEO?", "5 Content Marketing Mistakes New Shopify Stores Make"*
 
-**Bottom of funnel (1 every 1-2 weeks):** Showcases your work, results, and methodology. Case studies, process breakdowns, client stories. *Examples: "How We Grew a Shopify App's Organic Traffic by 3x", "Our YouTube SEO Process: Step by Step"*
+**Middle of funnel (every few weeks):** Connects the reader's problem to SellonTube's expertise. Shows how to think, not just what to do. *Examples: "Why Your YouTube Shorts Get Views But Don't Drive Sales", "The Content Strategy Most Shopify Apps Get Wrong"*
+
+**Bottom of funnel (once or twice a month):** Showcases your work, results, and methodology. Case studies, process breakdowns, client stories. *Examples: "How We Grew a Shopify App's Organic Traffic by 3x", "Our YouTube SEO Process: Step by Step"*
 
 ### Finding High-Intent Topics
 
@@ -122,11 +148,25 @@ Short transitional phrases that pull the reader into the next paragraph. Place t
 
 Use 4-5 per post. Don't force them.
 
-### Structure Rules
+### Psychology Principle: The Peak-End Rule
 
-- **Lead with the answer.** Don't bury the most important information at the bottom. Readers who get value early stick around for details.
-- **Every section must earn its place.** If a section doesn't teach something new or move the argument forward, cut it.
-- For paragraph rhythm, formatting, and sentence-level style: follow the Style Guide.
+People judge content by two moments: the peak (the most interesting or surprising point) and the end. Not the average quality throughout. This is why the Style Guide places such emphasis on the first sentence and the closing line — they are the two moments the reader carries away.
+
+In practice: every post needs a clear peak — one section, stat, or insight that is genuinely surprising or unusually specific. If no section stands out, the post is forgettable even if it's technically correct. The closing sentence is the last thing the reader remembers. Make it sharp.
+
+### Psychology Principle: Loss Aversion Framing
+
+Readers are more motivated by what they stand to lose than by what they might gain. Benefit-led writing ("here's what you'll achieve") is weaker than loss-led writing ("here's what's happening to businesses that aren't doing this").
+
+Use loss framing deliberately — particularly in intros and in the "What to do this week" closing. Not every section needs it, but at least one moment per post should make inaction feel costly. Example: instead of "YouTube helps you generate leads," write "Every week you're not on YouTube, a competitor with worse expertise is ranking for the exact queries your prospects are typing."
+
+### Psychology Principle: Status-Quo Bias
+
+Readers default to doing nothing. The path of least resistance is to close the tab and carry on as before. Content that only makes action feel attractive is not enough — it must also make inaction feel uncomfortable.
+
+Concretely: after presenting a solution or framework, name the cost of not acting. Not in a manipulative way — in an honest, specific way. "The businesses that skip this step typically see X." If you don't have a real example, describe the pattern honestly. Status-quo bias is broken by making the current situation feel unstable, not just by making the alternative look appealing.
+
+For paragraph rhythm, formatting, sentence-level style, and structural patterns: follow the Style Guide.
 
 ---
 
@@ -186,7 +226,7 @@ These are the mechanical SEO requirements for every post:
 
 ---
 
-## 6. CONTENT FORMATS: SUSTAINING A 2-3 POST PER WEEK CADENCE
+## 6. CONTENT FORMATS: SUSTAINING A 1 POST PER WEEK CADENCE
 
 Not every post needs to be a 3,000-word thought leadership piece. These formats produce strong results with less effort:
 
@@ -194,7 +234,7 @@ Not every post needs to be a 3,000-word thought leadership piece. These formats 
 
 **Cross-cutting:** Look through existing posts for themes that keep appearing. If "content repurposing" shows up across 5 posts, it deserves its own dedicated article.
 
-**Content refreshes:** Revisit older posts that have lost traffic. Update data, add new sections, fix outdated advice. Faster than writing from scratch, and can recover lost rankings.
+**Content refreshes:** Revisit older posts that have lost traffic. Update data, add new sections, fix outdated advice. Faster than writing from scratch, and can recover lost rankings. **AI citation freshness rule:** ChatGPT cites content updated within 30 days 3.2x more than older content. Any post targeting a competitive keyword must be reviewed and updated at least every 90 days. Posts in core clusters (`youtube_seo`, `youtube_lead_gen`, `b2b`) must be reviewed monthly. Adding a new section, updating a stat, or adding a FAQ question counts as an update. Changing the `publishDate` without adding content does not.
 
 **Roundups with an angle:** Instead of generic "top 10" lists, curate with a point of view. "5 YouTube SEO mistakes we keep seeing in Shopify store channels" beats "5 YouTube SEO tips."
 

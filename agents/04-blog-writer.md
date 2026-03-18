@@ -9,8 +9,9 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 ## Source files to read before writing
 1. `SellonTube-Style-Guide.md` — mandatory. All rules apply.
 2. `SellonTube-Content-Quality-Playbook.md` — mandatory. All rules apply.
-3. `seo.md` — SEO rules.
-4. An existing blog post from `src/data/post/` — read one for format/tone calibration.
+3. `seo.md` — traditional SEO rules.
+4. `ai-seo.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
+5. An existing blog post from `src/data/post/` — read one for format/tone calibration.
 
 ## ICP reminder
 **Audience:** B2B founders, SaaS operators, service business owners evaluating YouTube for customer acquisition and lead generation.
@@ -31,7 +32,9 @@ Every section must answer "why does this matter for a business trying to acquire
 7. **Numbered lists** — For sequential steps or ranked items. Bullet lists for non-sequential.
 8. **Short + long paragraph mix** — One-sentence punchy paragraphs after a key point. Then a longer explanatory paragraph. Alternate.
 9. **FAQ section** — 3–5 questions at the end. Questions must be real search queries, not invented softballs.
-10. **CTA** — End with one clear CTA (book a call, try a tool, read related post). Never multiple CTAs.
+10. **CTA** — Two CTA rules:
+    - **Bottom CTA (mandatory):** Always "book a call." Every post ends with this. No substitutions.
+    - **Mid-body CTA (optional, max one):** A direct link to a SellonTube tool, placed only where the tool is genuinely relevant to the section being discussed. Do not add mid-body CTAs for internal blog posts or services pages — tools only, and only when relevant.
 
 ### Tone
 - Authoritative but not academic
@@ -75,6 +78,7 @@ OUTLINE:
 - Quick Answer: [yes/no — include for "what is X" / "how does X work" queries. 2-3 sentences above the intro]
 - Intro: [1-sentence summary of angle]
 - H2: Key Takeaways [mandatory if >1,000 words — list 5-6 standalone insights, first bullet = direct answer to title query]
+- H2: Table of Contents [mandatory on all posts — anchor links to every H2, flat list, H2s only]
 - H2: [section]
   - H3: [subsection if needed]
 - H2: [section]
@@ -106,7 +110,11 @@ metadata:
 ---
 ```
 
-Then full body in MDX.
+Then full body in MDX, followed by:
+- **Author bio** (mandatory) — name, role, specific expertise, years of experience or client count, LinkedIn link. Place before the Sources section. See `ai-seo.md` §7 for required fields.
+- **Sources section** (if external stats cited)
+- **FAQ section**
+- **Bottom CTA** (book a call)
 
 ### Phase 3 — Auto-QA
 After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to the user until QA passes or violations are fixed.
