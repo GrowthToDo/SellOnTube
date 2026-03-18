@@ -224,35 +224,9 @@ SEO drives long-term compounding traffic. But newsletters, LinkedIn, and social 
 
 ---
 
-## 8. YOUR AI WORKFLOW: HOW TO USE THIS PROJECT
+## 8. AI WORKFLOW
 
-SellonTube's blog engine runs on AI inside a Claude Project. The risk: if you're not careful, every post sounds like a machine wrote it. Here's how to prevent that.
-
-### The Core Principle: Frontload Input, Don't Backload Editing
-
-Don't generate a draft and then try to edit it into something good. Put your thinking, expertise, and creative direction *before* Claude writes — through your project instructions, this playbook, your sample posts, and your content brief. The better these inputs are, the less editing you need after.
-
-### The Five-Step Workflow
-
-1. **Brief:** Give Claude the topic, keyword, target audience, and any specific points, examples, or client stories you want included. This is where your marketing brain does the real work.
-2. **Outline:** Ask for a bullet-point outline first. Review it. Is the structure persuasive? Are the right points covered? Redirect here — it's much easier to fix structure than rewrite prose.
-3. **Draft:** Once the outline is right, ask for the full post.
-4. **Review:** Read the draft. Give specific feedback. "The intro is too generic — make it sharper." "This section needs a real example." "Cut the last two paragraphs." Don't rewrite — redirect.
-5. **Publishing notes:** Generate meta description, URL slug, tags, internal linking suggestions, and social caption.
-
-### What AI Can and Cannot Do
-
-**Use AI for:** Expanding outlines into structured prose, generating meta descriptions and FAQ sections, rephrasing drafts, creating content variations across formats (blog → LinkedIn → newsletter).
-
-**Never outsource:** Original opinions, real client stories (AI fabricates them), judging whether advice is generic, knowing which topics your audience cares about. These require your marketing judgment.
-
-### The Three-Check Quality Gate
-
-Before any post goes to Gautam, scan for:
-
-1. **Fabricated claims.** If a number or case study appears that you didn't provide, verify it or remove it.
-2. **Generic advice.** If a sentence could appear on any agency's blog, it needs to be more specific to SellonTube.
-3. **Missing "so what."** Every section must answer why this matters to the reader's business. Facts without action aren't useful.
+Blog posts follow the Agent 04 workflow: keyword brief → outline (user approval) → full draft → Agent 05 QA → publish. Never skip the outline approval step. Never outsource original opinions, real client stories, or topical judgment to AI.
 
 ---
 

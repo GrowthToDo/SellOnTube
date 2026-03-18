@@ -136,94 +136,10 @@ After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to th
 
 ---
 
-## Content Structure & Formatting Reference
+## Content Structure, Formatting & SEO Craft
 
-These structural and formatting patterns apply to every post. The goal: a business owner should be able to skim in 90 seconds and leave with a clear mental model.
+All structural patterns (items 1-16), formatting rules, and SEO craft rules are defined in the source files listed above. Apply every rule from:
+- `SellonTube-Style-Guide.md` — Fixes #1-10 and the full Content Structure & Formatting Reference (items 1-16)
+- `SellonTube-Content-Quality-Playbook.md` — Sections 3 (persuasion), 5 (SEO craft), and the quality checklist
 
-### 1. Open with a real problem scenario — not a definition
-The first 2-3 sentences drop the reader into a specific, recognisable situation. No warm-up. No "YouTube SEO is important because...".
-
-Good pattern: "You optimised your video title. You added tags. You wrote a 200-word description. Six weeks later: 34 views, 28 of them yours."
-
-### 2. Case studies over hypotheticals
-Every major claim should be anchored by a real example with at least one specific number. Not "a Shopify store we worked with" — but "a Shopify app client generated 1,257 conversions from YouTube in 12 months, compared to 411 from their blog in the same period." If you don't have a real number, use "in our experience" or "we've seen this pattern with..." Never invent statistics.
-
-### 3. Bold callout lines to surface key insights
-After landing a key point in a section, pull the core insight onto its own bolded line. Use 2-3 per post maximum. Examples:
-- "**The bottleneck is not production. It is keyword selection.**"
-- "**Most channels optimise for the algorithm. The ones that convert optimise for the buyer.**"
-
-### 4. Before/after comparison blocks for mindset shifts
-When explaining a shift in thinking or approach, use this exact format:
-
-**What most channels do:** [1-2 sentences on the default behaviour]
-**What actually works:** [1-2 sentences on the better approach]
-
-No prose paragraphs inside these blocks. Keep them tight.
-
-### 5. ✅ / ❌ decision blocks for choices the reader has to make
-Only when there is a real either/or decision:
-
-✅ **Do this when:** [specific condition] — [1-sentence explanation]
-❌ **Skip this when:** [specific condition] — [1-sentence explanation]
-
-Do not use this to dress up a list of tips.
-
-### 6. Numbered step frameworks for any process
-Use Step 1 / Step 2 / Step 3 with H3 headings — not bullet points. Each step: bolded action label + 2-4 sentences + one concrete example from SellonTube's work.
-
-### 7. Horizontal rules between major H2 sections
-Use `---` between H2 sections. Required on any post over 800 words.
-
-### 8. Short paragraphs + white space
-Maximum 3 sentences per paragraph. One-sentence paragraphs encouraged for emphasis. Never stack two dense paragraphs back-to-back without a callout, list, or visual break.
-
-### 9. Close with "What to do this week" — never a summary
-Final section: numbered list of 5-7 specific micro-actions the reader can take in the next 7 days, followed by one sharp final sentence. Never close with a summary or vague CTA like "Start today."
-
-**Benchmark test:** Could a reader screenshot one section and share it as a standalone insight on LinkedIn? If yes, structure is right. If the post only works as a whole, it needs more work.
-
-### 10. Key Takeaways as the first H2 — mandatory on posts over 1,000 words
-Place a "Key Takeaways" H2 immediately after the intro. 5-6 bullet points, each a standalone insight. The first bullet directly answers the title query. Google pulls this for featured results. Do not fill it with navigation copy like "this post covers X and Y."
-
-### 11. Quick Answer block for direct-answer queries
-For posts targeting a "what is X" or "how does X work" query, add a 2-3 sentence blockquote or callout immediately after the H1 — before the intro paragraph. Answer the question directly. No preamble, no "in this post." The problem scenario intro follows after. Only use it when the query has a clear, concise answer.
-
-### 12. Comparison tables as a content and keyword device
-Tables are SEO assets — each row can surface for a different long-tail query. Use:
-- **Tool | Best for | Key limitation** — roundup posts
-- **Phase | What to do | Why it works** — framework posts
-- **Industry | Problem | How YouTube solves it** — use case posts
-- **Role | Recommended approach | Reasoning** — decision framework posts
-
-Column headers must be specific. "Step | Description" is not a table.
-
-### 13. "How to Choose" section — mandatory for comparison and roundup posts
-Any post reviewing tools, strategies, or options needs a "How to Choose [X]" H2. Structure it as a table or ✅/❌ blocks segmented by role, need, or team size. Captures high-intent "which X is right for me" queries.
-
-### 14. Sources section — cite every external stat
-Any post referencing external statistics needs a "Sources" section at the end (after FAQ, before CTA). Format: source name + what it says + year. If a stat can't be cited, remove it or replace with "in our experience..." An uncited stat is a liability, not an asset.
-
-### 15. Industry and use case tables
-For posts with broad applicability, add a "Who This Works For" or "Industry Use Cases" H2 structured as: Industry | Problem | How YouTube addresses it. 5-7 rows max. Each row targets a different niche query and shows Google topical depth.
-
-### 16. Consistent sub-structure for listicle items
-For "best X" or "top N" posts, every item uses the same H3 sub-structure throughout:
-- Best for: [specific use case]
-- Key advantage: [what makes it stand out]
-- Key limitation: [honest tradeoff]
-- Verdict: [one sentence]
-
-Decide the structure before writing item 1. Inconsistent depth across items signals low quality to Google.
-
----
-
-## SEO Craft: Additional Rules
-
-### Featured snippet targeting
-One section per post should be written as a direct, concise answer (40-60 words) to the target keyword question. No preamble. Just the answer. Google pulls these as featured snippets. Structure it as a short paragraph or a clean numbered list.
-
-**Placement:** For "what is X" / "how does X work" queries, this is the Quick Answer block above the intro. For other post types, it is the Key Takeaways section's first bullet or a standalone mid-post callout. The answer must be useful without surrounding context.
-
-### Video + blog pairing
-For any post targeting a keyword where YouTube videos already rank in Google's top 10, note this in the post outline. Build the post with the assumption that a companion video will eventually be created for the same keyword. Write the post so the H2 headings could double as a video chapter structure.
+Do not rely on memory of these rules. Re-read the source files before writing each draft.
