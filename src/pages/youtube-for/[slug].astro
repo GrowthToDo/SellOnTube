@@ -50,6 +50,34 @@ const faqSchema = {
   }))
 };
 
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": niche.heroTitle || niche.metaTitle,
+  "description": niche.metaDescription,
+  "url": `${siteUrl}/youtube-for/${niche.slug}`,
+  "author": {
+    "@type": "Person",
+    "name": "Sathyanand",
+    "jobTitle": "Founder, SellOnTube",
+    "url": "https://www.linkedin.com/in/sathyanands/",
+    "sameAs": ["https://www.linkedin.com/in/sathyanands/"]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SellOnTube",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${siteUrl}/youtube-for/${niche.slug}`
+  }
+};
+
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -68,6 +96,7 @@ const serviceSchema = {
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />

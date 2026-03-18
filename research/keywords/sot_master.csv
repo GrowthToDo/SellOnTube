@@ -1,407 +1,347 @@
-﻿rank,keyword,search_volume,cpc_usd,keyword_difficulty,intent,cluster,content_type,target_slug,status,source
-1,youtube seo,50000,376.36,15,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-2,youtube seo optimization,50000,376.36,15,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-3,create a company youtube channel,50000,210.11,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-4,youtube marketing,5000,2423.72,20,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-5,youtube marketing services,5000,1557.78,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-6,youtube seo services,5000,1368.95,1,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-7,youtube video seo,5000,525.61,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-8,youtube video seo optimization,5000,525.61,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-9,youtube seo tools,5000,472.66,1,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-10,youtube metrics,5000,399.4,2,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-11,youtube strategy,5000,295.55,18,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-12,youtube analytics for other channels,5000,225.3,6,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-13,youtube seo keywords,5000,209.94,13,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-14,startup youtube,5000,182.4,1,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-15,check youtube channel,5000,64.03,1,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-16,free youtube transcript generator,5000,129.53,18,informational,youtube_transcription_captions,blog,best-youtube-transcript-generators,live,sot_final
-17,set up company youtube channel,5000,182.34,23,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-18,youtube marketing company,500,3649.82,7,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-19,youtube businesses,500,2780.79,7,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-20,marketing agency youtube,500,1982.07,18,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-21,youtube marketing agency,500,1982.07,18,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-22,youtube video marketing,500,1790.71,2,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-23,youtube business,500,1683.81,10,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-24,youtube seo company,500,1403.03,5,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-25,lead gen youtube,500,1338.97,12,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-26,youtube lead gen,500,1338.97,12,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-27,youtube seo agency,500,1338.7,1,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-28,youtube marketing strategy,500,1078.06,4,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-29,youtube business channel,500,860.09,6,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-30,youtube content strategy,500,600.94,5,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-31,youtube seo expert,500,568.34,13,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-32,create youtube channel for business,500,555.89,30,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-33,youtube seo software,500,522.3,3,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-34,youtube seo strategy,500,483.18,3,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-35,best tools for youtube seo,500,359.29,4,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-36,youtube growth strategy,500,357.07,17,strategic,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-37,youtube seo best practices,500,345.5,3,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-38,youtube channel strategy,500,279.92,13,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-39,youtube analytics for other channels free,500,201.41,2,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-40,youtube seo guidelines,500,198.85,4,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-41,youtube seo optimization tips,500,193.96,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-42,youtube seo tips,500,193.96,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-43,youtube marketing campaign,500,39.59,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-44,youtube video marketing services,500,11.29,1,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-45,b2b youtube,500,11.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final
-46,youtube for b2b,500,11.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final
-47,youtube agencies,500,9.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-48,youtube management agency,500,6.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-49,youtube digital marketing,500,6.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-50,keyword research for youtube seo,500,0.0,1,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-51,youtube channel optimization and video seo,500,0.0,0,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-52,youtube marketing tools,500,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-53,youtube video marketing company,500,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-54,youtube video seo service,500,0.0,1,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-55,youtube marketing case study,500,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-56,best business channel on youtube,500,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-57,using youtube for business,500,1307.19,2,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-58,youtube premium for business,500,0.0,3,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-59,youtube videos for business,500,963.0,4,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-60,youtube ads for business,500,5211.32,6,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-61,youtube marketing companies,500,1344.32,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-62,youtube for business,500,2625.87,12,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-63,content strategy youtube,500,472.73,16,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-64,youtube channel management agency,500,237.05,27,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-65,youtube talent agency,500,415.09,29,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-66,check youtube channel stats,500,93.88,1,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-67,company youtube channel,500,761.72,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-68,brand youtube channel,500,471.78,5,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-69,optimizing youtube channel,500,395.08,5,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-70,optimize youtube channel,500,627.79,9,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-71,youtube coach,500,321.65,22,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-72,youtube agency,500,1107.5,33,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-73,best youtube marketing,50,40.03,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-74,organic youtube marketing,50,39.36,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-75,b2b youtube strategy,50,32.45,0,,youtube_marketing,blog,youtube-marketing-b2b,live,sot_final
-76,youtube for business marketing,50,29.29,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-77,youtube marketing for real estate,50,27.21,0,,youtube_marketing,blog,real-estate,not-started,sot_final
-78,youtube marketing online,50,23.65,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-79,youtube seo marketing,50,23.32,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-80,youtube marketing consultant,50,21.98,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-81,youtube marketing specialist,50,21.71,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-82,youtube marketing platform,50,17.01,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-83,best youtube marketing agencies,50,10.6,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-84,best youtube marketing agency,50,10.6,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-85,youtube seo consultant,50,10.26,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-86,youtube video marketing agency,50,8.86,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-87,youtube marketing packages,50,8.3,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-88,youtube video marketing strategy,50,6.34,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-89,youtube marketing cost,50,6.24,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-90,youtube marketing price,50,5.7,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-91,youtube marketing agency near me,50,4.06,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-92,learn youtube marketing,50,2.83,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-93,youtube digital marketing agency,50,2.0,0,transactional,b2b,blog,youtube-marketing-b2b,live,sot_final
-94,youtube marketing for beginners,50,1.11,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-95,youtube marketing services near me,50,0.62,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-96,best youtube marketing campaigns,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-97,best youtube marketing companies,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-98,best youtube marketing services,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-99,best youtube marketing strategy,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-100,cost of youtube marketing,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-101,digital marketing agency youtube,50,0.0,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-102,digital marketing agency youtube video,50,0.0,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final
-103,ecommerce youtube marketing,50,0.0,0,,youtube_marketing,blog,ecommerce,not-started,sot_final
-104,successful youtube marketing campaigns,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-105,top youtube marketing companies,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-106,youtube marketing b2b,50,0.0,0,,youtube_marketing,blog,youtube-marketing-b2b,live,sot_final
-107,youtube marketing best practices,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-108,youtube marketing content,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-109,youtube marketing firm,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-110,youtube marketing for b2b,50,0.0,0,,youtube_marketing,blog,youtube-marketing-b2b,live,sot_final
-111,youtube marketing for ecommerce,50,0.0,0,,youtube_marketing,blog,ecommerce,not-started,sot_final
-112,youtube marketing for law firms,50,0.0,0,,youtube_marketing,blog,law-firms,not-started,sot_final
-113,youtube marketing for small business,50,0.0,0,,youtube_marketing,blog,small-business,not-started,sot_final
-114,youtube marketing influencer,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-115,youtube marketing near me,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-116,youtube marketing secrets,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-117,youtube video seo marketing,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-118,youtube video seo services,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final
-119,youtube for b2b marketing,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final
-120,b2b youtube channels,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final
-121,best b2b youtube channels,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final
-122,open youtube account for business,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-123,set up a youtube account for business,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-124,setting up a youtube business channel,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-125,youtube business case study,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-126,youtube create account for business,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-127,best youtube channel for business case study,50,0.0,0,transactional,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-128,companies that use youtube for marketing,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-129,best business channel,50,0.0,1,transactional,video_marketing_general,blog,the-youtube-acquisition-engine,live,sot_final
-130,small business youtube channels,50,0.0,1,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-131,top business channel on youtube,50,0.0,1,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-132,youtube for business pricing,50,0.0,2,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-133,private youtube channel for business,50,0.0,2,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-134,meta for business youtube,50,0.0,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-135,youtube small business,50,0.0,4,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-136,youtube for enterprise,50,0.0,4,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-137,how to check youtube analytics of other channels,50,53.22,5,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-138,how to see youtube analytics for other channels,50,195.43,5,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-139,youtube for internal business use,50,0.0,7,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-140,youtube for small business,50,784.2,8,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-141,youtube startup video,50,0.0,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-142,youtube for companies,50,0.0,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-143,small business videos youtube,50,0.0,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-144,youtube create a business channel,50,0.0,11,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-145,youtube channel startup,50,348.08,11,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-146,startup youtube channel,50,348.08,11,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-147,youtube for your business,50,0.0,14,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-148,youtube business channel create,50,0.0,14,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-149,starting a youtube channel for business,50,70.3,16,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-150,setting up youtube for business,50,0.0,26,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-151,create a youtube page for business,50,2308.25,28,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-152,small scale business youtube,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-153,youtube marketing service youtube stores,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-154,youtube stores youtube marketing service,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-155,youtube ad script,50,0.0,0,informational,youtube_ads,blog,youtube-ads-guide,not-started,sot_final
-156,brand new youtube channel,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-157,create brand account youtube channel,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-158,youtube channel marketing agency,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-159,seo youtube agency,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-160,youtube saas,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-161,search engine optimization for youtube channel,50,0.0,0,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-162,ways to improve your youtube channel,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-163,youtube channel improve,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-164,check youtube channel performance,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-165,youtube video structure,50,0.0,2,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-166,real estate marketing youtube,50,0.0,3,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-167,youtube real estate marketing,50,0.0,3,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-168,check youtube channel analytics,50,0.0,3,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-169,check youtube channel statistics,50,0.0,4,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-170,check seo of youtube channel,50,0.0,4,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-171,check youtube channel traffic,50,0.0,10,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-172,youtube seo audit,50,0.0,11,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final
-173,free youtube video transcript generator,50,168.73,19,informational,youtube_transcription_captions,blog,best-youtube-transcript-generators,live,sot_final
-174,scripting a youtube video,50,225.14,23,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-175,youtube channel growth agency,50,741.22,24,transactional,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-176,optimize your youtube channel,50,239.81,29,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-177,improve youtube channel,50,256.05,32,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-178,youtube content agency,50,722.17,35,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-179,create a youtube channel business,50,200.15,37,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-180,create a youtube channel for your business,50,632.46,37,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-181,youtube promotion agency,50,724.77,39,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-182,youtube channel promotion agency,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-183,youtube ecommerce marketing,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-184,ways to improve youtube channel,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final
-185,youtube shorts agency,50,642.64,11,transactional,youtube_shorts_strategy,blog,youtube-shorts-for-business,not-started,sot_final
-186,youtube shorts for business,50,899.29,15,transactional,youtube_shorts_strategy,blog,youtube-shorts-for-business,not-started,sot_final
-187,youtube shorts business,50,287.15,18,transactional,youtube_shorts_strategy,blog,youtube-shorts-for-business,not-started,sot_final
-188,youtube analytics business,0,0.0,0,technical,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final
-189,youtube script,5000,367.15,1,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-190,youtube analytics dashboard,5000,620.26,2,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-191,youtube script generator,5000,76.69,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-192,youtube video script generator,5000,119.48,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-193,youtube ai tool,5000,164.47,16,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-194,ai tools for youtube,5000,127.82,36,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-195,ai tool for youtube,5000,127.82,36,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-196,best ai tools for youtube,5000,224.12,38,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-197,youtube video analytics for other channels,500,218.3,5,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-198,script for a youtube video,500,236.39,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-199,youtube video script,500,236.39,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-200,youtube script video,500,236.39,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-201,youtube script generator free,500,115.14,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-202,youtube video script generator free,500,95.58,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-203,youtube script writer,500,391.39,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-204,youtube script writers,500,391.39,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-205,youtube script generator ai,500,40.11,17,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-206,get script from youtube video,500,200.05,17,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-207,ai youtube script generator,500,185.19,24,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-208,free ai tools for youtube,500,78.4,36,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-209,view other youtube channel analytics,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-210,other youtube channel analytics,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-211,youtube analytics for other videos,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-212,youtube analytics for other channels reddit,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-213,how to check other youtubers analytics,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-214,view youtube analytics for other channels,50,0.0,1,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-215,how to see other youtube channel stats,50,0.0,2,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-216,can you see other youtubers analytics,50,0.0,2,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-217,how to view other youtubers analytics,50,0.0,4,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-218,how to view other youtube channel analytics,50,0.0,6,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-219,how to see other youtube channel analytics,50,0.0,6,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-220,free youtube analytics for other channels,50,0.0,7,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-221,how to see other youtubers analytics,50,0.0,8,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-222,youtube analytics tool for other channels,50,0.0,11,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-223,how to check other youtube channel analytics,50,89.8,11,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-224,how to analyse other youtube channel,50,0.0,12,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-225,how to analyze other youtube channel,50,0.0,12,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-226,how to check other channels analytics,50,41.92,13,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-227,how to see other channels analytics,50,0.0,13,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final
-228,youtube script writing app,50,0.0,0,informational,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final
-229,youtube channel introduction script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-230,youtube video intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-231,youtube script online,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-232,youtube script writing tips,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-233,youtube channel script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-234,youtube ads script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-235,youtube channel trailer script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-236,first youtube video script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-237,example of a youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-238,example of youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-239,example script for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-240,best youtube intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-241,youtube video script generator online,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-242,free youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-243,youtube video script format,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-244,youtube script writing examples,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-245,youtube channel introduction script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-246,youtube vlog script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-247,youtube outro script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-248,script for first youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-249,youtube outro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-250,best script for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-251,youtube intro script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-252,youtube intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-253,youtube script format,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-254,youtube script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-255,best youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-256,youtube video script example,50,0.0,1,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-257,youtube video script generator ai,50,0.0,2,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-258,write a youtube script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-259,youtube short script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-260,youtube script outline,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-261,youtube video script generator in hindi,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-262,get youtube script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-263,get youtube video script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-264,free youtube video script,50,0.0,3,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-265,youtube script converter,50,122.96,3,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-266,get script youtube video,50,0.0,4,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-267,write a script for youtube video,50,127.29,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-268,writing a script for a youtube video,50,127.29,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-269,video script youtube,50,0.0,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-270,script of youtube video,50,140.28,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-271,youtube script maker,50,0.0,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-272,youtube script writing software,50,0.0,7,informational,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final
-273,youtube content script,50,0.0,7,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-274,youtube video script ai,50,0.0,9,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-275,script of a youtube video,50,0.0,9,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-276,youtube channel audit tool,50,430.98,10,technical,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final
-277,get script of youtube video,50,178.38,11,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-278,youtube script ai,50,357.62,14,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-279,ai youtube script,50,0.0,16,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-280,youtube video script writer,50,0.0,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-281,script from youtube video,50,170.58,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-282,youtube script ai writer,50,0.0,17,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-283,free ai youtube script generator,50,275.38,18,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-284,youtube channel audit tool free,50,426.71,19,technical,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final
-285,ai youtube script writer,50,352.43,27,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-286,writing a youtube video script,50,0.0,29,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-287,youtube script writer ai,50,289.21,31,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-288,youtube script writing ai,50,289.21,31,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final
-289,get the script of a youtube video,50,184.21,34,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-290,script ideas for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-291,script for youtube video example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-292,youtube vlog intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-293,free script for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-294,video script for youtube,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-295,introduction for youtube channel script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final
-296,youtube for subscription businesses,0,168.46,5.0,informational,pseo_for,pseo_for,subscription-businesses,planned,manual
-297,youtube for coaches,0,,0.0,informational,pseo_for,pseo_for,coaches,live,manual
-298,youtube for accountants,0,,,informational,pseo_for,pseo_for,accountants,planned,manual
-299,youtube for saas,0,0,0,informational,pseo_for,pseo_for,saas,live,manual
-300,youtube for agencies,0,0,0,informational,pseo_for,pseo_for,agencies,live,manual
-301,youtube for consultants,0,0,0,informational,pseo_for,pseo_for,consultants,live,manual
-302,youtube for b2b companies,0,0,0,informational,pseo_for,pseo_for,b2b-companies,live,manual
-303,youtube for course creators,0,0,0,informational,pseo_for,pseo_for,course-creators,planned,manual
-304,youtube for financial advisors,0,0,0,informational,pseo_for,pseo_for,financial-advisors,live,manual
-305,youtube for law firms,0,0,0,informational,pseo_for,pseo_for,law-firms,live,manual
-306,youtube for real estate agents,0,0,0,informational,pseo_for,pseo_for,real-estate,live,manual
-307,youtube for marketing agencies,0,0,0,informational,pseo_for,pseo_for,marketing-agencies,planned,manual
-308,youtube for software companies,0,0,0,informational,pseo_for,pseo_for,software-companies,planned,manual
-309,youtube for fintech companies,0,0,0,informational,pseo_for,pseo_for,fintech-companies,planned,manual
-310,youtube for hr software companies,0,0,0,informational,pseo_for,pseo_for,hr-software,planned,manual
-311,youtube for edtech companies,0,0,0,informational,pseo_for,pseo_for,edtech-companies,planned,manual
-312,youtube for cybersecurity companies,0,0,0,informational,pseo_for,pseo_for,cybersecurity-companies,planned,manual
-313,youtube for insurance agents,0,0,0,informational,pseo_for,pseo_for,insurance-agents,planned,manual
-314,youtube for mortgage brokers,0,0,0,informational,pseo_for,pseo_for,mortgage-brokers,planned,manual
-315,youtube for recruiting firms,0,0,0,informational,pseo_for,pseo_for,recruiting-firms,planned,manual
-316,youtube for management consultants,0,0,0,informational,pseo_for,pseo_for,management-consultants,planned,manual
-317,youtube for business coaches,0,0,0,informational,pseo_for,pseo_for,business-coaches,planned,manual
-318,youtube for life coaches,0,0,0,informational,pseo_for,pseo_for,life-coaches,planned,manual
-319,youtube for professional services firms,0,0,0,informational,pseo_for,pseo_for,professional-services,planned,manual
-320,youtube for startup founders,0,0,0,informational,pseo_for,pseo_for,startup-founders,planned,manual
-321,youtube for ecommerce businesses,0,0,0,informational,pseo_for,pseo_for,ecommerce,planned,manual
-322,youtube for healthcare practices,0,0,0,informational,pseo_for,pseo_for,healthcare-practices,planned,manual
-323,youtube for dental practices,0,0,0,informational,pseo_for,pseo_for,dental-practices,planned,manual
-324,youtube for online marketplaces,0,0,0,informational,pseo_for,pseo_for,marketplaces,planned,manual
-325,youtube for small business,0,0,0,informational,pseo_for,pseo_for,small-business,planned,manual
-326,youtube vs facebook,0,,0.0,informational,pseo_vs,pseo_vs,facebook,live,manual
-327,youtube vs influencer marketing,0,2951.9,7.0,informational,pseo_vs,pseo_vs,influencer-marketing,planned,manual
-328,youtube vs instagram,0,,0.0,informational,pseo_vs,pseo_vs,instagram,live,manual
-329,youtube vs content marketing,0,,17.0,informational,pseo_vs,pseo_vs,content-marketing,planned,manual
-330,youtube vs reddit for saas,0,,0.0,informational,pseo_vs,pseo_vs,reddit-for-saas,planned,manual
-331,youtube vs linkedin for b2b,0,0,0,informational,pseo_vs,pseo_vs,linkedin-for-b2b,planned,manual
-332,youtube vs instagram for coaches,0,0,0,informational,pseo_vs,pseo_vs,instagram-for-coaches,planned,manual
-333,youtube vs tiktok for saas,0,0,0,informational,pseo_vs,pseo_vs,tiktok-for-saas,planned,manual
-334,youtube vs paid ads,0,0,0,informational,pseo_vs,pseo_vs,paid-ads,planned,manual
-335,youtube vs facebook ads,0,0,0,informational,pseo_vs,pseo_vs,facebook-ads,planned,manual
-336,youtube vs podcasting,0,0,0,informational,pseo_vs,pseo_vs,podcasting,planned,manual
-337,youtube vs blogging,0,0,0,informational,pseo_vs,pseo_vs,blogging,planned,manual
-338,youtube vs email marketing,0,0,0,informational,pseo_vs,pseo_vs,email-marketing,planned,manual
-339,youtube vs linkedin for agencies,0,0,0,informational,pseo_vs,pseo_vs,linkedin-for-agencies,planned,manual
-340,youtube vs instagram for saas,0,0,0,informational,pseo_vs,pseo_vs,instagram-for-saas,planned,manual
-341,youtube vs webinars,0,0,0,informational,pseo_vs,pseo_vs,webinars,planned,manual
-342,youtube vs cold outreach,0,0,0,informational,pseo_vs,pseo_vs,cold-outreach,planned,manual
-343,youtube vs seo content,0,0,0,informational,pseo_vs,pseo_vs,seo-content,planned,manual
-344,youtube vs referral marketing,0,0,0,informational,pseo_vs,pseo_vs,referral-marketing,planned,manual
-345,youtube vs community building,0,0,0,informational,pseo_vs,pseo_vs,community-building,planned,manual
-346,youtube vs twitter for saas,0,0,0,informational,pseo_vs,pseo_vs,twitter-for-saas,planned,manual
-347,youtube in marketing,5000,0.0,17,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-348,digital marketer youtube,500,0.0,13,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-349,youtube lead generation,500,0.0,20,informational,youtube_lead_gen,blog,youtube-lead-generation,not-started,gkp_new
-350,how to get clients from youtube,50,0.0,0,informational,youtube_lead_gen,blog,youtube-lead-generation,not-started,gkp_new
-351,lead generation through youtube,50,0.0,0,informational,youtube_lead_gen,blog,youtube-lead-generation,not-started,gkp_new
-352,youtube for lead generation,50,0.0,7,informational,youtube_lead_gen,blog,youtube-lead-generation,not-started,gkp_new
-353,youtube in digital marketing,50,0.0,6,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-354,youtube for marketing your business,50,0.0,79,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-355,youtube marketing for business,50,0.0,2,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-356,youtube marketing for agencies,50,0.0,0,informational,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,gkp_new
-357,youtube customer acquisition,0,0.0,0,informational,youtube_lead_gen,blog,youtube-lead-generation,not-started,gkp_new
-358,youtube marketing roi,0,0.0,0,informational,youtube_marketing,blog,youtube-marketing-roi,not-started,gkp_new
-359,youtube marketing strategy for business,0,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-360,youtube content strategy for b2b,0,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,gkp_new
-361,youtube marketing for consultants,0,0.0,0,informational,pseo_for,pseo_for,consultants,live,gkp_new
-362,youtube marketing for saas,0,0.0,0,informational,pseo_for,pseo_for,saas,live,gkp_new
-363,youtube keyword research for business,0,0.0,0,informational,youtube_seo,blog,youtube-seo-guide,not-started,gkp_new
-364,auto dealer youtube marketing agency,50,0.0,0,informational,pseo_for,pseo_for,auto-dealers,planned,gkp_new
-365,automotive dealer youtube marketing agency,50,0.0,0,informational,pseo_for,pseo_for,auto-dealers,planned,gkp_new
-366,youtube keyword tool,50000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-367,keyword tools for youtube,50000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-368,youtube keyword research tool,5000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-369,youtube keyword search,5000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-370,youtube keyword search tool,5000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-371,youtube keyword analysis tool,5000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-372,youtube keyword tool free,5000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-373,free keyword tool for youtube,5000,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-374,youtube keyword finder,500,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-375,youtube keyword checker,500,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-376,youtube keyword tracker,500,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-377,youtube keyword explorer,500,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-378,best youtube keyword research tool,500,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-379,youtube seo keyword tool,50,0.0,0,informational,youtube_keyword_research,tool,youtube-keyword-research-tool,not-started,gkp_new
-380,youtube title generator,50000,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-381,title generator for youtube,50000,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-382,video title generator,5000,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-383,youtube title generator ai,5000,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-384,youtube video title generator,5000,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-385,ai youtube title generator,500,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-386,seo youtube title generator,500,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-387,youtube title maker,500,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-388,youtube title creator,500,0.0,0,informational,youtube_title_generator,tool,youtube-title-generator,not-started,gkp_new
-389,marketing strategy for youtube,500,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-390,how to generate leads from youtube,50,0.0,0,informational,youtube_lead_gen,blog,youtube-lead-generation,not-started,gkp_new
-391,how to get leads from youtube,50,0.0,0,informational,youtube_lead_gen,blog,youtube-lead-generation,not-started,gkp_new
-392,youtube channel marketing strategy,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-393,youtube b2b marketing best practices,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,gkp_new
-394,youtube sales funnel strategy,0,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,gkp_new
-395,using youtube to promote your business,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-396,youtube content marketing strategy,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,gkp_new
-397,youtube inbound marketing,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,gkp_new
-398,youtube video ideas generator,500,0.0,0,informational,youtube_video_ideas,tool,youtube-video-ideas-generator,not-started,gkp_new
-399,youtube video ideas for businesses,0,0.0,0,informational,youtube_video_ideas,tool,youtube-video-ideas-generator,not-started,gkp_new
-400,youtube content calendar generator,0,0.0,0,informational,youtube_video_ideas,tool,youtube-video-ideas-generator,not-started,gkp_new
-401,topic generator for youtube,50,0.0,0,informational,youtube_video_ideas,tool,youtube-video-ideas-generator,not-started,gkp_new
-402,youtube topic generator,50,0.0,0,informational,youtube_video_ideas,tool,youtube-video-ideas-generator,not-started,gkp_new
-403,vidiq keywords,500,0.0,0,informational,youtube_keyword_research,blog,best-youtube-keyword-research-tools,not-started,gkp_new
-404,tubebuddy keyword explorer,500,0.0,0,informational,youtube_keyword_research,blog,best-youtube-keyword-research-tools,not-started,gkp_new
-405,vidiq keyword research,500,0.0,0,informational,youtube_keyword_research,blog,best-youtube-keyword-research-tools,not-started,gkp_new
-406,vidiq search volume,50,0.0,0,informational,youtube_keyword_research,blog,best-youtube-keyword-research-tools,not-started,gkp_new
+﻿rank,keyword,search_volume,cpc_inr,keyword_difficulty,intent,cluster,content_type,target_slug,status,source,priority_score
+1,youtube seo,50000,376.36,15,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,80.5
+2,youtube seo optimization,50000,376.36,15,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,80.5
+3,create a company youtube channel,50000,210.11,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.7
+4,youtube marketing,5000,2423.72,20,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.0
+5,youtube marketing services,5000,1557.78,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.7
+6,youtube seo services,5000,1368.95,1,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,72.9
+7,youtube video seo,5000,525.61,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,72.8
+8,youtube video seo optimization,5000,525.61,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,72.8
+9,youtube seo tools,5000,472.66,1,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,72.9
+10,youtube metrics,5000,399.4,2,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.8
+11,youtube strategy,5000,295.55,18,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,40.2
+12,youtube analytics for other channels,5000,225.3,6,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,46.4
+13,youtube seo keywords,5000,209.94,13,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,71.7
+14,startup youtube,5000,182.4,1,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.9
+15,check youtube channel,5000,64.03,1,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,46.9
+16,free youtube transcript generator,5000,129.53,18,informational,youtube_transcription_captions,blog,best-youtube-transcript-generators,live,sot_final,51.2
+17,set up company youtube channel,5000,182.34,23,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,50.7
+18,youtube marketing company,500,3649.82,7,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.4
+19,youtube businesses,500,2780.79,7,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.4
+20,marketing agency youtube,500,1982.07,18,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,59.3
+21,youtube marketing agency,500,1982.07,18,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,59.3
+22,youtube video marketing,500,1790.71,2,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.9
+23,youtube business,500,1683.81,10,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.1
+24,youtube seo company,500,1403.03,5,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,71.6
+25,lead gen youtube,500,1338.97,12,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,64.9
+26,youtube lead gen,500,1338.97,12,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,64.9
+27,youtube seo agency,500,1338.7,1,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,87.0
+28,youtube marketing strategy,500,1078.06,4,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,40.7
+29,youtube business channel,500,860.09,6,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.5
+30,youtube content strategy,500,600.94,5,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,40.6
+31,youtube seo expert,500,568.34,13,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,70.8
+32,create youtube channel for business,500,555.89,30,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,63.1
+33,youtube seo software,500,522.3,3,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,86.8
+34,youtube seo strategy,500,483.18,3,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,71.8
+35,best tools for youtube seo,500,359.29,4,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,86.7
+36,youtube growth strategy,500,357.07,17,strategic,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,53.4
+37,youtube seo best practices,500,345.5,3,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,86.8
+38,youtube channel strategy,500,279.92,13,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,39.8
+39,youtube analytics for other channels free,500,201.41,2,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,60.9
+40,youtube seo guidelines,500,198.85,4,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,71.7
+41,youtube seo optimization tips,500,193.96,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,71.9
+42,youtube seo tips,500,193.96,2,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,71.9
+43,youtube marketing campaign,500,39.59,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.1
+44,youtube video marketing services,500,11.29,1,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.0
+45,b2b youtube,500,11.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final,78.1
+46,youtube for b2b,500,11.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final,78.1
+47,youtube agencies,500,9.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.1
+48,youtube management agency,500,6.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.1
+49,youtube digital marketing,500,6.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.1
+50,keyword research for youtube seo,500,0.0,1,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,72.0
+51,youtube channel optimization and video seo,500,0.0,0,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,72.1
+52,youtube marketing tools,500,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.1
+53,youtube video marketing company,500,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.1
+54,youtube video seo service,500,0.0,1,transactional,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,87.0
+55,youtube marketing case study,500,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.1
+56,best business channel on youtube,500,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.1
+57,using youtube for business,500,1307.19,2,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.9
+58,youtube premium for business,500,0.0,3,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.8
+59,youtube videos for business,500,963.0,4,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.7
+60,youtube ads for business,500,5211.32,6,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.5
+61,youtube marketing companies,500,1344.32,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.1
+62,youtube for business,500,2625.87,12,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,64.9
+63,content strategy youtube,500,472.73,16,strategic,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,39.5
+64,youtube channel management agency,500,237.05,27,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,58.4
+65,youtube talent agency,500,415.09,29,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,58.2
+66,check youtube channel stats,500,93.88,1,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,46.0
+67,company youtube channel,500,761.72,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.8
+68,brand youtube channel,500,471.78,5,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.6
+69,optimizing youtube channel,500,395.08,5,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.6
+70,optimize youtube channel,500,627.79,9,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.2
+71,youtube coach,500,321.65,22,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,58.9
+72,youtube agency,500,1107.5,33,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,57.8
+73,best youtube marketing,50,40.03,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+74,organic youtube marketing,50,39.36,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+75,b2b youtube strategy,50,32.45,0,,youtube_marketing,blog,youtube-marketing-b2b,live,sot_final,55.0
+76,youtube for business marketing,50,29.29,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+77,youtube marketing for real estate,50,27.21,0,,youtube_marketing,blog,real-estate,not-started,sot_final,55.0
+78,youtube marketing online,50,23.65,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+79,youtube seo marketing,50,23.32,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+80,youtube marketing consultant,50,21.98,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+81,youtube marketing specialist,50,21.71,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+82,youtube marketing platform,50,17.01,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+83,best youtube marketing agencies,50,10.6,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+84,best youtube marketing agency,50,10.6,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+85,youtube seo consultant,50,10.26,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+86,youtube video marketing agency,50,8.86,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+87,youtube marketing packages,50,8.3,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+88,youtube video marketing strategy,50,6.34,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+89,youtube marketing cost,50,6.24,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+90,youtube marketing price,50,5.7,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+91,youtube marketing agency near me,50,4.06,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+92,learn youtube marketing,50,2.83,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+93,youtube digital marketing agency,50,2.0,0,transactional,b2b,blog,youtube-marketing-b2b,live,sot_final,87.0
+94,youtube marketing for beginners,50,1.11,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+95,youtube marketing services near me,50,0.62,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+96,best youtube marketing campaigns,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+97,best youtube marketing companies,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+98,best youtube marketing services,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+99,best youtube marketing strategy,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+100,cost of youtube marketing,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+101,digital marketing agency youtube,50,0.0,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+102,digital marketing agency youtube video,50,0.0,0,,youtube_marketing,blog,youtube-marketing-agency-guide,not-started,sot_final,55.0
+103,ecommerce youtube marketing,50,0.0,0,,youtube_marketing,blog,ecommerce,not-started,sot_final,55.0
+104,successful youtube marketing campaigns,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+105,top youtube marketing companies,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+106,youtube marketing b2b,50,0.0,0,,youtube_marketing,blog,youtube-marketing-b2b,live,sot_final,55.0
+107,youtube marketing best practices,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+108,youtube marketing content,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+109,youtube marketing firm,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+110,youtube marketing for b2b,50,0.0,0,,youtube_marketing,blog,youtube-marketing-b2b,live,sot_final,55.0
+111,youtube marketing for ecommerce,50,0.0,0,,youtube_marketing,blog,ecommerce,not-started,sot_final,55.0
+112,youtube marketing for law firms,50,0.0,0,,youtube_marketing,blog,law-firms,not-started,sot_final,55.0
+113,youtube marketing for small business,50,0.0,0,,youtube_marketing,blog,small-business,not-started,sot_final,55.0
+114,youtube marketing influencer,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+115,youtube marketing near me,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+116,youtube marketing secrets,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+117,youtube video seo marketing,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+118,youtube video seo services,50,0.0,0,,youtube_marketing,blog,youtube-marketing-strategy,planned,sot_final,55.0
+119,youtube for b2b marketing,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final,78.0
+120,b2b youtube channels,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final,78.0
+121,best b2b youtube channels,50,0.0,0,informational,b2b,blog,youtube-marketing-b2b,live,sot_final,78.0
+122,open youtube account for business,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,66.0
+123,set up a youtube account for business,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,66.0
+124,setting up a youtube business channel,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,66.0
+125,youtube business case study,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,66.0
+126,youtube create account for business,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,66.0
+127,best youtube channel for business case study,50,0.0,0,transactional,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,75.0
+128,companies that use youtube for marketing,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.0
+129,best business channel,50,0.0,1,transactional,video_marketing_general,blog,the-youtube-acquisition-engine,live,sot_final,60.9
+130,small business youtube channels,50,0.0,1,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.9
+131,top business channel on youtube,50,0.0,1,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,60.9
+132,youtube for business pricing,50,0.0,2,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.8
+133,private youtube channel for business,50,0.0,2,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.8
+134,meta for business youtube,50,0.0,3,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.7
+135,youtube small business,50,0.0,4,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.6
+136,youtube for enterprise,50,0.0,4,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.6
+137,how to check youtube analytics of other channels,50,53.22,5,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.5
+138,how to see youtube analytics for other channels,50,195.43,5,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.5
+139,youtube for internal business use,50,0.0,7,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.3
+140,youtube for small business,50,784.2,8,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,65.2
+141,youtube startup video,50,0.0,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.0
+142,youtube for companies,50,0.0,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.0
+143,small business videos youtube,50,0.0,10,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.0
+144,youtube create a business channel,50,0.0,11,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,64.9
+145,youtube channel startup,50,348.08,11,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,50.9
+146,startup youtube channel,50,348.08,11,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,50.9
+147,youtube for your business,50,0.0,14,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,64.6
+148,youtube business channel create,50,0.0,14,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,64.6
+149,starting a youtube channel for business,50,70.3,16,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,64.4
+150,setting up youtube for business,50,0.0,26,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,63.4
+151,create a youtube page for business,50,2308.25,28,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,63.2
+152,small scale business youtube,50,0.0,0,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,66.0
+153,youtube marketing service youtube stores,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.0
+154,youtube stores youtube marketing service,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.0
+155,youtube ad script,50,0.0,0,informational,youtube_ads,blog,youtube-ads-guide,not-started,sot_final,38.0
+156,brand new youtube channel,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.0
+157,create brand account youtube channel,50,0.0,0,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,52.0
+158,youtube channel marketing agency,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.0
+159,seo youtube agency,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.0
+160,youtube saas,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.0
+161,search engine optimization for youtube channel,50,0.0,0,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,72.0
+162,ways to improve your youtube channel,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,46.0
+163,youtube channel improve,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,46.0
+164,check youtube channel performance,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,46.0
+165,youtube video structure,50,0.0,2,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,51.8
+166,real estate marketing youtube,50,0.0,3,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,60.7
+167,youtube real estate marketing,50,0.0,3,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,60.7
+168,check youtube channel analytics,50,0.0,3,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.7
+169,check youtube channel statistics,50,0.0,4,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.6
+170,check seo of youtube channel,50,0.0,4,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.6
+171,check youtube channel traffic,50,0.0,10,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,45.0
+172,youtube seo audit,50,0.0,11,technical,youtube_seo,blog,youtube-seo-guide,not-started,sot_final,70.9
+173,free youtube video transcript generator,50,168.73,19,informational,youtube_transcription_captions,blog,best-youtube-transcript-generators,live,sot_final,50.1
+174,scripting a youtube video,50,225.14,23,informational,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,49.7
+175,youtube channel growth agency,50,741.22,24,transactional,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,72.6
+176,optimize your youtube channel,50,239.81,29,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,43.1
+177,improve youtube channel,50,256.05,32,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,42.8
+178,youtube content agency,50,722.17,35,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,57.5
+179,create a youtube channel business,50,200.15,37,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,62.3
+180,create a youtube channel for your business,50,632.46,37,informational,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,62.3
+181,youtube promotion agency,50,724.77,39,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,57.1
+182,youtube channel promotion agency,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.0
+183,youtube ecommerce marketing,50,0.0,0,transactional,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,61.0
+184,ways to improve youtube channel,50,0.0,0,technical,youtube_general,blog,youtube-marketing-strategy,planned,sot_final,46.0
+185,youtube shorts agency,50,642.64,11,transactional,youtube_shorts_strategy,blog,youtube-shorts-for-business,not-started,sot_final,59.9
+186,youtube shorts for business,50,899.29,15,transactional,youtube_shorts_strategy,blog,youtube-shorts-for-business,not-started,sot_final,59.5
+187,youtube shorts business,50,287.15,18,transactional,youtube_shorts_strategy,blog,youtube-shorts-for-business,not-started,sot_final,59.2
+188,youtube analytics business,0,0.0,0,technical,youtube_growth_strategy,blog,create-youtube-channel-for-business,live,sot_final,60.0
+189,youtube script,5000,367.15,1,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.9
+190,youtube analytics dashboard,5000,620.26,2,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,57.8
+191,youtube script generator,5000,76.69,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.5
+192,youtube video script generator,5000,119.48,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.4
+193,youtube ai tool,5000,164.47,16,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,71.4
+194,ai tools for youtube,5000,127.82,36,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,69.4
+195,ai tool for youtube,5000,127.82,36,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,69.4
+196,best ai tools for youtube,5000,224.12,38,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,69.2
+197,youtube video analytics for other channels,500,218.3,5,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.6
+198,script for a youtube video,500,236.39,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.9
+199,youtube video script,500,236.39,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.9
+200,youtube script video,500,236.39,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.9
+201,youtube script generator free,500,115.14,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.5
+202,youtube video script generator free,500,95.58,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.5
+203,youtube script writer,500,391.39,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final,33.5
+204,youtube script writers,500,391.39,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final,33.5
+205,youtube script generator ai,500,40.11,17,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,61.4
+206,get script from youtube video,500,200.05,17,informational,video_production,tool,youtube-script-generator,not-started,sot_final,33.4
+207,ai youtube script generator,500,185.19,24,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,60.7
+208,free ai tools for youtube,500,78.4,36,transactional,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,68.5
+209,view other youtube channel analytics,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,57.0
+210,other youtube channel analytics,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,57.0
+211,youtube analytics for other videos,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,57.0
+212,youtube analytics for other channels reddit,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,57.0
+213,how to check other youtubers analytics,50,0.0,0,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,57.0
+214,view youtube analytics for other channels,50,0.0,1,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.9
+215,how to see other youtube channel stats,50,0.0,2,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.8
+216,can you see other youtubers analytics,50,0.0,2,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.8
+217,how to view other youtubers analytics,50,0.0,4,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.6
+218,how to view other youtube channel analytics,50,0.0,6,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.4
+219,how to see other youtube channel analytics,50,0.0,6,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.4
+220,free youtube analytics for other channels,50,0.0,7,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.3
+221,how to see other youtubers analytics,50,0.0,8,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,56.2
+222,youtube analytics tool for other channels,50,0.0,11,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,55.9
+223,how to check other youtube channel analytics,50,89.8,11,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,55.9
+224,how to analyse other youtube channel,50,0.0,12,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,55.8
+225,how to analyze other youtube channel,50,0.0,12,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,55.8
+226,how to check other channels analytics,50,41.92,13,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,55.7
+227,how to see other channels analytics,50,0.0,13,technical,youtube_analytics,tool,youtube-analytics-tool,not-started,sot_final,55.7
+228,youtube script writing app,50,0.0,0,informational,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final,63.0
+229,youtube channel introduction script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+230,youtube video intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+231,youtube script online,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+232,youtube script writing tips,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+233,youtube channel script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+234,youtube ads script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+235,youtube channel trailer script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+236,first youtube video script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+237,example of a youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+238,example of youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+239,example script for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+240,best youtube intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+241,youtube video script generator online,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+242,free youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+243,youtube video script format,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+244,youtube script writing examples,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+245,youtube channel introduction script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+246,youtube vlog script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+247,youtube outro script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+248,script for first youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+249,youtube outro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+250,best script for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+251,youtube intro script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+252,youtube intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+253,youtube script format,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+254,youtube script example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+255,best youtube script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+256,youtube video script example,50,0.0,1,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.9
+257,youtube video script generator ai,50,0.0,2,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,62.8
+258,write a youtube script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.8
+259,youtube short script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.8
+260,youtube script outline,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.8
+261,youtube video script generator in hindi,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.8
+262,get youtube script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.8
+263,get youtube video script,50,0.0,2,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.8
+264,free youtube video script,50,0.0,3,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.7
+265,youtube script converter,50,122.96,3,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.7
+266,get script youtube video,50,0.0,4,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.6
+267,write a script for youtube video,50,127.29,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.5
+268,writing a script for a youtube video,50,127.29,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.5
+269,video script youtube,50,0.0,5,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.5
+270,script of youtube video,50,140.28,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.4
+271,youtube script maker,50,0.0,6,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.4
+272,youtube script writing software,50,0.0,7,informational,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final,62.3
+273,youtube content script,50,0.0,7,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.3
+274,youtube video script ai,50,0.0,9,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,62.1
+275,script of a youtube video,50,0.0,9,informational,video_production,tool,youtube-script-generator,not-started,sot_final,34.1
+276,youtube channel audit tool,50,430.98,10,technical,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final,56.0
+277,get script of youtube video,50,178.38,11,informational,video_production,tool,youtube-script-generator,not-started,sot_final,33.9
+278,youtube script ai,50,357.62,14,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,61.6
+279,ai youtube script,50,0.0,16,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,61.4
+280,youtube video script writer,50,0.0,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final,33.4
+281,script from youtube video,50,170.58,16,informational,video_production,tool,youtube-script-generator,not-started,sot_final,33.4
+282,youtube script ai writer,50,0.0,17,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,61.3
+283,free ai youtube script generator,50,275.38,18,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,61.2
+284,youtube channel audit tool free,50,426.71,19,technical,youtube_tools_software,tool,youtube-channel-audit-tool,not-started,sot_final,55.1
+285,ai youtube script writer,50,352.43,27,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,60.3
+286,writing a youtube video script,50,0.0,29,informational,video_production,tool,youtube-script-generator,not-started,sot_final,32.1
+287,youtube script writer ai,50,289.21,31,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,59.9
+288,youtube script writing ai,50,289.21,31,informational,youtube_automation,tool,youtube-ai-tools,not-started,sot_final,59.9
+289,get the script of a youtube video,50,184.21,34,informational,video_production,tool,youtube-script-generator,not-started,sot_final,31.6
+290,script ideas for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+291,script for youtube video example,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+292,youtube vlog intro script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+293,free script for youtube video,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+294,video script for youtube,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+295,introduction for youtube channel script,50,0.0,0,informational,video_production,tool,youtube-script-generator,not-started,sot_final,35.0
+296,channel subscription youtube,5000,168.46,5.0,informational,pseo_for,pseo_for,subscription-businesses,planned,master_keywords,69.5
+297,actioncoach youtube,50,,0.0,informational,pseo_for,pseo_for,coaches,live,master_keywords,69.0
+298,cpa youtube marketing,50,,,informational,pseo_for,pseo_for,accountants,planned,master_keywords,64.0
+299,youtube for saas,0,0,0,informational,pseo_for,pseo_for,saas,live,manual,69.0
+300,youtube for agencies,0,0,0,informational,pseo_for,pseo_for,agencies,live,manual,69.0
+301,youtube for consultants,0,0,0,informational,pseo_for,pseo_for,consultants,live,manual,69.0
+302,youtube for b2b companies,0,0,0,informational,pseo_for,pseo_for,b2b-companies,live,manual,69.0
+303,youtube for course creators,0,0,0,informational,pseo_for,pseo_for,course-creators,planned,manual,69.0
+304,youtube for financial advisors,0,0,0,informational,pseo_for,pseo_for,financial-advisors,live,manual,69.0
+305,youtube for law firms,0,0,0,informational,pseo_for,pseo_for,law-firms,live,manual,69.0
+306,youtube for real estate,0,0,0,informational,pseo_for,pseo_for,real-estate,live,manual,69.0
+307,youtube for marketing agencies,0,0,0,informational,pseo_for,pseo_for,marketing-agencies,planned,manual,69.0
+308,youtube for software companies,0,0,0,informational,pseo_for,pseo_for,software-companies,planned,manual,69.0
+309,youtube for fintech companies,0,0,0,informational,pseo_for,pseo_for,fintech-companies,planned,manual,69.0
+310,youtube for hr software,0,0,0,informational,pseo_for,pseo_for,hr-software,planned,manual,69.0
+311,youtube for edtech companies,0,0,0,informational,pseo_for,pseo_for,edtech-companies,planned,manual,69.0
+312,youtube for cybersecurity companies,0,0,0,informational,pseo_for,pseo_for,cybersecurity-companies,planned,manual,69.0
+313,youtube for insurance agents,0,0,0,informational,pseo_for,pseo_for,insurance-agents,planned,manual,69.0
+314,youtube for mortgage brokers,0,0,0,informational,pseo_for,pseo_for,mortgage-brokers,planned,manual,69.0
+315,youtube for recruiting firms,0,0,0,informational,pseo_for,pseo_for,recruiting-firms,planned,manual,69.0
+316,youtube for management consultants,0,0,0,informational,pseo_for,pseo_for,management-consultants,planned,manual,69.0
+317,youtube for business coaches,0,0,0,informational,pseo_for,pseo_for,business-coaches,planned,manual,69.0
+318,youtube for life coaches,0,0,0,informational,pseo_for,pseo_for,life-coaches,planned,manual,69.0
+319,youtube for professional services,0,0,0,informational,pseo_for,pseo_for,professional-services,planned,manual,69.0
+320,youtube for startup founders,0,0,0,informational,pseo_for,pseo_for,startup-founders,planned,manual,69.0
+321,youtube for ecommerce,0,0,0,informational,pseo_for,pseo_for,ecommerce,planned,manual,69.0
+322,youtube for healthcare practices,0,0,0,informational,pseo_for,pseo_for,healthcare-practices,planned,manual,69.0
+323,youtube for dental practices,0,0,0,informational,pseo_for,pseo_for,dental-practices,planned,manual,69.0
+324,youtube for marketplaces,0,0,0,informational,pseo_for,pseo_for,marketplaces,planned,manual,69.0
+325,youtube for small business,0,0,0,informational,pseo_for,pseo_for,small-business,planned,manual,69.0
+326,youtube facebook,5000,,0.0,informational,pseo_vs,pseo_vs,facebook,live,master_keywords,70.0
+327,youtube influencer marketing,500,2951.9,7.0,informational,pseo_vs,pseo_vs,influencer-marketing,planned,master_keywords,68.4
+328,gen youtube instagram,50,,0.0,informational,pseo_vs,pseo_vs,instagram,live,master_keywords,69.0
+329,youtube content marketing strategy,50,,17.0,strategic,pseo_vs,pseo_vs,content-marketing,planned,master_keywords,56.3
+330,seo youtube reddit,50,,0.0,technical,pseo_vs,pseo_vs,reddit-for-saas,planned,master_keywords,63.0
+331,youtube for linkedin for b2b,0,0,0,informational,pseo_vs,pseo_vs,linkedin-for-b2b,planned,manual,69.0
+332,youtube for instagram for coaches,0,0,0,informational,pseo_vs,pseo_vs,instagram-for-coaches,planned,manual,69.0
+333,youtube for tiktok for saas,0,0,0,informational,pseo_vs,pseo_vs,tiktok-for-saas,planned,manual,69.0
+334,youtube for paid ads,0,0,0,informational,pseo_vs,pseo_vs,paid-ads,planned,manual,69.0
+335,youtube for facebook ads,0,0,0,informational,pseo_vs,pseo_vs,facebook-ads,planned,manual,69.0
+336,youtube for podcasting,0,0,0,informational,pseo_vs,pseo_vs,podcasting,planned,manual,69.0
+337,youtube for blogging,0,0,0,informational,pseo_vs,pseo_vs,blogging,planned,manual,69.0
+338,youtube for email marketing,0,0,0,informational,pseo_vs,pseo_vs,email-marketing,planned,manual,69.0
+339,youtube for linkedin for agencies,0,0,0,informational,pseo_vs,pseo_vs,linkedin-for-agencies,planned,manual,69.0
+340,youtube for instagram for saas,0,0,0,informational,pseo_vs,pseo_vs,instagram-for-saas,planned,manual,69.0
+341,youtube for webinars,0,0,0,informational,pseo_vs,pseo_vs,webinars,planned,manual,69.0
+342,youtube for cold outreach,0,0,0,informational,pseo_vs,pseo_vs,cold-outreach,planned,manual,69.0
+343,youtube for seo content,0,0,0,informational,pseo_vs,pseo_vs,seo-content,planned,manual,69.0
+344,youtube for referral marketing,0,0,0,informational,pseo_vs,pseo_vs,referral-marketing,planned,manual,69.0
+345,youtube for community building,0,0,0,informational,pseo_vs,pseo_vs,community-building,planned,manual,69.0
+346,youtube for twitter for saas,0,0,0,informational,pseo_vs,pseo_vs,twitter-for-saas,planned,manual,69.0

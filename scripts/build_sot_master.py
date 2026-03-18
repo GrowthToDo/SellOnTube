@@ -4,10 +4,57 @@ Combines sot_keywords_final.csv (blog/tool keywords) with best-match
 pSEO keywords pulled from master_keywords_cleaned.csv.
 
 Output columns:
-  keyword, search_volume, cpc_usd, keyword_difficulty, intent,
-  cluster, content_type, target_slug, status, source
+  rank, keyword, search_volume, cpc_inr, keyword_difficulty, intent,
+  cluster, content_type, target_slug, status, source, priority_score
+
+Note: cpc values are in INR (not USD) — column renamed from cpc_usd to cpc_inr.
+
+Priority score formula (0-100):
+  Business potential (0-40): from cluster tier mapping
+  Content-market fit (0-30): from intent
+  Search potential (0-20): from search_volume + keyword_difficulty
+  Resource cost (0-10): from content_type
 """
 import csv, sys
+
+# ── Priority Score ───────────────────────────────────────────────────────────
+
+BUSINESS_POTENTIAL = {
+    # Tier 1 — Core (40pts)
+    "youtube_seo": 40, "youtube_lead_gen": 40, "b2b": 40, "youtube_keyword_research": 40,
+    # Tier 2 — Adjacent (28pts)
+    "youtube_marketing": 28, "youtube_analytics": 28, "youtube_growth_strategy": 28,
+    "youtube_automation": 28, "youtube_title_generator": 28, "youtube_video_ideas": 28,
+    "youtube_tools_software": 28,
+    # Tier 3 — Broad (14pts)
+    "youtube_general": 14, "youtube_shorts_strategy": 14,
+    "youtube_transcription_captions": 14, "video_marketing_general": 14,
+    # Excluded (0pts)
+    "video_production": 0, "youtube_ads": 0,
+    # pSEO — adjacent tier
+    "pseo_for": 28, "pseo_vs": 28,
+}
+
+CONTENT_MARKET_FIT = {
+    "commercial": 30, "transactional": 30,
+    "informational": 21,
+    "technical": 15,
+}
+
+RESOURCE_COST = {
+    "pseo_for": 10, "pseo_vs": 10,
+    "blog": 7,
+    "tool": 4,
+}
+
+def calc_priority_score(cluster, intent, search_volume, keyword_difficulty, content_type):
+    bp  = BUSINESS_POTENTIAL.get(cluster, 14)
+    cmf = CONTENT_MARKET_FIT.get(str(intent).lower(), 10)
+    sv  = int(float(search_volume)) if search_volume else 0
+    kd  = int(float(keyword_difficulty)) if keyword_difficulty else 50
+    sp  = round(min(sv / 50000, 1.0) * 10 + ((100 - kd) / 100) * 10, 1)
+    rc  = RESOURCE_COST.get(content_type, 7)
+    return round(bp + cmf + sp + rc, 1)
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
@@ -223,7 +270,7 @@ for row in sot_rows:
     out_rows.append({
         "keyword":            keyword,
         "search_volume":      row["search_volume"],
-        "cpc_usd":            row["cpc_usd"],
+        "cpc_inr":            row["cpc_usd"],
         "keyword_difficulty": row["keyword_difficulty"],
         "intent":             row["intent"],
         "cluster":            cluster,
@@ -231,6 +278,7 @@ for row in sot_rows:
         "target_slug":        target_slug,
         "status":             status,
         "source":             "sot_final",
+        "priority_score":     calc_priority_score(cluster, row["intent"], row["search_volume"], row["keyword_difficulty"], ctype),
     })
 
 # 2. Add pSEO for rows (one primary keyword per slug)
@@ -250,7 +298,7 @@ for slug in PSEO_FOR_SLUGS:
     out_rows.append({
         "keyword":            kw,
         "search_volume":      str(sv),
-        "cpc_usd":            cpc,
+        "cpc_inr":            cpc,
         "keyword_difficulty": kd,
         "intent":             intent,
         "cluster":            "pseo_for",
@@ -258,6 +306,7 @@ for slug in PSEO_FOR_SLUGS:
         "target_slug":        slug,
         "status":             status,
         "source":             "master_keywords" if sv > 0 else "manual",
+        "priority_score":     calc_priority_score("pseo_for", intent, str(sv), kd, "pseo_for"),
     })
     already_in.add(kw.lower())
 
@@ -275,7 +324,7 @@ for slug in PSEO_VS_SLUGS:
     out_rows.append({
         "keyword":            kw,
         "search_volume":      str(sv),
-        "cpc_usd":            cpc,
+        "cpc_inr":            cpc,
         "keyword_difficulty": kd,
         "intent":             intent,
         "cluster":            "pseo_vs",
@@ -283,6 +332,7 @@ for slug in PSEO_VS_SLUGS:
         "target_slug":        slug,
         "status":             status,
         "source":             "master_keywords" if sv > 0 else "manual",
+        "priority_score":     calc_priority_score("pseo_vs", intent, str(sv), kd, "pseo_vs"),
     })
     already_in.add(kw.lower())
 
@@ -298,8 +348,8 @@ for i, row in enumerate(out_rows, 1):
     row["rank"] = i
 
 # ── Write output ─────────────────────────────────────────────────────────────
-FIELDNAMES = ["rank","keyword","search_volume","cpc_usd","keyword_difficulty",
-              "intent","cluster","content_type","target_slug","status","source"]
+FIELDNAMES = ["rank","keyword","search_volume","cpc_inr","keyword_difficulty",
+              "intent","cluster","content_type","target_slug","status","source","priority_score"]
 
 with open(OUT, "w", newline="", encoding="utf-8-sig") as f:
     writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
