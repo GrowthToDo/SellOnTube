@@ -22,13 +22,15 @@ Prioritize 2s and 3s. A blog full of 3s feels like a sales pitch. A blog full of
 
 ### The Funnel Mix
 
-Your 2-3 posts per week should cover different stages:
+**Cadence: 1 post per week. Hard maximum: 2 posts in any 7-day window.** SellonTube is a new, low-authority site — a burst of posts risks Google flagging thin content. Before scheduling any post, count how many fall in the same 7-day window across `src/data/post/`. If adding the new post would push any window above 2, stop and flag it.
 
-**Top of funnel (1-2 per week):** Broad, keyword-driven educational content. Attracts new visitors through search. *Examples: "What Is YouTube SEO?", "5 Content Marketing Mistakes New Shopify Stores Make"*
+Posts should cover different funnel stages across the month:
 
-**Middle of funnel (1 per week):** Connects the reader's problem to SellonTube's expertise. Shows how to think, not just what to do. *Examples: "Why Your YouTube Shorts Get Views But Don't Drive Sales", "The Content Strategy Most Shopify Apps Get Wrong"*
+**Top of funnel (most weeks):** Broad, keyword-driven educational content. Attracts new visitors through search. *Examples: "What Is YouTube SEO?", "5 Content Marketing Mistakes New Shopify Stores Make"*
 
-**Bottom of funnel (1 every 1-2 weeks):** Showcases your work, results, and methodology. Case studies, process breakdowns, client stories. *Examples: "How We Grew a Shopify App's Organic Traffic by 3x", "Our YouTube SEO Process: Step by Step"*
+**Middle of funnel (every few weeks):** Connects the reader's problem to SellonTube's expertise. Shows how to think, not just what to do. *Examples: "Why Your YouTube Shorts Get Views But Don't Drive Sales", "The Content Strategy Most Shopify Apps Get Wrong"*
+
+**Bottom of funnel (once or twice a month):** Showcases your work, results, and methodology. Case studies, process breakdowns, client stories. *Examples: "How We Grew a Shopify App's Organic Traffic by 3x", "Our YouTube SEO Process: Step by Step"*
 
 ### Finding High-Intent Topics
 
@@ -186,7 +188,7 @@ These are the mechanical SEO requirements for every post:
 
 ---
 
-## 6. CONTENT FORMATS: SUSTAINING A 2-3 POST PER WEEK CADENCE
+## 6. CONTENT FORMATS: SUSTAINING A 1 POST PER WEEK CADENCE
 
 Not every post needs to be a 3,000-word thought leadership piece. These formats produce strong results with less effort:
 

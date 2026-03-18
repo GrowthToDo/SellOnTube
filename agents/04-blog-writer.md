@@ -31,7 +31,9 @@ Every section must answer "why does this matter for a business trying to acquire
 7. **Numbered lists** — For sequential steps or ranked items. Bullet lists for non-sequential.
 8. **Short + long paragraph mix** — One-sentence punchy paragraphs after a key point. Then a longer explanatory paragraph. Alternate.
 9. **FAQ section** — 3–5 questions at the end. Questions must be real search queries, not invented softballs.
-10. **CTA** — End with one clear CTA (book a call, try a tool, read related post). Never multiple CTAs.
+10. **CTA** — Two CTA rules:
+    - **Bottom CTA (mandatory):** Always "book a call." Every post ends with this. No substitutions.
+    - **Mid-body CTA (optional, max one):** A direct link to a SellonTube tool, placed only where the tool is genuinely relevant to the section being discussed. Do not add mid-body CTAs for internal blog posts or services pages — tools only, and only when relevant.
 
 ### Tone
 - Authoritative but not academic
@@ -75,6 +77,7 @@ OUTLINE:
 - Quick Answer: [yes/no — include for "what is X" / "how does X work" queries. 2-3 sentences above the intro]
 - Intro: [1-sentence summary of angle]
 - H2: Key Takeaways [mandatory if >1,000 words — list 5-6 standalone insights, first bullet = direct answer to title query]
+- H2: Table of Contents [mandatory on all posts — anchor links to every H2, flat list, H2s only]
 - H2: [section]
   - H3: [subsection if needed]
 - H2: [section]

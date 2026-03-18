@@ -105,7 +105,7 @@ Headings are the first thing skimmers read. If the headings sound like AI, the b
 
 - **A specific next action.** "Open your YouTube Studio, look at your last 10 video titles, and ask: would I click on this if I didn't know my own brand? Fix the ones where the answer is no."
 - **A provocative final thought.** One sentence that sticks. Something the reader thinks about 10 minutes later.
-- **A direct CTA.** "Run your numbers through our free ROI calculator and see if YouTube makes sense for your business." No fluff around it.
+- **A direct CTA.** Always "book a call" — this is the fixed closing CTA on every post. No substitutions. If a SellonTube tool is relevant to the post, it can appear as a mid-body CTA (once, where relevant) — but the final line still closes with the book a call prompt.
 
 The last line of a post is the second most-read line after the headline. Don't waste it on a summary.
 
@@ -318,3 +318,53 @@ When writing a "best X" or "top N tools/strategies" post, every list item must u
 - Verdict: [one sentence]
 
 Consistent structure makes posts scannable, signals quality to Google, and helps readers compare items quickly. Inconsistent depth across items is a quality signal Google notices.
+
+### 17. Table of Contents — mandatory on all posts
+
+Add a Table of Contents immediately after the Key Takeaways section (or after the intro on posts under 1,000 words where Key Takeaways is omitted). Use anchor links to every H2 in the post.
+
+**Why on all posts:** SellonTube is moving toward long-form content. A ToC present from the start builds a consistent reading experience, helps Google understand page structure, and makes posts easier to navigate as they grow in depth.
+
+**Format:**
+```
+## Table of Contents
+- [Section Name](#anchor)
+- [Section Name](#anchor)
+```
+
+Keep the ToC flat — link to H2s only, not H3s. If a post has more than 10 H2s, that's a signal the post needs to be split, not that the ToC needs to be longer.
+
+### 18. YouTube timestamp code blocks for video optimization posts
+
+When writing any post that teaches YouTube video structure, descriptions, or chapter formatting, show the timestamp format as a code block rather than describing it in prose. Readers copy-paste from code blocks — prose descriptions get skimmed and forgotten.
+
+**Use this pattern:**
+
+```
+0:00 Introduction
+0:45 The problem with most YouTube descriptions
+2:30 How to structure your chapters for search
+4:15 The right way to write your first chapter
+```
+
+Rules for the code block itself:
+- Start at 0:00 always
+- Chapter labels should be specific and benefit-driven, not generic ("Introduction" is the only exception for the opener)
+- Include 4-6 chapters — enough to show the pattern without padding
+- Use a real or realistic example tied to the post's topic, not a generic placeholder
+
+Only use this pattern when the post is directly teaching video structure or description optimization. Don't force it into posts where timestamps are tangential.
+
+### 19. "Best starting point" callout — one per post
+
+In any listicle or framework post where the reader faces a genuine "where do I begin?" decision, call out the single best starting tactic explicitly. This stops readers from getting paralysed by choice.
+
+**Format:**
+
+> **Best starting point:** [tactic or item name] — [one sentence explaining why this one first]
+
+Rules:
+- Maximum one per post. If every section has one, the signal is lost.
+- Only use it when there is a genuinely clear answer. Don't force it onto posts where the right starting point is "it depends."
+- Place it after the item it refers to, not at the top of the list.
+- This is a reader service, not a promotional device. Never use it to push a SellonTube service.
