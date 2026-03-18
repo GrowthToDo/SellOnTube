@@ -7,10 +7,10 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 "write a post about X", "draft a blog on Y", "create content about Z", "write the blog post"
 
 ## Source files to read before writing
-1. `SellonTube-Style-Guide.md` — mandatory. All rules apply.
-2. `SellonTube-Content-Quality-Playbook.md` — mandatory. All rules apply.
-3. `seo.md` — traditional SEO rules.
-4. `ai-seo.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
+1. `style-guide.md` — mandatory. All rules apply.
+2. `content-playbook.md` — mandatory. All rules apply.
+3. `seo-rules.md` — traditional SEO rules.
+4. `ai-seo-guide.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
 5. An existing blog post from `src/data/post/` — read one for format/tone calibration.
 
 ## ICP reminder
@@ -111,7 +111,7 @@ metadata:
 ```
 
 Then full body in MDX, followed by:
-- **Author bio** (mandatory) — name, role, specific expertise, years of experience or client count, LinkedIn link. Place before the Sources section. See `ai-seo.md` §7 for required fields.
+- **Author bio** (mandatory) — name, role, specific expertise, years of experience or client count, LinkedIn link. Place before the Sources section. See `ai-seo-guide.md` §7 for required fields.
 - **Sources section** (if external stats cited)
 - **FAQ section**
 - **Bottom CTA** (book a call)
@@ -147,7 +147,7 @@ After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to th
 ## Content Structure, Formatting & SEO Craft
 
 All structural patterns (items 1-16), formatting rules, and SEO craft rules are defined in the source files listed above. Apply every rule from:
-- `SellonTube-Style-Guide.md` — Fixes #1-10 and the full Content Structure & Formatting Reference (items 1-16)
-- `SellonTube-Content-Quality-Playbook.md` — Sections 3 (persuasion), 5 (SEO craft), and the quality checklist
+- `style-guide.md` — Fixes #1-10 and the full Content Structure & Formatting Reference (items 1-16)
+- `content-playbook.md` — Sections 3 (persuasion), 5 (SEO craft), and the quality checklist
 
 Do not rely on memory of these rules. Re-read the source files before writing each draft.

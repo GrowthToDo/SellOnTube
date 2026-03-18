@@ -12,7 +12,7 @@ Audit technical SEO health: redirects, schema markup, sitemap, and site configur
 - `src/components/common/JsonLd.astro` — schema markup
 - `src/config.yaml` — site config
 - GSC page data (from Agent 01) — cross-reference non-Astro URLs still appearing in impressions
-- `ai-seo.md` — AI citation requirements including robots.txt bot list and schema priority
+- `ai-seo-guide.md` — AI citation requirements including robots.txt bot list and schema priority
 
 ## Execution steps
 
@@ -35,7 +35,7 @@ Read all `[[redirects]]` entries.
 - [ ] No page redirects to itself
 
 ### Step 1b — AI bot access audit (`netlify.toml` + `public/robots.txt`)
-Check that no AI crawler is blocked. Required bots (from `ai-seo.md`):
+Check that no AI crawler is blocked. Required bots (from `ai-seo-guide.md`):
 - [ ] GPTBot — allowed
 - [ ] ChatGPT-User — allowed
 - [ ] PerplexityBot — allowed

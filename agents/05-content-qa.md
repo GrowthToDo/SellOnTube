@@ -8,9 +8,9 @@ Audit any file against the Style Guide and Content Quality Playbook. Report ever
 Also: automatically called by Agent 04 after every blog post draft.
 
 ## Source files to read first
-1. `SellonTube-Style-Guide.md` — every rule applies to ALL copy on the touched file, not just new writing
-2. `SellonTube-Content-Quality-Playbook.md` — quality standards
-3. `ai-seo.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
+1. `style-guide.md` — every rule applies to ALL copy on the touched file, not just new writing
+2. `content-playbook.md` — quality standards
+3. `ai-seo-guide.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
 
 ## Execution steps
 
@@ -88,7 +88,7 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] The CTA does not use vague language: "Get started", "Learn more", "Contact us" — it must state what happens next
 - [ ] If a mid-body tool CTA is present: it appears at a moment where the reader naturally wants to act, not forced in mid-argument
 
-**AI citation (check against `ai-seo.md`):**
+**AI citation (check against `ai-seo-guide.md`):**
 - [ ] Definition Block used for any "What is X?" section
 - [ ] Step-by-Step Block used for any "How to X?" section
 - [ ] At least one Statistic Citation Block present — "According to [Source], [stat]" format with named source

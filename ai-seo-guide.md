@@ -3,7 +3,7 @@
 
 Traditional SEO gets you ranked. AI SEO gets you **cited**. A well-structured page can get cited by ChatGPT, Perplexity, or Google AI Overviews even if it ranks on page 2 or 3 in traditional search. As AI-powered search becomes the default for SellonTube's ICP (B2B founders, SaaS operators), being the source AI systems reference is as important as ranking on page 1.
 
-This document governs all AI citation optimisation work. Read it alongside `seo.md` (traditional SEO rules) before any content or technical SEO decision.
+This document governs all AI citation optimisation work. Read it alongside `seo-rules.md` (traditional SEO rules) before any content or technical SEO decision.
 
 ---
 

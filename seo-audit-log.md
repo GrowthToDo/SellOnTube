@@ -1,7 +1,7 @@
 # SellonTube SEO Intelligence
 
 Detailed audit findings, fix history, and strategic reference.
-Quick rules → see `seo.md`. This file has the detail.
+Quick rules → see `seo-rules.md`. This file has the detail.
 
 ---
 

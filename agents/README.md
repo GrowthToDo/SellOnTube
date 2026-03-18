@@ -37,5 +37,5 @@ Just speak naturally. Examples that trigger each agent:
 - Never push to live without explicit user approval
 - Blog cadence: max 1/week, hard ceiling 2/week — always count before scheduling
 - pSEO publishDates are IST (UTC+5:30) — Netlify builds UTC — check before releasing
-- Read seo.md before any SEO recommendation
+- Read seo-rules.md before any SEO recommendation
 - Style Guide + Content Quality Playbook apply to ALL copy touched, not just new writing

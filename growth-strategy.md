@@ -18,13 +18,13 @@ High-quality = B2B founders, SaaS operators, and service businesses actively exp
 - Free tools targeting YouTube-for-business searches
 - **Positioning angle: YouTube for business, acquisition, and lead generation — NOT for creators**
 - This gap is unoccupied by all existing tools (VidIQ, TubeBuddy, Kapwing all target creators)
-- Build order and full specs: `MICROTOOLS-BLOG-STRATEGY.md`
+- Build order and full specs: `microtool-strategy.md`
 - Tools 1–4: pure client-side JS (fast to ship, no backend cost)
 - Tools 5–7: Netlify Functions + Claude API
 
 ### C. Blog — regular cadence (TBD)
 - Target: mix of high-volume keywords (reach) and high-intent keywords (conversion)
-- 6 topical clusters aligned to the site's theme — see `MICROTOOLS-BLOG-STRATEGY.md`
+- 6 topical clusters aligned to the site's theme — see `microtool-strategy.md`
 - Publishing cadence: to be decided
 - Each post must target a specific validated keyword and follow the Content Quality Playbook
 
@@ -69,7 +69,7 @@ Before writing any new post, validate the keyword:
 - Is the intent commercial or informational? (Prefer informational that leads to commercial intent)
 - Does it fit the ICP? (B2B SaaS founders, operators at SMBs with $1M+ revenue, businesses that sell high-ticket services)
 
-**Keyword clusters and post list:** See `MICROTOOLS-BLOG-STRATEGY.md` Part 2 — 6 clusters fully mapped with post titles.
+**Keyword clusters and post list:** See `microtool-strategy.md` Part 2 — 6 clusters fully mapped with post titles.
 
 **Cadence:** 1 post/week, hard ceiling 2/week. Quality over quantity — each post must target a specific, validated keyword and meet the Content Quality Playbook standard.
 
@@ -101,7 +101,7 @@ This is the #1 constraint on organic growth. Without backlinks, Google has littl
 
 Google's Helpful Content system rewards real brand signals — direct searches, links from real sites, social mentions. Distribution feeds into Google's trust model, not just traffic volume.
 
-See `SellonTube-Content-Quality-Playbook.md` Section 7 for recommended channels, repurposing strategy, and the underutilized channel mapping framework. Pick 2 channels and commit — don't spread thin.
+See `content-playbook.md` Section 7 for recommended channels, repurposing strategy, and the underutilized channel mapping framework. Pick 2 channels and commit — don't spread thin.
 
 ---
 

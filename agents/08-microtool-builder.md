@@ -112,7 +112,7 @@ Existing tools should be re-scored against this scorecard when:
 - A better-fit tool idea emerges that might replace it
 - The ICP or product positioning shifts
 
-Current tools to re-evaluate: see `MICROTOOLS-BLOG-STRATEGY.md` for the full pipeline list.
+Current tools to re-evaluate: see `microtool-strategy.md` for the full pipeline list.
 
 ---
 
@@ -148,7 +148,7 @@ Pick ONE primary keyword for the `<title>` and `<h1>`. It should match the exact
 These go into the on-page copy, the methodology section headings, and the meta description. Look for related terms in the same cluster.
 
 **Step 2c — Confirm the slug:**
-Check `src/pages/` to make sure the slug isn't taken. Use the slug format from `MICROTOOLS-BLOG-STRATEGY.md` if the tool was planned there.
+Check `src/pages/` to make sure the slug isn't taken. Use the slug format from `microtool-strategy.md` if the tool was planned there.
 
 ---
 
@@ -243,7 +243,7 @@ const metadata = {
 ```
 netlify/functions/[function-name].ts
 ```
-Follow the Claude API pattern in `MICROTOOLS-BLOG-STRATEGY.md`. Use `claude-haiku-4-5-20251001` for speed and cost unless the task requires Sonnet. Always include rate-limit logic in the function response (return structured JSON that the frontend can parse).
+Follow the Claude API pattern in `microtool-strategy.md`. Use `claude-haiku-4-5-20251001` for speed and cost unless the task requires Sonnet. Always include rate-limit logic in the function response (return structured JSON that the frontend can parse).
 
 ---
 
@@ -338,8 +338,8 @@ Never do any of these:
 
 - Reference tool: `src/pages/tools/youtube-roi-calculator.astro`
 - Keyword data: `research/keywords/master_keywords_cleaned.csv`
-- Tool plan: `MICROTOOLS-BLOG-STRATEGY.md`
-- Style rules: `SellonTube-Style-Guide.md`
-- SEO rules: `seo.md`
+- Tool plan: `microtool-strategy.md`
+- Style rules: `style-guide.md`
+- SEO rules: `seo-rules.md`
 - Booking link: `https://cal.com/gautham-8bdvdx/30min`
 - Email capture endpoint: in ROI calculator `<script>` block

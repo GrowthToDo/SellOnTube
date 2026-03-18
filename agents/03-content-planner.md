@@ -10,7 +10,7 @@ Build and maintain a rolling 4-week content calendar. Enforce cadence rules. Nev
 - `src/data/post/*.{md,mdx}` — all blog posts (read `publishDate` from frontmatter)
 - `src/data/niches.ts` — pSEO "YouTube For" pages (separate drip, not subject to blog cadence rule)
 - `src/data/comparisons.ts` — pSEO "YouTube Vs" pages (same — separate drip)
-- `research/keywords/sot_master.csv` — keyword pipeline. Use `priority_score` column to rank candidates. If `priority_score` column is not yet present, calculate it manually using the formula in `SellonTube-Content-Quality-Playbook.md` (Priority Score section).
+- `research/keywords/sot_master.csv` — keyword pipeline. Use `priority_score` column to rank candidates. If `priority_score` column is not yet present, calculate it manually using the formula in `content-playbook.md` (Priority Score section).
 - Output from Agent 02 (keyword picks) — use these to fill open calendar slots
 
 ## Cadence rules (non-negotiable)

@@ -4,7 +4,7 @@
 Route content marketing and SEO requests to the right sub-agent(s). Synthesize results. Never skip reading the relevant sub-agent spec before executing.
 
 ## Pre-flight (run before every task)
-1. Read `seo.md` — rules override general SEO knowledge
+1. Read `seo-rules.md` — rules override general SEO knowledge
 2. Read `agents/README.md` — confirm routing
 3. Identify if the task is single-agent or multi-agent
 
