@@ -89,6 +89,20 @@ Ban these heading patterns:
 
 Headings are the first thing skimmers read. If the headings sound like AI, the body text doesn't matter.
 
+**Keyword and punch carry equal weight in every H2.**
+
+Never sacrifice the keyword for punch, and never sacrifice punch for the keyword. Both must be present. Length is not a constraint — a longer H2 that achieves both keyword value and a specific, compelling claim is better than a short H2 that achieves only one.
+
+**How to write H2s:**
+1. Write the punchy version first — the one that makes the reader want to read the section.
+2. Check if the target keyword or a secondary keyword fits naturally anywhere in it.
+3. If not, find the word or phrase in the heading where it can slot in without disrupting the rhythm.
+4. If the heading gets longer as a result, that is fine. Keyword + punch always beats short + weak.
+
+**Single word additions are often enough.** Most headings just need "YouTube", "Marketing", or "Business" added in the right place. You rarely need to restructure the whole heading.
+
+Ban: shortening a heading to hit an arbitrary length if the shorter version loses either the keyword or the punch.
+
 ---
 
 ## Fix #6: Kill Empty Conclusions
@@ -236,6 +250,42 @@ When the content involves a genuine decision, format it as:
 
 Only use this format when there is a real either/or decision. Do not use it to dress up a list of tips.
 
+**Extended use — emotional signal bullets:**
+
+✅ and ❌ can also be used in bullet lists to signal positive vs negative outcomes, actions vs failures, or correct vs incorrect approaches. Use plain bullets (- ) for neutral items with no clear positive or negative signal.
+
+Examples:
+- ❌ for failures, missing results, or wrong approaches: "❌ No leads in your CRM."
+- ✅ for correct actions, positive signals, or right approaches: "✅ Posting consistently."
+- Plain bullet for neutral observations with no emotional charge.
+
+Never mix ✅ and ❌ in the same bullet list unless the contrast is the point. Never use them decoratively — only when the positive/negative signal adds meaning.
+
+**When to break prose into bullets:**
+If a paragraph lists three or more items of the same type, convert them to bullets. Do not leave naturally list-like content in prose form. Examples:
+- Showing methodology, framework, point of view: bullets.
+- Case studies, client results, before and after comparisons: bullets.
+- Steps, actions, or decisions in sequence: numbered list or bullets.
+Prose is for explanation and argument. Bullets are for items of the same type.
+
+**Nuance — neutral results vs actual failures:**
+Not every disappointing number is a ❌. Numbers that are neutral on their own (views, subscribers) should use plain bullets. The ❌ should only go on the result that actually signals failure for a business.
+
+Bad:
+❌ 400 subscribers.
+❌ 2,000 views a month.
+❌ Zero pipeline movement.
+
+Good:
+- 400 subscribers.
+- 2,000 views a month.
+
+But...
+
+❌ Zero pipeline movement.
+
+The "But..." as its own line before the ❌ creates a pause that makes the failure land harder. Use this pattern when a neutral setup precedes a negative result.
+
 ### 6. Numbered step frameworks for any process
 
 When teaching a process, use Step 1 / Step 2 / Step 3 with H3 headings — not bullet points. Each step gets:
@@ -293,7 +343,32 @@ Any post that reviews tools, strategies, or options should include a dedicated "
 
 Structure it as a table or ✅/❌ decision blocks with role, need, or scenario breakdowns. This is one of the highest-converting sections on any comparison post.
 
-### 14. Sources section — cite every external stat
+### 14. Internal links — use "Read more:" pattern where appropriate
+
+When referencing another SellonTube post inline, do not hyperlink the entire sentence or force a keyword phrase mid-argument. Instead, place the internal link as a dedicated "Read more:" line immediately after the relevant paragraph.
+
+**Format:**
+> **Read more:** [Descriptive, keyword-rich title](/blog/slug)
+
+**Rules:**
+- Only use where the linked post is directly relevant to the point just made
+- Never interrupt the flow of an argument with a mid-sentence hyperlink
+- The link text should describe what the reader will get — not generic phrases like "click here" or "learn more"
+- Never force a "Read more:" line where the link is tangential — inline keyword linking is fine for passing references
+- Maximum 3-4 "Read more:" links per post — too many dilutes the signal
+- Aim for 1-2 internal links per major sub-heading section. Use "Read more:" for direct relevance, inline keyword linking for passing references. Never leave a major section with zero internal links if a relevant post exists.
+
+**Inline internal links — three valid targets:**
+Every inline internal link should point to one of three types of SellonTube content, wherever it genuinely helps the reader take the next step:
+1. **Blog posts** — when a related post goes deeper on the point just made
+2. **pSEO pages** — when the section is relevant to a specific industry or niche (e.g. `/youtube-for/saas`, `/youtube-for/consultants`)
+3. **Tools** — when a SellonTube tool directly helps the reader take the action being described (e.g. `/youtube-roi-calculator`, `/tools/youtube-topic-evaluator`)
+
+**Never force-fit a link.** If no resource naturally helps the reader at that exact moment, leave the sentence without a link. A forced link is worse than no link — it feels promotional and breaks the reader's trust.
+
+The test: would a reader naturally want to click this link at this exact moment in the post? If yes, include it. If maybe, skip it.
+
+### 15. Sources section — cite every external stat
 
 Any post that references an external statistic must end with a "Sources" section (after the FAQ, before the CTA). List each cited source with: source name, what it says, and year.
 
@@ -369,3 +444,87 @@ Rules:
 - Only use it when there is a genuinely clear answer. Don't force it onto posts where the right starting point is "it depends."
 - Place it after the item it refers to, not at the top of the list.
 - This is a reader service, not a promotional device. Never use it to push a SellonTube service.
+
+---
+
+## Fix #11: Intro Copywriting Principles
+
+These rules govern how every blog post introduction should be written. The intro is the second most-read section after the headline. Every sentence must earn its place.
+
+**1. Open with a specific scenario, not a generic statement.**
+Drop the reader into a real, recognisable situation immediately. "You posted your first 10 videos on your business YouTube channel" is more powerful than "Most businesses struggle with YouTube." The reader should recognise themselves in the first two sentences.
+
+**2. Use bullets for specific, vivid details — not generic lists.**
+Bullets in an intro only earn their place when they are specific and emotional. "No leads in your CRM. No uptick in demo requests. No new clients who said I found you on YouTube." works because it is specific and vivid. Generic bullet lists do not belong in an intro.
+
+**3. Connect sections with cause and effect — not topic shifts.**
+Every paragraph in the intro must connect to the one before it. Use cause and effect, not topic changes. A disconnected paragraph breaks the reader's momentum and feels like a gear shift.
+
+**4. "Why? Because" is a strong transitional device.**
+It mimics natural speech. It connects a result to its diagnosis without using banned AI transitions like "Moreover" or "It's worth noting." Use it when diagnosing a problem the reader just recognised.
+
+**5. Never use "Understand that" or "Deeply internalize" — they preach.**
+State the reality plainly. "Once you build your channel around that single principle" is cleaner than "If you deeply internalize this principle." Style Guide Fix #9 applies here too — never talk down to the reader.
+
+**6. "Leverage" is banned.**
+Flagged by Agent 05 QA checklist. Replace with plain language: "use", "build with", "turn into."
+
+**7. Pick "we" or "I" and stay consistent throughout the post.**
+Decide before writing whether the post speaks as SellonTube ("we") or as Sathya personally ("I"). Never switch mid-post. The intro must match the voice used in the body.
+
+**8. Close the intro with a clear promise — not a vague tease.**
+"In this article, we'll show you exactly how to do that." is specific and direct. "This article covers the difference" is vague and weak. The reader should know exactly what they will get from reading on.
+
+**9. Word count discipline — 80 to 120 words maximum.**
+Every sentence must earn its place. Cut anything that repeats an idea already established. If the intro exceeds 120 words, something is being said twice.
+
+## Fix #12: Sentence Structure and Conversational Tone
+
+SellonTube content should read like Sathya talking directly to a client on a call. Not a consultant writing a report. These rules govern sentence-level structure.
+
+**Short sentences over long ones.**
+
+Break compound sentences into two or three short ones. Never join ideas with "and" or a comma when a full stop hits harder.
+
+Bad: "A YouTube channel focused on content output won't drive leads without a defined conversion path, which is why most businesses don't see results."
+Good: "A YouTube channel focused on content output won't drive leads. Not without a defined conversion path."
+
+**Fragments are allowed — use them for emphasis.**
+
+Incomplete sentences are fine when used deliberately. They land harder than a full sentence.
+
+Good: "Not on its own." / "Not for business YouTube channels." / "It doesn't work."
+
+Never use fragments as a crutch. One or two per section maximum.
+
+**Second person throughout — including sentence openings.**
+
+Always speak directly to the reader. "Your channel", "you're running", "you'll learn." Never use "most businesses", "companies often", or "many marketers" — these are distant and generic. The reader should feel you're talking to them specifically.
+
+Ban: "Most businesses build their YouTube channel like a creator channel."
+Use: "Your YouTube channel is probably built like a creator channel."
+
+This also applies to impersonal constructions that describe a concept instead of addressing the reader directly. Even without "most businesses", a sentence can still drift into third-person territory.
+
+Ban: "Revenue from YouTube comes from three things..."
+Use: "Your YouTube channel drives revenue when you..."
+
+The test: does the sentence feel addressed to the reader, or does it feel like a description of a topic? If it's the second, rewrite it starting with "You" or "Your."
+
+**Don't force "Your" onto every sentence — only when it naturally owns something.**
+
+"Your channel", "your sales conversations", "your conversion page" — natural ownership, use "Your."
+"Your YouTube traffic will convert slower" — traffic doesn't belong to you the same way. Awkward. Use a direct statement instead: "YouTube traffic converts slower than paid ads."
+"Your right metrics" — grammatically odd. Use "The metrics that matter are..."
+
+The goal is for the reader to feel spoken to — not for every sentence to begin with "Your." Sometimes a direct statement or pointed observation is more natural and hits harder.
+
+Ban: "Publishing more videos won't move your conversion rate."
+Use: "Publishing more videos doesn't mean more conversions."
+
+**Puncture assumptions, don't lecture.**
+
+Set up the reader's current belief, then knock it down simply. No preachy framing like "you need to understand" or "it's important to realise." Just state the reality plainly.
+
+Bad: "It's important to understand that a creator strategy won't work for a business."
+Good: "You're running a creator strategy on a business problem. It doesn't work."
