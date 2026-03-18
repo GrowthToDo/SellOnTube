@@ -822,7 +822,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'fintech-companies',
-    publishDate: '2026-04-05',
+    publishDate: '2026-04-20',
     name: 'Fintech Companies',
     shortName: 'Fintech',
     metaTitle: 'YouTube Marketing Strategy for Fintech | SellonTube',
@@ -890,7 +890,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'hr-software',
-    publishDate: '2026-04-08',
+    publishDate: '2026-04-27',
     name: 'HR Software Companies',
     shortName: 'HR Software',
     metaTitle: 'YouTube Marketing Strategy for HR Software | SellonTube',
@@ -958,7 +958,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'edtech-companies',
-    publishDate: '2026-03-28',
+    publishDate: '2026-04-06',
     name: 'EdTech Companies',
     shortName: 'EdTech',
     metaTitle: 'YouTube Marketing Strategy for EdTech Companies | SellonTube',
@@ -1026,7 +1026,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'cybersecurity-companies',
-    publishDate: '2026-04-07',
+    publishDate: '2026-04-23',
     name: 'Cybersecurity Companies',
     shortName: 'Cybersecurity',
     metaTitle: 'YouTube Marketing Strategy for Cybersecurity | SellonTube',
@@ -1094,7 +1094,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'accountants',
-    publishDate: '2026-03-30',
+    publishDate: '2026-04-09',
     name: 'Accounting Firms',
     shortName: 'Accountants',
     metaTitle: 'YouTube Marketing Strategy for Accounting Firms | SellonTube',
@@ -1162,7 +1162,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'insurance-agents',
-    publishDate: '2026-04-10',
+    publishDate: '2026-04-30',
     name: 'Insurance Agents',
     shortName: 'Insurance Agents',
     metaTitle: 'YouTube Marketing Strategy for Insurance Agents | SellonTube',
@@ -1230,7 +1230,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'mortgage-brokers',
-    publishDate: '2026-04-19',
+    publishDate: '2026-05-18',
     name: 'Mortgage Brokers',
     shortName: 'Mortgage Brokers',
     metaTitle: 'YouTube Marketing Strategy for Mortgage Brokers | SellonTube',
@@ -1298,7 +1298,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'recruiting-firms',
-    publishDate: '2026-04-01',
+    publishDate: '2026-04-13',
     name: 'Recruiting Firms',
     shortName: 'Recruiting Firms',
     metaTitle: 'YouTube Marketing Strategy for Recruiting Firms | SellonTube',
@@ -1366,7 +1366,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'management-consultants',
-    publishDate: '2026-04-03',
+    publishDate: '2026-04-16',
     name: 'Management Consultants',
     shortName: 'Management Consultants',
     metaTitle: 'YouTube Strategy for Management Consultants | SellonTube',
@@ -1434,7 +1434,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'business-coaches',
-    publishDate: '2026-03-23',
+    publishDate: '2026-03-26',
     name: 'Business Coaches',
     shortName: 'Business Coaches',
     metaTitle: 'YouTube Marketing Strategy for Business Coaches | SellonTube',
@@ -1502,7 +1502,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'life-coaches',
-    publishDate: '2026-03-24',
+    publishDate: '2026-04-02',
     name: 'Life Coaches',
     shortName: 'Life Coaches',
     metaTitle: 'YouTube Marketing Strategy for Life Coaches | SellonTube',
@@ -1570,7 +1570,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'professional-services',
-    publishDate: '2026-03-26',
+    publishDate: '2026-03-30',
     name: 'Professional Services Firms',
     shortName: 'Professional Services',
     metaTitle: 'YouTube Strategy for Professional Services | SellonTube',
@@ -1706,7 +1706,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'ecommerce',
-    publishDate: '2026-03-21',
+    publishDate: '2026-03-23',
     name: 'E-commerce Businesses',
     shortName: 'E-commerce',
     metaTitle: 'YouTube Marketing Strategy for E-commerce | SellonTube',
@@ -1774,7 +1774,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'healthcare-practices',
-    publishDate: '2026-04-12',
+    publishDate: '2026-05-04',
     name: 'Healthcare Practices',
     shortName: 'Healthcare',
     metaTitle: 'YouTube Marketing Strategy for Healthcare | SellonTube',
@@ -1842,7 +1842,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'dental-practices',
-    publishDate: '2026-04-14',
+    publishDate: '2026-05-07',
     name: 'Dental Practices',
     shortName: 'Dental Practices',
     metaTitle: 'YouTube Marketing Strategy for Dental Practices | SellonTube',
@@ -1910,7 +1910,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'subscription-businesses',
-    publishDate: '2026-04-15',
+    publishDate: '2026-05-11',
     name: 'Subscription Businesses',
     shortName: 'Subscriptions',
     metaTitle: 'YouTube Marketing Strategy for Subscriptions | SellonTube',
@@ -1978,7 +1978,7 @@ export const niches: Niche[] = [
   },
   {
     slug: 'marketplaces',
-    publishDate: '2026-04-17',
+    publishDate: '2026-05-14',
     name: 'Marketplace Businesses',
     shortName: 'Marketplaces',
     metaTitle: 'YouTube Marketing Strategy for Marketplaces | SellonTube',

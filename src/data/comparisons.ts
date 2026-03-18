@@ -151,7 +151,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'linkedin-for-b2b',
-    publishDate: '2026-03-22',
+    publishDate: '2026-03-25',
     channelB: 'LinkedIn',
     audience: 'B2B Companies',
     metaTitle: 'YouTube vs LinkedIn for B2B Marketing: Which Drives More Leads? | SellOnTube',
@@ -179,7 +179,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'instagram-for-coaches',
-    publishDate: '2026-04-13',
+    publishDate: '2026-04-29',
     channelB: 'Instagram',
     audience: 'Coaches',
     metaTitle: 'YouTube vs Instagram for Coaches: Which Gets More Clients? | SellOnTube',
@@ -207,7 +207,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'tiktok-for-saas',
-    publishDate: '2026-04-11',
+    publishDate: '2026-04-25',
     channelB: 'TikTok',
     audience: 'SaaS Companies',
     metaTitle: 'YouTube vs TikTok for SaaS Marketing: Which Drives More Signups? | SellOnTube',
@@ -263,7 +263,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'google-ads',
-    publishDate: '2026-04-22',
+    publishDate: '2026-05-16',
     channelB: 'Google Ads',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Google Ads: Which Has Better ROI for Lead Generation? | SellOnTube',
@@ -291,7 +291,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'facebook-ads',
-    publishDate: '2026-04-06',
+    publishDate: '2026-04-18',
     channelB: 'Facebook Ads',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Facebook Ads: Which Is Better for Customer Acquisition? | SellOnTube',
@@ -347,7 +347,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'podcasting',
-    publishDate: '2026-04-04',
+    publishDate: '2026-04-15',
     channelB: 'Podcasting',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Podcasting for Business: Which Grows Your Audience Faster? | SellOnTube',
@@ -375,7 +375,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'blogging',
-    publishDate: '2026-03-27',
+    publishDate: '2026-04-01',
     channelB: 'Blogging',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Blogging: Which Is Better for Business Growth in 2025? | SellOnTube',
@@ -431,7 +431,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'linkedin-for-agencies',
-    publishDate: '2026-04-16',
+    publishDate: '2026-05-02',
     channelB: 'LinkedIn',
     audience: 'Agencies',
     metaTitle: 'YouTube vs LinkedIn for Agency Marketing: Which Gets More Clients? | SellOnTube',
@@ -459,7 +459,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'instagram-for-saas',
-    publishDate: '2026-04-18',
+    publishDate: '2026-05-06',
     channelB: 'Instagram',
     audience: 'SaaS Companies',
     metaTitle: 'YouTube vs Instagram for SaaS Marketing: Which Drives More Signups? | SellOnTube',
@@ -487,7 +487,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'webinars',
-    publishDate: '2026-04-02',
+    publishDate: '2026-04-11',
     channelB: 'Webinars',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Webinars: Which Is Better for Lead Generation? | SellOnTube',
@@ -515,7 +515,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'cold-outreach',
-    publishDate: '2026-03-25',
+    publishDate: '2026-03-28',
     channelB: 'Cold Outreach',
     audience: 'B2B Companies',
     metaTitle: 'YouTube vs Cold Outreach for B2B: Which Gets More Clients? | SellOnTube',
@@ -543,7 +543,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'seo-content',
-    publishDate: '2026-03-20',
+    publishDate: '2026-03-21',
     channelB: 'SEO Content',
     audience: 'Businesses',
     metaTitle: 'YouTube vs SEO Blog Content: Which Is Better for Organic Traffic? | SellOnTube',
@@ -571,7 +571,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'influencer-marketing',
-    publishDate: '2026-03-29',
+    publishDate: '2026-04-04',
     channelB: 'Influencer Marketing',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Influencer Marketing: Which Gets Better ROI? | SellOnTube',
@@ -599,7 +599,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'referral-marketing',
-    publishDate: '2026-03-31',
+    publishDate: '2026-04-08',
     channelB: 'Referral Marketing',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Referral Marketing: Which Is Better for Business Growth? | SellOnTube',
@@ -627,7 +627,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'community-building',
-    publishDate: '2026-04-09',
+    publishDate: '2026-04-22',
     channelB: 'Community Building',
     audience: 'Businesses',
     metaTitle: 'YouTube vs Community Building: Which Is Better for Business Growth? | SellOnTube',
@@ -655,7 +655,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'twitter-for-saas',
-    publishDate: '2026-04-20',
+    publishDate: '2026-05-09',
     channelB: 'Twitter / X',
     audience: 'SaaS Companies',
     metaTitle: 'YouTube vs Twitter for SaaS Marketing: Which Drives More Signups? | SellOnTube',
@@ -683,7 +683,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: 'reddit-for-saas',
-    publishDate: '2026-04-21',
+    publishDate: '2026-05-13',
     channelB: 'Reddit',
     audience: 'SaaS Companies',
     metaTitle: 'YouTube vs Reddit for SaaS Marketing: Which Drives More Signups? | SellOnTube',
