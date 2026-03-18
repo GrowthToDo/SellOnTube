@@ -54,6 +54,61 @@ Next 30 days: [table]
 
 **Pages not yet scheduled:** [list if any]
 
+## Pre-launch quality checklist
+Run before any new pSEO page or template goes live:
+- [ ] Every page provides unique value specific to that slug — not just variable substitution
+- [ ] H1, H2 headings are present and meaningful (not generic placeholders)
+- [ ] Schema markup is implemented (check `JsonLd.astro`)
+- [ ] Internal links connect the page to its hub and at least one related page
+- [ ] No keyword cannibalization — confirm no existing page already targets the same query
+- [ ] publishDate IST→UTC timing verified for the planned deploy
+
+## Post-launch monitoring signals
+After a batch of pSEO pages goes live, watch for:
+- **Indexation rate** — submit to GSC on publish day. If pages aren't indexed within 2–3 weeks, check for thin content signals
+- **Rankings** — track target keyword positions within 30 days
+- **Engagement** — low time-on-page or high bounce on pSEO pages signals thin content
+- **Thin content warnings** — if GSC flags "Discovered - currently not indexed" on multiple pages, the template may need more unique content per page
+
+## YouTube vs. page content standards
+
+These rules apply to all `/youtube-vs/[slug]` pages. They are content quality rules, not schedule rules.
+
+**Honesty principle — mandatory:**
+Every vs. page must acknowledge what YouTube is NOT good for in the context of the comparison platform. Pages that only promote YouTube lose credibility — readers verify claims independently. A line like "YouTube is not the right choice if [specific condition]" builds more trust than a page that only lists YouTube's advantages.
+
+**"Who it's for" section — mandatory:**
+Every vs. page must include an explicit recommendation block stating:
+- When to choose YouTube over [platform]
+- When to choose [platform] over YouTube
+- Who each option serves best (by business type, goal, or stage)
+
+Use the ✅/❌ decision block format from the Style Guide. This is the highest-converting section on any comparison page.
+
+**Depth over tables:**
+Comparison tables are useful but not sufficient. Each major difference should be explained in prose — *why* it matters for a B2B founder, not just *that* it's different. A table row saying "YouTube: free / [Platform]: $X/month" without explaining the business implication is surface-level.
+
+**No fabricated claims:**
+Never state that YouTube outperforms a competitor on a specific metric without a cited source or honest attribution ("in our experience with clients"). Unverified superiority claims damage credibility.
+
+## Future pSEO expansion types
+SellonTube currently uses 2 of 12 possible pSEO page types. Future expansion options to consider when data is available:
+
+| Type | Example for SellonTube |
+|---|---|
+| **Templates** (current) | `/youtube-for/[niche]` |
+| **Comparisons** (current) | `/youtube-vs/[platform]` |
+| **Integrations** | `/youtube-and/[tool]` (e.g. YouTube + HubSpot) |
+| **Glossaries** | `/glossary/[youtube-seo-term]` |
+| **Directories** | `/youtube-channels/[industry]` |
+| **Location-based** | `/youtube-marketing/[city]` |
+| **Curations** | `/best-youtube-channels/[niche]` |
+| **Plural alternatives** | `/youtube-vs/[platform]-alternatives` — reaches earlier-stage researchers not yet committed to switching |
+| **Best alternatives** | `/best-[platform]-alternatives` — captures "I want to switch from X" traffic |
+| **Competitor vs Competitor** | `/[platform-a]-vs-[platform-b]` — captures competitor-to-competitor queries while positioning YouTube as context |
+
+Only build a new type when there is real data to populate it. Never launch a new type with placeholder content.
+
 ## Rules
 - Never suggest publishing all pSEO pages at once — the drip exists to avoid Google flagging a flood of templated content
 - Always verify IST→UTC conversion for any page going live within 48 hours

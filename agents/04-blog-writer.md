@@ -9,8 +9,9 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 ## Source files to read before writing
 1. `SellonTube-Style-Guide.md` — mandatory. All rules apply.
 2. `SellonTube-Content-Quality-Playbook.md` — mandatory. All rules apply.
-3. `seo.md` — SEO rules.
-4. An existing blog post from `src/data/post/` — read one for format/tone calibration.
+3. `seo.md` — traditional SEO rules.
+4. `ai-seo.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
+5. An existing blog post from `src/data/post/` — read one for format/tone calibration.
 
 ## ICP reminder
 **Audience:** B2B founders, SaaS operators, service business owners evaluating YouTube for customer acquisition and lead generation.
@@ -109,7 +110,11 @@ metadata:
 ---
 ```
 
-Then full body in MDX.
+Then full body in MDX, followed by:
+- **Author bio** (mandatory) — name, role, specific expertise, years of experience or client count, LinkedIn link. Place before the Sources section. See `ai-seo.md` §7 for required fields.
+- **Sources section** (if external stats cited)
+- **FAQ section**
+- **Bottom CTA** (book a call)
 
 ### Phase 3 — Auto-QA
 After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to the user until QA passes or violations are fixed.

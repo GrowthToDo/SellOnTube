@@ -160,6 +160,7 @@ For SellonTube, the voice is: **experienced consultant talking to a smart busine
 - If a sentence sounds like a LinkedIn influencer post, rewrite it. "The businesses that win are the ones that take action." Empty.
 - Never shift into preachy mode. "You need to understand that..." or "You must realize..." talks down to the reader.
 - Be consistent with "we" and "you." Decide whether the post speaks as SellonTube ("we") or directly to the reader ("you"). Both are fine. Switching randomly breaks the voice.
+- **Write in active voice.** "YouTube drives leads" not "Leads are driven by YouTube." Passive voice distances the reader from the action. If a sentence can be rewritten in active voice without losing meaning, rewrite it.
 
 **Voice test:** Read any paragraph out loud. Does it sound like something Sathya would actually say to a client on a call? If it sounds like something nobody would say in real life, rewrite it.
 

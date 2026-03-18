@@ -12,6 +12,7 @@ Audit technical SEO health: redirects, schema markup, sitemap, and site configur
 - `src/components/common/JsonLd.astro` — schema markup
 - `src/config.yaml` — site config
 - GSC page data (from Agent 01) — cross-reference non-Astro URLs still appearing in impressions
+- `ai-seo.md` — AI citation requirements including robots.txt bot list and schema priority
 
 ## Execution steps
 
@@ -33,15 +34,45 @@ Read all `[[redirects]]` entries.
 - [ ] `/calculator` → `/youtube-roi-calculator` (301 in place — verify)
 - [ ] No page redirects to itself
 
+### Step 1b — AI bot access audit (`netlify.toml` + `public/robots.txt`)
+Check that no AI crawler is blocked. Required bots (from `ai-seo.md`):
+- [ ] GPTBot — allowed
+- [ ] ChatGPT-User — allowed
+- [ ] PerplexityBot — allowed
+- [ ] ClaudeBot — allowed
+- [ ] anthropic-ai — allowed
+- [ ] Google-Extended — allowed
+- [ ] Bingbot — allowed
+
+If `robots.txt` or `netlify.toml` blocks any of these, flag as critical — the platform cannot cite SellonTube content.
+
+Also check:
+- [ ] Bing Webmaster Tools — site submitted (required for Copilot citation)
+- [ ] Brave Search visibility — verify SellonTube appears at search.brave.com for at least 3 core keywords (required for Claude citation)
+
 ### Step 2 — Schema markup audit (`JsonLd.astro`)
 Read the schema component.
 
-**Check for:**
+**Currently implemented (in `JsonLd.astro`):**
+- `Organization` — name, url, logo, sameAs, contactPoint, service
+- `WebSite` — name, url, description, publisher
+
+**Check implemented schemas for:**
 - [ ] Organization schema: name, url, logo present and correct
-- [ ] WebSite schema: name, url, potentialAction (SearchAction) present
-- [ ] Blog post pages: Article schema with headline, datePublished, dateModified, author
+- [ ] WebSite schema: name, url present and correct
 - [ ] No broken JSON-LD (malformed brackets, missing commas)
 - [ ] Schema URLs match live site URL (https://sellontube.com)
+
+**Known schema gaps (not yet implemented — flag but do not implement without user instruction):**
+
+| Schema type | Where needed | Rich result it enables |
+|---|---|---|
+| `Article` | All blog posts (`src/data/post/`) | Author, date, thumbnail in search results |
+| `FAQPage` | Blog posts with FAQ sections | FAQ rich results / People Also Ask |
+| `BreadcrumbList` | pSEO pages (`/youtube-for/`, `/youtube-vs/`) | Breadcrumb trail in search results |
+| `HowTo` | How-to guide blog posts | Step-by-step rich results |
+
+When running a schema audit, report these as "pending implementation" in the schema health output. Do not mark them as errors — they are documented gaps, not regressions.
 
 ### Step 3 — Astro config (`astro.config.ts`)
 Read and check:

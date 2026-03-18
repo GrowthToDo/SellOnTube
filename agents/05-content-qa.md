@@ -10,6 +10,7 @@ Also: automatically called by Agent 04 after every blog post draft.
 ## Source files to read first
 1. `SellonTube-Style-Guide.md` — every rule applies to ALL copy on the touched file, not just new writing
 2. `SellonTube-Content-Quality-Playbook.md` — quality standards
+3. `ai-seo.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
 
 ## Execution steps
 
@@ -76,6 +77,25 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Listicle items (if present) all follow the same H3 sub-structure throughout (Best for / Key advantage / Key limitation / Verdict)
 - [ ] Comparison tables use specific column headers — not "Step | Description" but e.g., "Tool | Best for | Key limitation"
 - [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
+
+**Emotional resonance**
+- [ ] The opening makes the reader feel something — curiosity, recognition, or a slight sting. If the first paragraph is skippable, flag it.
+- [ ] At least one section creates a moment of "that's exactly my problem" — specific enough that the ICP reader feels seen
+- [ ] No section is purely informational without any emotional pull — facts alone don't hold attention
+
+**CTA friction (zero risk check)**
+- [ ] The closing CTA pre-answers the most likely objection ("Is this worth my time?") — either through a specific outcome claim or a low-commitment framing ("30-minute call", "no obligation")
+- [ ] The CTA does not use vague language: "Get started", "Learn more", "Contact us" — it must state what happens next
+- [ ] If a mid-body tool CTA is present: it appears at a moment where the reader naturally wants to act, not forced in mid-argument
+
+**AI citation (check against `ai-seo.md`):**
+- [ ] Definition Block used for any "What is X?" section
+- [ ] Step-by-Step Block used for any "How to X?" section
+- [ ] At least one Statistic Citation Block present — "According to [Source], [stat]" format with named source
+- [ ] Self-Contained Answer Block present (1-2 per post) — standalone quotable paragraph
+- [ ] Expert Quote Block present if expert quotes are included — named, attributed, linked to source
+- [ ] Author bio present at the end of the post — name, role, expertise, credentials, LinkedIn link
+- [ ] No fabricated expert quotes — every quote must be real and verifiable
 
 **SEO craft**
 - [ ] At least one section is written as a 40-60 word direct answer to the target keyword question (featured snippet candidate) — no preamble, just the answer
