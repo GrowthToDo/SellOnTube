@@ -84,13 +84,17 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] ✅/❌ emotional signal bullets used correctly — ❌ for failures/wrong approaches, ✅ for correct actions/positive signals, plain bullets for neutral items
 - [ ] ✅ and ❌ never mixed in the same bullet list unless the contrast is the point
 - [ ] ✅/❌ never used decoratively — only when the positive/negative signal adds meaning
+- [ ] ✅/❌ lines are wrapped in `<ul style="list-style: none; padding-left: 0;">` — never bare markdown lines (collapses inline) and never `- ❌/✅` (shows redundant bullet dot + emoji)
 - [ ] Process content uses numbered H3 steps, not bullet points
-- [ ] `---` horizontal rules present between H2 sections on any post over 800 words
+- [ ] Only ONE `---` horizontal rule in the post body — placed after the TOC box, before the first H2. Never between H2 sections.
 - [ ] No paragraph exceeds 3 sentences in body copy
-- [ ] Post closes with "What to do this week" (numbered list of 5-7 micro-actions + one final sentence) — NOT a summary, NOT a restatement, NOT a vague CTA
+- [ ] Post closes with "What to do this week" inside the green action box (see style-guide.md Fix #13) — NOT a bare markdown list, NOT a summary
 - [ ] Benchmark test: at least one section can stand alone as a shareable insight (screenshot test)
-- [ ] Posts over 1,000 words have a "Key Takeaways" H2 immediately after the intro — 5-6 standalone insights, not navigation bullets
+- [ ] Posts over 1,000 words have a Key Takeaways amber box immediately after the intro — 5-6 standalone insights, not navigation bullets (see style-guide.md Fix #13 for HTML pattern)
 - [ ] Key Takeaways section opens with (or includes) the direct answer to the title query
+- [ ] Table of Contents is a slate box with numbered `<a>` links — not a bare markdown list (see style-guide.md Fix #13 for HTML pattern)
+- [ ] No "About the Author" section written in MDX body — AuthorBio renders automatically from frontmatter
+- [ ] Post file is `.mdx` if it contains any inline HTML boxes or diagrams — `.md` files do not render inline HTML reliably
 - [ ] For "what is X" / "how does X work" queries: Quick Answer callout is present before or at the top of the intro (position zero target)
 - [ ] Comparison and roundup posts include a "How to Choose [X]" H2 section
 - [ ] Any external statistics are cited — Sources section present at the end of the post

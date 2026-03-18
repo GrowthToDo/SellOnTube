@@ -528,3 +528,133 @@ Set up the reader's current belief, then knock it down simply. No preachy framin
 
 Bad: "It's important to understand that a creator strategy won't work for a business."
 Good: "You're running a creator strategy on a business problem. It doesn't work."
+
+---
+
+## Fix #13: Blog Visual Formatting (MDX Posts)
+
+All blog posts must follow these visual formatting rules. These were established during the `youtube-marketing-strategy` rewrite and apply to every post going forward.
+
+---
+
+### File format
+
+- Posts that include diagrams or styled boxes **must use `.mdx`**, not `.md`.
+- Posts without any inline HTML can stay as `.md`.
+- Never put a diagram in a `.md` file — it will not render.
+
+---
+
+### Emoji bullet lists (❌ / ✅)
+
+Never write emoji bullets as bare markdown lines. They will collapse into a single inline paragraph.
+
+**Wrong:**
+```
+❌ No leads in your CRM.
+❌ No uptick in demo requests.
+```
+
+**Wrong (has bullet dot AND emoji — redundant):**
+```
+- ❌ No leads in your CRM.
+- ❌ No uptick in demo requests.
+```
+
+**Correct — wrap in a no-dot `<ul>`:**
+```html
+<ul style="list-style: none; padding-left: 0; margin: 1rem 0;">
+  <li style="margin-bottom: 0.4rem;">❌ No leads in your CRM.</li>
+  <li style="margin-bottom: 0.4rem;">❌ No uptick in demo requests.</li>
+</ul>
+```
+
+Rules:
+- ❌ for failure states, wrong approaches, blockers.
+- ✅ for correct actions, positive outcomes.
+- Plain `- ` bullets for neutral items (no emoji signal needed).
+- Never mix ❌ and ✅ in the same list unless the contrast is the explicit point.
+
+---
+
+### Horizontal divider rules (`---`)
+
+- **One horizontal rule only per post** — placed after the TOC box, before the first H2 section.
+- **Never** place `---` between H2 sections. It creates visual noise and breaks reading flow.
+- The single divider signals: "intro/navigation area ends here, content begins."
+
+---
+
+### Three mandatory boxed sections
+
+Every blog post over 1,000 words must use these three HTML boxes. Copy the patterns exactly — colours are standardised.
+
+**1. Key Takeaways box (amber)**
+
+```html
+<div style="background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 1.5rem 1.75rem; margin: 2rem 0;">
+  <p style="font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #92400e; margin: 0 0 1rem 0;">&#128161; Key Takeaways</p>
+  <ul style="margin: 0; padding-left: 1.25rem; color: #44403c; line-height: 1.75; font-size: 0.95rem;">
+    <li style="margin-bottom: 0.5rem;">[insight]</li>
+  </ul>
+</div>
+```
+
+**2. Table of Contents box (slate)**
+
+```html
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #94a3b8; border-radius: 8px; padding: 1.5rem 1.75rem; margin: 2rem 0;">
+  <p style="font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #475569; margin: 0 0 1rem 0;">In This Article</p>
+  <ol style="margin: 0; padding-left: 1.5rem; line-height: 2; font-size: 0.9rem;">
+    <li><a href="#anchor" style="color: #3b82f6; text-decoration: none;">[Section title]</a></li>
+  </ol>
+</div>
+```
+
+Note: TOC links must use HTML `<a>` tags, not markdown `[text](url)` — markdown links don't work inside HTML blocks.
+
+**3. What to Do This Week box (green)**
+
+```html
+<div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #16a34a; border-radius: 8px; padding: 1.5rem 1.75rem; margin: 2rem 0;">
+  <p style="font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #15803d; margin: 0 0 1rem 0;">&#9989; What to Do This Week</p>
+  <ol style="margin: 0; padding-left: 1.5rem; color: #166534; line-height: 1.75; font-size: 0.95rem;">
+    <li style="margin-bottom: 0.75rem;">[action item with <a href="/url" style="color: #16a34a; font-weight: 600;">inline link</a> where relevant]</li>
+  </ol>
+  <p style="margin: 1rem 0 0 0; font-size: 0.875rem; color: #15803d; font-style: italic;">[closing one-liner]</p>
+</div>
+```
+
+Note: All links inside HTML boxes must be `<a href="...">` tags — markdown link syntax does not work inside HTML blocks.
+
+---
+
+### Diagrams
+
+Use inline HTML `<div>` blocks with inline styles. Reference the patterns in:
+- `src/data/post/youtube-marketing-strategy.mdx` — three-column stage diagram, two-column metrics comparison, three-column timeline
+- `src/data/post/create-youtube-channel-for-business.mdx` — two-column comparison grid
+
+Standard diagram wrapper:
+```html
+<div style="border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; margin: 2rem 0; font-size: 0.875rem;">
+  <div style="background: #f8fafc; padding: 0.75rem 1.5rem; border-bottom: 1px solid #e5e7eb;">
+    <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #6b7280;">[Diagram title]</span>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: #e5e7eb;">
+    <!-- columns here -->
+  </div>
+</div>
+```
+
+Column colour coding (consistent across all diagrams):
+- Blue (`#eff6ff` / `#1e40af`) — Stage 1, Phase 1, or neutral/informational
+- Amber (`#fffbeb` / `#92400e`) — Stage 2, Phase 2, or caution
+- Green (`#f0fdf4` / `#14532d`) — Stage 3, Phase 3, positive outcome
+- Red (`#fef2f2` / `#dc2626`) — negative, wrong approach, what not to do
+
+---
+
+### No "About the Author" section in MDX body
+
+Never write an "About the Author" section inside the post content. `SinglePost.astro` renders the `AuthorBio` component automatically below every post using the `author:` frontmatter value and the `src/data/authors.ts` registry. A manual section in the MDX creates a duplicate that looks broken.
