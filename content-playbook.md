@@ -287,7 +287,7 @@ Run every post through these checks before handing it to Gautam.
 - [ ] Post changes how the reader thinks, not just what they know
 
 **READABILITY & STYLE:**
-- [ ] Passes all Style Guide checks (Fixes #1-15)
+- [ ] Passes all Style Guide checks (Fixes #1-17)
 - [ ] 4-5 bucket brigades at natural attention dips
 - [ ] Most important information is front-loaded
 

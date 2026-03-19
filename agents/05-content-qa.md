@@ -115,6 +115,40 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] All screenshots are wrapped in the Fix #21 styled container with caption and descriptive alt text
 - [ ] Currency is always $ — never £, €, or other symbols
 
+**Visual production standards (Fix #16)**
+- [ ] Every visual earns its place — no decorative charts or generic diagrams
+- [ ] All diagrams are SVG — no inline HTML visuals
+- [ ] Visual type matches one of the Priority Visual Types in Fix #16
+- [ ] Visual is placed immediately after the prose it supports — not before, not mid-argument
+- [ ] Every element in the SVG is labelled directly — does not rely on surrounding prose to explain
+- [ ] SVG uses clear hierarchy, whitespace, and 2–3 colours maximum
+- [ ] SVG files are self-contained: no external CDN links, no remote fonts, no remote images
+- [ ] SVG uses system font stack and Fix #13 colour palette — no new brand colours
+- [ ] SVG uses `viewBox` + `width="100%"` for responsive scaling
+- [ ] SVG filename follows `[visual-type]-[subject].svg` convention
+- [ ] SVG files stored in `src/assets/images/blog/visuals/[post-slug]/`
+- [ ] SVGs embedded using the `<figure>` wrapper pattern from Fix #16
+- [ ] Alt text describes what the visual shows — not just "diagram"
+- [ ] No external visual hosting (CodePen, Figma embeds, etc.) in production posts
+
+**Feature image (Fix #17)**
+- [ ] Dimensions are 1200 × 630px, aspect ratio 1.91:1 — not cropped or stretched
+- [ ] Format is JPG — source SVG kept at `[post-slug]-featured.svg`, under 200KB
+- [ ] Background uses site colours only: `#030620` base, gradient to `#0a1540` — no invented colours
+- [ ] Layout: text left (clipped at x=655), photo right (starts at x=660) — text does NOT bleed into photo
+- [ ] Headline split across 2–3 lines at 70px — no single line overflows the text column
+- [ ] Last headline line uses brand gradient `#3b82f6`→`#8b5cf6`
+- [ ] Content block is vertically centred — no dead space in the bottom half
+- [ ] Photo: professional person, face clearly visible, left and bottom fades use `#030620` exactly
+- [ ] No generic stock photo (no laptops, handshakes, arrows pointing up)
+- [ ] SellOnTube wordmark present, bottom-left — wordmark only, no URL
+- [ ] Font is Inter — no decorative or display fonts
+- [ ] All SVG URLs have `&amp;` not `&` — unescaped ampersands break SVG rendering
+- [ ] No duplicate SVG attributes — each attribute defined once per element only
+- [ ] Filename follows `[post-slug]-featured.jpg` convention
+- [ ] Frontmatter `image` field references `~/assets/images/blog/[post-slug]-featured.jpg`
+- [ ] Alt text is descriptive, max 125 characters, not keyword-stuffed
+
 **Strategy post principles (Fix #14 — applies to strategy, framework, and multi-step process posts)**
 - [ ] Post includes a "When This Doesn't Apply" or "One Honest Limitation" section — 2-4 sentences naming the conditions where the approach fails
 - [ ] Failure mode has a specific, quotable one-sentence diagnosis — not just a description of symptoms
