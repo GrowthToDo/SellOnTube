@@ -101,6 +101,7 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Listicle items (if present) all follow the same H3 sub-structure throughout (Best for / Key advantage / Key limitation / Verdict)
 - [ ] Comparison tables use specific column headers — not "Step | Description" but e.g., "Tool | Best for | Key limitation"
 - [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
+- [ ] YouTube embeds (if present): each embed is directly relevant to the section, is preceded by a context sentence (specific, not generic), uses the responsive wrapper with `youtube-nocookie.com`, `?rel=0`, `loading="lazy"`, and no `autoplay`. Maximum 2 per post. The post reads well without any embed. Context sentence contains no em-dash.
 
 **Emotional resonance**
 - [ ] The opening makes the reader feel something — curiosity, recognition, or a slight sting. If the first paragraph is skippable, flag it.

@@ -290,6 +290,7 @@ Run every post through these checks before handing it to Gautam.
 - [ ] Passes all Style Guide checks (Fixes #1-10)
 - [ ] 4-5 bucket brigades at natural attention dips
 - [ ] Most important information is front-loaded
+- [ ] YouTube embeds (if any): each adds clear standalone value, has a context sentence above it, uses the correct responsive wrapper with `youtube-nocookie.com` and `loading="lazy"`, and the page reads well without it (see Style Guide #20)
 
 **VALUE:**
 - [ ] Every section has at least one specific example, number, or real scenario
