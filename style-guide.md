@@ -119,7 +119,7 @@ Ban: shortening a heading to hit an arbitrary length if the shorter version lose
 
 - **A specific next action.** "Open your YouTube Studio, look at your last 10 video titles, and ask: would I click on this if I didn't know my own brand? Fix the ones where the answer is no."
 - **A provocative final thought.** One sentence that sticks. Something the reader thinks about 10 minutes later.
-- **A direct CTA.** Always "book a call" — this is the fixed closing CTA on every post. No substitutions. If a SellonTube tool is relevant to the post, it can appear as a mid-body CTA (once, where relevant) — but the final line still closes with the book a call prompt.
+- **A direct CTA.** Always "book a call" — this is the fixed closing CTA on every post. No substitutions. If a SellonTube tool is relevant to the post, it can appear as a mid-body CTA — up to 2 times, each at a different decision moment where the reader would naturally want to act. Never place two tool CTAs in the same section. The final line of the post still closes with the book a call prompt regardless.
 
 The last line of a post is the second most-read line after the headline. Don't waste it on a summary.
 
@@ -139,6 +139,8 @@ Ban these patterns:
 **Vague:** "Many businesses have seen great results using YouTube for lead generation."
 
 **Specific:** "A Shopify app we worked with generated 1,257 conversions from YouTube in 12 months, while the blog produced 411 in the same period."
+
+**Naming hierarchy:** Named client + metric > industry type + metric > anonymous. Where a client has given permission to be named, always use their name. Where they haven't, keep it anonymous — never fabricate or imply a name. The anonymous format ("a Shopify app we worked with") is acceptable only when naming isn't possible, not as a default.
 
 **Critical: Never invent statistics.** If you don't have a real number, don't make one up. Say "in our experience" or "we've seen patterns where..." and describe the trend honestly. A post with zero numbers but honest observations is more trustworthy than impressive-sounding statistics from nowhere. If citing a number, always note where it comes from.
 
@@ -167,6 +169,8 @@ Ban these patterns:
 ## Fix #9: One Consistent Voice Throughout
 
 For SellonTube, the voice is: **experienced consultant talking to a smart business owner.** Not academic. Not salesy. Not motivational speaker.
+
+**Currency:** Always use $ — never £, €, or other symbols. SellonTube's ICP is global but dollar-denominated.
 
 **Rules:**
 
@@ -293,9 +297,9 @@ When teaching a process, use Step 1 / Step 2 / Step 3 with H3 headings — not b
 - 2-4 sentences of explanation
 - One concrete example or specific observation from SellonTube's work
 
-### 7. Horizontal rules between major H2 sections
+### 7. Horizontal rules
 
-Use `---` between H2 sections to create visual breathing room. Required on any post over 800 words.
+See Fix #13 — one `---` per post only, after the TOC box. Never between H2 sections.
 
 ### 8. Short paragraphs + white space
 
@@ -374,7 +378,7 @@ Any post that references an external statistic must end with a "Sources" section
 
 Never leave a stat uncited. If you cannot cite it, either remove it or attribute it honestly ("in our experience" / "based on clients we've worked with"). A cited post signals E-E-A-T to Google and earns more links than an uncited one.
 
-### 15. Industry and use case tables
+### 16. Industry and use case tables
 
 For any post with broad applicability, add an "Industry Use Cases" or "Who This Works For" section structured as a table:
 
@@ -383,7 +387,7 @@ For any post with broad applicability, add an "Industry Use Cases" or "Who This 
 
 Each row targets a different niche long-tail query and shows Google the post has topical depth. Cap it at 5-7 rows — enough to be useful, not so many it becomes a filler list.
 
-### 16. Consistent sub-structure for listicle items
+### 17. Consistent sub-structure for listicle items
 
 When writing a "best X" or "top N tools/strategies" post, every list item must use the same H3 sub-structure. Decide the structure before writing and apply it throughout. Recommended structure:
 
@@ -395,7 +399,7 @@ When writing a "best X" or "top N tools/strategies" post, every list item must u
 
 Consistent structure makes posts scannable, signals quality to Google, and helps readers compare items quickly. Inconsistent depth across items is a quality signal Google notices.
 
-### 17. Table of Contents — mandatory on all posts
+### 18. Table of Contents — mandatory on all posts
 
 Add a Table of Contents immediately after the Key Takeaways section (or after the intro on posts under 1,000 words where Key Takeaways is omitted). Use anchor links to every H2 in the post.
 
@@ -410,7 +414,7 @@ Add a Table of Contents immediately after the Key Takeaways section (or after th
 
 Keep the ToC flat — link to H2s only, not H3s. If a post has more than 10 H2s, that's a signal the post needs to be split, not that the ToC needs to be longer.
 
-### 18. YouTube timestamp code blocks for video optimization posts
+### 19. YouTube timestamp code blocks for video optimization posts
 
 When writing any post that teaches YouTube video structure, descriptions, or chapter formatting, show the timestamp format as a code block rather than describing it in prose. Readers copy-paste from code blocks — prose descriptions get skimmed and forgotten.
 
@@ -431,7 +435,7 @@ Rules for the code block itself:
 
 Only use this pattern when the post is directly teaching video structure or description optimization. Don't force it into posts where timestamps are tangential.
 
-### 19. "Best starting point" callout — one per post
+### 20. "Best starting point" callout — one per post
 
 In any listicle or framework post where the reader faces a genuine "where do I begin?" decision, call out the single best starting tactic explicitly. This stops readers from getting paralysed by choice.
 
@@ -444,6 +448,44 @@ Rules:
 - Only use it when there is a genuinely clear answer. Don't force it onto posts where the right starting point is "it depends."
 - Place it after the item it refers to, not at the top of the list.
 - This is a reader service, not a promotional device. Never use it to push a SellonTube service.
+
+### 21. Screenshots — presentation and usage
+
+**When to use screenshots:**
+- YouTube Studio data (watch time, CTR, impressions) to prove a performance claim
+- GSC or GA4 data showing real rankings, traffic, or clicks
+- Actual search results showing a keyword's SERP landscape
+- Product or tool pages — your own (SellonTube tools) or a third-party tool being reviewed — where seeing the interface is more useful than describing it
+
+**How to present them (every screenshot must be framed):**
+
+Wrap every screenshot in a styled container: rounded corners (`border-radius: 12px`), a subtle border (`1px solid #e5e7eb`), a light drop shadow, and a caption label below. Never drop a raw screenshot directly into the post.
+
+```html
+<figure style="margin: 2rem 0;">
+  <img
+    src="/path/to/screenshot.png"
+    alt="[Descriptive alt text — see rule below]"
+    style="border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.08); width: 100%; display: block;"
+  />
+  <figcaption style="margin-top: 0.5rem; font-size: 0.8rem; color: #6b7280; text-align: center;">[Caption describing what the reader is looking at]</figcaption>
+</figure>
+```
+
+Optional: add a thin coloured annotation (red/amber rectangle or arrow) to direct the reader's eye to the specific element being discussed. Use the colour system from Fix #13.
+
+**Alt text rule:**
+
+Describe what the screenshot shows AND what is notable about it. Never use generic labels.
+
+Bad: `"Screenshot of YouTube Studio"`
+Good: `"YouTube Studio impressions chart showing 3× traffic increase after title rewrite — week 6"`
+
+**What to avoid:**
+- Screenshots of pure text — write it out instead
+- Screenshots that require zooming to read
+- Raw unframed screenshots at any width
+- More than 2 screenshots per 1,000 words — use diagrams for concept explanation, screenshots for proof
 
 ---
 
@@ -754,3 +796,103 @@ The review phase must specify:
 - What to do with that signal (double down on working topic clusters, pause and retest underperformers)
 
 **Why:** Plans that don't include a review loop train readers to publish uniformly and hope something sticks. The compounding effect comes from building on what works — but only if the reader knows to look for the signal and act on it.
+
+---
+
+## Fix #15: Content Depth and Authority Signals
+
+These patterns were identified from competitive analysis of high-performing content. Apply them to increase impressions, CTR, and time on page.
+
+### 1. Year in title — listicle posts only
+
+For posts structured as "Best X", "Top N", or numbered ideas/tools lists, append the current year at the end of the title. Year-tagged titles get higher CTR because searchers prefer recent results for this content type.
+
+- Only on listicles — not strategy posts, guides, or evergreen how-tos
+- Place the year at the end: "5 Best YouTube Tools for B2B in 2026"
+- Update the title and `publishDate` when the year rolls over — a stale year actively hurts CTR
+- Do not add a year if the post content won't be updated annually
+
+### 2. Multi-column stats strip
+
+When a post centres on a specific result or data point, a 4-column stats box placed after the intro makes the claim land immediately. Each column shows one key metric.
+
+Only use when the numbers are real, relevant, and meaningful to the reader on their own — not as decoration. If you have to stretch to fill 4 columns, skip it.
+
+Example for an ROI post: `1,257 conversions | 12 months | 3× blog output | $0 in ads`
+
+```html
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; margin: 2rem 0;">
+  <div style="background: #fff; padding: 1.25rem; text-align: center;">
+    <div style="font-size: 1.75rem; font-weight: 800; color: #111827;">[number]</div>
+    <div style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">[label]</div>
+  </div>
+</div>
+```
+
+### 3. "More [Topic] Guides" internal linking section
+
+Every post should end with a dedicated H2 section titled "More [Topic] Guides" (e.g., "More YouTube SEO Guides") containing 3–5 links to related posts in the same cluster. Place it after the FAQ, before Sources.
+
+This is separate from inline "Read more:" links and does not count against the 3–4 inline link cap.
+
+Format as a plain unordered list with descriptive link text — no summaries needed:
+
+```
+## More YouTube Marketing Guides
+- [How to Build a YouTube Acquisition Engine](/blog/the-youtube-acquisition-engine)
+- [YouTube ROI: How to Calculate Before You Invest](/blog/youtube-marketing-roi)
+```
+
+**Why this matters:** Scattered inline links pass authority loosely. A grouped cluster section creates a visible hub-and-spoke structure that Google can follow cleanly — and keeps readers on the site longer.
+
+### 4. "Real Signal" validation per section
+
+For posts presenting multiple strategies, ideas, or options, each major item should include a short credibility callout linking to external proof — a published report, a real case, a news article, or a named source.
+
+Format: a single sentence with an inline link, placed inside the relevant section.
+
+*"According to [Source], [specific claim with link]."*
+
+This makes every section independently credible rather than relying on overall post authority. It also signals to Google that the content is well-researched, not generic.
+
+Don't force it — only include when genuine external evidence exists for that specific point. A missing signal is better than a weak one.
+
+### 5. Consistent per-item sub-structure for framework posts
+
+When a post presents 3–7 strategies, approaches, or ideas, every item must use the same sub-structure. Decide the labels before writing and apply them identically across all items.
+
+The specific labels depend on the post topic — but the rule is the same regardless: same depth, same order, same structure for every item. Inconsistent depth signals low quality to both readers and Google.
+
+### 6. Custom diagram per concept-introducing H2
+
+For posts over 1,500 words, every H2 section that introduces a new concept, framework, or process should have one diagram. Use the diagram patterns from Fix #13.
+
+Do not add diagrams to FAQ, Sources, "More Guides", or closing sections — only where a visual genuinely aids comprehension of the concept being introduced.
+
+One diagram per concept section is the target. This drives image search traffic, increases time on page, and makes the post visually distinctive in search results.
+
+### 7. Temporal grounding in the content body
+
+For listicle and trend posts, ground key claims in a specific time reference in the body — not just the title. "As of Q1 2026, the three YouTube channels ranking for this query are all voiceover-led."
+
+Only use on claims that are genuinely time-specific. Don't force a date onto evergreen advice — it will age badly and require constant updates.
+
+### 8. Mid-content tool CTAs at decision moments
+
+Each SellonTube tool should be linked once at the most relevant decision moment in the post — the exact section where the reader would naturally want to act, not saved for the end.
+
+Current tools and their natural placement:
+- **YouTube ROI Calculator** → at the section discussing revenue projections or payback period
+- **YouTube Topic Evaluator** → at the section discussing keyword or topic selection
+- **YouTube Video Ideas Generator** → at the section discussing content ideation
+- **YouTube Transcript Generator** → at the section discussing repurposing or transcription
+
+As new tools are added to `/tools/`, update this list with their natural placement context. The principle is always the same: link where the reader's need is highest, not where it's convenient.
+
+See Fix #6 for the 2-per-post limit. The closing CTA is always "book a call" — tools appear mid-content only.
+
+### 9. Sources — expand to authority links, not just stats
+
+The existing rule (item 15 in the Content Structure Reference) requires citing every external statistic. Expand this: the Sources section should also include any authoritative external source referenced in the post even where no specific number is quoted — industry reports, named publications, credible external posts.
+
+Actively linking to high-authority domains signals E-E-A-T to Google and increases the likelihood of AI tools (ChatGPT, Perplexity, Google AI Overviews) citing the post. Aim for 3–5 external authority links per post minimum. Never link to low-authority or thin content just to have a source.

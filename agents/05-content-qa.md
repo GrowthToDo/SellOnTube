@@ -28,7 +28,7 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Does NOT open with: "The Hidden Power of", "The Secret to", "Why Most", "How to Master", "The Ultimate Guide to", "Everything You Need to Know"
 - [ ] Does NOT use insider jargon the ICP wouldn't search (e.g., "High-LTV", "Compounding Flywheel")
 - [ ] Primary keyword appears in title (check against frontmatter keyword if available)
-- [ ] Title length: max 60 characters (count them)
+- [ ] Title length: target 55–60 characters. Hard ceiling: 65. Exception for listicle posts with a year appended: up to 68. Always place the year at the end of the title so the keyword phrase is visible even if truncated on desktop.
 - [ ] Title does NOT start with an article ("A", "An", "The") as the very first word unless unavoidable
 
 **Excerpt violations**
@@ -101,6 +101,19 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Listicle items (if present) all follow the same H3 sub-structure throughout (Best for / Key advantage / Key limitation / Verdict)
 - [ ] Comparison tables use specific column headers — not "Step | Description" but e.g., "Tool | Best for | Key limitation"
 - [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
+
+**Content depth and authority signals (Fix #15)**
+- [ ] Listicle posts: year appended to title, placed at the end, content will be updated annually
+- [ ] Stats strip present only if post has 4 real, meaningful metrics — skipped if data would be stretched
+- [ ] "More [Topic] Guides" section present at end of post (after FAQ, before Sources) with 3–5 cluster links
+- [ ] Framework/listicle posts: each major item has an external "Real Signal" link where genuine evidence exists
+- [ ] Framework posts with 3–7 items: identical sub-structure applied to every item
+- [ ] Posts over 1,500 words: every concept-introducing H2 has a diagram (Fix #13 patterns)
+- [ ] Time-sensitive claims are grounded with a specific date reference — evergreen advice has no date
+- [ ] SellonTube tools linked at their natural decision moment, not only at the end — tool list in Fix #15 item 8
+- [ ] Sources section includes authority links beyond just stats (3–5 minimum external authority links)
+- [ ] All screenshots are wrapped in the Fix #21 styled container with caption and descriptive alt text
+- [ ] Currency is always $ — never £, €, or other symbols
 
 **Strategy post principles (Fix #14 — applies to strategy, framework, and multi-step process posts)**
 - [ ] Post includes a "When This Doesn't Apply" or "One Honest Limitation" section — 2-4 sentences naming the conditions where the approach fails
