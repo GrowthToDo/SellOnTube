@@ -3,7 +3,10 @@ publishDate: 2025-12-23T00:00:00Z
 author: Sathyanand
 title: "YouTube Strategy for Business: The Acquisition-First Approach"
 excerpt: "Most YouTube strategies fail because they're built for creators, not buyers. The acquisition-first model targets high-intent queries and converts viewers into customers."
-image: ~/assets/images/blog/youtube-strategy.jpg
+image: ~/assets/images/blog/why-most-youtube-strategies-fail-featured.svg
+image_alt: "YouTube strategy planning session showing the acquisition-first approach that converts viewers into B2B clients, not just subscribers | SellonTube"
+featuredImageWidth: 1200
+featuredImageHeight: 630
 category: YouTube Strategy
 tags:
   - youtube
