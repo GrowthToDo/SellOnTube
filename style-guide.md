@@ -447,6 +447,71 @@ Rules:
 
 ---
 
+### 20. YouTube video embeds: only when they add clear value
+
+Embed a YouTube video only when it genuinely improves reader understanding, depth, or usefulness for that specific section. Never use embeds as filler, visual padding, or to make a post look more comprehensive.
+
+**When to embed:**
+- The video directly demonstrates, explains, or proves the point made in the section
+- It is a walkthrough, tutorial, demo, expert commentary, interview, case study, or explanatory talk that the written content alone cannot replicate
+- A reader who skips the video still gets full value from the text. The video adds depth, not dependency
+
+**When not to embed:**
+- The video is only loosely related to the section
+- The video is low quality, outdated, or from an unverified source
+- The post reads just as well without it
+- There is already an embed nearby. Maximum 2 embeds per post.
+
+**Video selection:**
+- Prefer SellonTube-owned videos or trusted brand-owned channels
+- Third-party videos must be high-quality, directly relevant, and from a credible source
+- Avoid content more than 2-3 years old unless the subject is evergreen
+
+**Placement:**
+- Place the embed immediately after the paragraph it supports. Never at the top of a section before any written content.
+- Add one brief sentence of context before the embed: what the reader is about to see and why it is relevant
+- Never use a video embed as a section opener
+
+**Technical implementation (MDX):**
+
+Use a responsive wrapper around the iframe. The prose container does not apply aspect-ratio to iframes by default.
+
+```html
+<div class="relative aspect-video my-8 rounded-xl overflow-hidden shadow-md">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0"
+    title="[Descriptive title of the video]"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    loading="lazy"
+    class="absolute inset-0 w-full h-full"
+  ></iframe>
+</div>
+```
+
+- Use `youtube-nocookie.com` (not `youtube.com`) for privacy-enhanced mode. No tracking cookies are set before user consent.
+- Add `?rel=0` to suppress unrelated suggestions after the video ends
+- Always include a descriptive `title` attribute (accessibility requirement)
+- Always add `loading="lazy"` to avoid blocking page load
+- Never add `autoplay=1`. It is disruptive to readers and hurts engagement signals.
+
+**Mistakes to avoid:**
+- Do not add an em-dash in the context sentence above the embed. Write two plain sentences instead.
+- Do not place the embed before any written content in the section. The text comes first.
+- Do not embed a video and then write text below it that the video already covered. The written content must stand on its own, with the video as a supplement.
+- Do not use a generic context sentence like "Here is a video about this topic." Say specifically what the reader should pay attention to and why.
+- Do not embed a video older than 2-3 years unless the content is demonstrably still accurate.
+
+**Contributor workflow:**
+1. Review the section. Does a video genuinely improve comprehension or usefulness here?
+2. Select the best available video: relevant, high-quality, not outdated
+3. Place it after the supporting paragraph
+4. Write one sentence of context above the embed, stating what to watch for
+5. Confirm the page reads well without the video. Written content must be self-contained.
+6. Check the total embed count for the post. Stop at 2.
+
+---
+
 ## Fix #11: Intro Copywriting Principles
 
 These rules govern how every blog post introduction should be written. The intro is the second most-read section after the headline. Every sentence must earn its place.
