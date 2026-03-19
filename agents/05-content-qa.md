@@ -102,6 +102,16 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Comparison tables use specific column headers — not "Step | Description" but e.g., "Tool | Best for | Key limitation"
 - [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
 
+**Strategy post principles (Fix #14 — applies to strategy, framework, and multi-step process posts)**
+- [ ] Post includes a "When This Doesn't Apply" or "One Honest Limitation" section — 2-4 sentences naming the conditions where the approach fails
+- [ ] Failure mode has a specific, quotable one-sentence diagnosis — not just a description of symptoms
+- [ ] First major H2 anchors the reader in business math (LTV, sales cycle, pipeline target) before any tactic is introduced
+- [ ] Each content type / format is labelled by buyer journey stage (problem-aware / solution-aware / proof) — not vague labels like "educational" or "promotional"
+- [ ] Measurement section (if present) names "algorithm metrics" and "revenue metrics" as two distinct categories — never listed together
+- [ ] CTA mirrors the specific topic of the post — not a generic "book a call" or "visit our website"
+- [ ] Obvious-but-ignored advice is followed by an acknowledgment that most businesses skip it and the consequence of doing so
+- [ ] Multi-phase plans include a named review phase with: what signal to look for + what to do with it
+
 **Emotional resonance**
 - [ ] The opening makes the reader feel something — curiosity, recognition, or a slight sting. If the first paragraph is skippable, flag it.
 - [ ] At least one section creates a moment of "that's exactly my problem" — specific enough that the ICP reader feels seen

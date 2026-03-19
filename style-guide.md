@@ -658,3 +658,99 @@ Column colour coding (consistent across all diagrams):
 ### No "About the Author" section in MDX body
 
 Never write an "About the Author" section inside the post content. `SinglePost.astro` renders the `AuthorBio` component automatically below every post using the `author:` frontmatter value and the `src/data/authors.ts` registry. A manual section in the MDX creates a duplicate that looks broken.
+
+---
+
+## Fix #14: Strategy Post Principles
+
+These rules apply specifically to posts that teach a strategy, framework, or multi-step process — i.e., any post where the reader is deciding whether or how to adopt an approach. They were established from the `youtube-marketing-strategy` reference post.
+
+---
+
+### 1. Include a "When This Doesn't Apply" section
+
+Every strategy post must have a dedicated section (H2 or strong callout) that explicitly names the conditions under which the recommended approach will fail. This is not a disclaimer — it is a trust signal.
+
+The section should answer: low LTV, missing search demand, broken conversion process, wrong sales cycle length — whatever the real constraints are. 2-4 sentences. Name the failure conditions honestly.
+
+**Why:** Readers trust advice more when the author pre-emptively limits its scope. A post that says "this works for everyone" signals it was written to sell, not to inform.
+
+Bad: *(no limitation section — post implies the strategy works universally)*
+Good: "A YouTube marketing strategy will not fix a broken offer, a leaky sales process, or a business with economics that do not support the content investment."
+
+---
+
+### 2. Give the failure mode a specific, quotable diagnosis
+
+When describing why most businesses fail at a topic, give that failure a precise label — not just a description of symptoms.
+
+A named diagnosis the reader can repeat to someone else sticks far longer than a described symptom.
+
+Bad: "Many businesses struggle with their YouTube channels and don't see the results they expected."
+Good: "Here's the problem: they built a creator strategy for a business objective."
+
+The label should be quotable in one sentence. If it takes a paragraph to explain the failure mode, the label isn't sharp enough yet.
+
+---
+
+### 3. Open strategy posts with business math, not content ideas
+
+For any post teaching a marketing or content strategy, the first major H2 should anchor the reader in their own business economics before any tactic is introduced.
+
+2-3 questions the reader must answer before tactics make sense: customer LTV, sales cycle length, target pipeline number, etc. Frame downstream content decisions (frequency, format, topic depth) as outputs of those numbers — not arbitrary choices.
+
+**Why:** Readers who skip the business math can't evaluate whether a tactic makes sense for their situation. Tactics without context feel like generic advice.
+
+---
+
+### 4. Name the buyer journey stage for each content type
+
+When a strategy post describes different content types or formats, label each one by its buyer journey stage: problem-aware, solution-aware, or proof. Do not use vague labels like "educational" or "promotional."
+
+For B2B strategy posts, include the recommended production ratio: **2 solution-aware : 1 proof : 1 problem-aware** as the default starting mix. Explain the reasoning — solution-aware content is where B2B buyers spend the most time before deciding to reach out.
+
+---
+
+### 5. Name "algorithm metrics" and "revenue metrics" as two distinct categories
+
+Any post covering YouTube measurement must frame the distinction explicitly as two named categories:
+
+- **Algorithm metrics** (views, subscribers, watch time, impressions) — tell you how the algorithm treats your content
+- **Revenue metrics** (CTA click-through rate, leads in CRM, revenue attributed to YouTube) — tell you whether the channel is generating business
+
+Never list them together as if they belong to the same measurement family. The mislabelling is the insight: most businesses evaluate YouTube using algorithm metrics and then conclude it isn't working when they can't see leads.
+
+---
+
+### 6. CTA must mirror the exact topic of the content
+
+Every call to action must match the specific promise of the content it closes. A mismatch between content and CTA is the most common conversion leak on B2B content.
+
+Bad: "Visit our website" or "Book a discovery call" (generic, no connection to content)
+Good: "Book a 30-minute diagnostic where we run a search intent audit for your market" (mirrors a post about search intent)
+
+The test: could the CTA appear on any post on the site, or is it specifically tied to this one? If the first, rewrite it.
+
+---
+
+### 7. After delivering obvious-but-ignored advice, acknowledge it directly
+
+When you give advice that sounds simple but is consistently not done in practice, state that explicitly — and briefly name the consequence of skipping it.
+
+This is not hedging. It validates the reader's instinct that the simple answer is the real answer, and it pre-empts the "that can't be right, it's too obvious" reaction.
+
+Pattern: "[Advice]. This sounds obvious. Most businesses skip it anyway, because [specific reason]. The result: [specific consequence]."
+
+Use once or twice per post maximum. If every section has it, it loses credibility.
+
+---
+
+### 8. Multi-phase plans must include a review + double-down step
+
+Any post that teaches a multi-phase plan (90-day, 6-week, quarterly) must include a review phase as one of the named phases — not just an afterthought.
+
+The review phase must specify:
+- What signal to look for (e.g., which videos are generating CTA clicks, not just views)
+- What to do with that signal (double down on working topic clusters, pause and retest underperformers)
+
+**Why:** Plans that don't include a review loop train readers to publish uniformly and hope something sticks. The compounding effect comes from building on what works — but only if the reader knows to look for the signal and act on it.
