@@ -119,7 +119,7 @@ Ban: shortening a heading to hit an arbitrary length if the shorter version lose
 
 - **A specific next action.** "Open your YouTube Studio, look at your last 10 video titles, and ask: would I click on this if I didn't know my own brand? Fix the ones where the answer is no."
 - **A provocative final thought.** One sentence that sticks. Something the reader thinks about 10 minutes later.
-- **A direct CTA.** Always "book a call" — this is the fixed closing CTA on every post. No substitutions. If a SellonTube tool is relevant to the post, it can appear as a mid-body CTA — up to 2 times, each at a different decision moment where the reader would naturally want to act. Never place two tool CTAs in the same section. The final line of the post still closes with the book a call prompt regardless.
+- **A direct CTA.** Always "book a call" — this is the fixed closing CTA on every post. No substitutions. If a SellonTube tool is relevant to the post, it can appear as a mid-body CTA (once, where relevant) — but the final line still closes with the book a call prompt.
 
 The last line of a post is the second most-read line after the headline. Don't waste it on a summary.
 
@@ -139,8 +139,6 @@ Ban these patterns:
 **Vague:** "Many businesses have seen great results using YouTube for lead generation."
 
 **Specific:** "A Shopify app we worked with generated 1,257 conversions from YouTube in 12 months, while the blog produced 411 in the same period."
-
-**Naming hierarchy:** Named client + metric > industry type + metric > anonymous. Where a client has given permission to be named, always use their name. Where they haven't, keep it anonymous — never fabricate or imply a name. The anonymous format ("a Shopify app we worked with") is acceptable only when naming isn't possible, not as a default.
 
 **Critical: Never invent statistics.** If you don't have a real number, don't make one up. Say "in our experience" or "we've seen patterns where..." and describe the trend honestly. A post with zero numbers but honest observations is more trustworthy than impressive-sounding statistics from nowhere. If citing a number, always note where it comes from.
 
@@ -169,8 +167,6 @@ Ban these patterns:
 ## Fix #9: One Consistent Voice Throughout
 
 For SellonTube, the voice is: **experienced consultant talking to a smart business owner.** Not academic. Not salesy. Not motivational speaker.
-
-**Currency:** Always use $ — never £, €, or other symbols. SellonTube's ICP is global but dollar-denominated.
 
 **Rules:**
 
@@ -297,9 +293,9 @@ When teaching a process, use Step 1 / Step 2 / Step 3 with H3 headings — not b
 - 2-4 sentences of explanation
 - One concrete example or specific observation from SellonTube's work
 
-### 7. Horizontal rules
+### 7. Horizontal rules between major H2 sections
 
-See Fix #13 — one `---` per post only, after the TOC box. Never between H2 sections.
+Use `---` between H2 sections to create visual breathing room. Required on any post over 800 words.
 
 ### 8. Short paragraphs + white space
 
@@ -378,7 +374,7 @@ Any post that references an external statistic must end with a "Sources" section
 
 Never leave a stat uncited. If you cannot cite it, either remove it or attribute it honestly ("in our experience" / "based on clients we've worked with"). A cited post signals E-E-A-T to Google and earns more links than an uncited one.
 
-### 16. Industry and use case tables
+### 15. Industry and use case tables
 
 For any post with broad applicability, add an "Industry Use Cases" or "Who This Works For" section structured as a table:
 
@@ -387,7 +383,7 @@ For any post with broad applicability, add an "Industry Use Cases" or "Who This 
 
 Each row targets a different niche long-tail query and shows Google the post has topical depth. Cap it at 5-7 rows — enough to be useful, not so many it becomes a filler list.
 
-### 17. Consistent sub-structure for listicle items
+### 16. Consistent sub-structure for listicle items
 
 When writing a "best X" or "top N tools/strategies" post, every list item must use the same H3 sub-structure. Decide the structure before writing and apply it throughout. Recommended structure:
 
@@ -399,7 +395,7 @@ When writing a "best X" or "top N tools/strategies" post, every list item must u
 
 Consistent structure makes posts scannable, signals quality to Google, and helps readers compare items quickly. Inconsistent depth across items is a quality signal Google notices.
 
-### 18. Table of Contents — mandatory on all posts
+### 17. Table of Contents — mandatory on all posts
 
 Add a Table of Contents immediately after the Key Takeaways section (or after the intro on posts under 1,000 words where Key Takeaways is omitted). Use anchor links to every H2 in the post.
 
@@ -414,7 +410,7 @@ Add a Table of Contents immediately after the Key Takeaways section (or after th
 
 Keep the ToC flat — link to H2s only, not H3s. If a post has more than 10 H2s, that's a signal the post needs to be split, not that the ToC needs to be longer.
 
-### 19. YouTube timestamp code blocks for video optimization posts
+### 18. YouTube timestamp code blocks for video optimization posts
 
 When writing any post that teaches YouTube video structure, descriptions, or chapter formatting, show the timestamp format as a code block rather than describing it in prose. Readers copy-paste from code blocks — prose descriptions get skimmed and forgotten.
 
@@ -435,7 +431,7 @@ Rules for the code block itself:
 
 Only use this pattern when the post is directly teaching video structure or description optimization. Don't force it into posts where timestamps are tangential.
 
-### 20. "Best starting point" callout — one per post
+### 19. "Best starting point" callout — one per post
 
 In any listicle or framework post where the reader faces a genuine "where do I begin?" decision, call out the single best starting tactic explicitly. This stops readers from getting paralysed by choice.
 
@@ -448,44 +444,6 @@ Rules:
 - Only use it when there is a genuinely clear answer. Don't force it onto posts where the right starting point is "it depends."
 - Place it after the item it refers to, not at the top of the list.
 - This is a reader service, not a promotional device. Never use it to push a SellonTube service.
-
-### 21. Screenshots — presentation and usage
-
-**When to use screenshots:**
-- YouTube Studio data (watch time, CTR, impressions) to prove a performance claim
-- GSC or GA4 data showing real rankings, traffic, or clicks
-- Actual search results showing a keyword's SERP landscape
-- Product or tool pages — your own (SellonTube tools) or a third-party tool being reviewed — where seeing the interface is more useful than describing it
-
-**How to present them (every screenshot must be framed):**
-
-Wrap every screenshot in a styled container: rounded corners (`border-radius: 12px`), a subtle border (`1px solid #e5e7eb`), a light drop shadow, and a caption label below. Never drop a raw screenshot directly into the post.
-
-```html
-<figure style="margin: 2rem 0;">
-  <img
-    src="/path/to/screenshot.png"
-    alt="[Descriptive alt text — see rule below]"
-    style="border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.08); width: 100%; display: block;"
-  />
-  <figcaption style="margin-top: 0.5rem; font-size: 0.8rem; color: #6b7280; text-align: center;">[Caption describing what the reader is looking at]</figcaption>
-</figure>
-```
-
-Optional: add a thin coloured annotation (red/amber rectangle or arrow) to direct the reader's eye to the specific element being discussed. Use the colour system from Fix #13.
-
-**Alt text rule:**
-
-Describe what the screenshot shows AND what is notable about it. Never use generic labels.
-
-Bad: `"Screenshot of YouTube Studio"`
-Good: `"YouTube Studio impressions chart showing 3× traffic increase after title rewrite — week 6"`
-
-**What to avoid:**
-- Screenshots of pure text — write it out instead
-- Screenshots that require zooming to read
-- Raw unframed screenshots at any width
-- More than 2 screenshots per 1,000 words — use diagrams for concept explanation, screenshots for proof
 
 ---
 
@@ -765,29 +723,6 @@ Column colour coding (consistent across all diagrams):
 ### No "About the Author" section in MDX body
 
 Never write an "About the Author" section inside the post content. `SinglePost.astro` renders the `AuthorBio` component automatically below every post using the `author:` frontmatter value and the `src/data/authors.ts` registry. A manual section in the MDX creates a duplicate that looks broken.
-
----
-
-## Fix #14: Strategy Post Principles
-
-These rules apply specifically to posts that teach a strategy, framework, or multi-step process — i.e., any post where the reader is deciding whether or how to adopt an approach. They were established from the `youtube-marketing-strategy` reference post.
-
----
-
-### 1. Include a "When This Doesn't Apply" section
-
-Every strategy post must have a dedicated section (H2 or strong callout) that explicitly names the conditions under which the recommended approach will fail. This is not a disclaimer — it is a trust signal.
-
-The section should answer: low LTV, missing search demand, broken conversion process, wrong sales cycle length — whatever the real constraints are. 2-4 sentences. Name the failure conditions honestly.
-
-**Why:** Readers trust advice more when the author pre-emptively limits its scope. A post that says "this works for everyone" signals it was written to sell, not to inform.
-
-Bad: *(no limitation section — post implies the strategy works universally)*
-Good: "A YouTube marketing strategy will not fix a broken offer, a leaky sales process, or a business with economics that do not support the content investment."
-
----
-
-### 2. Give the failure mode a specific, quotable diagnosis
 
 When describing why most businesses fail at a topic, give that failure a precise label — not just a description of symptoms.
 
