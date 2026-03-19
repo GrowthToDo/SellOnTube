@@ -119,7 +119,7 @@ Ban: shortening a heading to hit an arbitrary length if the shorter version lose
 
 - **A specific next action.** "Open your YouTube Studio, look at your last 10 video titles, and ask: would I click on this if I didn't know my own brand? Fix the ones where the answer is no."
 - **A provocative final thought.** One sentence that sticks. Something the reader thinks about 10 minutes later.
-- **A direct CTA.** Always "book a call" — this is the fixed closing CTA on every post. No substitutions. If a SellonTube tool is relevant to the post, it can appear as a mid-body CTA (once, where relevant) — but the final line still closes with the book a call prompt.
+- **A direct CTA.** Always "book a call" — this is the fixed closing CTA on every post. No substitutions. If a SellonTube tool is relevant to the post, it can appear as a mid-body CTA — up to 2 times, each at a different decision moment where the reader would naturally want to act. Never place two tool CTAs in the same section. The final line of the post still closes with the book a call prompt regardless.
 
 The last line of a post is the second most-read line after the headline. Don't waste it on a summary.
 
@@ -139,6 +139,8 @@ Ban these patterns:
 **Vague:** "Many businesses have seen great results using YouTube for lead generation."
 
 **Specific:** "A Shopify app we worked with generated 1,257 conversions from YouTube in 12 months, while the blog produced 411 in the same period."
+
+**Naming hierarchy:** Named client + metric > industry type + metric > anonymous. Where a client has given permission to be named, always use their name. Where they haven't, keep it anonymous — never fabricate or imply a name. The anonymous format ("a Shopify app we worked with") is acceptable only when naming isn't possible, not as a default.
 
 **Critical: Never invent statistics.** If you don't have a real number, don't make one up. Say "in our experience" or "we've seen patterns where..." and describe the trend honestly. A post with zero numbers but honest observations is more trustworthy than impressive-sounding statistics from nowhere. If citing a number, always note where it comes from.
 
@@ -167,6 +169,8 @@ Ban these patterns:
 ## Fix #9: One Consistent Voice Throughout
 
 For SellonTube, the voice is: **experienced consultant talking to a smart business owner.** Not academic. Not salesy. Not motivational speaker.
+
+**Currency:** Always use $ — never £, €, or other symbols. SellonTube's ICP is global but dollar-denominated.
 
 **Rules:**
 
@@ -293,9 +297,9 @@ When teaching a process, use Step 1 / Step 2 / Step 3 with H3 headings — not b
 - 2-4 sentences of explanation
 - One concrete example or specific observation from SellonTube's work
 
-### 7. Horizontal rules between major H2 sections
+### 7. Horizontal rules
 
-Use `---` between H2 sections to create visual breathing room. Required on any post over 800 words.
+See Fix #13 — one `---` per post only, after the TOC box. Never between H2 sections.
 
 ### 8. Short paragraphs + white space
 
@@ -374,7 +378,7 @@ Any post that references an external statistic must end with a "Sources" section
 
 Never leave a stat uncited. If you cannot cite it, either remove it or attribute it honestly ("in our experience" / "based on clients we've worked with"). A cited post signals E-E-A-T to Google and earns more links than an uncited one.
 
-### 15. Industry and use case tables
+### 16. Industry and use case tables
 
 For any post with broad applicability, add an "Industry Use Cases" or "Who This Works For" section structured as a table:
 
@@ -383,7 +387,7 @@ For any post with broad applicability, add an "Industry Use Cases" or "Who This 
 
 Each row targets a different niche long-tail query and shows Google the post has topical depth. Cap it at 5-7 rows — enough to be useful, not so many it becomes a filler list.
 
-### 16. Consistent sub-structure for listicle items
+### 17. Consistent sub-structure for listicle items
 
 When writing a "best X" or "top N tools/strategies" post, every list item must use the same H3 sub-structure. Decide the structure before writing and apply it throughout. Recommended structure:
 
@@ -395,7 +399,7 @@ When writing a "best X" or "top N tools/strategies" post, every list item must u
 
 Consistent structure makes posts scannable, signals quality to Google, and helps readers compare items quickly. Inconsistent depth across items is a quality signal Google notices.
 
-### 17. Table of Contents — mandatory on all posts
+### 18. Table of Contents — mandatory on all posts
 
 Add a Table of Contents immediately after the Key Takeaways section (or after the intro on posts under 1,000 words where Key Takeaways is omitted). Use anchor links to every H2 in the post.
 
@@ -410,7 +414,7 @@ Add a Table of Contents immediately after the Key Takeaways section (or after th
 
 Keep the ToC flat — link to H2s only, not H3s. If a post has more than 10 H2s, that's a signal the post needs to be split, not that the ToC needs to be longer.
 
-### 18. YouTube timestamp code blocks for video optimization posts
+### 19. YouTube timestamp code blocks for video optimization posts
 
 When writing any post that teaches YouTube video structure, descriptions, or chapter formatting, show the timestamp format as a code block rather than describing it in prose. Readers copy-paste from code blocks — prose descriptions get skimmed and forgotten.
 
@@ -431,7 +435,7 @@ Rules for the code block itself:
 
 Only use this pattern when the post is directly teaching video structure or description optimization. Don't force it into posts where timestamps are tangential.
 
-### 19. "Best starting point" callout — one per post
+### 20. "Best starting point" callout — one per post
 
 In any listicle or framework post where the reader faces a genuine "where do I begin?" decision, call out the single best starting tactic explicitly. This stops readers from getting paralysed by choice.
 
@@ -444,6 +448,44 @@ Rules:
 - Only use it when there is a genuinely clear answer. Don't force it onto posts where the right starting point is "it depends."
 - Place it after the item it refers to, not at the top of the list.
 - This is a reader service, not a promotional device. Never use it to push a SellonTube service.
+
+### 21. Screenshots — presentation and usage
+
+**When to use screenshots:**
+- YouTube Studio data (watch time, CTR, impressions) to prove a performance claim
+- GSC or GA4 data showing real rankings, traffic, or clicks
+- Actual search results showing a keyword's SERP landscape
+- Product or tool pages — your own (SellonTube tools) or a third-party tool being reviewed — where seeing the interface is more useful than describing it
+
+**How to present them (every screenshot must be framed):**
+
+Wrap every screenshot in a styled container: rounded corners (`border-radius: 12px`), a subtle border (`1px solid #e5e7eb`), a light drop shadow, and a caption label below. Never drop a raw screenshot directly into the post.
+
+```html
+<figure style="margin: 2rem 0;">
+  <img
+    src="/path/to/screenshot.png"
+    alt="[Descriptive alt text — see rule below]"
+    style="border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.08); width: 100%; display: block;"
+  />
+  <figcaption style="margin-top: 0.5rem; font-size: 0.8rem; color: #6b7280; text-align: center;">[Caption describing what the reader is looking at]</figcaption>
+</figure>
+```
+
+Optional: add a thin coloured annotation (red/amber rectangle or arrow) to direct the reader's eye to the specific element being discussed. Use the colour system from Fix #13.
+
+**Alt text rule:**
+
+Describe what the screenshot shows AND what is notable about it. Never use generic labels.
+
+Bad: `"Screenshot of YouTube Studio"`
+Good: `"YouTube Studio impressions chart showing 3× traffic increase after title rewrite — week 6"`
+
+**What to avoid:**
+- Screenshots of pure text — write it out instead
+- Screenshots that require zooming to read
+- Raw unframed screenshots at any width
+- More than 2 screenshots per 1,000 words — use diagrams for concept explanation, screenshots for proof
 
 ---
 
@@ -723,3 +765,399 @@ Column colour coding (consistent across all diagrams):
 ### No "About the Author" section in MDX body
 
 Never write an "About the Author" section inside the post content. `SinglePost.astro` renders the `AuthorBio` component automatically below every post using the `author:` frontmatter value and the `src/data/authors.ts` registry. A manual section in the MDX creates a duplicate that looks broken.
+
+---
+
+## Fix #14: Strategy Post Principles
+
+These rules apply specifically to posts that teach a strategy, framework, or multi-step process — i.e., any post where the reader is deciding whether or how to adopt an approach. They were established from the `youtube-marketing-strategy` reference post.
+
+---
+
+### 1. Include a "When This Doesn't Apply" section
+
+Every strategy post must have a dedicated section (H2 or strong callout) that explicitly names the conditions under which the recommended approach will fail. This is not a disclaimer — it is a trust signal.
+
+The section should answer: low LTV, missing search demand, broken conversion process, wrong sales cycle length — whatever the real constraints are. 2-4 sentences. Name the failure conditions honestly.
+
+**Why:** Readers trust advice more when the author pre-emptively limits its scope. A post that says "this works for everyone" signals it was written to sell, not to inform.
+
+Bad: *(no limitation section — post implies the strategy works universally)*
+Good: "A YouTube marketing strategy will not fix a broken offer, a leaky sales process, or a business with economics that do not support the content investment."
+
+---
+
+### 2. Give the failure mode a specific, quotable diagnosis
+
+When describing why most businesses fail at a topic, give that failure a precise label — not just a description of symptoms.
+
+A named diagnosis the reader can repeat to someone else sticks far longer than a described symptom.
+
+Bad: "Many businesses struggle with their YouTube channels and don't see the results they expected."
+Good: "Here's the problem: they built a creator strategy for a business objective."
+
+The label should be quotable in one sentence. If it takes a paragraph to explain the failure mode, the label isn't sharp enough yet.
+
+---
+
+### 3. Open strategy posts with business math, not content ideas
+
+For any post teaching a marketing or content strategy, the first major H2 should anchor the reader in their own business economics before any tactic is introduced.
+
+2-3 questions the reader must answer before tactics make sense: customer LTV, sales cycle length, target pipeline number, etc. Frame downstream content decisions (frequency, format, topic depth) as outputs of those numbers — not arbitrary choices.
+
+**Why:** Readers who skip the business math can't evaluate whether a tactic makes sense for their situation. Tactics without context feel like generic advice.
+
+---
+
+### 4. Name the buyer journey stage for each content type
+
+When a strategy post describes different content types or formats, label each one by its buyer journey stage: problem-aware, solution-aware, or proof. Do not use vague labels like "educational" or "promotional."
+
+For B2B strategy posts, include the recommended production ratio: **2 solution-aware : 1 proof : 1 problem-aware** as the default starting mix. Explain the reasoning — solution-aware content is where B2B buyers spend the most time before deciding to reach out.
+
+---
+
+### 5. Name "algorithm metrics" and "revenue metrics" as two distinct categories
+
+Any post covering YouTube measurement must frame the distinction explicitly as two named categories:
+
+- **Algorithm metrics** (views, subscribers, watch time, impressions) — tell you how the algorithm treats your content
+- **Revenue metrics** (CTA click-through rate, leads in CRM, revenue attributed to YouTube) — tell you whether the channel is generating business
+
+Never list them together as if they belong to the same measurement family. The mislabelling is the insight: most businesses evaluate YouTube using algorithm metrics and then conclude it isn't working when they can't see leads.
+
+---
+
+### 6. CTA must mirror the exact topic of the content
+
+Every call to action must match the specific promise of the content it closes. A mismatch between content and CTA is the most common conversion leak on B2B content.
+
+Bad: "Visit our website" or "Book a discovery call" (generic, no connection to content)
+Good: "Book a 30-minute diagnostic where we run a search intent audit for your market" (mirrors a post about search intent)
+
+The test: could the CTA appear on any post on the site, or is it specifically tied to this one? If the first, rewrite it.
+
+---
+
+### 7. After delivering obvious-but-ignored advice, acknowledge it directly
+
+When you give advice that sounds simple but is consistently not done in practice, state that explicitly — and briefly name the consequence of skipping it.
+
+This is not hedging. It validates the reader's instinct that the simple answer is the real answer, and it pre-empts the "that can't be right, it's too obvious" reaction.
+
+Pattern: "[Advice]. This sounds obvious. Most businesses skip it anyway, because [specific reason]. The result: [specific consequence]."
+
+Use once or twice per post maximum. If every section has it, it loses credibility.
+
+---
+
+### 8. Multi-phase plans must include a review + double-down step
+
+Any post that teaches a multi-phase plan (90-day, 6-week, quarterly) must include a review phase as one of the named phases — not just an afterthought.
+
+The review phase must specify:
+- What signal to look for (e.g., which videos are generating CTA clicks, not just views)
+- What to do with that signal (double down on working topic clusters, pause and retest underperformers)
+
+**Why:** Plans that don't include a review loop train readers to publish uniformly and hope something sticks. The compounding effect comes from building on what works — but only if the reader knows to look for the signal and act on it.
+
+---
+
+## Fix #15: Content Depth and Authority Signals
+
+These patterns were identified from competitive analysis of high-performing content. Apply them to increase impressions, CTR, and time on page.
+
+### 1. Year in title — listicle posts only
+
+For posts structured as "Best X", "Top N", or numbered ideas/tools lists, append the current year at the end of the title. Year-tagged titles get higher CTR because searchers prefer recent results for this content type.
+
+- Only on listicles — not strategy posts, guides, or evergreen how-tos
+- Place the year at the end: "5 Best YouTube Tools for B2B in 2026"
+- Update the title and `publishDate` when the year rolls over — a stale year actively hurts CTR
+- Do not add a year if the post content won't be updated annually
+
+### 2. Multi-column stats strip
+
+When a post centres on a specific result or data point, a 4-column stats box placed after the intro makes the claim land immediately. Each column shows one key metric.
+
+Only use when the numbers are real, relevant, and meaningful to the reader on their own — not as decoration. If you have to stretch to fill 4 columns, skip it.
+
+Example for an ROI post: `1,257 conversions | 12 months | 3× blog output | $0 in ads`
+
+```html
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #e5e7eb; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; margin: 2rem 0;">
+  <div style="background: #fff; padding: 1.25rem; text-align: center;">
+    <div style="font-size: 1.75rem; font-weight: 800; color: #111827;">[number]</div>
+    <div style="font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem;">[label]</div>
+  </div>
+</div>
+```
+
+### 3. "More [Topic] Guides" internal linking section
+
+Every post should end with a dedicated H2 section titled "More [Topic] Guides" (e.g., "More YouTube SEO Guides") containing 3–5 links to related posts in the same cluster. Place it after the FAQ, before Sources.
+
+This is separate from inline "Read more:" links and does not count against the 3–4 inline link cap.
+
+Format as a plain unordered list with descriptive link text — no summaries needed:
+
+```
+## More YouTube Marketing Guides
+- [How to Build a YouTube Acquisition Engine](/blog/the-youtube-acquisition-engine)
+- [YouTube ROI: How to Calculate Before You Invest](/blog/youtube-marketing-roi)
+```
+
+**Why this matters:** Scattered inline links pass authority loosely. A grouped cluster section creates a visible hub-and-spoke structure that Google can follow cleanly — and keeps readers on the site longer.
+
+### 4. "Real Signal" validation per section
+
+For posts presenting multiple strategies, ideas, or options, each major item should include a short credibility callout linking to external proof — a published report, a real case, a news article, or a named source.
+
+Format: a single sentence with an inline link, placed inside the relevant section.
+
+*"According to [Source], [specific claim with link]."*
+
+This makes every section independently credible rather than relying on overall post authority. It also signals to Google that the content is well-researched, not generic.
+
+Don't force it — only include when genuine external evidence exists for that specific point. A missing signal is better than a weak one.
+
+### 5. Consistent per-item sub-structure for framework posts
+
+When a post presents 3–7 strategies, approaches, or ideas, every item must use the same sub-structure. Decide the labels before writing and apply them identically across all items.
+
+The specific labels depend on the post topic — but the rule is the same regardless: same depth, same order, same structure for every item. Inconsistent depth signals low quality to both readers and Google.
+
+### 6. Custom diagram per concept-introducing H2
+
+For posts over 1,500 words, every H2 section that introduces a new concept, framework, or process should have one diagram. Use the diagram patterns from Fix #13.
+
+Do not add diagrams to FAQ, Sources, "More Guides", or closing sections — only where a visual genuinely aids comprehension of the concept being introduced.
+
+One diagram per concept section is the target. This drives image search traffic, increases time on page, and makes the post visually distinctive in search results.
+
+### 7. Temporal grounding in the content body
+
+For listicle and trend posts, ground key claims in a specific time reference in the body — not just the title. "As of Q1 2026, the three YouTube channels ranking for this query are all voiceover-led."
+
+Only use on claims that are genuinely time-specific. Don't force a date onto evergreen advice — it will age badly and require constant updates.
+
+### 8. Mid-content tool CTAs at decision moments
+
+Each SellonTube tool should be linked once at the most relevant decision moment in the post — the exact section where the reader would naturally want to act, not saved for the end.
+
+Current tools and their natural placement:
+- **YouTube ROI Calculator** → at the section discussing revenue projections or payback period
+- **YouTube Topic Evaluator** → at the section discussing keyword or topic selection
+- **YouTube Video Ideas Generator** → at the section discussing content ideation
+- **YouTube Transcript Generator** → at the section discussing repurposing or transcription
+
+As new tools are added to `/tools/`, update this list with their natural placement context. The principle is always the same: link where the reader's need is highest, not where it's convenient.
+
+See Fix #6 for the 2-per-post limit. The closing CTA is always "book a call" — tools appear mid-content only.
+
+### 9. Sources — expand to authority links, not just stats
+
+The existing rule (item 15 in the Content Structure Reference) requires citing every external statistic. Expand this: the Sources section should also include any authoritative external source referenced in the post even where no specific number is quoted — industry reports, named publications, credible external posts.
+
+Actively linking to high-authority domains signals E-E-A-T to Google and increases the likelihood of AI tools (ChatGPT, Perplexity, Google AI Overviews) citing the post. Aim for 3–5 external authority links per post minimum. Never link to low-authority or thin content just to have a source.
+
+---
+
+## Fix #16: Visual Production Standards
+
+Every visual in a blog post must earn its place. No decorative charts. No generic stock diagrams. Each graphic should communicate a specific insight that would take two or more paragraphs to convey in prose.
+
+### When to use a visual
+
+Add a visual only when one of these conditions is true:
+
+- The concept involves a process, hierarchy, or comparison that is genuinely clearer as a diagram than as text
+- A table alone isn't enough — the relationships between items need to be shown spatially
+- The section is a core concept-introducing H2 in a post over 1,500 words (Fix #15 rule 6)
+- A screenshot is needed to show a real product interface, real search result, or real data output
+
+Do not add visuals as decoration, to break up text, or because the section "feels long."
+
+### Format: SVG only
+
+All diagrams and charts are SVG files. SVG is the only format for produced visuals — it scales cleanly at all sizes, is self-contained, and embeds in MDX as a standard `<img>` tag.
+
+SVG files must be self-contained: no external CDN links, no external fonts, no remotely hosted images. Use the system font stack inside SVG text elements: `-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`.
+
+Screenshots are the exception — see item 21 in the Content Structure Reference for the required wrapper pattern.
+
+### Priority visual types
+
+In order of impact for SellonTube content:
+
+1. **Funnel / journey diagrams** — buyer journey stages, content funnel tiers, pipeline stages
+2. **Before/after comparisons** — what most channels do vs what actually works, side-by-side metric comparisons
+3. **Process flows** — numbered sequences where order matters (e.g. keyword research workflow)
+4. **Framework grids** — 2×2 matrices, scoring tables with visual weight (not plain markdown tables)
+5. **Concept diagrams** — standalone visuals that explain a single idea or relationship (e.g. how algorithm signals connect to reach)
+6. **Checklist graphics** — visual checklist or criteria summary (e.g. "Is your channel ready for B2B leads?")
+7. **Stats strips** — 3-column metric cards (only when all 3 stats are real and meaningful — see Fix #15 rule 2)
+8. **Screenshots** — real product UI, real GSC/GA4 data, real YouTube Studio data
+
+### Placement
+
+- Place the visual immediately after the prose that introduces the concept — not before
+- Use visuals to summarise a framework or process after it has been explained, not as a substitute for explaining it
+- Add a visual where a long text block would benefit from a scannable alternative — not just because the section is long
+- Do not place a visual mid-argument where it breaks a tight logical sequence — reserve for summarising or clarifying, not interrupting
+
+### SVG craft principles
+
+- Lead with the most important element — hierarchy should be visible at a glance
+- Label every element directly in the SVG — do not rely on the surrounding prose to explain what something means
+- Use whitespace deliberately — crowded SVGs lose clarity faster than crowded text
+- Prefer 2–3 colours maximum per visual — use the Fix #13 palette
+- Keep SVGs lightweight and editable — no rasterised elements embedded inside SVG, no unnecessary groups or hidden layers
+- Simple beats impressive — if a visual needs a legend to be understood, simplify it
+
+### Quality standards
+
+- Every visual must have a clear title or label in the graphic itself (not just in the surrounding prose)
+- SellonTube branding: footer strip with "SellonTube — YouTube Acquisition for B2B" and "sellontube.com" on card-style visuals
+- Colour palette: use the existing palette from Fix #13 box styles (slate, amber, green, blue, red) — do not introduce new brand colours in graphics
+- No clip art, icon libraries, or emoji used as structural elements in SVG diagrams
+- Use `viewBox` with `width="100%"` so SVGs scale responsively at all viewport sizes
+
+### Contributor workflow
+
+1. Read the full section where a visual might help
+2. Identify the specific idea, relationship, or process that would be clearer as a graphic than as text
+3. Choose the visual type from the Priority Visual Types list above
+4. Create the SVG — apply the craft principles: hierarchy, direct labels, whitespace, 2–3 colours
+5. Place it immediately after the prose it supports
+6. Write descriptive alt text that explains what the visual shows — not just "diagram"
+
+### File organisation
+
+SVG files: `src/assets/images/blog/visuals/[post-slug]/[visual-name].svg`
+
+Name files by visual type and subject: `[visual-type]-[subject].svg` — e.g. `funnel-b2b-buyer-journey.svg`, `checklist-channel-readiness.svg`, `process-keyword-research.svg`
+
+Screenshots: `src/assets/images/blog/[post-slug]-[descriptor].jpg` (or `.png` if transparency needed)
+
+### Integration in MDX
+
+Embed SVGs as standard Astro image imports or `<img>` tags using the screenshot wrapper pattern from item 21:
+
+```html
+<figure style="margin: 2rem 0;">
+  <img src="~/assets/images/blog/visuals/[post-slug]/[visual-name].svg"
+       alt="[Descriptive alt text]"
+       style="width: 100%; display: block;" />
+  <figcaption style="margin-top: 0.5rem; font-size: 0.8rem; color: #6b7280; text-align: center;">[Caption]</figcaption>
+</figure>
+```
+
+Never link out to an external visual hosting service (CodePen, Figma embed, etc.) for production blog visuals. All visuals must be self-hosted.
+
+---
+
+## Fix #17: Feature Image Standards
+
+The feature image appears on the blog index card, at the top of the post, and in every social and search preview. It is the first visual signal a reader sees — it must earn the click.
+
+### Format and dimensions
+
+- **Format:** JPG for photos and illustrated graphics. PNG only if transparency is needed. WebP is the preferred delivery format — Astro handles conversion automatically on build.
+- **Dimensions:** 1200 × 630px — the Open Graph standard. Correct for Google search previews, LinkedIn, Twitter/X, and WhatsApp link previews.
+- **File size:** Keep source files under 200KB before Astro optimisation.
+- **Aspect ratio:** Always 1.91:1 — never crop or stretch. A distorted feature image breaks the Open Graph preview on social.
+
+### Visual style
+
+- **Preferred style:** Text-based graphic with a short headline or key phrase from the post, on a clean background. Most controllable, brand-consistent, and scalable.
+- **Photos:** Only when a real, high-quality photo directly reinforces the post topic. No generic stock photos — no people at laptops, no handshakes, no arrows pointing up.
+- **Illustrations:** Acceptable only if custom and consistent with the SellonTube visual style. No clip art or generic icon sets.
+- **Consistency:** All feature images across the blog must look like they belong to the same brand. A reader scanning the blog index should see a coherent visual identity, not a random mix of styles.
+
+### Composition
+
+- **Layout:** Text left, photo right. Text occupies the left 55%, photo occupies the right 45%. Text must be hard-clipped so it cannot bleed into the photo area — use `clipPath` in SVG.
+- **Headline:** Split across 2–3 lines at 70px. Never put more than one long word per line at large font sizes — measure before committing. The last line carries the brand gradient (primary blue `#3b82f6` → accent purple `#8b5cf6`).
+- **Safe zone:** Keep all text at least 70px from every edge. Google and social platforms crop previews unpredictably at the edges.
+- **Background:** Site dark bg `#030620` with a subtle diagonal gradient to `#0a1540` for depth. No invented colours.
+- **Vertical balance:** Distribute the content block (pill + headline + sub-headline) to occupy the vertical centre of the image. Branding is anchored to the bottom. Do not pile content in the top 60% and leave the bottom empty.
+- **One focal point:** The face is the dominant attention element. The headline communicates the topic. These are complementary — not competing — if the photo is correctly contained to the right column.
+- **No small text:** Any text smaller than 20px is invisible at thumbnail size. Sub-headline and branding are for full-size viewing only.
+
+### Branding
+
+- **Wordmark:** Include the SellonTube wordmark on every feature image — bottom-left or bottom-right corner. Small but visible at full size.
+- **Colour palette:** Use the site's actual design tokens only — no one-off colours:
+  - Dark background: `#030620` (site dark mode bg — `rgb(3 6 32)`)
+  - Primary blue: `#0161EF` (`rgb(1 97 239)`) — use for category labels, accents, highlights
+  - Secondary blue: `#0154CF` (`rgb(1 84 207)`) — use for gradients and hover states
+  - Accent purple: `#6D28D9` (`rgb(109 40 217)`) — use sparingly for contrast elements
+  - White: `#ffffff` — headline text
+  - Muted: `rgba(229, 236, 246, 0.66)` — sub-headline, footer text
+- **Typography:** `Inter` (the site's actual font — loaded via `@fontsource-variable/inter`). Use `'Inter', ui-sans-serif, system-ui, sans-serif` as the font stack in SVG `font-family` attributes.
+- **Template:** Build all feature images from a single reusable template. Swap the headline text per post — keep everything else locked.
+
+### SEO
+
+- **Filename:** `[post-slug]-featured.jpg` — e.g. `youtube-marketing-b2b-featured.jpg`. Descriptive filenames are parsed by Google image search.
+- **Alt text:** Describe what the image shows plus the post topic — not just the post title repeated verbatim. Max 125 characters. Example: `"Feature image for SellonTube post: three content types that drive B2B pipeline on YouTube"`
+- **No keyword stuffing:** One natural description only. Packing keywords into alt text is treated as spam by Google.
+
+### File organisation
+
+- **Storage path:** `src/assets/images/blog/[post-slug]-featured.jpg`
+- **SVG working file:** `src/assets/images/blog/[post-slug]-featured.svg` — kept as the editable source
+- **One feature image per post** — no variants or A/B versions stored in the repo
+- **Frontmatter:** Always reference via `~/assets/images/blog/[post-slug]-featured.jpg` in the post `image` field — Astro optimises it on build from there
+
+### Approved template spec
+
+This is the validated layout. Use it as the base for every feature image — swap the headline text and photo only.
+
+**Canvas:** 1200 × 630px
+
+**Background:** gradient from `#030620` (top-left) to `#0a1540` (bottom-right)
+
+**Photo (right column):**
+- Starts at x=660, width=540, full height (630px)
+- Source: AI-generated or curated Unsplash photo — professional person, confident expression, upper body
+- Left fade: `#030620` opacity 1→0 across the first 58% of the photo width (blends into background)
+- Bottom fade: `#030620` opacity 0→0.9 from 55% height to bottom (protects branding strip)
+
+**Text (left column, hard-clipped at x=655):**
+- Category pill: x=70, y=118, height=28, border-radius=14, fill `#0161EF` at 18% opacity, stroke `#3b82f6` at 45% opacity, label in `#60a5fa` at 12px/600 weight, letter-spacing 2.5
+- Headline line 1: x=70, y=234, 70px/800 weight, white, letter-spacing -1.5
+- Headline line 2: x=70, y=318, 70px/800 weight, white, letter-spacing -1.5
+- Headline line 3: x=70, y=402, 70px/800 weight, gradient `#3b82f6`→`#8b5cf6` (userSpaceOnUse, x1=70 x2=480)
+- Divider: x=70, y=422, width=72, height=3, fill `#3b82f6` at 65% opacity
+- Sub-headline: x=70, y=462, 21px/400 weight, `rgba(229,236,246,0.55)`
+
+**Branding (outside text clip, bottom-left):**
+- "SellOnTube": x=70, y=594, 14px/700 weight, `rgba(255,255,255,0.88)`
+- Tagline: x=166, y=594, 14px/400 weight, `rgba(229,236,246,0.32)`
+
+**Font stack:** `'Inter', ui-sans-serif, system-ui, sans-serif`
+
+### Common mistakes — do not repeat
+
+These errors were discovered during production of the first feature image:
+
+1. **`&` in SVG URLs must be escaped as `&amp;`** — unescaped ampersands in `href` attributes cause an XML parse error and the file renders blank. Every query parameter separator in a URL (`?w=600&h=630`) must be `?w=600&amp;h=630`.
+
+2. **Never put two long words on one line at 70px** — "YouTube Marketing" at 70px is ~680px wide and overflows the text column. Always split long headlines across multiple lines and verify each line fits before finalising.
+
+3. **Never define the same SVG attribute twice in one element** — `<linearGradient x1="0%" ... x1="70">` triggers "Attribute redefined" and breaks rendering. Define each attribute once only.
+
+4. **Text clip is mandatory** — without a `clipPath` on the text group, headline text bleeds into the photo area at large font sizes. Always clip the text group.
+
+5. **Fade overlay colours must match the background exactly** — if the background is `#030620` but the fade uses `#0f1f45`, the blending edge is visible as a hard colour shift. Fade colours must match the bg colour precisely.
+
+6. **Never use off-brand background colours** — `#0f1f45`, `#1a3355`, `#1e3a5f` are not SellonTube colours. The site's dark bg is `#030620`. Use that as the base and only introduce `#0161EF`, `#0154CF`, `#6D28D9` as accent colours.
+
+7. **Wordmark only — no URL** — "sellontube.com" on the image is redundant. The wordmark ("SellOnTube") is sufficient for branding. The URL adds visual noise without SEO or CTR benefit.
+
+8. **Dead space is a layout failure** — if the content block occupies only the top 60% and leaves 40% blank below it, the composition is unbalanced. Vertically centre the content block and anchor branding to the bottom independently.
+
+9. **Vertical accent bars add no hierarchy** — a decorative vertical bar on the left edge competes with the headline without adding meaning. Remove it.

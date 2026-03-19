@@ -28,7 +28,7 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Does NOT open with: "The Hidden Power of", "The Secret to", "Why Most", "How to Master", "The Ultimate Guide to", "Everything You Need to Know"
 - [ ] Does NOT use insider jargon the ICP wouldn't search (e.g., "High-LTV", "Compounding Flywheel")
 - [ ] Primary keyword appears in title (check against frontmatter keyword if available)
-- [ ] Title length: max 60 characters (count them)
+- [ ] Title length: target 55–60 characters. Hard ceiling: 65. Exception for listicle posts with a year appended: up to 68. Always place the year at the end of the title so the keyword phrase is visible even if truncated on desktop.
 - [ ] Title does NOT start with an article ("A", "An", "The") as the very first word unless unavoidable
 
 **Excerpt violations**
@@ -102,6 +102,63 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Comparison tables use specific column headers — not "Step | Description" but e.g., "Tool | Best for | Key limitation"
 - [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
 - [ ] YouTube embeds (if present): each embed is directly relevant to the section, is preceded by a context sentence (specific, not generic), uses the responsive wrapper with `youtube-nocookie.com`, `?rel=0`, `loading="lazy"`, and no `autoplay`. Maximum 2 per post. The post reads well without any embed. Context sentence contains no em-dash.
+
+**Content depth and authority signals (Fix #15)**
+- [ ] Listicle posts: year appended to title, placed at the end, content will be updated annually
+- [ ] Stats strip present only if post has 4 real, meaningful metrics — skipped if data would be stretched
+- [ ] "More [Topic] Guides" section present at end of post (after FAQ, before Sources) with 3–5 cluster links
+- [ ] Framework/listicle posts: each major item has an external "Real Signal" link where genuine evidence exists
+- [ ] Framework posts with 3–7 items: identical sub-structure applied to every item
+- [ ] Posts over 1,500 words: every concept-introducing H2 has a diagram (Fix #13 patterns)
+- [ ] Time-sensitive claims are grounded with a specific date reference — evergreen advice has no date
+- [ ] SellonTube tools linked at their natural decision moment, not only at the end — tool list in Fix #15 item 8
+- [ ] Sources section includes authority links beyond just stats (3–5 minimum external authority links)
+- [ ] All screenshots are wrapped in the Fix #21 styled container with caption and descriptive alt text
+- [ ] Currency is always $ — never £, €, or other symbols
+
+**Visual production standards (Fix #16)**
+- [ ] Every visual earns its place — no decorative charts or generic diagrams
+- [ ] All diagrams are SVG — no inline HTML visuals
+- [ ] Visual type matches one of the Priority Visual Types in Fix #16
+- [ ] Visual is placed immediately after the prose it supports — not before, not mid-argument
+- [ ] Every element in the SVG is labelled directly — does not rely on surrounding prose to explain
+- [ ] SVG uses clear hierarchy, whitespace, and 2–3 colours maximum
+- [ ] SVG files are self-contained: no external CDN links, no remote fonts, no remote images
+- [ ] SVG uses system font stack and Fix #13 colour palette — no new brand colours
+- [ ] SVG uses `viewBox` + `width="100%"` for responsive scaling
+- [ ] SVG filename follows `[visual-type]-[subject].svg` convention
+- [ ] SVG files stored in `src/assets/images/blog/visuals/[post-slug]/`
+- [ ] SVGs embedded using the `<figure>` wrapper pattern from Fix #16
+- [ ] Alt text describes what the visual shows — not just "diagram"
+- [ ] No external visual hosting (CodePen, Figma embeds, etc.) in production posts
+
+**Feature image (Fix #17)**
+- [ ] Dimensions are 1200 × 630px, aspect ratio 1.91:1 — not cropped or stretched
+- [ ] Format is JPG — source SVG kept at `[post-slug]-featured.svg`, under 200KB
+- [ ] Background uses site colours only: `#030620` base, gradient to `#0a1540` — no invented colours
+- [ ] Layout: text left (clipped at x=655), photo right (starts at x=660) — text does NOT bleed into photo
+- [ ] Headline split across 2–3 lines at 70px — no single line overflows the text column
+- [ ] Last headline line uses brand gradient `#3b82f6`→`#8b5cf6`
+- [ ] Content block is vertically centred — no dead space in the bottom half
+- [ ] Photo: professional person, face clearly visible, left and bottom fades use `#030620` exactly
+- [ ] No generic stock photo (no laptops, handshakes, arrows pointing up)
+- [ ] SellOnTube wordmark present, bottom-left — wordmark only, no URL
+- [ ] Font is Inter — no decorative or display fonts
+- [ ] All SVG URLs have `&amp;` not `&` — unescaped ampersands break SVG rendering
+- [ ] No duplicate SVG attributes — each attribute defined once per element only
+- [ ] Filename follows `[post-slug]-featured.jpg` convention
+- [ ] Frontmatter `image` field references `~/assets/images/blog/[post-slug]-featured.jpg`
+- [ ] Alt text is descriptive, max 125 characters, not keyword-stuffed
+
+**Strategy post principles (Fix #14 — applies to strategy, framework, and multi-step process posts)**
+- [ ] Post includes a "When This Doesn't Apply" or "One Honest Limitation" section — 2-4 sentences naming the conditions where the approach fails
+- [ ] Failure mode has a specific, quotable one-sentence diagnosis — not just a description of symptoms
+- [ ] First major H2 anchors the reader in business math (LTV, sales cycle, pipeline target) before any tactic is introduced
+- [ ] Each content type / format is labelled by buyer journey stage (problem-aware / solution-aware / proof) — not vague labels like "educational" or "promotional"
+- [ ] Measurement section (if present) names "algorithm metrics" and "revenue metrics" as two distinct categories — never listed together
+- [ ] CTA mirrors the specific topic of the post — not a generic "book a call" or "visit our website"
+- [ ] Obvious-but-ignored advice is followed by an acknowledgment that most businesses skip it and the consequence of doing so
+- [ ] Multi-phase plans include a named review phase with: what signal to look for + what to do with it
 
 **Emotional resonance**
 - [ ] The opening makes the reader feel something — curiosity, recognition, or a slight sting. If the first paragraph is skippable, flag it.
