@@ -166,6 +166,34 @@ Readers default to doing nothing. The path of least resistance is to close the t
 
 Concretely: after presenting a solution or framework, name the cost of not acting. Not in a manipulative way — in an honest, specific way. "The businesses that skip this step typically see X." If you don't have a real example, describe the pattern honestly. Status-quo bias is broken by making the current situation feel unstable, not just by making the alternative look appealing.
 
+### Writing with Personality: What "Clean" Isn't Enough
+
+Avoiding AI patterns is only half the job. Writing that uses no banned words but has no opinions, no rhythm variation, and no voice is still obviously machine-made. See Style Guide Fix #18 for the full Personality and Soul checklist. The core principle:
+
+**Have opinions.** Don't report what's true — react to it. "Most B2B founders treat YouTube like a billboard" is more human than "Many businesses use YouTube for brand awareness."
+
+**Acknowledge complexity honestly.** "This works well for SaaS; we've seen it underperform for services businesses where trust is built over 6-month sales cycles" beats "results vary."
+
+**Vary rhythm.** A long sentence that builds. Then one that lands. A short one. Then back to depth. The contrast creates movement — neither short nor long sentences do it alone.
+
+**Be specific about what you feel.** "There's something demoralising about publishing 30 videos and not knowing which three are driving demo requests" beats "this can be frustrating for businesses."
+
+### The Two-Pass Anti-AI Audit
+
+After writing any draft, before handing to QA:
+
+**Pass 1 — Identify the tells.** Ask: "What makes this obviously AI-generated?" Look for:
+- Vocabulary from Fix #2 extended list (delve, pivotal, tapestry, testament, showcase...)
+- Significance inflation ("marks a pivotal moment", "is a testament to")
+- Superficial -ing endings appended to sentences
+- Copula avoidance ("serves as", "stands as" where "is" fits)
+- Forced rule of three
+- Synonym cycling
+- Soulless neutral reporting — no opinions, every sentence the same length
+- Chatbot artifacts ("I hope this helps", "Let me know if...")
+
+**Pass 2 — Fix, then ask: does this post have a pulse?** Apply Fix #18 (Personality and Soul). The draft should express a point of view, vary its rhythm, and acknowledge complexity where it genuinely exists. If every paragraph sounds the same, the post isn't done.
+
 For paragraph rhythm, formatting, sentence-level style, and structural patterns: follow the Style Guide.
 
 ---
@@ -266,7 +294,9 @@ SEO drives long-term compounding traffic. But newsletters, LinkedIn, and social 
 
 ## 8. AI WORKFLOW
 
-Blog posts follow the Agent 04 workflow: keyword brief → outline (user approval) → full draft → Agent 05 QA → publish. Never skip the outline approval step. Never outsource original opinions, real client stories, or topical judgment to AI.
+Blog posts follow the Agent 04 workflow: keyword brief → outline (user approval) → full draft → **two-pass anti-AI audit (Phase 2.5)** → Agent 05 QA → publish. Never skip the outline approval step. Never outsource original opinions, real client stories, or topical judgment to AI.
+
+The two-pass anti-AI audit runs between the full draft and Agent 05 QA. See Section 3 above and Style Guide Fix #18/19 for the process. A draft that passes vocabulary checks but reads like a neutral report is not ready for QA.
 
 ---
 
@@ -287,7 +317,13 @@ Run every post through these checks before handing it to Gautam.
 - [ ] Post changes how the reader thinks, not just what they know
 
 **READABILITY & STYLE:**
-- [ ] Passes all Style Guide checks (Fixes #1-17)
+- [ ] Passes all Style Guide checks (Fixes #1-19)
+- [ ] No AI vocabulary words from Fix #2 extended list (delve, pivotal, tapestry, testament, showcase, vibrant, intricate, underscore, garner, foster, enduring, align with, landscape [abstract], valuable, interplay)
+- [ ] No significance inflation (Fix #3): "marks a pivotal moment", "is a testament to", "evolving landscape", "serves as", "stands as"
+- [ ] No superficial -ing endings added for fake depth (Fix #3)
+- [ ] No chatbot artifacts: "I hope this helps", "Let me know if...", "Great question!" (Fix #19)
+- [ ] No vague attributions: "Industry experts believe", "Observers have noted" — cite a real source or say "in our experience" (Fix #19)
+- [ ] Post has a pulse — at least one section expresses a clear opinion or genuine perspective (Fix #18)
 - [ ] 4-5 bucket brigades at natural attention dips
 - [ ] Most important information is front-loaded
 - [ ] YouTube embeds (if any): each adds clear standalone value, has a context sentence above it, uses the correct responsive wrapper with `youtube-nocookie.com` and `loading="lazy"`, and the page reads well without it (see Style Guide #20)

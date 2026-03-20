@@ -75,7 +75,13 @@ QA items are tiered by severity:
 - [ ] **[CRITICAL]** No hedging language: "it might be", "could potentially", "it is possible that"
 - [ ] **[CRITICAL]** No filler transitions: "In today's digital landscape", "In the fast-paced world of", "Now more than ever"
 - [ ] **[CRITICAL]** No "leverage" used as a verb (Style Guide violation if applicable)
+- [ ] **[CRITICAL]** No AI vocabulary words from Fix #2 extended list: delve, pivotal, tapestry, testament, landscape (abstract noun), showcase, foster, garner, vibrant, intricate/intricacies, underscore (verb), enduring, align with, valuable, interplay, encompassing, cultivating
+- [ ] **[CRITICAL]** No significance inflation: "marks a pivotal moment", "is a testament to", "reflects broader trends", "in today's evolving landscape", "shaping the future of", "setting the stage for", "contributing to the", "deeply rooted in"
+- [ ] **[CRITICAL]** No superficial -ing endings appended for fake depth ("highlighting...", "symbolising...", "contributing to...", "showcasing..." tacked onto a sentence that already made its point)
+- [ ] **[CRITICAL]** No copula avoidance: "serves as", "stands as", "boasts [a]", "features [a]", "represents [a]" where "is/are/has" is clearer (Fix #3)
+- [ ] **[CRITICAL]** No chatbot artifacts: "I hope this helps", "Let me know if you'd like more detail", "Great question!", "Of course!", "Certainly!", "Here is an overview of..."
 - [ ] H2/H3 headings are specific and informative — not generic like "Introduction", "Conclusion", "Final Thoughts"
+- [ ] H2/H3 headings use sentence case, not title case (Fix #5)
 - [ ] Every major claim has supporting specificity (stat, example, or concrete detail)
 - [ ] No section exists purely as padding — each section earns its place
 
@@ -104,6 +110,17 @@ QA items are tiered by severity:
 ---
 
 ## IMPORTANT (must resolve before publish)
+
+**[IMPORTANT]**
+**Humanizer: voice and structural patterns (Fix #18, Fix #19)**
+- [ ] Post has a pulse — at least one section expresses a clear opinion, takes a position, or acknowledges genuine complexity (Fix #18). Neutral reporting throughout = fail.
+- [ ] No vague attributions: "Industry experts believe", "Observers have noted", "Some critics argue", "Research suggests" — cite a named source with year, or use "in our experience" (Fix #19)
+- [ ] No promotional/advertisement language: "vibrant", "nestled in", "breathtaking", "renowned", "groundbreaking" (figurative), "must-have", "stunning" (Fix #19)
+- [ ] No rule of three forced — every grouping of three should be necessary; if one item can be cut without loss, collapse the group (Fix #3)
+- [ ] No synonym cycling — same entity referred to by multiple different words across the post to avoid repetition (Fix #3)
+- [ ] No formulaic "Challenges" or "Future Outlook" standalone H2 sections — integrate specific failure conditions into relevant sections instead (Fix #19)
+- [ ] No knowledge-cutoff disclaimers: "As of my last training update", "While specific details are limited", "Based on available information" (Fix #19)
+- [ ] Two-pass anti-AI audit (Agent 04 Phase 2.5) was completed before this QA run — verify the post doesn't show first-draft AI patterns
 
 **[IMPORTANT]**
 **Content structure & formatting**
