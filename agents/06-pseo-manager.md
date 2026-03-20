@@ -7,8 +7,8 @@ Track and manage the pSEO page drip schedule. Verify upcoming publishes. Catch t
 "what pSEO pages go live this week", "check drip schedule", "pSEO status", "which pages are publishing", "pSEO schedule"
 
 ## Source files
-- `src/data/niches.ts` — 29 "YouTube For" niche pages. Each entry has `publishDate`.
-- `src/data/comparisons.ts` — 20 "YouTube Vs" comparison pages. Each entry has `publishDate`.
+- `src/data/niches.ts` — 31 "YouTube For" niche pages. Each entry has `publishDate`.
+- `src/data/comparisons.ts` — 23 "YouTube Vs" comparison pages. Each entry has `publishDate`.
 - `src/pages/youtube-for/[slug].astro` — date parsing logic (IST +05:30 offset)
 - `src/pages/youtube-vs/[slug].astro` — same
 
@@ -41,7 +41,7 @@ If the user plans to deploy before 05:30 IST and expects the page to be live, fl
 
 **pSEO Status — [date]**
 
-Live pages: [n] / 49 total
+Live pages: [n] / 54 total
 Going live this week: [list with dates]
 Next 30 days: [table]
 
@@ -55,6 +55,8 @@ Next 30 days: [table]
 **Pages not yet scheduled:** [list if any]
 
 ## Pre-launch quality checklist
+Full publishing gate sequence: `docs/sops/pseo-publishing-sop.md`
+
 Run before any new pSEO page or template goes live:
 - [ ] Every page provides unique value specific to that slug — not just variable substitution
 - [ ] H1, H2 headings are present and meaningful (not generic placeholders)
