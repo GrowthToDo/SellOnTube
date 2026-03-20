@@ -17,13 +17,31 @@ Also: automatically called by Agent 04 after every blog post draft.
 ### Step 1 — Read the target file
 Read the complete file. Note: title, excerpt, all headings, all body copy.
 
-### Step 2 — Run the banned patterns checklist
+### Step 2 — Run the tiered QA checklist
+
+QA items are tiered by severity:
+
+**CRITICAL** — Grep these. Do not rely on read-through. Every CRITICAL violation blocks publish. Zero tolerance.
+**IMPORTANT** — Must be resolved before publish. Can be fixed and re-checked without re-running full QA.
+**ADVISORY** — Flag to user. Does not block publish. Improves quality.
+
+> **MANDATORY before any read-through:**
+> ```bash
+> grep -n "—" [filename]
+> ```
+> If this returns any matches: FAIL immediately. Fix all matches before continuing.
+> This grep has caught em-dash violations in 9+ files that read-through missed.
+
+---
+
+## CRITICAL (blocks publish — zero violations allowed)
 
 **Em-dashes and punctuation**
 - [ ] Grep for `—` (em-dash character) — banned in all copy. Replace with comma, colon, or restructure sentence.
 - [ ] Grep for word-hyphen-word with no spaces (regex: `\w-\w`) — may be a broken em-dash. Review each match. If it's actually a compound word (e.g., "B2B-focused"), it's fine. If it joins two separate ideas, it's a broken em-dash — fix it.
 - [ ] No double hyphens `--` used as em-dashes.
 
+**[CRITICAL]**
 **Title violations**
 - [ ] Does NOT open with: "The Hidden Power of", "The Secret to", "Why Most", "How to Master", "The Ultimate Guide to", "Everything You Need to Know"
 - [ ] Does NOT use insider jargon the ICP wouldn't search (e.g., "High-LTV", "Compounding Flywheel")
@@ -31,17 +49,32 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Title length: target 55–60 characters. Hard ceiling: 65. Exception for listicle posts with a year appended: up to 68. Always place the year at the end of the title so the keyword phrase is visible even if truncated on desktop.
 - [ ] Title does NOT start with an article ("A", "An", "The") as the very first word unless unavoidable
 
+**[CRITICAL]**
 **Excerpt violations**
 - [ ] Does NOT start with: "A practical guide", "This post covers", "In this article", "Learn how to", "A comprehensive guide"
 - [ ] Contains at least one specific claim, number, or concrete hook
 - [ ] Max 155 characters (count them)
 - [ ] No broken em-dashes in excerpt
 
+**[CRITICAL]**
+**Frontmatter**
+- [ ] `publishDate` is present and correctly formatted (YYYY-MM-DD)
+- [ ] `excerpt` is present
+- [ ] `title` is present
+- [ ] `category` is present
+- [ ] `metadata.canonical` matches the expected URL path
+- [ ] `image` path is present (even if placeholder)
+
+**[CRITICAL]**
+**ICP fit**
+- [ ] Content speaks to B2B founders/operators, not hobbyist creators
+- [ ] Where YouTube tactics are discussed, they're framed as business tools (leads, revenue, acquisition) — not vanity metrics (subscribers, views)
+
 **Body copy**
-- [ ] No passive voice where active is possible
-- [ ] No hedging language: "it might be", "could potentially", "it is possible that"
-- [ ] No filler transitions: "In today's digital landscape", "In the fast-paced world of", "Now more than ever"
-- [ ] No "leverage" used as a verb (Style Guide violation if applicable)
+- [ ] **[CRITICAL]** No passive voice where active is possible
+- [ ] **[CRITICAL]** No hedging language: "it might be", "could potentially", "it is possible that"
+- [ ] **[CRITICAL]** No filler transitions: "In today's digital landscape", "In the fast-paced world of", "Now more than ever"
+- [ ] **[CRITICAL]** No "leverage" used as a verb (Style Guide violation if applicable)
 - [ ] H2/H3 headings are specific and informative — not generic like "Introduction", "Conclusion", "Final Thoughts"
 - [ ] Every major claim has supporting specificity (stat, example, or concrete detail)
 - [ ] No section exists purely as padding — each section earns its place
@@ -63,18 +96,16 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Assumptions are punctured directly, not preached at the reader ("you need to understand", "it's important to realise" are banned)
 - [ ] Every paragraph reads like something Sathya would say on a client call — not a consultant writing a report
 
-**Frontmatter**
-- [ ] `publishDate` is present and correctly formatted (YYYY-MM-DD)
-- [ ] `excerpt` is present
-- [ ] `title` is present
-- [ ] `category` is present
-- [ ] `metadata.canonical` matches the expected URL path
-- [ ] `image` path is present (even if placeholder)
+**SEO craft**
+- [ ] At least one section is written as a 40-60 word direct answer to the target keyword question (featured snippet candidate) — no preamble, just the answer
+- [ ] Featured snippet answer is correctly placed: top of post (Quick Answer block) for direct-answer queries, Key Takeaways opening bullet for all others
+- [ ] If YouTube videos rank in Google's top 10 for this keyword: confirm it was noted in the outline and that H2 headings could double as video chapter titles
 
-**ICP fit**
-- [ ] Content speaks to B2B founders/operators, not hobbyist creators
-- [ ] Where YouTube tactics are discussed, they're framed as business tools (leads, revenue, acquisition) — not vanity metrics (subscribers, views)
+---
 
+## IMPORTANT (must resolve before publish)
+
+**[IMPORTANT]**
 **Content structure & formatting**
 - [ ] Post opens with a real problem scenario (specific situation), NOT a definition or warm-up
 - [ ] Every major claim is anchored by a real example with at least one specific number — no hypotheticals disguised as examples
@@ -103,6 +134,20 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
 - [ ] YouTube embeds (if present): each embed is directly relevant to the section, is preceded by a context sentence (specific, not generic), uses the responsive wrapper with `youtube-nocookie.com`, `?rel=0`, `loading="lazy"`, and no `autoplay`. Maximum 2 per post. The post reads well without any embed. Context sentence contains no em-dash.
 
+**[IMPORTANT]**
+**AI citation (check against `ai-seo-guide.md`):**
+- [ ] Definition Block used for any "What is X?" section
+- [ ] Step-by-Step Block used for any "How to X?" section
+- [ ] At least one Statistic Citation Block present — "According to [Source], [stat]" format with named source
+- [ ] Self-Contained Answer Block present (1-2 per post) — standalone quotable paragraph
+- [ ] Expert Quote Block present if expert quotes are included — named, attributed, linked to source
+- [ ] Author bio present at the end of the post — name, role, expertise, credentials, LinkedIn link
+- [ ] No fabricated expert quotes — every quote must be real and verifiable
+
+**Internal links**
+- [ ] At least 2 internal links present in the post body (verified, not estimated)
+
+**[IMPORTANT]**
 **Content depth and authority signals (Fix #15)**
 - [ ] Listicle posts: year appended to title, placed at the end, content will be updated annually
 - [ ] Stats strip present only if post has 4 real, meaningful metrics — skipped if data would be stretched
@@ -116,6 +161,11 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] All screenshots are wrapped in the Fix #21 styled container with caption and descriptive alt text
 - [ ] Currency is always $ — never £, €, or other symbols
 
+---
+
+## ADVISORY (flag to user — does not block publish)
+
+**[ADVISORY]**
 **Visual production standards (Fix #16)**
 - [ ] Every visual earns its place — no decorative charts or generic diagrams
 - [ ] All diagrams are SVG — no inline HTML visuals
@@ -132,7 +182,9 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Alt text describes what the visual shows — not just "diagram"
 - [ ] No external visual hosting (CodePen, Figma embeds, etc.) in production posts
 
+**[ADVISORY]**
 **Feature image (Fix #17)**
+> Note: the "file exists" check (frontmatter `image` field references a real file) is CRITICAL — failure here breaks the page render. All other feature image checks below are ADVISORY.
 - [ ] Format is SVG — no JPG, no PNG, no external photo
 - [ ] Canvas is 1200 × 675px (true 16:9) — `viewBox="0 0 1200 675" width="1200" height="675"`
 - [ ] Background uses site colours only: `#030620` base gradient to `#0a1540` — no invented colours
@@ -149,6 +201,7 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Frontmatter `image` field references `~/assets/images/blog/[post-slug]-featured.svg`
 - [ ] Alt text is descriptive, max 125 characters, not keyword-stuffed
 
+**[ADVISORY]**
 **Strategy post principles (Fix #14 — applies to strategy, framework, and multi-step process posts)**
 - [ ] Post includes a "When This Doesn't Apply" or "One Honest Limitation" section — 2-4 sentences naming the conditions where the approach fails
 - [ ] Failure mode has a specific, quotable one-sentence diagnosis — not just a description of symptoms
@@ -159,29 +212,17 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] Obvious-but-ignored advice is followed by an acknowledgment that most businesses skip it and the consequence of doing so
 - [ ] Multi-phase plans include a named review phase with: what signal to look for + what to do with it
 
+**[ADVISORY]**
 **Emotional resonance**
 - [ ] The opening makes the reader feel something — curiosity, recognition, or a slight sting. If the first paragraph is skippable, flag it.
 - [ ] At least one section creates a moment of "that's exactly my problem" — specific enough that the ICP reader feels seen
 - [ ] No section is purely informational without any emotional pull — facts alone don't hold attention
 
+**[ADVISORY]**
 **CTA friction (zero risk check)**
 - [ ] The closing CTA pre-answers the most likely objection ("Is this worth my time?") — either through a specific outcome claim or a low-commitment framing ("30-minute call", "no obligation")
 - [ ] The CTA does not use vague language: "Get started", "Learn more", "Contact us" — it must state what happens next
 - [ ] If a mid-body tool CTA is present: it appears at a moment where the reader naturally wants to act, not forced in mid-argument
-
-**AI citation (check against `ai-seo-guide.md`):**
-- [ ] Definition Block used for any "What is X?" section
-- [ ] Step-by-Step Block used for any "How to X?" section
-- [ ] At least one Statistic Citation Block present — "According to [Source], [stat]" format with named source
-- [ ] Self-Contained Answer Block present (1-2 per post) — standalone quotable paragraph
-- [ ] Expert Quote Block present if expert quotes are included — named, attributed, linked to source
-- [ ] Author bio present at the end of the post — name, role, expertise, credentials, LinkedIn link
-- [ ] No fabricated expert quotes — every quote must be real and verifiable
-
-**SEO craft**
-- [ ] At least one section is written as a 40-60 word direct answer to the target keyword question (featured snippet candidate) — no preamble, just the answer
-- [ ] Featured snippet answer is correctly placed: top of post (Quick Answer block) for direct-answer queries, Key Takeaways opening bullet for all others
-- [ ] If YouTube videos rank in Google's top 10 for this keyword: confirm it was noted in the outline and that H2 headings could double as video chapter titles
 
 ### Step 3 — Output QA report
 
@@ -190,20 +231,28 @@ QA REPORT — [filename]
 Date: [today]
 Result: PASS / FAIL
 
-VIOLATIONS FOUND: [n]
+CRITICAL VIOLATIONS: [n] — [PASS if 0 / FAIL if any]
+IMPORTANT VIOLATIONS: [n] — [must resolve before publish]
+ADVISORY FLAGS: [n] — [informational only]
 
-[If violations:]
+[List CRITICAL violations first:]
+CRITICAL:
 1. [Line ~X] [Category] — [what's wrong] → [suggested fix]
-2. ...
 
-[If PASS:]
-No violations found. Post is ready for user review.
+[List IMPORTANT violations:]
+IMPORTANT:
+1. [Line ~X] [Category] — [what's wrong] → [suggested fix]
+
+[List ADVISORY flags:]
+ADVISORY:
+1. [Line ~X] [Category] — [what's flagged] → [suggestion]
 
 TITLE CHECK: [pass/fail + note]
 EXCERPT CHECK: [pass/fail + note]
-BODY CHECK: [pass/fail + note]
+EM-DASH GREP: [grep output — must be empty for PASS]
 FRONTMATTER CHECK: [pass/fail + note]
 ICP FIT: [pass/fail + note]
+INTERNAL LINKS: [count found — must be ≥ 2]
 ```
 
 ### Step 4 — Fix or escalate
@@ -211,7 +260,10 @@ ICP FIT: [pass/fail + note]
 - If called manually by user: show the report. Ask if they want fixes applied automatically or want to review first.
 
 ## Rules
+- CRITICAL items are grepped. Always. Without exception. Nine files had em-dashes that read-through missed.
+- A PASS requires zero CRITICAL violations. Not "just one small thing." Zero.
+- IMPORTANT violations must all be fixed before publish — fixing them does not require re-running the full CRITICAL tier
+- ADVISORY flags are recorded in the report but do not block publish
 - Style Guide rules apply to ALL existing copy on the file, not just new content added in this session
-- A PASS requires zero violations — not "just one or two small things"
-- Never skip the em-dash grep — it has caused repeated violations across 9 files
-- Never skip the excerpt check — "A practical guide to..." openings are a documented recurring violation
+- When called by Agent 04 (auto-QA): fix all CRITICAL and IMPORTANT violations directly, then re-run. Only surface to user after result = PASS.
+- When called manually: show the report. Ask if the user wants fixes applied automatically or wants to review first.
