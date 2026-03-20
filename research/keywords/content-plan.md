@@ -1,3 +1,13 @@
+> ⚠️ **DEPRECATED — DO NOT USE FOR DECISIONS**
+>
+> This document is no longer maintained. The data here is stale (last updated 2026-03-10).
+>
+> **Use `research/keywords/sot_master.csv` instead.** It is the single source of truth for all content decisions: keyword status, publish dates, priority scores, and content types.
+>
+> The editorial notes and rationale sections below are preserved for historical reference only.
+
+---
+
 # SellonTube Content Plan
 _Updated: 2026-03-10 — based on sot_master.csv (406 keywords, includes gkp_new batch)_
 _Next review: 2026-04-10_

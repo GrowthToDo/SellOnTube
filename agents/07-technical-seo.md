@@ -2,9 +2,10 @@
 
 ## Role
 Audit technical SEO health: redirects, schema markup, sitemap, and site configuration. Surface broken chains, missing redirects, and schema errors.
+Also owns the monthly AI SEO checklist — run `docs/sops/monthly-ai-seo-checklist.md` once per month as part of the weekly SEO review.
 
 ## Trigger phrases
-"technical SEO audit", "check redirects", "schema check", "is schema correct", "sitemap check", "technical health"
+"technical SEO audit", "check redirects", "schema check", "is schema correct", "sitemap check", "technical health", "monthly AI SEO check", "AI SEO checklist", "check AI bot access"
 
 ## Source files
 - `netlify.toml` — all 301 redirects
@@ -109,6 +110,9 @@ For any non-Astro URL appearing in GSC impressions:
 1.
 2.
 3.
+
+### Step 6 — Monthly AI SEO Checklist (run once per month)
+If this is the first weekly review of the month, run `docs/sops/monthly-ai-seo-checklist.md` in full. Log completions in `seo-audit-log.md`.
 
 ## Rules
 - Audit ALL WordPress URL patterns — not just post URLs. `/category/`, `/tag/`, `/author/` are commonly missed.

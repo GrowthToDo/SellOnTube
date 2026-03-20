@@ -75,7 +75,7 @@ Run this before building any new tool — and periodically to re-evaluate existi
 Answer all four before proceeding. If any answer is "no", stop and discuss with the user before building.
 
 1. **Real pain point?** Does this solve a genuine problem the ICP actually has — not just a nice-to-have?
-2. **Search demand?** Is there evidence people search for this type of tool? (Check `master_keywords_cleaned.csv` — look for `search_intent: tool` keywords with >500/month volume)
+2. **Search demand?** Is there evidence people search for this type of tool? (Check `sot_master.csv` — look for `content_type: tool` keywords with status `not-started` and >500/month volume)
 3. **Sustainable to build?** Can it be built and maintained without ongoing complexity that outweighs the value?
 4. **Credible path to product?** Does the tool output naturally lead the user toward booking a call or hiring SellonTube?
 
@@ -126,7 +126,7 @@ Read the user's product spec carefully. Extract:
 - **Logic** — what calculation, scoring, or template generation happens?
 - **Output** — what does the user see?
 - **Email gate position** — does anything hide behind email submit?
-- **Tool type** — Client-side JS or Netlify Function + Claude API?
+- **Tool type** — Client-side JS or Netlify Function + Gemini Flash API?
 
 If the spec is ambiguous on any of these, ask before building. A wrong assumption wastes more time than a clarifying question.
 
@@ -137,10 +137,11 @@ If the spec is ambiguous on any of these, ask before building. A wrong assumptio
 Before writing a single line of code, run keyword research.
 
 **Step 2a — Find the primary keyword:**
-Read `research/keywords/master_keywords_cleaned.csv`. Search for keywords that match the tool's core function. Filter for:
-- High priority_score (>0.3)
-- search_intent = `tool` or `informational` (people researching, not buying yet)
-- Reasonable search_volume (>500/month)
+Read `research/keywords/sot_master.csv` (SSOT — 347 curated keywords). Search for keywords matching the tool's core function. Filter for:
+- `status = not-started` — mandatory first filter
+- `content_type = tool` preferred; `informational` acceptable
+- priority_score > 0.3
+- search_volume > 500/month
 
 Pick ONE primary keyword for the `<title>` and `<h1>`. It should match the exact query someone types when looking for this type of tool.
 
@@ -226,12 +227,23 @@ const metadata = {
 - Step 2: Generated output in a styled output block with a copy button
 - Step 3: Email gate (soft — "email this to yourself") after first generation
 
-*For AI-powered tools (Netlify Function + Claude API):*
+*For AI-powered tools (Netlify Function + Gemini Flash API):*
 - Step 1: Input (textarea or form fields)
 - Step 2: Loading state ("Analyzing...")
 - Step 3: AI output in structured format
 - Step 4: localStorage rate limit check — show email gate after N uses
 - Use fetch to `/api/[function-name]`
+
+**Gemini Flash standard (mandatory for ALL Netlify function tools):**
+- Model: `gemini-flash-latest` (auto-updating alias — never pin to a versioned model like `gemini-2.5-flash`)
+- API URL: `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent`
+- API key: `GEMINI_API_KEY` env var in Netlify (also accepts `GOOGLE_API_KEY` as fallback). Key must be from Google AI Studio (aistudio.google.com) — NOT Vertex AI.
+- maxOutputTokens: 2048 minimum (Gemini 2.5 uses thinking tokens that count against this limit — 800 causes truncated JSON)
+- **NEVER return HTTP 502** from Netlify functions — Cloudflare intercepts 502 and replaces the body with `error code: 502`. Use **HTTP 503** for upstream API failures.
+- If Gemini returns 429: return `{ error: 'quota_exceeded' }` with HTTP 429. Do NOT pass through Gemini's raw error.
+- Frontend 429 handling: check `res.status === 429` explicitly. Show user-facing notice: "AI alternatives are at capacity right now. Free daily limit reached. Check back tomorrow."
+- Error responses must include `geminiStatus` and `detail` fields for debuggability without Netlify logs.
+- Reference implementation: `netlify/functions/generate-alternatives.ts` + `src/pages/tools/youtube-topic-evaluator.astro`
 
 **Script block rules:**
 - TypeScript (Astro compiles it)
@@ -243,7 +255,7 @@ const metadata = {
 ```
 netlify/functions/[function-name].ts
 ```
-Follow the Claude API pattern in `microtool-strategy.md`. Use `claude-haiku-4-5-20251001` for speed and cost unless the task requires Sonnet. Always include rate-limit logic in the function response (return structured JSON that the frontend can parse).
+Follow the Gemini Flash standard above. Always include rate-limit logic in the function response (return structured JSON that the frontend can parse).
 
 ---
 
@@ -337,7 +349,7 @@ Never do any of these:
 ## Key File References
 
 - Reference tool: `src/pages/tools/youtube-roi-calculator.astro`
-- Keyword data: `research/keywords/master_keywords_cleaned.csv`
+- Keyword data: `research/keywords/sot_master.csv` (SSOT — use this, not master_keywords_cleaned.csv)
 - Tool plan: `microtool-strategy.md`
 - Style rules: `style-guide.md`
 - SEO rules: `seo-rules.md`
