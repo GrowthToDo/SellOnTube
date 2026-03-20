@@ -39,3 +39,5 @@ Just speak naturally. Examples that trigger each agent:
 - pSEO publishDates are IST (UTC+5:30) — Netlify builds UTC — check before releasing
 - Read seo-rules.md before any SEO recommendation
 - Style Guide + Content Quality Playbook apply to ALL copy touched, not just new writing
+- Full SOPs, templates, and documentation index: `DOCS.md`
+- ICP definition (canonical): `docs/icp.md`
