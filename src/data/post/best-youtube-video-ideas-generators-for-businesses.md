@@ -4,9 +4,7 @@ author: Sathyanand
 title: "The 14 Best YouTube Video Ideas Generators for Businesses in 2026"
 excerpt: "Most YouTube video idea generators were built for creators chasing views. This list is for businesses chasing customers. 14 tools ranked by how well they serve business channels."
 image: ~/assets/images/blog/best-youtube-video-ideas-generators-for-businesses-featured.svg
-image_alt: "Dark branded feature image showing Best YouTube Video Ideas Generators for Businesses title text on dark background | SellonTube"
-featuredImageWidth: 1200
-featuredImageHeight: 630
+image_alt: "Video Idea Generators for businesses chasing clients | SellonTube"
 category: Tools & Resources
 tags:
   - youtube
