@@ -999,100 +999,101 @@ The feature image appears on the blog index card, at the top of the post, and in
 
 ### Format and dimensions
 
-- **Format:** JPG for photos and illustrated graphics. PNG only if transparency is needed. WebP is the preferred delivery format — Astro handles conversion automatically on build.
-- **Dimensions:** 1200 × 630px — the Open Graph standard. Correct for Google search previews, LinkedIn, Twitter/X, and WhatsApp link previews.
-- **File size:** Keep source files under 200KB before Astro optimisation.
-- **Aspect ratio:** Always 1.91:1 — never crop or stretch. A distorted feature image breaks the Open Graph preview on social.
+- **Format:** SVG — self-contained, no external assets, no photos. Astro serves SVGs directly without conversion.
+- **Canvas:** 1200 × 675px — true 16:9. Correct for Google search previews, LinkedIn, Twitter/X, and WhatsApp link previews.
+- **Aspect ratio:** Always 16:9 — `viewBox="0 0 1200 675" width="1200" height="675"`. Never crop or stretch.
 
 ### Visual style
 
-- **Preferred style:** Text-based graphic with a short headline or key phrase from the post, on a clean background. Most controllable, brand-consistent, and scalable.
-- **Photos:** Only when a real, high-quality photo directly reinforces the post topic. No generic stock photos — no people at laptops, no handshakes, no arrows pointing up.
-- **Illustrations:** Acceptable only if custom and consistent with the SellonTube visual style. No clip art or generic icon sets.
-- **Consistency:** All feature images across the blog must look like they belong to the same brand. A reader scanning the blog index should see a coherent visual identity, not a random mix of styles.
+- **Pure text-based graphic** — no photos, no illustrations, no external image references. The design uses only SVG shapes, gradients, and text.
+- **Consistency:** All feature images are built from the same template. A reader scanning the blog index sees a coherent visual identity. Swap the headline text and category label only — everything else stays locked.
+- **No numbers in headlines** — neither arabic numerals nor spelled-out numbers in the title lines. "Four Videos a Month" becomes "Videos a Month Compound." Numbers are distracting at thumbnail size.
 
 ### Composition
 
-- **Layout:** Text left, photo right. Text occupies the left 55%, photo occupies the right 45%. Text must be hard-clipped so it cannot bleed into the photo area — use `clipPath` in SVG.
-- **Headline:** Split across 2–3 lines at 70px. Never put more than one long word per line at large font sizes — measure before committing. The last line carries the brand gradient (primary blue `#3b82f6` → accent purple `#8b5cf6`).
-- **Safe zone:** Keep all text at least 70px from every edge. Google and social platforms crop previews unpredictably at the edges.
-- **Background:** Site dark bg `#030620` with a subtle diagonal gradient to `#0a1540` for depth. No invented colours.
-- **Vertical balance:** Distribute the content block (pill + headline + sub-headline) to occupy the vertical centre of the image. Branding is anchored to the bottom. Do not pile content in the top 60% and leave the bottom empty.
-- **One focal point:** The face is the dominant attention element. The headline communicates the topic. These are complementary — not competing — if the photo is correctly contained to the right column.
-- **No small text:** Any text smaller than 20px is invisible at thumbnail size. Sub-headline and branding are for full-size viewing only.
+- **Centered layout:** All text is `text-anchor="middle"` at `x="600"`. No split column, no clipPath.
+- **Title: 2 lines at 90px.** Line 1 is white (`#ffffff`), line 2 uses the brand gradient (`#3b82f6` → `#8b5cf6`). Both lines are 90px/800 weight, letter-spacing -2.
+- **Vertical positions (fixed — do not change):**
+  - Category pill: y=125, h=28
+  - Title line 1: y=283
+  - Title line 2: y=388
+  - Divider bar: y=408
+  - Subtitle: y=450
+  - Footer wordmark: y=645
+- **Background:** diagonal gradient `#030620` → `#0a1540` plus a radial glow at top-right (`#3b82f6`, 15% opacity).
+- **Dot grid:** 9 cols × 5 rows of 1.5px circles at opacity 0.05 — adds texture, never distracts.
+- **No small text:** Any text smaller than 20px is invisible at thumbnail size. Subtitle and branding are for full-size viewing only.
 
 ### Branding
 
-- **Wordmark:** Include the SellonTube wordmark on every feature image — bottom-left or bottom-right corner. Small but visible at full size.
-- **Colour palette:** Use the site's actual design tokens only — no one-off colours:
-  - Dark background: `#030620` (site dark mode bg — `rgb(3 6 32)`)
-  - Primary blue: `#0161EF` (`rgb(1 97 239)`) — use for category labels, accents, highlights
-  - Secondary blue: `#0154CF` (`rgb(1 84 207)`) — use for gradients and hover states
-  - Accent purple: `#6D28D9` (`rgb(109 40 217)`) — use sparingly for contrast elements
-  - White: `#ffffff` — headline text
-  - Muted: `rgba(229, 236, 246, 0.66)` — sub-headline, footer text
-- **Typography:** `Inter` (the site's actual font — loaded via `@fontsource-variable/inter`). Use `'Inter', ui-sans-serif, system-ui, sans-serif` as the font stack in SVG `font-family` attributes.
-- **Template:** Build all feature images from a single reusable template. Swap the headline text per post — keep everything else locked.
+- **Footer wordmark:** centered at x=600, y=645. "SellOnTube" in 14px/700 `rgba(255,255,255,0.88)` + " — YouTube Acquisition for B2B" in 14px/400 `rgba(229,236,246,0.32)`. Wordmark only — no URL.
+- **Colour palette:**
+  - Dark background: `#030620` → `#0a1540` (gradient)
+  - Category pill fill: `#0161EF` at 18% opacity, stroke `#3b82f6` at 45% opacity
+  - Category label text: `#60a5fa`
+  - Gradient text: `#3b82f6` → `#8b5cf6` (userSpaceOnUse, x1=300 x2=900)
+  - White headline: `#ffffff`
+  - Subtitle: `rgba(229,236,246,0.55)`
+- **Typography:** `'Inter', ui-sans-serif, system-ui, sans-serif` — the site's actual font stack.
 
 ### SEO
 
-- **Filename:** `[post-slug]-featured.jpg` — e.g. `youtube-marketing-b2b-featured.jpg`. Descriptive filenames are parsed by Google image search.
-- **Alt text:** Describe what the image shows plus the post topic — not just the post title repeated verbatim. Max 125 characters. Example: `"Feature image for SellonTube post: three content types that drive B2B pipeline on YouTube"`
-- **No keyword stuffing:** One natural description only. Packing keywords into alt text is treated as spam by Google.
+- **Filename:** `[post-slug]-featured.svg` — e.g. `youtube-marketing-b2b-featured.svg`.
+- **Alt text:** Describe what the image shows plus the post topic. Max 125 characters. Not just the post title repeated verbatim.
+- **No keyword stuffing:** One natural description only.
 
 ### File organisation
 
-- **Storage path:** `src/assets/images/blog/[post-slug]-featured.jpg`
-- **SVG working file:** `src/assets/images/blog/[post-slug]-featured.svg` — kept as the editable source
+- **Storage path:** `src/assets/images/blog/[post-slug]-featured.svg`
 - **One feature image per post** — no variants or A/B versions stored in the repo
-- **Frontmatter:** Always reference via `~/assets/images/blog/[post-slug]-featured.jpg` in the post `image` field — Astro optimises it on build from there
+- **Frontmatter:** Always reference via `~/assets/images/blog/[post-slug]-featured.svg` in the post `image` field
 
 ### Approved template spec
 
-This is the validated layout. Use it as the base for every feature image — swap the headline text and photo only.
+**Reference implementation:** `src/assets/images/blog/create-youtube-channel-for-business-featured.svg` — copy this file and swap the text content only.
 
-**Canvas:** 1200 × 630px
+**Canvas:** `viewBox="0 0 1200 675" width="1200" height="675"`
 
-**Background:** gradient from `#030620` (top-left) to `#0a1540` (bottom-right)
+**Gradients (in `<defs>`):**
+- `bg`: linearGradient, `#030620` (0%) → `#0a1540` (100%), x1=0% y1=0% x2=100% y2=100%
+- `gradText`: linearGradient, `#3b82f6` (0%) → `#8b5cf6` (100%), x1=300 x2=900, gradientUnits=userSpaceOnUse
+- `glow`: radialGradient, cx=75% cy=25% r=55%, `#3b82f6` 15% opacity → `#030620` 0% opacity
 
-**Photo (right column):**
-- Starts at x=660, width=540, full height (630px)
-- Source: AI-generated or curated Unsplash photo — professional person, confident expression, upper body
-- Left fade: `#030620` opacity 1→0 across the first 58% of the photo width (blends into background)
-- Bottom fade: `#030620` opacity 0→0.9 from 55% height to bottom (protects branding strip)
+**Layers (top to bottom):**
+1. Background rect: `fill="url(#bg)"`
+2. Glow rect: `fill="url(#glow)"`
+3. Dot grid: 45 circles (9 cols × 5 rows), cx values 110–1070 (step 120), cy values 110–590 (step 120), r=1.5, opacity=0.05, fill=`#ffffff`
+4. Category pill (two overlapping rects, same x/y/w/h/rx): fill rect + stroke rect
+5. Category label text
+6. Title line 1 (white)
+7. Title line 2 (gradient)
+8. Divider: `x=556 y=408 width=88 height=3 rx=1.5`, `#3b82f6` 65% opacity
+9. Subtitle text
+10. Footer wordmark text
 
-**Text (left column, hard-clipped at x=655):**
-- Category pill: x=70, y=118, height=28, border-radius=14, fill `#0161EF` at 18% opacity, stroke `#3b82f6` at 45% opacity, label in `#60a5fa` at 12px/600 weight, letter-spacing 2.5
-- Headline line 1: x=70, y=234, 70px/800 weight, white, letter-spacing -1.5
-- Headline line 2: x=70, y=318, 70px/800 weight, white, letter-spacing -1.5
-- Headline line 3: x=70, y=402, 70px/800 weight, gradient `#3b82f6`→`#8b5cf6` (userSpaceOnUse, x1=70 x2=480)
-- Divider: x=70, y=422, width=72, height=3, fill `#3b82f6` at 65% opacity
-- Sub-headline: x=70, y=462, 21px/400 weight, `rgba(229,236,246,0.55)`
+**Category pill:**
+- Both rects: `rx=14`, centred on x=600 (adjust x and width to fit label text)
+- Fill rect: `fill="#0161EF" fill-opacity="0.18"`
+- Stroke rect: `fill="none" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.45"`
+- Label: `font-size="12" font-weight="600" letter-spacing="2.5" fill="#60a5fa" text-anchor="middle"` — UPPERCASE
 
-**Branding (outside text clip, bottom-left):**
-- "SellOnTube": x=70, y=594, 14px/700 weight, `rgba(255,255,255,0.88)`
-- Tagline: x=166, y=594, 14px/400 weight, `rgba(229,236,246,0.32)`
+**Title lines:**
+- Both: `x="600" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="90" font-weight="800" letter-spacing="-2" text-anchor="middle"`
+- Line 1 (`y="283"`): `fill="#ffffff"`
+- Line 2 (`y="388"`): `fill="url(#gradText)"`
 
-**Font stack:** `'Inter', ui-sans-serif, system-ui, sans-serif`
+**Footer:** `x="600" y="645" font-size="14" text-anchor="middle"` — two `<tspan>` elements
 
 ### Common mistakes — do not repeat
 
-These errors were discovered during production of the first feature image:
+1. **Never use numbers in title lines** — arabic or spelled-out. They clutter the design at thumbnail size. Rephrase to remove them.
 
-1. **`&` in SVG URLs must be escaped as `&amp;`** — unescaped ampersands in `href` attributes cause an XML parse error and the file renders blank. Every query parameter separator in a URL (`?w=600&h=630`) must be `?w=600&amp;h=630`.
+2. **Never define the same SVG attribute twice in one element** — triggers "Attribute redefined" and breaks rendering.
 
-2. **Never put two long words on one line at 70px** — "YouTube Marketing" at 70px is ~680px wide and overflows the text column. Always split long headlines across multiple lines and verify each line fits before finalising.
+3. **`&` in SVG text must be escaped as `&amp;`** — unescaped ampersands cause an XML parse error and the file renders blank.
 
-3. **Never define the same SVG attribute twice in one element** — `<linearGradient x1="0%" ... x1="70">` triggers "Attribute redefined" and breaks rendering. Define each attribute once only.
+4. **gradText gradient uses userSpaceOnUse** — `gradientUnits="userSpaceOnUse"` with fixed pixel coordinates (x1=300 x2=900). Without this, the gradient maps to the bounding box of the text element and renders as a flat colour.
 
-4. **Text clip is mandatory** — without a `clipPath` on the text group, headline text bleeds into the photo area at large font sizes. Always clip the text group.
+5. **Never use off-brand background colours** — the dark bg is `#030620`. No `#0f1f45`, `#1a3355`, etc.
 
-5. **Fade overlay colours must match the background exactly** — if the background is `#030620` but the fade uses `#0f1f45`, the blending edge is visible as a hard colour shift. Fade colours must match the bg colour precisely.
-
-6. **Never use off-brand background colours** — `#0f1f45`, `#1a3355`, `#1e3a5f` are not SellonTube colours. The site's dark bg is `#030620`. Use that as the base and only introduce `#0161EF`, `#0154CF`, `#6D28D9` as accent colours.
-
-7. **Wordmark only — no URL** — "sellontube.com" on the image is redundant. The wordmark ("SellOnTube") is sufficient for branding. The URL adds visual noise without SEO or CTR benefit.
-
-8. **Dead space is a layout failure** — if the content block occupies only the top 60% and leaves 40% blank below it, the composition is unbalanced. Vertically centre the content block and anchor branding to the bottom independently.
-
-9. **Vertical accent bars add no hierarchy** — a decorative vertical bar on the left edge competes with the headline without adding meaning. Remove it.
+6. **Wordmark only — no URL** — "sellontube.com" on the image is redundant noise. Use the wordmark text only.

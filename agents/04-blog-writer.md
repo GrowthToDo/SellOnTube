@@ -100,7 +100,7 @@ Write complete MDX with frontmatter:
 publishDate: YYYY-MM-DD
 title: '[approved title]'
 excerpt: '[excerpt — must NOT start with "A practical guide" or "This post covers". Must contain a specific claim or number.]'
-image: ~/assets/images/blog/[slug].jpg
+image: ~/assets/images/blog/[slug]-featured.svg
 category: [category]
 tags:
   - [tag1]

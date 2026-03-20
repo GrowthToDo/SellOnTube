@@ -133,21 +133,20 @@ Read the complete file. Note: title, excerpt, all headings, all body copy.
 - [ ] No external visual hosting (CodePen, Figma embeds, etc.) in production posts
 
 **Feature image (Fix #17)**
-- [ ] Dimensions are 1200 × 630px, aspect ratio 1.91:1 — not cropped or stretched
-- [ ] Format is JPG — source SVG kept at `[post-slug]-featured.svg`, under 200KB
-- [ ] Background uses site colours only: `#030620` base, gradient to `#0a1540` — no invented colours
-- [ ] Layout: text left (clipped at x=655), photo right (starts at x=660) — text does NOT bleed into photo
-- [ ] Headline split across 2–3 lines at 70px — no single line overflows the text column
-- [ ] Last headline line uses brand gradient `#3b82f6`→`#8b5cf6`
-- [ ] Content block is vertically centred — no dead space in the bottom half
-- [ ] Photo: professional person, face clearly visible, left and bottom fades use `#030620` exactly
-- [ ] No generic stock photo (no laptops, handshakes, arrows pointing up)
-- [ ] SellOnTube wordmark present, bottom-left — wordmark only, no URL
-- [ ] Font is Inter — no decorative or display fonts
-- [ ] All SVG URLs have `&amp;` not `&` — unescaped ampersands break SVG rendering
+- [ ] Format is SVG — no JPG, no PNG, no external photo
+- [ ] Canvas is 1200 × 675px (true 16:9) — `viewBox="0 0 1200 675" width="1200" height="675"`
+- [ ] Background uses site colours only: `#030620` base gradient to `#0a1540` — no invented colours
+- [ ] Centered layout — all text at `text-anchor="middle" x="600"` — no split columns, no clipPath
+- [ ] Title: exactly 2 lines at 90px/800 weight — line 1 white (`y=283`), line 2 gradient (`y=388`)
+- [ ] Title lines contain NO numbers (arabic or spelled-out)
+- [ ] Gradient text uses `fill="url(#gradText)"` with `gradientUnits="userSpaceOnUse"` (x1=300 x2=900)
+- [ ] Category pill centred on x=600, label UPPERCASE, `#60a5fa` fill
+- [ ] Divider bar at y=408, subtitle at y=450, footer wordmark at y=645
+- [ ] Footer wordmark: "SellOnTube" bold + " — YouTube Acquisition for B2B" muted — no URL
+- [ ] Font stack is `'Inter', ui-sans-serif, system-ui, sans-serif`
 - [ ] No duplicate SVG attributes — each attribute defined once per element only
-- [ ] Filename follows `[post-slug]-featured.jpg` convention
-- [ ] Frontmatter `image` field references `~/assets/images/blog/[post-slug]-featured.jpg`
+- [ ] Filename follows `[post-slug]-featured.svg` convention
+- [ ] Frontmatter `image` field references `~/assets/images/blog/[post-slug]-featured.svg`
 - [ ] Alt text is descriptive, max 125 characters, not keyword-stuffed
 
 **Strategy post principles (Fix #14 — applies to strategy, framework, and multi-step process posts)**
