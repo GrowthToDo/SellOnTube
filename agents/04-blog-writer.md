@@ -14,9 +14,7 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 5. An existing blog post from `src/data/post/` — read one for format/tone calibration.
 
 ## ICP reminder
-**Audience:** B2B founders, SaaS operators, service business owners evaluating YouTube for customer acquisition and lead generation.
-**NOT:** hobbyist creators, influencers, or people trying to grow subscribers for entertainment.
-Every section must answer "why does this matter for a business trying to acquire customers?" — not "how do I grow my channel?"
+See `docs/icp.md` for the canonical ICP definition. Every section must answer "why does this matter for a business trying to acquire customers?" — not "how do I grow my channel?" If a section could appear on VidIQ or TubeBuddy without modification, reframe it.
 
 ---
 
@@ -56,6 +54,8 @@ Every section must answer "why does this matter for a business trying to acquire
 ## Workflow: OUTLINE FIRST
 
 ### Phase 1 — Outline (surface to user for approval)
+
+Before producing the outline, fill in `docs/templates/content-brief-template.md` with all available data (keyword, intent, publish date, ICP angle, competing pages, planned internal links). Show the completed brief to the user before starting the outline.
 
 Produce:
 ```
@@ -115,6 +115,39 @@ Then full body in MDX, followed by:
 - **Sources section** (if external stats cited)
 - **FAQ section**
 - **Bottom CTA** (book a call)
+
+### Phase 3.5 — Featured Image Creation (before Agent 05 handoff)
+
+Create the featured image SVG before running QA. Requirements (from `style-guide.md` Fix #17):
+
+- Canvas: `viewBox="0 0 1200 675" width="1200" height="675"` (true 16:9)
+- Background gradient: `#030620` → `#0a1540`
+- All text centred: `text-anchor="middle" x="600"`
+- Title: exactly 2 lines at 90px, font-weight 800. Line 1 white (`y=283`), line 2 uses gradient text
+- Title lines contain NO numbers (arabic or spelled-out)
+- Gradient text: `fill="url(#gradText)"` with `gradientUnits="userSpaceOnUse"` x1=300 x2=900
+- Category pill: centred x=600, label UPPERCASE, `#60a5fa` fill
+- Divider bar at y=408, subtitle at y=450, footer wordmark at y=645
+- Footer: "SellOnTube" bold + " — YouTube Acquisition for B2B" muted — no URL
+- Font: `'Inter', ui-sans-serif, system-ui, sans-serif`
+- No duplicate SVG attributes. No external CDN links. No remote fonts.
+- `width="100%"` for responsive scaling
+
+Save to: `src/assets/images/blog/[post-slug]-featured.svg`
+Update frontmatter `image` field: `~/assets/images/blog/[post-slug]-featured.svg`
+
+Do NOT hand off to Agent 05 until this file exists.
+
+### Phase 3.6 — Internal Linking (before Agent 05 handoff)
+
+Before handing to Agent 05:
+
+1. Check `docs/templates/internal-linking-map.md` for existing posts and tools
+2. Insert at minimum:
+   - **One link to a SellonTube tool** — placed at the natural moment a reader would want to use it, not forced at the end
+   - **One link to a related blog post or pSEO page** — placed where the topic is directly relevant
+3. Update `docs/templates/internal-linking-map.md` with the new links added
+4. Confirm both links exist in the draft before proceeding to QA
 
 ### Phase 3 — Auto-QA
 After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to the user until QA passes or violations are fixed.
