@@ -55,6 +55,7 @@ For the top candidate, show the user:
 If the user rejects the top candidate, move to the next highest score and repeat.
 
 Once approved, assign the keyword to the next open calendar slot using IST dates for publishDate values (timezone-safe for Netlify UTC builds).
+Once the keyword and date are confirmed, direct the user to follow `docs/sops/blog-publishing-sop.md` — this SOP governs the full publish sequence from keyword confirmation through post-publish GSC submission.
 
 ### Step 5 — Output calendar
 
