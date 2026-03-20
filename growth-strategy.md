@@ -20,7 +20,7 @@ High-quality = B2B founders, SaaS operators, and service businesses actively exp
 - This gap is unoccupied by all existing tools (VidIQ, TubeBuddy, Kapwing all target creators)
 - Build order and full specs: `microtool-strategy.md`
 - Tools 1–4: pure client-side JS (fast to ship, no backend cost)
-- Tools 5–7: Netlify Functions + Claude API
+- Tools 5–7: Netlify Functions + Gemini Flash API (see `agents/08-microtool-builder.md` for the mandatory Gemini Flash integration pattern)
 
 ### C. Blog — regular cadence (TBD)
 - Target: mix of high-volume keywords (reach) and high-intent keywords (conversion)
