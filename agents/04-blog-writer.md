@@ -147,7 +147,7 @@ After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to th
 ## Content Structure, Formatting & SEO Craft
 
 All structural patterns (items 1-16), formatting rules, and SEO craft rules are defined in the source files listed above. Apply every rule from:
-- `style-guide.md` — Fixes #1-10 and the full Content Structure & Formatting Reference (items 1-16)
+- `style-guide.md` — Fixes #1-17 and the full Content Structure & Formatting Reference (items 1-21)
 - `content-playbook.md` — Sections 3 (persuasion), 5 (SEO craft), and the quality checklist
 
 Do not rely on memory of these rules. Re-read the source files before writing each draft.
