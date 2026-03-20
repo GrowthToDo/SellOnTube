@@ -28,6 +28,34 @@ These are allowed once per post maximum (never twice):
 
 **The test:** If removing the first word or phrase of a sentence doesn't change the meaning, that word or phrase shouldn't be there. "Additionally, you should optimize your thumbnails" → "Optimize your thumbnails."
 
+### AI vocabulary word list — ban these as default choices
+
+These words appear disproportionately in post-2023 AI-generated text. They often co-occur. Avoid them unless no cleaner word exists.
+
+| Word/phrase | Use instead |
+|---|---|
+| delve | look at, examine, explore |
+| pivotal | critical, central, important |
+| tapestry (abstract) | [delete or rewrite entirely] |
+| testament | proof, sign, evidence |
+| landscape (abstract noun) | the field, how X works today, [specific rewrite] |
+| showcase | show, demonstrate |
+| foster | build, develop, grow |
+| garner | get, earn, collect |
+| vibrant | active, busy, [specific descriptor] |
+| intricate/intricacies | complex, detailed, [specific] |
+| underscore (verb) | shows, confirms, proves |
+| enduring | lasting, long-running [or delete] |
+| align with | match, support, fit |
+| crucial | important [or delete — often filler] |
+| enhance | improve, strengthen [or delete] |
+| valuable | [delete — almost always filler] |
+| interplay | relationship, tension, connection |
+| encompassing | covering, including |
+| cultivating | building, developing |
+
+**The test:** Does the sentence lose meaning if you swap in the plain alternative? If not, the original word was filler.
+
 ---
 
 ## Fix #3: No AI Sentence Structures
@@ -41,6 +69,58 @@ Ban these patterns:
 - **Summary paragraphs that restate.** Every paragraph must add something new. Never end a section by repeating what you just said in different words.
 
 **The test:** Does this sound like something a human would text a colleague, or something an AI would write in a report? If it's the second, rewrite it.
+
+**Copula avoidance — use "is", not elaborate substitutes.**
+
+AI avoids simple "is/are/has" by substituting elaborate constructions. Replace them.
+
+| Bad | Good |
+|---|---|
+| "SellonTube serves as a YouTube acquisition partner." | "SellonTube is a YouTube acquisition partner." |
+| "This approach stands as the most effective method." | "This approach is the most effective method." |
+| "The channel boasts 10,000 subscribers." | "The channel has 10,000 subscribers." |
+| "The framework represents a shift in thinking." | "The framework changes how you think about X." |
+
+Ban as defaults: "serves as", "stands as", "marks", "represents [a]", "boasts", "features [a]", "offers [a]" when "is", "are", or "has" is clearer.
+
+**Significance inflation — cut the puffery.**
+
+AI inflates ordinary things with grand framing. State what something is and what it does — no more.
+
+Ban: "marks a pivotal moment", "is a testament to", "reflects broader trends in", "in today's evolving landscape", "shaping the future of", "setting the stage for", "contributing to the", "symbolising its enduring", "deeply rooted in", "indelible mark"
+
+Bad: "The shift toward B2B YouTube represents a pivotal moment in the evolving landscape of digital acquisition."
+Good: "B2B companies are moving to YouTube because it generates durable organic traffic that paid channels can't."
+
+**Superficial -ing endings — stop appending fake depth.**
+
+AI tacks present participle phrases onto sentences to simulate depth. They add nothing.
+
+Bad: "YouTube compounds over time, building trust with searchers and showcasing your expertise while reinforcing your positioning."
+
+Good: "YouTube compounds over time. Trust builds with each published video. Positioning sharpens in search."
+
+If the -ing phrase adds a genuinely new point, say it in its own sentence. If it just restates what you said, cut it.
+
+**Rule of three overuse — only when you genuinely have three.**
+
+AI forces ideas into groups of three to appear comprehensive. Use as many points as you actually have.
+
+Bad: "YouTube drives traffic, builds trust, and generates leads." (Is this three things, or just "YouTube generates leads"?)
+
+Test: could you cut one of the three without losing meaning? If yes, it's a forced triple — collapse it.
+
+**Elegant variation — pick a word and use it.**
+
+AI cycles synonyms to avoid repetition. Real writing either uses the same word deliberately or finds a genuinely better one. Do not synonym-cycle.
+
+Bad: "The founder... the main character... the central figure... the entrepreneur..."
+Good: "The founder..." (use the same word throughout)
+
+**False ranges — "from X to Y" must describe a real scale.**
+
+Bad: "YouTube helps businesses from founders to enterprises, from simple explainers to full campaigns."
+Good: [State what YouTube does. Only use "from X to Y" when X and Y are actual endpoints on a meaningful spectrum.]
 
 ---
 
@@ -88,6 +168,15 @@ Ban these heading patterns:
 | Key Considerations for Email Marketing | 3 Klaviyo Sequences That Actually Recover Abandoned Carts |
 
 Headings are the first thing skimmers read. If the headings sound like AI, the body text doesn't matter.
+
+**Heading case: sentence case only.**
+
+Use sentence case for all H2 and H3 headings — capitalise only the first word and proper nouns.
+
+Bad: "How to Build a YouTube Strategy for B2B Revenue"
+Good: "How to build a YouTube strategy for B2B revenue"
+
+Title case (capitalising every major word) is an AI and corporate writing default. Sentence case is how real writers and editorial publications write headings. Apply to all new content. Existing posts are not retroactively changed — update on next refresh.
 
 **Keyword and punch carry equal weight in every H2.**
 
@@ -1097,3 +1186,103 @@ The feature image appears on the blog index card, at the top of the post, and in
 5. **Never use off-brand background colours** — the dark bg is `#030620`. No `#0f1f45`, `#1a3355`, etc.
 
 6. **Wordmark only — no URL** — "sellontube.com" on the image is redundant noise. Use the wordmark text only.
+
+---
+
+## Fix #18: Personality and Soul
+
+SellonTube content that avoids AI vocabulary but has no personality is still obviously machine-made. Neutral reporting, identical sentence structure, and absence of opinion are tells as clear as any banned word. This fix addresses the writing quality that vocabulary rules can't fix.
+
+### Signs of soulless writing
+
+Even technically "clean" content fails if it shows these patterns:
+
+- Every sentence is roughly the same length and grammatical structure
+- No opinions — just neutral reporting of facts
+- No acknowledgment of complexity, mixed feelings, or genuine uncertainty
+- Reads like a white paper or product description, not like a person thinking
+- States that something is "important" or "valuable" without saying why it matters to the reader
+
+### How to inject voice
+
+**Have opinions.** Don't report what is — react to it. "Most B2B founders treat YouTube like a billboard" is more human than "Many businesses use YouTube for brand awareness." Take a position.
+
+**Acknowledge what you don't know.** "We don't have hard data on this, but the pattern we see with clients is..." signals a real person. Unwarranted certainty signals a machine.
+
+**Vary sentence rhythm deliberately.** A long sentence that builds context. Then a short one that lands it. Then another that adds nuance. The contrast is the technique — not short sentences on their own.
+
+**Let mixed feelings in.** "This works, though we rarely recommend starting here" is more human than "this approach has pros and cons." Real opinions hold two things at once.
+
+**Use specific emotional language.** Not "this can be frustrating" but "there's something demoralising about publishing 30 videos and having no idea which three are actually driving demo requests."
+
+**Be direct about counterintuitive things.** If a result surprises you, say so. If the conventional wisdom is wrong, say what's wrong about it, not just that it "falls short."
+
+### Before/after (SellonTube context)
+
+**Before (clean but soulless):**
+> YouTube marketing has become increasingly important for B2B businesses. Companies that utilise this channel effectively see improved lead generation outcomes. The data supports investment in video content strategy.
+
+**After (has a pulse):**
+> Most B2B founders don't think YouTube is for them. They picture gaming channels and 16-year-olds reviewing sneakers. The ones who test it anyway — tracking leads, not views — usually don't stop. Because the traffic compounds in a way that paid ads never do.
+
+### The voice test
+
+Read any paragraph out loud. Does it sound like Sathya talking to a founder on a call? Or like a consultant submitting a deliverable?
+
+If it's the second: the information might be right, but the voice is wrong. Add an opinion. Cut a sentence. Say what you actually think.
+
+---
+
+## Fix #19: Remaining AI Content Patterns
+
+These are content-level AI tells that vocabulary rules and structural checks don't catch. Apply them to all blog content.
+
+### Promotional and advertisement-like language
+
+AI writes like it's describing a tourist attraction. Ban these defaults:
+
+"nestled in", "vibrant [community/ecosystem]", "breathtaking", "boasts", "renowned", "groundbreaking" (figurative), "must-visit", "stunning", "rich [cultural/intellectual] heritage", "in the heart of"
+
+Fix: be specific. "Active Slack community with 4,200 members" not "vibrant community." "Generates 30% more leads per view than long-form, based on our last 6 client campaigns" not "groundbreaking results."
+
+### Vague attributions and weasel words
+
+AI cites phantom authorities when it doesn't have a real source.
+
+Ban: "Industry experts believe...", "Observers have noted...", "Some critics argue...", "Research suggests...", "Multiple sources indicate..."
+
+Fix: either cite a specific, named source with a year ("According to the 2024 Wistia State of Video report..."), or be honest about the source ("In our experience with B2B clients, we've seen..."). If no real source exists, state the observation honestly without fabricated authority.
+
+### Formulaic "challenges" sections
+
+AI reliably includes a "Challenges and Future Outlook" section regardless of whether it adds value.
+
+Ban as standalone H2 sections: "Challenges", "Future Prospects", "The Road Ahead", "Despite these challenges...", "Future Outlook"
+
+Fix: if challenges are worth mentioning, integrate them into the relevant section. For strategy posts, use Fix #14 rule 1 — name a specific failure condition in a "when this doesn't work" paragraph. Named, specific failure modes are useful. Vague "challenges" sections are filler.
+
+### Chatbot artifacts
+
+AI responses pasted into content without cleanup leave conversational residue.
+
+Ban: "I hope this helps", "Let me know if you'd like more detail", "Great question!", "Of course!", "Certainly!", "Here is an overview of...", "Would you like me to expand on..."
+
+Every sentence must be written for the reader, not generated in response to a prompt.
+
+### Knowledge-cutoff disclaimers
+
+Ban: "As of my last training update...", "While specific details are limited...", "Based on available information at this time..."
+
+Fix: if information is time-sensitive, ground it: "The last published data on this (2023, Wistia) shows..." If you have no source, say "in our experience" or remove the claim.
+
+---
+
+> **CONFLICTS WITH HUMANIZER SKILL — REVIEW BEFORE ADOPTING**
+>
+> Three Humanizer patterns conflict with existing SellonTube rules and have NOT been automatically applied:
+>
+> **1. Emoji ban (Humanizer Pattern 17)** — Humanizer bans all emoji. SellonTube uses ✅/❌ as a semantic formatting system (Fix #13) — positive/negative signals, not decoration. Resolution: SellonTube's ✅/❌ system is retained. Decorative emoji in headings or random bullets remain banned. This is a deliberate exception.
+>
+> **2. Rule of three** — Humanizer flags all groupings of three. SellonTube uses deliberate threes in structured frameworks. Resolution: ban forced triples (where a third point is hunted to complete the set). Allow genuine threes where all three points are independently necessary. Test: can you cut one without losing meaning?
+>
+> **3. Hyphenated word pairs (Humanizer Pattern 25)** — Humanizer recommends dropping hyphens from common compounds (data-driven → data driven, cross-functional → cross functional). This contradicts standard editorial convention and may read as typos. Resolution: NOT adopted. SellonTube follows standard hyphenation. Flag for user review if desired.

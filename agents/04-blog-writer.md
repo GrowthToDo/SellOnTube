@@ -149,6 +149,33 @@ Before handing to Agent 05:
 3. Update `docs/templates/internal-linking-map.md` with the new links added
 4. Confirm both links exist in the draft before proceeding to QA
 
+### Phase 2.5 — Anti-AI Pass (before Agent 05 handoff)
+
+After completing the full draft, run the two-pass humanizer process. Do NOT hand to Agent 05 before this is done.
+
+**Pass 1 — Identify the remaining tells.** Ask internally: "What makes this obviously AI-generated?" Scan for:
+
+- Vocabulary from Fix #2 extended list: delve, pivotal, tapestry, testament, landscape (abstract), showcase, foster, garner, vibrant, intricate, underscore (verb), enduring, align with, crucial, enhance, valuable, interplay, encompassing
+- Significance inflation: "marks a pivotal moment", "is a testament to", "reflects broader trends", "in today's evolving landscape", "shaping the future of", "setting the stage for"
+- Copula avoidance: "serves as", "stands as", "boasts", "features [a]" where "is/are/has" fits
+- Superficial -ing endings appended to sentences for fake depth
+- Forced rule of three (three points where two would suffice)
+- Synonym cycling (protagonist... main character... central figure... hero...)
+- Soulless neutral reporting — no opinions expressed, every sentence same length
+- Chatbot artifacts: "I hope this helps", "Let me know if you'd like more detail", "Great question!"
+- Vague attributions: "Industry experts believe", "Observers have noted"
+- Promotional language: "vibrant", "nestled", "breathtaking", "renowned", "groundbreaking" (figurative)
+
+List the tells found (even briefly, internally).
+
+**Pass 2 — Fix, then apply Fix #18 (Personality and Soul).** Eliminate every tell. Then ask: does this post have a pulse? Check:
+- At least one section expresses a clear opinion or takes a position
+- Rhythm varies — not every paragraph the same length
+- Where genuine complexity exists, it's acknowledged honestly
+- The voice sounds like Sathya talking, not a consultant submitting a report
+
+Only proceed to Agent 05 after both passes are complete.
+
 ### Phase 3 — Auto-QA
 After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to the user until QA passes or violations are fixed.
 
