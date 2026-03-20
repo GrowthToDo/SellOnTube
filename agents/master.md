@@ -7,6 +7,7 @@ Route content marketing and SEO requests to the right sub-agent(s). Synthesize r
 1. Read `seo-rules.md` — rules override general SEO knowledge
 2. Read `agents/README.md` — confirm routing
 3. Identify if the task is single-agent or multi-agent
+4. If the task involves writing any content: confirm the target keyword exists in `research/keywords/sot_master.csv` with `status = not-started`. If status is `live` or `planned`, STOP and flag to user before proceeding. Do not begin any writing task without this confirmation.
 
 ## Routing Logic
 
@@ -38,7 +39,8 @@ Route content marketing and SEO requests to the right sub-agent(s). Synthesize r
 → Output: prioritised content plan
 
 **"Write a post about [topic]"**
-→ Run 02 (pick best keyword variant)
+→ Run 02 (pick best keyword variant from sot_master.csv, status=not-started only)
+→ Confirm keyword status in sot_master.csv before proceeding. If status ≠ not-started: STOP and flag to user.
 → Run 03 (confirm open calendar slot)
 → Run 04 (write: outline → user approval → full draft)
 → Run 05 (QA the draft)
