@@ -20,6 +20,8 @@ Claude Code config (~/.claude/settings.json):
 
 import asyncio
 import json
+import os
+import requests
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -43,6 +45,10 @@ SCOPES = [
     "https://www.googleapis.com/auth/analytics.readonly",
     "https://www.googleapis.com/auth/webmasters.readonly",
 ]
+
+DFS_LOGIN = os.environ.get("DATAFORSEO_LOGIN", "")
+DFS_PASSWORD = os.environ.get("DATAFORSEO_PASSWORD", "")
+DFS_BASE = "https://api.dataforseo.com/v3"
 # ─────────────────────────────────────────────
 
 server = Server("sellontube-seo")
@@ -140,6 +146,79 @@ async def list_tools() -> list[Tool]:
                 "properties": {
                     "days": {"type": "integer", "description": "Number of days to look back (default 90)", "default": 90},
                 },
+            },
+        ),
+        Tool(
+            name="dfs_keyword_metrics",
+            description=(
+                "Get live keyword metrics from DataForSEO — search volume, CPC, competition, "
+                "and monthly trend data. Accepts up to 10 keywords per call. "
+                "Use this before selecting keywords for blog posts or pSEO pages to verify "
+                "current search volume and difficulty. More accurate than GKP estimates."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "keywords": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "List of keywords to look up (max 10)",
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Location name (default: United States)",
+                        "default": "United States",
+                    },
+                },
+                "required": ["keywords"],
+            },
+        ),
+        Tool(
+            name="dfs_serp_results",
+            description=(
+                "Get the top 10 organic Google search results for a keyword via DataForSEO. "
+                "Returns titles, URLs, meta descriptions, and ranking positions. "
+                "Use this before writing a blog post to understand what content format ranks, "
+                "who the competitors are, and whether a featured snippet is available."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "keyword": {
+                        "type": "string",
+                        "description": "The keyword to get SERP results for",
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Location name (default: United States)",
+                        "default": "United States",
+                    },
+                },
+                "required": ["keyword"],
+            },
+        ),
+        Tool(
+            name="dfs_keyword_suggestions",
+            description=(
+                "Get keyword suggestions and related keywords for a seed term via DataForSEO. "
+                "Returns up to 20 related keywords with volume, CPC, and competition. "
+                "Use this to expand a content cluster, find long-tail variants, or discover "
+                "subtopics to cover within a blog post or pSEO page."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "keyword": {
+                        "type": "string",
+                        "description": "Seed keyword to expand",
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Location name (default: United States)",
+                        "default": "United States",
+                    },
+                },
+                "required": ["keyword"],
             },
         ),
     ]
@@ -304,6 +383,107 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             "period_days": days,
             "total_pages": len(pages),
             "pages": pages,
+        }))]
+
+    elif name == "dfs_keyword_metrics":
+        keywords = arguments.get("keywords", [])[:10]
+        location = arguments.get("location", "United States")
+        resp = requests.post(
+            f"{DFS_BASE}/keywords_data/google_ads/search_volume/live",
+            auth=(DFS_LOGIN, DFS_PASSWORD),
+            json=[{"keywords": keywords, "language_name": "English", "location_name": location}],
+        )
+        resp.raise_for_status()
+        raw = resp.json()
+        results = raw["tasks"][0].get("result", []) if raw.get("tasks") else []
+        metrics = [
+            {
+                "keyword": r["keyword"],
+                "search_volume": r.get("search_volume"),
+                "cpc": r.get("cpc"),
+                "competition": r.get("competition"),
+                "competition_index": r.get("competition_index"),
+                "monthly_trend": [
+                    {"year": m["year"], "month": m["month"], "volume": m["search_volume"]}
+                    for m in (r.get("monthly_searches") or [])[-6:]
+                ],
+            }
+            for r in results
+        ]
+        return [TextContent(type="text", text=format_json({
+            "location": location,
+            "cost_usd": raw.get("cost"),
+            "keywords": metrics,
+        }))]
+
+    elif name == "dfs_serp_results":
+        keyword = arguments.get("keyword", "")
+        location = arguments.get("location", "United States")
+        resp = requests.post(
+            f"{DFS_BASE}/serp/google/organic/live/regular",
+            auth=(DFS_LOGIN, DFS_PASSWORD),
+            json=[{
+                "keyword": keyword,
+                "language_name": "English",
+                "location_name": location,
+                "depth": 10,
+            }],
+        )
+        resp.raise_for_status()
+        raw = resp.json()
+        task_result = raw["tasks"][0].get("result", [{}])[0] if raw.get("tasks") else {}
+        items = task_result.get("items", [])
+        organic = [
+            {
+                "rank": item.get("rank_absolute"),
+                "title": item.get("title"),
+                "url": item.get("url"),
+                "description": item.get("description"),
+                "domain": item.get("domain"),
+            }
+            for item in items
+            if item.get("type") == "organic"
+        ]
+        return [TextContent(type="text", text=format_json({
+            "keyword": keyword,
+            "location": location,
+            "cost_usd": raw.get("cost"),
+            "total_results": task_result.get("se_results_count"),
+            "organic_results": organic,
+        }))]
+
+    elif name == "dfs_keyword_suggestions":
+        keyword = arguments.get("keyword", "")
+        location = arguments.get("location", "United States")
+        resp = requests.post(
+            f"{DFS_BASE}/keywords_data/google_ads/keywords_for_keywords/live",
+            auth=(DFS_LOGIN, DFS_PASSWORD),
+            json=[{
+                "keywords": [keyword],
+                "language_name": "English",
+                "location_name": location,
+            }],
+        )
+        resp.raise_for_status()
+        raw = resp.json()
+        results = raw["tasks"][0].get("result", []) if raw.get("tasks") else []
+        suggestions = [
+            {
+                "keyword": r["keyword"],
+                "search_volume": r.get("search_volume"),
+                "cpc": r.get("cpc"),
+                "competition": r.get("competition"),
+                "competition_index": r.get("competition_index"),
+            }
+            for r in results
+            if r.get("keyword") != keyword
+        ]
+        suggestions.sort(key=lambda x: x["search_volume"] or 0, reverse=True)
+        return [TextContent(type="text", text=format_json({
+            "seed_keyword": keyword,
+            "location": location,
+            "cost_usd": raw.get("cost"),
+            "suggestions": suggestions[:20],
         }))]
 
     else:

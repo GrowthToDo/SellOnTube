@@ -42,7 +42,7 @@ Every keyword in `research/keywords/sot_master.csv` has a `priority_score` (0–
 
 **Tiebreaker:** When two keywords have equal `priority_score`, prefer the higher `cpc_inr` — higher CPC signals stronger commercial intent.
 
-**Note:** `build_sot_master.py` must be updated to calculate and write `priority_score` as a column. This is a separate technical task. Until implemented, Agent 03 applies the formula manually when recommending the next post.
+**Note:** `priority_score`, `kd_real`, `tier`, `search_volume_live`, and `cpc_usd_live` are maintained by `scripts/update_keyword_tiers.py` and `scripts/refresh_keyword_volumes.py`. Re-run these scripts when new keywords are added or quarterly to keep data fresh. Do not recalculate manually.
 
 ### The Funnel Mix
 

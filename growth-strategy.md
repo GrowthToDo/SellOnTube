@@ -22,15 +22,17 @@ High-quality = B2B founders, SaaS operators, and service businesses actively exp
 - Tools 1–4: pure client-side JS (fast to ship, no backend cost)
 - Tools 5–7: Netlify Functions + Gemini Flash API (see `agents/08-microtool-builder.md` for the mandatory Gemini Flash integration pattern)
 
-### C. Blog — regular cadence (TBD)
-- Target: mix of high-volume keywords (reach) and high-intent keywords (conversion)
-- 6 topical clusters aligned to the site's theme — see `microtool-strategy.md`
-- Publishing cadence: to be decided
+### C. Blog — 1 post/week (hard ceiling: 2/week)
+- **Priority cluster: `youtube_seo`** — validated by DataForSEO (March 2026). 8 winnable keywords, top volume 4,400/month, KD range 0–27. Start every new post here before touching other clusters.
+- All keyword selection must use `sot_master.csv` filtered to `tier = winnable` (KD ≤ 30). Never target `avoid` or `stretch` tier keywords until the site has measurable domain authority. See "Keyword Tier System" below.
+- Next post target: "youtube seo tools" (4,400 vol, KD 23) — highest volume winnable keyword in the CSV
+- 6 topical clusters mapped in `microtool-strategy.md` — Cluster 3 (YouTube SEO) is now Priority 1
 - Each post must target a specific validated keyword and follow the Content Quality Playbook
+- Blog + microtool tandem rule: whenever a blog post targets the `youtube_seo` or `youtube_automation` cluster, it must link to an existing or upcoming tool. The tool and post should ideally launch the same week.
 
 ---
 
-Last updated: 2026-03-02
+Last updated: 2026-03-21
 
 ---
 
@@ -64,12 +66,22 @@ Rules:
 
 ### Lever 4 — Blog: publish toward keyword clusters with real search demand *(mid-term)*
 
-Before writing any new post, validate the keyword:
-- Is there actual search demand? (Use GSC impressions data over time as proxy; use Google Autocomplete and related searches for intent signals)
-- Is the intent commercial or informational? (Prefer informational that leads to commercial intent)
-- Does it fit the ICP? (B2B SaaS founders, operators at SMBs with $1M+ revenue, businesses that sell high-ticket services)
+**Updated 2026-03-21 — DataForSEO intelligence applied.**
 
-**Keyword clusters and post list:** See `microtool-strategy.md` Part 2 — 6 clusters fully mapped with post titles.
+Before writing any new post, check the keyword in `sot_master.csv`:
+1. `tier = winnable` — mandatory. KD ≤ 30 is the only realistic range for SellonTube until domain authority grows.
+2. `status = not-started` — never duplicate a live or planned post.
+3. Sort by `priority_score` — the score now uses live DataForSEO volume and real KD, not GKP estimates.
+
+**Keywords now parked (previously assumed high-value, now avoid/stretch):**
+- "youtube seo" (KD 40), "youtube marketing" (KD 35), "youtube video seo" (KD 41) — revisit at 6–12 months
+- "check youtube channel" (KD 49), "set up company youtube channel" (KD 53) — avoid entirely
+- "youtube marketing platform" (KD 62), "youtube marketing for beginners" (KD 63) — avoid entirely
+- All of the above had inflated GKP volumes. Real volume + high KD = not winnable for a new site.
+
+**Priority cluster right now: `youtube_seo`** — 8 winnable not-started keywords, top volume 4,400/month. Write this cluster out fully before moving to the next.
+
+**Keyword clusters and post list:** See `microtool-strategy.md` Part 2 — Cluster 3 (YouTube SEO) is now Priority 1.
 
 **Cadence:** 1 post/week, hard ceiling 2/week. Quality over quantity — each post must target a specific, validated keyword and meet the Content Quality Playbook standard.
 
@@ -113,6 +125,25 @@ From the audit, several P1/P2 items remain unresolved. These are not traffic dri
 |---|---|---|
 | Author schema missing `url`/`sameAs` in BlogPosting | E-E-A-T signal | **Fixed** — LinkedIn URL added to BlogPosting schema |
 | `lastmod` dates missing from sitemap | Crawl efficiency | **Fixed** — `lastmod: new Date()` added to sitemap config |
+
+---
+
+---
+
+## Keyword Tier System (added 2026-03-21)
+
+`sot_master.csv` now has a `tier` column based on real DataForSEO keyword difficulty (KD), not GKP estimates:
+
+| Tier | KD range | What to do |
+|---|---|---|
+| `winnable` | ≤ 30 | Write now. 106 keywords. These are the only blog targets for the current site. |
+| `stretch` | 31–45 | Revisit at 6–12 months when site has more authority. 66 keywords. |
+| `avoid` | > 45 | Do not target. 123 keywords. Many had inflated GKP volumes that made them look attractive. |
+| `pseo` | n/a | pSEO pages — zero GKP volume is intentional. Topical authority play, not volume play. |
+
+**Key insight:** 79% of keywords in the CSV had GKP volumes that overstated reality by 30%+. The volume scores were GKP bucketing artefacts. DataForSEO live data corrects this. Trust `search_volume_live` and `kd_real` — not `search_volume` or `keyword_difficulty`.
+
+**Refresh schedule:** Re-run `scripts/update_keyword_tiers.py` and `scripts/refresh_keyword_volumes.py` quarterly, or whenever new keywords are added to the CSV.
 
 ---
 

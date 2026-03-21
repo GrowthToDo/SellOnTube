@@ -15,17 +15,27 @@ That gap is the entire opening. Every SellonTube tool should use **acquisition-f
 
 ### Build Sequence (Priority Order)
 
-| # | Tool | Slug | Type | Est. Monthly Queries | ICP Fit | Feasibility |
-|---|---|---|---|---|---|---|
-| 1 | YouTube Channel Audit for B2B | `/youtube-channel-audit` | Client-side JS | 3,000–6,000 | 5/5 | 5/5 |
-| 2 | YouTube vs. Blog Calculator | `/youtube-vs-blog-calculator` | Client-side JS | 2,000–4,000 | 5/5 | 5/5 |
-| 3 | YouTube Script Outline Generator | `/youtube-script-outline` | Client-side JS | 8,000–15,000 | 4/5 | 5/5 |
-| 4 | YouTube Topic Fit Checker | `/youtube-topic-fit` | Client-side JS | 1,000–2,500 | 5/5 | 5/5 |
-| 5 | YouTube Title Analyzer | `/youtube-title-analyzer` | Netlify Function + Claude API | 4,000–8,000 | 5/5 | 4/5 |
-| 6 | YouTube Topic Idea Generator | `/youtube-topic-generator` | Netlify Function + Claude API | 3,000–7,000 | 5/5 | 4/5 |
-| 7 | YouTube Channel Description Generator | `/youtube-channel-description` | Netlify Function + Claude API | 2,000–5,000 | 4/5 | 4/5 |
+**Updated 2026-03-21 — DataForSEO intelligence applied.**
+"youtube seo tools" is the highest-volume winnable keyword in the CSV (4,400/month, KD 23). A YouTube SEO tool directly captures this demand AND supports the blog post targeting the same keyword. Tool 1 has been updated accordingly. The old Tool 1 (Channel Audit) moves to Tool 2 — it remains high ICP fit but the SEO tools query has more verified demand.
 
-**Note:** The existing ROI Calculator (`/tools/youtube-roi-calculator`) is already Tool 0. All new tools follow its architecture.
+| # | Tool | Slug | Type | Real Monthly Vol | KD | ICP Fit |
+|---|---|---|---|---|---|---|
+| 0 | YouTube ROI Calculator *(live)* | `/tools/youtube-roi-calculator` | Client-side JS | — | — | 5/5 |
+| 1 | **YouTube SEO Checker** *(new #1)* | `/tools/youtube-seo-checker` | Client-side JS | 4,400+ | 23 | 5/5 |
+| 2 | YouTube Channel Audit for B2B | `/tools/youtube-channel-audit` | Client-side JS | 3,000–6,000 est. | low | 5/5 |
+| 3 | YouTube vs. Blog Calculator | `/tools/youtube-vs-blog-calculator` | Client-side JS | 2,000–4,000 est. | low | 5/5 |
+| 4 | YouTube Script Outline Generator | `/tools/youtube-script-outline` | Client-side JS | 1,600 | 18 | 4/5 |
+| 5 | YouTube Title Analyzer | `/tools/youtube-title-analyzer` | Netlify Function + Gemini | 4,000–8,000 est. | med | 5/5 |
+| 6 | YouTube Topic Idea Generator | `/tools/youtube-topic-generator` | Netlify Function + Gemini | 3,000–7,000 est. | med | 5/5 |
+| 7 | YouTube Channel Description Generator | `/tools/youtube-channel-description` | Netlify Function + Gemini | 2,000–5,000 est. | med | 4/5 |
+
+**Tool 1 — YouTube SEO Checker spec:**
+Target keywords: "youtube seo tools" (4,400 vol, KD 23), "best tools for youtube seo" (90 vol, KD 12), "youtube seo software" (140 vol, KD 27).
+What it does: User pastes a YouTube video URL or types a video title + description. Client-side tool scores it on 5 SEO dimensions: keyword in title, keyword in description (first 100 chars), description length, tags present, title character count. Outputs an "SEO Score" 0–100 with per-dimension feedback and one specific fix per failing dimension.
+B2B angle: All feedback is framed around "ranking for buyer queries" not "getting more views". Output is actionable in under 2 minutes.
+Companion blog post: "Best YouTube SEO Tools for Business Channels" — links to this tool. Both launch same week.
+
+**Blog + tool tandem rule:** Every tool launch must be paired with a blog post targeting the same keyword cluster within the same 7-day window. The blog post links to the tool; the tool page links back to the blog post.
 
 ---
 
@@ -127,18 +137,22 @@ Google's Helpful Content system flags the **ratio of low-quality to high-quality
 
 ### Topical Cluster Architecture
 
+**Updated 2026-03-21 — cluster priority reordered based on DataForSEO keyword intelligence.**
+
 6 clusters, all under the theme "YouTube for B2B customer acquisition":
 
-| Cluster | Sub-topic | Existing posts | Gap |
-|---|---|---|---|
-| 1 | Economics of YouTube acquisition | ROI post | 5 more posts needed |
-| 2 | Topic research and strategy | High-intent framework post | 5 more posts needed |
-| 3 | YouTube SEO for business | **None** | Full pillar + 4 supporting posts needed |
-| 4 | Niche application (industry posts) | **None** | 5+ posts needed |
-| 5 | Comparison and alternatives | **None** | 4 posts needed |
-| 6 | Case studies and data | Shopify case study | 3 more posts needed |
+| Priority | Cluster | Sub-topic | Existing posts | Winnable keywords | Action |
+|---|---|---|---|---|---|
+| **1** | 3 | YouTube SEO for business | **None** | 8 (top vol: 4,400) | Write now — highest volume + lowest KD |
+| **2** | 2 | Topic research and strategy | 1 post | 2 | Continue building out |
+| **3** | 1 | Economics of YouTube acquisition | 1 post | 3 | Continue building out |
+| **4** | 4 | Niche application (industry posts) | None | low | After Clusters 3+2+1 are covered |
+| **5** | 5 | Comparison and alternatives | None | low | After authority builds |
+| **6** | 6 | Case studies and data | 1 post | 1 | 1 per 6–8 weeks, backlink play |
 
-**Cluster 3 is the biggest gap** — zero posts on YouTube SEO mechanics despite being directly tied to every tool you're building.
+**Why Cluster 3 first:** DataForSEO confirms "youtube seo tools" (4,400 vol, KD 23) and "youtube seo services" (1,600 vol, KD 10) are the two highest-value winnable keywords on the entire site. Zero competition in the B2B angle. No existing blog post covers this. This cluster also powers Tool 1 (YouTube SEO Checker) — blog + tool launch together.
+
+**Clusters 4 and 5** have low winnable keyword volume for now. Write them after Clusters 1–3 are covered and the site starts accumulating authority from the easier wins.
 
 ---
 

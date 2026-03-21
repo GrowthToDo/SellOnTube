@@ -56,7 +56,13 @@ See `docs/icp.md` for the canonical ICP definition. Every section must answer "w
 
 ### Phase 1 — Outline (surface to user for approval)
 
-Before producing the outline, fill in `docs/templates/content-brief-template.md` with all available data (keyword, intent, publish date, ICP angle, competing pages, planned internal links). Show the completed brief to the user before starting the outline.
+Before producing the outline, run two DataForSEO lookups:
+1. `dfs_serp_results` for the primary keyword — note the content format of the top 3 results (listicle, guide, comparison, etc.), any featured snippet present, and the strongest competitor domain. Add this to the "competing pages" field of the content brief.
+2. `dfs_keyword_suggestions` for the primary keyword — pick 2–3 high-volume related terms to use as secondary keywords. Add these to the "secondary keywords" field of the brief.
+
+Skip both lookups only if the DataForSEO MCP tools are unavailable.
+
+Then fill in `docs/templates/content-brief-template.md` with all available data (keyword, intent, publish date, ICP angle, competing pages, planned internal links). Show the completed brief to the user before starting the outline.
 
 Produce:
 ```

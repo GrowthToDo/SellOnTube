@@ -10,7 +10,7 @@ Build and maintain a rolling 4-week content calendar. Enforce cadence rules. Nev
 - `src/data/post/*.{md,mdx}` — all blog posts (read `publishDate` from frontmatter)
 - `src/data/niches.ts` — pSEO "YouTube For" pages (separate drip, not subject to blog cadence rule)
 - `src/data/comparisons.ts` — pSEO "YouTube Vs" pages (same — separate drip)
-- `research/keywords/sot_master.csv` — keyword pipeline. Use `priority_score` column to rank candidates. If `priority_score` column is not yet present, calculate it manually using the formula in `content-playbook.md` (Priority Score section).
+- `research/keywords/sot_master.csv` — keyword pipeline. Use `priority_score` column to rank candidates. This score is now calculated using `search_volume_live` (real DataForSEO volume) and `kd_real` (real DataForSEO keyword difficulty) — do not recalculate manually. Filter to `tier = winnable` before sorting by priority_score.
 - Output from Agent 02 (keyword picks) — use these to fill open calendar slots
 
 ## Cadence rules (non-negotiable)
@@ -34,7 +34,12 @@ Starting from today's date, find the next 4 weeks. For each week, mark:
 - OPEN (0 posts in window)
 
 ### Step 4 — Pick the next keyword by priority score
-Read `sot_master.csv`. Filter for `status = not-started`. Sort by `priority_score` descending (highest first). If `priority_score` column is absent, calculate it manually per the formula in the Playbook.
+Read `sot_master.csv`. Apply filters in order:
+1. `status = not-started`
+2. `tier = winnable` (KD≤30 — the only realistic range for SellonTube right now)
+3. Sort by `priority_score` descending
+
+The `priority_score` column is pre-calculated — do not recalculate. It reflects real KD and live search volume.
 
 For the top candidate, show the user:
 
@@ -49,6 +54,8 @@ For the top candidate, show the user:
 | Priority score | |
 | Recommended publish date | |
 | Why this keyword next | one sentence |
+
+Before presenting the recommendation, call `dfs_keyword_metrics` for the top candidate keyword. Update the "Search volume" row in the table with the live value if it differs from the CSV. Add a "Live volume (DataForSEO)" row to show both figures side by side. Skip only if the tool is unavailable.
 
 **STOP. Present this recommendation to the user and wait for explicit approval before proceeding.** Do not trigger Agent 04 or assign a publish date until the user confirms the keyword.
 
