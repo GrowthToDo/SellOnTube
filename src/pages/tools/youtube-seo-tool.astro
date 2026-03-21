@@ -1,0 +1,686 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'YouTube SEO Tool — Free Video Metadata Checker for Business Channels',
+  description:
+    'Paste your YouTube video URL and get a plain-English diagnosis: why buyers aren\'t finding it and exactly what to fix. Free. No login.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">5 SEO dimensions</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Buyer-intent scoring</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Exact fixes included</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        Find Out Why Your YouTube Videos<br class="hidden sm:block" /> Aren't Reaching Buyers
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Paste your video URL and website. Get a plain-English diagnosis and exact fixes in 30 seconds.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+
+          <div>
+            <label for="video-url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              YouTube Video URL
+            </label>
+            <input
+              type="url"
+              id="video-url-input"
+              placeholder="https://youtube.com/watch?v=..."
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="video-url-error"
+            />
+            <p id="video-url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="website-url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Your Website or Product Page URL
+            </label>
+            <input
+              type="url"
+              id="website-url-input"
+              placeholder="https://yoursite.com"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="website-url-error"
+            />
+            <p id="website-url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+        </div>
+
+        <button
+          id="analyse-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Analyse My Video &rarr;
+        </button>
+
+        <p id="uses-counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free analyses remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Analysing your video and business...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">Checking 5 SEO dimensions</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) + email gate overlay wrapper -->
+    <div id="results-outer" class="relative max-w-2xl mx-auto px-4 mt-2">
+
+      <!-- Step: Results -->
+      <div
+        id="step-results"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden"
+        role="status"
+        aria-live="polite"
+      >
+        <!-- Headline diagnosis -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-rose-500/5">
+          <p class="text-xs font-semibold uppercase tracking-wider text-rose-500 dark:text-rose-400 mb-2">Primary issue</p>
+          <p id="result-headline-diagnosis" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white leading-relaxed"></p>
+        </div>
+
+        <!-- Total score -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-end gap-3 mb-1">
+            <span id="result-total-score" class="text-4xl font-bold text-gray-900 dark:text-white"></span>
+            <span class="text-sm text-gray-400 dark:text-slate-500 mb-1">/ 100</span>
+          </div>
+          <p id="result-score-label" class="text-sm text-gray-500 dark:text-slate-400"></p>
+        </div>
+
+        <!-- Business read -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-2">Based on your website</p>
+          <p id="result-business-summary" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <!-- Recommended keywords -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Recommended keywords</p>
+          <div id="result-keywords" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Score breakdown -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-4">Score breakdown</p>
+          <div id="result-scores" class="space-y-5"></div>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Want us to build a YouTube strategy around keywords your buyers are actually searching?</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Book a free diagnostic call with SellonTube.</p>
+          <a
+            id="results-cta"
+            href="https://cal.com/gautham-8bdvdx/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Book a free diagnostic call &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Analyse another video
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Email gate overlay (shown on top of blurred results) -->
+      <div
+        id="email-gate-overlay"
+        class="hidden absolute inset-0 z-10 flex items-center justify-center rounded-2xl"
+        style="background: rgba(0,0,0,0.45); backdrop-filter: blur(2px);"
+      >
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 sm:p-8 mx-4 w-full max-w-sm shadow-xl">
+          <div class="text-center mb-6">
+            <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free analyses</p>
+            <p class="text-sm text-gray-500 dark:text-slate-400">
+              Enter your business email to see these results and keep analysing videos. It's free.
+            </p>
+          </div>
+          <div id="gate-form" class="space-y-3">
+            <input
+              type="email"
+              id="gate-email"
+              placeholder="your@company.com"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+              aria-describedby="gate-email-error"
+            />
+            <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+            <button
+              id="gate-submit-btn"
+              class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                     bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+            >
+              Unlock Results
+            </button>
+            <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+          </div>
+          <div id="gate-success" class="hidden text-center mt-4">
+            <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Loading your results...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <CallToAction
+    title="A score is a start. A strategy converts."
+    subtitle="We map your full YouTube acquisition system: the keywords your buyers search, the topics that drive demos, the CTA structure that converts viewers to leads."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste your video and website</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Two URLs. The tool reads your video metadata and your business context automatically.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a buyer-intent score</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">5 dimensions scored on one question: will buyers find this video when they're ready to act?</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Copy the exact fixes</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Every failing dimension includes the actual rewritten title, description, or chapter labels. Paste and publish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'yt_seo_tool_uses';
+  const EMAIL_KEY = 'yt_seo_tool_email';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-results'];
+  function showStep(id: string): void {
+    // Input and loading live inside tool-container; results lives in results-outer
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const el = document.getElementById('results-outer');
+      if (el) el.classList.remove('hidden');
+      const heading = document.getElementById('result-headline-diagnosis');
+      heading?.focus();
+    } else {
+      const el = document.getElementById('results-outer');
+      if (el) el.classList.add('hidden');
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('uses-counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited analyses unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free analysis remaining' : remaining + ' free analyses remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
+    let websiteUrl = (document.getElementById('website-url-input') as HTMLInputElement).value.trim();
+    let valid = true;
+
+    if (!videoUrl) {
+      showFieldError('video-url-input', 'Please enter a YouTube video URL.');
+      valid = false;
+    } else {
+      clearFieldError('video-url-input');
+    }
+
+    // Auto-prepend https:// for website URL if bare domain entered
+    if (websiteUrl && !websiteUrl.startsWith('http://') && !websiteUrl.startsWith('https://')) {
+      websiteUrl = 'https://' + websiteUrl;
+      (document.getElementById('website-url-input') as HTMLInputElement).value = websiteUrl;
+    }
+    clearFieldError('website-url-input');
+
+    return valid;
+  }
+
+  // ===== RESULTS RENDERING =====
+
+  interface ScoreDimension {
+    score: number;
+    label: string;
+    fix: string | null;
+  }
+
+  interface SeoResult {
+    business_summary: string;
+    recommended_keywords: string[];
+    scores: {
+      title: ScoreDimension;
+      description: ScoreDimension;
+      keywords: ScoreDimension;
+      cta: ScoreDimension;
+      chapters: ScoreDimension;
+    };
+    total_score: number;
+    headline_diagnosis: string;
+  }
+
+  function getScoreColour(score: number, max: number): string {
+    const pct = score / max;
+    if (pct >= 0.75) return 'bg-emerald-500';
+    if (pct >= 0.5) return 'bg-amber-400';
+    return 'bg-rose-500';
+  }
+
+  function renderResults(data: SeoResult): void {
+    // Headline diagnosis
+    const diagEl = document.getElementById('result-headline-diagnosis');
+    if (diagEl) diagEl.textContent = data.headline_diagnosis;
+
+    // Total score
+    const scoreEl = document.getElementById('result-total-score');
+    if (scoreEl) scoreEl.textContent = String(data.total_score);
+
+    const scoreLabelEl = document.getElementById('result-score-label');
+    if (scoreLabelEl) {
+      if (data.total_score >= 80) {
+        scoreLabelEl.textContent = 'Strong metadata — minor refinements needed';
+      } else if (data.total_score >= 50) {
+        scoreLabelEl.textContent = 'Your video is partially optimised — buyers are missing it';
+      } else {
+        scoreLabelEl.textContent = 'Your video is nearly invisible to buyers';
+      }
+    }
+
+    // Business summary
+    const bizEl = document.getElementById('result-business-summary');
+    if (bizEl) bizEl.textContent = data.business_summary;
+
+    // Keywords
+    const kwEl = document.getElementById('result-keywords');
+    if (kwEl) {
+      kwEl.innerHTML = '';
+      data.recommended_keywords.forEach((kw) => {
+        const pill = document.createElement('span');
+        pill.className = 'inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1';
+        pill.textContent = kw;
+        kwEl.appendChild(pill);
+      });
+    }
+
+    // Score breakdown
+    const scoresEl = document.getElementById('result-scores');
+    if (scoresEl) {
+      scoresEl.innerHTML = '';
+      const dimensionOrder: (keyof SeoResult['scores'])[] = ['title', 'description', 'keywords', 'cta', 'chapters'];
+      dimensionOrder.forEach((key) => {
+        const dim = data.scores[key];
+        if (!dim) return;
+
+        const colourClass = getScoreColour(dim.score, 20);
+        const pct = Math.round((dim.score / 20) * 100);
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'space-y-1.5';
+
+        // Label row
+        const labelRow = document.createElement('div');
+        labelRow.className = 'flex items-center justify-between';
+
+        const nameEl = document.createElement('span');
+        nameEl.className = 'text-sm font-medium text-gray-700 dark:text-slate-300';
+        nameEl.textContent = dim.label;
+
+        const scoreSpan = document.createElement('span');
+        scoreSpan.className = 'text-sm font-semibold text-gray-900 dark:text-white tabular-nums';
+        scoreSpan.textContent = dim.score + ' / 20';
+
+        labelRow.appendChild(nameEl);
+        labelRow.appendChild(scoreSpan);
+        wrapper.appendChild(labelRow);
+
+        // Progress bar
+        const barTrack = document.createElement('div');
+        barTrack.className = 'w-full h-2 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden';
+        const barFill = document.createElement('div');
+        barFill.className = colourClass + ' h-full rounded-full transition-all duration-500';
+        barFill.style.width = pct + '%';
+        barTrack.appendChild(barFill);
+        wrapper.appendChild(barTrack);
+
+        // Fix box
+        if (dim.fix) {
+          const fixBox = document.createElement('div');
+          fixBox.className = 'mt-2 rounded-xl border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/5 px-4 py-3';
+
+          const fixLabel = document.createElement('p');
+          fixLabel.className = 'text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-1';
+          fixLabel.textContent = 'What to change:';
+          fixBox.appendChild(fixLabel);
+
+          const fixText = document.createElement('p');
+          fixText.className = 'text-xs text-gray-700 dark:text-slate-300 leading-relaxed';
+          fixText.textContent = dim.fix;
+          fixBox.appendChild(fixText);
+
+          wrapper.appendChild(fixBox);
+        }
+
+        scoresEl.appendChild(wrapper);
+      });
+    }
+  }
+
+  // ===== EMAIL GATE =====
+
+  function showEmailGate(): void {
+    const overlay = document.getElementById('email-gate-overlay');
+    if (overlay) overlay.classList.remove('hidden');
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-seo-tool' });
+  }
+
+  function hideEmailGate(): void {
+    const overlay = document.getElementById('email-gate-overlay');
+    if (overlay) overlay.classList.add('hidden');
+  }
+
+  // ===== API CALL =====
+
+  async function fetchSeoAnalysis(videoUrl: string, websiteUrl: string): Promise<void> {
+    const btn = document.getElementById('analyse-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/youtube-seo-tool', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoUrl, websiteUrl }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Analyse My Video \u2192';
+        showFieldError('video-url-input', 'AI analysis is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_analyse_error', tool: 'youtube-seo-tool', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) {
+        let errorMsg = 'Something went wrong. Please try again.';
+        try {
+          const errData = await res.json();
+          if (errData?.error && typeof errData.error === 'string') errorMsg = errData.error;
+        } catch { /* ignore parse error */ }
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Analyse My Video \u2192';
+        showFieldError('video-url-input', errorMsg);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_analyse_error', tool: 'youtube-seo-tool', reason: 'api_error_' + res.status });
+        return;
+      }
+
+      const data = await res.json() as SeoResult;
+      if (!data?.scores || typeof data?.total_score !== 'number') throw new Error('Invalid response structure');
+
+      // Check gate before showing results
+      if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+        // Render results first (will be behind overlay)
+        renderResults(data);
+        incrementCount();
+        updateCounterLabel();
+        // Show blurred results with overlay
+        showStep('step-results');
+        document.getElementById('results-outer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        showEmailGate();
+
+        // Store data for after gate unlock
+        (window as Window & { _pendingSeoResult?: SeoResult })._pendingSeoResult = data;
+      } else {
+        renderResults(data);
+        incrementCount();
+        updateCounterLabel();
+        showStep('step-results');
+        document.getElementById('results-outer')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_analyse_success', tool: 'youtube-seo-tool' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Analyse My Video \u2192';
+      showFieldError('video-url-input', 'Something went wrong. Please try again.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_analyse_error', tool: 'youtube-seo-tool', reason: 'api_error' });
+    }
+  }
+
+  // ===== ANALYSE =====
+
+  async function analyse(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
+    const websiteUrl = (document.getElementById('website-url-input') as HTMLInputElement).value.trim();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_analyse_click', tool: 'youtube-seo-tool' });
+
+    const btn = document.getElementById('analyse-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Analysing...';
+    showStep('step-loading');
+
+    await fetchSeoAnalysis(videoUrl, websiteUrl);
+
+    btn.disabled = false;
+    btn.textContent = 'Analyse My Video \u2192';
+  }
+
+  // ===== GATE SUBMIT =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, tool: 'youtube-seo-tool', timestamp: new Date().toISOString() }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-seo-tool' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Unlock Results';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      hideEmailGate();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('video-url-input') as HTMLInputElement).value = '';
+    clearFieldError('video-url-input');
+    (document.getElementById('website-url-input') as HTMLInputElement).value = '';
+    clearFieldError('website-url-input');
+    hideEmailGate();
+    showStep('step-input');
+    (document.getElementById('video-url-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('analyse-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Analyse My Video \u2192';
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-seo-tool' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('analyse-btn')?.addEventListener('click', analyse);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  document.getElementById('video-url-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.getElementById('website-url-input') as HTMLInputElement)?.focus();
+    }
+  });
+
+  document.getElementById('website-url-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      analyse();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  // ===== INIT =====
+
+  // results-outer starts hidden; step-results is hidden by default too
+  const resultsOuter = document.getElementById('results-outer');
+  if (resultsOuter) resultsOuter.classList.add('hidden');
+
+  updateCounterLabel();
+</script>
