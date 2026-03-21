@@ -70,7 +70,7 @@ async function fetchWebsiteText(url: string): Promise<string | null> {
   }
 }
 
-const SYSTEM_INSTRUCTION = `You are a YouTube SEO analyst for B2B businesses. Your job is to evaluate a YouTube video's metadata — title, description, and chapter labels — and score how well it attracts buyers in the consideration or decision stage.
+const SYSTEM_INSTRUCTION = `You are a YouTube SEO analyst for B2B businesses. Your job is to evaluate a YouTube video's metadata (title, description, and chapter labels) and score how well it attracts buyers in the consideration or decision stage.
 
 You receive:
 - A video title
@@ -127,7 +127,7 @@ List exactly 3 buyer-intent keywords the video should rank for. Base these on th
 One sentence: what this business sells and who they serve. If websiteText is null, infer from the video content. Be specific. Example: "Helps SaaS founders add YouTube as a B2B acquisition channel."
 
 ## headline_diagnosis
-One sentence naming the single biggest reason this video is not found by buyers. Be direct and specific. Example: "The title targets curiosity, not purchase intent — a buyer searching for a solution will never see this."
+One sentence naming the single biggest reason this video is not found by buyers. Be direct and specific. Example: "The title targets curiosity, not purchase intent. A buyer searching for a solution will never see this."
 
 ## Anti-AI self-audit (run before returning)
 Check every string in your output. Remove or rewrite anything that contains:
@@ -136,7 +136,7 @@ Check every string in your output. Remove or rewrite anything that contains:
 - Em dashes
 - Rule-of-three lists (X, Y, and Z sentence endings)
 - Filler phrases ("in order to," "due to the fact that," "it is worth noting that")
-- Vague claims — replace with concrete specifics
+- Vague claims: replace with concrete specifics
 
 After the self-audit, return the final JSON only.
 
@@ -162,7 +162,7 @@ function buildUserPrompt(
 ): string {
   const websiteSection = websiteText
     ? `Website text (first 3,000 chars):\n${websiteText}`
-    : `Website text: Not available — infer business context from the video content.`;
+    : `Website text: Not available. Infer business context from the video content.`;
 
   return `Evaluate this YouTube video's SEO metadata for buyer intent.
 
@@ -328,7 +328,7 @@ export default async (request: Request) => {
       if (geminiRes.status === 429) {
         return new Response(JSON.stringify({ error: 'quota_exceeded' }), { status: 429, headers });
       }
-      // Use 503 not 502 — Cloudflare intercepts 502 and replaces the response body
+      // Use 503 not 502: Cloudflare intercepts 502 and replaces the response body
       return new Response(
         JSON.stringify({ error: 'AI service unavailable', geminiStatus: geminiRes.status, detail: errText.slice(0, 500) }),
         { status: 503, headers }

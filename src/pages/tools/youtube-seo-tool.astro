@@ -3,7 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'YouTube SEO Tool — Free Video Metadata Checker for Business Channels',
+  title: 'YouTube SEO Tool: Free Video Metadata Checker for Business Channels',
   description:
     'Paste your YouTube video URL and get a plain-English diagnosis: why buyers aren\'t finding it and exactly what to fix. Free. No login.',
 };
@@ -377,9 +377,9 @@ const metadata = {
     const scoreLabelEl = document.getElementById('result-score-label');
     if (scoreLabelEl) {
       if (data.total_score >= 80) {
-        scoreLabelEl.textContent = 'Strong metadata — minor refinements needed';
+        scoreLabelEl.textContent = 'Strong metadata. Minor refinements needed.';
       } else if (data.total_score >= 50) {
-        scoreLabelEl.textContent = 'Your video is partially optimised — buyers are missing it';
+        scoreLabelEl.textContent = 'Your video is partially optimised. Buyers are missing it.';
       } else {
         scoreLabelEl.textContent = 'Your video is nearly invisible to buyers';
       }
