@@ -265,6 +265,7 @@ export default async (request: Request) => {
     const dataFetchRes = await fetch(`https://api.datafetchapi.com/v1/youtube/video/${videoId}`, {
       method: 'GET',
       headers: { 'X-API-KEY': youtubeApiKey },
+      signal: AbortSignal.timeout(8000),
     });
 
     if (dataFetchRes.ok) {
@@ -320,6 +321,7 @@ export default async (request: Request) => {
     const geminiRes = await fetch(`${GEMINI_API_URL}?key=${geminiApiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      signal: AbortSignal.timeout(20000),
       body: JSON.stringify({
         system_instruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
         contents: [{
@@ -358,14 +360,18 @@ export default async (request: Request) => {
     } catch {
       console.error('Gemini JSON parse failure. raw:', raw?.slice(0, 300));
       return new Response(
-        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.' }),
+        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.', detail: 'json_parse_failure', raw: raw?.slice(0, 200) }),
         { status: 500, headers }
       );
     }
 
     // Validate response shape
     if (!result?.scores || typeof result?.total_score !== 'number') {
-      throw new Error('Invalid response structure from Gemini');
+      console.error('Invalid Gemini response shape:', JSON.stringify(result)?.slice(0, 300));
+      return new Response(
+        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.', detail: 'invalid_shape', shape: JSON.stringify(result)?.slice(0, 200) }),
+        { status: 500, headers }
+      );
     }
 
     // Fix 6: Clamp score ranges
@@ -382,9 +388,10 @@ export default async (request: Request) => {
 
     return new Response(JSON.stringify(result), { status: 200, headers });
   } catch (error) {
-    console.error('youtube-seo-tool error:', error);
+    const detail = error instanceof Error ? error.message : String(error);
+    console.error('youtube-seo-tool error:', detail);
     return new Response(
-      JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.' }),
+      JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.', detail }),
       { status: 500, headers }
     );
   }
