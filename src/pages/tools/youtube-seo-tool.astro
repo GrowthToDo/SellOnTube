@@ -801,6 +801,7 @@ const metadata = {
           const errData = await res.json();
           if (errData?.error && typeof errData.error === 'string') errorMsg = errData.error;
           if (errData?.detail) errorMsg += ' [' + errData.detail + ']';
+          if (errData?.raw) errorMsg += ' raw:' + errData.raw;
         } catch { /* ignore parse error */ }
         showStep('step-input');
         btn.disabled = false;

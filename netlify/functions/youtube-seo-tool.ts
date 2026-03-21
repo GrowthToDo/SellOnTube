@@ -351,16 +351,32 @@ export default async (request: Request) => {
     }
 
     const geminiData = await geminiRes.json();
+    console.log('Gemini candidates count:', geminiData?.candidates?.length, 'promptFeedback:', JSON.stringify(geminiData?.promptFeedback)?.slice(0, 200));
+
+    // Check for blocked response (safety filter, empty candidates)
+    if (!geminiData?.candidates?.length) {
+      const blockReason = geminiData?.promptFeedback?.blockReason ?? 'unknown';
+      console.error('Gemini returned no candidates. blockReason:', blockReason);
+      return new Response(
+        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.', detail: 'no_candidates:' + blockReason }),
+        { status: 500, headers }
+      );
+    }
+
     const raw: string = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+    console.log('Gemini raw (first 200):', raw?.slice(0, 200));
+
+    // Strip markdown fences if present (defensive — responseMimeType should prevent this)
+    const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```\s*$/i, '').trim();
 
     // Fix 2: Guard JSON.parse
     let result: SeoToolResponse;
     try {
-      result = JSON.parse(raw) as SeoToolResponse;
+      result = JSON.parse(cleaned) as SeoToolResponse;
     } catch {
-      console.error('Gemini JSON parse failure. raw:', raw?.slice(0, 300));
+      console.error('Gemini JSON parse failure. cleaned:', cleaned?.slice(0, 300));
       return new Response(
-        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.', detail: 'json_parse_failure', raw: raw?.slice(0, 200) }),
+        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.', detail: 'json_parse_failure', raw: cleaned?.slice(0, 200) }),
         { status: 500, headers }
       );
     }
