@@ -214,9 +214,15 @@ export default async (request: Request) => {
     if (!dataFetchRes.ok) {
       const errText = await dataFetchRes.text();
       console.error('DataFetch API error:', dataFetchRes.status, errText);
+      if (dataFetchRes.status === 404) {
+        return new Response(
+          JSON.stringify({ error: 'We couldn\'t access that video. Make sure it\'s public and the URL is correct.' }),
+          { status: 400, headers }
+        );
+      }
       return new Response(
-        JSON.stringify({ error: 'We couldn\'t access that video. Make sure it\'s public and the URL is correct.' }),
-        { status: 400, headers }
+        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.' }),
+        { status: 500, headers }
       );
     }
 
