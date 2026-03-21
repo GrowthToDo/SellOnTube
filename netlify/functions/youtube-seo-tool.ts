@@ -258,37 +258,50 @@ export default async (request: Request) => {
       );
     }
 
-    // Step 2: Fetch video metadata from DataFetch API
+    // Step 2: Fetch video metadata — primary: DataFetch API, fallback: YouTube oEmbed
+    let title = '';
+    let description = '';
+
     const dataFetchRes = await fetch(`https://api.datafetchapi.com/v1/youtube/video/${videoId}`, {
       method: 'GET',
       headers: { 'X-API-KEY': youtubeApiKey },
     });
 
-    if (!dataFetchRes.ok) {
+    if (dataFetchRes.ok) {
+      const videoData = await dataFetchRes.json() as DataFetchVideoResponse;
+      // Handle both flat { title, description } and nested { data: { title, description } }
+      const d = (videoData as any)?.data ?? videoData;
+      title = d?.title ?? videoData?.title ?? '';
+      description = d?.description ?? videoData?.description ?? '';
+      console.log('DataFetch OK — title:', title?.slice(0, 60), 'desc length:', description?.length);
+    } else {
       const errText = await dataFetchRes.text();
-      console.error('DataFetch API error:', dataFetchRes.status, errText.slice(0, 200));
-      if (dataFetchRes.status === 404) {
-        return new Response(
-          JSON.stringify({ error: 'We couldn\'t access that video. Make sure it\'s public and the URL is correct.' }),
-          { status: 400, headers }
-        );
-      }
-      if (dataFetchRes.status === 403) {
-        return new Response(
-          JSON.stringify({ error: 'That video is private or age-restricted. Only public videos can be analysed.' }),
-          { status: 400, headers }
-        );
-      }
-      return new Response(
-        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.' }),
-        { status: 500, headers }
-      );
+      console.error('DataFetch API error:', dataFetchRes.status, errText.slice(0, 300));
     }
 
-    // Fix 4: Type the DataFetch response
-    const videoData = await dataFetchRes.json() as DataFetchVideoResponse;
-    const title: string = videoData?.title ?? '';
-    const description: string = videoData?.description ?? '';
+    // Fallback: YouTube oEmbed gives us title for any public video
+    if (!title) {
+      console.log('DataFetch returned no title — trying oEmbed fallback');
+      try {
+        const oEmbedRes = await fetch(
+          `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`,
+          { signal: AbortSignal.timeout(8000) }
+        );
+        if (oEmbedRes.ok) {
+          const oEmbed = await oEmbedRes.json() as { title?: string };
+          title = oEmbed?.title ?? '';
+          console.log('oEmbed fallback title:', title?.slice(0, 60));
+        } else if (oEmbedRes.status === 404 || oEmbedRes.status === 401) {
+          // oEmbed 404/401 = video is genuinely private or deleted
+          return new Response(
+            JSON.stringify({ error: 'We couldn\'t access that video. Make sure it\'s public and the URL is correct.' }),
+            { status: 400, headers }
+          );
+        }
+      } catch (e) {
+        console.error('oEmbed fallback failed:', e);
+      }
+    }
 
     if (!title) {
       return new Response(
