@@ -147,6 +147,69 @@ From the audit, several P1/P2 items remain unresolved. These are not traffic dri
 
 ---
 
+## 10-Day Sprint Plan (Mar 21–30, 2026)
+
+**Goal:** Build domain authority through a coordinated tool launch + backlink sprint.
+
+### The Three Tasks (in order)
+
+**1. Build YouTube SEO Checker** (`/tools/youtube-seo-checker`) — Mar 21–25
+- Client-side JS only. User pastes a video title + description; tool scores it on 5 SEO dimensions and outputs a 0–100 score with per-dimension fixes.
+- All feedback framed around ranking for buyer-intent queries, not views.
+- Target keywords: "youtube seo tools" (4,400 vol, KD 23), "best tools for youtube seo" (90 vol, KD 12), "youtube seo software" (140 vol, KD 27).
+
+**2. Publish blog post** — Mar 26
+- Title: "Best YouTube SEO Tools for Business Channels (2026)"
+- Target keyword: "youtube seo tools" (4,400 vol, KD 23)
+- Links to the YouTube SEO Checker tool. Cross-links to the YouTube SEO Guide pillar (Mar 18).
+- Must be live before the PH launch so anyone who clicks through lands on supporting content.
+
+**3. Launch on Product Hunt + multi-platform backlink sprint** — Mar 30 (Monday)
+- Submit to Product Hunt at 12:01am PST.
+- Same day: submit to Hacker News ("Show HN"), BetaList, There's An AI For That, Peerlist.
+- After launch: submit tool page URL to GSC for indexing.
+
+### Why This Sequence Matters for Domain Authority
+
+The goal of the PH launch is not upvotes — it is backlinks. Each platform gives a guaranteed high-DA backlink:
+
+| Platform | DR | Notes |
+|---|---|---|
+| Product Hunt | ~93 | Guaranteed listing backlink |
+| Hacker News | ~93 | "Show HN" post |
+| BetaList | ~70 | Free listing |
+| There's An AI For That | ~60 | Submit as AI tool (uses Gemini scoring) |
+| Peerlist | ~60 | Growing indie/SaaS community |
+
+Secondary benefit: PH launches get picked up by newsletters (TLDR, Ben's Bites, etc.) — each coverage = additional DR 50–80+ backlink with zero extra effort.
+
+### Day-by-Day
+
+| Date | Action |
+|---|---|
+| Mar 21–23 | Build YouTube SEO Checker (client-side JS, 5 scoring dimensions) |
+| Mar 24–25 | Polish UI, write tool page copy with full on-page SEO |
+| Mar 26 | Write + publish blog post — links to the tool |
+| Mar 27–28 | Prepare PH listing: headline, tagline, description, thumbnail/GIF, first comment |
+| Mar 29 | Schedule PH submission for 12:01am PST March 30 |
+| Mar 30 | Launch: PH + HN Show HN + BetaList + TAAFT + Peerlist |
+| Mar 30 | Submit tool page URL to GSC for indexing |
+
+---
+
+### Next 4 Weeks — Blog Cadence After the Sprint
+
+| Week | Post | Target keyword | Vol | KD |
+|---|---|---|---|---|
+| Mar 28 | Best YouTube SEO Tools for Business Channels | youtube seo tools | 4,400 | 23 |
+| Apr 4 | YouTube SEO Services: What to Look For (And What to Avoid) | youtube seo services | 1,600 | 10 |
+| Apr 11 | YouTube SEO Software: Do You Actually Need It? | youtube seo software | 140 | 27 |
+| Apr 18 | How to Write YouTube Titles That Rank for Buyer-Intent Queries | (Cluster 3 supporting) | — | — |
+
+After Cluster 3 (YouTube SEO) is covered: move to Cluster 2 (topic research — 2 remaining keywords), then Cluster 1 (economics — 3 remaining keywords).
+
+---
+
 ## What NOT to Do
 
 - No bulk pSEO publishing — the drip schedule is intentional
