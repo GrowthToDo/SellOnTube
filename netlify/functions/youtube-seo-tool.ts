@@ -46,6 +46,30 @@ function stripHtml(html: string): string {
   return text;
 }
 
+async function fetchWebsiteText(url: string): Promise<string | null> {
+  let parsedUrl: URL;
+  try {
+    parsedUrl = new URL(url.trim());
+  } catch {
+    return null;
+  }
+  if (parsedUrl.protocol !== 'https:' && parsedUrl.protocol !== 'http:') {
+    return null;
+  }
+  try {
+    const siteRes = await fetch(parsedUrl.toString(), {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SellonTube-SEO-Checker/1.0)' },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!siteRes.ok) return null;
+    const html = await siteRes.text();
+    const stripped = stripHtml(html);
+    return stripped.slice(0, 3000);
+  } catch {
+    return null;
+  }
+}
+
 const SYSTEM_INSTRUCTION = `You are a YouTube SEO analyst for B2B businesses. Your job is to evaluate a YouTube video's metadata — title, description, and chapter labels — and score how well it attracts buyers in the consideration or decision stage.
 
 You receive:
@@ -152,6 +176,26 @@ ${websiteSection}
 Score each dimension as specified. Return only the JSON object.`;
 }
 
+interface DataFetchVideoResponse {
+  title?: string;
+  description?: string;
+  [key: string]: unknown;
+}
+
+interface SeoToolResponse {
+  business_summary: string;
+  recommended_keywords: string[];
+  scores: {
+    title: { score: number; label: string; fix: string | null };
+    description: { score: number; label: string; fix: string | null };
+    keywords: { score: number; label: string; fix: string | null };
+    cta: { score: number; label: string; fix: string | null };
+    chapters: { score: number; label: string; fix: string | null };
+  };
+  total_score: number;
+  headline_diagnosis: string;
+}
+
 export default async (request: Request) => {
   const headers = {
     'Content-Type': 'application/json',
@@ -196,6 +240,15 @@ export default async (request: Request) => {
       );
     }
 
+    // Fix 3: Input length limits
+    const MAX_URL = 2000;
+    if (videoUrl.length > MAX_URL || (websiteUrl && websiteUrl.length > MAX_URL)) {
+      return new Response(
+        JSON.stringify({ error: 'One or more fields exceed the maximum allowed length.' }),
+        { status: 400, headers }
+      );
+    }
+
     // Step 1: Extract video ID
     const videoId = extractVideoId(videoUrl.trim());
     if (!videoId) {
@@ -213,10 +266,16 @@ export default async (request: Request) => {
 
     if (!dataFetchRes.ok) {
       const errText = await dataFetchRes.text();
-      console.error('DataFetch API error:', dataFetchRes.status, errText);
+      console.error('DataFetch API error:', dataFetchRes.status, errText.slice(0, 200));
       if (dataFetchRes.status === 404) {
         return new Response(
           JSON.stringify({ error: 'We couldn\'t access that video. Make sure it\'s public and the URL is correct.' }),
+          { status: 400, headers }
+        );
+      }
+      if (dataFetchRes.status === 403) {
+        return new Response(
+          JSON.stringify({ error: 'That video is private or age-restricted. Only public videos can be analysed.' }),
           { status: 400, headers }
         );
       }
@@ -226,7 +285,8 @@ export default async (request: Request) => {
       );
     }
 
-    const videoData = await dataFetchRes.json();
+    // Fix 4: Type the DataFetch response
+    const videoData = await dataFetchRes.json() as DataFetchVideoResponse;
     const title: string = videoData?.title ?? '';
     const description: string = videoData?.description ?? '';
 
@@ -237,22 +297,10 @@ export default async (request: Request) => {
       );
     }
 
-    // Step 3: Fetch website text (silent failure)
+    // Step 3: Fetch website text (Fix 1: SSRF-safe via fetchWebsiteText)
     let websiteText: string | null = null;
     if (websiteUrl?.trim()) {
-      try {
-        const siteRes = await fetch(websiteUrl.trim(), {
-          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; SellonTube-SEO-Checker/1.0)' },
-          signal: AbortSignal.timeout(8000),
-        });
-        if (siteRes.ok) {
-          const html = await siteRes.text();
-          const stripped = stripHtml(html);
-          websiteText = stripped.slice(0, 3000);
-        }
-      } catch {
-        // Silent failure — continue with websiteText = null
-      }
+      websiteText = await fetchWebsiteText(websiteUrl);
     }
 
     // Step 4: Gemini call
@@ -288,12 +336,35 @@ export default async (request: Request) => {
     }
 
     const geminiData = await geminiRes.json();
-    const raw = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
-    const result = JSON.parse(raw);
+    const raw: string = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+
+    // Fix 2: Guard JSON.parse
+    let result: SeoToolResponse;
+    try {
+      result = JSON.parse(raw) as SeoToolResponse;
+    } catch {
+      console.error('Gemini JSON parse failure. raw:', raw?.slice(0, 300));
+      return new Response(
+        JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.' }),
+        { status: 500, headers }
+      );
+    }
 
     // Validate response shape
     if (!result?.scores || typeof result?.total_score !== 'number') {
       throw new Error('Invalid response structure from Gemini');
+    }
+
+    // Fix 6: Clamp score ranges
+    if (typeof result.total_score !== 'number' || result.total_score < 0 || result.total_score > 100) {
+      result.total_score = Math.min(100, Math.max(0, Number(result.total_score) || 0));
+    }
+    const dimensionKeys = ['title', 'description', 'keywords', 'cta', 'chapters'] as const;
+    for (const key of dimensionKeys) {
+      const dim = result.scores[key];
+      if (dim && typeof dim.score === 'number') {
+        dim.score = Math.min(20, Math.max(0, dim.score));
+      }
     }
 
     return new Response(JSON.stringify(result), { status: 200, headers });
