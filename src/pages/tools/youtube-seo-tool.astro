@@ -245,6 +245,314 @@ const metadata = {
     </div>
   </section>
 
+  <!-- ===================== CONTENT SECTIONS ===================== -->
+
+  <!-- Section 1: What this tool does -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">What this tool actually scores</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Most YouTube channels underperform not because the content is bad, but because the metadata is invisible to the people who would buy. Title, description, tags, CTAs, chapter labels: these are the signals YouTube's search algorithm uses to decide who sees your video. Get them wrong and the right buyers never find it.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        This tool reads your video's metadata, reads your website to understand what you sell, and scores both against one question: is this video findable by someone who is actively looking for what you offer?
+      </p>
+
+      <!-- Scorecard diagram -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 shadow-sm mt-8">
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">The 5 scoring dimensions</p>
+          <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Each scored 0–20. Total: 0–100.</p>
+        </div>
+        <div class="divide-y divide-slate-100 dark:divide-slate-800">
+          {[
+            {
+              label: 'Title Relevance',
+              score: 20,
+              color: 'bg-emerald-500',
+              desc: 'Does the title match a phrase a buyer would actually search? A title like "Best CRM for SaaS Startups Under 50 Seats" scores high. "How we use HubSpot" scores low.',
+            },
+            {
+              label: 'Description Opening',
+              score: 20,
+              color: 'bg-emerald-500',
+              desc: 'YouTube shows roughly 150 characters before the "Show more" cutoff. Does that visible text include your keyword and a clear reason to watch?',
+            },
+            {
+              label: 'Keyword Coverage',
+              score: 20,
+              color: 'bg-emerald-500',
+              desc: 'Are the buyer-intent keywords your video should rank for present throughout the description body? This is the proxy for proper tag coverage.',
+            },
+            {
+              label: 'CTA Quality',
+              score: 20,
+              color: 'bg-emerald-500',
+              desc: 'Is there a clear next step above the fold and in the description body? "Book a call," "download the guide," "start your free trial" score high. A bare link with no context scores low.',
+            },
+            {
+              label: 'Chapter Labels',
+              score: 20,
+              color: 'bg-emerald-500',
+              desc: 'Chapters are indexed by YouTube search separately. Labelling them as searchable phrases ("How to evaluate a CRM before you buy") is a signal most business channels ignore.',
+            },
+          ].map((dim) => (
+            <div class="px-5 py-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-semibold text-gray-800 dark:text-slate-200">{dim.label}</span>
+                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">/ 20</span>
+              </div>
+              <div class="h-1.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden mb-2">
+                <div class={`h-full ${dim.color} rounded-full`} style="width: 100%"></div>
+              </div>
+              <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed">{dim.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Why YouTube SEO fails for business channels -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Why YouTube SEO fails most business channels</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Businesses that post on YouTube tend to optimise for one of two wrong targets: views or nothing at all.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Optimising for views means writing titles and descriptions to attract the largest possible audience. That produces content that performs well for YouTube's recommendation algorithm and poorly for search. A video titled "The Truth About Email Marketing" will get suggested to casual browsers. It will not appear when a founder searches "best email marketing tool for Shopify stores" with their credit card nearby.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The second failure is no optimisation at all. The video title is whatever the presenter called the recording file. The description is three sentences. No CTA, no chapters, no keyword strategy. The video lives on the channel and waits for organic traction that never comes.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Neither approach is wrong for a creator trying to build an audience. Both are fatal for a business trying to generate pipeline. Buyers search with specific intent: "best CRM for agencies," "HubSpot vs Salesforce for a 10-person team," "how to set up automated onboarding in Intercom." If your video's metadata does not match that language, YouTube's search index will not surface it to those people.
+      </p>
+
+      <!-- Buyer journey diagram -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 shadow-sm mt-8">
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">What happens when a buyer searches on YouTube</p>
+          <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">The same video content, two different metadata strategies</p>
+        </div>
+        <div class="p-5 sm:p-6">
+          <!-- Shared path -->
+          <div class="flex flex-col items-center mb-6">
+            <div class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 text-center max-w-xs">
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Buyer searches</p>
+              <p class="text-sm font-semibold text-gray-900 dark:text-white">"best CRM for SaaS startups"</p>
+            </div>
+            <div class="w-px h-6 bg-slate-300 dark:bg-slate-600"></div>
+            <div class="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 text-center max-w-xs">
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">YouTube returns results</p>
+              <p class="text-sm text-gray-600 dark:text-slate-400">Videos whose metadata matches the query</p>
+            </div>
+            <div class="w-px h-6 bg-slate-300 dark:bg-slate-600"></div>
+            <!-- Decision banner -->
+            <div class="w-full max-w-sm bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg px-4 py-3 text-center">
+              <p class="text-xs font-semibold text-amber-700 dark:text-amber-400">Your video's metadata decides what happens next</p>
+            </div>
+          </div>
+
+          <!-- Fork -->
+          <div class="grid grid-cols-2 gap-4">
+            <!-- Good outcome -->
+            <div class="rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3">Optimised metadata</p>
+              <div class="space-y-2 mb-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-emerald-500 text-xs mt-0.5">+</span>
+                  <p class="text-xs text-gray-700 dark:text-slate-300">Title matches buyer's search phrase</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-emerald-500 text-xs mt-0.5">+</span>
+                  <p class="text-xs text-gray-700 dark:text-slate-300">CTA visible above the fold</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-emerald-500 text-xs mt-0.5">+</span>
+                  <p class="text-xs text-gray-700 dark:text-slate-300">Chapters labelled with buyer-intent phrases</p>
+                </div>
+              </div>
+              <div class="border-t border-emerald-200 dark:border-emerald-800 pt-3">
+                <p class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">Your video appears. Buyer watches. Clicks the link. Becomes a lead.</p>
+              </div>
+            </div>
+            <!-- Bad outcome -->
+            <div class="rounded-lg border border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-900/20 p-4">
+              <p class="text-xs font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-400 mb-3">Unoptimised metadata</p>
+              <div class="space-y-2 mb-3">
+                <div class="flex items-start gap-2">
+                  <span class="text-rose-500 text-xs mt-0.5">-</span>
+                  <p class="text-xs text-gray-700 dark:text-slate-300">Title is generic or creator-focused</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-rose-500 text-xs mt-0.5">-</span>
+                  <p class="text-xs text-gray-700 dark:text-slate-300">Description has no keyword or CTA</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-rose-500 text-xs mt-0.5">-</span>
+                  <p class="text-xs text-gray-700 dark:text-slate-300">No chapters, no visible next step</p>
+                </div>
+              </div>
+              <div class="border-t border-rose-200 dark:border-rose-800 pt-3">
+                <p class="text-xs font-semibold text-rose-700 dark:text-rose-300">Your video does not appear. The buyer finds a competitor's video instead.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Who this is for -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Who this tool is for</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        This tool is built for businesses that use YouTube as a customer acquisition channel. Specifically:
+      </p>
+      <ul class="space-y-3">
+        {[
+          { who: 'SaaS founders', why: 'who publish product walkthroughs, comparison videos, or tutorials and want those videos to rank for evaluation-stage searches. If you have a video titled "How [Your Product] Works" and it gets 80 views a month, this tool will tell you why and what to change.', href: '/youtube-for/saas' },
+          { who: 'Consultants and agencies', why: 'who want inbound leads from YouTube rather than cold outreach. Your buyers search with specific problems ("how to reduce churn for a B2B SaaS"). Your video needs to be the answer they find.', href: '/youtube-for/consultants' },
+          { who: 'Service businesses', why: 'where a single client is worth tens of thousands of pounds. One well-optimised video that ranks for a buyer-intent phrase can pay for itself in a single inbound lead.', href: '/youtube-for/agencies' },
+        ].map((item) => (
+          <li class="flex items-start gap-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-4">
+            <span class="flex-shrink-0 w-2 h-2 rounded-full bg-emerald-500 mt-2"></span>
+            <p class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed">
+              <a href={item.href} class="font-semibold text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">{item.who}</a>
+              {' '}{item.why}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        If you are not yet sure which videos to make in the first place, use the <a href="/tools/youtube-video-ideas-evaluator" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">YouTube Video Idea Evaluator</a> first. There is no point optimising a video that targets the wrong audience. Get the topic right, then optimise the metadata.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: Who this is not for -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Who this tool is not for</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        This tool is not for YouTubers building an audience. If your goal is views, subscribers, and watch time, use VidIQ or TubeBuddy instead. They are excellent tools built specifically for that goal.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The difference is the target metric. A creator wants reach. A business wants qualified leads. Optimising for reach means chasing trending topics, broad search volume, and viral potential. Optimising for leads means targeting the specific phrases buyers type when they are close to a purchasing decision.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Those two strategies produce different titles, different descriptions, different CTA placements, and different chapter labels. A video with 400 views that generates 8 qualified leads is worth more than a video with 40,000 views that generates zero. This tool scores for the former, not the latter.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Also worth noting: this tool scores existing video metadata. It does not generate video ideas or tell you whether your topic has buyer intent before you produce the video. For that, use the <a href="/tools/youtube-video-ideas-generator" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">YouTube Video Ideas Generator</a> before you film.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 5: The logic behind the scoring -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">The logic behind the scoring</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The scoring model is built around one principle: YouTube is a search engine, and buyers use it differently from general viewers.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white pt-2">Title: BoFu framing, not keyword stuffing</h3>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        "BoFu" means bottom of funnel: a buyer who is close to making a decision. A BoFu title answers a specific question a buyer is actively asking. "HubSpot vs Salesforce for a 10-person SaaS team" is BoFu. "CRM software overview" is not. The tool scores titles on this framing, not on raw keyword presence. A title can include a keyword and still score low if it attracts curious browsers instead of active buyers.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white pt-2">Description: the first 150 characters matter most</h3>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        YouTube truncates descriptions at around 150 characters on desktop and even less on mobile. Everything after that is hidden behind "Show more." Most business videos waste those first 150 characters with a generic intro sentence or a website link with no context. The tool scores the opening separately from the rest of the description because they serve different purposes: the opening converts viewers to clicks, the body drives keyword coverage.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white pt-2">CTA: above the fold or it does not exist</h3>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Most viewers who would become leads will never click "Show more." If your CTA is at the bottom of a 500-word description, the majority of your potential leads will not see it. The tool penalises CTAs that are only present below the fold and rewards CTAs that are action-oriented ("book a call," "download the guide," "start your free trial") rather than passive ("visit our website").
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white pt-2">Chapter labels: an SEO signal most businesses ignore</h3>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        YouTube indexes chapter labels separately. A chapter titled "02:14 Pricing" will not rank for anything. A chapter titled "02:14 How much does [Product] cost for a 20-person team" is a searchable phrase that can surface your video in a distinct set of searches. Most business channels either skip chapters entirely or use bland section names. Both are missed opportunities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 6: How this connects to lead generation -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">How metadata connects to lead generation</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Metadata is not a technicality. It is the first thing that determines whether a buyer finds your video at all.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The chain works like this. A buyer searches YouTube for a phrase related to a problem they need to solve. YouTube's algorithm matches that phrase against video titles, descriptions, and chapter labels. Your video either appears in those results or it does not. If it appears, the buyer reads the title and the first 150 characters of the description to decide whether to click. If they click, the CTA determines whether they take a next step with your business.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Every one of the 5 dimensions this tool scores corresponds to a specific point in that chain. A weak title breaks the chain at step one. A strong title but weak description opening breaks it at step two. A strong title and description but no visible CTA breaks it at the final step.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Most business channels have videos that break the chain at multiple points simultaneously. That is why they generate views but not leads. Fixing the metadata does not require re-filming anything. The content you have already produced can start generating pipeline once the metadata is aligned with how buyers search.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        If you want to go beyond metadata and build a full YouTube acquisition system, from topic research to video structure to the lead path after someone watches, <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">book a diagnostic call</a>. The tool tells you what is broken. The diagnostic tells you what to build next.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Frequently asked questions</h2>
+      <div class="space-y-6">
+        {[
+          {
+            q: 'Does this tool access my YouTube account?',
+            a: 'No. It reads publicly available metadata from any public YouTube video URL. No login, no permissions, no account connection required.',
+          },
+          {
+            q: 'What does a score of 40 vs 80 actually mean in practice?',
+            a: 'A score of 40 typically means the video has correct content but its metadata is effectively invisible to search. The title does not match how buyers search, the description has no keyword coverage, and there is no CTA above the fold. A score of 80 means the metadata is largely aligned with buyer search behaviour and the main value leaks are minor. The score is a proxy for "how findable is this video to the people most likely to buy?"',
+          },
+          {
+            q: 'Will fixing my metadata change my existing video rankings?',
+            a: 'Yes, often within days. YouTube re-indexes video metadata when you update it. Improving a title from a generic phrase to a buyer-intent phrase has moved videos from page 3 to page 1 for specific search terms. The effect is fastest on videos that already have some watch time, since YouTube uses watch signals alongside metadata.',
+          },
+          {
+            q: 'Should I use this tool before or after publishing a video?',
+            a: 'Both. Before publishing: use it to check your planned title and description before the video goes live. After publishing: run it on existing videos to find which ones have the highest gap between content quality and metadata quality. Those are the easiest wins since the content is already done.',
+          },
+          {
+            q: 'My video has no chapters. Does that automatically score me lower?',
+            a: 'Yes. No chapters scores 0 out of 20 on the Chapter Labels dimension. Chapters are one of the most underused SEO signals on YouTube. Adding 4 to 5 well-labelled chapters to an existing video takes under 10 minutes and costs nothing.',
+          },
+          {
+            q: 'How is this different from checking YouTube SEO with VidIQ or TubeBuddy?',
+            a: 'VidIQ and TubeBuddy optimise for discoverability to general viewers: suggested video placement, trending topics, subscriber growth. This tool optimises for discoverability to buyers: search-intent phrases, above-the-fold CTAs, evaluation-stage titles. The output looks similar but the scoring criteria are fundamentally different.',
+          },
+          {
+            q: 'Can I use this for a video that is not on my own channel?',
+            a: 'Yes. You can run any public YouTube video URL through the tool. Some businesses use it to analyse competitor videos and identify gaps in their own metadata strategy.',
+          },
+        ].map((item) => (
+          <details class="group rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 overflow-hidden">
+            <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none">
+              <span class="text-sm font-semibold text-gray-900 dark:text-white">{item.q}</span>
+              <span class="flex-shrink-0 w-5 h-5 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-gray-400 group-open:text-emerald-600 group-open:border-emerald-500 dark:group-open:text-emerald-400 transition-colors text-xs font-bold select-none">+</span>
+            </summary>
+            <div class="px-5 pb-5 border-t border-slate-100 dark:border-slate-800 pt-4">
+              <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <script>
