@@ -187,7 +187,7 @@ QA items are tiered by severity:
 - [ ] Every visual earns its place — no decorative charts or generic diagrams
 - [ ] All diagrams are SVG — no inline HTML visuals
 - [ ] Visual type matches one of the Priority Visual Types in Fix #16
-- [ ] Visual is placed immediately after the prose it supports — not before, not mid-argument
+- [ ] Visual placement follows type: **framework/process diagrams** (buyer journey, pillars, steps) go immediately below the H2, before explanatory prose. **Comparison/punchline diagrams** (two-outcome contrast, gap visualisation) go after the setup prose. Never mid-argument.
 - [ ] Every element in the SVG is labelled directly — does not rely on surrounding prose to explain
 - [ ] SVG uses clear hierarchy, whitespace, and 2–3 colours maximum
 - [ ] SVG files are self-contained: no external CDN links, no remote fonts, no remote images

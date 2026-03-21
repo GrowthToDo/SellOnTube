@@ -5,6 +5,7 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 
 ## Trigger phrases
 "write a post about X", "draft a blog on Y", "create content about Z", "write the blog post"
+"update this post", "rewrite this blog", "improve this article", "optimise this post"
 
 ## Source files to read before writing
 1. `style-guide.md` — mandatory. All rules apply.
@@ -101,14 +102,34 @@ publishDate: YYYY-MM-DD
 title: '[approved title]'
 excerpt: '[excerpt — must NOT start with "A practical guide" or "This post covers". Must contain a specific claim or number.]'
 image: ~/assets/images/blog/[slug]-featured.svg
+image_alt: '[descriptive alt text — max 125 chars, no keyword stuffing]'
 category: [category]
 tags:
   - [tag1]
   - [tag2]
+faqs:
+  - question: '[real search query]'
+    answer: '[direct answer — 2-4 sentences, no hedging]'
+  - question: '[real search query]'
+    answer: '[direct answer]'
+  - question: '[real search query]'
+    answer: '[direct answer]'
 metadata:
   canonical: https://sellontube.com/[slug]
+  description: '[meta description — different from excerpt. Max 155 chars. Angle: what the reader gains.]'
+  openGraph:
+    url: https://sellontube.com/[slug]
+    siteName: SellOnTube
+    locale: en_US
+    type: article
+  twitter:
+    handle: "@sellontube"
+    site: "@sellontube"
+    cardType: summary_large_image
 ---
 ```
+
+> **Note on `faqs:` field:** This generates FAQ JSON-LD schema automatically via the blog template. Always populate it — it is the schema source of truth. Also render the same FAQs inline in the post body at the end (the inline FAQ section is for readers; the frontmatter field is for Google).
 
 Then full body in MDX, followed by:
 - **Author bio** (mandatory) — name, role, specific expertise, years of experience or client count, LinkedIn link. Place before the Sources section. See `ai-seo-guide.md` §7 for required fields.
@@ -201,6 +222,53 @@ After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to th
 - Strategy / framework piece: 1500–2500 words
 - Comparison post: 1000–1800 words
 - Never pad to hit a word count — cut ruthlessly
+
+---
+
+---
+
+## Blog Post Update Protocol
+
+Use this workflow instead of the new-post workflow when updating or rewriting an existing post. The reason updates take multiple rounds is skipping this pre-update audit — do it first, fix everything found, then write.
+
+### Pre-update audit (run before writing a single word)
+
+Read the full post file. Then check every item below. Fix anything that fails before starting content edits.
+
+**File and frontmatter**
+- [ ] File is `.mdx` — if `.md`, rename it now. `.md` files silently break all inline HTML and SVG.
+- [ ] `image` field references a real file. Run `ls src/assets/images/blog/` and confirm the exact filename. A wrong path = broken page on deploy.
+- [ ] `image_alt` is present and descriptive (max 125 chars, no keyword stuffing)
+- [ ] `faqs:` field is present with 3 real FAQ entries — this generates the FAQ JSON-LD schema
+- [ ] `metadata.description` is present and distinct from `excerpt`
+- [ ] `metadata.openGraph` and `metadata.twitter` blocks are present
+
+**Structure — check these exist; add them if missing**
+- [ ] Key Takeaways amber box immediately after the intro (mandatory on posts >1,000 words)
+- [ ] Table of Contents slate box immediately after Key Takeaways (anchor links to every H2)
+- [ ] Exactly ONE `---` horizontal rule in the post body — placed after the ToC box, before the first H2. Grep for `^---$` and count. Remove every extra.
+- [ ] "What to Do This Week" is a styled blue HTML box (`background: #eff6ff; border-left: 4px solid #3b82f6`) — NOT a bare markdown list
+- [ ] FAQ section is present inline in the post body (separate from frontmatter — both are needed)
+
+**Content quality — check before writing**
+- [ ] Grep for `—` (em dash). Fix ALL matches before starting. Do not add new content first.
+- [ ] All H2s include the target keyword where natural — H2s double as ToC anchors and YouTube chapter titles
+- [ ] H2 numbering: only number the "problems/mistakes" list items. The solution section (final H2) must NOT be numbered.
+- [ ] Second person throughout: no "most businesses", "many founders", "they" — replace with "you/your"
+- [ ] At least 4 internal links: a mix of blog posts, tools (`/youtube-roi-calculator`), and pSEO pages (`/youtube-for/`, `/youtube-vs/`)
+
+**Diagrams (if adding or repositioning)**
+- [ ] Framework/process diagrams (buyer journey, pillars, steps): place immediately below the H2, before any explanatory prose. The diagram orients the reader before the detail arrives.
+- [ ] Comparison/punchline diagrams (contrasting two outcomes, showing a gap): place after the setup prose. The reader needs context to read the visual.
+- [ ] All SVGs use inline styles (not class names) — MDX does not reliably process Tailwind class-based styles inside SVG elements.
+
+### Post-update checklist (before handing to Agent 05)
+
+1. Run humanizer Phase 2.5 (Pass 1 + Pass 2) on ALL existing copy, not just new additions. Old copy inherits AI tells from the original draft.
+2. Grep for `—` again. New copy adds new risks.
+3. Verify featured image file exists at the exact path in the `image` frontmatter field.
+4. Count internal links — must be ≥ 4.
+5. Hand to Agent 05. Do not surface to user before QA passes.
 
 ---
 
