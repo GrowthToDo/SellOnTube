@@ -177,6 +177,160 @@ const TOOLS = {
     hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="intercom"]'],
     extraDelay: 1500,
   },
+  'transcript-sellontube': {
+    url: 'https://sellontube.com/tools/youtube-transcript-generator',
+    scrollTo: '#step-input, form, [id="tool-container"], main section',
+    scrollPx: 80,
+    clipY: 64,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[id*="chat"]'],
+    extraDelay: 1000,
+  },
+  'transcript-sonix': {
+    url: 'https://sonix.ai/features/automated-transcription',
+    scrollTo: 'form, [class*="hero"], [class*="tool"], main',
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="intercom"]', '[class*="beacon"]'],
+    extraDelay: 1800,
+  },
+  'transcript-elevenlabs': {
+    url: 'https://elevenlabs.io/youtube-transcript-generator',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 0,
+    waitFor: null,
+    fillInputs: [],
+    clickJS: () => {
+      const candidates = [...document.querySelectorAll('[role="tab"], [class*="tab"], [class*="platform"], [class*="type"], button, li')];
+      const yt = candidates.find(el => el.textContent.trim() === 'YouTube' && el.offsetParent !== null);
+      if (yt) { yt.click(); return; }
+      // fallback: any element with exact YouTube text
+      const all = [...document.querySelectorAll('*')];
+      const ytFb = all.find(el => el.children.length === 0 && el.textContent.trim() === 'YouTube' && el.offsetParent !== null);
+      if (ytFb) ytFb.click();
+    },
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="banner"]'],
+    extraDelay: 2500,
+  },
+  'transcript-vidiq': {
+    url: 'https://vidiq.com/',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="CookieBanner"]', '[class*="consent"]', '[class*="gdpr"]', '#onetrust-banner-sdk'],
+    extraDelay: 1800,
+  },
+  'transcript-subscribr': {
+    url: 'https://subscribr.ai/',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="banner"]'],
+    extraDelay: 2000,
+  },
+  'transcript-rev': {
+    url: 'https://www.rev.com/services/transcription',
+    scrollTo: 'form, [class*="hero"], [class*="upload"], main',
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="intercom"]'],
+    extraDelay: 2000,
+  },
+  'transcript-happyscribe': {
+    url: 'https://www.happyscribe.com/',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="intercom"]', '[class*="gdpr"]'],
+    extraDelay: 1800,
+  },
+  'transcript-notta': {
+    url: 'https://www.notta.ai/en/youtube-transcript-generator',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 0,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="banner"]'],
+    extraDelay: 2000,
+  },
+  'transcript-otter': {
+    url: 'https://otter.ai/',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="intercom"]'],
+    extraDelay: 1800,
+  },
+  'transcript-descript': {
+    url: 'https://www.descript.com/features/transcription',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="intercom"]'],
+    extraDelay: 3500,
+  },
+  'transcript-kapwing': {
+    url: 'https://www.kapwing.com/tools/transcription',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 0,
+    waitFor: 'h1',
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="intercom"]', '[class*="beacon"]'],
+    extraDelay: 5000,
+  },
+  'transcript-transkriptor': {
+    url: 'https://transkriptor.com/youtube-video-to-text/',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="banner"]'],
+    extraDelay: 1800,
+  },
+  'transcript-notegpt': {
+    url: 'https://notegpt.io/youtube-transcript-generator',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 0,
+    waitFor: null,
+    fillInputs: [],
+    clickJS: () => {
+      const all = [...document.querySelectorAll('a, button, [role="menuitem"], li, nav *')];
+      const yt = all.find(el => /youtube transcript/i.test(el.textContent) && el.offsetParent !== null);
+      if (yt) yt.click();
+    },
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="banner"]'],
+    extraDelay: 2000,
+  },
+  'transcript-tactiq': {
+    url: 'https://tactiq.io/tools/youtube-transcript',
+    scrollTo: null,
+    scrollPx: 0,
+    clipY: 68,
+    waitFor: null,
+    fillInputs: [],
+    hideSelectors: ['[class*="cookie"]', '[id*="cookie"]', '[class*="chat"]', '[class*="banner"]'],
+    extraDelay: 1800,
+  },
 };
 
 async function dismissOverlays(page) {
@@ -262,6 +416,7 @@ async function takeToolScreenshot(toolName, config) {
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-web-security'],
     defaultViewport: { width: VIEWPORT_W, height: 900 },
+    protocolTimeout: 120000,
   });
 
   try {
@@ -288,6 +443,24 @@ async function takeToolScreenshot(toolName, config) {
 
     // Hide distracting elements
     await hideElements(page, config.hideSelectors);
+
+    // Click specific elements (e.g. tabs) before screenshotting
+    if (config.clickSelectors && config.clickSelectors.length > 0) {
+      for (const sel of config.clickSelectors) {
+        try {
+          const el = await page.$(sel);
+          if (el) { await el.click(); await new Promise(r => setTimeout(r, 800)); }
+        } catch (e) { /* try next */ }
+      }
+    }
+
+    // Run arbitrary JS click logic (e.g. find tab by text)
+    if (config.clickJS) {
+      try {
+        await page.evaluate(config.clickJS);
+        await new Promise(r => setTimeout(r, 1000));
+      } catch (e) { /* ignore */ }
+    }
 
     // Scroll to the tool
     await scrollToTool(page, config);
