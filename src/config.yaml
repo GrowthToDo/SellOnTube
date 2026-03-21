@@ -44,7 +44,7 @@ header:
       href: "/pricing"
     - text: "Blog"
       href: "/blog"
-    - text: "Free Tools"
+    - text: "Tools"
       href: "/tools"
 
   actions:
