@@ -32,3 +32,6 @@ research/**/*.xls
 
 # Claude Code local settings — contains GitHub tokens and machine-specific paths
 .claude/
+
+# Local Netlify folder
+.netlify
