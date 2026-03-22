@@ -441,9 +441,15 @@ export default async (request: Request) => {
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
     console.error('youtube-seo-tool error:', detail);
+    const isTimeout = error instanceof Error && (error.name === 'TimeoutError' || error.name === 'AbortError');
     return new Response(
-      JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.', detail }),
-      { status: 500, headers }
+      JSON.stringify({
+        error: isTimeout
+          ? 'This took longer than expected. Please try again.'
+          : 'Something went wrong on our end. Please try again in a moment.',
+        detail,
+      }),
+      { status: isTimeout ? 503 : 500, headers }
     );
   }
 };
