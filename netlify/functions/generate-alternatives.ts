@@ -1,4 +1,4 @@
-// v2
+// v3 — BuyerFit unified dimensions
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
@@ -6,30 +6,32 @@ function buildPrompt(
   topic: string,
   targetCustomer: string,
   product: string,
-  scores: { buyerIntent: string; audienceRelevance: string; problemProximity: string; conversionOpportunity: string }
+  scores: { buyerIntent: string; audienceFit: string; problemUrgency: string; conversionPath: string },
+  currentYear: number
 ): string {
   const weakDimensions = [
-    scores.buyerIntent !== 'High' ? `Buyer Intent is ${scores.buyerIntent} (viewer is not in decision mode)` : null,
-    scores.audienceRelevance !== 'High' ? `Audience Relevance is ${scores.audienceRelevance} (topic may attract the wrong audience, not "${targetCustomer}")` : null,
-    scores.problemProximity !== 'High' ? `Problem Proximity is ${scores.problemProximity} (viewer has no urgent active problem)` : null,
-    scores.conversionOpportunity !== 'Strong' ? `Conversion Opportunity is ${scores.conversionOpportunity} (product introduction feels forced)` : null,
+    scores.buyerIntent !== 'High' ? `Buyer Intent is ${scores.buyerIntent} (viewer is not in evaluation or decision mode)` : null,
+    scores.audienceFit !== 'High' ? `Audience Fit is ${scores.audienceFit} (topic may attract the wrong audience, not "${targetCustomer}")` : null,
+    scores.problemUrgency !== 'High' ? `Problem Urgency is ${scores.problemUrgency} (viewer has no active, urgent problem)` : null,
+    scores.conversionPath !== 'Strong' ? `Conversion Path is ${scores.conversionPath} (introducing ${product} would feel forced or unnatural)` : null,
   ].filter(Boolean);
 
   const weakSummary = weakDimensions.length > 0
     ? 'The topic is weak on: ' + weakDimensions.join('; ') + '.'
     : 'The topic scores well overall — generate titles that maintain these strengths while improving specificity.';
 
-  return `You are a YouTube content strategist for B2B businesses. A user evaluated this YouTube topic:
+  return `You are a YouTube content strategist for B2B businesses. A user evaluated this YouTube topic using the BuyerFit framework:
 
 Topic: "${topic}"
 Target Customer: "${targetCustomer}"
 Product/Service: "${product}"
+Current year: ${currentYear}
 
-Dimension scores:
+BuyerFit dimension scores:
 - Buyer Intent: ${scores.buyerIntent} (High = viewer is evaluating or deciding; Low = viewer is curious or learning)
-- Audience Relevance: ${scores.audienceRelevance} (High = exactly "${targetCustomer}"; Low = wrong audience)
-- Problem Proximity: ${scores.problemProximity} (High = viewer has an urgent, active problem; Low = passive interest)
-- Conversion Opportunity: ${scores.conversionOpportunity} (Strong = natural product fit; Weak = forced or unrelated)
+- Audience Fit: ${scores.audienceFit} (High = exactly "${targetCustomer}"; Low = wrong audience)
+- Problem Urgency: ${scores.problemUrgency} (High = viewer has an urgent, active problem right now; Low = passive interest)
+- Conversion Path: ${scores.conversionPath} (Strong = natural product fit; Weak = forced or unrelated)
 
 ${weakSummary}
 
@@ -39,13 +41,14 @@ Generate exactly 3 alternative YouTube video titles. Each must:
 - Create a natural moment to mention or demonstrate "${product}"
 - Score higher than the original on the weakest dimensions listed above
 - Feel like a real video a credible B2B channel would publish — not generic or vague
+- When including a year in the title, use ${currentYear} — never use a past year
 
 Respond with this exact JSON and nothing else:
 {
   "alternatives": [
     {
       "topic": "The exact video title",
-      "fixes": "Which dimension(s) this improves, e.g. Buyer Intent",
+      "fixes": "Which BuyerFit dimension(s) this improves, e.g. Buyer Intent",
       "explanation": "1-2 sentences: what kind of viewer this attracts and why it converts better for ${targetCustomer}."
     }
   ]
@@ -68,7 +71,6 @@ export default async (request: Request) => {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers });
   }
 
-  // Accept either GEMINI_API_KEY or GOOGLE_API_KEY
   const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
   if (!apiKey) {
     return new Response(
@@ -88,12 +90,14 @@ export default async (request: Request) => {
       );
     }
 
+    const currentYear = new Date().getFullYear();
+
     const geminiRes = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: AbortSignal.timeout(20000),
       body: JSON.stringify({
-        contents: [{ parts: [{ text: buildPrompt(topic.trim(), targetCustomer.trim(), product.trim(), scores) }] }],
+        contents: [{ parts: [{ text: buildPrompt(topic.trim(), targetCustomer.trim(), product.trim(), scores, currentYear) }] }],
         generationConfig: { responseMimeType: 'application/json', temperature: 0.7, maxOutputTokens: 2048 },
       }),
     });
@@ -104,7 +108,7 @@ export default async (request: Request) => {
       if (geminiRes.status === 429) {
         return new Response(JSON.stringify({ error: 'quota_exceeded', debug: errText }), { status: 429, headers });
       }
-      // Use 503 instead of 502 — Cloudflare intercepts 502 and hides the real error body
+      // Use 503 not 502 — Cloudflare intercepts 502 and hides the real error body
       return new Response(
         JSON.stringify({ error: 'AI service unavailable', geminiStatus: geminiRes.status, detail: errText.slice(0, 500) }),
         { status: 503, headers }

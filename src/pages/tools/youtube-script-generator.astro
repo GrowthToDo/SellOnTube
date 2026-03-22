@@ -1,0 +1,172 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'YouTube Script Generator for Business | Coming Soon | SellonTube',
+  description:
+    'A YouTube script generator built for B2B businesses. Takes your video idea and generates a buyer-intent script with a natural product pitch. Coming soon from SellonTube.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded-full px-3 py-1">Building in progress</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        YouTube Script Generator<br class="hidden sm:block" /> for Business
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Takes your buyer-intent video idea and generates a complete script with a natural product pitch built in. No forced CTAs. No filler. Just a script that converts.
+      </p>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div class="max-w-md mx-auto px-4">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Get notified when it launches</p>
+        <p class="text-xs text-gray-500 dark:text-slate-400 mb-5">We'll email you as soon as the Script Generator is live. No spam.</p>
+
+        <div id="waitlist-form" class="space-y-3">
+          <input
+            type="email"
+            id="waitlist-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+          />
+          <p id="waitlist-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="waitlist-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Notify me when it's ready
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. Unsubscribe any time.</p>
+        </div>
+
+        <div id="waitlist-success" class="hidden text-center py-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-1">You're on the list.</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">We'll email you when the Script Generator launches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it will do -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">What it will do</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Start with your video idea</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Paste the buyer-intent video idea you want to script. Add your product, target customer, and what problem it solves.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a complete script</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The generator writes a full script: hook, body, and close. Structured around your buyer's decision journey, not generic content frameworks.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Built-in conversion path</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Every script includes a natural product mention and CTA that matches the topic, not a forced pitch bolted onto the end.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- In the meantime -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-8">
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Start with the right video ideas while you wait</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          A great script starts with a buyer-intent video idea. Use the Video Ideas Generator to find topics that attract decision-stage viewers. You'll have the right ideas ready when the Script Generator launches.
+        </p>
+        <a
+          href="/tools/youtube-video-ideas-generator"
+          class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate buyer-intent video ideas &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Want a script reviewed before the tool launches?"
+    subtitle="In our diagnostic call, we map your full YouTube acquisition system, including how your scripts should be structured to convert viewers into leads."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+</Layout>
+
+<script>
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+
+  async function submitWaitlist(): Promise<void> {
+    const emailInput = document.getElementById('waitlist-email') as HTMLInputElement;
+    const errorEl = document.getElementById('waitlist-error') as HTMLElement;
+    const btn = document.getElementById('waitlist-btn') as HTMLButtonElement;
+    const email = emailInput.value.trim().toLowerCase();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    errorEl.classList.add('hidden');
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-script-generator-waitlist' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_waitlist_submitted', tool: 'youtube-script-generator' });
+
+    const form = document.getElementById('waitlist-form') as HTMLElement;
+    const success = document.getElementById('waitlist-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+  }
+
+  document.getElementById('waitlist-btn')?.addEventListener('click', submitWaitlist);
+  document.getElementById('waitlist-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitWaitlist();
+  });
+</script>
