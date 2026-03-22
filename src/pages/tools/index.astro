@@ -24,7 +24,7 @@ const tools = [
     slug: '/tools/youtube-video-ideas-evaluator',
     tagline: 'Does this video idea attract buyers or just viewers?',
     description:
-      'Paste a YouTube video idea, your target customer, and your business type. Get a buyer intent score across 5 dimensions plus 3–5 higher-converting video ideas.',
+      'Paste a YouTube video idea, your target customer, and what you sell. Get an instant verdict on whether it will generate leads, scored across 4 buyer intent dimensions.',
     badge: 'Buyer Intent',
     badgeColor: 'emerald',
   },
@@ -55,6 +55,15 @@ const tools = [
     badge: 'Transcripts',
     badgeColor: 'emerald',
   },
+  {
+    name: 'YouTube Script Generator',
+    slug: '/tools/youtube-script-generator',
+    tagline: 'Turn your buyer-intent video idea into a complete script.',
+    description:
+      'Takes your video idea and generates a full script with a natural product pitch built in. Hook, body, and close structured around your buyer\'s decision journey. Coming soon.',
+    badge: 'Coming Soon',
+    badgeColor: 'amber',
+  },
 ];
 ---
 
@@ -77,7 +86,7 @@ const tools = [
             <h2 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
               {tool.name}
             </h2>
-            <span class="flex-shrink-0 text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+            <span class={`flex-shrink-0 text-xs font-semibold px-3 py-1 rounded-full ${tool.badgeColor === 'amber' ? 'bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'}`}>
               {tool.badge}
             </span>
           </div>

@@ -35,6 +35,7 @@ export const footerData = {
         { text: 'Video Idea Evaluator', href: getPermalink('/tools/youtube-video-ideas-evaluator') },
         { text: 'Video Ideas Generator', href: getPermalink('/tools/youtube-video-ideas-generator') },
         { text: 'Transcript Generator', href: getPermalink('/tools/youtube-transcript-generator') },
+        { text: 'Script Generator', href: getPermalink('/tools/youtube-script-generator') },
       ],
     },
     {
