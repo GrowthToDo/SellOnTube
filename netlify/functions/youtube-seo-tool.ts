@@ -129,14 +129,48 @@ One sentence: what this business sells and who they serve. If websiteText is nul
 ## headline_diagnosis
 One sentence naming the single biggest reason this video is not found by buyers. Be direct and specific. Example: "The title targets curiosity, not purchase intent. A buyer searching for a solution will never see this."
 
-## Anti-AI self-audit (run before returning)
-Check every string in your output. Remove or rewrite anything that contains:
-- AI vocabulary: emphasizing, fostering, landscape, testament, delve, utilize, leverage, robust, comprehensive, seamless, elevate, empower, unlock, game-changer, dive into, cutting-edge
-- Negative parallelisms ("not just X, it's Y")
-- Em dashes
-- Rule-of-three lists (X, Y, and Z sentence endings)
-- Filler phrases ("in order to," "due to the fact that," "it is worth noting that")
-- Vague claims: replace with concrete specifics
+## Anti-AI self-audit (two steps — run before returning)
+
+Step 1 — Flag: For every string in your output ask: "What makes this obviously AI-generated?" Scan for:
+- Vague authority language: "making it difficult for potential customers", "plays a crucial role", "in today's landscape"
+- Rule-of-three endings: "finds, evaluates, and decides" / "fast, reliable, and scalable"
+- Negative parallelisms: "it's not just X, it's Y"
+- Filler openers: "In order to", "It is worth noting that", "This ensures that", "Additionally"
+- Copula avoidance: "serves as", "functions as", "stands as" → replace with plain "is"
+- Em dashes (—)
+- AI vocabulary: emphasizing, fostering, leverage, robust, seamless, elevate, empower, unlock, comprehensive, cutting-edge, pivotal, testament, delve, showcase, vibrant, crucial, highlight
+
+Step 2 — Rewrite every flagged string before returning. Rules:
+- Specific beats vague. Not "lacks buyer intent" → "no buyer would search this title"
+- Plain verbs. Not "leverages automation to enhance workflows" → "automates invoice approvals"
+- One idea per sentence. No stacked clauses.
+- Vary length. Short. Then one that takes a beat longer to land.
+
+Field-specific before/after examples:
+
+headline_diagnosis
+  BAD: "The title fails to incorporate buyer-intent keywords, limiting discoverability among potential customers in the consideration stage."
+  GOOD: "A founder searching 'best payroll tool for remote teams' will never see this. The title reads like an internal meeting name."
+
+business_summary
+  BAD: "This company provides innovative solutions to help entrepreneurs leverage technology for enhanced business operations."
+  GOOD: "Helps non-US founders open a US bank account and form an LLC without flying to America."
+
+title fix
+  BAD: "Unlock Your YouTube Potential: A Comprehensive Guide to B2B Video SEO"
+  GOOD: "YouTube SEO for B2B: How to Get Found by Buyers, Not Browsers"
+
+description fix (first 150 chars)
+  BAD: "In this comprehensive video, we explore innovative strategies to leverage YouTube's powerful platform for robust business growth."
+  GOOD: "If you sell to other businesses, YouTube search is where buyers research before they buy. Here's how to make sure they find your video."
+
+cta fix
+  BAD: "To unlock the full potential of your YouTube strategy, book a free discovery call to explore how we can help you achieve your goals."
+  GOOD: "Book a free strategy call: [URL]. We find the exact searches your buyers run before they decide."
+
+chapter labels fix
+  BAD: "00:00 Introduction and Overview\n00:45 Understanding the Core Concepts\n02:30 Exploring Key Strategies"
+  GOOD: "00:00 Why YouTube buyers search differently than creators\n00:45 Title formats that rank for purchase intent\n02:30 How to audit your description in 5 minutes"
 
 After the self-audit, return the final JSON only.
 
@@ -262,6 +296,7 @@ export default async (request: Request) => {
     const dataFetchRes = await fetch(`https://api.datafetchapi.com/v1/youtube/video/${videoId}`, {
       method: 'GET',
       headers: { 'X-API-KEY': youtubeApiKey },
+      signal: AbortSignal.timeout(12000),
     });
 
     if (!dataFetchRes.ok) {
@@ -307,6 +342,7 @@ export default async (request: Request) => {
     const geminiRes = await fetch(`${GEMINI_API_URL}?key=${geminiApiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      signal: AbortSignal.timeout(20000),
       body: JSON.stringify({
         system_instruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
         contents: [{

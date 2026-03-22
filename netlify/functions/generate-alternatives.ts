@@ -91,6 +91,7 @@ export default async (request: Request) => {
     const geminiRes = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      signal: AbortSignal.timeout(20000),
       body: JSON.stringify({
         contents: [{ parts: [{ text: buildPrompt(topic.trim(), targetCustomer.trim(), product.trim(), scores) }] }],
         generationConfig: { responseMimeType: 'application/json', temperature: 0.7, maxOutputTokens: 2048 },

@@ -74,6 +74,7 @@ export default async (request: Request) => {
     const apiRes = await fetch(apiUrl, {
       method: 'GET',
       headers: { 'X-API-KEY': apiKey },
+      signal: AbortSignal.timeout(12000),
     });
 
     if (!apiRes.ok) {
