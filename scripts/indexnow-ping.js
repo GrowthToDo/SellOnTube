@@ -1,7 +1,12 @@
 // scripts/indexnow-ping.js
-// Pings IndexNow API after deploy to trigger fast indexing by Bing/search engines.
+// Pings IndexNow API after deploy to trigger fast indexing by search engines.
 // Run: node scripts/indexnow-ping.js
 // Env: INDEXNOW_KEY (required), SITE_URL (default: https://sellontube.com)
+//
+// Endpoints:
+//   - Yandex: confirmed working (202)
+//   - api.indexnow.org / Bing: known to fail with Netlify-hosted sites (403 on key
+//     verification from their crawler). Logged as a warning but does not fail the deploy.
 
 import https from 'https';
 
@@ -16,12 +21,14 @@ if (!key) {
 
 const sitemapUrl = `${siteUrl}/sitemap-index.xml`;
 
+// required = must succeed for exit 0; optional = logged but non-fatal
 const endpoints = [
-  `https://api.indexnow.org/indexnow?url=${encodeURIComponent(sitemapUrl)}&key=${key}`,
-  `https://www.bing.com/indexnow?url=${encodeURIComponent(sitemapUrl)}&key=${key}`,
+  { url: `https://yandex.com/indexnow?url=${encodeURIComponent(sitemapUrl)}&key=${key}`, required: true },
+  { url: `https://api.indexnow.org/indexnow?url=${encodeURIComponent(sitemapUrl)}&key=${key}`, required: false },
+  { url: `https://www.bing.com/indexnow?url=${encodeURIComponent(sitemapUrl)}&key=${key}`, required: false },
 ];
 
-function ping(url) {
+function ping({ url, required }) {
   return new Promise((resolve) => {
     https.get(url, (res) => {
       let body = '';
@@ -31,15 +38,16 @@ function ping(url) {
           console.log(`[IndexNow] ✓ Success (${res.statusCode}): ${url}`);
           resolve(true);
         } else {
-          console.error(`[IndexNow] ✗ Failed (${res.statusCode}): ${url}`);
-          if (body) console.error(`[IndexNow]   Response: ${body.slice(0, 200)}`);
-          resolve(false);
+          const label = required ? '✗' : '⚠';
+          console[required ? 'error' : 'warn'](`[IndexNow] ${label} ${required ? 'Failed' : 'Warning'} (${res.statusCode}): ${url}`);
+          if (body) console[required ? 'error' : 'warn'](`[IndexNow]   Response: ${body.slice(0, 200)}`);
+          resolve(!required); // non-fatal endpoints resolve true so they don't block exit 0
         }
       });
     }).on('error', (err) => {
-      console.error(`[IndexNow] ✗ Network error: ${url}`);
-      console.error(`[IndexNow]   ${err.message}`);
-      resolve(false);
+      console[required ? 'error' : 'warn'](`[IndexNow] ${required ? '✗' : '⚠'} Network error: ${url}`);
+      console[required ? 'error' : 'warn'](`[IndexNow]   ${err.message}`);
+      resolve(!required);
     });
   });
 }
@@ -49,10 +57,10 @@ async function main() {
   const results = await Promise.all(endpoints.map(ping));
   const allOk = results.every(Boolean);
   if (!allOk) {
-    console.error('[IndexNow] One or more pings failed.');
+    console.error('[IndexNow] Required ping failed.');
     process.exit(1);
   }
-  console.log('[IndexNow] All pings successful.');
+  console.log('[IndexNow] Done.');
 }
 
 main();
