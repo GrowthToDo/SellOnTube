@@ -25,7 +25,8 @@ High-quality = B2B founders, SaaS operators, and service businesses actively exp
 ### C. Blog — 1 post/week (hard ceiling: 2/week)
 - **Priority cluster: `youtube_seo`** — validated by DataForSEO (March 2026). 8 winnable keywords, top volume 4,400/month, KD range 0–27. Start every new post here before touching other clusters.
 - All keyword selection must use `sot_master.csv` filtered to `tier = winnable` (KD ≤ 30). Never target `avoid` or `stretch` tier keywords until the site has measurable domain authority. See "Keyword Tier System" below.
-- Next post target: "youtube seo tools" (4,400 vol, KD 23) — highest volume winnable keyword in the CSV
+- ~~Next post target: "youtube seo tools" (4,400 vol, KD 23)~~ — DONE (published 2026-03-25)
+- **Next post target: "youtube seo services"** (1,600 vol, KD 8.5) — target publish date: 2026-03-31 or later. Angle TBD: reader is either (A) a business owner evaluating whether to hire a YouTube SEO agency, or (B) a marketer comparing service types. Confirm angle before writing.
 - 6 topical clusters mapped in `microtool-strategy.md` — Cluster 3 (YouTube SEO) is now Priority 1
 - Each post must target a specific validated keyword and follow the Content Quality Playbook
 - Blog + microtool tandem rule: whenever a blog post targets the `youtube_seo` or `youtube_automation` cluster, it must link to an existing or upcoming tool. The tool and post should ideally launch the same week.
