@@ -307,5 +307,5 @@ Yes, and they work best as a stack rather than in isolation. A practical sequenc
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #34d399; margin: 0 0 0.5rem 0;">Ready to fix your YouTube SEO?</p>
 <p style="font-size: 1.2rem; font-weight: 700; color: #fff; margin: 0 0 0.75rem 0;">Get a personalised channel diagnostic</p>
 <p style="color: #94a3b8; font-size: 0.9rem; margin: 0 0 1.5rem 0;">Find out exactly why your videos are not reaching buyers and what to fix first.</p>
-<a href="https://cal.com/gautham-8bdvdx/30min" style="display: inline-block; background: #10b981; color: #fff; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem;">Book a diagnostic call</a>
+<a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #10b981; color: #fff; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem;">Book a diagnostic call</a>
 </div>

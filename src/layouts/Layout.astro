@@ -47,6 +47,19 @@ const { language, textDirection } = I18N;
 
     <BasicScripts />
     <script>
+      // Open all external links in a new tab (runs on every page including View Transitions navigations)
+      function applyExternalLinks() {
+        document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+          const a = link as HTMLAnchorElement;
+          if (!a.hostname.endsWith('sellontube.com')) {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      }
+      document.addEventListener('astro:page-load', applyExternalLinks);
+    </script>
+    <script>
       document.addEventListener('click', function(e) {
         const link = (e.target as Element).closest('a[href*="cal.com"]');
         if (link) {
