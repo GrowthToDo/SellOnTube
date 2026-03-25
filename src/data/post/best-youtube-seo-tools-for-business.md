@@ -283,6 +283,8 @@ Use it as a five-minute sanity check before committing to a keyword. A tool scor
 **3.** Rewrite the titles and opening description lines of your two lowest-performing videos using the fixes from step one. Keep changes targeted. The goal is to align the metadata with the buyer query, not to rewrite the video itself.
 
 **4.** In 30 days, check those two videos in YouTube Studio. Look at the impression click-through rate and the search traffic breakdown. If both have moved, the rewrite worked. If not, run the videos through the SellonTube tool again. There may be a second-layer issue the first diagnosis did not surface.
+
+**5.** Once your existing videos are fixed, plan what to make next. Use a [YouTube video ideas generator](/tools/youtube-video-ideas-generator) to get buyer-intent ideas matched to your specific product and target customer, before committing to a new video.
 </div>
 
 ## Common Questions

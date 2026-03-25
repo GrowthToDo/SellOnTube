@@ -94,7 +94,9 @@ Every tool on this list was evaluated against four criteria. First, business rel
 
 ## 1. [SellonTube YouTube Video Ideas Generator](https://sellontube.com/tools/youtube-video-ideas-generator)
 
-![SellonTube YouTube Video Ideas Generator — main input and results view](../../assets/images/blog/tools/screenshots/sellontube.png)
+![SellonTube YouTube Video Ideas Generator — input form: product, URL, target customer, problem your product solves](../../assets/images/blog/tools/screenshots/sellontube-form.png)
+
+![SellonTube YouTube Video Ideas Generator — 5 buyer-intent video ideas output for a B2B product](../../assets/images/blog/tools/screenshots/sellontube-results.png)
 
 **SellonTube pros:**
 
