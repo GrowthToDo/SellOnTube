@@ -127,8 +127,6 @@ You paste your YouTube video URL and your website URL. Thirty seconds later, you
 
 This is the part that separates it from tools built for creators. TubeBuddy and vidIQ will tell you whether a keyword has search volume and how competitive it is. They will not tell you whether the keyword your video is targeting actually matches the intent of the buyer you are trying to reach. That gap is where most business channels lose ground.
 
-![SellonTube YouTube SEO Tool analysis screenshot: sample diagnosis output showing SEO score, primary issue, and dimension-level fixes for a business video](../../assets/images/blog/tools/screenshots/seo-sellontube-results-2x.jpg)
-
 Three scenarios where this shows up clearly.
 
 A SaaS founder who has published a series of tutorial videos notices they rank well in search but see no trial signups from YouTube. Running those videos through the tool reveals that every title is optimised for how-to queries, not for queries from people evaluating tools. The fix is a metadata rewrite, not new content.
