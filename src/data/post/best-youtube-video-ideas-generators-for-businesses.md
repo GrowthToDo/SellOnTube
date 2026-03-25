@@ -426,7 +426,26 @@ For businesses already using Instapage for landing pages, having an idea generat
 
 ## Which YouTube video ideas generator is right for your business?
 
-That depends on where your channel is and what you need from it. If you want ideas tied to revenue and buyer intent rather than raw views, SellonTube was built for exactly that problem. If you have an established channel and want data-backed SEO ideation, vidIQ or TubeBuddy will plug into your existing analytics. If you prefer to research what is actually performing before committing to a topic, 1of10's outlier detection gives you that lens. For competitive research, TubeMagic lets you reverse-engineer any channel's content patterns. If you just need free, zero-friction idea generation to break through a blank page, UTubeKit, RyRob, or SpeakNotes will get you moving in under a minute. And if you want to go from idea straight into video production, VEED.io handles that end-to-end. Start with what your business actually needs from YouTube, and pick the tool that matches: [sellontube.com/tools/youtube-video-ideas-generator](https://sellontube.com/tools/youtube-video-ideas-generator).
+Start with what your business actually needs from YouTube. Then pick the tool that matches.
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #10b981; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Pick by use case</p>
+<ul style="margin: 0; padding-left: 1.25rem;">
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want ideas tied to buyer intent and revenue, not views</strong> — SellonTube. Built specifically for this.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You have an established channel and want data-backed SEO ideation</strong> — vidIQ or TubeBuddy. Both plug into your existing analytics.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want to research what is already performing before committing to a topic</strong> — 1of10. Its outlier detection shows you what is breaking through.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want to reverse-engineer a competitor's content strategy</strong> — TubeMagic. Channel URL in, content patterns out.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You just need free, zero-friction ideas to get started</strong> — UTubeKit, RyRob, or SpeakNotes. Any of the three gets you moving in under a minute.</li>
+<li style="margin-bottom: 0; color: #334155; font-size: 0.9rem;"><strong>You want to go from idea straight into video production</strong> — VEED.io handles the full workflow end-to-end.</li>
+</ul>
+</div>
+
+<div style="background: #0f172a; border-radius: 12px; padding: 2rem 2.5rem; margin: 3rem 0; text-align: center;">
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #34d399; margin: 0 0 0.5rem 0;">Built for businesses, not creators</p>
+<p style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 0.75rem 0;">Get 5 buyer-intent video ideas for your product</p>
+<p style="color: #94a3b8; font-size: 0.9rem; margin: 0 0 1.5rem 0;">Free. No account needed. Results in 30 seconds.</p>
+<a href="/tools/youtube-video-ideas-generator" style="display: inline-block; background: #10b981; color: #fff; font-weight: 700; padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem;">Try the video ideas generator</a>
+</div>
 
 ---
 
