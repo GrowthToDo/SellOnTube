@@ -11,6 +11,8 @@
 |---|---|---|---|
 | youtube-marketing-roi | youtube-roi-calculator | YouTube ROI calculator | ROI formula section |
 | best-youtube-video-ideas-generators-for-businesses | youtube-video-ideas-evaluator | YouTube topic evaluator | Product section |
+| youtube-video-ideas-generator-for-b2b | youtube-video-ideas-generator | YouTube Video Ideas Generator | Patterns section (mid-post) |
+| youtube-video-ideas-generator-for-b2b | youtube-topic-evaluator | YouTube Topic Evaluator | Validation section |
 
 ---
 
@@ -28,6 +30,8 @@
 |---|---|---|---|
 | youtube-marketing-strategy | youtube-marketing-roi | YouTube marketing ROI | ROI measurement |
 | youtube-marketing-b2b | youtube-marketing-strategy | YouTube marketing strategy | Strategy reference |
+| youtube-video-ideas-generator-for-b2b | youtube-vs-blog-shopify-app-case-study | 3.25x More Conversions | Case studies section |
+| youtube-video-ideas-generator-for-b2b | best-youtube-video-ideas-generators-for-businesses | The 14 Best YouTube Video Ideas Generators | After patterns table |
 
 ---
 
