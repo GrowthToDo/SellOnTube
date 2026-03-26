@@ -1,3 +1,19 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "date": "2026-03-26",
+      "dayOfWeek": "Thursday",
+      "weekdayTheme": "Content / Messaging",
+      "sourceTitle": "How We Engineer High-Intent YouTube Topics: Inside Our Opportunity Analysis Framework",
+      "sourceUrl": "https://sellontube.com/blog/high-intent-topic-research-framework",
+      "postAngle": "The metric businesses use to pick YouTube topics (search volume) is the wrong one — intent density is what drives leads",
+      "hook": "The number that's ruining most YouTube content strategies isn't views, subscribers, or watch time.",
+      "hashtags": [
+        "#YouTubeSEO",
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "scheduled"
+    }
+  ]
 }

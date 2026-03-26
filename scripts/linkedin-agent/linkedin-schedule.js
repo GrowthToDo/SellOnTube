@@ -39,10 +39,14 @@ export function buildScheduledFor(dateStr) {
 export function buildPayload(post, accountId) {
   const payload = {
     content: post.linkedinPost,
-    scheduledFor: buildScheduledFor(post.scheduledDate),
     timezone: 'Asia/Kolkata',
     platforms: [{ platform: 'linkedin', accountId }],
   };
+  if (post.publishNow) {
+    payload.publishNow = true;
+  } else {
+    payload.scheduledFor = buildScheduledFor(post.scheduledDate);
+  }
   if (post.imageUrl) {
     payload.mediaUrls = [post.imageUrl];
   }
@@ -160,7 +164,8 @@ async function main() {
       await postToZernio(payload, apiKey);
       saveToHistory(post);
       console.log(`  SCHEDULED  ${label}`);
-      console.log(`             Publish: ${payload.scheduledFor} | Image: ${post.imageUrl ? 'yes' : 'none'}\n`);
+      const when = post.publishNow ? 'now' : payload.scheduledFor;
+      console.log(`             Publish: ${when} | Image: ${post.imageUrl ? 'yes' : 'none'}\n`);
       successCount++;
     } catch (err) {
       console.error(`  FAILED     ${label}`);

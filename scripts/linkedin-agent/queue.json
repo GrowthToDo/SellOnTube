@@ -1,13 +1,14 @@
 [
   {
-    "scheduledDate": "2026-03-31",
+    "scheduledDate": "YYYY-MM-DD",
     "dayOfWeek": "Monday",
     "weekdayTheme": "Strategy",
-    "sourceTitle": "The YouTube Acquisition Engine",
-    "sourceUrl": "https://sellontube.com/blog/the-youtube-acquisition-engine",
-    "imageUrl": "https://sellontube.com/images/og/youtube-acquisition-engine.jpg",
-    "postAngle": "YouTube as a compounding acquisition asset, not a content calendar task",
-    "linkedinPost": "Replace this with the full LinkedIn post text. Must include the source URL naturally in the body. Target 900-1700 characters. No em dashes.\n\nhttps://sellontube.com/blog/the-youtube-acquisition-engine",
-    "hashtags": ["#YouTubeSEO", "#B2BMarketing"]
+    "sourceTitle": "Exact page title",
+    "sourceUrl": "https://sellontube.com/exact-path",
+    "imageUrl": null,
+    "postAngle": "One sentence describing the angle taken",
+    "publishNow": false,
+    "linkedinPost": "Full post text ready to publish. Includes source URL naturally.",
+    "hashtags": ["#Optional", "#Hashtags"]
   }
 ]
