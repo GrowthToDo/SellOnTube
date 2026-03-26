@@ -6,8 +6,8 @@
 // Env:  ZERNIO_API_KEY, ZERNIO_ACCOUNT_ID (from .env or environment)
 
 import { readFileSync, writeFileSync } from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { fileURLToPath, pathToFileURL } from 'url';
+import { dirname, join, resolve } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -174,6 +174,7 @@ async function main() {
 }
 
 // Only run main if invoked directly (not imported)
-if (import.meta.url === `file://${process.argv[1]}`) {
+const scriptPath = pathToFileURL(resolve(process.argv[1])).href;
+if (import.meta.url === scriptPath) {
   main();
 }
