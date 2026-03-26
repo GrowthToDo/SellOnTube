@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "date": "2026-03-27",
+      "dayOfWeek": "Friday",
+      "weekdayTheme": "Mistakes / Contrarian",
+      "sourceTitle": "Why Most YouTube Strategies Fail (And What Actually Works)",
+      "sourceUrl": "https://sellontube.com/blog/why-most-youtube-strategies-fail",
+      "postAngle": "Creator strategy advice actively harms businesses on YouTube — the 7 failure patterns and what the acquisition-first model looks like instead",
+      "hook": "Your YouTube channel might be working perfectly for the wrong goal.",
+      "hashtags": [
+        "#YouTubeSEO",
+        "#B2BMarketing"
+      ],
+      "imageUrl": "https://sellontube.com/_astro/why-most-youtube-strategies-fail-feature.B4eIXsfk.webp",
+      "status": "scheduled"
+    },
+    {
       "date": "2026-03-26",
       "dayOfWeek": "Thursday",
       "weekdayTheme": "Content / Messaging",
