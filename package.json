@@ -24,7 +24,8 @@
     "get-image": "node scripts/get-feature-image.mjs",
     "image-sitemap": "node scripts/generate-image-sitemap.mjs",
     "indexnow": "node scripts/indexnow-ping.js",
-    "linkedin": "node scripts/linkedin-agent/linkedin-schedule.js"
+    "linkedin": "node scripts/linkedin-agent/linkedin-schedule.js",
+    "gsc-submit": "node scripts/gsc-sitemap-submit.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
