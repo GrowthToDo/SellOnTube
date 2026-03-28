@@ -1,14 +1,14 @@
 [
   {
-    "scheduledDate": "2026-03-27",
-    "dayOfWeek": "Friday",
-    "weekdayTheme": "Mistakes / Contrarian",
-    "sourceTitle": "Why Most YouTube Strategies Fail (And What Actually Works)",
-    "sourceUrl": "https://sellontube.com/blog/why-most-youtube-strategies-fail",
+    "scheduledDate": "2026-03-28",
+    "dayOfWeek": "Saturday",
+    "weekdayTheme": "Test",
+    "sourceTitle": "Test - WebP image format",
+    "sourceUrl": "https://sellontube.com/blog/youtube-marketing-roi",
     "imageUrl": "https://sellontube.com/_astro/why-most-youtube-strategies-fail-feature.B4eIXsfk.webp",
-    "postAngle": "Creator strategy advice actively harms businesses on YouTube — the 7 failure patterns and what the acquisition-first model looks like instead",
-    "publishNow": false,
-    "linkedinPost": "Your YouTube channel might be working perfectly for the wrong goal.\n\nFounders who try YouTube almost always borrow their strategy from creators. Post consistently. Hook viewers in the first three seconds. Grow subscribers. Optimise for watch time.\n\nNone of that creates customers.\n\nWhat a business-first channel actually measures: how many viewers could realistically become buyers? Not views. Not subscribers. Intent density.\n\nA 2,000-view video targeting someone actively researching your service will outperform a 200,000-view video built for general interest. Every time. The math is not close.\n\nRun this check on your last 10 videos:\n\nCan you name the specific search query each video was built to rank for?\nDoes each video attract someone who could realistically buy from you?\n\nIf either answer is unclear, you are running a creator strategy on a business problem.\n\nThere are 7 specific failure patterns behind this. A quick self-check in the post will tell you exactly which ones apply to your channel right now, and what the acquisition-first model looks like instead.\n\nhttps://sellontube.com/blog/why-most-youtube-strategies-fail\n\n#YouTubeSEO #B2BMarketing",
-    "hashtags": ["#YouTubeSEO", "#B2BMarketing"]
+    "postAngle": "Test with webp image instead of SVG",
+    "publishNow": true,
+    "linkedinPost": "Testing image attachment with WebP format.\n\nhttps://sellontube.com/blog/youtube-marketing-roi",
+    "hashtags": []
   }
 ]
