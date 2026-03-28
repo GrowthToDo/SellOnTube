@@ -52,7 +52,7 @@ It creates search visibility for the specific queries your buyers type. It build
 
 The compounding effect is what separates this from paid advertising. A paid campaign delivers leads while spend is running and stops the moment the budget runs out. A YouTube video published today can still rank and generate leads 18 months from now. The fixed production cost spreads across an increasing volume of views over time. This is why [YouTube ROI for B2B businesses](/blog/youtube-marketing-roi) almost always looks poor in month one and strong in month twelve.
 
-But there's a catch. All of this depends on building the channel around what your buyers search, not around what is easy to produce.
+But there's a catch. All of this depends on building the channel around what your buyers search, not around what is easy to produce. If you need a step-by-step framework for doing that, our guide to [building a YouTube marketing strategy for business](/blog/youtube-marketing-strategy) covers the full process.
 
 ## The Three Content Types That Drive B2B Pipeline
 

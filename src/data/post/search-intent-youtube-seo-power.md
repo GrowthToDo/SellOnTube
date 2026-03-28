@@ -171,6 +171,6 @@ Most are still posting generic "content."
 
 This opens the door for businesses who understand intent.
 
-If your LTV is strong and your buyers search before they buy, YouTube can become one of your most profitable acquisition channels, without you appearing on camera once.
+If your LTV is strong and your buyers search before they buy, YouTube can become one of your most profitable acquisition channels, without you appearing on camera once. The next step is putting together a [YouTube marketing strategy](/blog/youtube-marketing-strategy) that turns this intent into a repeatable pipeline.
 
 See exactly how search-intent YouTube works for your specific business type. We've built detailed guides for [SaaS, agencies, consultants, coaches, financial advisors, and 25+ other industries](/youtube-for).

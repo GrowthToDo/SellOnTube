@@ -96,7 +96,7 @@ We saw this firsthand in a 12-month case study with a Shopify app client. Over t
 
 You can read the full data from that experiment in our [YouTube vs. blog Shopify app case study](/blog/youtube-vs-blog-shopify-app-case-study).
 
-This compounding effect is what makes YouTube marketing ROI so counterintuitive. Businesses that evaluate it on a 90-day window almost always quit too early. The ones who commit to 6–12 months tend to see returns that make every other channel look expensive by comparison.
+This compounding effect is what makes YouTube marketing ROI so counterintuitive. Businesses that evaluate it on a 90-day window almost always quit too early. The ones who commit to 6–12 months with a clear [YouTube marketing strategy](/blog/youtube-marketing-strategy) tend to see returns that make every other channel look expensive by comparison.
 
 ## How to Calculate YouTube ROI for Your Specific Business
 
