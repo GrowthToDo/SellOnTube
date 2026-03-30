@@ -1,6 +1,7 @@
 ---
 // Pitch Deck Presentation - Dark Botanical Style
 // Self-contained HTML presentation for SellOnTube
+import { PRICING, formatPrice } from '~/utils/pricing';
 ---
 
 <!DOCTYPE html>
@@ -686,7 +687,7 @@
             <p style="text-transform: uppercase; letter-spacing: 0.15em; color: #c9a962; margin-bottom: 1rem; font-size: clamp(0.75rem, 1.5vw, 0.85rem);">Pricing</p>
 
             <div class="price-display">
-                <span class="price">$7,000</span>
+                <span class="price">{formatPrice(PRICING.current)}</span>
                 <p class="price-period">/month + applicable taxes</p>
             </div>
 
