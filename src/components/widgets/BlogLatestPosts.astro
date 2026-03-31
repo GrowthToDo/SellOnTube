@@ -3,11 +3,13 @@ import { APP_BLOG } from 'astrowind:config';
 
 import Grid from '~/components/blog/Grid.astro';
 
-import { getBlogPermalink } from '~/utils/permalinks';
+import { getBlogPermalink, getAsset } from '~/utils/permalinks';
 import { findLatestPosts } from '~/utils/blog';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Widget } from '~/types';
 import Button from '~/components/ui/Button.astro';
+
+const rssUrl = getAsset('/rss.xml');
 
 export interface Props extends Widget {
   title?: string;
@@ -49,6 +51,10 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
                 {linkText} »
               </Button>
             )}
+            <a href={rssUrl} class="inline-flex items-center gap-1 text-sm text-muted hover:text-primary transition" title="Subscribe via RSS">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9" /><path d="M4 4a16 16 0 0 1 16 16" /><circle cx="5" cy="19" r="1" /></svg>
+              RSS Feed
+            </a>
           </div>
         )}
 
