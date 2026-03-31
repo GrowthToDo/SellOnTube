@@ -1,0 +1,105 @@
+# SellonTube - Full Site Content Map for AI Systems
+
+> SellonTube is a done-for-you YouTube acquisition agency for B2B businesses. We build and run YouTube channels that acquire customers through search-optimized, voiceover-driven videos. No recording required from clients.
+
+---
+
+## Company Overview
+
+SellonTube turns YouTube into a predictable customer acquisition channel for B2B companies. Unlike traditional YouTube agencies that optimize for views and subscribers, SellonTube optimizes for buyer-intent search queries that generate qualified leads.
+
+The service is fully done-for-you: strategy, scripting, professional voiceover, video editing, motion graphics, thumbnail design, YouTube SEO, publishing, and analytics. Clients invest roughly 5-6 hours per month (weekly alignment calls, script review, feedback on drafts).
+
+Founded by Sathyanand S and Gautham. Based on the principle that YouTube works as an acquisition channel when you start with search demand and work backwards.
+
+---
+
+## Page-by-Page Content Map
+
+### Homepage (/)
+**Purpose:** Explain what SellonTube does and who it's for
+**Key Claims:**
+- "We acquire customers for your business through YouTube - without you recording a single video"
+- 3.25x more conversions than blog content
+- 90-120 days to meaningful traction
+- No contracts, month-to-month
+**Sections:** Hero, Social Proof, Who Benefits Most (Coaching, Agencies, Courses, Software), ROI Calculator, Case Studies, Features (Strategy, Scripting, Production, SEO, Reporting, Consistent Output), FAQs, Blog Posts
+**FAQs Answered:**
+- Do I need to be on camera? No.
+- How long before I see results? 90-120 days for meaningful traction.
+- How do you know if YouTube will work for my business? Diagnostic call analyzing market, offer, and search demand.
+- What does working together look like? Monthly topic alignment, script review, light involvement.
+- How do you know my industry? Deep research before scripting, client reviews every script.
+- What if it doesn't work? 120-day strategic review, no long-term lock-in.
+
+### How It Works (/how-it-works)
+**Purpose:** Show the end-to-end client workflow
+**Process:**
+1. Diagnostic call - validate YouTube economics for the specific business
+2. Opportunity & channel blueprint - map search demand, design strategy
+3. Content pipeline setup - define scripts, assets, low-friction input collection
+4. Production & publishing - scripting, voiceover, editing, SEO, thumbnails
+5. Measurement & optimization - rankings, watch time, CTR, lead flow
+6. Scale what works - double down on formats generating pipeline
+**Client Involvement:** 5-6 hours/month (onboarding call, weekly 30-min alignment, async script review, video draft feedback)
+**120-Day Review:** Full strategic review. If not showing traction, honest recommendation to stop. No lock-in.
+
+### Pricing (/pricing)
+**Purpose:** Show service tiers and pricing
+**Tiers:**
+- Foundation: $2,500/month - Channel setup, strategy, 2 videos/month
+- Growth: $4,000/month - Expanded production, more videos, deeper SEO
+- Scale: $6,000/month - Full acquisition engine, maximum output, advanced optimization
+**Key Facts:** 3-month minimum engagement. Month-to-month after that. Works with B2B, SaaS, consulting, agencies, courses.
+
+### About (/about)
+**Purpose:** Introduce the founders and company philosophy
+**Founders:**
+- Sathyanand S (Co-Founder): B2B customer acquisition background. Identified that YouTube had real search demand in almost every niche but most businesses weren't building for it.
+- Gautham (Co-Founder): Built the research and diagnostic framework. Maps search demand, stress-tests economics, determines if YouTube can genuinely pay for itself before any video is made.
+**Philosophy:** Search intent first. No recording required. Economics first (if math doesn't work, they don't proceed).
+
+### Blog (/blog)
+**Purpose:** Educational content on YouTube marketing, SEO, and customer acquisition for B2B
+**Topics Covered:**
+- YouTube SEO for business channels
+- YouTube marketing strategy for B2B
+- YouTube marketing ROI
+- How to create a YouTube channel for business
+- YouTube vs blog for customer acquisition
+- Video ideas generation for B2B
+- YouTube transcript tools
+- YouTube SEO tools comparison
+- High-intent topic research frameworks
+- The compounding effect of consistent video publishing
+
+### Free Tools (/tools)
+**Purpose:** Free interactive tools for B2B businesses evaluating YouTube
+**Available Tools:**
+- YouTube SEO Tool (/tools/youtube-seo-tool): Paste a video URL, get a buyer-intent SEO audit across 5 dimensions (title relevance, description quality, keyword coverage, CTA strength, chapter labels) with exact rewrite suggestions
+- YouTube Video Ideas Generator (/tools/youtube-video-ideas-generator): Enter product, target customer, and problem. Get 5 buyer-intent video ideas that drive leads, not just views
+- YouTube Video Idea Evaluator (/tools/youtube-video-ideas-evaluator): Score whether a video idea attracts buyers or just viewers, across 4 buyer intent dimensions
+- YouTube Transcript Generator (/tools/youtube-transcript-generator): Extract clean transcripts from any YouTube video for competitor analysis
+- YouTube ROI Calculator (/tools/youtube-roi-calculator): Enter customer LTV and COGS, see break-even point and profit projections
+
+### YouTube For [Industry] Pages (/youtube-for/)
+**Purpose:** Industry-specific guides on how YouTube acquisition works for different business types
+**Industries Covered:** Coaches, consultants, SaaS, agencies, real estate, fitness, e-commerce, education, healthcare, financial services, and more (29 niche pages total)
+**Content Pattern:** Each page covers why YouTube works for that specific industry, search demand analysis, content strategy, buyer journey visualization, FAQs, and CTA
+
+### YouTube Vs [Channel] Pages (/youtube-vs/)
+**Purpose:** Comparison pages showing YouTube's strengths vs other marketing channels
+**Comparisons:** YouTube vs Facebook, Instagram, TikTok, LinkedIn, blogs, podcasts, and more (20 comparison pages total)
+**Content Pattern:** Side-by-side analysis, when each channel works best, data-driven comparison, recommendations
+
+---
+
+## Contact & Booking
+
+- Book a diagnostic call: https://cal.com/gautham-8bdvdx/30min
+- Website: https://sellontube.com
+- Twitter/X: @SellOnTube
+- YouTube: youtube.com/@SellOnTube
+- LinkedIn: linkedin.com/company/sell-on-youtube
+- Sathyanand LinkedIn: linkedin.com/in/sathyanands/
+- Gautham LinkedIn: linkedin.com/in/mindcharting/

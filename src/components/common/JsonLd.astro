@@ -1,7 +1,7 @@
 ---
 /**
  * JSON-LD Structured Data Component
- * Adds Organization and WebSite schema for better SEO
+ * Adds Organization and WebSite schema (with SitelinksSearchbox) for better SEO and AI discoverability
  */
 
 import { SITE } from 'astrowind:config';
@@ -14,7 +14,30 @@ const organizationSchema = {
   "name": "SellOnTube",
   "url": siteUrl,
   "logo": `${siteUrl}/favicon.svg`,
-  "description": "We turn YouTube search intent into predictable leads for search-driven businesses - without you recording anything.",
+  "description": "SellOnTube is a done-for-you YouTube acquisition agency for B2B businesses. We build and run YouTube channels that acquire customers through search-optimized, voiceover-driven videos.",
+  "foundingDate": "2025",
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Sathyanand S",
+      "jobTitle": "Co-Founder",
+      "url": "https://www.linkedin.com/in/sathyanands/",
+      "sameAs": [
+        "https://www.linkedin.com/in/sathyanands/",
+        "https://x.com/SathyaHQ"
+      ]
+    },
+    {
+      "@type": "Person",
+      "name": "Gautham",
+      "jobTitle": "Co-Founder",
+      "url": "https://www.linkedin.com/in/mindcharting/",
+      "sameAs": [
+        "https://www.linkedin.com/in/mindcharting/",
+        "https://x.com/MindCharting"
+      ]
+    }
+  ],
   "sameAs": [
     "https://twitter.com/SellOnTube",
     "https://youtube.com/@SellOnTube",
@@ -25,15 +48,16 @@ const organizationSchema = {
     "contactType": "sales",
     "url": "https://cal.com/gautham-8bdvdx/30min"
   },
-  "service": {
-    "@type": "Service",
-    "name": "YouTube Acquisition Services",
-    "description": "Done-for-you YouTube customer acquisition through voiceover-driven, search-optimized videos.",
-    "provider": {
-      "@type": "Organization",
-      "name": "SellOnTube"
-    }
-  }
+  "knowsAbout": [
+    "YouTube marketing",
+    "YouTube SEO",
+    "B2B customer acquisition",
+    "Video marketing for business",
+    "YouTube channel management",
+    "Content marketing strategy"
+  ],
+  "areaServed": "Worldwide",
+  "serviceType": "YouTube Customer Acquisition"
 };
 
 const websiteSchema = {
@@ -41,10 +65,18 @@ const websiteSchema = {
   "@type": "WebSite",
   "name": "SellOnTube",
   "url": siteUrl,
-  "description": "We turn YouTube search intent into predictable leads for search-driven businesses.",
+  "description": "SellOnTube turns YouTube search intent into predictable leads for B2B businesses. Done-for-you strategy, scripting, voiceover, production, and SEO.",
   "publisher": {
     "@type": "Organization",
     "name": "SellOnTube"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `${siteUrl}/blog?q={search_term_string}`
+    },
+    "query-input": "required name=search_term_string"
   }
 };
 ---

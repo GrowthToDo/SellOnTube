@@ -1,15 +1,42 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
   title: 'YouTube Video Ideas Generator for Business | SellonTube',
   description:
     'Generate buyer-intent YouTube video ideas for your product or service. Free tool by SellonTube. Get 5 high-intent ideas in seconds.',
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Video Ideas Generator", "item": `${siteUrl}/tools/youtube-video-ideas-generator` }
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Video Ideas Generator",
+  "description": "Generate buyer-intent YouTube video ideas for your product or service. Enter your product, target customer, and problem to get 5 high-intent ideas.",
+  "url": `${siteUrl}/tools/youtube-video-ideas-generator`,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

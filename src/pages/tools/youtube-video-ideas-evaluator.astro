@@ -1,15 +1,42 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
   title: 'YouTube Video Idea Evaluator | Free Buyer Intent Checker',
   description:
     'Enter any YouTube video idea and find out if it targets buyers or browsers. Free buyer intent scoring for B2B founders: 4 scored dimensions, instant verdict.',
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Video Idea Evaluator", "item": `${siteUrl}/tools/youtube-video-ideas-evaluator` }
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Video Idea Evaluator",
+  "description": "Score whether a YouTube video idea attracts buyers or just viewers. Free buyer intent checker with 4 scored dimensions and instant verdict.",
+  "url": `${siteUrl}/tools/youtube-video-ideas-evaluator`,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

@@ -3,14 +3,41 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import { PRICING, formatPrice } from '~/utils/pricing';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
   title: 'YouTube ROI Calculator',
   description: 'Calculate if YouTube customer acquisition makes sense for your business. See your potential ROI in seconds.',
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube ROI Calculator", "item": `${siteUrl}/tools/youtube-roi-calculator` }
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube ROI Calculator",
+  "description": "Calculate if YouTube customer acquisition makes sense for your business. Enter your customer LTV and COGS, see break-even point and profit projections.",
+  "url": `${siteUrl}/tools/youtube-roi-calculator`,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
   <HeroText
     title="Does YouTube make sense for your business?"
     subtitle="Enter your numbers. See if the math works."

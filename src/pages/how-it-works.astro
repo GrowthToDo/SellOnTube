@@ -26,10 +26,30 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": "How It Works", "item": `${siteUrl}/how-it-works` }
   ]
 };
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "YouTube Customer Acquisition Service",
+  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl },
+  "description": "Done-for-you YouTube customer acquisition: diagnostic, strategy, scripting, voiceover production, SEO, publishing, and analytics. Clients invest 5-6 hours per month.",
+  "areaServed": "Worldwide",
+  "serviceType": "YouTube Marketing",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "YouTube Acquisition Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic Call", "description": "Validate whether YouTube can profitably acquire customers for your business" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Channel Strategy & Blueprint", "description": "Search demand research, competitor analysis, and content strategy" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Production & Publishing", "description": "Scripting, voiceover, editing, thumbnails, SEO, and publishing" } }
+    ]
+  }
+};
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <!-- Hero-style intro -->
   <section class="py-20 sm:py-24 text-center">
     <div class="max-w-3xl mx-auto px-4">
