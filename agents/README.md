@@ -17,6 +17,7 @@ Just speak naturally. Examples that trigger each agent:
 | "what pSEO pages go live this week" / "check drip schedule" | 06-pseo-manager |
 | "technical SEO audit" / "check redirects" / "schema check" | 07-technical-seo |
 | "build a tool" / "create a microtool" / "here's the spec for a tool" | 08-microtool-builder |
+| "write reddit posts" / "reddit launch" / "seed this on reddit" | 10-reddit-marketer |
 | "full audit" / "weekly review" | master → routes to 01 + 07, then 03 |
 
 ## Agent Index
@@ -32,6 +33,7 @@ Just speak naturally. Examples that trigger each agent:
 | 06-pseo-manager.md | pSEO drip schedule, publishDate checks | Read niches.ts + comparisons.ts |
 | 07-technical-seo.md | Redirects, schema, technical health | Read netlify.toml, JsonLd.astro |
 | 08-microtool-builder.md | Build interactive tools — SEO + ICP-optimized | ROI calc pattern, keyword CSV, style guide |
+| 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | reddit-marketing-playbook.md, style guide, ICP |
 
 ## Key Rules (apply to all agents)
 - Never push to live without explicit user approval
