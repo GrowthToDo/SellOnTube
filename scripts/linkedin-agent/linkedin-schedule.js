@@ -36,7 +36,8 @@ export function buildScheduledFor(dateStr) {
 }
 
 // Pure: build Zernio API payload from a queue post object
-export function buildPayload(post, accountId) {
+// zernioImageUrl is the uploaded image URL from Zernio's media endpoint (optional)
+export function buildPayload(post, accountId, zernioImageUrl) {
   const payload = {
     content: post.linkedinPost,
     timezone: 'Asia/Kolkata',
@@ -47,8 +48,8 @@ export function buildPayload(post, accountId) {
   } else {
     payload.scheduledFor = buildScheduledFor(post.scheduledDate);
   }
-  if (post.imageUrl) {
-    payload.mediaUrls = [post.imageUrl];
+  if (zernioImageUrl) {
+    payload.mediaItems = [{ url: zernioImageUrl, type: 'image' }];
   }
   return payload;
 }
@@ -56,6 +57,49 @@ export function buildPayload(post, accountId) {
 // Sleep helper for retry
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Upload an image to Zernio and return the hosted URL
+async function uploadImageToZernio(imageUrl, apiKey) {
+  // Fetch the image
+  const imgRes = await fetch(imageUrl);
+  if (!imgRes.ok) {
+    throw new Error(`Failed to fetch image ${imageUrl}: HTTP ${imgRes.status}`);
+  }
+  const imgBuffer = await imgRes.arrayBuffer();
+  const contentType = imgRes.headers.get('content-type') || 'image/webp';
+  const ext = contentType.includes('svg') ? 'svg' : contentType.includes('png') ? 'png' : contentType.includes('jpeg') || contentType.includes('jpg') ? 'jpg' : 'webp';
+  const filename = `linkedin-image.${ext}`;
+
+  // Build multipart form
+  const blob = new Blob([imgBuffer], { type: contentType });
+  const form = new FormData();
+  form.append('files', blob, filename);
+
+  const res = await fetch('https://zernio.com/api/v1/media', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${apiKey}` },
+    body: form,
+  });
+
+  const body = await res.text();
+  if (!res.ok) {
+    throw new Error(`Image upload failed: HTTP ${res.status}: ${body.slice(0, 200)}`);
+  }
+
+  const data = JSON.parse(body);
+  // Zernio returns: { files: [{ type, url, filename, size, mimeType }] }
+  if (data.files && Array.isArray(data.files) && data.files.length > 0 && data.files[0].url) {
+    return data.files[0].url;
+  }
+  if (Array.isArray(data) && data.length > 0 && data[0].url) {
+    return data[0].url;
+  }
+  if (data.url) return data.url;
+  if (data.data && Array.isArray(data.data) && data.data.length > 0) {
+    return data.data[0].url || data.data[0];
+  }
+  throw new Error(`Unexpected upload response: ${body.slice(0, 200)}`);
 }
 
 // POST to Zernio with one retry on network failure
@@ -157,15 +201,23 @@ async function main() {
   let failCount = 0;
 
   for (const post of queue) {
-    const label = `${post.scheduledDate} (${post.dayOfWeek}) — ${post.sourceTitle}`;
-    const payload = buildPayload(post, accountId);
+    const label = `${post.scheduledDate} (${post.dayOfWeek}) -- ${post.sourceTitle}`;
 
     try {
+      // Upload image to Zernio first if present
+      let zernioImageUrl = null;
+      if (post.imageUrl) {
+        console.log(`  UPLOADING  Image for ${post.dayOfWeek}...`);
+        zernioImageUrl = await uploadImageToZernio(post.imageUrl, apiKey);
+        console.log(`             Uploaded: ${zernioImageUrl}`);
+      }
+
+      const payload = buildPayload(post, accountId, zernioImageUrl);
       await postToZernio(payload, apiKey);
       saveToHistory(post);
       console.log(`  SCHEDULED  ${label}`);
       const when = post.publishNow ? 'now' : payload.scheduledFor;
-      console.log(`             Publish: ${when} | Image: ${post.imageUrl ? 'yes' : 'none'}\n`);
+      console.log(`             Publish: ${when} | Image: ${zernioImageUrl ? 'yes' : 'none'}\n`);
       successCount++;
     } catch (err) {
       console.error(`  FAILED     ${label}`);

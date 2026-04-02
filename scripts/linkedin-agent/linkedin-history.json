@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "date": "2026-04-02",
+      "dayOfWeek": "Wednesday",
+      "weekdayTheme": "Lead Generation",
+      "sourceTitle": "YouTube Marketing ROI: Formula, Real Case Study Data + Free Calculator",
+      "sourceUrl": "https://sellontube.com/blog/youtube-marketing-roi",
+      "postAngle": "YouTube ROI is calculable but most B2B teams guess instead of measuring. Real case study data shows 3.25x conversion advantage over blogging.",
+      "hook": "\"What's the ROI of YouTube?\"",
+      "hashtags": [
+        "#YouTubeROI",
+        "#B2BMarketing"
+      ],
+      "imageUrl": "https://sellontube.com/_astro/best-youtube-seo-tools-for-business-feature.2epTmv7j_ZLvv8N.jpg",
+      "status": "scheduled"
+    },
+    {
       "date": "2026-03-27",
       "dayOfWeek": "Friday",
       "weekdayTheme": "Mistakes / Contrarian",
