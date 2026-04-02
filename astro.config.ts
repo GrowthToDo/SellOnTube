@@ -31,7 +31,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap({
-      filter: (page) => !page.includes('/tag/') && !page.includes('/category/'),
+      filter: (page) => !page.includes('/tag/') && !page.includes('/category/') && !/\/blog\/\d+$/.test(page),
       lastmod: new Date(),
     }),
     mdx(),
