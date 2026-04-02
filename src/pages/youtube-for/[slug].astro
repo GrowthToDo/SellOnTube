@@ -19,6 +19,8 @@ export async function getStaticPaths() {
 const { niche } = Astro.props;
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 const siteUrl = SITE.site || 'https://sellontube.com';
+const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
+cutoff.setHours(23, 59, 59, 999);
 
 const metadata = {
   title: niche.metaTitle,
@@ -614,7 +616,7 @@ const serviceSchema = {
       </p>
       <div class="flex flex-wrap gap-2">
         {niches
-          .filter((n) => n.slug !== niche.slug)
+          .filter((n) => n.slug !== niche.slug && new Date(n.publishDate + 'T00:00:00+05:30') <= cutoff)
           .map((n) => (
             <a
               href={`/youtube-for/${n.slug}`}

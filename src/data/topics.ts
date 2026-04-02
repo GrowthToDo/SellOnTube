@@ -2253,10 +2253,17 @@ export function getTopicsByIndustry(industry: Topic['industry']): Topic[] {
 }
 
 // Helper: get related topics by slug array
-export function getRelatedTopics(slugs: string[]): Topic[] {
+export function getRelatedTopics(slugs: string[], filterByPublishDate = false): Topic[] {
+  const cutoff = new Date();
+  cutoff.setHours(23, 59, 59, 999);
   return slugs
     .map((slug) => topics.find((t) => t.slug === slug))
-    .filter((t): t is Topic => t !== undefined);
+    .filter((t): t is Topic => t !== undefined)
+    .filter((t) => {
+      if (!filterByPublishDate || import.meta.env.DEV) return true;
+      const pubDate = topicPublishSchedule[t.slug] ?? t.publishDate;
+      return new Date(pubDate + 'T00:00:00+05:30') <= cutoff;
+    });
 }
 
 // All industries metadata for the hub page
