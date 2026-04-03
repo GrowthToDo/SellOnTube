@@ -2,7 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: `YouTube SEO Tools & Software — SellonTube`,
+  title: `YouTube SEO Tools & Software`,
   description: `SellonTube gives B2B teams YouTube SEO tools, keyword research, and channel analytics to turn YouTube into a customer acquisition channel. Free plan included.`,
   canonical: 'https://sellontube.com/product-pricing',
   openGraph: {
@@ -10,38 +10,6 @@ const metadata = {
     url: 'https://sellontube.com/product-pricing',
     images: [{ url: '~/assets/images/default.png', width: 1200, height: 628 }],
   },
-};
-
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "SellonTube",
-  "applicationCategory": "BusinessApplication",
-  "description": "YouTube SEO tools and channel analytics for B2B businesses",
-  "url": "https://sellontube.com",
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "Explorer",
-      "price": "0",
-      "priceCurrency": "USD",
-      "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
-    },
-    {
-      "@type": "Offer",
-      "name": "Research",
-      "price": "49",
-      "priceCurrency": "USD",
-      "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
-    },
-    {
-      "@type": "Offer",
-      "name": "Strategy",
-      "price": "199",
-      "priceCurrency": "USD",
-      "priceSpecification": { "@type": "UnitPriceSpecification", "billingDuration": "P1M" }
-    }
-  ]
 };
 
 const faqSchema = {
@@ -94,7 +62,6 @@ const breadcrumbSchema = {
 ---
 
 <Layout metadata={metadata}>
-  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 

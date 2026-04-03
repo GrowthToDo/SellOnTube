@@ -6,7 +6,7 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube Transcript Generator -- Free, Instant, No Signup | SellonTube',
+  title: 'YouTube Transcript Generator: Free, Instant, No Signup',
   description:
     'Get clean transcripts from any YouTube video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights. Free tool by SellonTube.',
 };
@@ -21,22 +21,10 @@ const breadcrumbSchema = {
   ]
 };
 
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "YouTube Transcript Generator",
-  "description": "Get clean transcripts from any YouTube video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights.",
-  "url": `${siteUrl}/tools/youtube-transcript-generator`,
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
-};
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

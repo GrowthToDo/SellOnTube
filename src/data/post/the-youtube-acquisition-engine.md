@@ -1,8 +1,8 @@
 ---
 publishDate: 2025-12-22T00:00:00Z
 author: Sathyanand
-title: "YouTube for Customer Acquisition: The System That Replaces Paid Ads"
-excerpt: "YouTube works as a B2B acquisition channel when you treat it as search, not social. Here's the end-to-end system: search-led topics, voiceover videos, leads that compound without ad spend."
+title: "YouTube for Customer Acquisition: Full System"
+excerpt: "YouTube works as a B2B acquisition channel when you treat it as search, not social. Search-led topics, voiceover videos, compounding leads."
 image: ~/assets/images/blog/the-youtube-acquisition-engine-featured.svg
 image_alt: "Structured content workspace illustrating the YouTube acquisition engine system that replaces paid ads for B2B businesses | SellonTube"
 featuredImageWidth: 1200

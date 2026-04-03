@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-03-04T00:00:00Z
 author: Sathyanand
-title: "YouTube Marketing for B2B: How to Generate Leads From Your Channel"
-excerpt: "Most B2B companies treat YouTube like a creator platform and get creator results: subscribers, not clients. Here is what a YouTube channel built for B2B lead generation actually looks like."
+title: "YouTube Marketing for B2B: Generate Leads"
+excerpt: "B2B companies that treat YouTube like a creator platform get subscribers, not clients. Here is what a lead generation channel looks like."
 image: ~/assets/images/blog/youtube-marketing-b2b-featured.svg
 image_alt: "B2B marketing team reviewing YouTube channel strategy to generate leads and book clients without paid advertising | SellonTube"
 featuredImageWidth: 1200

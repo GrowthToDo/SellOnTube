@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube Script Generator for Business | Coming Soon | SellonTube',
+  title: 'YouTube Script Generator for Business | Coming Soon',
   description:
-    'A YouTube script generator built for B2B businesses. Takes your video idea and generates a buyer-intent script with a natural product pitch. Coming soon from SellonTube.',
+    'A YouTube script generator built for B2B businesses. Generates a buyer-intent script with a natural product pitch. Coming soon.',
 };
 
 const breadcrumbSchema = {
@@ -21,22 +21,10 @@ const breadcrumbSchema = {
   ]
 };
 
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "YouTube Script Generator",
-  "description": "A YouTube script generator built for B2B businesses. Generates buyer-intent scripts with a natural product pitch built in.",
-  "url": `${siteUrl}/tools/youtube-script-generator`,
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
-};
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

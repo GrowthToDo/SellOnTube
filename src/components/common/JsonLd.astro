@@ -13,9 +13,12 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "SellOnTube",
   "url": siteUrl,
-  "logo": `${siteUrl}/favicon.svg`,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${siteUrl}/favicon.svg`
+  },
   "description": "SellOnTube is a done-for-you YouTube acquisition agency for B2B businesses. We build and run YouTube channels that acquire customers through search-optimized, voiceover-driven videos.",
-  "foundingDate": "2025",
+  "foundingDate": "2025-01-01",
   "founder": [
     {
       "@type": "Person",
@@ -48,14 +51,10 @@ const organizationSchema = {
     "contactType": "sales",
     "url": "https://cal.com/gautham-8bdvdx/30min"
   },
-  "knowsAbout": [
-    "YouTube marketing",
-    "YouTube SEO",
-    "B2B customer acquisition",
-    "Video marketing for business",
-    "YouTube channel management",
-    "Content marketing strategy"
-  ]
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 2
+  }
 };
 
 const websiteSchema = {
