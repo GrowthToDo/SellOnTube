@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-02-27T00:00:00Z
 author: Sathyanand
-title: "YouTube Marketing ROI: Formula, Real Case Study Data + Free Calculator"
-excerpt: "YouTube drove 3.25x more conversions than blogging in our 12-month case study. Here's the exact ROI formula, real benchmarks by business type, and a free calculator for your numbers."
+title: "YouTube Marketing ROI: Formula + Free Calculator"
+excerpt: "YouTube drove 3.25x more conversions than blogging in our 12-month study. The exact ROI formula, real benchmarks by business type, and a free calculator."
 image: ~/assets/images/blog/youtube-marketing-roi-featured.svg
 image_alt: "Growth analytics dashboard displaying YouTube marketing ROI metrics, conversion data, and pipeline value for B2B channels | SellonTube"
 featuredImageWidth: 1200
@@ -128,7 +128,7 @@ We've taken the framework from this post (customer LTV, content costs, compoundi
 
 Plug in your numbers and see whether YouTube is worth it for your specific business model, price point, and growth goals.
 
-**[Try the free YouTube ROI Calculator →](/youtube-roi-calculator)**
+**[Try the free YouTube ROI Calculator →](/tools/youtube-roi-calculator)**
 
 It takes about 60 seconds, and you'll walk away with a clear picture of what YouTube could realistically return over 6 and 12 months.
 
@@ -148,7 +148,7 @@ A strong YouTube marketing ROI for service businesses and course creators typica
 
 ### How much should a small business spend on YouTube marketing?
 
-The right budget depends on your customer LTV and margins. A business coach with a $5,000 program needs far fewer YouTube-driven clients to justify the investment than a $50/month SaaS product. Start by calculating your break-even point (how many customers from YouTube would cover your production costs) and working backward from there. Our [YouTube ROI calculator](/youtube-roi-calculator) does this automatically.
+The right budget depends on your customer LTV and margins. A business coach with a $5,000 program needs far fewer YouTube-driven clients to justify the investment than a $50/month SaaS product. Start by calculating your break-even point (how many customers from YouTube would cover your production costs) and working backward from there. Our [YouTube ROI calculator](/tools/youtube-roi-calculator) does this automatically.
 
 ### How do I use a YouTube ROI calculator for my business?
 
