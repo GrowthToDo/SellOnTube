@@ -1,0 +1,1146 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Free YouTube Title Generator for Business | SellOnTube',
+  description:
+    'Generate YouTube video titles that attract buyers, not just viewers. Built for B2B. 3 scored titles per topic. Free, no signup required.',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">3 scored titles</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Buyer intent rated</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        YouTube Titles That Attract<br class="hidden sm:block" /> Buyers (Not Just Viewers)
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Enter your video topic, pick a format, and tell us who you sell to. Get 3 buyer-intent YouTube titles scored for acquisition potential.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+
+          <div>
+            <label for="topic-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Video topic
+            </label>
+            <input
+              type="text"
+              id="topic-input"
+              placeholder="e.g. Best CRM tools for small business"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="topic-error"
+            />
+            <p id="topic-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="type-select" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Video type
+            </label>
+            <select
+              id="type-select"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors appearance-none"
+              style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M6%208L1%203h10z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem center;"
+            >
+              <option value="comparison">Comparison &amp; Evaluation</option>
+              <option value="how-to">How-to</option>
+              <option value="mistakes">Mistakes &amp; Pitfalls</option>
+              <option value="results">Results &amp; Proof</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="customer-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Your target customer
+            </label>
+            <input
+              type="text"
+              id="customer-input"
+              placeholder="e.g. SaaS founders, Shopify store owners"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="customer-error"
+            />
+            <p id="customer-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+        </div>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate Titles &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free generations remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Generating buyer-intent titles...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">Scoring for acquisition potential</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free generations</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep generating titles. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Generating
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Generating your titles now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-2xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">3 buyer-intent titles for</p>
+          <p id="result-topic" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+        </div>
+
+        <!-- Titles list -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-4">Your titles</p>
+          <div id="titles-list" class="space-y-4"></div>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Got your title? Check if your full video is optimized for YouTube search.</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Run your video through our free YouTube SEO tool.</p>
+          <a
+            id="results-cta"
+            href="/tools/youtube-seo-tool"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Check your video SEO score &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Generate more titles
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Titles bring clicks. Strategy converts them."
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: topics, titles, CTAs, and the path from viewer to customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your video details</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Type your video topic, pick one of four buyer-intent formats, and tell us who your target customer is. Three fields. Under 30 seconds.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get 3 scored titles</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI generates 3 titles optimized for buyer intent, not clickbait. Each title comes with a buyer intent score and an explanation of who it attracts.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Copy and publish</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Pick the title with the highest buyer intent score. Copy it with one click. Use it on your YouTube video and attract the people who actually buy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Sections -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Visual: Clickbait vs Buyer-Intent comparison -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 dark:divide-slate-700">
+          <div class="p-5 sm:p-6 bg-rose-500/5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-rose-500 mb-3">Clickbait title</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-3">"INSANE Marketing Hack You NEED to Try"</p>
+            <div class="space-y-2 text-xs text-gray-600 dark:text-slate-400">
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> Attracts curious browsers</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> 10,000 views, 0 leads</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> High bounce rate hurts rankings</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> No product fit in the video</div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 bg-emerald-500/5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-500 mb-3">Buyer-intent title</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-3">"HubSpot vs Salesforce for Small Teams (2026)"</p>
+            <div class="space-y-2 text-xs text-gray-600 dark:text-slate-400">
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Attracts CRM evaluators</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> 800 views, 12 demo requests</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> High retention boosts rankings</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Product demo fits naturally</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why clickbait YouTube titles fail for business channels</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Clickbait titles work for entertainment channels. They do not work for businesses that use YouTube to generate leads, demos, or sales conversations. The reason is simple: clickbait optimizes for the total number of clicks. Business YouTube channels need to optimize for the right clicks.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A video titled "INSANE Marketing Hack You NEED to Try" will attract curious browsers who want entertainment. A video titled "HubSpot vs Salesforce for Small Teams (2026)" will attract someone who is actively evaluating CRM software and is closer to making a purchase decision. The first video might get 10,000 views. The second might get 800. But the second video's viewers are the ones who book demos, request pricing, and become customers.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube's own algorithm reinforces this. The algorithm now weighs viewer satisfaction, not just click-through rate. When a clickbait title misleads viewers into watching a video that does not match their expectations, they bounce. Bounce signals tell YouTube the video is low quality. The result: lower rankings, less reach, and wasted production effort.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          For a business channel, the title is a filter. Its job is not to attract everyone. Its job is to attract the specific type of person who could become a customer and to repel everyone else. Every viewer who watches your video and has no use for your product is a wasted impression. Every viewer who watches and thinks "this is exactly what I needed" is a potential lead.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          This YouTube title generator is built around that principle. It does not try to maximize clicks. It tries to maximize the percentage of clicks that come from people who are evaluating, comparing, or purchasing something you sell.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">The 4 buyer-intent title formats that work for business</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Not every video format attracts buyers equally. After analyzing thousands of B2B YouTube videos, four formats consistently attract viewers who are in the consideration or decision stage of purchasing. These are the four formats this tool uses to generate titles.
+        </p>
+
+        <!-- Visual: Buyer journey funnel showing where each format sits -->
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden mb-8">
+          <div class="px-5 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">Where each title format sits in the buyer journey</p>
+          </div>
+          <div class="p-5 sm:p-6">
+            <div class="space-y-3">
+              <!-- Awareness - excluded -->
+              <div class="flex items-center gap-3">
+                <div class="w-24 sm:w-32 flex-shrink-0 text-right">
+                  <span class="text-xs font-medium text-gray-400 dark:text-slate-500">Awareness</span>
+                </div>
+                <div class="flex-1 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 border border-dashed border-slate-300 dark:border-slate-600 flex items-center px-3">
+                  <span class="text-xs text-gray-400 dark:text-slate-500 italic">Not targeted by this tool</span>
+                </div>
+              </div>
+              <!-- Research -->
+              <div class="flex items-center gap-3">
+                <div class="w-24 sm:w-32 flex-shrink-0 text-right">
+                  <span class="text-xs font-medium text-gray-600 dark:text-slate-300">Research</span>
+                </div>
+                <div class="flex-1 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center px-3">
+                  <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">How-to</span>
+                  <span class="text-xs text-gray-500 dark:text-slate-400 ml-2 hidden sm:inline">+ Mistakes &amp; Pitfalls</span>
+                </div>
+              </div>
+              <!-- Evaluation -->
+              <div class="flex items-center gap-3">
+                <div class="w-24 sm:w-32 flex-shrink-0 text-right">
+                  <span class="text-xs font-medium text-gray-600 dark:text-slate-300">Evaluation</span>
+                </div>
+                <div class="flex-1 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center px-3">
+                  <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Comparison &amp; Evaluation</span>
+                  <span class="text-xs text-gray-500 dark:text-slate-400 ml-2 hidden sm:inline">+ Mistakes &amp; Pitfalls</span>
+                </div>
+              </div>
+              <!-- Decision -->
+              <div class="flex items-center gap-3">
+                <div class="w-24 sm:w-32 flex-shrink-0 text-right">
+                  <span class="text-xs font-medium text-gray-600 dark:text-slate-300">Decision</span>
+                </div>
+                <div class="flex-1 h-9 rounded-lg bg-emerald-500/15 border border-emerald-500/40 flex items-center px-3">
+                  <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Results &amp; Proof</span>
+                  <span class="text-xs text-gray-500 dark:text-slate-400 ml-2 hidden sm:inline">+ Comparison &amp; Evaluation</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-slate-500 mt-4">All four formats target the middle and bottom of the funnel where purchase decisions happen.</p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">1. Comparison and evaluation</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-3">
+              Titles that compare products, rank options, or evaluate whether something is worth buying. These attract viewers who already know what category of product they need and are comparing specific options.
+            </p>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Examples:</span>
+            </p>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"Best Project Management Tools for Remote Teams"</li>
+              <li>"Monday.com vs Asana for Marketing Agencies"</li>
+              <li>"Is Notion Worth It for Small Business?"</li>
+              <li>"Top 5 Email Platforms for E-commerce (2026)"</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mt-3">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Why it works:</span> The viewer has already decided they need a product in this category. They are comparing options before committing. This is the highest-intent stage in the buying journey.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">2. How-to</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-3">
+              Titles focused on solving a specific, actionable problem. These differ from broad educational how-to content because they target tasks that require a product or service to complete. The viewer is not learning a concept. They are trying to do something specific, often with a tool they are considering buying.
+            </p>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Examples:</span>
+            </p>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"How to Set Up a Sales Pipeline in HubSpot"</li>
+              <li>"How to Migrate from Mailchimp to ConvertKit"</li>
+              <li>"How to Track YouTube ROI for B2B Channels"</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mt-3">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Why it works:</span> The viewer is either already using a product and looking for implementation help (retention) or evaluating whether a product can do what they need (acquisition). Both signals indicate buying proximity.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">3. Mistakes and pitfalls</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-3">
+              Titles that warn about common errors, bad decisions, or red flags. These attract viewers who are about to make a purchase decision and want to avoid making the wrong choice. Loss aversion is a strong motivator. People who search for mistakes to avoid are closer to buying than people who search for general advice.
+            </p>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Examples:</span>
+            </p>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"5 Mistakes When Choosing a CRM for Your Agency"</li>
+              <li>"Why Your Email Sequences Are Not Converting"</li>
+              <li>"Red Flags When Hiring a Marketing Agency"</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mt-3">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Why it works:</span> The viewer is in the evaluation stage and actively seeking guidance before spending money. This gives the creator a natural opening to recommend their product as the solution that avoids the mistake.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">4. Results and proof</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-3">
+              Titles that present real outcomes, case studies, or ROI data. These attract viewers who need proof before making a buying decision. They have already identified a potential solution and want evidence that it works. This is the final stage before conversion.
+            </p>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Examples:</span>
+            </p>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"How We Got 300 Leads from YouTube in 6 Months"</li>
+              <li>"Shopify Store Revenue After Switching to Klaviyo"</li>
+              <li>"Content Marketing ROI: Our 12-Month Results"</li>
+            </ul>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mt-3">
+              <span class="font-medium text-gray-700 dark:text-slate-300">Why it works:</span> The viewer is looking for social proof and data to justify a purchase decision they are already leaning toward. The video becomes the final push. Titles with specific numbers and timeframes perform particularly well because they signal real data, not theory.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">YouTube title best practices for business channels</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Writing a good YouTube title is not about being clever. It is about being clear. For business channels, clarity is what separates a title that drives pipeline from one that drives nothing. Here are the rules that matter.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Keep titles under 60 characters</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube truncates titles at roughly 60-70 characters on desktop and as few as 40-50 on mobile. If your most important words are at the end of a 90-character title, mobile viewers will never see them. This title generator enforces a 60-character limit on every title it generates.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Front-load the keyword</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Put the primary keyword or topic within the first 40 characters. YouTube gives more ranking weight to words that appear early in the title. "HubSpot vs Salesforce for Small Teams" is better than "A Complete Guide to Choosing Between HubSpot and Salesforce for Small Teams."
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Name the audience</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Adding your target audience to the title filters out irrelevant viewers and signals relevance to YouTube's algorithm. "Best CRM for Small Business" performs differently than "Best CRM for Enterprise." If you sell to SaaS founders, say "for SaaS" in the title. If you sell to agencies, say "for Agencies." Be specific.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Use numbers when they add credibility</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Numbers signal specificity. "5 Mistakes When Choosing a CRM" is more clickable than "Mistakes When Choosing a CRM" because it sets clear expectations. But do not force numbers where they do not belong. "7 Things About Marketing" is vague regardless of the number.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Match the title promise to the video content</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              If the title says "HubSpot vs Salesforce" and the video only covers HubSpot, viewers will bounce. YouTube tracks audience retention, and a misleading title will tank your video's performance within 48 hours. The title should be an accurate description of what the viewer will get, not a stretched promise.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Avoid vague superlatives</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Words like "ultimate", "complete", "definitive", and "comprehensive" are filler. They do not tell the viewer anything specific. "The Complete Guide to CRM" could be anything. "How to Set Up HubSpot for a 10-Person Team" tells the viewer exactly what they will learn and whether it applies to them.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How long should a YouTube title be?</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The optimal YouTube title length is between 40 and 60 characters. Here is why that range matters.
+        </p>
+
+        <!-- Visual: Title length truncation guide -->
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden mb-6">
+          <div class="px-5 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">How YouTube truncates titles by device</p>
+          </div>
+          <div class="p-5 sm:p-6 space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-medium text-gray-600 dark:text-slate-300">Mobile (40-50 chars)</span>
+                <span class="text-xs text-gray-400 dark:text-slate-500">70%+ of watch time</span>
+              </div>
+              <div class="relative h-7 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-emerald-500/15 border-r-2 border-emerald-500 rounded-l-lg flex items-center px-2" style="width: 50%">
+                  <span class="text-[10px] font-medium text-emerald-700 dark:text-emerald-400 truncate">Best CRM for Agencies (2026)</span>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2" style="width: 50%">
+                  <span class="text-[10px] text-gray-400 dark:text-slate-500 truncate">...this part is hidden</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-xs font-medium text-gray-600 dark:text-slate-300">Desktop (60-70 chars)</span>
+                <span class="text-xs text-gray-400 dark:text-slate-500">Full title visible</span>
+              </div>
+              <div class="relative h-7 bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden">
+                <div class="absolute inset-y-0 left-0 bg-emerald-500/15 border-r-2 border-emerald-500 rounded-l-lg flex items-center px-2" style="width: 75%">
+                  <span class="text-[10px] font-medium text-emerald-700 dark:text-emerald-400 truncate">Best CRM for Agencies: Top 5 Compared (2026)</span>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center px-2" style="width: 25%">
+                  <span class="text-[10px] text-gray-400 dark:text-slate-500 truncate">...hidden</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-slate-500">This tool enforces a strict 60-character limit so your full title displays on every device.</p>
+          </div>
+        </div>
+
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          On desktop, YouTube displays roughly 60-70 characters before truncating with an ellipsis. On mobile, which accounts for over 70% of YouTube watch time, the cutoff is closer to 40-50 characters. If your title is 80 characters long, mobile users will only see the first half.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The practical test: can someone understand what your video is about and whether it is relevant to them from the first 40 characters alone? If yes, your title works on every device. If no, you need to rewrite it.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          For business channels specifically, shorter titles tend to perform better because they force clarity. You cannot hide behind filler words in 50 characters. "Best CRM for Agencies (2026)" is 29 characters and tells the viewer everything they need to know. The viewer can decide in under a second whether to click.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          This tool enforces a strict 60-character maximum. Every title it generates is designed to display fully on both desktop and mobile without truncation.
+        </p>
+      </div>
+
+      <!-- Section 5 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">YouTube title examples by industry</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          The best YouTube titles for business channels combine a clear topic, a specific audience, and a buyer-intent format. Here are examples across four industries that commonly use YouTube for customer acquisition.
+        </p>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">SaaS companies</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"Notion vs ClickUp for Product Teams (2026)"</li>
+              <li>"How to Set Up Zapier for Lead Routing"</li>
+              <li>"3 Mistakes SaaS Founders Make with Pricing Pages"</li>
+              <li>"We Grew MRR 40% with This Onboarding Flow"</li>
+            </ul>
+            <p class="text-sm text-gray-500 dark:text-slate-500 mt-2">Each title names the tool, the audience, and implies the viewer is evaluating or implementing a solution.</p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Marketing agencies</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"In-House vs Agency: Which Gets Better ROI?"</li>
+              <li>"How to Evaluate a Marketing Agency in 2026"</li>
+              <li>"Red Flags When Hiring an SEO Agency"</li>
+              <li>"Agency Client Results: 200% Traffic in 8 Months"</li>
+            </ul>
+            <p class="text-sm text-gray-500 dark:text-slate-500 mt-2">These titles attract business owners who are deciding whether to hire an agency, which agency to pick, or whether their current agency is performing.</p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Consultants and coaches</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"Business Coach vs Mentor: Which Do You Need?"</li>
+              <li>"How to Choose a Business Consultant (5 Criteria)"</li>
+              <li>"Why Coaching Programs Fail (And How to Fix It)"</li>
+              <li>"$50K in Revenue from One Coaching Framework"</li>
+            </ul>
+            <p class="text-sm text-gray-500 dark:text-slate-500 mt-2">The viewer is considering hiring a coach or consultant. Each title helps them evaluate options or see proof that the investment pays off.</p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">E-commerce brands</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"Shopify vs WooCommerce for Small Stores"</li>
+              <li>"How to Set Up Klaviyo for Shopify (Step by Step)"</li>
+              <li>"5 Pricing Mistakes That Kill Shopify Margins"</li>
+              <li>"How We Scaled to $100K/Month on Shopify"</li>
+            </ul>
+            <p class="text-sm text-gray-500 dark:text-slate-500 mt-2">Notice how each title maps to one of the four buyer-intent formats: comparison, how-to, mistakes, or results.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Common YouTube title mistakes businesses make</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Businesses that are new to YouTube often default to title patterns borrowed from corporate marketing or entertainment creators. Neither translates well to B2B YouTube. Here are the five title mistakes we see repeatedly.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Using internal jargon</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Your team calls it "the customer success enablement workflow." Your buyers search for "how to reduce churn." YouTube titles must use the words your customer actually types into the search bar, not the language from your internal documents.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Making titles too broad</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              "Marketing Tips" competes with millions of videos. "B2B Email Marketing for SaaS Companies" competes with a few hundred. Broad titles attract broad audiences. Specific titles attract specific buyers. For a business channel, specificity is a competitive advantage, not a limitation.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Copying creator culture</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              ALL CAPS words, excessive punctuation, emoji in titles, and phrases like "YOU NEED TO SEE THIS" work for entertainment channels with established audiences. For a business channel with under 10,000 subscribers, they signal low credibility. Your ICP is a professional making a purchasing decision. Write titles that respect that.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Ignoring search intent</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              A title like "Our Thoughts on the Marketing Landscape" is a blog headline, not a search query. Nobody types that into YouTube. Titles need to match what real people actually search for. Before finalizing any title, ask: would someone type something close to this into YouTube's search bar? If no, rewrite it.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Not including the target audience</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              "Best CRM Software" attracts everyone from freelancers to enterprise buyers. "Best CRM for 10-Person SaaS Teams" attracts exactly the audience a SaaS-focused CRM company wants. Adding your target audience to the title is the single easiest way to improve the quality of traffic from every video.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 7 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What this tool does not generate</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          This YouTube title generator is intentionally limited. It does not try to generate every possible type of title. It generates titles that attract buyers for business channels. Anything outside that scope is excluded by design.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <span class="font-medium text-gray-700 dark:text-slate-300">Clickbait titles.</span> No ALL CAPS, no "You Won't Believe", no misleading hooks, no false urgency. These patterns attract viewers who click out of curiosity and leave when the content does not match the hype. For a business channel, this is negative ROI.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <span class="font-medium text-gray-700 dark:text-slate-300">Awareness and educational titles.</span> "What is CRM?" and "Why Email Marketing Matters" are valid content types, but they attract people at the top of the funnel who are learning, not buying. This tool is built for the middle and bottom of the funnel where purchase decisions happen.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <span class="font-medium text-gray-700 dark:text-slate-300">Generic entertainment titles.</span> "Day in the Life of a CEO" and "My Morning Routine" are personality-driven content. They build brand affinity over time but do not generate direct leads. If your YouTube strategy is built around personal brand, these titles may work for you. This tool is not designed for that use case.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          <span class="font-medium text-gray-700 dark:text-slate-300">Vague titles that could apply to any video.</span> "Marketing Strategy 2026" is too broad to rank and too vague to attract a specific buyer. Every title this tool generates includes a specific topic, a specific audience, and a specific intent. If a title could apply to any business, it is not specific enough.
+        </p>
+      </div>
+
+      <!-- Section 8 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How this YouTube title generator is different</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          There are dozens of YouTube title generators online. All of them follow the same pattern: enter a topic, get a list of catchy titles, pick one. They optimize for clicks.
+        </p>
+
+        <!-- Visual: Comparison table vs competitors -->
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden mb-6">
+          <div class="px-5 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">How this tool compares</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700">
+                  <th class="text-left px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Feature</th>
+                  <th class="text-center px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Typical generators</th>
+                  <th class="text-center px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400">SellOnTube</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600 dark:text-slate-400">
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Inputs</td>
+                  <td class="px-4 py-2.5 text-center">1 field (topic)</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">3 fields (topic + type + customer)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Optimized for</td>
+                  <td class="px-4 py-2.5 text-center">Click-through rate</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Buyer intent</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Target audience</td>
+                  <td class="px-4 py-2.5 text-center">Creators</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">B2B businesses</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Clickbait</td>
+                  <td class="px-4 py-2.5 text-center">Encouraged</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Rejected by design</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Scoring</td>
+                  <td class="px-4 py-2.5 text-center">None</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Buyer intent rated</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Explanation</td>
+                  <td class="px-4 py-2.5 text-center">None</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Why each title works</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          This tool takes three inputs instead of one. It asks for your video topic, your video type (comparison, how-to, mistakes, or results), and your target customer. With that context, it generates titles that are optimized for buyer intent, not just click-through rate.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Each title comes with a buyer intent score. High means the title will primarily attract viewers who are actively evaluating or purchasing. Medium means the title attracts a mix of researchers and buyers. Low means the title leans more toward general interest. You can see at a glance which title will bring the best audience for your business.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The tool also explains why each title received its score. Instead of guessing which title "feels" better, you get a specific rationale tied to the type of viewer the title attracts and whether that viewer is likely to need your product or service.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube title generator free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating titles at no cost. There is no paid tier and no feature gating.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How many titles does this tool generate?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Each generation produces 3 titles. We limit it to 3 instead of 10 or 20 because more options does not mean better options. Three well-scored titles with buyer intent ratings give you a clearer decision than a long list of undifferentiated suggestions.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What makes this different from other YouTube title generators?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Two things. First, it asks who your target customer is. No other title generator does this. That single input allows the tool to filter titles for buyer intent instead of just optimizing for clicks. Second, every title comes with a buyer intent score and explanation, so you know which title attracts the right audience before you publish.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Do I need a YouTube channel to use this?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              No. You can use the tool to generate and evaluate title ideas before creating your channel. Many users generate titles to validate video ideas before investing in production.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How do I pick the best title from the 3 options?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Start with the buyer intent score. Pick the title rated "High" if available. If multiple titles score "High," choose the one that most accurately describes your video content. A title that matches the actual video will have better retention, which YouTube rewards with higher rankings over time.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I use this for YouTube Shorts?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. YouTube Shorts titles follow the same rules: clear, specific, searchable. The 60-character limit this tool enforces is well within Shorts title requirements. The buyer-intent scoring applies equally to short-form and long-form content.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What if my video does not fit any of the 4 types?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The four video types (comparison, how-to, mistakes, results) cover the vast majority of buyer-intent content. If your video is an interview, vlog, or awareness piece, it may not fit these categories. That is intentional. This tool is built for content that drives purchasing decisions. If your video is awareness-stage content, a general-purpose title generator may be a better fit.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How does the buyer intent score work?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The AI evaluates each title based on the type of viewer it will attract. High buyer intent means the title uses patterns (comparisons, specific product names, pricing, mistakes) that primarily attract people in the evaluation or purchase stage. Medium means the title attracts a mix of researchers and buyers. Low means the title leans more toward general interest or education. The score also considers whether the title gives the video creator a natural opportunity to recommend or demonstrate their product.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-video-ideas-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Video Ideas Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Need video ideas first? Get 5 buyer-intent video ideas for your business.</p>
+        </a>
+        <a href="/tools/youtube-video-ideas-evaluator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Video Ideas Evaluator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Score any video idea on buyer intent before you film it.</p>
+        </a>
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Check your full video SEO score across title, description, tags, and more.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_title_gen_count';
+  const EMAIL_KEY = 'sot_title_gen_email_submitted';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-topic');
+      heading?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited generations unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free generation remaining' : remaining + ' free generations remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error').replace('-select', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error').replace('-select', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    const topic = (document.getElementById('topic-input') as HTMLInputElement).value.trim();
+    const customer = (document.getElementById('customer-input') as HTMLInputElement).value.trim();
+
+    let valid = true;
+
+    if (!topic || topic.length < 3) {
+      showFieldError('topic-input', 'Please enter your video topic (min 3 characters).');
+      valid = false;
+    } else { clearFieldError('topic-input'); }
+
+    if (!customer || customer.length < 3) {
+      showFieldError('customer-input', 'Please enter your target customer (min 3 characters).');
+      valid = false;
+    } else { clearFieldError('customer-input'); }
+
+    return valid;
+  }
+
+  // ===== TITLE CARD RENDERING =====
+
+  interface TitleResult {
+    title: string;
+    buyerIntent: string;
+    reason: string;
+  }
+
+  function intentColor(level: string): { bg: string; text: string; border: string } {
+    const l = level.toLowerCase();
+    if (l === 'high') return { bg: 'bg-emerald-500/10', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/20' };
+    if (l === 'medium') return { bg: 'bg-amber-500/10', text: 'text-amber-600 dark:text-amber-400', border: 'border-amber-500/20' };
+    return { bg: 'bg-rose-500/10', text: 'text-rose-600 dark:text-rose-400', border: 'border-rose-500/20' };
+  }
+
+  function renderTitles(titles: TitleResult[]): void {
+    const list = document.getElementById('titles-list');
+    if (!list) return;
+
+    const topic = (document.getElementById('topic-input') as HTMLInputElement).value.trim();
+    const resultTopic = document.getElementById('result-topic');
+    if (resultTopic) resultTopic.textContent = topic;
+
+    list.innerHTML = titles.map((t, i) => {
+      const escaped = t.title.replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const reasonEscaped = t.reason.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const colors = intentColor(t.buyerIntent);
+
+      return (
+        '<div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4">' +
+          '<div class="flex items-start gap-3">' +
+            '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
+            '<div class="min-w-0 flex-1">' +
+              '<p class="text-sm font-semibold text-gray-900 dark:text-white mb-2" data-title-text="' + escaped + '"></p>' +
+              '<div class="flex items-center gap-2 mb-2">' +
+                '<span class="inline-flex items-center text-xs font-semibold px-2.5 py-0.5 rounded-full ' + colors.bg + ' ' + colors.text + ' border ' + colors.border + '">' +
+                  t.buyerIntent + ' buyer intent' +
+                '</span>' +
+              '</div>' +
+              '<p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3" data-reason-text="' + reasonEscaped + '"></p>' +
+              '<div class="flex items-center justify-end">' +
+                '<button class="copy-btn text-xs border border-slate-200 dark:border-slate-600 rounded-lg px-3 py-1.5 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" data-index="' + i + '">' +
+                  'Copy' +
+                '</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    // Set textContent (not innerHTML) for title text - XSS safe
+    list.querySelectorAll('[data-title-text]').forEach((el, i) => {
+      (el as HTMLElement).textContent = titles[i].title;
+    });
+
+    // Set textContent for reason text - XSS safe
+    list.querySelectorAll('[data-reason-text]').forEach((el, i) => {
+      (el as HTMLElement).textContent = titles[i].reason;
+    });
+
+    // Wire copy buttons
+    list.querySelectorAll('.copy-btn').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        navigator.clipboard.writeText(titles[i].title).then(() => {
+          btn.textContent = 'Copied!';
+          (btn as HTMLElement).classList.add('text-emerald-600', 'dark:text-emerald-400', 'border-emerald-500/50');
+          setTimeout(() => {
+            btn.textContent = 'Copy';
+            (btn as HTMLElement).classList.remove('text-emerald-600', 'dark:text-emerald-400', 'border-emerald-500/50');
+          }, 1500);
+        });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'title_copied', tool: 'youtube-title-generator', title_index: i });
+      });
+    });
+  }
+
+  // ===== API CALL =====
+
+  async function fetchTitles(topic: string, videoType: string, targetCustomer: string): Promise<void> {
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/generate-titles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic, videoType, targetCustomer }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate Titles \u2192';
+        showFieldError('customer-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-title-generator', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) throw new Error('API error ' + res.status);
+
+      const data = await res.json();
+      if (!Array.isArray(data?.titles) || data.titles.length === 0) throw new Error('Empty titles array');
+
+      renderTitles(data.titles);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-title-generator' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Generate Titles \u2192';
+      showFieldError('customer-input', 'Something went wrong on our end. Please try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-title-generator', reason: 'api_error' });
+    }
+  }
+
+  // ===== GENERATE =====
+
+  async function generate(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const topic = (document.getElementById('topic-input') as HTMLInputElement).value.trim();
+    const videoType = (document.getElementById('type-select') as HTMLSelectElement).value;
+    const targetCustomer = (document.getElementById('customer-input') as HTMLInputElement).value.trim();
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-title-generator' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-title-generator' });
+
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Generating...';
+    showStep('step-loading');
+
+    await fetchTitles(topic, videoType, targetCustomer);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    // Validate format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    // Block personal domains
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-title-generator' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-title-generator' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    // Proceed with generation after brief confirmation
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Generating';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      generate();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('topic-input') as HTMLInputElement).value = '';
+    clearFieldError('topic-input');
+    (document.getElementById('customer-input') as HTMLInputElement).value = '';
+    clearFieldError('customer-input');
+    (document.getElementById('type-select') as HTMLSelectElement).selectedIndex = 0;
+    showStep('step-input');
+    (document.getElementById('topic-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Generate Titles \u2192';
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-title-generator' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('generate-btn')?.addEventListener('click', generate);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  // Enter key navigation
+  document.getElementById('topic-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.getElementById('customer-input') as HTMLInputElement)?.focus();
+    }
+  });
+
+  document.getElementById('customer-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      generate();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>
