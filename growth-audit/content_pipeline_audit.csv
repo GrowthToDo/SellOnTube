@@ -1,0 +1,48 @@
+piece_title,type,status,verdict,reason,priority
+"Fix 13 youtube-for/ 404 pages (fintech-companies, insurance-agents, edtech-companies, mortgage-brokers, recruiting-firms, hr-software, healthcare-practices, cybersecurity-companies, management-consultants, subscription-businesses, dental-practices, accountants, marketplaces)",pseo,published-broken,ship,"Critical: 17 internal links each pointing to 404s. Fix build/publishDate issue and redeploy.",P0
+"Best YouTube SEO Tools for Business (blog)",blog,unclear,"ship","4400 vol youtube seo tools KD 23. Page appears in GA4 (13 sessions) and sitemap but NOT in src/data/post/. Verify status — if draft publish immediately. #1 winnable keyword.",P0
+"YouTube Script Generator (tool)",tool,planned,ship,"youtube script 1600 vol KD 18 + 3 variants totaling 1650 vol. Tool page exists at /tools/youtube-script-generator as Coming Soon. Build and launch.",P1
+"YouTube SEO Services (blog)",blog,not-started,ship,"youtube seo services 1600 vol KD 10. Extremely low KD. Write as a comparison/guide — not a sales page. Links to /pricing naturally.",P1
+"YouTube Content Strategy (blog)",blog,not-started,ship,"youtube content strategy 110 vol KD 5 + youtube strategy 1600 vol KD 16. Low competition. Can rank fast.",P1
+"YouTube Marketing ROI (blog expansion)",blog,published,revise,"Ranking pos 17.2 for youtube marketing roi (8 imp). Expand with advertising ROI section benchmarks and calculator embed. Closest to page 1.",P1
+"YouTube Marketing Strategy (blog rewrite)",blog,published,revise,"191 impressions at pos 55 — Google sees relevance but page underperforms. Title 94 chars (too long). Mapped to 15+ winnable keywords totaling 12320 vol — too many targets for one page. Split: keep this page for youtube marketing strategy (320 vol) and create separate pages for youtube agency (260 vol) and create a company youtube channel (6600 vol).",P1
+"YouTube For Coaches (pseo expansion)",pseo,published,revise,"Best pSEO signal: pos 16.6 for youtube for coaches (5 imp). Add coach-specific examples real channel references FAQ schema. Make it citation-worthy.",P2
+"YouTube For SaaS (pseo expansion)",pseo,published,revise,"Ranking pos 14 for is youtube saas (1 imp). SaaS is core ICP. Add real SaaS channel examples conversion data specific video topic frameworks.",P2
+"Create YouTube Channel for Business (blog expansion)",blog,published,revise,"Pos 5 for how to create a youtube business account. Mapped to 9 live winnable keywords (510 total vol). Add screenshots step-by-step expand FAQ.",P2
+"YouTube Transcript Generator (tool optimization)",tool,published,revise,"Pos 5 for youtube to transcript. Fix double title suffix. Add comparison copy use cases FAQ. Lock in page 1.",P2
+"YouTube Video Ideas Evaluator (tool optimization)",tool,published,revise,"Pos 19.3 for video evaluator (3 imp). Fix title add structured data improve landing copy.",P2
+"YouTube For Real Estate (pseo)",pseo,published,ship,"210 vol — highest volume pSEO keyword. Verify page is live and indexed. Expand if thin.",P2
+"YouTube For Small Business (pseo expansion)",pseo,published,revise,"youtube for small business 40 vol KD 27. Moderate signal. Expand with small business specific examples.",P3
+"YouTube Video Ideas Generator for B2B (blog)",blog,published,revise,"Low engagement (40% engagement rate 60% bounce). Page exists but isn't resonating. Tighten copy align with tool CTA.",P3
+"YouTube vs Blog Shopify Case Study (blog)",blog,published,ship,"Original data (3.25x conversion claim). Good for backlinks and LLM citation. Title too long (91 chars) — shorten.",P3
+"YouTube Acquisition Engine (blog)",blog,published,ship,"Framework post. Good E-E-A-T signal. Title too long (80 chars) — minor fix.",P3
+"Why Most YouTube Strategies Fail (blog)",blog,published,ship,"Good engagement (75%). Keep as-is. Minor: title starts with banned pattern check style guide compliance.",P3
+"High-Intent Topic Research Framework (blog)",blog,published,revise,"Title 98 chars — severely truncated in SERPs. Zero GSC impressions. Rewrite title to target a searchable keyword not just a brand framework name.",P3
+"Compounding Effect Four Videos a Month (blog)",blog,published,revise,"Title 108 chars — worst offender. Rewrite. Zero GSC impressions. Consider whether the topic has search demand — no matching keyword in sot_master.csv.",P3
+"Search Intent YouTube SEO Power (blog)",blog,published,revise,"Title 74 chars. Getting 2 imp for android youtube search intent (pos 35.5) and search intent youtube (pos 25). Retitle to target search intent youtube directly.",P3
+"YouTube For HR Software (pseo)",pseo,published-broken,kill,"0 search volume. Currently 404. Fix 404 for link equity but do not invest in content expansion.",P4
+"YouTube For Cybersecurity Companies (pseo)",pseo,published-broken,kill,"0 search volume. Currently 404. Fix 404 for link equity only.",P4
+"YouTube For Fintech Companies (pseo)",pseo,published-broken,kill,"0 search volume. Currently 404. Fix 404 for link equity only.",P4
+"YouTube For Dental Practices (pseo)",pseo,published-broken,kill,"0 search volume. Currently 404. Fix 404 for link equity only.",P4
+"YouTube For Mortgage Brokers (pseo)",pseo,published-broken,kill,"0 search volume. Currently 404. Fix 404 for link equity only.",P4
+"YouTube For Marketplaces (pseo)",pseo,published-broken,kill,"0 search volume. Currently 404. Fix 404 for link equity only.",P4
+"Photographers YouTube Video Ideas",pseo,broken-404,kill,"404. 0 search volume. No GSC signal. Redirect to /youtube-video-ideas hub.",P4
+"Animators YouTube Video Ideas",pseo,broken-404,kill,"404. 0 search volume. No GSC signal. Redirect to /youtube-video-ideas hub.",P4
+"Make Money YouTube Video Ideas",pseo,broken-404,kill,"404. Off-ICP (creator not B2B). Redirect to /youtube-video-ideas hub.",P4
+"Small Business YouTube Video Ideas",pseo,broken-404,kill,"404. 0 search volume. Redirect to /youtube-video-ideas hub.",P4
+"Coach Pricing Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/coach-methodology-videos.",P4
+"Coach FAQ Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/coach-methodology-videos.",P4
+"Consultant Myth-Busting Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/consultant-diagnosis-videos.",P4
+"Consultant Step-by-Step Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/consultant-diagnosis-videos.",P4
+"Consultant ROI Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/consultant-framework-videos.",P4
+"Consultant Case Study Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/consultant-diagnosis-videos.",P4
+"Coach Program Overview Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/coach-methodology-videos.",P4
+"YouTube Channel Audit Tool",tool,planned,kill,"Estimated vol 3K-6K not validated by DataForSEO. No matching keyword in sot_master.csv. Pause until demand validated.",P4
+"SaaS Onboarding Preview Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/saas-integration-videos.",P4
+"B2B Onboarding Preview Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/b2b-process-transparency-videos.",P4
+"B2B Buyer Guide Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/b2b-vendor-comparison-videos.",P4
+"B2B Results Proof Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/b2b-process-transparency-videos.",P4
+"B2B Pricing Structure Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/b2b-process-transparency-videos.",P4
+"Agency Red Flags Videos",pseo,broken-404,kill,"404. Redirect to /youtube-video-ideas/agency-hiring-guide-videos.",P4
+"YouTube For Artists",pseo,broken-404,kill,"404. Off-ICP (not B2B). Redirect to /youtube-video-ideas hub.",P4
+"/slides (pitch deck)",page,published,kill,"Orphan page — zero internal links. Not an SEO target. Noindex or exclude from sitemap.",P4

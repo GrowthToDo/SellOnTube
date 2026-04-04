@@ -1,0 +1,29 @@
+page_url,clicks,impressions,avg_position,CTR,opportunity_type,recommended_action,effort,priority_tier
+https://sellontube.com/blog/youtube-marketing-roi,0,8,17.2,0%,striking-distance,"Expand with youtube advertising roi section (pos 14.5). Add ROI benchmarks by industry. Embed calculator. Add FAQ schema. Add 40-word direct-answer paragraph for AI Overviews.",medium,P1
+https://sellontube.com/youtube-for/coaches,0,5,16.6,0%,striking-distance,"Expand with real coach channel examples. Interlink to /youtube-video-ideas/coach-*. Add FAQ schema. Also ranking for youtube video ideas for coaches (pos 10.5) and youtube video marketing for coaches (pos 18.5).",low-med,P1
+https://sellontube.com/tools/youtube-transcript-generator,0,2,5.0,0%,striking-distance,"Already page 1 for youtube to transcript. Fix double title suffix (82 chars -> under 60). Add comparison section vs competitors. Add FAQ. Submit refreshed URL to GSC.",low,P1
+https://sellontube.com/blog/create-youtube-channel-for-business,0,1,5.0,0%,striking-distance,"Pos 5 for how to create a youtube business account. Mapped to 9 live winnable keywords (510 vol total). Add step-by-step screenshots. Expand FAQ. Target long-tail variants.",medium,P1
+https://sellontube.com/blog/youtube-marketing-strategy,0,191,55.1,0%,high-impressions-low-rank,"191 impressions at pos 55 — highest non-branded query. Title 94 chars (truncated). Complete rewrite needed: tighter keyword targeting stronger structure. Consider splitting — this page is mapped to 15+ keywords (12320 vol) which dilutes focus.",high,P1
+https://sellontube.com/tools/youtube-video-ideas-evaluator,0,3,19.3,0%,striking-distance,"Ranking for video evaluator (pos 19.3). Fix double title. Add structured data. Improve landing copy with use cases and examples.",low,P2
+https://sellontube.com/youtube-video-ideas/coach-results-videos,0,2,10.5,0%,striking-distance,"Ranking for youtube video ideas for coaches (pos 10.5). Expand content with specific video titles examples and frameworks.",low,P2
+https://sellontube.com/youtube-for/saas,0,1,14.0,0%,striking-distance,"Ranking for is youtube saas (pos 14). Add real SaaS channel case studies specific video frameworks conversion data.",medium,P2
+https://sellontube.com/tools/youtube-roi-calculator,0,1,19.0,0%,striking-distance,"Ranking for youtube roi (pos 19 — but main query youtube roi has 18 imp at pos 21.4 overall). Fix title. Add comparison copy. Interlink from youtube-marketing-roi blog.",low,P2
+https://sellontube.com/blog/youtube-marketing-strategy,0,33,35.0,0%,high-impressions-low-rank,"33 impressions for youtube marketing strategies (plural) at pos 35. Same page different query variant. Consolidation opportunity with the 191-impression query.",high,P2
+https://sellontube.com/,3,14,7.0,21.43%,branded-only,"Only clicks are branded (sell tube). Homepage CTR is healthy at 21.4% but all traffic is brand queries. Not actionable for SEO growth.",low,P3
+https://sellontube.com/youtube-for-saas,0,1,18.0,0%,redirect-leak,"Old flat URL /youtube-for-saas still getting impressions. GA4 shows 'Page Not Found' title for this path. Verify 301 redirect is working. Request GSC re-indexing of old URL.",low,P2
+https://sellontube.com/youtube-for-coaches,0,0,0,0%,redirect-leak,"GA4 shows sessions to /youtube-for-coaches with 'Page Not Found' title. Verify 301 wildcard redirect /youtube-for-* -> /youtube-for/:splat is working. If yes request GSC re-indexing.",low,P2
+https://sellontube.com/services-pricing,0,0,0,0%,redirect-leak,"GA4 shows 8 sessions with 'Page Not Found' title. 301 redirect to /pricing exists in netlify.toml but GA4 shows the old path. Likely cached or bookmarked traffic — low priority.",low,P3
+https://sellontube.com/youtube-for/fintech-companies,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links pointing here. Fix build issue. Zero search volume — do not invest in content expansion.",low,P0
+https://sellontube.com/youtube-for/insurance-agents,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/edtech-companies,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/mortgage-brokers,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/recruiting-firms,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/hr-software,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/healthcare-practices,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/cybersecurity-companies,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/management-consultants,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/subscription-businesses,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/dental-practices,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/accountants,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/youtube-for/marketplaces,0,0,0,0%,broken-404,"404 per Ahrefs. 17 internal links. Fix build issue. Zero search volume.",low,P0
+https://sellontube.com/slides,0,0,0,0%,orphan-page,"Zero internal links. Pitch deck — not SEO target. Noindex or exclude from sitemap.",low,P3
