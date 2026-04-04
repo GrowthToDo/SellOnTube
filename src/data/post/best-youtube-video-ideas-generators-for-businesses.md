@@ -136,7 +136,7 @@ vidIQ's AI analyses trending topics, keywords, and audience behaviour to suggest
 
 For businesses with an established channel and at least a few months of upload history, vidIQ is one of the stronger options. It sits inside a larger suite that covers titles, scripts, and content generation, so the idea is just the starting point of a longer workflow. That integration matters when you are producing videos consistently.
 
-Where it falls short for business channels is intent. vidIQ optimises for performance. Views, click-through rate, watch time. Those matter, but a business channel also needs ideas that attract people who are close to a buying decision. vidIQ does not distinguish between a video that gets 50,000 views from casual browsers and one that gets 2,000 views from ready-to-buy prospects.
+Where it falls short for business channels is intent. vidIQ optimises for performance. Views, click-through rate, watch time. Those matter, but a business channel also needs ideas that attract people who are close to a buying decision. vidIQ does not distinguish between a video that gets 50,000 views from casual browsers and one that gets 2,000 views from ready-to-buy prospects. Once you have your idea, our [YouTube Title Generator](/tools/youtube-title-generator) can score titles for buyer intent before you publish.
 
 **vidIQ price:** Free to try. Paid plans available.
 
