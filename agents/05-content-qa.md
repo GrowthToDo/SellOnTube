@@ -10,7 +10,8 @@ Also: automatically called by Agent 04 after every blog post draft.
 ## Source files to read first
 1. `style-guide.md` — every rule applies to ALL copy on the touched file, not just new writing
 2. `content-playbook.md` — quality standards
-3. `ai-seo-guide.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
+3. `content-depth-framework.md` — depth validation. Verify the page's coverage level matches the depth decision tree for its intent. Check that every section passes the editorial checklist (answers real question, adds specificity, boosts decisions). Flag padding or sections that fail the gate.
+4. `ai-seo-guide.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
 
 ## Execution steps
 
@@ -110,6 +111,16 @@ QA items are tiered by severity:
 ---
 
 ## IMPORTANT (must resolve before publish)
+
+**[IMPORTANT]**
+**Content depth validation (per `content-depth-framework.md`)**
+- [ ] Coverage level (Deep/Medium/Short) matches the topic's search intent — not inflated or undersized
+- [ ] Word count falls within the correct range for the coverage level (Deep: 2,000-4,000+ | Medium: 1,200-2,200 | Short: 500-1,200)
+- [ ] Every section passes the editorial gate: answers a real question, boosts decisions/implementation, adds specificity/proof, covers search intent without dilution
+- [ ] No padding: no generic intros, repetition, keyword stuffing, or filler sections. If a section fails the gate, flag for removal.
+- [ ] Page contains 5+ quotable passages (standalone sentences/blocks extractable by AI/featured snippets)
+- [ ] AI/LLM readability: clear H2/H3 headings, concise definitions, short paragraphs (3-5 lines), tables/checklists where appropriate
+- [ ] "Comprehensive but Tight" checklist items covered where relevant: What is it? Why matters? Who for/not for? How to do it? Mistakes to avoid? Next steps?
 
 **[IMPORTANT]**
 **Humanizer: voice and structural patterns (Fix #18, Fix #19)**

@@ -58,6 +58,9 @@ Next 30 days: [table]
 Full publishing gate sequence: `docs/sops/pseo-publishing-sop.md`
 
 Run before any new pSEO page or template goes live:
+- [ ] Coverage level is appropriate per `content-depth-framework.md` — pSEO pages target 800-2,200 words. Prioritize uniqueness > length. Kill duplicates; don't publish thin pages.
+- [ ] Every section passes the editorial gate: answers a real question, adds specificity, useful to buyers. No padding.
+- [ ] Page contains quotable standalone passages extractable by AI/search engines
 - [ ] Every page provides unique value specific to that slug — not just variable substitution
 - [ ] H1, H2 headings are present and meaningful (not generic placeholders)
 - [ ] Schema markup is implemented (check `JsonLd.astro`)
