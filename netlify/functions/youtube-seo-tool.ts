@@ -1,4 +1,6 @@
 // youtube-seo-tool.ts
+import { getVideoDetails } from './lib/youtube-data.js';
+
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
@@ -75,6 +77,7 @@ const SYSTEM_INSTRUCTION = `You are a YouTube SEO analyst for B2B businesses. Yo
 You receive:
 - A video title
 - A video description
+- Video tags (may be empty if no tags are set)
 - A business website summary (may be null if the site was unavailable)
 
 Your output must be a single valid JSON object. No preamble, no explanation, no markdown fences.
@@ -98,12 +101,12 @@ Two layers combined:
 fix: If score < 15, provide ACTUAL first 150 characters rewritten. If score >= 15, set fix to null.
 
 ### 3. Keyword Coverage (0–20)
-Identify 3 buyer-intent keywords the video should rank for based on the title, description, and business context. Score how many appear naturally in the description (0, 1, 2, or all 3).
+Identify 3 buyer-intent keywords the video should rank for based on the title, description, tags, and business context. Score how many appear naturally in the description AND tags combined (0, 1, 2, or all 3). If video tags are provided, factor tag quality into the score: buyer-intent tags add points, generic/irrelevant tags do not.
 - 0 keywords present → 0–4
 - 1 keyword present → 5–10
 - 2 keywords present → 11–16
 - All 3 present → 17–20
-fix: If score < 15, list the exact 3 keywords to weave into the description. If score >= 15, set fix to null.
+fix: If score < 15, list the exact 3 keywords to weave into the description and tags. If score >= 15, set fix to null.
 
 ### 4. CTA Quality (0–20)
 - No CTA anywhere → 0–3
@@ -192,11 +195,16 @@ After the self-audit, return the final JSON only.
 function buildUserPrompt(
   title: string,
   description: string,
-  websiteText: string | null
+  websiteText: string | null,
+  tags: string[] = []
 ): string {
   const websiteSection = websiteText
     ? `Website text (first 3,000 chars):\n${websiteText}`
     : `Website text: Not available. Infer business context from the video content.`;
+
+  const tagsSection = tags.length > 0
+    ? `Video tags: ${tags.join(', ')}`
+    : `Video tags: None found (no tags set on this video).`;
 
   return `Evaluate this YouTube video's SEO metadata for buyer intent.
 
@@ -204,6 +212,8 @@ Video title: ${title}
 
 Video description:
 ${description}
+
+${tagsSection}
 
 ${websiteSection}
 
@@ -314,6 +324,24 @@ export default async (request: Request) => {
       console.error('DataFetch API error:', dataFetchRes.status, errText.slice(0, 300));
     }
 
+    // Step 2b: Fetch tags via YouTube Data API v3 (bonus data, non-blocking)
+    let videoTags: string[] = [];
+    const ytApiKey = process.env.YOUTUBE_API_KEY;
+    if (ytApiKey) {
+      try {
+        const ytDetails = await getVideoDetails(videoId, ytApiKey);
+        if (ytDetails) {
+          videoTags = ytDetails.tags;
+          // Use YouTube Data API as fallback for title/description if DataFetch missed them
+          if (!title) title = ytDetails.title;
+          if (!description) description = ytDetails.description;
+          console.log('YouTube Data API OK — tags:', videoTags.length, 'title fallback:', !title);
+        }
+      } catch (e) {
+        console.error('YouTube Data API fetch failed (non-fatal):', e);
+      }
+    }
+
     // Fallback: YouTube oEmbed gives us title for any public video
     if (!title) {
       console.log('DataFetch returned no title — trying oEmbed fallback');
@@ -360,7 +388,7 @@ export default async (request: Request) => {
         system_instruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
         contents: [{
           parts: [{
-            text: buildUserPrompt(title, description, websiteText),
+            text: buildUserPrompt(title, description, websiteText, videoTags),
           }],
         }],
         generationConfig: {
