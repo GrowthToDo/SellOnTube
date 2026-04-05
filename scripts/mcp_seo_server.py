@@ -58,6 +58,10 @@ SCOPES = [
 DFS_LOGIN = os.environ.get("DATAFORSEO_LOGIN", "")
 DFS_PASSWORD = os.environ.get("DATAFORSEO_PASSWORD", "")
 DFS_BASE = "https://api.dataforseo.com/v3"
+
+BING_API_KEY = os.environ.get("BING_WEBMASTER_API_KEY", "")
+BING_BASE = "https://ssl.bing.com/webmaster/api.svc/json"
+BING_SITE_URL = "https://sellontube.com/"
 # ─────────────────────────────────────────────
 
 server = Server("sellontube-seo")
@@ -155,6 +159,42 @@ async def list_tools() -> list[Tool]:
                 "properties": {
                     "days": {"type": "integer", "description": "Number of days to look back (default 90)", "default": 90},
                 },
+            },
+        ),
+        Tool(
+            name="bing_top_queries",
+            description=(
+                "Get top search queries from Bing Webmaster Tools — "
+                "what people search on Bing, Yahoo, DuckDuckGo, and Copilot to find sellontube.com. "
+                "Returns queries with clicks, impressions, CTR, and average position."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {},
+            },
+        ),
+        Tool(
+            name="bing_top_pages",
+            description=(
+                "Get top pages from Bing Webmaster Tools — "
+                "which sellontube.com URLs get the most traffic from Bing/Yahoo/DuckDuckGo/Copilot. "
+                "Returns pages with clicks, impressions, and crawl stats."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {},
+            },
+        ),
+        Tool(
+            name="bing_crawl_stats",
+            description=(
+                "Get crawl statistics from Bing Webmaster Tools — "
+                "how Bingbot is crawling sellontube.com. Shows crawl errors, "
+                "blocked URLs, and crawl volume. Use to diagnose indexing issues on Bing."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {},
             },
         ),
         Tool(
@@ -417,6 +457,82 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             "period_days": days,
             "total_pages": len(pages),
             "pages": pages,
+        }))]
+
+    elif name == "bing_top_queries":
+        resp = requests.get(
+            f"{BING_BASE}/GetQueryStats",
+            params={"siteUrl": BING_SITE_URL, "apikey": BING_API_KEY},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        raw = resp.json()
+        stats = raw.get("d", [])
+        queries = [
+            {
+                "query": s.get("Query"),
+                "impressions": s.get("Impressions", 0),
+                "clicks": s.get("Clicks", 0),
+                "avg_position": s.get("AvgImpressionPosition"),
+                "avg_click_position": s.get("AvgClickPosition"),
+            }
+            for s in stats
+        ]
+        queries.sort(key=lambda x: x["impressions"], reverse=True)
+        return [TextContent(type="text", text=format_json({
+            "source": "Bing Webmaster Tools (covers Bing, Yahoo, DuckDuckGo, Copilot)",
+            "total_queries": len(queries),
+            "queries": queries[:50],
+        }))]
+
+    elif name == "bing_top_pages":
+        resp = requests.get(
+            f"{BING_BASE}/GetPageStats",
+            params={"siteUrl": BING_SITE_URL, "apikey": BING_API_KEY},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        raw = resp.json()
+        stats = raw.get("d", [])
+        pages = [
+            {
+                "url": s.get("Query"),
+                "impressions": s.get("Impressions", 0),
+                "clicks": s.get("Clicks", 0),
+                "avg_position": s.get("AvgImpressionPosition"),
+                "avg_click_position": s.get("AvgClickPosition"),
+            }
+            for s in stats
+        ]
+        pages.sort(key=lambda x: x["impressions"], reverse=True)
+        return [TextContent(type="text", text=format_json({
+            "source": "Bing Webmaster Tools",
+            "total_pages": len(pages),
+            "pages": pages[:50],
+        }))]
+
+    elif name == "bing_crawl_stats":
+        resp = requests.get(
+            f"{BING_BASE}/GetCrawlStats",
+            params={"siteUrl": BING_SITE_URL, "apikey": BING_API_KEY},
+            timeout=30,
+        )
+        resp.raise_for_status()
+        raw = resp.json()
+        stats = raw.get("d", [])
+        crawl_data = [
+            {
+                "date": s.get("Date"),
+                "crawled_pages": s.get("CrawledPages", 0),
+                "in_index": s.get("InIndex", 0),
+                "in_links": s.get("InLinks", 0),
+                "crawl_errors": s.get("CrawlErrors", 0),
+            }
+            for s in stats
+        ]
+        return [TextContent(type="text", text=format_json({
+            "source": "Bing Webmaster Tools",
+            "crawl_stats": crawl_data,
         }))]
 
     elif name == "pagespeed_check":
