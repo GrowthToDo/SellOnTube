@@ -53,6 +53,7 @@ GA4_PROPERTY_ID = "522074510"
 SCOPES = [
     "https://www.googleapis.com/auth/analytics.readonly",
     "https://www.googleapis.com/auth/webmasters.readonly",
+    "https://www.googleapis.com/auth/indexing",
 ]
 
 DFS_LOGIN = os.environ.get("DATAFORSEO_LOGIN", "")
@@ -197,6 +198,32 @@ async def list_tools() -> list[Tool]:
             inputSchema={
                 "type": "object",
                 "properties": {},
+            },
+        ),
+        Tool(
+            name="google_indexing_submit",
+            description=(
+                "Submit URLs to Google's Indexing API for fast crawling and indexing. "
+                "Use after publishing new pages or updating existing ones. "
+                "Supports URL_UPDATED (request crawl) and URL_DELETED (remove from index). "
+                "Faster than GSC Request Indexing - no daily quota limit like the manual method."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "urls": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "List of full URLs or paths to submit, e.g. ['/blog/new-post', '/tools/tag-generator'] (max 10)",
+                    },
+                    "action": {
+                        "type": "string",
+                        "description": "URL_UPDATED (request crawl, default) or URL_DELETED (remove from index)",
+                        "default": "URL_UPDATED",
+                        "enum": ["URL_UPDATED", "URL_DELETED"],
+                    },
+                },
+                "required": ["urls"],
             },
         ),
         Tool(
@@ -572,6 +599,33 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
         return [TextContent(type="text", text=format_json({
             "source": "Bing Webmaster Tools",
             "crawl_stats": crawl_data,
+        }))]
+
+    elif name == "google_indexing_submit":
+        urls = arguments.get("urls", [])[:10]
+        action = arguments.get("action", "URL_UPDATED")
+        indexing_service = build("indexing", "v3", credentials=credentials)
+        results = []
+        for u in urls:
+            full_url = u if u.startswith("http") else f"https://sellontube.com{u}"
+            try:
+                resp = indexing_service.urlNotifications().publish(
+                    body={"url": full_url, "type": action}
+                ).execute()
+                results.append({
+                    "url": full_url,
+                    "status": "submitted",
+                    "notifyTime": resp.get("urlNotificationMetadata", {}).get("latestUpdate", {}).get("notifyTime"),
+                })
+            except Exception as e:
+                results.append({
+                    "url": full_url,
+                    "status": "error",
+                    "error": str(e)[:300],
+                })
+        return [TextContent(type="text", text=format_json({
+            "action": action,
+            "results": results,
         }))]
 
     elif name == "indexnow_submit":
