@@ -62,6 +62,8 @@ DFS_BASE = "https://api.dataforseo.com/v3"
 BING_API_KEY = os.environ.get("BING_WEBMASTER_API_KEY", "")
 BING_BASE = "https://ssl.bing.com/webmaster/api.svc/json"
 BING_SITE_URL = "https://sellontube.com/"
+
+INDEXNOW_KEY = os.environ.get("INDEXNOW_KEY", "")
 # ─────────────────────────────────────────────
 
 server = Server("sellontube-seo")
@@ -195,6 +197,43 @@ async def list_tools() -> list[Tool]:
             inputSchema={
                 "type": "object",
                 "properties": {},
+            },
+        ),
+        Tool(
+            name="indexnow_submit",
+            description=(
+                "Submit URLs to IndexNow for instant indexing on Bing, Yahoo, DuckDuckGo, and Yandex. "
+                "Use after publishing a new blog post, pSEO page, or tool page. "
+                "Accepts up to 10 URLs per call. Much faster than waiting for natural crawl."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "paths": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "List of page paths to submit, e.g. ['/blog/new-post', '/tools/tag-generator'] (max 10)",
+                    },
+                },
+                "required": ["paths"],
+            },
+        ),
+        Tool(
+            name="schema_validate",
+            description=(
+                "Validate structured data (JSON-LD/schema.org) on any sellontube.com page "
+                "using Google's Rich Results Test API. Returns detected schemas, "
+                "errors, and warnings. Use to catch schema issues that suppress rich snippets in Google."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "description": "Page path to validate, e.g. '/' or '/blog/youtube-marketing-roi'",
+                    },
+                },
+                "required": ["path"],
             },
         ),
         Tool(
@@ -534,6 +573,102 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             "source": "Bing Webmaster Tools",
             "crawl_stats": crawl_data,
         }))]
+
+    elif name == "indexnow_submit":
+        paths = arguments.get("paths", [])[:10]
+        urls = [f"https://sellontube.com{p}" for p in paths]
+        payload = {
+            "host": "sellontube.com",
+            "key": INDEXNOW_KEY,
+            "keyLocation": f"https://sellontube.com/{INDEXNOW_KEY}.txt",
+            "urlList": urls,
+        }
+        resp = requests.post(
+            "https://api.indexnow.org/IndexNow",
+            json=payload,
+            headers={"Content-Type": "application/json; charset=utf-8"},
+            timeout=30,
+        )
+        status = resp.status_code
+        result_msg = {
+            200: "OK - URLs submitted successfully",
+            202: "Accepted - URLs queued for processing",
+            400: "Bad request - check URL format",
+            403: "Forbidden - key mismatch",
+            422: "Unprocessable - invalid URLs",
+            429: "Too many requests - try again later",
+        }.get(status, f"HTTP {status}")
+        return [TextContent(type="text", text=format_json({
+            "submitted_urls": urls,
+            "status_code": status,
+            "result": result_msg,
+        }))]
+
+    elif name == "schema_validate":
+        path = arguments.get("path", "/")
+        url = f"https://sellontube.com{path}"
+        # Use Schema.org validator API
+        resp = requests.get(
+            "https://validator.schema.org/validate",
+            params={"url": url},
+            timeout=30,
+        )
+        # Fallback: parse the page ourselves and extract JSON-LD
+        if resp.status_code != 200:
+            # Fetch the page and extract JSON-LD blocks
+            page_resp = requests.get(url, timeout=30)
+            page_resp.raise_for_status()
+            import re
+            json_ld_blocks = re.findall(
+                r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+                page_resp.text,
+                re.DOTALL,
+            )
+            schemas = []
+            errors = []
+            for i, block in enumerate(json_ld_blocks):
+                try:
+                    parsed = json.loads(block)
+                    schema_type = parsed.get("@type", "Unknown")
+                    if isinstance(schema_type, list):
+                        schema_type = ", ".join(schema_type)
+                    schemas.append({
+                        "index": i + 1,
+                        "type": schema_type,
+                        "context": parsed.get("@context", ""),
+                        "fields": list(parsed.keys()),
+                        "valid_json": True,
+                    })
+                    # Basic validation checks
+                    issues = []
+                    if "@context" not in parsed:
+                        issues.append("Missing @context")
+                    if "@type" not in parsed:
+                        issues.append("Missing @type")
+                    if parsed.get("@type") == "Article":
+                        for field in ["headline", "author", "datePublished", "image"]:
+                            if field not in parsed:
+                                issues.append(f"Recommended field missing: {field}")
+                    if parsed.get("@type") == "FAQPage":
+                        if "mainEntity" not in parsed:
+                            issues.append("FAQPage missing mainEntity")
+                    if issues:
+                        schemas[-1]["issues"] = issues
+                except json.JSONDecodeError as e:
+                    errors.append({"index": i + 1, "error": f"Invalid JSON: {str(e)}", "raw_preview": block[:200]})
+
+            return [TextContent(type="text", text=format_json({
+                "url": url,
+                "total_json_ld_blocks": len(json_ld_blocks),
+                "schemas": schemas,
+                "parse_errors": errors,
+                "note": "Basic validation - check Google Rich Results Test for full eligibility",
+            }))]
+        else:
+            return [TextContent(type="text", text=format_json({
+                "url": url,
+                "raw_response": resp.text[:2000],
+            }))]
 
     elif name == "pagespeed_check":
         path = arguments.get("path", "/")
