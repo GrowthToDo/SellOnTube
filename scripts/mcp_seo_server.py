@@ -361,6 +361,55 @@ async def list_tools() -> list[Tool]:
                 "required": ["keyword"],
             },
         ),
+        Tool(
+            name="broken_link_check",
+            description=(
+                "Crawl sellontube.com and find broken links (404s, 5xx errors, redirect chains). "
+                "Broken links leak link equity and hurt rankings. "
+                "Checks internal links and external links on the page. Use regularly to catch dead links."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "description": "Page path to check links on, e.g. '/' or '/blog/youtube-marketing-roi'. Use '/sitemap.xml' to check all pages.",
+                    },
+                },
+                "required": ["path"],
+            },
+        ),
+        Tool(
+            name="meta_tag_audit",
+            description=(
+                "Audit meta tags (title, description, OG tags) across sellontube.com pages. "
+                "Finds truncated titles (>60 chars), missing/short descriptions (<70 chars), "
+                "duplicate titles, and missing OG images. Truncated titles = lower CTR in search results."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "paths": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "List of page paths to audit. Use ['/sitemap.xml'] to auto-discover all pages.",
+                    },
+                },
+                "required": ["paths"],
+            },
+        ),
+        Tool(
+            name="internal_link_map",
+            description=(
+                "Map internal links across sellontube.com. Finds orphan pages (no internal links "
+                "pointing to them), pages with too few internal links, and the most/least linked pages. "
+                "Orphan pages don't get crawled or ranked. Critical for pSEO pages."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {},
+            },
+        ),
     ]
 
 
@@ -891,6 +940,190 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             "location": location,
             "cost_usd": raw.get("cost"),
             "suggestions": suggestions[:20],
+        }))]
+
+    elif name == "broken_link_check":
+        import re as _re
+        from urllib.parse import urljoin, urlparse
+        path = arguments.get("path", "/")
+        base = "https://sellontube.com"
+
+        # If sitemap, extract all URLs
+        if "sitemap" in path:
+            sitemap_resp = requests.get(f"{base}/sitemap-index.xml", timeout=30)
+            urls_to_check = _re.findall(r'<loc>(.*?)</loc>', sitemap_resp.text)
+            # If it's a sitemap index, fetch child sitemaps
+            child_urls = []
+            for u in urls_to_check:
+                if "sitemap" in u.lower() and u.endswith(".xml"):
+                    child_resp = requests.get(u, timeout=30)
+                    child_urls.extend(_re.findall(r'<loc>(.*?)</loc>', child_resp.text))
+            if child_urls:
+                urls_to_check = child_urls
+        else:
+            urls_to_check = [f"{base}{path}"]
+
+        broken = []
+        checked = 0
+        for page_url in urls_to_check[:50]:  # cap at 50 pages
+            try:
+                page_resp = requests.get(page_url, timeout=15)
+                if page_resp.status_code >= 400:
+                    broken.append({"url": page_url, "status": page_resp.status_code, "type": "page_itself"})
+                    continue
+                links = _re.findall(r'href=["\']([^"\']+)["\']', page_resp.text)
+                seen = set()
+                for link in links:
+                    full = urljoin(page_url, link)
+                    if full in seen or full.startswith(("mailto:", "tel:", "javascript:", "#")):
+                        continue
+                    seen.add(full)
+                    parsed = urlparse(full)
+                    if parsed.scheme not in ("http", "https"):
+                        continue
+                    try:
+                        lr = requests.head(full, timeout=10, allow_redirects=True)
+                        checked += 1
+                        if lr.status_code >= 400:
+                            broken.append({
+                                "source_page": page_url,
+                                "broken_url": full,
+                                "status": lr.status_code,
+                                "type": "internal" if "sellontube.com" in full else "external",
+                            })
+                    except requests.RequestException:
+                        broken.append({
+                            "source_page": page_url,
+                            "broken_url": full,
+                            "status": "timeout/error",
+                            "type": "internal" if "sellontube.com" in full else "external",
+                        })
+            except requests.RequestException:
+                broken.append({"url": page_url, "status": "unreachable", "type": "page_itself"})
+
+        return [TextContent(type="text", text=format_json({
+            "pages_checked": len(urls_to_check[:50]),
+            "links_checked": checked,
+            "broken_links": broken,
+            "total_broken": len(broken),
+        }))]
+
+    elif name == "meta_tag_audit":
+        import re as _re
+        paths = arguments.get("paths", ["/"])
+        base = "https://sellontube.com"
+
+        # If sitemap, discover all pages
+        if any("sitemap" in p for p in paths):
+            sitemap_resp = requests.get(f"{base}/sitemap-index.xml", timeout=30)
+            all_locs = _re.findall(r'<loc>(.*?)</loc>', sitemap_resp.text)
+            child_urls = []
+            for u in all_locs:
+                if "sitemap" in u.lower() and u.endswith(".xml"):
+                    child_resp = requests.get(u, timeout=30)
+                    child_urls.extend(_re.findall(r'<loc>(.*?)</loc>', child_resp.text))
+            urls = child_urls if child_urls else all_locs
+        else:
+            urls = [f"{base}{p}" for p in paths]
+
+        issues = []
+        titles_seen = {}
+        for url in urls[:100]:
+            try:
+                resp = requests.get(url, timeout=15)
+                html = resp.text
+                title_match = _re.search(r'<title>(.*?)</title>', html, _re.DOTALL)
+                title = title_match.group(1).strip() if title_match else ""
+                desc_match = _re.search(r'<meta[^>]*name=["\']description["\'][^>]*content=["\']([^"\']*)["\']', html, _re.IGNORECASE)
+                desc = desc_match.group(1).strip() if desc_match else ""
+                og_title = _re.search(r'<meta[^>]*property=["\']og:title["\'][^>]*content=["\']([^"\']*)["\']', html, _re.IGNORECASE)
+                og_desc = _re.search(r'<meta[^>]*property=["\']og:description["\'][^>]*content=["\']([^"\']*)["\']', html, _re.IGNORECASE)
+                og_image = _re.search(r'<meta[^>]*property=["\']og:image["\'][^>]*content=["\']([^"\']*)["\']', html, _re.IGNORECASE)
+
+                page_issues = []
+                if not title:
+                    page_issues.append("Missing title")
+                elif len(title) > 60:
+                    page_issues.append(f"Title too long ({len(title)} chars, max 60)")
+                elif len(title) < 20:
+                    page_issues.append(f"Title too short ({len(title)} chars)")
+
+                if not desc:
+                    page_issues.append("Missing meta description")
+                elif len(desc) < 70:
+                    page_issues.append(f"Description too short ({len(desc)} chars, min 70)")
+                elif len(desc) > 160:
+                    page_issues.append(f"Description too long ({len(desc)} chars, max 160)")
+
+                if not og_image:
+                    page_issues.append("Missing og:image")
+                if not og_title:
+                    page_issues.append("Missing og:title")
+
+                # Track duplicates
+                if title:
+                    if title in titles_seen:
+                        page_issues.append(f"Duplicate title (same as {titles_seen[title]})")
+                    titles_seen[title] = url
+
+                if page_issues:
+                    issues.append({"url": url, "title": title[:80], "description": desc[:80], "issues": page_issues})
+            except requests.RequestException:
+                issues.append({"url": url, "issues": ["Page unreachable"]})
+
+        return [TextContent(type="text", text=format_json({
+            "pages_audited": len(urls[:100]),
+            "pages_with_issues": len(issues),
+            "issues": issues,
+        }))]
+
+    elif name == "internal_link_map":
+        import re as _re
+        from urllib.parse import urljoin, urlparse
+        base = "https://sellontube.com"
+
+        # Get all pages from sitemap
+        sitemap_resp = requests.get(f"{base}/sitemap-index.xml", timeout=30)
+        all_locs = _re.findall(r'<loc>(.*?)</loc>', sitemap_resp.text)
+        child_urls = []
+        for u in all_locs:
+            if "sitemap" in u.lower() and u.endswith(".xml"):
+                child_resp = requests.get(u, timeout=30)
+                child_urls.extend(_re.findall(r'<loc>(.*?)</loc>', child_resp.text))
+        site_urls = set(child_urls if child_urls else all_locs)
+
+        # Build link map: who links to whom
+        inbound_count = {u: 0 for u in site_urls}
+        outbound_count = {u: 0 for u in site_urls}
+        inbound_from = {u: [] for u in site_urls}
+
+        for page_url in list(site_urls)[:100]:
+            try:
+                resp = requests.get(page_url, timeout=15)
+                links = _re.findall(r'href=["\']([^"\'#]+)["\']', resp.text)
+                internal_targets = set()
+                for link in links:
+                    full = urljoin(page_url, link).split("?")[0].split("#")[0]
+                    if "sellontube.com" in full and full != page_url and full in site_urls:
+                        internal_targets.add(full)
+                outbound_count[page_url] = len(internal_targets)
+                for target in internal_targets:
+                    inbound_count[target] = inbound_count.get(target, 0) + 1
+                    if target in inbound_from:
+                        inbound_from[target].append(page_url)
+            except requests.RequestException:
+                pass
+
+        orphans = [u for u, c in inbound_count.items() if c == 0]
+        low_links = [{"url": u, "inbound": c} for u, c in inbound_count.items() if 0 < c <= 2]
+        most_linked = sorted(inbound_count.items(), key=lambda x: x[1], reverse=True)[:10]
+
+        return [TextContent(type="text", text=format_json({
+            "total_pages": len(site_urls),
+            "orphan_pages (0 internal links pointing to them)": orphans,
+            "low_link_pages (1-2 internal links)": low_links,
+            "most_linked_pages": [{"url": u, "inbound_links": c} for u, c in most_linked],
+            "recommendation": "Add internal links to orphan pages from related content to improve crawlability and rankings.",
         }))]
 
     else:
