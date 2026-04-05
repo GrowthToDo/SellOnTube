@@ -1,7 +1,7 @@
 """
 SellonTube SEO MCP Server
 ==========================
-Gives Claude direct access to GA4 and GSC data as native tools.
+Gives Claude direct access to GA4, GSC, PageSpeed Insights, and DataForSEO data as native tools.
 
 Setup:
     pip install -r scripts/requirements.txt
@@ -24,6 +24,15 @@ import os
 import requests
 from datetime import datetime, timedelta
 from pathlib import Path
+
+# Load .env if present (belt-and-suspenders — also works via .mcp.json env)
+_env_path = Path(__file__).parent.parent / ".env"
+if _env_path.exists():
+    for line in _env_path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            k, v = line.split("=", 1)
+            os.environ.setdefault(k.strip(), v.strip())
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -146,6 +155,31 @@ async def list_tools() -> list[Tool]:
                 "properties": {
                     "days": {"type": "integer", "description": "Number of days to look back (default 90)", "default": 90},
                 },
+            },
+        ),
+        Tool(
+            name="pagespeed_check",
+            description=(
+                "Run Google PageSpeed Insights on any sellontube.com page. "
+                "Returns Core Web Vitals (LCP, CLS, FID/INP), performance score, "
+                "and top optimization opportunities. Use this before deploying changes "
+                "or to audit page speed across the site."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "path": {
+                        "type": "string",
+                        "description": "Page path to check, e.g. '/' or '/tools/youtube-seo-tool' or '/blog/youtube-marketing-roi'",
+                    },
+                    "strategy": {
+                        "type": "string",
+                        "description": "Device type: 'mobile' (default) or 'desktop'",
+                        "default": "mobile",
+                        "enum": ["mobile", "desktop"],
+                    },
+                },
+                "required": ["path"],
             },
         ),
         Tool(
@@ -383,6 +417,74 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             "period_days": days,
             "total_pages": len(pages),
             "pages": pages,
+        }))]
+
+    elif name == "pagespeed_check":
+        path = arguments.get("path", "/")
+        strategy = arguments.get("strategy", "mobile")
+        url = f"https://sellontube.com{path}"
+        psi_url = (
+            "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
+            f"?url={url}&strategy={strategy}"
+            "&category=performance&category=accessibility&category=seo"
+        )
+        resp = requests.get(psi_url, timeout=60)
+        resp.raise_for_status()
+        raw = resp.json()
+
+        # Extract scores
+        categories = raw.get("lighthouseResult", {}).get("categories", {})
+        scores = {
+            cat_id: round((cat_data.get("score") or 0) * 100)
+            for cat_id, cat_data in categories.items()
+        }
+
+        # Extract Core Web Vitals from field data (CrUX)
+        field_data = raw.get("loadingExperience", {}).get("metrics", {})
+        cwv = {}
+        cwv_map = {
+            "LARGEST_CONTENTFUL_PAINT_MS": "LCP_ms",
+            "CUMULATIVE_LAYOUT_SHIFT_SCORE": "CLS",
+            "INTERACTION_TO_NEXT_PAINT": "INP_ms",
+            "FIRST_CONTENTFUL_PAINT_MS": "FCP_ms",
+        }
+        for key, label in cwv_map.items():
+            if key in field_data:
+                cwv[label] = {
+                    "value": field_data[key].get("percentile"),
+                    "category": field_data[key].get("category"),
+                }
+
+        # Extract lab metrics
+        audits = raw.get("lighthouseResult", {}).get("audits", {})
+        lab = {}
+        for metric_id in ["largest-contentful-paint", "cumulative-layout-shift",
+                          "total-blocking-time", "speed-index", "first-contentful-paint",
+                          "interactive"]:
+            if metric_id in audits:
+                lab[metric_id] = {
+                    "value": audits[metric_id].get("displayValue"),
+                    "score": round((audits[metric_id].get("score") or 0) * 100),
+                }
+
+        # Extract top opportunities
+        opportunities = []
+        for audit_id, audit in audits.items():
+            if audit.get("details", {}).get("type") == "opportunity" and (audit.get("score") or 1) < 0.9:
+                opportunities.append({
+                    "title": audit.get("title"),
+                    "savings_ms": audit.get("details", {}).get("overallSavingsMs"),
+                    "description": audit.get("description", "")[:200],
+                })
+        opportunities.sort(key=lambda x: x.get("savings_ms") or 0, reverse=True)
+
+        return [TextContent(type="text", text=format_json({
+            "url": url,
+            "strategy": strategy,
+            "scores": scores,
+            "core_web_vitals_field": cwv if cwv else "No field data yet (needs enough real-user traffic)",
+            "lab_metrics": lab,
+            "top_opportunities": opportunities[:5],
         }))]
 
     elif name == "dfs_keyword_metrics":
