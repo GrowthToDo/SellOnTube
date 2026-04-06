@@ -140,10 +140,17 @@ metadata:
 > **Note on `faqs:` field:** This generates FAQ JSON-LD schema automatically via the blog template. Always populate it — it is the schema source of truth. Also render the same FAQs inline in the post body at the end (the inline FAQ section is for readers; the frontmatter field is for Google).
 
 Then full body in MDX, followed by:
-- **Author bio** (mandatory) — name, role, specific expertise, years of experience or client count, LinkedIn link. Place before the Sources section. See `ai-seo-guide.md` §7 for required fields.
-- **Sources section** (if external stats cited)
 - **FAQ section**
 - **Bottom CTA** (book a call)
+- **Sources section** — only if 3+ external sources are cited. Single inline citations do not need a separate section.
+
+> **Do NOT add these manually — the blog template auto-renders them:**
+> - Author bio (rendered from frontmatter `author` field — do not add a markdown "About the author" section)
+> - Related posts / "More Guides" (rendered by the RelatedPosts component)
+>
+> **`toolCta` frontmatter rule:** Set `toolCta` only if the post body has no in-context link to a SellOnTube tool. If the body already links to a tool naturally, omit `toolCta` to avoid CTA stacking at the bottom.
+>
+> **Action box rule:** Do not link to the ROI calculator or any tool in the action box if the bottom CTA component already links there. Avoid duplicate CTAs within scrolling distance of each other.
 
 ### Phase 3.5 — Featured Image Creation (before Agent 05 handoff)
 

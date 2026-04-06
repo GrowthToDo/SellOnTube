@@ -156,7 +156,7 @@ QA items are tiered by severity:
 - [ ] Post file is `.mdx` if it contains any inline HTML boxes or diagrams — `.md` files do not render inline HTML reliably
 - [ ] For "what is X" / "how does X work" queries: Quick Answer callout is present before or at the top of the intro (position zero target)
 - [ ] Comparison and roundup posts include a "How to Choose [X]" H2 section
-- [ ] Any external statistics are cited — Sources section present at the end of the post
+- [ ] If 3+ external sources are cited, a Sources section is present at the end of the post. Single inline citations do not require a separate section.
 - [ ] Listicle items (if present) all follow the same H3 sub-structure throughout (Best for / Key advantage / Key limitation / Verdict)
 - [ ] Comparison tables use specific column headers — not "Step | Description" but e.g., "Tool | Best for | Key limitation"
 - [ ] Posts with broad applicability include an industry or use case table (Industry | Problem | How YouTube addresses it)
@@ -169,7 +169,7 @@ QA items are tiered by severity:
 - [ ] At least one Statistic Citation Block present — "According to [Source], [stat]" format with named source
 - [ ] Self-Contained Answer Block present (1-2 per post) — standalone quotable paragraph
 - [ ] Expert Quote Block present if expert quotes are included — named, attributed, linked to source
-- [ ] Author bio present at the end of the post — name, role, expertise, credentials, LinkedIn link
+- [ ] **Do NOT check for a manual author bio** — the blog template auto-renders it from frontmatter. A markdown "About the author" section in the body is a duplicate and should be removed if found.
 - [ ] No fabricated expert quotes — every quote must be real and verifiable
 
 **Internal links**
@@ -179,13 +179,13 @@ QA items are tiered by severity:
 **Content depth and authority signals (Fix #15)**
 - [ ] Listicle posts: year appended to title, placed at the end, content will be updated annually
 - [ ] Stats strip present only if post has 4 real, meaningful metrics — skipped if data would be stretched
-- [ ] "More [Topic] Guides" section present at end of post (after FAQ, before Sources) with 3–5 cluster links
+- [ ] **Do NOT add a manual "More Guides" section** — the RelatedPosts component auto-renders related posts. A manual list is a duplicate and should be removed if found.
 - [ ] Framework/listicle posts: each major item has an external "Real Signal" link where genuine evidence exists
 - [ ] Framework posts with 3–7 items: identical sub-structure applied to every item
 - [ ] Posts over 1,500 words: every concept-introducing H2 has a diagram (Fix #13 patterns)
 - [ ] Time-sensitive claims are grounded with a specific date reference — evergreen advice has no date
 - [ ] SellonTube tools linked at their natural decision moment, not only at the end — tool list in Fix #15 item 8
-- [ ] Sources section includes authority links beyond just stats (3–5 minimum external authority links)
+- [ ] If a Sources section is present, it includes authority links beyond just stats (3–5 minimum external authority links). If fewer than 3 sources, cite inline instead.
 - [ ] All screenshots are wrapped in the Fix #21 styled container with caption and descriptive alt text
 - [ ] Currency is always $ — never £, €, or other symbols
 

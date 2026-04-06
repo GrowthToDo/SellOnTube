@@ -218,16 +218,9 @@ Evidence supporting this includes:
 
 ## 7. Author Bio and E-E-A-T Requirements
 
-Every blog post must include an author bio. Google AI Overviews and ChatGPT both weight author credentials as an E-E-A-T signal.
+The blog template auto-renders an author bio component from the frontmatter `author` field. **Do not add a manual "About the author" markdown section in the post body** — this creates a duplicate.
 
-**Required fields in author bio:**
-- Full name
-- Role/title
-- Specific area of expertise (e.g., "YouTube SEO for B2B businesses")
-- Years of experience or number of clients worked with (specific, not vague)
-- Link to LinkedIn or personal site
-
-**Where it appears:** At the bottom of every blog post, before the Sources section.
+The auto-rendered component satisfies E-E-A-T requirements (name, role, expertise, LinkedIn link). Keep author profile data up to date in the site's author configuration, not in individual post files.
 
 ---
 
