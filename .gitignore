@@ -30,8 +30,9 @@ scripts/seo_data/*.json
 research/**/*.xlsx
 research/**/*.xls
 
-# Claude Code local settings — contains GitHub tokens and machine-specific paths
-.claude/
+# Claude Code local settings — ignore tokens/config, but track shared commands
+.claude/*
+!.claude/commands/
 
 # Local Netlify folder
 .netlify
