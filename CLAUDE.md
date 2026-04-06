@@ -20,6 +20,16 @@ Claude Code must rely on Language Server Protocol (LSP) tools as the primary met
 3. **Understand** — Check type information, parameter signatures, and dependency relationships via LSP.
 4. **Implement** — Modify or write code with full knowledge of the existing structure and contracts.
 
+## New Tool Integration Rule
+
+**Every new tool page must be added to the /tools listing and footer before the task is considered done.** This is not a separate task — it is part of building the tool. After creating any new `src/pages/tools/*.astro` file:
+1. Add the tool to the `tools` array in `src/pages/tools/index.astro` (correct workflow position)
+2. Add the tool to the `Free Tools` linkGroup in `src/navigation.ts` (matching order)
+3. Submit both URLs to Bing via Webmaster API (IndexNow is broken due to Cloudflare — use `curl` to `SubmitUrlbatch` endpoint with API key from `.mcp.json`)
+4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing)
+
+See `agents/08-microtool-builder.md` Phase 7 for full details.
+
 ## Key Principle
 
 > Prioritize using the LSP tool for context-efficient and accurate implementation.

@@ -332,6 +332,35 @@ Before showing the user the finished file, run these checks:
 
 ---
 
+### Phase 7: Post-Build Integration (mandatory — do not skip)
+
+After the tool page is built and QA passes, complete ALL of the following before showing the user the final output. These are not separate tasks — they are part of building a tool.
+
+**7a — Add to /tools listing page:**
+- Open `src/pages/tools/index.astro`
+- Add a new entry to the `tools` array matching the existing card format: `name`, `slug`, `tagline`, `description`, `badge`, `badgeColor`
+- Place the tool in the correct workflow position. Current order follows the content creation funnel: SEO Audit → Ideation → Titles → Evaluation → Script → Transcript → ROI. Insert the new tool where it fits in this user journey.
+- Badge should be a short category label (1-2 words). Use `badgeColor: 'emerald'` for live tools, `'amber'` for "Coming Soon".
+
+**7b — Add to footer tools list:**
+- Open `src/navigation.ts`
+- Add the tool to the `Free Tools` linkGroup in `footerData`
+- Use a short display name (e.g. "Title Generator" not "YouTube Title Generator") consistent with existing footer entries
+- Place it in the same relative order as the /tools page
+
+**7c — Submit for indexing:**
+- Submit both URLs to Bing via the Webmaster API (IndexNow is broken due to Cloudflare blocking key verification — see `scripts/indexnow-ping.js` comments). Use this curl pattern:
+  ```
+  curl -X POST "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch?apikey=<BING_WEBMASTER_API_KEY from .mcp.json>" \
+    -H "Content-Type: application/json" \
+    -d '{"siteUrl":"https://sellontube.com/","urlList":["https://sellontube.com/tools/[slug]","https://sellontube.com/tools"]}'
+  ```
+- Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing) — Bing API does not cover Google.
+
+**No tool is considered complete until 7a, 7b, and 7c are done.**
+
+---
+
 ## Output Format
 
 Deliver in this order:
