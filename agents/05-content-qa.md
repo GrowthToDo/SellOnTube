@@ -169,7 +169,6 @@ QA items are tiered by severity:
 - [ ] At least one Statistic Citation Block present — "According to [Source], [stat]" format with named source
 - [ ] Self-Contained Answer Block present (1-2 per post) — standalone quotable paragraph
 - [ ] Expert Quote Block present if expert quotes are included — named, attributed, linked to source
-- [ ] **Do NOT check for a manual author bio** — the blog template auto-renders it from frontmatter. A markdown "About the author" section in the body is a duplicate and should be removed if found.
 - [ ] No fabricated expert quotes — every quote must be real and verifiable
 
 **Internal links**
@@ -179,7 +178,6 @@ QA items are tiered by severity:
 **Content depth and authority signals (Fix #15)**
 - [ ] Listicle posts: year appended to title, placed at the end, content will be updated annually
 - [ ] Stats strip present only if post has 4 real, meaningful metrics — skipped if data would be stretched
-- [ ] **Do NOT add a manual "More Guides" section** — the RelatedPosts component auto-renders related posts. A manual list is a duplicate and should be removed if found.
 - [ ] Framework/listicle posts: each major item has an external "Real Signal" link where genuine evidence exists
 - [ ] Framework posts with 3–7 items: identical sub-structure applied to every item
 - [ ] Posts over 1,500 words: every concept-introducing H2 has a diagram (Fix #13 patterns)

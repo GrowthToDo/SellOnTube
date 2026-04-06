@@ -79,7 +79,6 @@
 - [ ] **10. Agent 05 QA: IMPORTANT tier — all must be resolved**
   - Content structure (Fix #13 patterns): Key Takeaways box, TOC, section structure
   - AEO/GEO citation blocks present where applicable
-  - No manual "About the author" section in body (template auto-renders author bio)
   - CTA rules: bottom CTA = book a call; any mid-body CTA follows tool-only rule
   - Internal links: at least 2 confirmed present
 
