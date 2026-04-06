@@ -21,10 +21,37 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "When will the YouTube Script Generator launch?", "acceptedAnswer": { "@type": "Answer", "text": "The tool is currently in development. Join the waitlist to be notified the day it goes live. Existing SellOnTube tools (Video Ideas Generator, Title Generator, SEO Tool) are available now." } },
+    { "@type": "Question", "name": "Will it generate a full word-for-word script?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The generator will produce a complete script with hook, body, product bridge, and close. It will be structured around your specific video idea, target customer, and product." } },
+    { "@type": "Question", "name": "How long are the generated scripts?", "acceptedAnswer": { "@type": "Answer", "text": "Script length will be calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes)." } },
+    { "@type": "Question", "name": "Will it work with the Video Ideas Generator?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The intended workflow is: generate ideas with the Video Ideas Generator, evaluate them with the Ideas Evaluator, create a title with the Title Generator, then produce the script. Each tool feeds into the next." } },
+    { "@type": "Question", "name": "Is the Script Generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Like all SellOnTube tools, the Script Generator will be free with an email gate for unlimited use. No paid tier." } },
+    { "@type": "Question", "name": "Should I use a teleprompter or memorize the script?", "acceptedAnswer": { "@type": "Answer", "text": "For most B2B videos, a teleprompter delivers better results than memorization. It keeps the content precise and eliminates filler words." } },
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Script Generator",
+  "description": metadata.description,
+  "url": `${siteUrl}/tools/youtube-script-generator`,
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
+
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
@@ -106,7 +133,7 @@ const breadcrumbSchema = {
       <div>
         <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Start with the right video ideas while you wait</h2>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
-          A great script starts with a buyer-intent video idea. Use the Video Ideas Generator to find topics that attract decision-stage viewers. You'll have the right ideas ready when the Script Generator launches.
+          A great script starts with a buyer-intent video idea. Use the Video Ideas Generator to find topics that attract decision-stage viewers. You will have the right ideas ready when the Script Generator launches.
         </p>
         <a
           href="/tools/youtube-video-ideas-generator"
@@ -131,6 +158,282 @@ const breadcrumbSchema = {
       },
     ]}
   />
+
+  <!-- SEO Content -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Visual: Script structure comparison -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 dark:divide-slate-700">
+          <div class="p-5 sm:p-6 bg-rose-500/5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-rose-500 mb-3">Creator script</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-3">"Hey guys, welcome back..."</p>
+            <div class="space-y-2 text-xs text-gray-600 dark:text-slate-400">
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> Opens with personality hook</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> Entertainment-first structure</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> CTA is "subscribe and like"</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> No product integration point</div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 bg-emerald-500/5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-500 mb-3">Business script</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-3">"If you're comparing X and Y..."</p>
+            <div class="space-y-2 text-xs text-gray-600 dark:text-slate-400">
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Opens with viewer's problem</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Builds toward a decision</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> CTA is "book a demo" or "try free"</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Product fits naturally in the narrative</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why creator script templates do not work for business YouTube</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Search "YouTube script template" and you will find hundreds of frameworks built for entertainment creators. They open with personality hooks ("Hey guys, welcome back"), build engagement through storytelling, and close with "like and subscribe." That structure is designed to maximize watch time and audience retention.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A business YouTube video has a different goal: move a viewer from research to action. The script needs to open with the buyer's problem, build credibility through specific expertise, create a natural moment to introduce your product, and close with a clear next step (book a call, start a trial, request a demo).
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The structure is fundamentally different. Entertainment scripts maximize time on platform. Business scripts minimize time to conversion. Using a creator template for a business video is like using a blog post template to write a sales page. Same medium, completely different purpose.
+        </p>
+      </div>
+
+      <!-- Section 2: Script structure -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">The 4-part script structure for B2B YouTube videos</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          After studying B2B channels that consistently generate leads from YouTube, four script sections appear in every high-converting video. This is the framework our Script Generator will use.
+        </p>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">1. The hook (first 15 seconds)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              State the viewer's problem or decision in the first sentence. "If you are choosing between HubSpot and Salesforce for a team under 20 people, this video will save you weeks of evaluation." The viewer should know within 5 seconds whether this video is for them.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">The hook is a filter. It should attract your ideal buyer and signal to everyone else that this video is not for them.</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">2. The body (2-8 minutes)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Deliver the substance the title promised. If the title says "5 Mistakes When Choosing a CRM," cover exactly 5 mistakes with specific examples. Use data, screenshots, or demonstrations. The body builds trust by demonstrating that you actually know the subject matter, not just that you read about it.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">Every minute in the body should either solve a problem, answer a question, or demonstrate expertise. Cut anything that does not do one of those three things.</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">3. The product bridge (30-60 seconds)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              This is the moment where your product enters the conversation naturally. It should feel like a recommendation, not a commercial. "Now, the tool we use to handle this specific problem is [your product], and here is why it works for this use case." The bridge only works if the body built enough credibility first.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">The product bridge is the most critical section. Forced here, the viewer bounces. Natural here, the viewer clicks.</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">4. The close (15-30 seconds)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Tell the viewer exactly what to do next. "If you want us to run this analysis for your business, the link to book a diagnostic call is in the description." Do not say "like and subscribe." Your goal is not subscribers. Your goal is customers. Every close should point to a specific conversion action.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">The best closes reference the viewer's specific situation: "If you are a SaaS founder evaluating CRMs right now, here is how to get help."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Script length -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How long should a B2B YouTube script be?</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A spoken word rate of 150 words per minute is standard for YouTube. That means a 5-minute video needs a 750-word script. A 10-minute video needs 1,500 words. For B2B, the sweet spot is 5-8 minutes for most topics.
+        </p>
+
+        <!-- Visual: Length guide -->
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden mb-6">
+          <div class="px-5 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">Script length by video type</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700">
+                  <th class="text-left px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Video type</th>
+                  <th class="text-center px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Duration</th>
+                  <th class="text-center px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Script length</th>
+                  <th class="text-center px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Best for</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600 dark:text-slate-400">
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Product comparison</td>
+                  <td class="px-4 py-2.5 text-center">6-10 min</td>
+                  <td class="px-4 py-2.5 text-center">900-1,500 words</td>
+                  <td class="px-4 py-2.5 text-center">Evaluation-stage buyers</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">How-to / Tutorial</td>
+                  <td class="px-4 py-2.5 text-center">5-8 min</td>
+                  <td class="px-4 py-2.5 text-center">750-1,200 words</td>
+                  <td class="px-4 py-2.5 text-center">Implementation-stage users</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Mistakes / Pitfalls</td>
+                  <td class="px-4 py-2.5 text-center">4-7 min</td>
+                  <td class="px-4 py-2.5 text-center">600-1,050 words</td>
+                  <td class="px-4 py-2.5 text-center">Risk-aware decision makers</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Case study / Results</td>
+                  <td class="px-4 py-2.5 text-center">5-8 min</td>
+                  <td class="px-4 py-2.5 text-center">750-1,200 words</td>
+                  <td class="px-4 py-2.5 text-center">Proof-seeking buyers</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Shorter videos (under 5 minutes) work for narrow, specific topics. Longer videos (over 10 minutes) work for deep comparisons or walkthroughs. For B2B, shorter is usually better. A busy founder will watch a 6-minute comparison video. They will not watch a 20-minute one.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The Script Generator will produce scripts calibrated to the right length for each video type. No padding, no filler sections to hit an arbitrary duration.
+        </p>
+      </div>
+
+      <!-- Section 4: Common mistakes -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">YouTube script mistakes that kill B2B conversions</h2>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Burying the product pitch at the end</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Average YouTube retention for a 7-minute video drops to 40-50% by the end. If your CTA and product mention only appear in the last 30 seconds, half your audience has already left. Place the product bridge at the 60-70% mark when retention is still relatively high.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Writing for readers instead of speakers</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              A YouTube script is spoken, not read. Sentences need to be short. Complex phrasing that works in a blog post sounds awkward on camera. Read every sentence aloud before filming. If you stumble, simplify it. If it sounds formal, make it conversational.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Opening with a company introduction</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              "Hi, I'm John from Acme Corp, and today we're going to talk about..." The viewer does not care who you are yet. They care about their problem. Open with the problem. Earn the right to introduce yourself by being useful first.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Scripting every word of a demo</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Product demos should use bullet-point outlines, not word-for-word scripts. A scripted demo sounds robotic. An outlined demo sounds natural. Script the hook, the transitions, and the close. Outline the demo sections with key points to hit.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">No clear next step</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Every business video needs exactly one clear CTA. "Book a demo," "Start a free trial," or "Download the template." Not "check out our website" (too vague) or three different actions (too confusing). One action. Make it obvious. Put the link in the description and mention it on screen.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: What makes a script convert -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What separates a script that gets views from one that gets leads</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A script that generates leads does three things a views-optimized script does not. First, it names the viewer's specific situation. "If you are running a SaaS product with 50-200 users and your churn rate is above 8%" is more effective than "if you are struggling with churn." Specificity signals expertise.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Second, it includes at least one insight the viewer cannot get from a Google search. Proprietary data, a client result, a counterintuitive finding. This is what makes a viewer think "this person knows more than I do about this topic" and move toward hiring or purchasing.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          Third, the product mention solves a problem raised in the video's body. The viewer should be thinking "I need to fix this" before the product is introduced. If the script builds that tension correctly, the product bridge is not a pitch. It is a relief.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">When will the YouTube Script Generator launch?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The tool is currently in development. Join the waitlist above to be notified the day it goes live. Existing SellOnTube tools (Video Ideas Generator, Title Generator, SEO Tool) are available now.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Will it generate a full word-for-word script?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. The generator will produce a complete script with hook, body, product bridge, and close. It will be structured around your specific video idea, target customer, and product. You will be able to use it as-is or as a detailed starting point for your own edits.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How long are the generated scripts?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Script length will be calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes). No padding or filler.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Will it work with the Video Ideas Generator?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. The intended workflow is: generate ideas with the <a href="/tools/youtube-video-ideas-generator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Video Ideas Generator</a>, evaluate them with the <a href="/tools/youtube-video-ideas-evaluator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Ideas Evaluator</a>, create a title with the <a href="/tools/youtube-title-generator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Title Generator</a>, then produce the script. Each tool feeds into the next.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is the Script Generator free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Like all SellOnTube tools, the Script Generator will be free with an email gate for unlimited use. No paid tier.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Should I use a teleprompter or memorize the script?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              For most B2B videos, a teleprompter delivers better results than memorization. It keeps the content precise and eliminates filler words. If you find teleprompter delivery too stiff, use the generated script as a detailed outline: memorize the key points and transitions, but speak naturally between them.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-video-ideas-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Video Ideas Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Need a buyer-intent topic to script? Start here.</p>
+        </a>
+        <a href="/tools/youtube-title-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Title Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Generate buyer-intent titles scored for acquisition potential.</p>
+        </a>
+        <a href="/tools/youtube-transcript-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Transcript Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Study competitor scripts before writing your own.</p>
+        </a>
+      </div>
+    </div>
+  </section>
 
 </Layout>
 

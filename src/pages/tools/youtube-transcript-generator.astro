@@ -21,10 +21,38 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this YouTube transcript generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free transcripts without signup. Enter a business email to unlock unlimited transcripts at no cost. There is no paid tier and no feature restrictions." } },
+    { "@type": "Question", "name": "How accurate are the transcripts?", "acceptedAnswer": { "@type": "Answer", "text": "The tool extracts captions directly from YouTube. For videos with manual captions, accuracy is near-perfect. For auto-generated captions, accuracy depends on audio quality and speaker clarity." } },
+    { "@type": "Question", "name": "Is it legal to transcribe competitor videos?", "acceptedAnswer": { "@type": "Answer", "text": "This tool extracts publicly available caption data from YouTube. Using transcripts for competitive research, content analysis, and strategy development falls under standard fair use." } },
+    { "@type": "Question", "name": "What is the difference between clean text and timestamped view?", "acceptedAnswer": { "@type": "Answer", "text": "Clean text gives you the full transcript as readable prose, ideal for keyword analysis and content repurposing. Timestamped view shows each segment with its timecode, useful for identifying when specific topics appear in the video." } },
+    { "@type": "Question", "name": "Can I transcribe my own videos?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Paste the URL of any of your published YouTube videos. This is useful for auditing your own content: checking keyword usage, reviewing CTA placement, or extracting text for blog repurposing." } },
+    { "@type": "Question", "name": "How long does transcription take?", "acceptedAnswer": { "@type": "Answer", "text": "Transcripts are extracted in seconds regardless of video length. The tool pulls existing caption data rather than processing audio." } },
+    { "@type": "Question", "name": "Why does it say no transcript available for some videos?", "acceptedAnswer": { "@type": "Answer", "text": "Some video creators disable captions entirely, or the video may be too new for YouTube to have generated auto-captions. Live streams in progress also lack transcripts." } },
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Transcript Generator",
+  "description": metadata.description,
+  "url": `${siteUrl}/tools/youtube-transcript-generator`,
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
+
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
@@ -235,129 +263,211 @@ const breadcrumbSchema = {
   />
 
   <!-- How it works -->
-  <section class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950">
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">How It Works</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">1</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste the YouTube link</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400">into the box above.</p>
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste a YouTube URL</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Drop any public YouTube video URL into the input field. Works with any video that has captions enabled.</p>
         </div>
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">2</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Click generate</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400">We fetch and transcribe the video.</p>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a clean transcript</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The tool extracts and formats the transcript. Toggle between clean text and timestamped view depending on your analysis needs.</p>
         </div>
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">3</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Download the transcript</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400">or copy it for analysis.</p>
-        </div>
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6 text-center">
-          <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500 text-white text-lg font-bold mb-4">4</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get the AI summary</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400">to spot patterns and insights instantly.</p>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Copy and analyze</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Copy the full transcript with one click. Use it for competitor analysis, script research, keyword extraction, or content repurposing.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Key Benefits -->
+  <!-- SEO Content -->
   <section class="py-16 sm:py-20">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">Key Benefits: Why Use SellonTube's Youtube Transcript Generator?</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
 
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Study competitors easily</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Analyze scripts, hooks, and keyword usage.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">AI-powered summaries</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Extract key insights without watching hours of video</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Improve your own videos</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Learn what works and apply it to your SEO strategy.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Clean, accurate transcripts</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Better than YouTube's messy auto captions.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">100% free tool</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Unlimited transcripts and summaries.</p>
-        </div>
-
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why transcripts matter more than view counts for B2B YouTube strategy</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A competitor's video has 50,000 views. You cannot replicate those views by watching the video. You can replicate the script structure, keyword usage, hook, CTA placement, and product positioning by reading the transcript.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Transcripts turn competitor intelligence from "I watched their video" into "I know exactly how they structure their content, where they mention their product, what keywords they use in the first 30 seconds, and how they transition from education to pitch." That is actionable intelligence.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          For B2B marketers, the transcript is the script. Reverse-engineering a successful competitor's script is faster and more reliable than guessing at what works. This tool gives you that transcript in seconds.
+        </p>
       </div>
 
-      <p class="mt-8 text-center text-base sm:text-lg text-gray-500 dark:text-slate-400">
-        Built for marketers and GTM engineers to analyze competitor videos and grow conversions with YouTube SEO.
-      </p>
+      <!-- Section 2: Workflow -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to use transcripts for competitive research</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Extracting a transcript is step one. Here is how to turn it into competitive intelligence that improves your own content.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Analyze the first 30 seconds</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The hook determines whether a viewer stays. Read the first 3-4 sentences of the transcript. Does the competitor open with a problem statement, a question, a bold claim, or a story? Note what works and adapt the pattern for your own videos. The hook structure is the most replicable element.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Find the product mention</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Search the transcript for the competitor's product name. Note when it first appears (timestamp), how it is introduced, and whether the mention feels natural or forced. B2B channels that convert well typically introduce their product at the 60-70% mark after establishing credibility.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Extract keywords and phrases</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Copy the transcript into a word frequency tool or just search for terms your buyers use. If a competitor says "churn rate" 8 times in a video about SaaS metrics, that keyword is central to their SEO strategy. You should be using it too.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Map the content structure</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Break the transcript into sections: hook, main points, transitions, product mention, CTA. Most successful B2B videos follow a consistent structure. Once you identify that structure, you can use it as a template for your own scripts.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Use cases by role -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Who uses this tool and how</h2>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Content marketers</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Study competitor video scripts to identify content gaps, keyword opportunities, and structural patterns. Repurpose your own video transcripts into blog posts, email sequences, and social content. A single 10-minute video transcript produces enough material for 3-4 blog posts.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">B2B founders and growth teams</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Analyze how competitors position their products on YouTube. Identify the exact language, objections, and selling points they use. Use this intelligence to refine your own video strategy, sales messaging, and positioning before investing in production.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">SEO and YouTube strategists</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Extract keyword density and placement from top-ranking videos. YouTube indexes spoken keywords via captions. A transcript shows you exactly which keywords a ranking video uses and where. Use that data to optimize your own video descriptions, titles, and scripts.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Agencies managing client channels</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Audit a client's existing videos by transcribing them. Identify weak hooks, missing CTAs, and poor product placement. Use transcripts from high-performing competitor videos as benchmarks when briefing scriptwriters or presenting strategy recommendations.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: What this tool does not do -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What this transcript generator does not do</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <span class="font-medium text-gray-700 dark:text-slate-300">It does not transcribe private or unlisted videos.</span> The tool works with public YouTube videos only. If the video creator has disabled captions, the tool cannot extract a transcript.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <span class="font-medium text-gray-700 dark:text-slate-300">It does not generate original scripts.</span> This tool extracts existing transcripts. If you need to generate new scripts for your own videos, use the <a href="/tools/youtube-script-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube Script Generator</a> (coming soon) paired with the <a href="/tools/youtube-video-ideas-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">Video Ideas Generator</a>.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          <span class="font-medium text-gray-700 dark:text-slate-300">It does not auto-translate.</span> Transcripts are extracted in the video's original language. Multi-language support is on the roadmap.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube transcript generator free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free transcripts without signup. Enter a business email to unlock unlimited transcripts at no cost. There is no paid tier and no feature restrictions.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How accurate are the transcripts?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The tool extracts captions directly from YouTube. For videos with manual captions, accuracy is near-perfect. For auto-generated captions, accuracy depends on audio quality and speaker clarity. In both cases, the output is cleaner and more readable than YouTube's raw caption display.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is it legal to transcribe competitor videos?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              This tool extracts publicly available caption data from YouTube. Using transcripts for competitive research, content analysis, and strategy development falls under standard fair use. Do not republish or distribute competitor transcripts as your own content.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What is the difference between clean text and timestamped view?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Clean text gives you the full transcript as readable prose, ideal for keyword analysis and content repurposing. Timestamped view shows each segment with its timecode, useful for identifying when specific topics, product mentions, or CTAs appear in the video.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I transcribe my own videos?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Paste the URL of any of your published YouTube videos. This is useful for auditing your own content: checking keyword usage, reviewing CTA placement, or extracting text for blog repurposing. A 10-minute video transcript typically produces 1,500 words of repurposable content.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How long does transcription take?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Transcripts are extracted in seconds regardless of video length. A 5-minute video and a 60-minute video both take the same amount of time because the tool pulls existing caption data rather than processing audio.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why does it say "no transcript available" for some videos?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Some video creators disable captions entirely, or the video may be too new for YouTube to have generated auto-captions. Live streams in progress also lack transcripts. If the video has a CC button on YouTube, the tool should be able to extract it.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Use Cases -->
-  <section class="py-16 sm:py-20 bg-slate-50 dark:bg-slate-950">
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
     <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">Use Cases</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Competitor Research</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">See how top channels script their videos and identify keyword-rich phrases.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Video Script Writing</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">You can use these transcripts as inspiration to create high-performing YouTube content.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">SEO Optimization</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Spot titles, hooks, and CTAs that drive engagement.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Content Analysis</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">You can quickly study long webinars, product demos, or interviews without watching them end-to-end.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="py-16 sm:py-20">
-    <div class="max-w-2xl mx-auto px-4">
-      <h2 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-10">FAQ</h2>
-      <div class="space-y-5">
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Is it free?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. SellonTube's YouTube Transcript Generator is 100% free, with unlimited usage.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Is it legal?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">We only work with public YouTube videos. Please respect copyright and fair use when analyzing competitor content.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">How accurate is it?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Cleaner and more structured than YouTube auto captions, though minor errors may occur.</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-5">
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-2">How long does it take?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Most transcripts + summaries are ready in under a minute.</p>
-        </div>
-
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Check if your video metadata is optimized for buyer discovery.</p>
+        </a>
+        <a href="/tools/youtube-video-ideas-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Video Ideas Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Analyzed a competitor? Generate buyer-intent ideas for your own channel.</p>
+        </a>
+        <a href="/tools/youtube-script-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Script Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Turn your video idea into a conversion-focused script.</p>
+        </a>
       </div>
     </div>
   </section>
