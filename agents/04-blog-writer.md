@@ -10,9 +10,10 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 ## Source files to read before writing
 1. `style-guide.md` — mandatory. All rules apply.
 2. `content-playbook.md` — mandatory. All rules apply.
-3. `seo-rules.md` — traditional SEO rules.
-4. `ai-seo-guide.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
-5. An existing blog post from `src/data/post/` — read one for format/tone calibration.
+3. `content-depth-framework.md` — mandatory. Use the depth decision tree to set coverage level (Deep/Medium/Short) and word range based on topic intent. Apply the "Comprehensive but Tight" checklist and AI/LLM readability rules to every draft.
+4. `seo-rules.md` — traditional SEO rules.
+5. `ai-seo-guide.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
+6. An existing blog post from `src/data/post/` — read one for format/tone calibration.
 
 ## ICP reminder
 See `docs/icp.md` for the canonical ICP definition. Every section must answer "why does this matter for a business trying to acquire customers?" — not "how do I grow my channel?" If a section could appear on VidIQ or TubeBuddy without modification, reframe it.
@@ -69,7 +70,8 @@ Produce:
 PRIMARY KEYWORD: [keyword]
 SECONDARY KEYWORDS: [2-3 LSI terms]
 SEARCH INTENT: [informational/commercial/transactional]
-TARGET WORD COUNT: [600–2500 depending on topic complexity]
+COVERAGE LEVEL: [Deep/Medium/Short — per content-depth-framework.md decision tree]
+TARGET WORD COUNT: [Deep: 2,000–4,000+ | Medium: 1,200–2,200 | Short: 500–1,200]
 PUBLISH DATE: [from Agent 03]
 
 TITLE OPTIONS (3 variants):

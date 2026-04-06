@@ -66,6 +66,17 @@ Layout (metadata) →
 
 ---
 
+## Content Depth Rules
+
+Read `content-depth-framework.md` before writing any tool page copy. Tool pages target **700-2,000 words**. Key rules:
+- Tool-first: usage, examples, outputs, mistakes, FAQs. No blog bloat.
+- Every section must pass the editorial gate: answers a real question, adds specificity, useful to buyers/operators.
+- Target 5+ quotable passages for AI/snippet extractability.
+- AI/LLM readability: clear H2/H3 headings, short paragraphs, tables/checklists where appropriate.
+- Apply the "Comprehensive but Tight" checklist where relevant (What is it? How to use? Mistakes to avoid? FAQs? Next steps?).
+
+---
+
 ## Tool Viability Assessment
 
 Run this before building any new tool — and periodically to re-evaluate existing tools.
