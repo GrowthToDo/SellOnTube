@@ -32,7 +32,7 @@ Just speak naturally. Examples that trigger each agent:
 | 05-content-qa.md | Style guide QA on any file | Grep banned patterns |
 | 06-pseo-manager.md | pSEO drip schedule, publishDate checks | Read niches.ts + comparisons.ts |
 | 07-technical-seo.md | Redirects, schema, technical health | Read netlify.toml, JsonLd.astro |
-| 08-microtool-builder.md | Build interactive tools — SEO + ICP-optimized | ROI calc pattern, keyword CSV, style guide |
+| 08-microtool-builder.md | Build interactive tools — single source of truth for tool strategy, pipeline, build standards, publishing workflow | Title Generator reference, keyword CSV, style guide, schema templates |
 | 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | reddit-marketing-playbook.md, style guide, ICP |
 
 ## Key Rules (apply to all agents)

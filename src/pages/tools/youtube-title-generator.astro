@@ -1,15 +1,58 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
   title: 'Free YouTube Title Generator for Business | SellOnTube',
   description:
     'Generate YouTube video titles that attract buyers, not just viewers. Built for B2B. 3 scored titles per topic. Free, no signup required.',
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Title Generator", "item": `${siteUrl}/tools/youtube-title-generator` }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this YouTube title generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating titles at no cost. There is no paid tier and no feature gating." } },
+    { "@type": "Question", "name": "How many titles does this tool generate?", "acceptedAnswer": { "@type": "Answer", "text": "Each generation produces 3 titles. We limit it to 3 instead of 10 or 20 because more options does not mean better options. Three well-scored titles with buyer intent ratings give you a clearer decision than a long list of undifferentiated suggestions." } },
+    { "@type": "Question", "name": "What makes this different from other YouTube title generators?", "acceptedAnswer": { "@type": "Answer", "text": "Two things. First, it asks who your target customer is. No other title generator does this. That single input allows the tool to filter titles for buyer intent instead of just optimizing for clicks. Second, every title comes with a buyer intent score and explanation, so you know which title attracts the right audience before you publish." } },
+    { "@type": "Question", "name": "Do I need a YouTube channel to use this?", "acceptedAnswer": { "@type": "Answer", "text": "No. You can use the tool to generate and evaluate title ideas before creating your channel. Many users generate titles to validate video ideas before investing in production." } },
+    { "@type": "Question", "name": "How do I pick the best title from the 3 options?", "acceptedAnswer": { "@type": "Answer", "text": "Start with the buyer intent score. Pick the title rated High if available. If multiple titles score High, choose the one that most accurately describes your video content. A title that matches the actual video will have better retention, which YouTube rewards with higher rankings over time." } },
+    { "@type": "Question", "name": "Can I use this for YouTube Shorts?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. YouTube Shorts titles follow the same rules: clear, specific, searchable. The 60-character limit this tool enforces is well within Shorts title requirements. The buyer-intent scoring applies equally to short-form and long-form content." } },
+    { "@type": "Question", "name": "What if my video does not fit any of the 4 types?", "acceptedAnswer": { "@type": "Answer", "text": "The four video types (comparison, how-to, mistakes, results) cover the vast majority of buyer-intent content. If your video is an interview, vlog, or awareness piece, it may not fit these categories. That is intentional. This tool is built for content that drives purchasing decisions." } },
+    { "@type": "Question", "name": "How does the buyer intent score work?", "acceptedAnswer": { "@type": "Answer", "text": "The AI evaluates each title based on the type of viewer it will attract. High buyer intent means the title uses patterns that primarily attract people in the evaluation or purchase stage. Medium means the title attracts a mix of researchers and buyers. Low means the title leans more toward general interest or education." } },
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Title Generator",
+  "description": metadata.description,
+  "url": `${siteUrl}/tools/youtube-title-generator`,
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
 ---
 
 <Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

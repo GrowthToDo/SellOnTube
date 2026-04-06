@@ -21,10 +21,38 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Does this tool access my YouTube account?", "acceptedAnswer": { "@type": "Answer", "text": "No. It reads publicly available metadata from any public YouTube video URL. No login, no permissions, no account connection required." } },
+    { "@type": "Question", "name": "What does a score of 40 vs 80 actually mean in practice?", "acceptedAnswer": { "@type": "Answer", "text": "A score of 40 typically means the video has correct content but its metadata is effectively invisible to search. A score of 80 means the metadata matches how buyers search and the gaps are minor refinements." } },
+    { "@type": "Question", "name": "Will fixing my metadata change my existing video rankings?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, often within days. YouTube re-indexes video metadata when you update it. Improving a title from a generic phrase to a buyer-intent phrase has moved videos from page 3 to page 1 for specific search terms." } },
+    { "@type": "Question", "name": "Should I use this tool before or after publishing a video?", "acceptedAnswer": { "@type": "Answer", "text": "Both. Before publishing: check your planned title and description. After publishing: run it on existing videos to find which ones have the highest gap between content quality and metadata quality." } },
+    { "@type": "Question", "name": "My video has no chapters. Does that automatically score me lower?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. No chapters scores 0 out of 20 on the Chapter Labels dimension. Adding 4 to 5 well-labelled chapters to an existing video takes under 10 minutes and costs nothing." } },
+    { "@type": "Question", "name": "How is this different from checking YouTube SEO with VidIQ or TubeBuddy?", "acceptedAnswer": { "@type": "Answer", "text": "VidIQ and TubeBuddy optimise for discoverability to general viewers. This tool optimises for discoverability to buyers: search-intent phrases, above-the-fold CTAs, evaluation-stage titles. Same interface, different scoring logic." } },
+    { "@type": "Question", "name": "Can I use this for a video that is not on my own channel?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run any public YouTube video URL through the tool. Some businesses use it to analyse competitor videos and identify gaps in their own metadata strategy." } },
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube SEO Tool",
+  "description": metadata.description,
+  "url": `${siteUrl}/tools/youtube-seo-tool`,
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
+
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
@@ -467,7 +495,54 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- Section 5: The logic behind the scoring -->
+  <!-- Section 5: Business SEO vs Creator SEO comparison -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Business YouTube SEO vs creator YouTube SEO</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Creator SEO tools like VidIQ and TubeBuddy are built to maximise views and subscribers. This tool is built to maximise qualified leads. The difference affects every recommendation.
+      </p>
+
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 shadow-sm mt-8">
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">What each approach optimises for</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700">
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Dimension</th>
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Creator tools</th>
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">This tool</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+              {[
+                { dim: 'Title strategy', creator: 'High search volume keywords, trending phrases', business: 'Buyer-intent phrases that match evaluation-stage searches' },
+                { dim: 'Description goal', creator: 'Maximise watch time and suggested video placement', business: 'Keyword coverage + visible CTA above the fold' },
+                { dim: 'Success metric', creator: 'Views, subscribers, watch hours', business: 'Qualified leads, demo bookings, pipeline value' },
+                { dim: 'Keyword selection', creator: 'Broad topics with high monthly volume', business: 'Specific phrases buyers type before purchasing' },
+                { dim: 'CTA placement', creator: 'Subscribe, like, notification bell', business: 'Book a call, start a trial, download a guide' },
+                { dim: 'Chapter labels', creator: 'Engagement hooks to retain viewers', business: 'Searchable phrases that rank independently' },
+              ].map((row) => (
+                <tr>
+                  <td class="px-5 py-3 font-medium text-gray-900 dark:text-white whitespace-nowrap">{row.dim}</td>
+                  <td class="px-5 py-3 text-gray-500 dark:text-slate-400">{row.creator}</td>
+                  <td class="px-5 py-3 text-gray-700 dark:text-slate-300">{row.business}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Neither approach is better in absolute terms. They solve different problems. If your goal is pipeline, not audience size, the scoring logic needs to reflect that.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 6: The logic behind the scoring -->
   <section class="py-16 sm:py-20">
     <div class="max-w-2xl mx-auto px-4 space-y-5">
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white">The logic behind the scoring</h2>
@@ -502,6 +577,94 @@ const breadcrumbSchema = {
       <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
         If you want to go beyond metadata and build a full YouTube acquisition system, from topic research to video structure to the lead path after someone watches, <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">book a diagnostic call</a>. The tool tells you what is broken. The diagnostic tells you what to build next.
       </p>
+    </div>
+  </section>
+
+  <!-- Section 8: Common YouTube SEO mistakes businesses make -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Common YouTube SEO mistakes businesses make</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        These are the patterns we see repeatedly when auditing business YouTube channels. Each one breaks the search-to-lead chain at a different point.
+      </p>
+      <div class="space-y-4 mt-4">
+        {[
+          {
+            mistake: 'Naming videos after internal project titles',
+            detail: 'A video called "Q4 Product Update" tells YouTube nothing about what a buyer would search. Rename it to the problem the update solves: "How [Product] Now Handles Multi-Currency Invoicing." Same video, completely different search visibility.',
+          },
+          {
+            mistake: 'Writing the description for humans who already clicked',
+            detail: 'The first 150 characters of your description appear in search results before anyone clicks. If those characters say "In this video, we explore..." instead of "Compare the top 5 CRM platforms for agencies under 20 seats," you lose the click.',
+          },
+          {
+            mistake: 'Treating chapters as a table of contents',
+            detail: 'Chapters like "Intro," "Main Point," and "Conclusion" waste indexable real estate. YouTube indexes each chapter as a separate search result. Label them with buyer phrases: "How to evaluate CRM pricing," "CRM features agencies actually use."',
+          },
+          {
+            mistake: 'Burying the CTA below the fold',
+            detail: 'YouTube truncates descriptions after roughly 150 characters. If your link to book a demo or start a trial sits in line 8 of a 12-line description, it is invisible unless the viewer clicks "Show more." Place your primary CTA in the first two lines.',
+          },
+          {
+            mistake: 'Optimising for one keyword instead of a keyword cluster',
+            detail: 'A video targeting "best project management tool" should also cover "project management software for small teams," "project management tool comparison," and "Asana vs Monday vs ClickUp." The description body is where you place these variations. The tool checks whether you have covered the cluster, not just the primary keyword.',
+          },
+        ].map((item) => (
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-5">
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">{item.mistake}</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{item.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: YouTube SEO by business type -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">YouTube SEO by business type</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The metadata strategy changes depending on how your buyers search. Here is what high-scoring metadata looks like for four common business types.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+        {[
+          {
+            type: 'SaaS companies',
+            keywords: 'Comparison and evaluation queries',
+            example: '"Best [category] for [use case]," "HubSpot vs Salesforce for startups," "[Product] tutorial for [workflow]"',
+            tip: 'Your buyers are comparing options. Titles should include your category keyword and a specific use case. Descriptions should list the alternatives you cover.',
+            href: '/youtube-for/saas',
+          },
+          {
+            type: 'Consulting firms',
+            keywords: 'Problem-aware and methodology queries',
+            example: '"How to reduce SaaS churn below 5%," "Customer success framework for B2B," "When to hire a growth consultant"',
+            tip: 'Your buyers search for the problem before they search for a consultant. Title the video around the problem, not your firm. The CTA converts problem-aware viewers into calls.',
+            href: '/youtube-for/consultants',
+          },
+          {
+            type: 'Agencies',
+            keywords: 'Service evaluation and proof queries',
+            example: '"How a paid media agency runs Facebook ads," "Agency pricing models explained," "What to look for in a marketing agency"',
+            tip: 'Prospects want to see your process before they book a call. Chapter labels like "Our campaign setup process" and "How we report results" rank independently and build trust.',
+            href: '/youtube-for/agencies',
+          },
+          {
+            type: 'E-commerce brands',
+            keywords: 'Product demonstration and comparison queries',
+            example: '"[Product] review and setup guide," "[Product A] vs [Product B] for [use case]," "How to choose [product category]"',
+            tip: 'Buyers search for product names and category comparisons. Your description should include model numbers, specs, and use-case keywords that match how buyers filter options.',
+            href: '/youtube-for/ecommerce',
+          },
+        ].map((item) => (
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-5">
+            <a href={item.href} class="text-base font-semibold text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">{item.type}</a>
+            <p class="text-xs font-medium text-emerald-600 dark:text-emerald-400 mt-1 mb-3">{item.keywords}</p>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">{item.example}</p>
+            <p class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed">{item.tip}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -550,6 +713,27 @@ const breadcrumbSchema = {
             </div>
           </details>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-video-ideas-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube Video Ideas Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Generate video topics that match what your buyers actually search for.</p>
+        </a>
+        <a href="/tools/youtube-title-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube Title Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Write titles that rank for buyer-intent keywords, not just views.</p>
+        </a>
+        <a href="/tools/youtube-transcript-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube Transcript Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Extract transcripts to repurpose video content into blog posts and SEO pages.</p>
+        </a>
       </div>
     </div>
   </section>

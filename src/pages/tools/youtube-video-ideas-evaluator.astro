@@ -21,10 +21,37 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this video idea evaluator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free evaluations without signup. Enter a business email to unlock unlimited evaluations at no cost. There is no paid version." } },
+    { "@type": "Question", "name": "How is buyer intent different from search volume?", "acceptedAnswer": { "@type": "Answer", "text": "Search volume tells you how many people type a query. Buyer intent tells you whether those people are ready to purchase. This tool measures intent, not volume." } },
+    { "@type": "Question", "name": "Can I evaluate ideas I did not generate with SellOnTube?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Paste any video idea from any source. The evaluator works on any topic, regardless of where the idea originated." } },
+    { "@type": "Question", "name": "What does the Funnel Stage classification mean?", "acceptedAnswer": { "@type": "Answer", "text": "Awareness means the viewer is learning about a problem. Consideration means they are evaluating solutions. Decision means they are choosing between specific options. For B2B channels, Consideration and Decision stage ideas generate the most pipeline." } },
+    { "@type": "Question", "name": "How accurate is the scoring?", "acceptedAnswer": { "@type": "Answer", "text": "The evaluator uses keyword pattern matching across proven buyer-intent signals. It is directionally accurate for deciding whether to invest production time in an idea. Think of it as a quality gate, not a prediction engine." } },
+    { "@type": "Question", "name": "Should I only produce ideas that score High?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. A Moderate score with strong Audience Fit can still generate leads if the viewer matches your ICP. But Low scoring ideas should be reframed or replaced." } },
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Video Ideas Evaluator",
+  "description": metadata.description,
+  "url": `${siteUrl}/tools/youtube-video-ideas-evaluator`,
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
+
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
@@ -344,15 +371,204 @@ const breadcrumbSchema = {
           A low Buyer Intent score almost always means the video idea is framed around explanation rather than problem-solving. The fix is usually in the title. "How email marketing works" becomes "Why your email sequences aren't converting Shopify visitors." Same broad subject, completely different viewer and intent.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          A low Audience Fit score means the video idea attracts the wrong people. No amount of CTA optimisation fixes this. Use the Video Ideas Generator to find topics that start from your buyer's specific context.
+          A low Audience Fit score means the video idea attracts the wrong people. No amount of CTA optimisation fixes this. Use the <a href="/tools/youtube-video-ideas-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">Video Ideas Generator</a> to find topics that start from your buyer's specific context.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
           A weak Conversion Path score is the hardest to fix in post. If the video subject has no logical moment to introduce your product, that moment will feel forced. Start with a better idea from the Generator, built around the buyer's problem from the first frame.
         </p>
       </div>
 
+      <!-- Visual: Score interpretation guide -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="px-5 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">How to read your scores</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700">
+                <th class="text-left px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Score</th>
+                <th class="text-left px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">What it means</th>
+                <th class="text-left px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">What to do</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-600 dark:text-slate-400">
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-2.5 font-medium text-emerald-600 dark:text-emerald-400">High</td>
+                <td class="px-4 py-2.5">Viewers are evaluating or purchasing. Strong conversion potential.</td>
+                <td class="px-4 py-2.5">Produce it. Move to title and script.</td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-2.5 font-medium text-amber-600 dark:text-amber-400">Medium</td>
+                <td class="px-4 py-2.5">Mixed audience. Some buyers, some researchers.</td>
+                <td class="px-4 py-2.5">Reframe with buyer-specific language. Test a tighter angle.</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2.5 font-medium text-rose-600 dark:text-rose-400">Low</td>
+                <td class="px-4 py-2.5">Viewers are learning, not buying. No conversion path.</td>
+                <td class="px-4 py-2.5">Replace the idea. Generate new ones with the Ideas Generator.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Section: Who this is for / not for -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Who this evaluator is for</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          This tool is for B2B founders, marketers, and content teams who use YouTube to generate pipeline. If your goal is leads, demos, or sales conversations from YouTube, the evaluator checks whether a video idea will deliver that before you spend production time.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          It is especially useful for <a href="/youtube-for/saas" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">SaaS companies</a>, <a href="/youtube-for/consultants" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">consultants</a>, and <a href="/youtube-for/agencies" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">agencies</a> where a single customer can be worth $5,000-100,000+. At those LTVs, evaluating one idea before filming saves more than the cost of producing a bad video.
+        </p>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4 mt-10">Who this evaluator is not for</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          If you are building a YouTube audience for ad revenue, brand partnerships, or subscriber growth, this tool will give misleading scores. It is calibrated for buyer intent, not viewer entertainment. A "Day in the Life" vlog will score low even if it would perform well as audience-building content. That is by design.
+        </p>
+      </div>
+
+      <!-- Section: The 4 dimensions explained -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">The 4 scoring dimensions explained</h2>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">1. Buyer Intent</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Measures whether the video idea contains signals that indicate a purchasing decision: comparison keywords ("best," "vs," "review"), pricing language, or problem-resolution phrases. High buyer intent means the viewer is researching a decision, not learning a concept.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">This is the most important dimension. A high score here means the viewer has money and a problem.</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">2. Audience Fit</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Checks whether the video idea will attract your specific target customer, not a different audience. "How to build a Shopify app" attracts developers. "Best upsell apps for Shopify stores" attracts store owners. If you sell to store owners, the first idea has low audience fit regardless of search volume.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">Low audience fit cannot be fixed in post-production. It requires a different topic.</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">3. Problem Urgency</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Evaluates whether the video addresses a problem the viewer is experiencing right now. "Not converting," "broken checkout," and "losing customers" signal immediate pain. "Introduction to marketing" signals curiosity, not urgency. Urgent problems convert faster because the viewer needs a solution today.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">High urgency topics have shorter sales cycles. The viewer is already motivated to act.</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">4. Conversion Path</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Assesses whether the video topic creates a natural moment to introduce your product. "Best CRM for small teams" lets a CRM company demonstrate their product without forcing a pitch. "History of customer management" has no natural product moment. The tool checks for this structural fit.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">A strong conversion path means the product mention feels helpful, not salesy.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Mistakes -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Common evaluation mistakes</h2>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Overriding a low score because the topic "feels" right</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Gut feeling is useful in many business decisions. Topic selection is not one of them. If the evaluator scores an idea low on buyer intent, the idea will attract learners. You may like the topic personally. Your customers are not searching for it when they are ready to buy.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Evaluating only one idea per topic cluster</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              "How email marketing works" will score differently from "Why your email sequences are losing Shopify revenue." Same broad topic, completely different buyer intent. Test 3-4 framings of the same subject. The evaluator is fast enough to run multiple variations in under a minute.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Ignoring the Conversion Path dimension</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              A video can score high on buyer intent and audience fit but still have no natural product moment. If you cannot see where your product fits into the video's narrative, the CTA will feel forced. Forced CTAs get skipped. Check all four dimensions, not just the top line verdict.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this video idea evaluator free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free evaluations without signup. Enter a business email to unlock unlimited evaluations at no cost. There is no paid version.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How is buyer intent different from search volume?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Search volume tells you how many people type a query. Buyer intent tells you whether those people are ready to purchase. "What is CRM" has high search volume and zero buyer intent. "Best CRM for small teams" has lower volume but the person typing it is actively shopping. This tool measures intent, not volume.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I evaluate ideas I did not generate with SellOnTube?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Paste any video idea from any source. The evaluator works on any topic, regardless of where the idea originated. You can also use it to evaluate competitors' video topics to understand their buyer intent strategy.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What does the Funnel Stage classification mean?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Awareness means the viewer is learning about a problem or category. Consideration means they are evaluating solutions. Decision means they are choosing between specific options. For B2B channels, Consideration and Decision stage ideas generate the most pipeline.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How accurate is the scoring?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The evaluator uses keyword pattern matching across proven buyer-intent signals. It is directionally accurate for deciding whether to invest production time in an idea. It is not a guarantee of performance. Think of it as a quality gate, not a prediction engine.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Should I only produce ideas that score "High"?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Not necessarily. A "Moderate" score with strong Audience Fit can still generate leads if the viewer matches your ICP. But "Low" scoring ideas should be reframed or replaced. The production cost of a video is too high to spend on topics that structurally cannot convert.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-video-ideas-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Video Ideas Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Need better ideas? Generate 5 buyer-intent video ideas for your business.</p>
+        </a>
+        <a href="/tools/youtube-title-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Title Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Idea scored well? Generate buyer-intent titles for it.</p>
+        </a>
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Already published? Check if your video metadata reaches buyers.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <script>

@@ -21,10 +21,37 @@ const breadcrumbSchema = {
   ]
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this video ideas generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free generations without signup. After that, enter a business email to unlock unlimited use at no cost. There is no paid tier." } },
+    { "@type": "Question", "name": "How many video ideas does each generation produce?", "acceptedAnswer": { "@type": "Answer", "text": "Each generation produces 5 buyer-intent video ideas. They are tailored to your product, target customer, and the problem you solve." } },
+    { "@type": "Question", "name": "What makes this different from other YouTube idea generators?", "acceptedAnswer": { "@type": "Answer", "text": "Two things. First, it asks about your product, customer, and problem, not just a keyword. That context allows it to generate ideas with built-in buyer intent. Second, every idea uses bottom-of-funnel topic patterns: comparisons, evaluations, mistakes, and results." } },
+    { "@type": "Question", "name": "What should I do with the ideas after generating them?", "acceptedAnswer": { "@type": "Answer", "text": "Run your favorites through the Video Ideas Evaluator to check buyer intent. Then use the Title Generator to create a buyer-optimized title for the winning idea." } },
+    { "@type": "Question", "name": "Can I use this for YouTube Shorts ideas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The buyer-intent principles apply equally to short-form and long-form video." } },
+    { "@type": "Question", "name": "Why does it ask for my product URL?", "acceptedAnswer": { "@type": "Answer", "text": "The URL helps the AI understand your product's positioning, features, and target market more precisely. This produces more specific ideas than a generic product description alone. The URL is not stored or shared." } },
+  ]
+};
+
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "YouTube Video Ideas Generator",
+  "description": metadata.description,
+  "url": `${siteUrl}/tools/youtube-video-ideas-generator`,
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
+};
+
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
@@ -298,6 +325,200 @@ const breadcrumbSchema = {
         </p>
       </div>
 
+      <!-- Section: Best practices -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to evaluate the ideas this tool gives you</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Not every idea the generator produces will be equally strong for your business. Here is how to rank them before committing production time.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Check for a natural product mention</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The best video ideas create a moment where recommending your product feels like helpful advice, not a pitch. "Best CRM for 10-person teams" naturally lets a CRM company demonstrate their product. "History of CRM software" does not. If you cannot find the natural product moment, pick a different idea.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Verify the idea matches a real search query</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Type the video idea into YouTube's search bar. If YouTube auto-suggests similar queries, there is real search demand. If nothing related appears, the topic may be too niche or phrased in a way your audience does not actually search.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Prioritize ideas where you have a genuine edge</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              You can make a better video than a competitor when you have proprietary data, direct customer experience, or a unique perspective on the problem. If your only angle is "we also know about this topic," the idea is weaker. Pick the ideas where your specific expertise or product makes the content genuinely better.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Use the evaluator to score before you produce</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Run your favorite ideas through the <a href="/tools/youtube-video-ideas-evaluator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">Video Ideas Evaluator</a> to get a buyer intent score across 4 dimensions. A high-scoring idea is worth producing. A low-scoring idea needs reframing or replacing before it consumes production budget.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Industry examples -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Buyer-intent video ideas by industry</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Here is what strong buyer-intent video ideas look like across four B2B verticals. Notice how each idea targets someone actively evaluating, comparing, or deciding.
+        </p>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">SaaS</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"Best Onboarding Tools for SaaS Under $50/month"</li>
+              <li>"Intercom vs Zendesk for SaaS Support Teams"</li>
+              <li>"3 Churn Signals Your Dashboard Should Track"</li>
+              <li>"How We Cut Onboarding Time by 40% (Exact Setup)"</li>
+            </ul>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Agencies</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"SEO Agency vs Freelancer: Which Gets Better ROI?"</li>
+              <li>"5 Questions to Ask Before Hiring a PPC Agency"</li>
+              <li>"What a $10K/Month Marketing Retainer Actually Includes"</li>
+              <li>"Client Reporting: What Agencies Should Show You"</li>
+            </ul>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Consultants</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"Business Coach vs Consultant: Which Do You Need?"</li>
+              <li>"How to Evaluate an Operations Consultant (5 Criteria)"</li>
+              <li>"What a $15K Strategy Engagement Looks Like"</li>
+              <li>"Why Coaching Programs Fail (3 Patterns)"</li>
+            </ul>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">E-commerce</h3>
+            <ul class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed list-disc pl-5 space-y-1">
+              <li>"Best Upsell Apps for Shopify (Ranked by AOV Lift)"</li>
+              <li>"Klaviyo vs Mailchimp for Shopify Email Marketing"</li>
+              <li>"How We Increased AOV 35% with Post-Purchase Upsells"</li>
+              <li>"Shopify Checkout Customization: Worth It or Not?"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Common mistakes -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Common video ideation mistakes for business channels</h2>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Starting with "What is X" topics</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              "What is CRM?" attracts people learning a concept. "Best CRM for 10-person SaaS teams" attracts people ready to buy one. For a business channel, every video should target someone at least halfway through a purchase decision.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Chasing trending topics outside your niche</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              A trending topic that is irrelevant to your buyers will get views from people who will never become customers. A CRM company making videos about AI trends attracts AI enthusiasts, not CRM buyers. Stay in your lane.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Generating ideas without specifying the target customer</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              "Project management tips" could target freelancers, enterprise teams, or agencies. Each audience needs different content. This tool asks for your target customer because a video idea without a defined audience is a video idea that attracts the wrong people.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Producing without evaluating</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              A single video costs $500-5,000+ to produce. Spending 60 seconds running the idea through a buyer intent check before committing that budget is the highest-leverage quality gate you can add to your workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this video ideas generator free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free generations without signup. After that, enter a business email to unlock unlimited use at no cost. There is no paid tier.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How many video ideas does each generation produce?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Each generation produces 5 buyer-intent video ideas. They are tailored to your product, target customer, and the problem you solve. You can generate multiple batches by clicking "Generate more ideas" after reviewing the results.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What makes this different from other YouTube idea generators?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Two things. First, it asks about your product, customer, and problem, not just a keyword. That context allows it to generate ideas with built-in buyer intent. Second, every idea it generates uses bottom-of-funnel topic patterns: comparisons, evaluations, mistakes, and results. It does not generate awareness content or generic educational topics.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What should I do with the ideas after generating them?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Run your favorites through the <a href="/tools/youtube-video-ideas-evaluator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Video Ideas Evaluator</a> to check buyer intent. Then use the <a href="/tools/youtube-title-generator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Title Generator</a> to create a buyer-optimized title for the winning idea. That gives you a validated topic with a strong title, ready for scripting.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I use this for YouTube Shorts ideas?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. The buyer-intent principles apply equally to short-form and long-form video. A Shorts comparison or mistake-avoidance clip can drive the same quality of lead as a long-form video, just with less depth per idea.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why does it ask for my product URL?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The URL helps the AI understand your product's positioning, features, and target market more precisely. This produces more specific ideas than a generic product description alone. The URL is not stored or shared.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-video-ideas-evaluator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Video Ideas Evaluator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Score any video idea on buyer intent before you produce it.</p>
+        </a>
+        <a href="/tools/youtube-title-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Title Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Got an idea? Generate buyer-intent titles scored for acquisition.</p>
+        </a>
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Already published? Check if buyers can find your video.</p>
+        </a>
+      </div>
     </div>
   </section>
 
