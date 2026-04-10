@@ -16,7 +16,7 @@ tags:
   - ltv
 metadata:
   canonical: https://sellontube.com/blog/youtube-marketing-roi
-  description: "YouTube drove 3.25x more conversions than blogging in our 12-month case study. Here's the exact ROI formula, real benchmarks by business type, and a free calculator for your numbers."
+  description: "YouTube drove 3.25x more conversions than blogging in our 12-month study. The exact ROI formula, benchmarks, and a free calculator."
   openGraph:
     url: https://sellontube.com/blog/youtube-marketing-roi
     siteName: SellOnTube

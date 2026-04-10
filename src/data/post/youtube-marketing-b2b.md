@@ -16,7 +16,7 @@ tags:
   - content-marketing
 metadata:
   canonical: https://sellontube.com/blog/youtube-marketing-b2b
-  description: "Most B2B companies treat YouTube like a creator platform and get creator results: subscribers, not clients. Here is what a YouTube channel built for B2B lead generation looks like."
+  description: "B2B companies that treat YouTube like a creator platform get subscribers, not clients. Here is what a lead generation channel looks like."
   openGraph:
     url: https://sellontube.com/blog/youtube-marketing-b2b
     siteName: SellOnTube

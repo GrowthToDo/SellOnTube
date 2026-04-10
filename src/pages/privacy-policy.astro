@@ -138,7 +138,7 @@ const lastUpdated = '6 March 2026';
             <li>Data portability (receive your data in a structured format)</li>
           </ul>
           <p class="text-gray-600 dark:text-slate-400 mt-3">
-            To exercise any of these rights, contact us at <a href="mailto:hello@sellontube.com" class="text-emerald-600 dark:text-emerald-400 hover:underline">hello@sellontube.com</a>.
+            To exercise any of these rights, contact us at <a class="sot-email text-emerald-600 dark:text-emerald-400 hover:underline"></a>.
           </p>
         </section>
 
@@ -163,7 +163,7 @@ const lastUpdated = '6 March 2026';
           <h2 class="text-xl font-semibold mb-3">10. Contact</h2>
           <p class="text-gray-600 dark:text-slate-400">
             Questions about this policy? Email us at
-            <a href="mailto:hello@sellontube.com" class="text-emerald-600 dark:text-emerald-400 hover:underline">hello@sellontube.com</a>.
+            <a class="sot-email text-emerald-600 dark:text-emerald-400 hover:underline"></a>.
           </p>
         </section>
 
@@ -171,3 +171,11 @@ const lastUpdated = '6 March 2026';
     </div>
   </section>
 </Layout>
+
+<script>
+  document.querySelectorAll('.sot-email').forEach(el => {
+    const e = 'hello' + '@' + 'sellontube' + '.com';
+    (el as HTMLAnchorElement).href = 'mailto:' + e;
+    el.textContent = e;
+  });
+</script>
