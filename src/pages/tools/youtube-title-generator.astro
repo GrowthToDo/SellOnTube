@@ -6,7 +6,7 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'Free YouTube Title Generator for Business | SellOnTube',
+  title: 'Free YouTube Title Generator for Business',
   description:
     'Generate YouTube video titles that attract buyers, not just viewers. Built for B2B. 3 scored titles per topic. Free, no signup required.',
 };
@@ -36,23 +36,11 @@ const faqSchema = {
   ]
 };
 
-const softwareSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "YouTube Title Generator",
-  "description": metadata.description,
-  "url": `${siteUrl}/tools/youtube-title-generator`,
-  "applicationCategory": "WebApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl }
-};
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
