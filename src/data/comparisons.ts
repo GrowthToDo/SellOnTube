@@ -12,6 +12,29 @@ export interface Comparison {
   bottomLine: string;
   faqs: { question: string; answer: string }[];
   relatedLinks?: { text: string; href: string }[];
+  /** Cost comparison table: channel-specific metrics side by side */
+  costComparison?: {
+    rows: { metric: string; youtube: string; channelB: string; winner: 'youtube' | 'channelB' | 'tie' }[];
+    footnote?: string;
+  };
+  /** Month-by-month scenario walkthrough for a specific business type */
+  scenario?: {
+    businessType: string;
+    monthlyAdSpend: string;
+    videoCost: string;
+    months: { month: string; adSpend: string; adLeads: string; ytSpend: string; ytLeads: string }[];
+    takeaway: string;
+  };
+  /** Extended content sections with heading + multiple paragraphs */
+  deepSections?: {
+    heading: string;
+    paragraphs: string[];
+  }[];
+  /** Structured decision criteria replacing the generic "Choose YouTube if" list */
+  decisionCriteria?: {
+    chooseYoutube: { criterion: string; detail: string }[];
+    chooseChannelB: { criterion: string; detail: string }[];
+  };
 }
 
 export const comparisons: Comparison[] = [
@@ -238,28 +261,118 @@ export const comparisons: Comparison[] = [
     publishDate: '2026-03-16',
     channelB: 'Paid Ads',
     audience: 'Businesses',
-    metaTitle: 'YouTube vs Paid Ads: Which Delivers Better Marketing ROI?',
-    metaDescription: 'YouTube organic content vs paid ads compared. YouTube wins on long-term ROI and compounding returns. Paid ads win on speed. Here is when each makes sense.',
-    heroTitle: 'YouTube vs Paid Ads: Which Delivers Better Marketing ROI?',
-    verdict: 'Paid ads are faster to launch and more predictable in the short term. YouTube content compounds over time and delivers meaningfully better ROI past month six. Businesses with customer LTV above $2,000 almost always find YouTube delivers superior long-term returns, but it requires patience that paid ads do not demand.',
+    metaTitle: 'YouTube vs Paid Ads: Real ROI Data After 12 Months',
+    metaDescription: 'YouTube returns $4.80 per $1 spent and compounds monthly. Paid ads stop the day you stop paying. See the full cost-per-lead breakdown and when to use each.',
+    heroTitle: 'YouTube vs Paid Ads: Which Produces Cheaper Leads After 12 Months?',
+    verdict: 'Paid ads generate leads within days. YouTube takes three to six months before organic traffic becomes meaningful. The difference is what happens after month six. YouTube video campaigns return an average of $4.80 for every $1 spent, and that number improves each month as older videos keep ranking. Paid ads deliver roughly the same cost per lead in month 12 as in month 1. For businesses with customer LTV above $2,000, YouTube consistently produces lower acquisition costs over a 12-month horizon.',
     youtubeWins: [
-      { title: 'Returns that compound monthly', description: 'Paid ads reset to zero when you stop paying. YouTube content accumulates value over time. A video published in month one keeps driving traffic and leads in month 12, 18, and 24 because it continues to rank in search. The effective cost per lead drops every month as fixed production cost gets amortized across a growing number of leads.' },
-      { title: 'Trust built before purchase', description: 'Paid ad clicks bring strangers who have seen a headline and a four-word value proposition. YouTube viewers arrive having watched 10-15 minutes of your expertise and methodology. That pre-built familiarity produces significantly higher conversion rates than cold ad traffic, because trust is already established before any sales conversation begins.' },
-      { title: 'No creative burnout', description: 'Paid ad performance degrades as audiences see the same creative repeatedly and the algorithm exhausts its most receptive segments. YouTube content ranking for a search query converts consistently over time, because each searcher is encountering it for the first time. There is no fatigue cycle to manage.' },
-      { title: 'No cost per click', description: 'Once a YouTube video ranks in search, each additional visitor costs nothing. Paid ads charge you for every click, every month, indefinitely. In competitive categories, CPCs increase over time as more advertisers compete. YouTube organic compounds in your favour; paid ads compound against you.' },
+      { title: 'Cost per lead drops every month', description: 'A YouTube video costs money once to produce. After it ranks, every additional view and lead is free. By month 12, the effective cost per lead from YouTube is a fraction of what it was in month 1 because the fixed production cost gets spread across an ever-growing number of leads. Paid ads work the opposite way: average CPCs across Google Ads rose 10% year-over-year in 2025, and Facebook ad CPLs climbed 21% in the same period. YouTube organic gets cheaper over time. Paid ads get more expensive.' },
+      { title: 'Viewers arrive pre-sold', description: 'A paid ad click brings someone who read a headline and a two-sentence description. A YouTube viewer watched you explain a problem for 8-12 minutes, saw how you think, and decided to click through. That difference shows up in conversion rates. Search-mode visitors convert at 3-5x the rate of scroll-mode or ad-interrupt visitors for considered purchases. The sales call starts from a completely different baseline.' },
+      { title: 'No ad fatigue or creative decay', description: 'Paid ad performance degrades as the same audience sees the same creative repeatedly. Facebook campaigns typically need fresh creative every 2-4 weeks to maintain performance. YouTube content ranking for a search query encounters new viewers every day, because each searcher discovers it independently. There is no fatigue cycle to manage and no ongoing creative refresh cost.' },
+      { title: 'Zero cost per click once ranked', description: 'Google Ads averages $2-5 per click in most B2B categories. Facebook averages $1.50-3.00. YouTube organic costs nothing per click after the video is produced and ranks. In a category where you get 500 clicks per month, that is $1,000-2,500/month in paid ads versus $0/month from YouTube organic. Over 12 months, the gap compounds to $12,000-30,000 in saved ad spend from a single well-ranked video.' },
     ],
     channelBWins: [
-      { title: 'Immediate results', description: 'Paid ads drive traffic from the day a campaign launches. YouTube typically takes three to six months to build meaningful organic traffic through search rankings. For businesses that need revenue in the next 30-60 days, paid ads are the only option.' },
-      { title: 'Precise audience targeting', description: 'Paid platforms let you target by demographics, interests, behaviours, and remarketing lists with a level of control that organic YouTube cannot match. For very narrow niche audiences that may not actively search on YouTube, paid targeting can be more efficient.' },
-      { title: 'Faster testing and iteration', description: 'A/B testing ad creatives generates meaningful data within days. YouTube content performance takes weeks or months to properly evaluate. For rapid market validation, paid ads provide feedback at a speed that content cannot.' },
+      { title: 'Traffic starts on day one', description: 'Paid ads drive qualified visitors within hours of a campaign going live. YouTube takes three to six months to build meaningful organic search traffic. If your business needs leads in the next 30-60 days and has no existing YouTube library, paid ads are the only realistic option for immediate pipeline.' },
+      { title: 'Granular audience targeting', description: 'Paid platforms let you target by job title, company size, income, interests, and retargeting lists. YouTube organic relies on searchers finding your content through queries. For very narrow niche audiences who may not be actively searching on YouTube, paid targeting reaches people that organic discovery cannot.' },
+      { title: 'Rapid message testing', description: 'A/B testing ad creatives generates statistically significant data within days. YouTube content takes weeks or months to accumulate enough views for meaningful analysis. For validating a new offer, testing price points, or refining messaging before a product launch, paid ads provide feedback faster than any content strategy.' },
     ],
-    bottomLine: 'Run paid ads while you build YouTube. Paid ads provide immediate revenue while YouTube builds toward a compounding inbound engine. Once YouTube begins generating consistent leads, reduce paid dependency gradually rather than abruptly. Businesses with LTV above $2,000 typically find the crossover point somewhere between months six and twelve, after which each additional dollar in YouTube content produces more qualified leads than the equivalent dollar in paid media.',
+    bottomLine: 'Run paid ads while you build YouTube. Paid ads keep your pipeline active while YouTube accumulates ranked content that compounds in value. Once YouTube generates consistent inbound leads, reduce paid spend gradually. The crossover point for most businesses with LTV above $2,000 falls between months six and twelve. After that crossover, each dollar invested in YouTube content produces more qualified leads at lower cost than the equivalent dollar in paid media. The businesses that start YouTube now and run paid ads in parallel will have a structural cost advantage over competitors who rely solely on paid channels.',
     faqs: [
-      { question: 'When does YouTube become more cost-effective than paid ads?', answer: 'Typically between months six and twelve for most business categories. The crossover depends on your customer LTV, content production cost, and how competitive your YouTube search terms are. Use our YouTube ROI calculator to model the crossover point for your specific business numbers.' },
-      { question: 'Can I run YouTube content marketing and paid ads simultaneously?', answer: 'Yes, and this is the recommended approach. Paid ads sustain revenue while YouTube builds. As YouTube matures and delivers consistent inbound, you can reduce paid spend without experiencing a drop in total lead volume. Most clients make the transition gradually over six to twelve months.' },
-      { question: 'What happens to my traffic if I stop running paid ads?', answer: 'Traffic stops immediately. That is the fundamental limitation of paid channels: you are renting reach, not building an asset. YouTube content, once ranked, continues generating traffic after the production cost is paid off. Stopping paid ads hurts you; stopping new YouTube production slows future growth but does not eliminate existing rankings.' },
-      { question: 'Should I do YouTube ads or YouTube organic content?', answer: 'They serve different purposes. YouTube ads work like any pay-per-click channel: you pay for each view with no compounding benefit. YouTube organic content builds search rankings over time and delivers traffic without ongoing spend. We focus on organic search-driven content because it compounds in a way that paid placements never do.' },
+      { question: 'When does YouTube become more cost-effective than paid ads?', answer: 'For most B2B and high-ticket businesses, the crossover happens between months six and twelve. The exact timing depends on your customer LTV, video production cost, and how competitive your target search terms are. A business spending $3,000/month on Google Ads with an LTV of $5,000 typically sees YouTube deliver lower cost-per-lead by month eight. Use our YouTube ROI calculator to model the crossover for your specific numbers.' },
+      { question: 'How much does YouTube organic content cost compared to paid ads?', answer: 'A well-produced YouTube video costs $500-2,000 to create and can generate leads for years. A Google Ads campaign costs $2-5 per click, every click, forever. At 200 clicks per month and $3 average CPC, you spend $7,200 per year on ads. One YouTube video that ranks and gets 200 views per month costs its one-time production fee and nothing after that. The math increasingly favours YouTube as your library grows.' },
+      { question: 'Should I stop paid ads when I start YouTube?', answer: 'No. Run both in parallel. Paid ads sustain your pipeline while YouTube builds search rankings over three to six months. As YouTube matures and delivers consistent inbound leads, reduce paid spend incrementally. Cutting ads before YouTube is producing reliably creates a revenue gap. The transition should be gradual, typically over six to twelve months.' },
+      { question: 'What happens to my leads if I stop running paid ads?', answer: 'Lead flow stops within 24-48 hours. That is the fundamental limitation of paid channels: you rent reach, not own it. YouTube organic content, once ranked, continues generating traffic and leads after the production cost is paid. Pausing paid ads is immediate and painful. Pausing new YouTube production slows future growth but does not eliminate traffic from videos already ranking.' },
+      { question: 'Is YouTube organic or YouTube ads a better investment?', answer: 'YouTube organic content and YouTube ads serve different purposes. YouTube ads are pay-per-view with no compounding benefit. Organic YouTube content builds search rankings that deliver free traffic indefinitely. For businesses with a 12-month horizon and LTV above $1,500, organic YouTube consistently delivers better ROI. YouTube ads can be useful for accelerating early views on new videos to help them rank faster in organic search.' },
+      { question: 'What ROI can I expect from YouTube vs paid ads?', answer: 'YouTube video campaigns average $4.80 return for every $1 spent, and that return improves over time as the content library compounds. Google Ads average ROAS varies by industry but typically ranges from $2-8 per $1 spent, staying relatively flat month over month. The key difference: YouTube ROI in month 12 is significantly higher than month 1 because older videos are still producing. Paid ads ROI in month 12 is roughly the same as month 1.' },
     ],
+    relatedLinks: [
+      { text: 'YouTube ROI Calculator', href: '/tools/youtube-roi-calculator' },
+      { text: 'How to Calculate YouTube Marketing ROI', href: '/blog/youtube-marketing-roi' },
+      { text: 'YouTube vs Facebook for Business', href: '/youtube-vs/facebook' },
+      { text: 'YouTube Marketing Strategy Guide', href: '/blog/youtube-marketing-strategy' },
+    ],
+    costComparison: {
+      rows: [
+        { metric: 'Cost per click', youtube: '$0 (organic)', channelB: '$2-5 (Google), $1.50-3 (Facebook)', winner: 'youtube' },
+        { metric: 'Average cost per lead', youtube: 'Decreases monthly (amortized)', channelB: '$27-70 depending on platform', winner: 'youtube' },
+        { metric: 'Monthly spend to maintain traffic', youtube: '$0 for existing ranked videos', channelB: 'Full budget required every month', winner: 'youtube' },
+        { metric: 'Upfront investment', youtube: '$500-2,000 per video', channelB: '$0 (pay as you go)', winner: 'channelB' },
+        { metric: 'Time to first lead', youtube: '2-4 months', channelB: '1-7 days', winner: 'channelB' },
+        { metric: '12-month total cost (same traffic)', youtube: 'Fixed: production cost only', channelB: 'Cumulative: 12x monthly spend', winner: 'youtube' },
+        { metric: 'Average ROAS', youtube: '$4.80 per $1 (improving)', channelB: '$2-8 per $1 (flat)', winner: 'youtube' },
+        { metric: 'Creative refresh cost', youtube: 'None (evergreen content)', channelB: 'New creative every 2-4 weeks', winner: 'youtube' },
+      ],
+      footnote: 'Paid ads CPL data from WordStream and Stackmatix 2025-2026 benchmarks. YouTube ROAS from Vidico 2026 marketing statistics. Costs vary by industry, competition level, and targeting precision.',
+    },
+    scenario: {
+      businessType: 'B2B SaaS company',
+      monthlyAdSpend: '$3,000',
+      videoCost: '$1,000',
+      months: [
+        { month: 'Month 1', adSpend: '$3,000', adLeads: '12', ytSpend: '$2,000 (2 videos)', ytLeads: '0' },
+        { month: 'Month 3', adSpend: '$3,000', adLeads: '12', ytSpend: '$2,000 (2 videos)', ytLeads: '1-2' },
+        { month: 'Month 6', adSpend: '$3,000', adLeads: '11 (CPC rising)', ytSpend: '$2,000 (2 videos)', ytLeads: '6-8' },
+        { month: 'Month 9', adSpend: '$3,000', adLeads: '10', ytSpend: '$2,000 (2 videos)', ytLeads: '14-18' },
+        { month: 'Month 12', adSpend: '$3,000', adLeads: '9 (CPC up 10%)', ytSpend: '$2,000 (2 videos)', ytLeads: '25-30' },
+        { month: '12-month total', adSpend: '$36,000', adLeads: '~130 leads', ytSpend: '$24,000 (24 videos)', ytLeads: '~90-110 leads' },
+      ],
+      takeaway: 'By month 9, YouTube delivers more leads per dollar than paid ads. By month 12, YouTube produces nearly double the leads at two-thirds the cost. The 24 videos continue generating leads in year two at zero additional spend. The $36,000 in ads produces nothing after you stop paying.',
+    },
+    deepSections: [
+      {
+        heading: 'The Compounding Math: Why YouTube Gets Cheaper Every Month',
+        paragraphs: [
+          'Paid ads have a linear cost structure. You pay $3 per click in month 1 and you pay $3 per click in month 12. In competitive categories, you actually pay more in month 12 because more advertisers enter the auction. Facebook ad CPLs rose 21% year-over-year in 2025. Google Ads CPCs climbed 10% in the same period. Your cost per lead trends upward the longer you run ads.',
+          'YouTube organic has a logarithmic cost structure. You spend $1,000 to produce a video in month 1. That video generates 5 leads in month 3, 15 leads in month 6, and 25 leads in month 12 as it gains authority and ranks for more related queries. Your cost per lead from that single video drops from $200 in month 3 to $67 in month 6 to $40 in month 12. And it keeps dropping in year two.',
+          'Now multiply that by a library of 20+ videos. Each one follows the same curve. The combined effect is a lead generation engine where your per-lead cost falls every single month while your total lead volume rises. No paid channel does this. Paid channels charge you again for every lead, every month, at a rising rate.',
+          'This is why businesses that start YouTube early build a structural cost advantage that competitors cannot easily replicate. Catching up requires producing the same volume of content and waiting the same number of months for it to compound. There is no shortcut.',
+        ],
+      },
+      {
+        heading: 'What Happens When You Turn Off Paid Ads vs YouTube',
+        paragraphs: [
+          'Run this thought experiment: your CFO asks you to cut marketing spend by 50% next quarter. What happens to each channel?',
+          'If you cut paid ads by 50%, you lose roughly 50% of your ad-sourced leads immediately. The relationship between spend and leads is nearly linear. There is no residual benefit from the campaigns you ran last quarter. Every impression, click, and lead from the past is gone.',
+          'If you cut YouTube production by 50%, you produce fewer new videos next quarter. Your existing library of ranked videos continues generating the same traffic and leads as before. You lose future growth from the videos you did not make, but you keep 100% of the traffic from the videos that already rank. Your lead flow next quarter barely changes.',
+          'This asymmetry matters in every downturn, budget review, and strategic pivot. YouTube builds an owned asset. Paid ads rent access to an audience you never own. When budgets tighten, the business with a YouTube library weathers the cut. The business dependent on paid ads takes an immediate hit to pipeline.',
+        ],
+      },
+      {
+        heading: 'How to Run Both Channels Without Doubling Your Budget',
+        paragraphs: [
+          'The most effective approach is not YouTube or paid ads. It is paid ads now, YouTube in parallel, then a gradual transition as YouTube matures. Here is how to structure the transition without increasing total spend.',
+          'Months 1-3: Keep your current paid ads budget unchanged. Redirect 10-15% of total marketing budget from lower-performing channels (not from ads) toward YouTube production. Produce 2 videos per month targeting your highest-value search queries. Expect zero leads from YouTube in this phase.',
+          'Months 4-6: YouTube starts generating early traffic and occasional leads. Keep paid ads steady. Use paid ad data to inform YouTube topics: your highest-converting ad keywords are likely your highest-value YouTube search terms.',
+          'Months 7-9: YouTube generates consistent leads. Begin reducing paid spend by 10-20% per month and redirect those savings into additional YouTube production. Monitor total lead volume to ensure the combined output stays flat or grows.',
+          'Months 10-12: YouTube should be producing more leads per dollar than paid ads. Continue the gradual shift. Most businesses settle at a 70/30 split favouring YouTube, keeping a small paid ads budget for retargeting and immediate-need campaigns.',
+          'The key rule: never cut paid ads faster than YouTube can replace the leads. The transition is gradual by design. Rushing it creates a pipeline gap that takes months to recover from.',
+        ],
+      },
+      {
+        heading: 'Why AI Search Makes YouTube More Valuable Than Paid Ads',
+        paragraphs: [
+          'Google AI Overviews now answer many informational queries directly in the search results. For written content, this reduces click-through rates because the searcher gets the answer without visiting your site. Paid ads are also affected: if the AI Overview satisfies the query, fewer people scroll down to the ads.',
+          'YouTube content operates differently. An AI Overview can summarise a blog post, but it cannot replace watching a founder walk through a product demo, a consultant explain a framework on a whiteboard, or an expert diagnose a common mistake in real time. The visual, personal, and demonstrative nature of video makes it resistant to AI summarisation in a way that text content is not.',
+          'This matters for your marketing spend allocation. Every dollar you put into paid search ads competes with AI Overviews for the same click. Every dollar you put into YouTube content builds an asset that AI cannot replicate or disintermediate. As AI search expands, the relative value of YouTube content increases while the relative value of text-based paid ads decreases.',
+          'Businesses investing in YouTube now are positioning themselves on the side of this trend. Businesses relying solely on paid search ads are betting against it. Within two to three years, the gap between these two positions will be visible in customer acquisition costs.',
+        ],
+      },
+    ],
+    decisionCriteria: {
+      chooseYoutube: [
+        { criterion: 'Customer LTV above $2,000', detail: 'The production cost per video is justified when each customer is worth thousands. Lower LTV businesses need very high conversion rates to make the math work.' },
+        { criterion: 'Buyers research before purchasing', detail: 'If your prospects Google their problem, compare solutions, and watch explanations before contacting sales, YouTube captures them at that exact moment.' },
+        { criterion: 'You can commit for 6-12 months', detail: 'YouTube compounds. Quitting at month 3 means you paid the production cost but never collected the compounding returns. The payoff curve is back-loaded.' },
+        { criterion: 'You want lower CAC over time', detail: 'If your goal is reducing customer acquisition cost year over year, YouTube is the only channel where costs fall as your library grows.' },
+        { criterion: 'You are building a brand, not just generating clicks', detail: 'YouTube builds recognition and trust through long-form content. Prospects arrive on sales calls already familiar with your approach. Paid ads do not create this effect.' },
+      ],
+      chooseChannelB: [
+        { criterion: 'You need leads in the next 30 days', detail: 'Paid ads deliver traffic immediately. If you have zero YouTube content and need pipeline now, ads are the only viable option for short-term revenue.' },
+        { criterion: 'Your audience does not search on YouTube', detail: 'Some niche B2B segments simply do not use YouTube for research. If your buyers live on LinkedIn, trade publications, or industry-specific platforms, paid targeting on those channels reaches them directly.' },
+        { criterion: 'You are testing a new offer or market', detail: 'A/B testing ad creatives gives statistically significant data in days. YouTube takes months. For rapid market validation, paid ads provide faster signal.' },
+        { criterion: 'Your budget is under $1,000/month total', detail: 'At very low budgets, producing quality YouTube content and running ads is not feasible. Paid ads give you more control over limited spend in the short term.' },
+      ],
+    },
   },
   {
     slug: 'google-ads',
