@@ -5,7 +5,7 @@
 
 High-quality = B2B founders, SaaS operators, and service businesses actively exploring YouTube as a customer acquisition and lead generation channel.
 
-## The Three Pillars
+## The Four Pillars
 
 ### A. pSEO — 50 pages (in progress)
 - 29 "YouTube For [niche]" pages + 20 "YouTube Vs [channel]" pages + hub pages
@@ -31,9 +31,34 @@ High-quality = B2B founders, SaaS operators, and service businesses actively exp
 - Each post must target a specific validated keyword and follow the Content Quality Playbook
 - Blog + microtool tandem rule: whenever a blog post targets the `youtube_seo` or `youtube_automation` cluster, it must link to an existing or upcoming tool. The tool and post should ideally launch the same week.
 
+### D. AI Search Visibility (AEO) — defend existing traffic, expand to AI channels
+
+AI search engines (ChatGPT, Perplexity, Claude, Google AI Overviews) increasingly answer the same queries SellonTube targets. If content isn't structured for citation, AI engines cite competitors instead -- even if SellonTube ranks on page 1 of Google.
+
+**Strategy: Defensive now, offensive later.**
+
+**Defensive (active):**
+- `llms.txt` + `llms-full.txt` maintained with product-first positioning. Update when new tools ship.
+- `robots.txt` explicitly allows all major AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Cohere-AI, Meta-ExternalAgent, etc.)
+- AI Citability Rules baked into `content-depth-framework.md` -- every new page follows them
+- Citability audit (agent 11, Mode 3) runs as part of the publishing workflow, after content-qa (agent 05)
+
+**Offensive (Q3 2026+, once baseline data exists):**
+- Monthly AEO batch audits (agent 11, Mode 2) to track which keywords SellonTube appears in across AI engines
+- Identify keywords where AI engines cite competitors but not SellonTube -- prioritize content improvements for those
+- Target conversational queries that AI engines answer but Google doesn't surface well
+
+**Cadence:**
+- Update `llms.txt` whenever a new tool ships or major content launches
+- Run citability audit (Mode 3) on every blog post before publishing
+- Run batch AEO audit (Mode 2) monthly, save to `research/aeo/`
+- Compare monthly audits to track trend (gaining vs losing citations)
+
+**Key files:** `agents/11-aeo-monitor.md` (agent spec), `content-depth-framework.md` (citability rules), `public/llms.txt` + `public/llms-full.txt` (AI crawler content), `research/aeo/` (audit outputs)
+
 ---
 
-Last updated: 2026-03-21
+Last updated: 2026-04-12
 
 ---
 

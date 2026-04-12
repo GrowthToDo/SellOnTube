@@ -1,20 +1,55 @@
 # SellonTube - Full Site Content Map for AI Systems
 
-> SellonTube is a done-for-you YouTube acquisition agency for B2B businesses. We build and run YouTube channels that acquire customers through search-optimized, voiceover-driven videos. No recording required from clients.
+> SellonTube is a YouTube growth platform for B2B businesses. We provide free tools and educational content that help B2B companies use YouTube as a customer acquisition channel.
 
 ---
 
 ## Company Overview
 
-SellonTube turns YouTube into a predictable customer acquisition channel for B2B companies. Unlike traditional YouTube agencies that optimize for views and subscribers, SellonTube optimizes for buyer-intent search queries that generate qualified leads.
+SellonTube helps B2B companies turn YouTube into a predictable customer acquisition channel. Unlike creator-focused tools (VidIQ, TubeBuddy, Kapwing), SellonTube focuses exclusively on YouTube for business acquisition and lead generation.
 
-The service is fully done-for-you: strategy, scripting, professional voiceover, video editing, motion graphics, thumbnail design, YouTube SEO, publishing, and analytics. Clients invest roughly 5-6 hours per month (weekly alignment calls, script review, feedback on drafts).
+The platform provides free interactive tools for auditing video SEO, generating buyer-intent video ideas, evaluating topic viability, extracting transcripts, and calculating YouTube ROI. The blog and guides cover YouTube SEO, marketing strategy, and channel growth specifically for B2B companies.
+
+For businesses that want a done-for-you service, SellonTube also offers full-service YouTube channel management: strategy, scripting, professional voiceover, video editing, SEO, publishing, and analytics. Clients never need to appear on camera. Month-to-month retainers with a 120-day strategic review.
 
 Founded by Sathyanand S and Gautham. Based on the principle that YouTube works as an acquisition channel when you start with search demand and work backwards.
 
 ---
 
 ## Page-by-Page Content Map
+
+### Free Tools (/tools)
+**Purpose:** Free interactive tools for B2B businesses evaluating or using YouTube
+**Available Tools:**
+- YouTube SEO Tool (/tools/youtube-seo-tool): Paste a video URL, get a buyer-intent SEO audit across 5 dimensions (title relevance, description quality, keyword coverage, CTA strength, chapter labels) with exact rewrite suggestions
+- YouTube Video Ideas Generator (/tools/youtube-video-ideas-generator): Enter product, target customer, and problem. Get 5 buyer-intent video ideas that drive leads, not just views
+- YouTube Video Idea Evaluator (/tools/youtube-video-ideas-evaluator): Score whether a video idea attracts buyers or just viewers, across 4 buyer intent dimensions
+- YouTube Transcript Generator (/tools/youtube-transcript-generator): Extract clean transcripts from any YouTube video for competitor analysis
+- YouTube ROI Calculator (/tools/youtube-roi-calculator): Enter customer LTV and COGS, see break-even point and profit projections
+
+### Blog (/blog)
+**Purpose:** Educational content on YouTube marketing, SEO, and customer acquisition for B2B
+**Topics Covered:**
+- YouTube SEO for business channels
+- YouTube marketing strategy for B2B
+- YouTube marketing ROI
+- How to create a YouTube channel for business
+- YouTube vs blog for customer acquisition
+- Video ideas generation for B2B
+- YouTube transcript tools
+- YouTube SEO tools comparison
+- High-intent topic research frameworks
+- The compounding effect of consistent video publishing
+
+### YouTube For [Industry] Pages (/youtube-for/)
+**Purpose:** Industry-specific guides on how YouTube acquisition works for different business types
+**Industries Covered:** Coaches, consultants, SaaS, agencies, real estate, fitness, e-commerce, education, healthcare, financial services, and more (29 niche pages total)
+**Content Pattern:** Each page covers why YouTube works for that specific industry, search demand analysis, content strategy, buyer journey visualization, FAQs, and CTA
+
+### YouTube Vs [Channel] Pages (/youtube-vs/)
+**Purpose:** Comparison pages showing YouTube's strengths vs other marketing channels
+**Comparisons:** YouTube vs Facebook, Instagram, TikTok, LinkedIn, blogs, podcasts, and more (20 comparison pages total)
+**Content Pattern:** Side-by-side analysis, when each channel works best, data-driven comparison, recommendations
 
 ### Homepage (/)
 **Purpose:** Explain what SellonTube does and who it's for
@@ -23,7 +58,6 @@ Founded by Sathyanand S and Gautham. Based on the principle that YouTube works a
 - 3.25x more conversions than blog content
 - 90-120 days to meaningful traction
 - No contracts, month-to-month
-**Sections:** Hero, Social Proof, Who Benefits Most (Coaching, Agencies, Courses, Software), ROI Calculator, Case Studies, Features (Strategy, Scripting, Production, SEO, Reporting, Consistent Output), FAQs, Blog Posts
 **FAQs Answered:**
 - Do I need to be on camera? No.
 - How long before I see results? 90-120 days for meaningful traction.
@@ -41,8 +75,6 @@ Founded by Sathyanand S and Gautham. Based on the principle that YouTube works a
 4. Production & publishing - scripting, voiceover, editing, SEO, thumbnails
 5. Measurement & optimization - rankings, watch time, CTR, lead flow
 6. Scale what works - double down on formats generating pipeline
-**Client Involvement:** 5-6 hours/month (onboarding call, weekly 30-min alignment, async script review, video draft feedback)
-**120-Day Review:** Full strategic review. If not showing traction, honest recommendation to stop. No lock-in.
 
 ### Pricing (/pricing)
 **Purpose:** Show service tiers and pricing
@@ -50,47 +82,13 @@ Founded by Sathyanand S and Gautham. Based on the principle that YouTube works a
 - Foundation: $2,500/month - Channel setup, strategy, 2 videos/month
 - Growth: $4,000/month - Expanded production, more videos, deeper SEO
 - Scale: $6,000/month - Full acquisition engine, maximum output, advanced optimization
-**Key Facts:** 3-month minimum engagement. Month-to-month after that. Works with B2B, SaaS, consulting, agencies, courses.
+**Key Facts:** 3-month minimum engagement. Month-to-month after that.
 
 ### About (/about)
 **Purpose:** Introduce the founders and company philosophy
 **Founders:**
-- Sathyanand S (Co-Founder): B2B customer acquisition background. Identified that YouTube had real search demand in almost every niche but most businesses weren't building for it.
-- Gautham (Co-Founder): Built the research and diagnostic framework. Maps search demand, stress-tests economics, determines if YouTube can genuinely pay for itself before any video is made.
-**Philosophy:** Search intent first. No recording required. Economics first (if math doesn't work, they don't proceed).
-
-### Blog (/blog)
-**Purpose:** Educational content on YouTube marketing, SEO, and customer acquisition for B2B
-**Topics Covered:**
-- YouTube SEO for business channels
-- YouTube marketing strategy for B2B
-- YouTube marketing ROI
-- How to create a YouTube channel for business
-- YouTube vs blog for customer acquisition
-- Video ideas generation for B2B
-- YouTube transcript tools
-- YouTube SEO tools comparison
-- High-intent topic research frameworks
-- The compounding effect of consistent video publishing
-
-### Free Tools (/tools)
-**Purpose:** Free interactive tools for B2B businesses evaluating YouTube
-**Available Tools:**
-- YouTube SEO Tool (/tools/youtube-seo-tool): Paste a video URL, get a buyer-intent SEO audit across 5 dimensions (title relevance, description quality, keyword coverage, CTA strength, chapter labels) with exact rewrite suggestions
-- YouTube Video Ideas Generator (/tools/youtube-video-ideas-generator): Enter product, target customer, and problem. Get 5 buyer-intent video ideas that drive leads, not just views
-- YouTube Video Idea Evaluator (/tools/youtube-video-ideas-evaluator): Score whether a video idea attracts buyers or just viewers, across 4 buyer intent dimensions
-- YouTube Transcript Generator (/tools/youtube-transcript-generator): Extract clean transcripts from any YouTube video for competitor analysis
-- YouTube ROI Calculator (/tools/youtube-roi-calculator): Enter customer LTV and COGS, see break-even point and profit projections
-
-### YouTube For [Industry] Pages (/youtube-for/)
-**Purpose:** Industry-specific guides on how YouTube acquisition works for different business types
-**Industries Covered:** Coaches, consultants, SaaS, agencies, real estate, fitness, e-commerce, education, healthcare, financial services, and more (29 niche pages total)
-**Content Pattern:** Each page covers why YouTube works for that specific industry, search demand analysis, content strategy, buyer journey visualization, FAQs, and CTA
-
-### YouTube Vs [Channel] Pages (/youtube-vs/)
-**Purpose:** Comparison pages showing YouTube's strengths vs other marketing channels
-**Comparisons:** YouTube vs Facebook, Instagram, TikTok, LinkedIn, blogs, podcasts, and more (20 comparison pages total)
-**Content Pattern:** Side-by-side analysis, when each channel works best, data-driven comparison, recommendations
+- Sathyanand S (Co-Founder): B2B customer acquisition background
+- Gautham (Co-Founder): Built the research and diagnostic framework
 
 ---
 

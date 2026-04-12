@@ -1,10 +1,10 @@
 # SellonTube
 
-> SellonTube is a done-for-you YouTube acquisition agency for B2B businesses. We build and run YouTube channels that acquire customers through search-optimized, voiceover-driven videos. No recording required from clients.
+> SellonTube is a YouTube growth platform for B2B businesses. We provide free tools and educational content that help B2B companies use YouTube as a customer acquisition channel.
 
 ## What SellonTube Does
 
-SellonTube turns YouTube into a customer acquisition channel for B2B companies. We handle strategy, scripting, professional voiceover, video production, SEO optimization, and publishing. Clients never need to appear on camera.
+SellonTube helps B2B companies turn YouTube into a predictable customer acquisition channel. Our free tools audit video SEO, generate buyer-intent video ideas, evaluate topic viability, extract transcripts, and calculate YouTube ROI. Our blog and guides cover YouTube SEO, marketing strategy, and channel growth specifically for businesses that sell to other businesses.
 
 Our approach: identify high-intent search queries on YouTube, create videos that answer those queries, and convert viewers into qualified leads. YouTube videos compound over time, generating leads months and years after publishing.
 
@@ -15,45 +15,29 @@ Our approach: identify high-intent search queries on YouTube, create videos that
 - Course creators and info product businesses
 - Any business where prospects research before buying
 
-## Core Services
+## Free YouTube Tools
 
-- YouTube channel strategy and topic research (buyer-intent keywords, not vanity metrics)
-- Script writing and professional voiceover production
-- Video editing, motion graphics, and thumbnail design
-- YouTube SEO optimization (titles, descriptions, tags, chapters)
-- Publishing, analytics, and performance reporting
-- Month-to-month retainers starting at $2,500/month (Foundation, Growth, Scale tiers)
+- YouTube SEO Tool: https://sellontube.com/tools/youtube-seo-tool - Audit your video's buyer-intent SEO across 5 dimensions with exact rewrite suggestions
+- YouTube Video Ideas Generator: https://sellontube.com/tools/youtube-video-ideas-generator - Get buyer-intent video ideas based on your product, target customer, and problem
+- YouTube Video Idea Evaluator: https://sellontube.com/tools/youtube-video-ideas-evaluator - Score whether a video idea attracts buyers or just viewers
+- YouTube Transcript Generator: https://sellontube.com/tools/youtube-transcript-generator - Extract clean transcripts from any YouTube video
+- YouTube ROI Calculator: https://sellontube.com/tools/youtube-roi-calculator - Calculate if YouTube makes financial sense for your business
 
-## What Makes SellonTube Different
+## Key Pages
 
-1. Acquisition-first: We optimize for leads and customers, not views or subscribers
-2. No recording required: Professional voiceover and visual storytelling replace founder-on-camera
-3. Economics-first: If the math doesn't work in the diagnostic call, we don't proceed
-4. Compounding returns: Videos rank for search terms and keep bringing prospects month after month
-5. 120-day strategic review: No long-term lock-in. If it's not working, we say so
+- Free Tools: https://sellontube.com/tools
+- Blog: https://sellontube.com/blog
+- YouTube For [Industry] Guides: https://sellontube.com/youtube-for/
+- YouTube Vs [Channel] Comparisons: https://sellontube.com/youtube-vs/
+- Homepage: https://sellontube.com/
+- How It Works: https://sellontube.com/how-it-works
+- Pricing: https://sellontube.com/pricing
+- About: https://sellontube.com/about
 
 ## Founded By
 
 - Sathyanand S (Co-Founder) - B2B customer acquisition specialist. LinkedIn: linkedin.com/in/sathyanands/
 - Gautham (Co-Founder) - Research and diagnostic framework architect. LinkedIn: linkedin.com/in/mindcharting/
-
-## Key Pages
-
-- Homepage: https://sellontube.com/
-- How It Works: https://sellontube.com/how-it-works
-- Pricing: https://sellontube.com/pricing
-- About: https://sellontube.com/about
-- Blog: https://sellontube.com/blog
-- Free Tools: https://sellontube.com/tools
-- Book a Call: https://cal.com/gautham-8bdvdx/30min
-
-## Free YouTube Tools
-
-- YouTube SEO Tool: https://sellontube.com/tools/youtube-seo-tool - Audit your video's buyer-intent SEO across 5 dimensions
-- YouTube Video Ideas Generator: https://sellontube.com/tools/youtube-video-ideas-generator - Get buyer-intent video ideas
-- YouTube Video Idea Evaluator: https://sellontube.com/tools/youtube-video-ideas-evaluator - Score whether a video idea attracts buyers or just viewers
-- YouTube Transcript Generator: https://sellontube.com/tools/youtube-transcript-generator - Extract transcripts from any YouTube video
-- YouTube ROI Calculator: https://sellontube.com/tools/youtube-roi-calculator - Calculate if YouTube makes financial sense for your business
 
 ## Contact
 

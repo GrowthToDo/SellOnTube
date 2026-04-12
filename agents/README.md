@@ -18,6 +18,7 @@ Just speak naturally. Examples that trigger each agent:
 | "technical SEO audit" / "check redirects" / "schema check" | 07-technical-seo |
 | "build a tool" / "create a microtool" / "here's the spec for a tool" | 08-microtool-builder |
 | "write reddit posts" / "reddit launch" / "seed this on reddit" | 10-reddit-marketer |
+| "check AI visibility" / "AEO audit" / "are we in ChatGPT" / "citability check" | 11-aeo-monitor |
 | "full audit" / "weekly review" | master → routes to 01 + 07, then 03 |
 
 ## Agent Index
@@ -34,6 +35,7 @@ Just speak naturally. Examples that trigger each agent:
 | 07-technical-seo.md | Redirects, schema, technical health | Read netlify.toml, JsonLd.astro |
 | 08-microtool-builder.md | Build interactive tools — single source of truth for tool strategy, pipeline, build standards, publishing workflow | Title Generator reference, keyword CSV, style guide, schema templates |
 | 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | reddit-marketing-playbook.md, style guide, ICP |
+| 11-aeo-monitor.md | AI search visibility — spot checks, batch audits, citability scoring | sot_master.csv, content-depth-framework.md, research/aeo/ |
 
 ## Key Rules (apply to all agents)
 - Never push to live without explicit user approval
