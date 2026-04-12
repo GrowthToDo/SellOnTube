@@ -269,6 +269,50 @@ const channelBLogoHtml = channelLogos[comparison.channelB] ?? genericLogoHtml;
       </div>
     </section>
 
+    <!-- Cost Comparison Table (data-driven, optional) -->
+    {comparison.costComparison && (
+      <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6">
+          YouTube vs {comparison.channelB}: Cost Breakdown
+        </h2>
+        <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-100 dark:bg-slate-800">
+                <th class="text-left px-4 py-3 font-semibold text-gray-600 dark:text-slate-400 w-1/3">Metric</th>
+                <th class="text-left px-4 py-3 font-semibold text-red-600">
+                  <span class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+                    </svg>
+                    YouTube
+                  </span>
+                </th>
+                <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-slate-300">
+                  <span class="flex items-center gap-1.5">
+                    <Fragment set:html={channelBLogoHtml} />
+                    {comparison.channelB}
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+              {comparison.costComparison.rows.map((row, i) => (
+                <tr class={i % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800/50'}>
+                  <td class="px-4 py-3 text-gray-600 dark:text-slate-400 font-medium">{row.metric}</td>
+                  <td class={`px-4 py-3 ${row.winner === 'youtube' ? 'text-green-700 dark:text-green-400 font-semibold' : 'text-gray-800 dark:text-slate-200'}`}>{row.youtube}</td>
+                  <td class={`px-4 py-3 ${row.winner === 'channelB' ? 'text-green-700 dark:text-green-400 font-semibold' : 'text-gray-800 dark:text-slate-200'}`}>{row.channelB}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {comparison.costComparison.footnote && (
+          <p class="text-xs text-gray-400 dark:text-slate-500 mt-3 italic">{comparison.costComparison.footnote}</p>
+        )}
+      </section>
+    )}
+
     <!-- Where YouTube Wins -->
     <section class="py-10 border-t border-slate-200 dark:border-slate-700">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-5">
@@ -383,6 +427,45 @@ const channelBLogoHtml = channelLogos[comparison.channelB] ?? genericLogoHtml;
           <p class="text-[10px] text-gray-400 dark:text-slate-500 italic ml-auto">Videos from Month 1 still generating traffic at Month 12.</p>
         </div>
       </figure>
+
+      <!-- Scenario Walkthrough (data-driven, optional) -->
+      {comparison.scenario && (
+        <div class="mt-10">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+            Real numbers: {comparison.scenario.businessType} spending {comparison.scenario.monthlyAdSpend}/month on ads
+          </h3>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-5">
+            Video production cost: {comparison.scenario.videoCost} per video. Here is what happens when you run both channels side by side for 12 months.
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="bg-slate-100 dark:bg-slate-800">
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 dark:text-slate-400">Month</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 dark:text-slate-400">{comparison.channelB} spend</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-gray-600 dark:text-slate-400">{comparison.channelB} leads</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-red-600">YT spend</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-red-600">YT leads</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                {comparison.scenario.months.map((m, i) => (
+                  <tr class={i % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-800/50'}>
+                    <td class="px-3 py-2.5 text-gray-800 dark:text-slate-200 font-medium">{m.month}</td>
+                    <td class="px-3 py-2.5 text-gray-600 dark:text-slate-400">{m.adSpend}</td>
+                    <td class="px-3 py-2.5 text-gray-600 dark:text-slate-400">{m.adLeads}</td>
+                    <td class="px-3 py-2.5 text-gray-800 dark:text-slate-200">{m.ytSpend}</td>
+                    <td class="px-3 py-2.5 text-gray-800 dark:text-slate-200">{m.ytLeads}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-4 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+            <p class="text-sm font-semibold text-green-800 dark:text-green-300">{comparison.scenario.takeaway}</p>
+          </div>
+        </div>
+      )}
     </section>
 
     <!-- Mid-article CTA -->
@@ -430,24 +513,80 @@ const channelBLogoHtml = channelLogos[comparison.channelB] ?? genericLogoHtml;
       </div>
     </section>
 
+    <!-- Deep Sections (data-driven, optional) -->
+    {comparison.deepSections && comparison.deepSections.length > 0 && (
+      comparison.deepSections.map((section) => (
+        <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-5">
+            {section.heading}
+          </h2>
+          <div class="space-y-4">
+            {section.paragraphs.map((p) => (
+              <p class="text-gray-700 dark:text-slate-300 leading-relaxed">{p}</p>
+            ))}
+          </div>
+        </section>
+      ))
+    )}
+
     <!-- How to Decide -->
     <section class="py-10 border-t border-slate-200 dark:border-slate-700">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-5">
-        How to Decide: When to Choose YouTube
+        How to Decide: YouTube or {comparison.channelB}
       </h2>
       <p class="text-lg text-gray-700 dark:text-slate-300 leading-relaxed mb-6">
         {comparison.bottomLine}
       </p>
-      <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-        <p class="font-semibold text-gray-900 dark:text-white mb-4">Choose YouTube if:</p>
-        <ul class="space-y-2 text-gray-700 dark:text-slate-300">
-          <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You want an acquisition channel that compounds in value over time</li>
-          <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> Your buyers actively research their problem before purchasing</li>
-          <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You're tired of paying for every lead with ads that stop when you stop spending</li>
-          <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You have a 6-12 month horizon and want durable inbound traffic</li>
-          <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You want to see the numbers before committing — <a href="/tools/youtube-roi-calculator" class="text-primary underline hover:text-primary/80">model your YouTube ROI here</a></li>
-        </ul>
-      </div>
+
+      {comparison.decisionCriteria ? (
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-green-50 dark:bg-green-950/20 rounded-xl p-5 border border-green-200 dark:border-green-800">
+            <p class="font-semibold text-green-800 dark:text-green-300 mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+              </svg>
+              Choose YouTube when:
+            </p>
+            <ul class="space-y-3">
+              {comparison.decisionCriteria.chooseYoutube.map((item) => (
+                <li>
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white">{item.criterion}</p>
+                  <p class="text-sm text-gray-600 dark:text-slate-400 mt-0.5">{item.detail}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-5 border border-slate-200 dark:border-slate-700">
+            <p class="font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+              <Fragment set:html={channelBLogoHtml} />
+              Choose {comparison.channelB} when:
+            </p>
+            <ul class="space-y-3">
+              {comparison.decisionCriteria.chooseChannelB.map((item) => (
+                <li>
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white">{item.criterion}</p>
+                  <p class="text-sm text-gray-600 dark:text-slate-400 mt-0.5">{item.detail}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div class="bg-slate-50 dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+          <p class="font-semibold text-gray-900 dark:text-white mb-4">Choose YouTube if:</p>
+          <ul class="space-y-2 text-gray-700 dark:text-slate-300">
+            <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You want an acquisition channel that compounds in value over time</li>
+            <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> Your buyers actively research their problem before purchasing</li>
+            <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You're tired of paying for every lead with ads that stop when you stop spending</li>
+            <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You have a 6-12 month horizon and want durable inbound traffic</li>
+            <li class="flex gap-2 items-start"><span class="text-primary font-bold mt-0.5 flex-shrink-0">&#10003;</span> You want to see the numbers before committing - <a href="/tools/youtube-roi-calculator" class="text-primary underline hover:text-primary/80">model your YouTube ROI here</a></li>
+          </ul>
+        </div>
+      )}
+
+      <p class="mt-5 text-sm text-gray-500 dark:text-slate-400">
+        Want to see the numbers for your specific business? <a href="/tools/youtube-roi-calculator" class="text-primary underline hover:text-primary/80">Model your YouTube ROI here.</a>
+      </p>
     </section>
 
     <!-- FAQs -->
