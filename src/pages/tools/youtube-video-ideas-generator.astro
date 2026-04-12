@@ -21,6 +21,18 @@ const breadcrumbSchema = {
   ]
 };
 
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Video Ideas Generator",
+  "url": `${siteUrl}/tools/youtube-video-ideas-generator`,
+  "description": "Generate buyer-intent YouTube video ideas for your product or service. Enter your business details, get 5 high-intent ideas in seconds. Free, no signup.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -38,6 +50,7 @@ const faqSchema = {
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->

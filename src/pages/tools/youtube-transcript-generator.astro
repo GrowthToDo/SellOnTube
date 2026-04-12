@@ -6,7 +6,7 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube Transcript Generator: Free, Instant, No Signup',
+  title: 'Free YouTube Transcript Generator, No Signup',
   description:
     'Get clean transcripts from any YouTube video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights. Free tool by SellonTube.',
 };
@@ -19,6 +19,18 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
     { "@type": "ListItem", "position": 3, "name": "YouTube Transcript Generator", "item": `${siteUrl}/tools/youtube-transcript-generator` }
   ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Transcript Generator",
+  "url": `${siteUrl}/tools/youtube-transcript-generator`,
+  "description": "Extract clean transcripts from any YouTube video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights. Free, no signup.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
 const faqSchema = {
@@ -39,6 +51,7 @@ const faqSchema = {
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->

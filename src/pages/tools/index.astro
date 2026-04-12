@@ -7,7 +7,7 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'Free YouTube Tools for Business — SellonTube',
+  title: 'Free YouTube Tools for Business',
   description:
     'Free tools to evaluate YouTube topics, calculate ROI, and build a channel that generates customers. Built for B2B founders and SaaS businesses.',
 };
@@ -36,7 +36,7 @@ const tools = [
     slug: '/tools/youtube-seo-tool',
     tagline: "Why aren't buyers finding your YouTube videos?",
     description:
-      'Paste your video URL and website. Get a buyer-intent score across 5 dimensions — title relevance, description quality, keyword coverage, CTA strength, chapter labels — plus the exact rewritten text to fix each failing dimension.',
+      'Paste your video URL and website. Get a buyer-intent score across 5 dimensions: title relevance, description quality, keyword coverage, CTA strength, and chapter labels. Includes the exact rewritten text to fix each failing dimension.',
     badge: 'SEO Audit',
     badgeColor: 'emerald',
   },
@@ -45,7 +45,7 @@ const tools = [
     slug: '/tools/youtube-video-ideas-generator',
     tagline: 'What YouTube videos should I create to attract buyers?',
     description:
-      'Enter your product, target customer, and the problem you solve. Get 5 buyer-intent video ideas — the kind that drive leads and customers, not just views.',
+      'Enter your product, target customer, and the problem you solve. Get 5 buyer-intent video ideas built to drive leads and customers, not just views.',
     badge: 'Idea Generation',
     badgeColor: 'emerald',
   },
@@ -101,8 +101,8 @@ const tools = [
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(collectionPageSchema)} />
   <HeroText
-    title="YouTube tools built for businesses, not creators"
-    subtitle="Every tool here is framed around one question: will this generate customers? Not views, not subscribers — customers."
+    title="Free YouTube Tools for Business"
+    subtitle="Every tool here is framed around one question: will this generate customers? Not views, not subscribers, customers."
   />
 
   <section class="py-10 sm:py-12">

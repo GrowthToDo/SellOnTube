@@ -6,7 +6,7 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube Video Idea Evaluator | Free Buyer Intent Checker',
+  title: 'YouTube Video Idea Evaluator for B2B',
   description:
     'Enter any YouTube video idea and find out if it targets buyers or browsers. Free buyer intent scoring for B2B founders: 4 scored dimensions, instant verdict.',
 };
@@ -19,6 +19,18 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
     { "@type": "ListItem", "position": 3, "name": "YouTube Video Idea Evaluator", "item": `${siteUrl}/tools/youtube-video-ideas-evaluator` }
   ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Video Idea Evaluator",
+  "url": `${siteUrl}/tools/youtube-video-ideas-evaluator`,
+  "description": "Score any YouTube video idea for buyer intent across 4 dimensions. Find out if your idea attracts buyers or browsers before you invest in production. Free.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
 const faqSchema = {
@@ -38,6 +50,7 @@ const faqSchema = {
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
