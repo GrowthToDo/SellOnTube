@@ -35,3 +35,13 @@ See `agents/08-microtool-builder.md` Phase 7 for full details.
 > Prioritize using the LSP tool for context-efficient and accurate implementation.
 
 LSP queries are cheaper, faster, and more precise than reading entire files or running broad searches. Use them first, read files second, search broadly last.
+
+## Build Standards
+
+1. **Performance** -- Optimize LCP on tool pages (Gemini loading states). Lazy-load below-fold images. Reserve space for media to prevent CLS. Defer non-critical JS.
+2. **Canonical/crawl hygiene** -- Absolute canonical URLs in head. Sitemap aligned with canonicals. Internal links point to canonical URLs only. Watch for WordPress legacy URLs leaking into the index.
+3. **Internal linking** -- Route equity from blog posts and pSEO pages toward `/tools/*`. Use descriptive anchors. Add contextual cross-links from informational to commercial pages.
+4. **Structured data** -- Only schema matching visible content. WebApplication on tools, BreadcrumbList on all pages, FAQPage only where FAQ is visible on-page.
+5. **Implementation** -- Semantic HTML. Pages fully crawlable without JS. No render-blocking resources above the fold.
+
+**Every page/feature deliverable includes:** SEO risks, canonical/indexation risks, recommended structured data, performance notes.
