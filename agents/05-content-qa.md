@@ -12,6 +12,8 @@ Also: automatically called by Agent 04 after every blog post draft.
 2. `content-playbook.md` — quality standards
 3. `content-depth-framework.md` — depth validation. Verify the page's coverage level matches the depth decision tree for its intent. Check that every section passes the editorial checklist (answers real question, adds specificity, boosts decisions). Flag padding or sections that fail the gate.
 4. `ai-seo-guide.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
+5. `agents/references/core-eeat-benchmark.md` — 80-item E-E-A-T scoring framework. Use for structured quality scoring on any post where depth or authority is in question. (Source: seo-geo-claude-skills)
+6. `agents/references/ai-writing-detection.md` — comprehensive AI writing pattern ban list (extends the em-dash ban with 50+ flagged words/phrases, structural tells, and academic red flags). Cross-reference during the anti-AI audit pass. (Source: marketingskills)
 
 ## Execution steps
 

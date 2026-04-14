@@ -14,6 +14,8 @@ Also owns the monthly AI SEO checklist — run `docs/sops/monthly-ai-seo-checkli
 - `src/config.yaml` — site config
 - GSC page data (from Agent 01) — cross-reference non-Astro URLs still appearing in impressions
 - `ai-seo-guide.md` — AI citation requirements including robots.txt bot list and schema priority
+- `agents/references/schema-templates.json` — VideoObject, BroadcastEvent, Clip, SeekToAction, and other schema templates. Use as reference when implementing new schema types, especially YouTube/video-related markup. (Source: claude-seo)
+- `agents/references/knowledge-graph-guide.md` — Knowledge Graph, Wikidata, and entity optimization playbook. Use when auditing entity presence, building sameAs links, or implementing Organization/Person schema with proper @id cross-referencing. (Source: seo-geo-claude-skills)
 
 ## Execution steps
 
@@ -72,8 +74,10 @@ Read the schema component.
 | `FAQPage` | Blog posts with FAQ sections | FAQ rich results / People Also Ask |
 | `BreadcrumbList` | pSEO pages (`/youtube-for/`, `/youtube-vs/`) | Breadcrumb trail in search results |
 | `HowTo` | How-to guide blog posts | Step-by-step rich results |
+| `VideoObject` | Tool pages, blog posts with YouTube embeds | Video rich results, video carousel |
+| `BroadcastEvent` | Live stream landing pages (future) | LIVE badge in search results |
 
-When running a schema audit, report these as "pending implementation" in the schema health output. Do not mark them as errors — they are documented gaps, not regressions.
+When running a schema audit, report these as "pending implementation" in the schema health output. Do not mark them as errors — they are documented gaps, not regressions. See `agents/references/schema-templates.json` for ready-to-use templates.
 
 ### Step 3 — Astro config (`astro.config.ts`)
 Read and check:

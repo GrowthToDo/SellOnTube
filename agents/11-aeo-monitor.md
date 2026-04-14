@@ -70,9 +70,19 @@ Audit a specific page against the AI Citability Rules in `content-depth-framewor
 | Definition blocks | Key concepts have standalone 1-2 sentence definitions? | |
 | FAQ alignment | FAQ questions written in conversational form? | |
 
-3. For each fail, provide a specific fix suggestion with example text
+3. Score against GEO optimization dimensions (from `agents/references/geo-skill-patterns.md`):
 
-**Output:** Pass/fail table with fix suggestions. Overall score: X/5 rules passed.
+| Dimension | Weight | Check |
+|---|---|---|
+| Citability | 25% | Self-contained answer blocks (134-167 words), quotable facts, attributed claims |
+| Structural readability | 20% | Clear heading hierarchy, question-based subheadings, formatted lists |
+| Multi-modal content | 15% | Text combined with images, videos, tables, or infographics |
+| Authority signals | 20% | Author credentials, publication dates, source citations, cross-platform presence |
+| Technical accessibility | 20% | Server-side rendered (Astro = yes), AI crawlers allowed |
+
+4. For each fail, provide a specific fix suggestion with example text
+
+**Output:** Pass/fail table with fix suggestions. Overall score: X/5 citability rules passed + GEO dimension scores.
 
 **When to run:** After content-qa (agent 05) and before publishing. Mode 3 is the AEO equivalent of the style guide QA pass.
 
@@ -93,6 +103,8 @@ The recommended publishing flow with AEO added:
 - `research/aeo/` — output directory for batch audit CSVs
 - `public/llms.txt` — update when new tools or major pages ship
 - `public/llms-full.txt` — full content map for AI systems
+- `agents/references/ai-citation-patterns.md` — how each AI system (Google AI Overviews, ChatGPT, Perplexity, Claude) selects and cites content. Includes citation frequency, format preferences, authority signals, and optimal content structures for citation (definition blocks, stat blocks, Q&A pairs, comparison tables, step-by-step, before/after). Use when advising on content structure for citability. (Source: seo-geo-claude-skills)
+- `agents/references/geo-skill-patterns.md` — GEO optimization prompt patterns including citability scoring (25%), structural readability (20%), multi-modal content (15%), authority signals (20%), and technical accessibility (20%). Key insight: "Brand mentions correlate 3x more strongly with AI visibility than backlinks." Use as scoring framework for Mode 3 citability audits. (Source: claude-seo)
 
 ## Rules
 

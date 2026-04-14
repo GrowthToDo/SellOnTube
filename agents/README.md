@@ -37,6 +37,20 @@ Just speak naturally. Examples that trigger each agent:
 | 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | reddit-marketing-playbook.md, style guide, ICP |
 | 11-aeo-monitor.md | AI search visibility — spot checks, batch audits, citability scoring | sot_master.csv, content-depth-framework.md, research/aeo/ |
 
+### Reference Library (`agents/references/`)
+
+Curated reference files cherry-picked from open-source SEO skill repos. Not standalone agents — they enrich existing agents.
+
+| File | Used by | What it adds |
+|---|---|---|
+| `core-eeat-benchmark.md` | Agent 05 | 80-item structured E-E-A-T scoring framework |
+| `ai-writing-detection.md` | Agent 05 | 50+ AI writing markers (extends em-dash ban) |
+| `schema-templates.json` | Agent 07 | VideoObject, BroadcastEvent, Clip schema templates |
+| `knowledge-graph-guide.md` | Agent 07 | Knowledge Graph, Wikidata, entity optimization playbook |
+| `ai-citation-patterns.md` | Agent 11 | How each AI system selects and cites content |
+| `geo-skill-patterns.md` | Agent 11 | GEO optimization scoring framework |
+| `backlink-analysis-skill.md` | (standalone) | Free backlink analysis via CommonCrawl, Moz, Bing Webmaster — no dedicated agent yet |
+
 ## Key Rules (apply to all agents)
 - Never push to live without explicit user approval
 - Blog cadence: max 1/week, hard ceiling 2/week — always count before scheduling
