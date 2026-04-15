@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Autocomplete Keyword Tool",
   "url": `${siteUrl}/tools/youtube-autocomplete-keywords`,
-  "description": "Scrape YouTube autocomplete suggestions for any seed keyword. Get long-tail keywords categorized by search intent: buyer, how-to, comparison, question, trending. Export as CSV. Free, no signup for quick results.",
+  "description": "Scrape YouTube autocomplete suggestions for any seed keyword. Get long-tail keywords categorized by search intent: Comparison, Mistakes, Results, How-To, Research. Export as CSV. Free, no signup for quick results.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -37,12 +37,13 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Is this YouTube autocomplete keyword tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with CSV download) requires an email address." } },
-    { "@type": "Question", "name": "How is this different from other YouTube keyword tools?", "acceptedAnswer": { "@type": "Answer", "text": "This tool shows you exactly what YouTube suggests when users type, which is a direct signal of real search demand. No estimated volumes, no proxy data. Keywords are categorized by search intent so you can prioritize buyer-intent and comparison queries over generic informational ones." } },
-    { "@type": "Question", "name": "Why use YouTube autocomplete for keyword research?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube autocomplete reflects what millions of users actually search for. These suggestions are driven by real query frequency, recency, and user behavior. Long-tail autocomplete phrases reveal specific user intent that volume-based tools miss entirely." } },
-    { "@type": "Question", "name": "What do the intent categories mean?", "acceptedAnswer": { "@type": "Answer", "text": "The five categories match the video types that drive business results on YouTube. Comparison and Evaluation (High priority) covers keywords where the viewer is actively comparing options: best, vs, alternatives, review, pricing. Mistakes and Red Flags (High priority) attracts viewers trying to avoid bad decisions before buying. Results and Proof (High priority) targets viewers looking for evidence before committing. How-To and Problem-Solving (Medium priority) captures viewers with an active problem to solve. Research and Discovery (Low priority) covers general learning queries." } },
-    { "@type": "Question", "name": "Can I use these keywords for YouTube SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Autocomplete keywords are the foundation of YouTube SEO. Use the buyer-intent and comparison keywords as video titles, tags, and description text. These are the exact phrases YouTube associates with your topic." } },
-    { "@type": "Question", "name": "How many keywords does the exhaustive scrape return?", "acceptedAnswer": { "@type": "Answer", "text": "Typically 100-200+, depending on how popular your topic is. The exhaustive mode adds 0-9 digit variations and buyer-intent modifiers like 'best', 'vs', 'alternatives to', 'mistakes', 'results', 'review', 'pricing', 'cost', 'worth it', 'how to', 'tutorial', 'switch to', and 'why' to your seed keyword." } },
+    { "@type": "Question", "name": "Is this YouTube autocomplete keyword tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with intent categorization and CSV export) requires an email address. No credit card, no subscription." } },
+    { "@type": "Question", "name": "How is YouTube autocomplete different from using VidIQ or TubeBuddy for keyword research?", "acceptedAnswer": { "@type": "Answer", "text": "VidIQ and TubeBuddy estimate search volume using panel data and clickstream samples. Those numbers are approximations. This tool scrapes what YouTube actually suggests when users type, which is a direct signal of real-time search demand. Keywords are also categorized by buyer intent so you can prioritize comparison and evaluation queries over generic informational ones." } },
+    { "@type": "Question", "name": "Should I use autocomplete keywords in my YouTube titles and descriptions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Autocomplete keywords are the exact phrases YouTube's algorithm expects in your metadata. Use the high-priority Comparison keywords as video titles. Place related variations in the first 150 characters of your description. Add remaining phrases to tags and chapter labels." } },
+    { "@type": "Question", "name": "What do the five intent categories mean and why do they matter?", "acceptedAnswer": { "@type": "Answer", "text": "Each category maps to a stage in the buyer journey. Comparison & Evaluation (High) covers viewers actively comparing solutions. Mistakes & Red Flags (High) catches viewers avoiding bad decisions. Results & Proof (High) targets viewers seeking evidence before committing. How-To & Problem-Solving (Medium) captures viewers with an active problem to solve. Research & Discovery (Low) covers early-stage learning queries. The priority tells you which keywords to target first for business results." } },
+    { "@type": "Question", "name": "How many keywords will I get from the exhaustive scrape?", "acceptedAnswer": { "@type": "Answer", "text": "Typically 100-200+, depending on how popular your topic is on YouTube. The exhaustive mode adds 19 buyer-intent modifiers (best, vs, alternatives to, how to, mistakes, results, review, pricing, cost, worth it, tutorial, and more) to your seed keyword, querying YouTube 60-100+ times." } },
+    { "@type": "Question", "name": "Can I target different countries with this tool?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Select your target geography from the dropdown before running the scrape. YouTube returns different autocomplete suggestions for different countries. If you sell to US customers, run it with United States selected. The default Global returns suggestions aggregated across all markets." } },
+    { "@type": "Question", "name": "How often should I run this tool for the same keyword?", "acceptedAnswer": { "@type": "Answer", "text": "At least quarterly. YouTube autocomplete changes as search behavior shifts. New keywords appear when competitors launch products, features ship, or trends start. Running the tool quarterly for your core topics catches new long-tail phrases before competitors build content around them." } },
   ]
 };
 
@@ -330,36 +331,273 @@ const geoOptions = [
     </div>
   </section>
 
-  <!-- SEO Content -->
+  <!-- Section 1: Why autocomplete -->
+  <section class="py-16 sm:py-20 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Why YouTube autocomplete beats volume-based keyword tools</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        YouTube keyword tools estimate search volume using panel data or clickstream samples. The numbers are approximations, often months out of date. YouTube autocomplete shows you the exact phrases YouTube surfaces when real users type a query right now. These suggestions reflect actual search frequency, recency, and user behavior patterns.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        <strong>YouTube autocomplete keyword research</strong> is the process of systematically scraping YouTube's search suggestions to discover the long-tail phrases your target audience actually types. Unlike volume estimates, these are real queries driven by real demand.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Every experienced YouTube marketer already does this manually: type your topic, add a, b, c, and record what auto-completes. This tool runs 27 queries in seconds for the quick scrape. The exhaustive scrape fires 60-100+ queries with buyer-intent modifiers, returning 100-200+ unique keyword phrases. Same technique, zero manual effort.
+      </p>
+
+      <!-- Comparison table -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 shadow-sm mt-8">
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Autocomplete scraping vs volume-based tools</p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700">
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Dimension</th>
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Volume tools (VidIQ, TubeBuddy)</th>
+                <th class="text-left px-5 py-3 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Autocomplete scraping</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+              {[
+                { dim: 'Data source', vol: 'Panel estimates, third-party clickstream', auto: 'YouTube\'s own suggestion algorithm, real-time' },
+                { dim: 'Freshness', vol: 'Monthly or quarterly updates', auto: 'Live data, reflects this week\'s search trends' },
+                { dim: 'Long-tail depth', vol: 'Misses niche phrases with low estimated volume', auto: 'Surfaces exact phrases users type, including 4-6 word queries' },
+                { dim: 'Buyer intent signal', vol: 'Volume number with no intent context', auto: 'Phrases naturally reveal intent: "best X", "X vs Y", "how to set up X"' },
+                { dim: 'Cost', vol: '$7.99-$49.99/month for keyword features', auto: 'Free. No API key, no quota limit' },
+                { dim: 'Limitation', vol: 'Estimates can be inaccurate for niche topics', auto: 'No exact volume numbers, only relative demand signal' },
+              ].map((row) => (
+                <tr>
+                  <td class="px-5 py-3 font-medium text-gray-900 dark:text-white whitespace-nowrap">{row.dim}</td>
+                  <td class="px-5 py-3 text-gray-500 dark:text-slate-400">{row.vol}</td>
+                  <td class="px-5 py-3 text-gray-700 dark:text-slate-300">{row.auto}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The smartest approach uses both. Autocomplete tells you what people search. Volume tools tell you how often. Start with autocomplete to discover the phrases, then validate the best ones with volume data if you need to prioritize across dozens of topics.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 2: Intent categories diagram -->
   <section class="py-16 sm:py-20">
-    <div class="max-w-2xl mx-auto px-4 space-y-16">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">The 5 intent categories and what they mean for your business</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        A list of 150 keywords is useless without a way to prioritize. This tool categorizes every keyword into five intent groups that match the video types proven to drive business results on YouTube.
+      </p>
 
-      <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why YouTube autocomplete is the most underused keyword research method</h2>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          YouTube keyword tools typically estimate search volume using panel data or clickstream samples. The numbers are approximations. YouTube autocomplete is different. It shows you the exact phrases YouTube surfaces when real users type a query. These suggestions are driven by actual search frequency, recency, and user behavior patterns.
-        </p>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          The manual version of this is something every good YouTube marketer already does: go to YouTube, type "how to [your expertise]" and see what auto-completes. Then type your topic plus a, b, c and record every suggestion. Those suggestions are real searches from your prospects. The strategy is simple: make videos answering those exact questions.
-        </p>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          This tool automates that entire process. Instead of manually typing your seed keyword plus every letter A through Z, recording each suggestion, and organizing them by hand, the quick scrape runs 27 queries in seconds. The exhaustive scrape adds digits, prepended modifiers, and appended modifiers for a total of 60-100 queries, typically returning 100-200+ unique keyword phrases. Same technique, zero manual effort.
-        </p>
+      <!-- Intent categories scored card -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 shadow-sm mt-8">
+        <div class="bg-slate-50 dark:bg-slate-800 px-5 py-4 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Intent categories ranked by business value</p>
+          <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Higher priority = closer to a purchase decision</p>
+        </div>
+        <div class="divide-y divide-slate-100 dark:divide-slate-800">
+          {[
+            {
+              label: 'Comparison & Evaluation',
+              priority: 'High',
+              color: 'bg-emerald-500',
+              width: '100%',
+              desc: 'Keywords where the viewer is actively narrowing options. "Best CRM for small business", "HubSpot vs Salesforce", "CRM pricing 2025". These viewers have budget and timeline. They are comparing before buying.',
+              examples: 'best, vs, alternatives to, review, pricing, cost, free, worth it',
+            },
+            {
+              label: 'Mistakes & Red Flags',
+              priority: 'High',
+              color: 'bg-amber-500',
+              width: '90%',
+              desc: 'Keywords from viewers trying to avoid bad decisions. "CRM mistakes to avoid", "worst email marketing tools". These viewers are in the evaluation stage, actively looking for reasons to choose or reject.',
+              examples: 'mistakes, avoid, wrong, scam, worst, red flag, warning',
+            },
+            {
+              label: 'Results & Proof',
+              priority: 'High',
+              color: 'bg-purple-500',
+              width: '80%',
+              desc: 'Keywords from viewers looking for evidence before committing. "CRM ROI case study", "email marketing results after 6 months". Social proof seekers with high purchase intent.',
+              examples: 'results, case study, ROI, before and after, revenue, growth',
+            },
+            {
+              label: 'How-To & Problem-Solving',
+              priority: 'Medium',
+              color: 'bg-blue-500',
+              width: '60%',
+              desc: 'On YouTube, someone watching a how-to video has an active problem right now. They are one step from evaluating and buying a solution. "How to set up automated onboarding in Intercom" is a viewer with software open on their screen.',
+              examples: 'how to, tutorial, setup, for beginners, walkthrough, fix',
+            },
+            {
+              label: 'Research & Discovery',
+              priority: 'Low',
+              color: 'bg-slate-400',
+              width: '30%',
+              desc: 'Top-of-funnel queries from viewers exploring a topic. "What is a CRM", "why use YouTube for marketing". Valuable for authority-building and capturing future buyers early, but low direct conversion.',
+              examples: 'what is, why, should I, can you, does it',
+            },
+          ].map((cat) => (
+            <div class="px-5 py-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-semibold text-gray-800 dark:text-slate-200">{cat.label}</span>
+                <span class={`text-xs font-bold ${cat.priority === 'High' ? 'text-rose-600 dark:text-rose-400' : cat.priority === 'Medium' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'}`}>{cat.priority} priority</span>
+              </div>
+              <div class="h-1.5 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden mb-2">
+                <div class={`h-full ${cat.color} rounded-full`} style={`width: ${cat.width}`}></div>
+              </div>
+              <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-1">{cat.desc}</p>
+              <p class="text-xs text-gray-400 dark:text-slate-600"><span class="font-medium">Trigger words:</span> {cat.examples}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How intent categorization helps you prioritize</h2>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          A list of 150 keywords is useless without a way to prioritize. This tool categorizes every keyword by search intent so you can focus on the phrases most likely to drive business results.
-        </p>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          The categories match the four proven video types that drive business results on YouTube. Comparison and Evaluation keywords ("best CRM for small business", "HubSpot vs Salesforce", "CRM pricing") attract viewers actively narrowing their options. Mistakes and Red Flags keywords ("CRM mistakes to avoid") attract viewers in the evaluation stage who want to avoid bad decisions. Results and Proof keywords ("CRM ROI after 6 months") attract viewers looking for evidence before committing. All three are High priority because they target the bottom of the funnel where purchase decisions happen.
-        </p>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          How-To and Problem-Solving keywords ("how to set up a CRM", "CRM tutorial for beginners") are Medium priority. On YouTube, someone watching a how-to video has an active problem to solve right now. They are one step away from evaluating and buying. Research and Discovery keywords ("what is a CRM", "why use video interviews") are Low priority top-of-funnel queries. The categorization lets you build a content calendar that balances immediate acquisition with long-term authority.
-        </p>
-      </div>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The categorization lets you build a content calendar that balances immediate acquisition (High-priority keywords) with long-term authority (Low-priority keywords). Target the High-priority ones first. Those are the videos that generate pipeline this quarter.
+      </p>
+    </div>
+  </section>
 
+  <!-- Section 3: Who this tool is for -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Who this tool is for</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        This tool is built for businesses that use YouTube to acquire customers, not build an audience. Specifically:
+      </p>
+      <ul class="space-y-3">
+        {[
+          { who: 'SaaS founders', why: 'who need to find the exact phrases prospects type before evaluating software. "Best project management tool for remote teams" is a keyword your competitor is already ranking for. This tool finds it in seconds.', href: '/youtube-for/saas' },
+          { who: 'Consultants and agencies', why: 'who want inbound from YouTube search instead of cold outreach. Your buyers search with specific problems. Autocomplete reveals those problems in their exact words.', href: '/youtube-for/consultants' },
+          { who: 'Course creators and coaches', why: 'who need to validate demand before building content. If YouTube autocomplete returns 30+ variations of your topic, there is an audience searching for it. If it returns 5, rethink the angle.', href: '/youtube-for/online-course-creators' },
+        ].map((item) => (
+          <li class="flex items-start gap-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-4">
+            <span class="flex-shrink-0 w-2 h-2 rounded-full bg-emerald-500 mt-2"></span>
+            <p class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed">
+              <a href={item.href} class="font-semibold text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">{item.who}</a>
+              {' '}{item.why}
+            </p>
+          </li>
+        ))}
+      </ul>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Already have your keywords? Run your existing videos through the <a href="/tools/youtube-seo-tool" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">YouTube SEO Tool</a> to check if your titles and descriptions actually match the phrases buyers search for.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: How to use these keywords -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">How to turn autocomplete keywords into a content plan</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        Keywords without a system are a spreadsheet you never open again. Here is the workflow that turns this tool's output into videos that rank.
+      </p>
+
+      <!-- Step cards -->
+      <div class="space-y-4 mt-6">
+        {[
+          {
+            step: '1',
+            title: 'Start with High-priority keywords',
+            body: 'Sort the CSV by priority. Pick 3-5 Comparison or Mistakes keywords. Each one becomes a video title. "Best CRM for small business" is a title, not a topic to discuss loosely.',
+          },
+          {
+            step: '2',
+            title: 'Cluster related keywords into single videos',
+            body: 'If your CSV has "shopify upsell app", "best shopify upsell app", and "shopify upsell app free", those are not three videos. They are one video with one primary title and the variations placed in the description and tags.',
+          },
+          {
+            step: '3',
+            title: 'Use the Title Generator to test phrasing',
+            body: 'Paste your top keywords into the <a href="/tools/youtube-title-generator" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">YouTube Title Generator</a> to get buyer-intent title variations. The difference between "Shopify Upsell Apps" and "Best Shopify Upsell App for Small Stores (2025)" is the difference between page 3 and page 1.',
+          },
+          {
+            step: '4',
+            title: 'Validate ideas before producing',
+            body: 'Run your best keyword clusters through the <a href="/tools/youtube-video-ideas-evaluator" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">Video Ideas Evaluator</a>. It scores buyer intent, audience fit, and conversion potential so you produce the videos most likely to generate leads.',
+          },
+          {
+            step: '5',
+            title: 'Optimize existing videos with new keywords',
+            body: 'You do not need to film new videos for every keyword. Update titles and descriptions on existing content to match the autocomplete phrases you discovered. Run updated videos through the <a href="/tools/youtube-seo-tool" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">YouTube SEO Tool</a> to verify the metadata matches.',
+          },
+        ].map((s) => (
+          <div class="flex items-start gap-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-5">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+              <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400">{s.step}</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">{s.title}</p>
+              <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed" set:html={s.body}></p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Common mistakes -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">5 mistakes businesses make with YouTube keyword research</h2>
+
+      <div class="space-y-6 mt-4">
+        <div>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">1. Chasing volume instead of intent</p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed text-sm">
+            A keyword with 10,000 monthly searches and zero buyer intent will not generate a single lead. "What is email marketing" gets volume. "Best email marketing tool for Shopify" gets customers. Autocomplete surfaces both. The intent tags tell you which is which.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">2. Targeting one keyword per video instead of clusters</p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed text-sm">
+            YouTube ranks videos for groups of related phrases, not isolated keywords. If you see "best CRM for startups", "top CRM for small business", and "CRM comparison 2025" in your CSV, those are one video, not three. Use the primary phrase as the title and weave the variations into your description.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">3. Ignoring the how-to keywords</p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed text-sm">
+            On Google, "how to" queries are informational. On YouTube, they signal an active problem. Someone searching "how to set up upsells on Shopify" has Shopify open on their screen. They are one step from evaluating tools. Businesses that skip how-to content leave the easiest trust-building videos on the table.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">4. Researching keywords once and never again</p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed text-sm">
+            YouTube autocomplete changes as search behavior shifts. A keyword that did not appear last month might appear now because a competitor launched, a trend started, or a new feature shipped. Run this tool quarterly for your core topics to catch new long-tail phrases before competitors do.
+          </p>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">5. Skipping geography targeting</p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed text-sm">
+            YouTube autocomplete returns different suggestions for different countries. If you sell to US customers, run the scrape with "United States" selected. The global default mixes suggestions from every market, diluting the relevance. A SaaS tool popular in India surfaces different autocomplete phrases than the same tool in the US.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: How autocomplete connects to YouTube SEO -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-5">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">How autocomplete keywords connect to YouTube SEO</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        YouTube's search algorithm matches video metadata against user queries. Your title, description, tags, and chapter labels are the signals that determine whether your video appears in search results. Autocomplete keywords are the raw material for every one of those signals.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        The chain works like this. A buyer types a phrase into YouTube search. YouTube matches that phrase against your video's metadata. If the metadata contains the phrase, your video appears. If the buyer clicks, your description and CTA determine whether they take a next step with your business.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        <strong>Autocomplete keywords are the exact phrases YouTube expects in your metadata.</strong> A video titled "Our Product Demo" will never rank for "best project management tool for remote teams." A video with that exact autocomplete phrase as its title will.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+        If you want to go beyond keywords and build a full YouTube acquisition system, from topic research to video structure to the lead path after someone watches, <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">book a diagnostic call</a>. This tool tells you what people search. The diagnostic tells you what to build around it.
+      </p>
     </div>
   </section>
 
@@ -370,33 +608,38 @@ const geoOptions = [
       <div class="space-y-6">
 
         <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube autocomplete keyword tool free?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with CSV download) requires an email address.</p>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube autocomplete keyword tool free to use?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with intent categorization and CSV export) requires an email address. No credit card, no subscription.</p>
         </div>
 
         <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How is this different from other YouTube keyword tools?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">This tool shows you exactly what YouTube suggests when users type, which is a direct signal of real search demand. No estimated volumes, no proxy data. Keywords are categorized by search intent so you can prioritize buyer-intent and comparison queries over generic informational ones.</p>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How is YouTube autocomplete different from using VidIQ or TubeBuddy for keyword research?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">VidIQ and TubeBuddy estimate search volume using panel data and clickstream samples. Those numbers are approximations. This tool scrapes what YouTube actually suggests when users type, which is a direct signal of real-time search demand. Keywords are also categorized by buyer intent so you can prioritize comparison and evaluation queries over generic informational ones.</p>
         </div>
 
         <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why use YouTube autocomplete for keyword research?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">YouTube autocomplete reflects what millions of users actually search for. These suggestions are driven by real query frequency, recency, and user behavior. Long-tail autocomplete phrases reveal specific user intent that volume-based tools miss entirely.</p>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Should I use autocomplete keywords in my YouTube titles and descriptions?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Autocomplete keywords are the exact phrases YouTube's algorithm expects in your metadata. Use the high-priority Comparison keywords as video titles. Place related variations in the first 150 characters of your description (the visible part before "Show more"). Add remaining phrases to tags and chapter labels.</p>
         </div>
 
         <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What do the intent categories mean?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Comparison and Evaluation (High priority) covers viewers actively comparing: best, vs, alternatives, review, pricing. Mistakes and Red Flags (High priority) attracts viewers avoiding bad decisions before buying. Results and Proof (High priority) targets viewers who want evidence before committing. How-To and Problem-Solving (Medium priority) captures viewers with an active problem to solve on YouTube. Research and Discovery (Low priority) covers general learning queries like "what is" or "why".</p>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What do the five intent categories mean and why do they matter?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Each category maps to a stage in the buyer journey. Comparison & Evaluation (High) covers viewers actively comparing solutions. Mistakes & Red Flags (High) catches viewers avoiding bad decisions. Results & Proof (High) targets viewers seeking evidence before committing. How-To & Problem-Solving (Medium) captures viewers with an active problem to solve. Research & Discovery (Low) covers early-stage learning queries. The priority tells you which keywords to target first for business results.</p>
         </div>
 
         <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I use these keywords for YouTube SEO?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Autocomplete keywords are the foundation of YouTube SEO. Use the buyer-intent and comparison keywords as video titles, tags, and description text. These are the exact phrases YouTube associates with your topic.</p>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How many keywords will I get from the exhaustive scrape?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Typically 100-200+, depending on how popular your topic is on YouTube. The exhaustive mode adds 19 buyer-intent modifiers ("best", "vs", "alternatives to", "how to", "mistakes", "results", "review", "pricing", "cost", "worth it", "tutorial", and more) to your seed keyword, querying YouTube 60-100+ times. More popular topics return more keywords.</p>
+        </div>
+
+        <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I target different countries with this tool?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Select your target geography from the dropdown before running the scrape. YouTube returns different autocomplete suggestions for different countries. If you sell to US customers, run it with "United States" selected. The default "Global" returns suggestions aggregated across all markets.</p>
         </div>
 
         <div class="pb-2">
-          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How many keywords does the exhaustive scrape return?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Typically 100-200+, depending on how popular your topic is. The exhaustive mode adds 0-9 digit variations and buyer-intent modifiers like "best", "vs", "alternatives to", "mistakes", "results", "review", "pricing", "cost", "worth it", "how to", "tutorial", "switch to", and "why" to your seed keyword.</p>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How often should I run this tool for the same keyword?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">At least quarterly. YouTube autocomplete changes as search behavior shifts. New keywords appear when competitors launch products, features ship, or trends start. Running the tool quarterly for your core topics catches new long-tail phrases before competitors build content around them.</p>
         </div>
 
       </div>
