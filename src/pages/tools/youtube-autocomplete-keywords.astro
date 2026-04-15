@@ -1,0 +1,883 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: 'Free YouTube Autocomplete Keyword Tool - Find Long-Tail YouTube Keywords',
+  description:
+    'Scrape YouTube autocomplete suggestions for any keyword. Get long-tail keywords categorized by search intent. Free, no signup for quick results.',
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Autocomplete Keywords", "item": `${siteUrl}/tools/youtube-autocomplete-keywords` }
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Autocomplete Keyword Tool",
+  "url": `${siteUrl}/tools/youtube-autocomplete-keywords`,
+  "description": "Scrape YouTube autocomplete suggestions for any seed keyword. Get long-tail keywords categorized by search intent: buyer, how-to, comparison, question, trending. Export as CSV. Free, no signup for quick results.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this YouTube autocomplete keyword tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with CSV download) requires an email address." } },
+    { "@type": "Question", "name": "How is this different from other YouTube keyword tools?", "acceptedAnswer": { "@type": "Answer", "text": "This tool shows you exactly what YouTube suggests when users type, which is a direct signal of real search demand. No estimated volumes, no proxy data. Keywords are categorized by search intent so you can prioritize buyer-intent and comparison queries over generic informational ones." } },
+    { "@type": "Question", "name": "Why use YouTube autocomplete for keyword research?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube autocomplete reflects what millions of users actually search for. These suggestions are driven by real query frequency, recency, and user behavior. Long-tail autocomplete phrases reveal specific user intent that volume-based tools miss entirely." } },
+    { "@type": "Question", "name": "What do the intent categories mean?", "acceptedAnswer": { "@type": "Answer", "text": "The five categories match the video types that drive business results on YouTube. Comparison and Evaluation (High priority) covers keywords where the viewer is actively comparing options: best, vs, alternatives, review, pricing. Mistakes and Red Flags (High priority) attracts viewers trying to avoid bad decisions before buying. Results and Proof (High priority) targets viewers looking for evidence before committing. How-To and Problem-Solving (Medium priority) captures viewers with an active problem to solve. Research and Discovery (Low priority) covers general learning queries." } },
+    { "@type": "Question", "name": "Can I use these keywords for YouTube SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Autocomplete keywords are the foundation of YouTube SEO. Use the buyer-intent and comparison keywords as video titles, tags, and description text. These are the exact phrases YouTube associates with your topic." } },
+    { "@type": "Question", "name": "How many keywords does the exhaustive scrape return?", "acceptedAnswer": { "@type": "Answer", "text": "Typically 100-200+, depending on how popular your topic is. The exhaustive mode adds 0-9 digit variations and buyer-intent modifiers like 'best', 'vs', 'alternatives to', 'mistakes', 'results', 'review', 'pricing', 'cost', 'worth it', 'how to', 'tutorial', 'switch to', and 'why' to your seed keyword." } },
+  ]
+};
+
+const geoOptions = [
+  { label: 'Global', gl: '', hl: 'en' },
+  { label: 'United States', gl: 'us', hl: 'en' },
+  { label: 'United Kingdom', gl: 'gb', hl: 'en' },
+  { label: 'India', gl: 'in', hl: 'en' },
+  { label: 'Australia', gl: 'au', hl: 'en' },
+  { label: 'Canada', gl: 'ca', hl: 'en' },
+  { label: 'Germany', gl: 'de', hl: 'de' },
+  { label: 'France', gl: 'fr', hl: 'fr' },
+  { label: 'Brazil', gl: 'br', hl: 'pt' },
+  { label: 'Japan', gl: 'jp', hl: 'ja' },
+  { label: 'South Korea', gl: 'kr', hl: 'ko' },
+  { label: 'Indonesia', gl: 'id', hl: 'id' },
+  { label: 'Philippines', gl: 'ph', hl: 'en' },
+  { label: 'Thailand', gl: 'th', hl: 'th' },
+  { label: 'Singapore', gl: 'sg', hl: 'en' },
+  { label: 'Malaysia', gl: 'my', hl: 'en' },
+  { label: 'UAE', gl: 'ae', hl: 'en' },
+  { label: 'South Africa', gl: 'za', hl: 'en' },
+  { label: 'Mexico', gl: 'mx', hl: 'es' },
+  { label: 'Nigeria', gl: 'ng', hl: 'en' },
+];
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Long-tail keywords</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Intent categorized</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">CSV export</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        YouTube Autocomplete<br class="hidden sm:block" /> Keyword Tool
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Enter a seed keyword. Get every phrase YouTube suggests, categorized by search intent. Find the long-tail queries your competitors are missing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+
+          <div>
+            <label for="seed-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Seed keyword
+            </label>
+            <input
+              type="text"
+              id="seed-input"
+              placeholder="e.g. crm for small business"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="seed-error"
+            />
+            <p id="seed-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="geo-select" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Geography
+            </label>
+            <select
+              id="geo-select"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors appearance-none"
+              style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M6%208L1%203h10z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem center;"
+            >
+              {geoOptions.map(g => (
+                <option value={`${g.gl}|${g.hl}`}>{g.label}</option>
+              ))}
+            </select>
+          </div>
+
+        </div>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate Keywords &rarr;
+        </button>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Scraping YouTube autocomplete suggestions...</p>
+          <div class="w-full max-w-xs mx-auto">
+            <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+              <div id="progress-bar" class="h-full bg-emerald-500 rounded-full transition-all duration-700 ease-out" style="width: 0%"></div>
+            </div>
+            <p id="progress-text" class="mt-2 text-xs text-gray-400 dark:text-slate-600">Querying A-Z variations...</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-2xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <!-- Results header -->
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Autocomplete keywords for</p>
+            <p id="result-seed" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+            <p id="result-geo" class="text-xs text-gray-400 dark:text-slate-500 mt-0.5"></p>
+          </div>
+        </div>
+
+        <!-- Intent group teaser cards (quick results) -->
+        <div id="intent-groups" class="divide-y divide-slate-200 dark:divide-slate-700/60"></div>
+
+        <!-- Email gate for exhaustive scrape -->
+        <div id="email-gate" class="hidden border-t-2 border-emerald-500/30">
+          <!-- Teaser bar showing what's locked -->
+          <div class="px-6 sm:px-8 pt-6 pb-3 bg-gradient-to-b from-emerald-500/5 to-transparent">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke-width="2"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-gray-900 dark:text-white">Unlock the full list + CSV export</p>
+                <p id="gate-teaser-count" class="text-xs text-gray-500 dark:text-slate-400"></p>
+              </div>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mb-4 ml-11">
+              The exhaustive scrape adds buyer-intent modifiers ("best", "vs", "alternatives to", "mistakes", "pricing", "worth it") to your seed keyword. Typically returns 2-3x more keywords, categorized and exported as CSV.
+            </p>
+            <div id="gate-form" class="flex flex-col sm:flex-row gap-2 ml-11">
+              <input
+                type="email"
+                id="gate-email"
+                placeholder="your@company.com"
+                class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                       text-sm focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                aria-describedby="gate-email-error"
+              />
+              <button
+                id="gate-submit-btn"
+                class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold
+                       bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors whitespace-nowrap"
+              >
+                Get full list + CSV &rarr;
+              </button>
+            </div>
+            <p id="gate-email-error" class="hidden mt-1.5 ml-11 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+            <p class="mt-2 ml-11 text-xs text-gray-400 dark:text-slate-600">No spam. We only send YouTube acquisition resources.</p>
+          </div>
+        </div>
+
+        <!-- Exhaustive loading -->
+        <div id="exhaustive-loading" class="hidden p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60 text-center">
+          <div class="flex flex-col items-center gap-3 py-4">
+            <div class="w-8 h-8 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Running exhaustive scrape (A-Z + 0-9 + modifiers)...</p>
+            <p class="text-xs text-gray-400 dark:text-slate-600">This takes 15-20 seconds</p>
+          </div>
+        </div>
+
+        <!-- Exhaustive results -->
+        <div id="exhaustive-results" class="hidden">
+          <div class="p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-1">Exhaustive scrape complete</p>
+                <p id="exhaustive-count" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+              </div>
+              <div class="flex gap-2">
+                <button
+                  id="copy-exhaustive-btn"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-200 dark:border-slate-700 text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke-width="2"/></svg>
+                  Copy All
+                </button>
+                <button
+                  id="export-exhaustive-csv-btn"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Download CSV
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="exhaustive-intent-groups" class="divide-y divide-slate-200 dark:divide-slate-700/60"></div>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Research another keyword
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Inline CTA to related tools -->
+      <div class="mt-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Found your keywords? Check if your videos are optimized for them.</p>
+        <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Run your video through our free YouTube SEO tool to see how well it ranks for these terms.</p>
+        <div class="flex flex-wrap gap-2">
+          <a
+            href="/tools/youtube-seo-tool"
+            class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Check your video SEO score &rarr;
+          </a>
+          <a
+            href="/tools/youtube-title-generator"
+            class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium border border-slate-200 dark:border-slate-700 text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            Generate titles from keywords
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Keywords are the starting point. Strategy is the system."
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: keywords, topics, titles, CTAs, and the path from viewer to customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your seed keyword</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Type a topic, product, or niche. Pick your target geography. One keyword, two fields, under 10 seconds.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">We scrape YouTube autocomplete</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The tool queries YouTube's suggestion API with A-Z variations of your seed keyword, collecting every phrase YouTube thinks users want to search next.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Keywords sorted by intent</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Every keyword is categorized by buyer intent: Comparison, Mistakes, Results, How-To, or Research. Each gets a priority tag (High, Medium, Low) so you know which keywords to target first for business results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why YouTube autocomplete is the most underused keyword research method</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube keyword tools typically estimate search volume using panel data or clickstream samples. The numbers are approximations. YouTube autocomplete is different. It shows you the exact phrases YouTube surfaces when real users type a query. These suggestions are driven by actual search frequency, recency, and user behavior patterns.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The manual version of this is something every good YouTube marketer already does: go to YouTube, type "how to [your expertise]" and see what auto-completes. Then type your topic plus a, b, c and record every suggestion. Those suggestions are real searches from your prospects. The strategy is simple: make videos answering those exact questions.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          This tool automates that entire process. Instead of manually typing your seed keyword plus every letter A through Z, recording each suggestion, and organizing them by hand, the quick scrape runs 27 queries in seconds. The exhaustive scrape adds digits, prepended modifiers, and appended modifiers for a total of 60-100 queries, typically returning 100-200+ unique keyword phrases. Same technique, zero manual effort.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How intent categorization helps you prioritize</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A list of 150 keywords is useless without a way to prioritize. This tool categorizes every keyword by search intent so you can focus on the phrases most likely to drive business results.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The categories match the four proven video types that drive business results on YouTube. Comparison and Evaluation keywords ("best CRM for small business", "HubSpot vs Salesforce", "CRM pricing") attract viewers actively narrowing their options. Mistakes and Red Flags keywords ("CRM mistakes to avoid") attract viewers in the evaluation stage who want to avoid bad decisions. Results and Proof keywords ("CRM ROI after 6 months") attract viewers looking for evidence before committing. All three are High priority because they target the bottom of the funnel where purchase decisions happen.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          How-To and Problem-Solving keywords ("how to set up a CRM", "CRM tutorial for beginners") are Medium priority. On YouTube, someone watching a how-to video has an active problem to solve right now. They are one step away from evaluating and buying. Research and Discovery keywords ("what is a CRM", "why use video interviews") are Low priority top-of-funnel queries. The categorization lets you build a content calendar that balances immediate acquisition with long-term authority.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-2xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">Frequently asked questions</p>
+      <div class="space-y-6">
+
+        <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube autocomplete keyword tool free?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with CSV download) requires an email address.</p>
+        </div>
+
+        <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How is this different from other YouTube keyword tools?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">This tool shows you exactly what YouTube suggests when users type, which is a direct signal of real search demand. No estimated volumes, no proxy data. Keywords are categorized by search intent so you can prioritize buyer-intent and comparison queries over generic informational ones.</p>
+        </div>
+
+        <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why use YouTube autocomplete for keyword research?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">YouTube autocomplete reflects what millions of users actually search for. These suggestions are driven by real query frequency, recency, and user behavior. Long-tail autocomplete phrases reveal specific user intent that volume-based tools miss entirely.</p>
+        </div>
+
+        <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What do the intent categories mean?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Comparison and Evaluation (High priority) covers viewers actively comparing: best, vs, alternatives, review, pricing. Mistakes and Red Flags (High priority) attracts viewers avoiding bad decisions before buying. Results and Proof (High priority) targets viewers who want evidence before committing. How-To and Problem-Solving (Medium priority) captures viewers with an active problem to solve on YouTube. Research and Discovery (Low priority) covers general learning queries like "what is" or "why".</p>
+        </div>
+
+        <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I use these keywords for YouTube SEO?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Autocomplete keywords are the foundation of YouTube SEO. Use the buyer-intent and comparison keywords as video titles, tags, and description text. These are the exact phrases YouTube associates with your topic.</p>
+        </div>
+
+        <div class="pb-2">
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How many keywords does the exhaustive scrape return?</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Typically 100-200+, depending on how popular your topic is. The exhaustive mode adds 0-9 digit variations and buyer-intent modifiers like "best", "vs", "alternatives to", "mistakes", "results", "review", "pricing", "cost", "worth it", "how to", "tutorial", "switch to", and "why" to your seed keyword.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side JavaScript -->
+  <script>
+    // Intent categories aligned with SellonTube's title generator video types
+    // + video ideas generator BoFu patterns
+    // Priority order: highest business value first
+    // SellonTube's YouTube buyer-intent framework
+    // Aligned with Title Generator's 4 video types + catch-all for top-of-funnel
+    // Priority order matters: patterns checked top-to-bottom, first match wins
+    const INTENT_CONFIG: Record<string, { label: string; color: string; priority: 'High' | 'Medium' | 'Low'; pattern: RegExp | null }> = {
+      comparison: {
+        label: 'Comparison & Evaluation',
+        color: 'emerald',
+        priority: 'High',
+        // Includes evaluation-stage "how to" (choose/pick/evaluate/find) + pricing/cost signals
+        pattern: /\bbest\b|vs |versus|comparison|compared|alternative|which is better|difference between|review|unboxing|worth it|ranked|top \d|price|pricing|\bcost\b|cheap|affordable|\bfree\b|subscription|demo|trial|how to choose|how to pick|how to find the right|how to evaluate|how to compare|how to select/i,
+      },
+      mistakes: {
+        label: 'Mistakes & Red Flags',
+        color: 'amber',
+        priority: 'High',
+        pattern: /mistake|avoid|stop |don't|dont |wrong|fail|red flag|scam|bad |warning|trap|pitfall|regret|never |worst /i,
+      },
+      results: {
+        label: 'Results & Proof',
+        color: 'purple',
+        priority: 'High',
+        pattern: /result|case study|\broi\b|before and after|revenue|\bgrowth\b|how we|how i|after \d|increased|achieved|earnings|income|profit|testimonial|success stor/i,
+      },
+      howto: {
+        label: 'How-To & Problem-Solving',
+        color: 'blue',
+        priority: 'Medium',
+        // Implementation/action "how to" -- the viewer has a problem to solve right now
+        pattern: /how to|tutorial|\bguide\b|step by|set up|setup|for beginners|tips for|ways to|walkthrough|getting started|\bdiy\b|fix |not working|broken|troubleshoot|implement|install|configure|course/i,
+      },
+      research: {
+        label: 'Research & Discovery',
+        color: 'slate',
+        priority: 'Low',
+        pattern: /^(what|why|where|who|when|which|can |does |is |should|will )/i,
+      },
+    };
+
+    const INTENT_ORDER = ['comparison', 'mistakes', 'results', 'howto', 'research'];
+
+    const COLOR_MAP: Record<string, { border: string; bg: string; text: string; badge: string }> = {
+      emerald: { border: 'border-l-emerald-500',  bg: 'bg-emerald-500/10', text: 'text-emerald-600 dark:text-emerald-400', badge: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20' },
+      amber:   { border: 'border-l-amber-500',    bg: 'bg-amber-500/10',   text: 'text-amber-600 dark:text-amber-400',   badge: 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20' },
+      purple:  { border: 'border-l-purple-500',   bg: 'bg-purple-500/10',  text: 'text-purple-600 dark:text-purple-400', badge: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' },
+      blue:    { border: 'border-l-blue-500',     bg: 'bg-blue-500/10',    text: 'text-blue-600 dark:text-blue-400',     badge: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' },
+      slate:   { border: 'border-l-slate-400',    bg: 'bg-slate-500/10',   text: 'text-slate-500 dark:text-slate-400',   badge: 'bg-slate-500/10 text-slate-500 dark:text-slate-400 border-slate-500/20' },
+    };
+
+    function categorizeIntent(keyword: string): string {
+      const k = keyword.toLowerCase();
+      for (const intentKey of INTENT_ORDER) {
+        const cfg = INTENT_CONFIG[intentKey as keyof typeof INTENT_CONFIG];
+        if (cfg.pattern && cfg.pattern.test(k)) return intentKey;
+      }
+      // Default: uncategorized keywords are top-of-funnel research
+      return 'research';
+    }
+
+    function groupByIntent(keywords: string[]): Record<string, string[]> {
+      const groups: Record<string, string[]> = {};
+      for (const key of INTENT_ORDER) groups[key] = [];
+      for (const kw of keywords) {
+        const intent = categorizeIntent(kw);
+        groups[intent].push(kw);
+      }
+      return groups;
+    }
+
+    /**
+     * Teaser view for quick results: shows 2-3 keywords per category as a preview.
+     * No copy buttons, no accordions. Designed to show breadth and persuade email signup.
+     */
+    function renderIntentGroupsTeaser(groups: Record<string, string[]>, containerId: string) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+
+      const PREVIEW_COUNT = 3;
+      let totalKeywords = 0;
+      let categoriesWithKeywords = 0;
+
+      for (const intentKey of INTENT_ORDER) {
+        const keywords = groups[intentKey];
+        if (!keywords || keywords.length === 0) continue;
+
+        totalKeywords += keywords.length;
+        categoriesWithKeywords++;
+
+        const cfg = INTENT_CONFIG[intentKey as keyof typeof INTENT_CONFIG];
+        const colors = COLOR_MAP[cfg.color];
+        const preview = keywords.slice(0, PREVIEW_COUNT);
+        const remaining = keywords.length - preview.length;
+
+        const prioBadgeColor = cfg.priority === 'High' ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20' : cfg.priority === 'Medium' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' : 'bg-slate-500/10 text-slate-500 dark:text-slate-400 border-slate-500/20';
+
+        const section = document.createElement('div');
+        section.className = `border-l-4 ${colors.border} p-4 sm:px-6`;
+        section.innerHTML = `
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-sm font-semibold text-gray-900 dark:text-white">${cfg.label}</span>
+            <span class="inline-flex items-center text-xs font-semibold ${prioBadgeColor} border rounded-full px-2 py-0.5">${cfg.priority}</span>
+            <span class="text-xs text-gray-400 dark:text-slate-500">${keywords.length} keywords</span>
+          </div>
+          <div class="space-y-1">
+            ${preview.map(kw => `
+              <div class="py-1 px-3 rounded-lg">
+                <span class="text-sm text-gray-700 dark:text-slate-300">${escapeHtml(kw)}</span>
+              </div>
+            `).join('')}
+            ${remaining > 0 ? `
+              <div class="py-1 px-3">
+                <span class="text-xs font-medium text-gray-400 dark:text-slate-500">+${remaining} more in full list</span>
+              </div>
+            ` : ''}
+          </div>
+        `;
+        container.appendChild(section);
+      }
+
+      // Update the gate teaser count
+      const gateTeaserCount = document.getElementById('gate-teaser-count');
+      if (gateTeaserCount) {
+        gateTeaserCount.textContent = `${totalKeywords} keywords found across ${categoriesWithKeywords} intent categories. Get the full list + 2-3x more from the exhaustive scrape.`;
+      }
+    }
+
+    /**
+     * Full accordion view for exhaustive results: expandable categories with copy buttons.
+     */
+    function renderIntentGroups(groups: Record<string, string[]>, containerId: string, expandFirst = true) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      container.innerHTML = '';
+
+      let isFirst = true;
+      for (const intentKey of INTENT_ORDER) {
+        const keywords = groups[intentKey];
+        if (!keywords || keywords.length === 0) continue;
+
+        const cfg = INTENT_CONFIG[intentKey as keyof typeof INTENT_CONFIG];
+        const colors = COLOR_MAP[cfg.color];
+        const isOpen = expandFirst && isFirst;
+        isFirst = false;
+
+        const accPrioBadgeColor = cfg.priority === 'High' ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20' : cfg.priority === 'Medium' ? 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20' : 'bg-slate-500/10 text-slate-500 dark:text-slate-400 border-slate-500/20';
+
+        const section = document.createElement('div');
+        section.className = `border-l-4 ${colors.border}`;
+        section.innerHTML = `
+          <button class="accordion-toggle w-full flex items-center justify-between p-4 sm:px-6 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors text-left" aria-expanded="${isOpen}">
+            <div class="flex items-center gap-3">
+              <span class="text-sm font-semibold text-gray-900 dark:text-white">${cfg.label}</span>
+              <span class="inline-flex items-center text-xs font-semibold ${accPrioBadgeColor} border rounded-full px-2 py-0.5">${cfg.priority}</span>
+              <span class="text-xs text-gray-400 dark:text-slate-500">${keywords.length}</span>
+            </div>
+            <svg class="accordion-arrow w-4 h-4 text-gray-400 dark:text-slate-500 transition-transform ${isOpen ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="accordion-content ${isOpen ? '' : 'hidden'} px-4 sm:px-6 pb-4">
+            <div class="space-y-1">
+              ${keywords.map(kw => `
+                <div class="group flex items-center justify-between py-1.5 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors">
+                  <span class="text-sm text-gray-700 dark:text-slate-300">${escapeHtml(kw)}</span>
+                  <button class="copy-kw-btn opacity-0 group-hover:opacity-100 inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs text-gray-400 dark:text-slate-500 hover:text-emerald-500 transition-all" data-keyword="${encodeURIComponent(kw)}">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke-width="2"/></svg>
+                    Copy
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        container.appendChild(section);
+      }
+
+      // Attach accordion toggle listeners
+      container.querySelectorAll('.accordion-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const content = btn.nextElementSibling as HTMLElement;
+          const arrow = btn.querySelector('.accordion-arrow') as HTMLElement;
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!isExpanded));
+          content?.classList.toggle('hidden');
+          arrow?.classList.toggle('rotate-180');
+        });
+      });
+
+      // Attach copy-keyword listeners
+      container.querySelectorAll('.copy-kw-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const keyword = decodeURIComponent((btn as HTMLElement).dataset.keyword || '');
+          copyToClipboard(keyword, btn as HTMLElement);
+        });
+      });
+    }
+
+    function escapeHtml(str: string): string {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function copyToClipboard(text: string, btn: HTMLElement) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerHTML;
+        btn.innerHTML = '<svg class="w-3 h-3 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied';
+        setTimeout(() => { btn.innerHTML = original; }, 1500);
+      });
+    }
+
+    const PRIORITY_SORT: Record<string, number> = { High: 1, Medium: 2, Low: 3 };
+
+    function generateCSV(keywords: string[], seed: string, geoLabel: string): string {
+      const header = 'keyword,intent,priority,seed_keyword,geography,timestamp\n';
+      const ts = new Date().toISOString();
+
+      // Sort by priority (High → Medium → Low), then alphabetical within each group
+      const sorted = [...keywords].sort((a, b) => {
+        const intentA = categorizeIntent(a);
+        const intentB = categorizeIntent(b);
+        const prioA = PRIORITY_SORT[INTENT_CONFIG[intentA as keyof typeof INTENT_CONFIG].priority] || 9;
+        const prioB = PRIORITY_SORT[INTENT_CONFIG[intentB as keyof typeof INTENT_CONFIG].priority] || 9;
+        if (prioA !== prioB) return prioA - prioB;
+        return a.localeCompare(b);
+      });
+
+      const rows = sorted.map(kw => {
+        const intentKey = categorizeIntent(kw);
+        const cfg = INTENT_CONFIG[intentKey as keyof typeof INTENT_CONFIG];
+        return `"${kw.replace(/"/g, '""')}","${cfg.label}","${cfg.priority}","${seed.replace(/"/g, '""')}","${geoLabel}","${ts}"`;
+      }).join('\n');
+      return header + rows;
+    }
+
+    function downloadCSV(csvContent: string, filename: string) {
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    async function trackLead(email: string, seed: string, geography: string, keywordCount: number) {
+      const webhookUrl = (window as any).__GOOGLE_SHEET_WEBHOOK_URL__;
+      if (!webhookUrl) return;
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email, seed_keyword: seed, geography, keyword_count: keywordCount,
+            timestamp: new Date().toISOString()
+          })
+        });
+      } catch (e) { /* silent - don't block user */ }
+    }
+
+    // State
+    let currentSeed = '';
+    let currentGeoLabel = '';
+    let currentGl = '';
+    let currentHl = 'en';
+    let quickKeywords: string[] = [];
+    let exhaustiveKeywords: string[] = [];
+
+    // DOM elements
+    const stepInput = document.getElementById('step-input')!;
+    const stepLoading = document.getElementById('step-loading')!;
+    const stepResults = document.getElementById('step-results')!;
+    const seedInput = document.getElementById('seed-input') as HTMLInputElement;
+    const geoSelect = document.getElementById('geo-select') as HTMLSelectElement;
+    const generateBtn = document.getElementById('generate-btn')!;
+    const seedError = document.getElementById('seed-error')!;
+    const progressBar = document.getElementById('progress-bar')!;
+    const progressText = document.getElementById('progress-text')!;
+    const resultSeed = document.getElementById('result-seed')!;
+    const resultGeo = document.getElementById('result-geo')!;
+    const emailGate = document.getElementById('email-gate')!;
+    const gateEmail = document.getElementById('gate-email') as HTMLInputElement;
+    const gateSubmitBtn = document.getElementById('gate-submit-btn')!;
+    const gateEmailError = document.getElementById('gate-email-error')!;
+    const exhaustiveLoading = document.getElementById('exhaustive-loading')!;
+    const exhaustiveResults = document.getElementById('exhaustive-results')!;
+    const exhaustiveCount = document.getElementById('exhaustive-count')!;
+    const copyExhaustiveBtn = document.getElementById('copy-exhaustive-btn')!;
+    const exportExhaustiveCsvBtn = document.getElementById('export-exhaustive-csv-btn')!;
+    const resetBtn = document.getElementById('reset-btn')!;
+
+    // Animate progress bar
+    function animateProgress() {
+      const steps = [
+        { target: 30, delay: 500, text: 'Querying A-Z variations...' },
+        { target: 55, delay: 1500, text: 'Collecting suggestions...' },
+        { target: 75, delay: 2500, text: 'Deduplicating results...' },
+        { target: 85, delay: 3500, text: 'Almost there...' },
+      ];
+      steps.forEach(step => {
+        setTimeout(() => {
+          progressBar.style.width = step.target + '%';
+          progressText.textContent = step.text;
+        }, step.delay);
+      });
+    }
+
+    function showError(el: HTMLElement, msg: string) {
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+    function hideError(el: HTMLElement) {
+      el.textContent = '';
+      el.classList.add('hidden');
+    }
+
+    // Generate quick keywords
+    generateBtn.addEventListener('click', async () => {
+      const seed = seedInput.value.trim();
+      if (!seed) {
+        showError(seedError, 'Enter a seed keyword to get started.');
+        return;
+      }
+      hideError(seedError);
+
+      const [gl, hl] = geoSelect.value.split('|');
+      currentSeed = seed;
+      currentGl = gl;
+      currentHl = hl;
+      currentGeoLabel = geoSelect.options[geoSelect.selectedIndex].text;
+
+      // Show loading
+      stepInput.classList.add('hidden');
+      stepLoading.classList.remove('hidden');
+      progressBar.style.width = '0%';
+      animateProgress();
+
+      try {
+        const params = new URLSearchParams({ q: seed, expand: 'true', hl });
+        if (gl) params.set('gl', gl);
+
+        const res = await fetch(`/api/youtube-suggest?${params.toString()}`);
+
+        if (!res.ok) {
+          if (res.status === 503) {
+            throw new Error('rate-limited');
+          }
+          throw new Error(`HTTP ${res.status}`);
+        }
+
+        const data = await res.json();
+        quickKeywords = data.suggestions || [];
+
+        if (quickKeywords.length === 0) {
+          throw new Error('empty');
+        }
+
+        // Complete progress
+        progressBar.style.width = '100%';
+        progressText.textContent = 'Done!';
+
+        setTimeout(() => {
+          stepLoading.classList.add('hidden');
+          stepResults.classList.remove('hidden');
+
+          resultSeed.textContent = `"${seed}" - ${quickKeywords.length} keywords found`;
+          resultGeo.textContent = `Geography: ${currentGeoLabel}`;
+
+          const groups = groupByIntent(quickKeywords);
+          renderIntentGroupsTeaser(groups, 'intent-groups');
+
+          // Show email gate
+          emailGate.classList.remove('hidden');
+          exhaustiveLoading.classList.add('hidden');
+          exhaustiveResults.classList.add('hidden');
+        }, 400);
+
+      } catch (err: any) {
+        stepLoading.classList.add('hidden');
+        stepInput.classList.remove('hidden');
+
+        if (err.message === 'rate-limited') {
+          showError(seedError, 'YouTube is rate-limiting requests right now. Try again in 60 seconds.');
+        } else if (err.message === 'empty') {
+          showError(seedError, 'No autocomplete suggestions found for this keyword. Try a broader term or different geography.');
+        } else {
+          showError(seedError, 'Something went wrong. Check your connection and try again.');
+        }
+      }
+    });
+
+    // Enter key on seed input triggers generate
+    seedInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') generateBtn.click();
+    });
+
+    // Email gate submit
+    gateSubmitBtn.addEventListener('click', async () => {
+      const email = gateEmail.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError(gateEmailError, 'Enter a valid email address.');
+        return;
+      }
+      hideError(gateEmailError);
+
+      // Hide gate, show exhaustive loading
+      emailGate.classList.add('hidden');
+      exhaustiveLoading.classList.remove('hidden');
+
+      // Fire-and-forget lead tracking
+      trackLead(email, currentSeed, currentGeoLabel, 0);
+
+      try {
+        const params = new URLSearchParams({ q: currentSeed, expand: 'true', exhaustive: 'true', hl: currentHl });
+        if (currentGl) params.set('gl', currentGl);
+
+        const res = await fetch(`/api/youtube-suggest?${params.toString()}`);
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const data = await res.json();
+        exhaustiveKeywords = data.suggestions || [];
+
+        // Update lead tracking with actual count
+        trackLead(email, currentSeed, currentGeoLabel, exhaustiveKeywords.length);
+
+        // Auto-download CSV
+        const csv = generateCSV(exhaustiveKeywords, currentSeed, currentGeoLabel);
+        const filename = `youtube-keywords-${currentSeed.replace(/\s+/g, '-')}-full.csv`;
+        downloadCSV(csv, filename);
+
+        // Show exhaustive results
+        exhaustiveLoading.classList.add('hidden');
+        exhaustiveResults.classList.remove('hidden');
+        exhaustiveCount.textContent = `${exhaustiveKeywords.length} keywords (${exhaustiveKeywords.length - quickKeywords.length} new from exhaustive scrape)`;
+
+        const groups = groupByIntent(exhaustiveKeywords);
+        renderIntentGroups(groups, 'exhaustive-intent-groups', true);
+
+      } catch (err) {
+        exhaustiveLoading.classList.add('hidden');
+        emailGate.classList.remove('hidden');
+        showError(gateEmailError, 'Something went wrong with the exhaustive scrape. Try again.');
+      }
+    });
+
+    // Enter key on email input triggers submit
+    gateEmail.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') gateSubmitBtn.click();
+    });
+
+    // Copy all exhaustive keywords
+    copyExhaustiveBtn.addEventListener('click', () => {
+      copyToClipboard(exhaustiveKeywords.join('\n'), copyExhaustiveBtn);
+    });
+
+    // Export exhaustive CSV
+    exportExhaustiveCsvBtn.addEventListener('click', () => {
+      const csv = generateCSV(exhaustiveKeywords, currentSeed, currentGeoLabel);
+      const filename = `youtube-keywords-${currentSeed.replace(/\s+/g, '-')}-full.csv`;
+      downloadCSV(csv, filename);
+    });
+
+    // Reset
+    resetBtn.addEventListener('click', () => {
+      stepResults.classList.add('hidden');
+      stepInput.classList.remove('hidden');
+      seedInput.value = '';
+      quickKeywords = [];
+      exhaustiveKeywords = [];
+      seedInput.focus();
+    });
+  </script>
+</Layout>

@@ -31,6 +31,7 @@ export const footerData = {
       links: [
         { text: 'All Tools', href: getPermalink('/tools') },
         { text: 'YouTube SEO Tool', href: getPermalink('/tools/youtube-seo-tool') },
+        { text: 'Autocomplete Keywords', href: getPermalink('/tools/youtube-autocomplete-keywords') },
         { text: 'ROI Calculator', href: getPermalink('/tools/youtube-roi-calculator') },
         { text: 'Video Idea Evaluator', href: getPermalink('/tools/youtube-video-ideas-evaluator') },
         { text: 'Video Ideas Generator', href: getPermalink('/tools/youtube-video-ideas-generator') },
