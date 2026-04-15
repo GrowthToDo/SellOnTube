@@ -4,9 +4,13 @@
 import { getSuggestions, getExpandedSuggestions } from './lib/youtube-suggest.js';
 
 export default async (request: Request) => {
+  const origin = request.headers.get('Origin') || '';
+  const allowedOrigins = ['https://sellontube.com', 'http://localhost:4321'];
+  const corsOrigin = allowedOrigins.includes(origin) ? origin : 'https://sellontube.com';
+
   const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://sellontube.com',
+    'Access-Control-Allow-Origin': corsOrigin,
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
@@ -22,6 +26,9 @@ export default async (request: Request) => {
   const url = new URL(request.url);
   const query = url.searchParams.get('q')?.trim();
   const expand = url.searchParams.get('expand') === 'true';
+  const exhaustive = url.searchParams.get('exhaustive') === 'true';
+  const gl = url.searchParams.get('gl') || undefined;
+  const hl = url.searchParams.get('hl') || 'en';
 
   if (!query) {
     return new Response(
@@ -38,12 +45,14 @@ export default async (request: Request) => {
   }
 
   try {
+    const opts = { gl, hl };
+
     const suggestions = expand
-      ? await getExpandedSuggestions(query)
-      : await getSuggestions(query);
+      ? await getExpandedSuggestions(query, { ...opts, exhaustive })
+      : await getSuggestions(query, opts);
 
     return new Response(
-      JSON.stringify({ query, expand, count: suggestions.length, suggestions }),
+      JSON.stringify({ query, expand, exhaustive, gl: gl || 'global', hl, count: suggestions.length, suggestions }),
       { status: 200, headers }
     );
   } catch (error) {
