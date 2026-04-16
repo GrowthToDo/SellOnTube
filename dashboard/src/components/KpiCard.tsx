@@ -4,6 +4,8 @@ const ACCENT_COLORS: Record<string, string> = {
   amber: "#f59e0b",
   rose: "#f43f5e",
   violet: "#8b5cf6",
+  indigo: "#6366f1",
+  teal: "#14b8a6",
   gray: "#6b7280",
 };
 

@@ -11,6 +11,8 @@ interface AnalyticsData {
   averageViewDuration: number;
   watchTimeMinutes: number;
   videoCount: number;
+  impressions: number;
+  ctr: number;
   trafficSources: { source: string; views: number; percentage: number }[];
   searchTerms: { term: string; views: number }[];
   dailyViews: { date: string; views: number; watchTimeMinutes: number; subscribersGained: number }[];
@@ -397,6 +399,8 @@ export async function fetchDashboardData(
     averageViewDuration: analytics.averageViewDuration,
     watchTimeMinutes: analytics.watchTimeMinutes,
     videoCount: channelStats.videoCount,
+    impressions: 0,
+    ctr: 0,
     trafficSources,
     searchTerms,
     dailyViews,
@@ -404,4 +408,65 @@ export async function fetchDashboardData(
     geography,
     deviceTypes,
   };
+}
+
+export async function getChannelId(accessToken: string): Promise<string> {
+  const res = await fetch(
+    "https://www.googleapis.com/youtube/v3/channels?part=id&mine=true",
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
+
+  if (!res.ok) {
+    const error = await res.text();
+    throw new Error(`Channel ID API error: ${res.status} - ${error}`);
+  }
+
+  const data = await res.json();
+  const channelId = data.items?.[0]?.id;
+  if (!channelId) throw new Error("No channel found for this account");
+  return channelId;
+}
+
+export async function checkKeywordRank(
+  accessToken: string,
+  keyword: string,
+  channelId: string
+): Promise<{
+  keyword: string;
+  rank: number | null;
+  videoId: string | null;
+  videoTitle: string | null;
+}> {
+  const params = new URLSearchParams({
+    part: "snippet",
+    q: keyword,
+    type: "video",
+    maxResults: "20",
+  });
+
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/search?${params}`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
+
+  if (!res.ok) {
+    const error = await res.text();
+    throw new Error(`Search API error: ${res.status} - ${error}`);
+  }
+
+  const data = await res.json();
+  const items: any[] = data.items || [];
+
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].snippet?.channelId === channelId) {
+      return {
+        keyword,
+        rank: i + 1,
+        videoId: items[i].id?.videoId || null,
+        videoTitle: items[i].snippet?.title || null,
+      };
+    }
+  }
+
+  return { keyword, rank: null, videoId: null, videoTitle: null };
 }
