@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030620"/>
+      <stop offset="100%" stop-color="#0a1540"/>
+    </linearGradient>
+    <linearGradient id="gradText" x1="300" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="25%" r="55%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#030620" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <g opacity="0.05" fill="#ffffff">
+    <circle cx="110" cy="110" r="1.5"/><circle cx="230" cy="110" r="1.5"/><circle cx="350" cy="110" r="1.5"/><circle cx="470" cy="110" r="1.5"/><circle cx="590" cy="110" r="1.5"/><circle cx="710" cy="110" r="1.5"/><circle cx="830" cy="110" r="1.5"/><circle cx="950" cy="110" r="1.5"/><circle cx="1070" cy="110" r="1.5"/>
+    <circle cx="110" cy="230" r="1.5"/><circle cx="230" cy="230" r="1.5"/><circle cx="350" cy="230" r="1.5"/><circle cx="470" cy="230" r="1.5"/><circle cx="590" cy="230" r="1.5"/><circle cx="710" cy="230" r="1.5"/><circle cx="830" cy="230" r="1.5"/><circle cx="950" cy="230" r="1.5"/><circle cx="1070" cy="230" r="1.5"/>
+    <circle cx="110" cy="350" r="1.5"/><circle cx="230" cy="350" r="1.5"/><circle cx="350" cy="350" r="1.5"/><circle cx="470" cy="350" r="1.5"/><circle cx="590" cy="350" r="1.5"/><circle cx="710" cy="350" r="1.5"/><circle cx="830" cy="350" r="1.5"/><circle cx="950" cy="350" r="1.5"/><circle cx="1070" cy="350" r="1.5"/>
+    <circle cx="110" cy="470" r="1.5"/><circle cx="230" cy="470" r="1.5"/><circle cx="350" cy="470" r="1.5"/><circle cx="470" cy="470" r="1.5"/><circle cx="590" cy="470" r="1.5"/><circle cx="710" cy="470" r="1.5"/><circle cx="830" cy="470" r="1.5"/><circle cx="950" cy="470" r="1.5"/><circle cx="1070" cy="470" r="1.5"/>
+    <circle cx="110" cy="590" r="1.5"/><circle cx="230" cy="590" r="1.5"/><circle cx="350" cy="590" r="1.5"/><circle cx="470" cy="590" r="1.5"/><circle cx="590" cy="590" r="1.5"/><circle cx="710" cy="590" r="1.5"/><circle cx="830" cy="590" r="1.5"/><circle cx="950" cy="590" r="1.5"/><circle cx="1070" cy="590" r="1.5"/>
+  </g>
+  <rect x="486" y="125" width="228" height="28" rx="14" fill="#0161EF" fill-opacity="0.18"/>
+  <rect x="486" y="125" width="228" height="28" rx="14" fill="none" stroke="#10b981" stroke-width="1" stroke-opacity="0.45"/>
+  <text x="600" y="144" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="2.5" fill="#34d399" text-anchor="middle">KEYWORD RESEARCH</text>
+  <text x="600" y="283" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="86" font-weight="800" letter-spacing="-2" fill="#ffffff" text-anchor="middle">Autocomplete</text>
+  <text x="600" y="383" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="86" font-weight="800" letter-spacing="-2" fill="url(#gradText)" text-anchor="middle">Keyword Tools</text>
+  <rect x="556" y="408" width="88" height="3" rx="1.5" fill="#10b981" fill-opacity="0.65"/>
+  <text x="600" y="450" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="400" fill="rgba(229,236,246,0.55)" text-anchor="middle">Find the long-tail queries your competitors miss.</text>
+  <text x="600" y="645" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="14" text-anchor="middle"><tspan font-weight="700" fill="rgba(255,255,255,0.88)">SellOnTube</tspan><tspan font-weight="400" fill="rgba(229,236,246,0.32)"> &#8212; YouTube Acquisition for B2B</tspan></text>
+</svg>
