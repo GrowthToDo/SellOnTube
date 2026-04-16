@@ -1,7 +1,7 @@
 export interface Topic {
   slug: string;
   publishDate: string;
-  industry: 'saas' | 'agencies' | 'consultants' | 'coaches' | 'b2b-services' | 'artists' | 'authors' | 'animators' | 'beauty-and-fashion' | 'business' | 'video-editors' | 'real-estate-agents' | 'fitness' | 'mental-health' | 'lifestyle' | 'musicians' | 'make-money' | 'photographers' | 'small-business';
+  industry: 'saas' | 'agencies' | 'consultants' | 'coaches' | 'b2b-services' | 'beauty-and-fashion' | 'business' | 'video-editors' | 'real-estate-agents' | 'fitness' | 'mental-health' | 'lifestyle' | 'musicians' | 'make-money' | 'photographers' | 'small-business';
   industryLabel: string;
   industryHubSlug: string; // maps to /youtube-for/[slug]
   title: string; // short label, e.g. "Comparison Videos"
@@ -1634,115 +1634,6 @@ export const topics: Topic[] = [
   },
 
   // ─── Creator Niches ──────────────────────────────────────────────────────────
-
-  {
-    slug: 'artists-youtube-video-ideas',
-    publishDate: '2026-04-01',
-    industry: 'artists',
-    industryLabel: 'Artists',
-    industryHubSlug: 'artists',
-    title: 'YouTube Video Ideas',
-    metaTitle: 'YouTube Video Ideas for Artists',
-    metaDescription: 'The best YouTube video ideas for artists: tutorials, studio vlogs, process breakdowns, and income content that sells your work.',
-    heroTitle: 'YouTube Video Ideas for Artists: Build an Audience That Actually Buys',
-    intro: `YouTube is one of the few platforms where artists can show the full arc of their work — from blank canvas to finished piece — and build a loyal following that follows their creative journey. The challenge is not talent; it is knowing which video ideas will earn views and which will disappear into the algorithm. The right YouTube video ideas for artists are not generic "draw with me" content. They are specific, searchable, and structured to attract people who are either learning from you, buying from you, or both.\n\nWhat separates good artist video ideas from forgettable ones is specificity. "How I paint portraits" performs far worse than "How I paint hyperrealistic eyes in oil — step by step." The more precisely your video title matches what someone is searching, the more likely YouTube serves it to the right viewer. Artists who understand this build channels that compound — where each video finds an audience long after it was published.\n\nThe search opportunity for YouTube video ideas for artists is genuinely underserved. Most art content skews toward mass appeal (satisfying videos, speed paints) rather than the instructional, behind-the-scenes, and income-focused content that serious artists and collectors actually search for. If you focus your video ideas on process, tools, pricing, and the business side of being an artist, you occupy a niche that has real search volume and almost no competition from creators who understand SEO.`,
-    buyerIntentExplanation: `People searching for YouTube video ideas for artists fall into two groups — both valuable. The first group are aspiring and working artists looking for content direction: they want to know what to film, how to structure their channel, and which video ideas will grow their following. The second group are art buyers and students researching artists before purchasing a course, print, or commission. When an artist's YouTube channel shows technique, process, and personality, it functions as a trust-building sales funnel. Someone who watches five of your videos is not just a viewer — they are a warm prospect for your Etsy shop, your Patreon, or your commission waitlist. These searches represent creators who are ready to invest in their channel as a business asset, not just a creative outlet.`,
-    exampleVideoTitles: [
-      'How I Paint Hyperrealistic Portraits in Oil — Full Process',
-      'My Watercolour Supply Setup: What I Actually Use vs What I Wish I Had',
-      'How I Price My Art Commissions (and Why I Stopped Undercharging)',
-      'Studio Tour: How I Set Up My Home Art Studio for Under £500',
-      'How I Sold 200 Prints Without a Gallery: My Etsy Strategy',
-      'The 5 Biggest Mistakes Beginner Watercolour Artists Make',
-      'How I Went from 0 to 10K YouTube Subscribers as an Artist',
-      'Oil vs Acrylic vs Watercolour: Which Medium Is Right for You?',
-      'How I Create a Digital Illustration From Sketch to Final in Procreate',
-      'Behind the Commission: How I Work With Clients From Brief to Delivery',
-      'How I Make $3,000/Month as a Full-Time Artist (Income Breakdown)',
-      'The Art Supplies That Changed My Work — And the Ones That Were a Waste',
-      'Speed Paint: Portrait in Gouache, Start to Finish',
-      'How I Learned to Draw Realistically Without Art School',
-    ],
-    relatedTopicSlugs: [
-      'photographers-youtube-video-ideas',
-      'animators-youtube-video-ideas',
-      'small-business-youtube-video-ideas',
-      'make-money-youtube-video-ideas',
-    ],
-  },
-
-  {
-    slug: 'authors-youtube-video-ideas',
-    publishDate: '2026-04-04',
-    industry: 'authors',
-    industryLabel: 'Authors',
-    industryHubSlug: 'authors',
-    title: 'YouTube Video Ideas',
-    metaTitle: 'YouTube Video Ideas for Authors',
-    metaDescription: 'YouTube video ideas for authors that build reader trust, explain your writing process, and sell more books without full-time content creation.',
-    heroTitle: 'YouTube Video Ideas for Authors: Turn Viewers Into Loyal Readers',
-    intro: `For authors, YouTube is less about viral content and more about trust. A reader who has watched you talk about your craft, your research process, and your journey to publication already feels like they know you before they ever pick up your book. That relationship is what drives pre-orders, mailing list sign-ups, and word-of-mouth — the three most powerful forces in book marketing.\n\nThe best YouTube video ideas for authors are the ones that collapse the distance between writer and reader. Process videos, writing routine content, and honest behind-the-scenes looks at publishing (traditional and indie) consistently outperform generic literary content because they answer questions readers and aspiring writers are actively searching for. You do not need a large channel to move book sales; you need the right viewers — people who are already your target reader or who aspire to write what you write.\n\nThe search landscape for author video ideas is wide open. Most authors who are active on YouTube focus on reading vlogs or book reviews, leaving the instructional and publishing-side content almost entirely uncontested. If you create video ideas around writing craft, the publishing business, and your specific genre, you build a channel that attracts both readers and aspiring authors — two audiences with high conversion potential.`,
-    buyerIntentExplanation: `Searches for YouTube video ideas for authors signal two distinct types of intent. Aspiring writers search for craft advice, productivity tips, and publishing guidance — they are looking for a mentor figure, and if you provide that, they become loyal long-term subscribers who buy your books and courses. Meanwhile, avid readers searching for author content are already primed to purchase: they want to understand your world, your influences, and what you are working on next. Both groups represent high-value audiences. The author who creates consistently on YouTube builds a direct relationship with readers that no algorithm-dependent social platform can replicate — and that relationship translates directly into book sales.`,
-    exampleVideoTitles: [
-      'My Daily Writing Routine: How I Write 2,000 Words Before Noon',
-      'Traditional Publishing vs Self-Publishing in 2025: Honest Comparison',
-      'How I Outline a Novel (My Scene-by-Scene Method)',
-      'My First Year of Self-Publishing: Revenue, Lessons, and Mistakes',
-      'How I Research Historical Fiction Without Getting Lost for Months',
-      'The Query Letter That Got Me My Literary Agent',
-      'My Book Writing Setup: Scrivener, Notion, and the Tools I Actually Use',
-      'How Long Does It Take to Write a Novel? (Real Answer)',
-      'How I Sold 1,000 Copies of My First Book Without a Publisher',
-      'NaNoWriMo Survival Guide: What Actually Works',
-      'How to Write a Book Series That Keeps Readers Coming Back',
-      'Behind the Cover: How My Book Cover Was Designed',
-      'What a Real Author Advance Looks Like (Numbers Included)',
-      'How I Beat Writer\'s Block: The Method That Actually Works for Me',
-    ],
-    relatedTopicSlugs: [
-      'artists-youtube-video-ideas',
-      'make-money-youtube-video-ideas',
-      'small-business-youtube-video-ideas',
-      'lifestyle-youtube-video-ideas',
-    ],
-  },
-
-  {
-    slug: 'animators-youtube-video-ideas',
-    publishDate: '2026-04-07',
-    industry: 'animators',
-    industryLabel: 'Animators',
-    industryHubSlug: 'animators',
-    title: 'YouTube Video Ideas',
-    metaTitle: 'YouTube Video Ideas for Animators',
-    metaDescription: 'YouTube video ideas for animators: tutorials, software comparisons, freelance tips, and process breakdowns that grow your channel.',
-    heroTitle: 'YouTube Video Ideas for Animators: Grow Your Audience and Win More Clients',
-    intro: `Animation is one of YouTube's most technically engaged niches. Viewers come for the craft — they want to see how scenes are built, how rigs are constructed, how the pipeline works from storyboard to render. The best YouTube video ideas for animators capitalise on this technical curiosity by answering the questions that students, hobbyists, and professional animators are actively searching: which software to use, how long freelance animation actually takes, and what clients are really paying for.\n\nThe opportunity for animators on YouTube goes beyond building a creative following. Animation tutorials and process videos function as a permanent portfolio — clients searching for animators will watch your process videos before they ever email you. A video showing how you build a character rig or animate a product explainer does more for your freelance business than any portfolio PDF, because it demonstrates competence in real time.\n\nYouTube video ideas for animators that focus on software comparisons, pipeline breakdowns, and the business side of animation freelancing consistently attract high-intent viewers. These are not passive entertainment audiences — they are students choosing which software to invest in, clients evaluating whether to hire, and professionals looking for workflow improvements. That is a far more valuable audience than general entertainment viewers.`,
-    buyerIntentExplanation: `People searching for YouTube video ideas for animators are typically at a decision point: which software to learn, whether to go freelance, or how to price their work. These are not passive viewers — they are actively evaluating their next move. Software comparison searches ("Blender vs Cinema 4D for beginners") have strong commercial intent because they precede a purchase or a significant time investment in learning. Freelance pricing and client workflow videos attract working animators who are building a business, not just a hobby. A YouTube channel that serves these specific intents becomes a trusted resource that drives direct inquiries, course sales, and long-term subscriber relationships with fellow professionals.`,
-    exampleVideoTitles: [
-      'Blender vs Cinema 4D for Freelance Animators: Honest Comparison',
-      'How I Built a Character Rig in Blender From Scratch (Full Process)',
-      'My Freelance Animation Workflow: From Client Brief to Final Delivery',
-      'How Much I Charge for Animated Explainer Videos (Real Rates)',
-      'After Effects vs Blender: Which Should You Learn First?',
-      'How I Animate a 60-Second Product Video in 3 Days',
-      'My Full 2D Animation Pipeline in Procreate and After Effects',
-      'How to Get Your First Animation Client Without a Big Portfolio',
-      'The Animation Software I Wish I Had Learned First',
-      'How I Animated My First Short Film: Budget, Timeline, and Lessons',
-      'Procreate vs Clip Studio Paint for Frame-by-Frame Animation',
-      'How I Price Motion Graphics Projects (and Stop Undervaluing My Work)',
-      'Behind the Scene: Animating a Brand Mascot for a SaaS Company',
-      'Freelance Animation Income: My Year-One Revenue Breakdown',
-    ],
-    relatedTopicSlugs: [
-      'artists-youtube-video-ideas',
-      'video-editors-youtube-video-ideas',
-      'make-money-youtube-video-ideas',
-      'small-business-youtube-video-ideas',
-    ],
-  },
-
   {
     slug: 'beauty-and-fashion-youtube-video-ideas',
     publishDate: '2026-04-10',
@@ -1844,7 +1735,6 @@ export const topics: Topic[] = [
       'The Biggest Mistakes Beginner Video Editors Make (and How to Fix Them)',
     ],
     relatedTopicSlugs: [
-      'animators-youtube-video-ideas',
       'photographers-youtube-video-ideas',
       'make-money-youtube-video-ideas',
       'small-business-youtube-video-ideas',
@@ -1954,7 +1844,6 @@ export const topics: Topic[] = [
     relatedTopicSlugs: [
       'fitness-youtube-video-ideas',
       'lifestyle-youtube-video-ideas',
-      'authors-youtube-video-ideas',
       'small-business-youtube-video-ideas',
     ],
   },
@@ -2024,7 +1913,6 @@ export const topics: Topic[] = [
       'My Honest Income Breakdown as an Independent Musician',
     ],
     relatedTopicSlugs: [
-      'artists-youtube-video-ideas',
       'make-money-youtube-video-ideas',
       'small-business-youtube-video-ideas',
       'video-editors-youtube-video-ideas',
@@ -2096,7 +1984,6 @@ export const topics: Topic[] = [
       'My Studio Lighting Setup for Portrait Photography Under £500',
     ],
     relatedTopicSlugs: [
-      'artists-youtube-video-ideas',
       'video-editors-youtube-video-ideas',
       'make-money-youtube-video-ideas',
       'small-business-youtube-video-ideas',
@@ -2217,10 +2104,7 @@ export const topicPublishSchedule: Record<string, string> = {
   // ── Tier 2 Week 10 — 2026-05-18 ─────────────────────────────────────────
   'b2b-onboarding-preview-videos':       '2026-05-18',
 
-  // ── Creator Niches — 2026-04-01 onward (3-day cadence) ───────────────────
-  'artists-youtube-video-ideas':         '2026-04-01',
-  'authors-youtube-video-ideas':         '2026-04-04',
-  'animators-youtube-video-ideas':       '2026-04-07',
+  // ── Creator Niches — 2026-04-10 onward (3-day cadence) ───────────────────
   'beauty-and-fashion-youtube-video-ideas': '2026-04-10',
   'business-youtube-video-ideas':        '2026-04-13',
   'video-editors-youtube-video-ideas':   '2026-04-16',
@@ -2273,9 +2157,6 @@ export const industries = [
   { id: 'consultants' as const, label: 'Consultants', hubSlug: 'consultants', description: 'Framework, diagnosis, and ROI content that makes consulting engagement logic visible before the first call.' },
   { id: 'coaches' as const, label: 'Coaches', hubSlug: 'coaches', description: 'Methodology, results, and problem awareness videos that convert prospects who are evaluating coaching investment.' },
   { id: 'b2b-services' as const, label: 'B2B Services', hubSlug: 'b2b-companies', description: 'Vendor comparison, pricing, and onboarding content that captures B2B buyers at every stage of provider selection.' },
-  { id: 'artists' as const, label: 'Artists', hubSlug: 'artists', description: 'Process videos, studio tours, income breakdowns, and tool reviews that build an audience of fans and buyers.' },
-  { id: 'authors' as const, label: 'Authors', hubSlug: 'authors', description: 'Writing craft, publishing process, and reader connection content that turns channel viewers into book buyers.' },
-  { id: 'animators' as const, label: 'Animators', hubSlug: 'animators', description: 'Software comparisons, pipeline walkthroughs, and freelance business content for animation professionals.' },
   { id: 'beauty-and-fashion' as const, label: 'Beauty & Fashion', hubSlug: 'beauty-and-fashion', description: 'Tutorials, honest reviews, and styling guides that convert high-intent viewers into affiliate and product revenue.' },
   { id: 'business' as const, label: 'Business Owners', hubSlug: 'business', description: 'Process transparency, growth strategy, and income content that attracts pre-qualified clients before first contact.' },
   { id: 'video-editors' as const, label: 'Video Editors', hubSlug: 'video-editors', description: 'Software tutorials, editing techniques, and freelance workflow content that earns clients and builds technical authority.' },
