@@ -463,7 +463,7 @@ Start with what your business actually needs from YouTube. Then pick the tool th
 
 ### What is the best YouTube video idea generator for small businesses?
 
-SellonTube's YouTube Video Ideas Generator is built specifically for business channels. It maps ideas to buyer intent rather than trending topics, making it the strongest option for small businesses that need YouTube content to drive enquiries and sales rather than just views. It is free to use and requires no account.
+SellonTube's YouTube Video Ideas Generator is built specifically for business channels. It maps ideas to buyer intent rather than trending topics, making it the strongest option for small businesses that need YouTube content to drive enquiries and sales rather than just views. It is free to use and requires no account. You can also browse our curated [YouTube video ideas for business owners](/youtube-video-ideas/business-youtube-video-ideas) for ready-to-film topic lists.
 
 ### How do I come up with YouTube video ideas for my business?
 

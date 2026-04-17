@@ -219,7 +219,7 @@ We usually say **no** when:
 In our diagnostic, we literally run the numbers.
 
 If the math doesn't work, we'd rather tell you *not* to invest in YouTube
-than to drag you through a year of "content" that never pays off.
+than to drag you through a year of "content" that never pays off. If you're weighing YouTube against other lead gen tactics, see our [YouTube vs Cold Outreach](/youtube-vs/cold-outreach) comparison.
 
 ---
 
