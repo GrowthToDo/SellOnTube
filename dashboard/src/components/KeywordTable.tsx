@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import UTMCopy from "./UTMCopy";
 import OpportunityBar from "./OpportunityBar";
 import CompetitorPanel from "./CompetitorPanel";
 import type { CompetitorVideo } from "@/lib/opportunity";
+import { getKeywordOpportunity } from "@/lib/opportunity";
 
 interface KeywordRow {
   keyword: string;
@@ -26,6 +27,9 @@ interface KeywordTableProps {
   checkProgress: { current: number; total: number } | null;
 }
 
+type SortKey = "keyword" | "rank" | "opportunity" | null;
+type SortDir = "asc" | "desc";
+
 function ChangeIndicator({ change }: { change: number | null }) {
   if (change === null) {
     return <span className="inline-flex items-center rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-600">NEW</span>;
@@ -39,11 +43,61 @@ function ChangeIndicator({ change }: { change: number | null }) {
   return <span className="text-gray-400 text-sm">&mdash;</span>;
 }
 
+function SortIcon({ active, dir }: { active: boolean; dir: SortDir }) {
+  return (
+    <svg
+      className={`inline-block h-3 w-3 ml-0.5 transition-colors ${active ? "text-blue-600" : "text-gray-300"}`}
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+    >
+      {dir === "desc" ? (
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+      ) : (
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+      )}
+    </svg>
+  );
+}
+
 export default function KeywordTable({ rows, onDelete, checking, checkProgress }: KeywordTableProps) {
   const [expandedKeyword, setExpandedKeyword] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<SortKey>(null);
+  const [sortDir, setSortDir] = useState<SortDir>("desc");
+
+  const sortedRows = useMemo(() => {
+    if (!sortKey) return rows;
+
+    return [...rows].sort((a, b) => {
+      let cmp = 0;
+      if (sortKey === "opportunity") {
+        const aOpp = a.competitors.length > 0 ? getKeywordOpportunity(a.competitors).score : -1;
+        const bOpp = b.competitors.length > 0 ? getKeywordOpportunity(b.competitors).score : -1;
+        cmp = aOpp - bOpp;
+      } else if (sortKey === "rank") {
+        const aRank = a.rank ?? 999;
+        const bRank = b.rank ?? 999;
+        cmp = bRank - aRank;
+      } else if (sortKey === "keyword") {
+        cmp = a.keyword.localeCompare(b.keyword);
+      }
+      return sortDir === "desc" ? -cmp : cmp;
+    });
+  }, [rows, sortKey, sortDir]);
 
   if (rows.length === 0) {
     return null;
+  }
+
+  function toggleSort(key: SortKey) {
+    if (sortKey === key) {
+      if (sortDir === "desc") setSortDir("asc");
+      else { setSortKey(null); setSortDir("desc"); }
+    } else {
+      setSortKey(key);
+      setSortDir("desc");
+    }
   }
 
   function toggleExpand(keyword: string) {
@@ -65,11 +119,29 @@ export default function KeywordTable({ rows, onDelete, checking, checkProgress }
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/50">
               <th className="w-8 px-2 py-3"></th>
-              <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Keyword</th>
+              <th
+                className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-700 select-none"
+                onClick={() => toggleSort("keyword")}
+              >
+                Keyword
+                <SortIcon active={sortKey === "keyword"} dir={sortKey === "keyword" ? sortDir : "asc"} />
+              </th>
               <th className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Your Video</th>
-              <th className="text-center px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Rank</th>
+              <th
+                className="text-center px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-700 select-none"
+                onClick={() => toggleSort("rank")}
+              >
+                Rank
+                <SortIcon active={sortKey === "rank"} dir={sortKey === "rank" ? sortDir : "desc"} />
+              </th>
               <th className="text-center px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Change</th>
-              <th className="text-center px-2 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Opp.</th>
+              <th
+                className="text-left px-2 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-700 select-none"
+                onClick={() => toggleSort("opportunity")}
+              >
+                Opportunity
+                <SortIcon active={sortKey === "opportunity"} dir={sortKey === "opportunity" ? sortDir : "desc"} />
+              </th>
               <th className="text-right px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">YT Views</th>
               <th className="text-right px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Sessions</th>
               <th className="text-right px-3 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">Signups</th>
@@ -78,12 +150,12 @@ export default function KeywordTable({ rows, onDelete, checking, checkProgress }
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => {
+            {sortedRows.map((row) => {
               const isExpanded = expandedKeyword === row.keyword;
               const hasCompetitors = row.competitors.length > 0;
 
               return (
-                <tr key={row.keyword} className="group/row contents">
+                <tr key={row.keyword} className="group/row">
                   <td
                     colSpan={11}
                     className="p-0"
@@ -144,7 +216,7 @@ export default function KeywordTable({ rows, onDelete, checking, checkProgress }
                         <ChangeIndicator change={row.change} />
                       </div>
 
-                      <div className="flex-none w-14 px-2 py-3 flex items-center justify-center">
+                      <div className="flex-none min-w-[160px] px-2 py-3">
                         <OpportunityBar competitors={row.competitors} />
                       </div>
 

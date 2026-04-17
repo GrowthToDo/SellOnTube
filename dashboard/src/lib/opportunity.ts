@@ -62,6 +62,26 @@ export function getKeywordOpportunity(competitors: CompetitorVideo[]): KeywordOp
   return { score: beatable, total, color, signals };
 }
 
+export function getSignalSummary(competitors: CompetitorVideo[]): string {
+  const signals = competitors
+    .filter((c) => !c.isOwnVideo)
+    .map((c) => getVideoSignal(c.viewCount, c.publishedAt));
+
+  const counts: Record<string, number> = {};
+  for (const s of signals) {
+    counts[s.label] = (counts[s.label] || 0) + 1;
+  }
+
+  const parts: string[] = [];
+  for (const label of ["Easy", "New", "Stale", "Solid", "Strong"]) {
+    if (counts[label]) {
+      parts.push(`${counts[label]} ${label}`);
+    }
+  }
+
+  return parts.join(" · ");
+}
+
 export function formatAge(publishedAt: string): string {
   const ageMs = Date.now() - new Date(publishedAt).getTime();
   const totalMonths = Math.floor(ageMs / (1000 * 60 * 60 * 24 * 30.44));
