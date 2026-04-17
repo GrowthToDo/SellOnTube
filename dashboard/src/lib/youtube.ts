@@ -1,3 +1,5 @@
+import type { CompetitorVideo } from "./opportunity";
+
 interface ChannelStats {
   videoCount: number;
   subscriberCount: number;
@@ -427,6 +429,29 @@ export async function getChannelId(accessToken: string): Promise<string> {
   return channelId;
 }
 
+async function getVideoStats(
+  accessToken: string,
+  videoIds: string[]
+): Promise<Record<string, number>> {
+  if (videoIds.length === 0) return {};
+
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoIds.join(",")}`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
+
+  if (!res.ok) return {};
+
+  const data = await res.json();
+  const views: Record<string, number> = {};
+
+  for (const item of data.items || []) {
+    views[item.id] = parseInt(item.statistics?.viewCount || "0", 10);
+  }
+
+  return views;
+}
+
 export async function checkKeywordRank(
   accessToken: string,
   keyword: string,
@@ -436,6 +461,7 @@ export async function checkKeywordRank(
   rank: number | null;
   videoId: string | null;
   videoTitle: string | null;
+  competitors: CompetitorVideo[];
 }> {
   const params = new URLSearchParams({
     part: "snippet",
@@ -457,16 +483,35 @@ export async function checkKeywordRank(
   const data = await res.json();
   const items: any[] = data.items || [];
 
+  let rank: number | null = null;
+  let userVideoId: string | null = null;
+  let userVideoTitle: string | null = null;
+
   for (let i = 0; i < items.length; i++) {
     if (items[i].snippet?.channelId === channelId) {
-      return {
-        keyword,
-        rank: i + 1,
-        videoId: items[i].id?.videoId || null,
-        videoTitle: items[i].snippet?.title || null,
-      };
+      rank = i + 1;
+      userVideoId = items[i].id?.videoId || null;
+      userVideoTitle = items[i].snippet?.title || null;
+      break;
     }
   }
 
-  return { keyword, rank: null, videoId: null, videoTitle: null };
+  const top5 = items.slice(0, 5);
+  const videoIds = top5.map((item: any) => item.id?.videoId).filter(Boolean);
+  const viewCounts = await getVideoStats(accessToken, videoIds);
+
+  const competitors: CompetitorVideo[] = top5.map((item: any, i: number) => {
+    const vid = item.id?.videoId || "";
+    return {
+      position: i + 1,
+      videoId: vid,
+      title: item.snippet?.title || "",
+      channelTitle: item.snippet?.channelTitle || "",
+      viewCount: viewCounts[vid] || 0,
+      publishedAt: item.snippet?.publishedAt || "",
+      isOwnVideo: item.snippet?.channelId === channelId,
+    };
+  });
+
+  return { keyword, rank, videoId: userVideoId, videoTitle: userVideoTitle, competitors };
 }

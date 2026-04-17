@@ -1,3 +1,5 @@
+import type { CompetitorVideo } from "./opportunity";
+
 const NINETY_DAYS_MS = 90 * 24 * 60 * 60 * 1000;
 
 export interface RankEntry {
@@ -5,6 +7,7 @@ export interface RankEntry {
   videoId: string | null;
   videoTitle: string | null;
   checkedAt: string;
+  competitors?: CompetitorVideo[];
 }
 
 export interface KeywordsData {

@@ -16,12 +16,14 @@ import {
   slugifyKeyword,
   generateUTMLink,
 } from "@/lib/storage";
+import type { CompetitorVideo } from "@/lib/opportunity";
 
 interface RankResult {
   keyword: string;
   rank: number | null;
   videoId: string | null;
   videoTitle: string | null;
+  competitors: CompetitorVideo[];
 }
 
 interface GA4ChannelTotals {
@@ -164,6 +166,7 @@ export default function KeywordsPage() {
               videoId: result.videoId,
               videoTitle: result.videoTitle,
               checkedAt: new Date().toISOString(),
+              competitors: result.competitors || [],
             };
 
             if (!newHistory[result.keyword]) {
@@ -226,6 +229,7 @@ export default function KeywordsPage() {
         sessions: ga4Campaign?.sessions ?? null,
         signups: ga4Campaign?.keyEvents ?? null,
         utmLink,
+        competitors: latest?.competitors || [],
       };
     });
   }
