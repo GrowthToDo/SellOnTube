@@ -32,7 +32,7 @@ metadata:
 
 You posted 40 videos this year. Your analytics show a few hundred views each. Your website traffic from YouTube sits at single digits per week, no enquiries, no leads, no one reaching out to buy. Every idea came from a YouTube video ideas generator built for creators optimising for watch time. Not for businesses optimising for revenue.
 
-The problem is not effort. Most YouTube video idea generators ask for your niche and return topics calibrated for the algorithm. They do not know what your customers search before they buy. They cannot tell the difference between a video that builds purchase intent and one that just performs well in suggested feeds. A business channel needs a fundamentally different kind of idea.
+The problem is not effort. Most YouTube video idea generators ask for your niche and return topics calibrated for the algorithm. They do not know what your customers search before they buy. They cannot tell the difference between a video that builds purchase intent and one that just performs well in suggested feeds. A business channel needs a fundamentally different kind of idea. (If you haven't set yours up yet, here's [how to create a YouTube channel for your business](/blog/create-youtube-channel-for-business).)
 
 This list covers the 14 best YouTube video ideas generators available in 2026, ranked for business use. SellonTube's tool is listed first because it was built for this specific problem.
 
@@ -454,6 +454,8 @@ Start with what your business actually needs from YouTube. Then pick the tool th
 - [How to identify YouTube topics that attract ready-to-buy customers](https://sellontube.com/blog/high-intent-topic-research-framework)
 - [Why high-intent YouTube videos behave like SEO assets (for SaaS, agencies, and service businesses)](https://sellontube.com/blog/search-intent-youtube-seo-power)
 - [YouTube vs. blog content: real conversion data from a Shopify app](https://sellontube.com/blog/youtube-vs-blog-shopify-app-case-study)
+- [Build a YouTube marketing strategy that drives leads, not just views](/blog/youtube-marketing-strategy)
+- [Step-by-step: create a YouTube channel for your business](/blog/create-youtube-channel-for-business)
 
 ---
 

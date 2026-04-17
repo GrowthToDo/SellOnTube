@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-02-27T00:00:00Z
 author: Sathyanand
-title: "YouTube Marketing ROI: Formula + Free Calculator"
-excerpt: "YouTube drove 3.25x more conversions than blogging in our 12-month study. The exact ROI formula, real benchmarks by business type, and a free calculator."
+title: "YouTube Marketing ROI: 3.25x More Conversions Than Blogging"
+excerpt: "YouTube generates 3.25x more conversions than blogging for B2B companies. See the ROI formula, benchmarks for 6 business types, and calculate yours free."
 image: ~/assets/images/blog/youtube-marketing-roi-featured.svg
 image_alt: "Growth analytics dashboard displaying YouTube marketing ROI metrics, conversion data, and pipeline value for B2B channels | SellonTube"
 featuredImageWidth: 1200
@@ -16,7 +16,7 @@ tags:
   - ltv
 metadata:
   canonical: https://sellontube.com/blog/youtube-marketing-roi
-  description: "YouTube drove 3.25x more conversions than blogging in our 12-month study. The exact ROI formula, benchmarks, and a free calculator."
+  description: "YouTube generates 3.25x more conversions than blogging for B2B. ROI formula, benchmarks for 6 business types, and a free calculator."
   openGraph:
     url: https://sellontube.com/blog/youtube-marketing-roi
     siteName: SellOnTube
