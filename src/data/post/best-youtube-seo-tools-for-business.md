@@ -1,7 +1,7 @@
 ---
 publishDate: 2026-03-25T00:00:00Z
 author: Sathyanand
-title: "7 YouTube SEO Tools That Work for Business Channels in 2026"
+title: "7 YouTube SEO Tools for Business Channels (2026)"
 excerpt: "YouTube SEO tools built for creators chasing views won't help you get clients. 7 tools tested on real business channels, ranked by what actually drives leads."
 image: ~/assets/images/blog/best-youtube-seo-tools-for-business-feature.jpg
 image_alt: "YouTube SEO tools compared for business channels | SellonTube"

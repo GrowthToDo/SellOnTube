@@ -1,7 +1,7 @@
 ---
 publishDate: 2026-04-16T00:00:00Z
 author: Sathyanand
-title: "How to Find YouTube Autocomplete Keywords (The Right Way)"
+title: "How to Find YouTube Autocomplete Keywords"
 excerpt: "A repeatable system for finding YouTube autocomplete keywords, filtering by buyer intent, and turning raw suggestions into a content plan."
 image: ~/assets/images/blog/how-to-find-youtube-autocomplete-keywords-featured.svg
 image_alt: "Step-by-step workflow for finding YouTube autocomplete keywords"
