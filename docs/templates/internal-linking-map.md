@@ -13,6 +13,8 @@
 | best-youtube-video-ideas-generators-for-businesses | youtube-video-ideas-evaluator | YouTube topic evaluator | Product section |
 | youtube-video-ideas-generator-for-b2b | youtube-video-ideas-generator | YouTube Video Ideas Generator | Patterns section (mid-post) |
 | youtube-video-ideas-generator-for-b2b | youtube-topic-evaluator | YouTube Topic Evaluator | Validation section |
+| youtube-keyword-research | youtube-autocomplete-keywords | YouTube autocomplete keyword tool | Step 2 + FAQ |
+| youtube-keyword-research | youtube-seo-tool | YouTube SEO Tool | Tools section |
 
 ---
 
@@ -32,6 +34,11 @@
 | youtube-marketing-b2b | youtube-marketing-strategy | YouTube marketing strategy | Strategy reference |
 | youtube-video-ideas-generator-for-b2b | youtube-vs-blog-shopify-app-case-study | 3.25x More Conversions | Case studies section |
 | youtube-video-ideas-generator-for-b2b | best-youtube-video-ideas-generators-for-businesses | The 14 Best YouTube Video Ideas Generators | After patterns table |
+| youtube-keyword-research | youtube-seo-guide | YouTube SEO: Rank Business Videos on Page 1 (2026) | After competition analysis section |
+| youtube-keyword-research | youtube-marketing-strategy | YouTube Marketing Strategy: 6-Step Framework | After 5-step process |
+| youtube-keyword-research | youtube-marketing-roi | YouTube Marketing ROI: 3.25x More Conversions Than Blogging | After measurement section |
+| youtube-keyword-research | compounding-effect-four-videos-a-month | how 4 videos a month compound into a pipeline | Search impression share section |
+| youtube-keyword-research | best-youtube-seo-tools-for-business | roundup of YouTube SEO tools for business channels | Tools section |
 
 ---
 
