@@ -16,13 +16,18 @@ export interface Props extends MetaData {
 
 const {
   title,
-  ignoreTitleTemplate = false,
+  ignoreTitleTemplate: _ignoreTitleTemplate = false,
   canonical = String(getCanonical(String(Astro.url.pathname))),
   robots = {},
   description,
   openGraph = {},
   twitter = {},
 } = Astro.props;
+
+// Auto-skip the title template when the title already contains the site name
+// to prevent double-suffix titles like "How SellOnTube Works | SellOnTube"
+const siteNameInTemplate = SITE?.name || 'SellOnTube';
+const ignoreTitleTemplate = _ignoreTitleTemplate || (!!title && title.includes(siteNameInTemplate));
 
 const seoProps: AstroSeoProps = merge(
   {

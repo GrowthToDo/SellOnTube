@@ -4,8 +4,6 @@ import { niches } from '~/data/niches';
 import Layout from '~/layouts/PageLayout.astro';
 import { SITE } from 'astrowind:config';
 
-const validNicheSlugs = new Set(niches.map(n => n.slug));
-
 const siteUrl = SITE.site || 'https://sellontube.com';
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 
@@ -28,6 +26,7 @@ const breadcrumbSchema = {
 // Apply publish schedule filter (IST, same pattern as pSEO pages)
 const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
 cutoff.setHours(23, 59, 59, 999);
+const validNicheSlugs = new Set(niches.filter(n => new Date(n.publishDate + 'T00:00:00+05:30') <= cutoff).map(n => n.slug));
 const publishedTopics = topics.filter((t) => {
   const pubDate = topicPublishSchedule[t.slug] ?? t.publishDate;
   return new Date(pubDate + 'T00:00:00+05:30') <= cutoff;

@@ -68,6 +68,26 @@
   status = 301
 
 [[redirects]]
+  from = "/youtube-for/online-course-creators"
+  to = "/youtube-for/course-creators"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-for/artists"
+  to = "/youtube-for/"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-video-ideas/artists-youtube-video-ideas"
+  to = "/youtube-video-ideas"
+  status = 301
+
+[[redirects]]
+  from = "/youtube-video-ideas/animators-youtube-video-ideas"
+  to = "/youtube-video-ideas"
+  status = 301
+
+[[redirects]]
   from = "/youtube-for"
   to = "/youtube-for/"
   status = 301
