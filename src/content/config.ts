@@ -70,6 +70,24 @@ const postCollection = defineCollection({
 
     toolCta: z.string().optional(),
 
+    faqs: z
+      .array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        })
+      )
+      .optional(),
+
+    howToSteps: z
+      .array(
+        z.object({
+          name: z.string(),
+          text: z.string(),
+        })
+      )
+      .optional(),
+
     metadata: metadataDefinition(),
   }),
 });

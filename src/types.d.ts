@@ -52,6 +52,12 @@ export interface Post {
 
   /** Optional tool CTA slug to show above the booking CTA */
   toolCta?: string;
+
+  /** Optional FAQ entries for FAQPage schema */
+  faqs?: { question: string; answer: string }[];
+
+  /** Optional HowTo steps for HowTo schema */
+  howToSteps?: { name: string; text: string }[];
 }
 
 export interface Taxonomy {

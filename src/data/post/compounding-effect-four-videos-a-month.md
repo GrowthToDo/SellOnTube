@@ -138,7 +138,7 @@ When a video ranks or performs well:
 
 A single successful video accelerates the performance of all others.
 
-That’s the compounding flywheel.
+That’s the compounding flywheel. We saw this firsthand in a [12-month experiment with a Shopify app](/blog/youtube-vs-blog-shopify-app-case-study), where YouTube delivered 3.25x more conversions than blogging, and the gap widened every month.
 
 ---
 
@@ -183,7 +183,7 @@ If a single customer is worth:
 - $5,000
 - $10,000+
 
-Then even a modest stream of monthly inbound leads generates disproportionate ROI.
+Then even a modest stream of monthly inbound leads generates disproportionate ROI. Use the [YouTube ROI Calculator](/tools/youtube-roi-calculator) to see exactly how the math works for your specific business model and price point.
 
 Four videos a month is all you need to unlock that math.
 

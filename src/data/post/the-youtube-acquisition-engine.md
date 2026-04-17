@@ -70,7 +70,7 @@ We look for **high-intent search terms** that signal:
 
 Our input sources:
 
-- YouTube autocomplete and "people also watched"
+- [YouTube autocomplete](/tools/youtube-autocomplete-keywords) and "people also watched"
 - Competitor channels and which videos keep showing up in recommended
 - Actual sales calls and support tickets
 - Your existing blog / docs / help centre queries
@@ -182,6 +182,8 @@ A year of 4-per-month publishing gives you:
 - A library sales can send to prospects every week  
 - A visible moat against competitors just starting their channels
 
+We documented this compounding effect in detail. In a [12-month experiment with a Shopify app](/blog/youtube-vs-blog-shopify-app-case-study), videos from month one were still converting in month twelve, and YouTube delivered 3.25x more conversions than blog content over the same period.
+
 ---
 
 ## 7. Measurement: what we actually track
@@ -216,7 +218,7 @@ We usually say **no** when:
 - The business model relies on one-off, low-margin transactions
 - There is no clear offer or sales process on the other side
 
-In our diagnostic, we literally run the numbers.
+In our diagnostic, we literally run the numbers. You can do the same with our [YouTube ROI Calculator](/tools/youtube-roi-calculator).
 
 If the math doesn't work, we'd rather tell you *not* to invest in YouTube
 than to drag you through a year of "content" that never pays off. If you're weighing YouTube against other lead gen tactics, see our [YouTube vs Cold Outreach](/youtube-vs/cold-outreach) comparison.

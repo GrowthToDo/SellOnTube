@@ -64,7 +64,7 @@ B2B YouTube content that generates qualified leads maps to three stages of the b
 
 **Proof content** targets buyers close to a decision. Case studies, client results, process walkthroughs. A Shopify app we worked with generated 1,257 conversions from YouTube in 12 months, compared to 411 from blog content over the same period. That kind of documented, specific result in a video is what moves a prospect from consideration to contact.
 
-For most B2B businesses starting a YouTube channel, one solid mid-funnel video per week generates more pipeline than five top-of-funnel videos. Match your content type to where your buyers actually are, not where you wish they were.
+For most B2B businesses starting a YouTube channel, one solid mid-funnel video per week generates more pipeline than five top-of-funnel videos. Match your content type to where your buyers actually are, not where you wish they were. If you need help finding those mid-funnel topics, our [YouTube Video Ideas Generator](/tools/youtube-video-ideas-generator) produces ideas filtered for buyer intent, not views.
 
 ## YouTube SEO for B2B: Why Broad Keywords Are the Wrong Target
 
@@ -90,7 +90,7 @@ The video sends them somewhere with a clear, specific call to action. "Book a 30
 
 The landing page converts. The destination has to echo the language and framing of the video. If your video is about YouTube strategy for professional services firms, the landing page should speak to that buyer specifically, not to a generic homepage.
 
-The [acquisition engine we use with clients](/blog/the-youtube-acquisition-engine) covers the full video structure that makes steps two and three work consistently.
+The [acquisition engine we use with clients](/blog/the-youtube-acquisition-engine) covers the full video structure that makes steps two and three work consistently. For the ROI side, see our breakdown of [YouTube marketing ROI benchmarks by business type](/blog/youtube-marketing-roi).
 
 ## The Common Mistake: Starting With Production
 

@@ -114,7 +114,7 @@ So what does this actually mean for your keyword research? Four things separate 
 
 **Additional data.** Raw autocomplete keywords tell you what people search. Volume estimates, intent tags, or popularity scores tell you which keywords to target first. Not every tool offers this. The ones that do save you a second step.
 
-**The bottleneck is not finding keywords. It is knowing which ones will attract buyers.**
+**The bottleneck is not finding keywords. It is knowing which ones will attract buyers.** Our [YouTube keyword research guide](/blog/youtube-keyword-research) covers the full 5-step process for filtering autocomplete results into a buyer-intent content plan.
 
 Here's what the manual process looks like next to an autocomplete tool:
 

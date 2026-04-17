@@ -63,6 +63,8 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     draft = false,
     metadata = {},
     toolCta,
+    faqs,
+    howToSteps,
   } = data;
 
   const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
@@ -114,6 +116,9 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     readingTime: remarkPluginFrontmatter?.readingTime,
 
     toolCta,
+
+    faqs,
+    howToSteps,
   };
 };
 

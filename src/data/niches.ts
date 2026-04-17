@@ -145,11 +145,11 @@ export const niches: Niche[] = [
     name: 'Coaches',
     shortName: 'Coaches',
     metaTitle: 'YouTube Marketing Strategy for Coaches',
-    metaDescription: 'Coaching clients research on YouTube before they book. A youtube marketing strategy turns niche search traffic into discovery calls — no camera required.',
+    metaDescription: 'Coaching clients research on YouTube before they book. A youtube marketing strategy turns niche search traffic into discovery calls, no camera required.',
     heroTitle: 'Turn YouTube into a predictable client acquisition channel for your coaching business',
     heroSubtitle: "Your ideal clients are on YouTube right now, watching coaches explain their problem before they book with anyone. If you're not visible during that research, you're not a candidate. No camera or personal brand required.",
     problemHeading: "It's Not Your Coaching",
-    problemBody: "Most coaches who aren't getting enough clients are not the problem. They can coach. The transformation is real. What's missing is being found by the people who already want what they offer.\n\nHere's how coaching clients actually decide: they don't scroll Instagram until they feel inspired to buy. They type a specific problem into YouTube, watch two or three coaches explain it, and quietly decide who they trust. **By the time they book a discovery call, the decision is largely made.** If you weren't one of the videos they watched, you weren't a candidate.\n\nThe coach who won your last ten ideal clients probably didn't outcoach you. They showed up in the search. You didn't.",
+    problemBody: "Most coaches who aren't getting enough clients are not the problem. They can coach. The transformation is real. What's missing is being found by the people who already want what they offer.\n\nHere's how coaching clients actually decide: they don't scroll Instagram until they feel inspired to buy. They type a specific problem into YouTube, watch two or three coaches explain it, and quietly decide who they trust. **By the time they book a discovery call, the decision is largely made.** If you weren't one of the videos they watched, you weren't a candidate.\n\nThis is already happening in the coaching industry. Vanessa Lau built a 700,000+ subscriber channel around business and social media coaching, using YouTube as her primary lead generation engine. Sunny Lenarduzzi grew to 500,000+ subscribers teaching coaches and consultants how to use YouTube itself for client acquisition. Marie Forleo's channel, with 800,000+ subscribers, drives enrollment for her B-School program without any paid advertising. These coaches did not build audiences first and then monetize. They created search-optimized content that attracted people already looking for coaching help, and converted those viewers into clients.\n\nThe coach who won your last ten ideal clients probably didn't outcoach you. They showed up in the search. You didn't.",
 
     searchExamples: ['"how to get more clients as an executive coach"', '"is business coaching worth the money"', '"best leadership coaching program for managers"'],
     goodFitItems: ['Coaching programs priced at $1,000+', 'Relying on referrals that are unpredictable', 'Want clients who arrive pre-sold on your approach', 'Willing to invest 6+ months in a compounding channel'],
@@ -175,6 +175,11 @@ export const niches: Niche[] = [
         'life coach vs therapist for anxiety',
         'health coach for busy executives',
         'best online coaching programs for entrepreneurs',
+        'how to choose between group and 1:1 coaching programs',
+        '5 signs you need a business coach not another course',
+        'what to expect in your first coaching session',
+        'life coach vs business coach which one do you need',
+        'how much should a coach charge per session in 2026',
       ],
     industryFaqs: [
         {
@@ -183,11 +188,23 @@ export const niches: Niche[] = [
         },
         {
           question: 'What if clients want to see my personality before booking?',
-          answer: 'Voiceover videos reveal personality through reasoning, word choice, and the quality of thinking — not just through appearing on camera. Discovery calls remain the place where the relationship decision is made. The video\'s job is to establish credibility and get the booking, not to replace the call.',
+          answer: 'Voiceover videos reveal personality through reasoning, word choice, and the quality of thinking, not just through appearing on camera. Discovery calls remain the place where the relationship decision is made. The video\'s job is to establish credibility and get the booking, not to replace the call.',
         },
         {
           question: 'What coaching niches work best with a youtube marketing strategy?',
           answer: 'B2B coaching categories with higher program pricing work best: executive coaching, leadership development, career coaching for specific professions, business coaching for a defined audience. The narrower and more specific the niche, the faster ranking happens and the better the conversion rate from YouTube views to discovery calls.',
+        },
+        {
+          question: 'Are there real examples of coaches who built their business through YouTube?',
+          answer: 'Several coaches have built entire client acquisition systems around YouTube. Vanessa Lau grew to over 700,000 subscribers with business coaching content and uses YouTube as her primary lead generation channel. Sunny Lenarduzzi, with 500,000+ subscribers, built a coaching business specifically teaching experts how to use YouTube for client acquisition. Marie Forleo drives enrollment for her B-School coaching program through her 800,000+ subscriber channel without paid ads. The pattern across all three: search-optimized content targeting specific problems their ideal clients are already researching, not viral entertainment.',
+        },
+        {
+          question: 'How many videos does a coach need before YouTube starts generating clients?',
+          answer: 'The threshold is lower than most coaches expect. A library of 8 to 12 well-targeted videos covering the specific queries your ideal clients search is often enough to start generating discovery calls. The key is targeting buying-intent searches, not publishing volume. A coach with 10 videos ranking for "best executive coach for tech founders" and similar specific queries will outperform a coach with 100 generic motivational videos.',
+        },
+        {
+          question: 'Should coaches show their face on camera or use voiceover?',
+          answer: 'Both approaches work for client acquisition. Sunny Lenarduzzi and Marie Forleo appear on camera and build strong personal connection through their videos. Other coaches use screen recordings, slide presentations, and voiceover to deliver equally effective search-ranked content. The deciding factor is not format. It is whether the video answers a specific question a potential client is actively searching for. Pick the format you will produce consistently, because consistency matters more than production style.',
         },
       ],
     commonMistakes: [

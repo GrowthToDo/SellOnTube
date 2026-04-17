@@ -276,7 +276,7 @@ Use it as a five-minute sanity check before committing to a keyword. A tool scor
 
 **1.** Run your three most important business videos through the [SellonTube YouTube SEO Tool](/tools/youtube-seo-tool). For each one, note the primary issue flagged. Look for a pattern across all three. If the same dimension keeps coming up, that is your channel's biggest SEO gap, not a one-off problem.
 
-**2.** Take the buyer-intent keyword from each video's diagnosis. Open RyRob's tool or TubeBuddy and check whether it has meaningful search volume. If volume is low, look at the related keyword suggestions for variants with similar intent but more searches.
+**2.** Take the buyer-intent keyword from each video's diagnosis. Follow our [YouTube keyword research process](/blog/youtube-keyword-research) to validate it. Open RyRob's tool or TubeBuddy and check whether it has meaningful search volume. If volume is low, look at the related keyword suggestions for variants with similar intent but more searches.
 
 **3.** Rewrite the titles and opening description lines of your two lowest-performing videos using the fixes from step one. Keep changes targeted. The goal is to align the metadata with the buyer query, not to rewrite the video itself.
 

@@ -68,7 +68,7 @@ The metrics that actually predict YouTube marketing ROI are:
 
 ### Click-through to your site
 
-How many viewers leave YouTube and visit your landing page, lead magnet, or booking link? This is where YouTube stops being "content" and starts being a marketing channel.
+How many viewers leave YouTube and visit your landing page, lead magnet, or booking link? This is where YouTube stops being "content" and starts being a marketing channel. Optimizing your video titles and descriptions for the right search terms directly impacts this number. Our [YouTube SEO guide](/blog/youtube-seo-guide) covers the mechanics of getting found by buyers instead of browsers.
 
 ### Lead-to-customer conversion rate
 
