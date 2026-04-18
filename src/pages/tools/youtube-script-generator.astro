@@ -597,7 +597,7 @@ const faqSchema = {
   const COUNT_KEY = 'sot_script_gen_count';
   const EMAIL_KEY = 'sot_script_gen_email_submitted';
   const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+  const CAPTURE_URL = '/.netlify/functions/capture-email';
 
   function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
   function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
@@ -832,13 +832,12 @@ const faqSchema = {
     btn.setAttribute('disabled', 'true');
 
     try {
-      await fetch(APPS_SCRIPT_URL, {
+      await fetch(CAPTURE_URL, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, source: 'youtube-script-generator' }),
       });
-    } catch { /* no-cors always resolves */ }
+    } catch { /* silent */ }
 
     setEmailSubmitted();
     updateCounterLabel();

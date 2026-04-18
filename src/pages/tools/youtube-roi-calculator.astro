@@ -684,9 +684,8 @@ const faqSchema = {
     }
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec', {
+      await fetch('/.netlify/functions/capture-email', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
