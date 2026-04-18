@@ -568,7 +568,7 @@ const faqSchema = {
     position: number;
     videoId: string;
     title: string;
-    channelTitle: string;
+    channelName: string;
     channelId: string;
     viewCount: number;
     publishedAt: string;
@@ -577,8 +577,9 @@ const faqSchema = {
 
   interface RankCheckResponse {
     keyword: string;
-    channelId: string | null;
-    rank: number | null;
+    channelInput: string;
+    userRank: number | null;
+    userVideo: VideoResult | null;
     results: VideoResult[];
   }
 
@@ -692,7 +693,7 @@ const faqSchema = {
       });
       list.querySelectorAll('[data-channel-name]').forEach((el) => {
         const idx = parseInt((el as HTMLElement).dataset.channelName || '0', 10);
-        (el as HTMLElement).textContent = top5[idx].channelTitle;
+        (el as HTMLElement).textContent = top5[idx].channelName;
       });
     }
 
