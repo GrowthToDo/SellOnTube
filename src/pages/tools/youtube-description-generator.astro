@@ -923,10 +923,25 @@ const faqSchema = {
 
   // ===== CTA TRACKING =====
 
-  document.getElementById('results-cta')?.addEventListener('click', () => {
+  document.getElementById('results-cta')?.addEventListener('click', (e) => {
+    const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
+    if (videoUrl) {
+      e.preventDefault();
+      const target = (e.currentTarget as HTMLAnchorElement);
+      target.href = '/tools/youtube-tag-generator?v=' + encodeURIComponent(videoUrl);
+      window.location.href = target.href;
+    }
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-description-generator' });
   });
+
+  // ===== PRE-FILL FROM QUERY PARAM =====
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const prefillVideo = urlParams.get('v');
+  if (prefillVideo) {
+    (document.getElementById('video-url-input') as HTMLInputElement).value = prefillVideo;
+  }
 
   // ===== EVENT LISTENERS =====
 
