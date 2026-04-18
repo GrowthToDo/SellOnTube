@@ -1,0 +1,761 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: 'YouTube Tag Generator for Business | Free Tool',
+  description:
+    'Generate buyer-intent YouTube tags from any video URL. Analyzes your title, description, and transcript to suggest tags that attract customers, not just viewers.',
+  canonical: `${siteUrl}/tools/youtube-tag-generator`,
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Tag Generator", "item": `${siteUrl}/tools/youtube-tag-generator` }
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Tag Generator",
+  "url": `${siteUrl}/tools/youtube-tag-generator`,
+  "description": "Generate buyer-intent YouTube tags from any video URL. Analyzes title, description, and transcript to suggest tags that attract customers.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
+const faqs = [
+  { question: "How many tags should a YouTube video have?", answer: "YouTube allows up to 500 characters of tags total. For business channels, 15-20 well-chosen tags typically outperform 30+ generic ones. Focus on relevance over quantity. Each tag should represent a term your target buyer would actually search for." },
+  { question: "Do YouTube tags still matter in 2026?", answer: "Yes, but their role has shifted. Tags are no longer the primary ranking signal they were in 2015. Today, tags help YouTube understand your video's topic when the title and description are ambiguous. They also help your video appear in 'related videos' alongside competitors. For business channels targeting niche keywords, tags still provide a measurable edge." },
+  { question: "What is the difference between tags and hashtags on YouTube?", answer: "Tags are hidden metadata you add in YouTube Studio. Viewers cannot see them. Hashtags appear visibly above your video title or in the description. Tags help YouTube's algorithm categorize your content. Hashtags help viewers browse related topics. Business channels should use both: tags for SEO, and 1-3 hashtags for discoverability." },
+  { question: "Should business channels use branded tags?", answer: "Yes, but sparingly. Include your company name and product name as 1-2 tags. The remaining tags should be keyword-focused terms your buyers search for. Branded tags help YouTube associate all your videos together, which strengthens your channel's topical authority over time." },
+  { question: "How do I find what tags competitors use?", answer: "You cannot see competitor tags directly on YouTube anymore. This tool analyzes any public video URL and shows its existing tags alongside optimized suggestions. You can also view a video's page source and search for 'keywords' to find the tag metadata." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+  }))
+};
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Buyer-intent tags</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Transcript analysis</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        YouTube Tag Generator<br class="hidden sm:block" /> for Business Channels
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Paste any YouTube video URL. Get optimized tags based on your title, description, and transcript. Tags built to attract buyers, not just viewers.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+          <div>
+            <label for="video-url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              YouTube video URL
+            </label>
+            <input
+              type="text"
+              id="video-url-input"
+              placeholder="e.g. https://youtube.com/watch?v=dQw4w9WgXcQ"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="video-url-error"
+            />
+            <p id="video-url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+        </div>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate Tags &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free generations remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Analyzing your video...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">Fetching metadata, transcript, and generating tags. This takes 10-20 seconds.</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free generations</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep generating tags. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Generating
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Generating your tags now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-3xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header with video title -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Tag analysis for</p>
+          <p id="result-video-title" tabindex="-1" class="text-lg font-bold text-gray-900 dark:text-white"></p>
+        </div>
+
+        <!-- Primary keyword -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Primary keyword</p>
+          <span id="result-primary-keyword" class="inline-flex items-center text-sm font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-1.5"></span>
+        </div>
+
+        <!-- Existing tags -->
+        <div id="existing-tags-section" class="hidden p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Existing tags</p>
+          <div id="existing-tags-list" class="flex flex-wrap gap-2 mb-3"></div>
+          <div id="warnings-list" class="space-y-1.5"></div>
+        </div>
+
+        <!-- Suggested tags -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Suggested tags</p>
+            <span class="text-[10px] text-gray-400 dark:text-slate-600">Click a tag to copy it</span>
+          </div>
+          <div id="suggested-tags-list" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Tag strategy -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Tag strategy</p>
+          <p id="result-tag-strategy" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <!-- Copy all + CTA -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 flex flex-col sm:flex-row gap-3">
+          <button
+            id="copy-all-btn"
+            class="flex-1 inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Copy All Tags
+          </button>
+          <a
+            href="/tools/youtube-description-generator"
+            id="results-cta"
+            class="flex-1 inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold
+                   border border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 transition-colors"
+          >
+            Generate description &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Generate for another video
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Copied toast -->
+      <div id="copy-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold px-5 py-2.5 rounded-xl shadow-lg">
+        Copied to clipboard
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Tags get you found. Strategy gets you customers."
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: positioning, metadata, and the path from search to paying customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste a video URL</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Enter any YouTube video URL. The tool pulls the title, description, existing tags, and transcript automatically. No login required.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">AI analyzes your content</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The tool identifies buyer-intent keywords from your video content and generates 15-20 optimized tags ordered by relevance. It flags problems with your existing tags too.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Copy and apply your tags</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Click any tag to copy it individually, or use "Copy All Tags" to grab the full set. Paste them into YouTube Studio and your video starts ranking for buyer searches.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Sections -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why YouTube tags matter for business channels</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube tags are hidden metadata that help the algorithm understand what your video is about. When someone searches "best project management software for agencies," YouTube uses your tags alongside your title and description to decide whether your video is relevant.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          For business channels, tags serve a specific purpose: they connect your video to the exact search terms your potential customers use. A consulting firm's video tagged with "management consulting for startups" will surface for startup founders evaluating consultants. The same video tagged with just "consulting" will get lost in a sea of generic results.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          Tags also influence the "related videos" sidebar. When your tags overlap with a competitor's popular video, YouTube is more likely to recommend your video alongside theirs. This makes tags a direct path to capturing competitor audiences. For more on how YouTube search works for business channels, read our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to choose YouTube tags that attract buyers</h2>
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Start with your primary keyword</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Your first tag should be the exact phrase you want to rank for. If your video is about email marketing platforms for ecommerce, your first tag should be "email marketing for ecommerce" or "best email marketing platform ecommerce." YouTube gives extra weight to the first tag.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Add buyer-intent modifiers</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Tags with words like "best," "vs," "review," "pricing," "for [industry]," and "how to choose" attract people who are actively evaluating solutions. These viewers are closer to a purchase decision than someone searching "what is email marketing."
+            </p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Include long-tail variations</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              If your primary keyword is "CRM software," add longer variations like "CRM software for small teams," "CRM for B2B sales," and "best CRM under $50 per month." Long-tail tags have less competition and attract more qualified viewers.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Mirror the language your customers use</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Check your sales calls, support tickets, and customer reviews for the exact phrases your buyers use. Tag your videos with those phrases. If customers say "client portal" instead of "customer dashboard," tag accordingly. Use our <a href="/tools/youtube-autocomplete-keywords" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">autocomplete keyword tool</a> to discover what people actually search for on YouTube.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Common YouTube tagging mistakes on business channels</h2>
+        <div class="space-y-4">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Using tags that are too broad</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Tags like "marketing," "business," or "software" are so competitive that they do nothing for a small channel. YouTube has millions of videos tagged with those terms.
+            </p>
+            <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+              Fix: Replace broad tags with specific, niche terms. "Marketing" becomes "B2B SaaS marketing strategy." "Software" becomes "project management software for agencies."
+            </p>
+          </div>
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Copying creator-style tags</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Tags like "vlog," "day in my life," or "subscribe" are designed for entertainment channels. They attract casual viewers who will never buy your product.
+            </p>
+            <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+              Fix: Every tag should pass this test: "Would my ideal customer type this into YouTube search?" If the answer is no, remove it.
+            </p>
+          </div>
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Using too few (or zero) tags</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Many business channels skip tags entirely because they feel like busywork. This leaves ranking opportunities on the table, especially for niche keywords where competition is low.
+            </p>
+            <p class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+              Fix: Add 15-20 tags per video. Start with your primary keyword, add 5-8 long-tail variants, 3-4 buyer-intent modifiers, and 2-3 industry-specific terms.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+          {faqs.map((faq) => (
+            <div>
+              <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">{faq.question}</h3>
+              <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Score individual videos on title, description, tags, and more.</p>
+        </a>
+        <a href="/tools/youtube-autocomplete-keywords" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Autocomplete Keywords</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Discover what buyers actually search for on YouTube.</p>
+        </a>
+        <a href="/tools/youtube-title-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Title Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Generate buyer-intent titles scored for acquisition potential.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_tag_gen_count';
+  const EMAIL_KEY = 'sot_tag_gen_email_submitted';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-video-title');
+      heading?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited generations unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free generation remaining' : remaining + ' free generations remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    const url = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
+    if (!url) {
+      showFieldError('video-url-input', 'Please enter a YouTube video URL.');
+      return false;
+    }
+    // Basic URL validation
+    if (!url.includes('youtube.com') && !url.includes('youtu.be') && !/^[\w-]{11}$/.test(url)) {
+      showFieldError('video-url-input', 'Please enter a valid YouTube video URL (e.g. https://youtube.com/watch?v=...)');
+      return false;
+    }
+    clearFieldError('video-url-input');
+    return true;
+  }
+
+  // ===== HTML HELPERS =====
+
+  function escapeHtml(text: string): string {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // ===== CLIPBOARD =====
+
+  let suggestedTagsData: string[] = [];
+
+  function showToast(): void {
+    const toast = document.getElementById('copy-toast');
+    if (!toast) return;
+    toast.classList.remove('hidden');
+    setTimeout(() => toast.classList.add('hidden'), 2000);
+  }
+
+  function copyTag(tag: string): void {
+    navigator.clipboard.writeText(tag).then(() => showToast());
+  }
+
+  function copyAllTags(): void {
+    if (suggestedTagsData.length === 0) return;
+    navigator.clipboard.writeText(suggestedTagsData.join(', ')).then(() => {
+      const btn = document.getElementById('copy-all-btn');
+      if (btn) {
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy All Tags'; }, 2000);
+      }
+      showToast();
+    });
+  }
+
+  // ===== RENDER RESULTS =====
+
+  interface TagResult {
+    videoTitle: string;
+    existingTags: string[];
+    suggestedTags: string[];
+    primaryKeyword: string;
+    tagStrategy: string;
+    warnings: string[];
+  }
+
+  function renderResults(data: TagResult): void {
+    // Video title
+    const titleEl = document.getElementById('result-video-title');
+    if (titleEl) titleEl.textContent = data.videoTitle;
+
+    // Primary keyword
+    const pkEl = document.getElementById('result-primary-keyword');
+    if (pkEl) pkEl.textContent = data.primaryKeyword;
+
+    // Existing tags
+    const existingSection = document.getElementById('existing-tags-section');
+    const existingList = document.getElementById('existing-tags-list');
+    const warningsList = document.getElementById('warnings-list');
+
+    if (existingSection && existingList && warningsList) {
+      if (data.existingTags.length > 0 || data.warnings.length > 0) {
+        existingSection.classList.remove('hidden');
+
+        if (data.existingTags.length > 0) {
+          existingList.innerHTML = data.existingTags.map(tag =>
+            '<span class="inline-flex items-center text-xs font-medium text-gray-600 dark:text-slate-400 bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-full px-3 py-1">' + escapeHtml(tag) + '</span>'
+          ).join('');
+        } else {
+          existingList.innerHTML = '<span class="text-xs text-gray-400 dark:text-slate-600 italic">No tags found on this video</span>';
+        }
+
+        if (data.warnings.length > 0) {
+          warningsList.innerHTML = data.warnings.map(w =>
+            '<p class="text-xs text-rose-600 dark:text-rose-400" data-warning></p>'
+          ).join('');
+          warningsList.querySelectorAll('[data-warning]').forEach((el, i) => {
+            (el as HTMLElement).textContent = '\u26A0 ' + data.warnings[i];
+          });
+        } else {
+          warningsList.innerHTML = '';
+        }
+      } else {
+        existingSection.classList.add('hidden');
+      }
+    }
+
+    // Suggested tags
+    suggestedTagsData = data.suggestedTags;
+    const suggestedList = document.getElementById('suggested-tags-list');
+    if (suggestedList) {
+      suggestedList.innerHTML = data.suggestedTags.map((tag, i) =>
+        '<button data-copy-tag="' + i + '" class="inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1.5 hover:bg-emerald-500/20 transition-colors cursor-pointer">' + escapeHtml(tag) + '</button>'
+      ).join('');
+
+      suggestedList.querySelectorAll('[data-copy-tag]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const idx = parseInt((btn as HTMLElement).dataset.copyTag || '0', 10);
+          copyTag(data.suggestedTags[idx]);
+        });
+      });
+    }
+
+    // Tag strategy
+    const strategyEl = document.getElementById('result-tag-strategy');
+    if (strategyEl) strategyEl.textContent = data.tagStrategy;
+  }
+
+  // ===== API CALL =====
+
+  async function fetchTags(videoUrl: string): Promise<void> {
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/generate-tags', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoUrl }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate Tags \u2192';
+        showFieldError('video-url-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-tag-generator', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (res.status === 404) {
+        const errData = await res.json();
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate Tags \u2192';
+        showFieldError('video-url-input', errData.error || 'Video not found. Check the URL and try again.');
+        return;
+      }
+
+      if (!res.ok) throw new Error('API error ' + res.status);
+
+      const data = await res.json();
+      if (!Array.isArray(data?.suggestedTags) || data.suggestedTags.length === 0) throw new Error('Invalid response structure');
+
+      renderResults(data);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-tag-generator' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Generate Tags \u2192';
+      showFieldError('video-url-input', 'Something went wrong on our end. Please try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-tag-generator', reason: 'api_error' });
+    }
+  }
+
+  // ===== GENERATE =====
+
+  async function runGenerate(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-tag-generator' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-tag-generator' });
+
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Analyzing...';
+    showStep('step-loading');
+
+    await fetchTags(videoUrl);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-tag-generator' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-tag-generator' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Generating';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      runGenerate();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('video-url-input') as HTMLInputElement).value = '';
+    clearFieldError('video-url-input');
+    showStep('step-input');
+    (document.getElementById('video-url-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Generate Tags \u2192';
+    suggestedTagsData = [];
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-tag-generator' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('generate-btn')?.addEventListener('click', runGenerate);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+  document.getElementById('copy-all-btn')?.addEventListener('click', copyAllTags);
+
+  document.getElementById('video-url-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      runGenerate();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>
