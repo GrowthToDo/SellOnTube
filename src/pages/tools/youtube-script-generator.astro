@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube Script Generator for Business',
+  title: 'Free YouTube Script Generator for Business',
   description:
-    'A YouTube script generator built for B2B businesses. Generates a buyer-intent script with a natural product pitch. Coming soon.',
+    'Generate buyer-intent YouTube scripts with a built-in product pitch. Hook, body, product bridge, and CTA. Built for B2B. Free, no signup required.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Script Generator",
   "url": `${siteUrl}/tools/youtube-script-generator`,
-  "description": "Generate buyer-intent YouTube scripts with a natural product pitch. Full word-for-word scripts with hook, body, product bridge, and close. Coming soon.",
+  "description": "Generate buyer-intent YouTube scripts with a built-in product pitch. Full word-for-word scripts with hook, body, product bridge, and CTA. Built for B2B. Free.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -37,12 +37,12 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "When will the YouTube Script Generator launch?", "acceptedAnswer": { "@type": "Answer", "text": "The tool is currently in development. Join the waitlist to be notified the day it goes live. Existing SellOnTube tools (Video Ideas Generator, Title Generator, SEO Tool) are available now." } },
-    { "@type": "Question", "name": "Will it generate a full word-for-word script?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The generator will produce a complete script with hook, body, product bridge, and close. It will be structured around your specific video idea, target customer, and product." } },
-    { "@type": "Question", "name": "How long are the generated scripts?", "acceptedAnswer": { "@type": "Answer", "text": "Script length will be calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes)." } },
+    { "@type": "Question", "name": "Is this YouTube script generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating scripts at no cost. There is no paid tier." } },
+    { "@type": "Question", "name": "Will it generate a full word-for-word script?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The generator produces a complete script with hook, setup, body sections, product bridge, and CTA. It is structured around your specific video idea, target customer, and product." } },
+    { "@type": "Question", "name": "How long are the generated scripts?", "acceptedAnswer": { "@type": "Answer", "text": "Script length is calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes)." } },
     { "@type": "Question", "name": "Will it work with the Video Ideas Generator?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The intended workflow is: generate ideas with the Video Ideas Generator, evaluate them with the Ideas Evaluator, create a title with the Title Generator, then produce the script. Each tool feeds into the next." } },
-    { "@type": "Question", "name": "Is the Script Generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Like all SellOnTube tools, the Script Generator will be free with an email gate for unlimited use. No paid tier." } },
-    { "@type": "Question", "name": "Should I use a teleprompter or memorize the script?", "acceptedAnswer": { "@type": "Answer", "text": "For most B2B videos, a teleprompter delivers better results than memorization. It keeps the content precise and eliminates filler words." } },
+    { "@type": "Question", "name": "Is the product pitch forced or natural?", "acceptedAnswer": { "@type": "Answer", "text": "Natural. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed. It reads like advice from an expert, not a commercial." } },
+    { "@type": "Question", "name": "Should I use a teleprompter or memorize the script?", "acceptedAnswer": { "@type": "Answer", "text": "For most B2B videos, a teleprompter delivers better results than memorization. It keeps the content precise and eliminates filler words. If you find teleprompter delivery too stiff, use the generated script as a detailed outline." } },
   ]
 };
 
@@ -57,97 +57,220 @@ const faqSchema = {
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <div class="flex flex-wrap justify-center gap-2 mb-6">
-        <span class="inline-flex items-center text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded-full px-3 py-1">Building in progress</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Full script output</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built-in product pitch</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
-        YouTube Script Generator<br class="hidden sm:block" /> for Business
+        YouTube Script Generator<br class="hidden sm:block" /> That Converts Viewers Into Leads
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Takes your buyer-intent video idea and generates a complete script with a natural product pitch built in. No forced CTAs. No filler. Just a script that converts.
+        Enter your video topic, target customer, and product. Get a complete script with a natural product pitch built in. No forced CTAs. No filler.
       </p>
     </div>
   </section>
 
-  <!-- Waitlist -->
+  <!-- Tool -->
   <section class="bg-white dark:bg-slate-950 pb-20">
-    <div class="max-w-md mx-auto px-4">
-      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
-        <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">Get notified when it launches</p>
-        <p class="text-xs text-gray-500 dark:text-slate-400 mb-5">We'll email you as soon as the Script Generator is live. No spam.</p>
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
 
-        <div id="waitlist-form" class="space-y-3">
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+
+          <div>
+            <label for="topic-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Video topic
+            </label>
+            <input
+              type="text"
+              id="topic-input"
+              placeholder="e.g. Best CRM tools for small business"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="topic-error"
+            />
+            <p id="topic-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="type-select" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Video type
+            </label>
+            <select
+              id="type-select"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors appearance-none"
+              style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M6%208L1%203h10z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem center;"
+            >
+              <option value="comparison">Comparison &amp; Evaluation</option>
+              <option value="how-to">How-to</option>
+              <option value="mistakes">Mistakes &amp; Pitfalls</option>
+              <option value="results">Results &amp; Proof</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="customer-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Your target customer
+            </label>
+            <input
+              type="text"
+              id="customer-input"
+              placeholder="e.g. SaaS founders, Shopify store owners"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="customer-error"
+            />
+            <p id="customer-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="product-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Your product or service
+            </label>
+            <input
+              type="text"
+              id="product-input"
+              placeholder="e.g. Acme CRM, a project management tool for agencies"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="product-error"
+            />
+            <p id="product-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+        </div>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate Script &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free generations remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Writing your script...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This takes 10-15 seconds for a full script</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free generations</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep generating scripts. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
           <input
             type="email"
-            id="waitlist-email"
+            id="gate-email"
             placeholder="your@company.com"
             class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                    focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
           />
-          <p id="waitlist-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           <button
-            id="waitlist-btn"
+            id="gate-submit-btn"
             class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
                    bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
           >
-            Notify me when it's ready
+            Continue Generating
           </button>
-          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. Unsubscribe any time.</p>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
         </div>
-
-        <div id="waitlist-success" class="hidden text-center py-4">
-          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-1">You're on the list.</p>
-          <p class="text-xs text-gray-400 dark:text-slate-500">We'll email you when the Script Generator launches.</p>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Generating your script now...</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- What it will do -->
-  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">What it will do</p>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
-        <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Start with your video idea</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Paste the buyer-intent video idea you want to script. Add your product, target customer, and what problem it solves.</p>
-        </div>
-        <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a complete script</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The generator writes a full script: hook, body, and close. Structured around your buyer's decision journey, not generic content frameworks.</p>
-        </div>
-        <div>
-          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Built-in conversion path</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Every script includes a natural product mention and CTA that matches the topic, not a forced pitch bolted onto the end.</p>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- In the meantime -->
-  <section class="py-16 sm:py-20">
-    <div class="max-w-2xl mx-auto px-4 space-y-8">
-      <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Start with the right video ideas while you wait</h2>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
-          A great script starts with a buyer-intent video idea. Use the Video Ideas Generator to find topics that attract decision-stage viewers. You will have the right ideas ready when the Script Generator launches.
-        </p>
-        <a
-          href="/tools/youtube-video-ideas-generator"
-          class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
-        >
-          Generate buyer-intent video ideas &rarr;
-        </a>
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-2xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between mb-1">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Your YouTube Script</p>
+            <div class="flex items-center gap-2 text-xs text-gray-400 dark:text-slate-500">
+              <span id="result-word-count"></span>
+              <span>&middot;</span>
+              <span id="result-duration"></span>
+            </div>
+          </div>
+          <p id="result-topic" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+        </div>
+
+        <!-- Script sections -->
+        <div id="script-sections" class="divide-y divide-slate-200 dark:divide-slate-700/60">
+        </div>
+
+        <!-- Copy all -->
+        <div class="p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <button
+            id="copy-all-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Copy Full Script
+          </button>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Got your script? Now make sure your video metadata matches.</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Run your published video through our free YouTube SEO tool.</p>
+          <a
+            id="results-cta"
+            href="/tools/youtube-seo-tool"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Check your video SEO score &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Generate another script
+          </button>
+        </div>
+
       </div>
     </div>
   </section>
 
   <CallToAction
-    title="Want a script reviewed before the tool launches?"
-    subtitle="In our diagnostic call, we map your full YouTube acquisition system, including how your scripts should be structured to convert viewers into leads."
+    title="Scripts convert. Strategy compounds."
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: topics, scripts, CTAs, and the path from viewer to customer."
     actions={[
       {
         variant: 'primary',
@@ -158,6 +281,30 @@ const faqSchema = {
       },
     ]}
   />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your video details</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Your topic, video type, target customer, and what you sell. Four fields. Under 30 seconds.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a complete script</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI writes a full script: hook, body sections, and a product pitch that fits naturally into the narrative. Ready for a teleprompter.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Copy and film</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Copy the full script with one click. Load it into your teleprompter or use it as a detailed outline. Either way, you start filming today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- SEO Content -->
   <section class="py-16 sm:py-20">
@@ -205,9 +352,9 @@ const faqSchema = {
 
       <!-- Section 2: Script structure -->
       <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">The 4-part script structure for B2B YouTube videos</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">The 5-part script structure this tool uses</h2>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
-          After studying B2B channels that consistently generate leads from YouTube, four script sections appear in every high-converting video. This is the framework our Script Generator will use.
+          After studying B2B channels that consistently generate leads from YouTube, five script sections appear in every high-converting video. This is the framework the Script Generator uses.
         </p>
 
         <div class="space-y-6">
@@ -220,27 +367,35 @@ const faqSchema = {
           </div>
 
           <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
-            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">2. The body (2-8 minutes)</h3>
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">2. The setup (30-45 seconds)</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
-              Deliver the substance the title promised. If the title says "5 Mistakes When Choosing a CRM," cover exactly 5 mistakes with specific examples. Use data, screenshots, or demonstrations. The body builds trust by demonstrating that you actually know the subject matter, not just that you read about it.
+              Why this problem matters. What it costs the viewer to ignore it. Build urgency without hype. "If you pick the wrong CRM now, you will spend 6 months migrating data later."
             </p>
-            <p class="text-sm text-gray-500 dark:text-slate-500">Every minute in the body should either solve a problem, answer a question, or demonstrate expertise. Cut anything that does not do one of those three things.</p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">The setup creates the tension that makes the rest of the video feel necessary.</p>
           </div>
 
           <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
-            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">3. The product bridge (30-60 seconds)</h3>
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">3. The body (3-4 main points)</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
-              This is the moment where your product enters the conversation naturally. It should feel like a recommendation, not a commercial. "Now, the tool we use to handle this specific problem is [your product], and here is why it works for this use case." The bridge only works if the body built enough credibility first.
+              Deliver the substance the title promised. Each point is specific, includes an example or data point, and teaches something actionable. This section builds trust by demonstrating that you actually know the subject matter.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">Every minute in the body should either solve a problem, answer a question, or demonstrate expertise. Cut anything else.</p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">4. The product bridge (30-60 seconds)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              This is the moment where your product enters the conversation naturally. It should feel like a recommendation, not a commercial. "Now, the tool we use to handle this specific problem is [your product], and here is why it works for this use case."
             </p>
             <p class="text-sm text-gray-500 dark:text-slate-500">The product bridge is the most critical section. Forced here, the viewer bounces. Natural here, the viewer clicks.</p>
           </div>
 
           <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
-            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">4. The close (15-30 seconds)</h3>
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">5. The CTA (15-20 seconds)</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
-              Tell the viewer exactly what to do next. "If you want us to run this analysis for your business, the link to book a diagnostic call is in the description." Do not say "like and subscribe." Your goal is not subscribers. Your goal is customers. Every close should point to a specific conversion action.
+              One clear next step. "Book a demo," "Start a free trial," or "Download the template." Not "check out our website." Your goal is not subscribers. Your goal is customers.
             </p>
-            <p class="text-sm text-gray-500 dark:text-slate-500">The best closes reference the viewer's specific situation: "If you are a SaaS founder evaluating CRMs right now, here is how to get help."</p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">The best CTAs reference the viewer's specific situation: "If you are a SaaS founder evaluating CRMs right now, here is how to get help."</p>
           </div>
         </div>
       </div>
@@ -301,7 +456,7 @@ const faqSchema = {
           Shorter videos (under 5 minutes) work for narrow, specific topics. Longer videos (over 10 minutes) work for deep comparisons or walkthroughs. For B2B, shorter is usually better. A busy founder will watch a 6-minute comparison video. They will not watch a 20-minute one.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          The Script Generator will produce scripts calibrated to the right length for each video type. No padding, no filler sections to hit an arbitrary duration.
+          The Script Generator produces scripts calibrated to the right length for each video type. No padding, no filler sections to hit an arbitrary duration.
         </p>
       </div>
 
@@ -367,37 +522,37 @@ const faqSchema = {
         <div class="space-y-6">
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">When will the YouTube Script Generator launch?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube script generator free?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              The tool is currently in development. Join the waitlist above to be notified the day it goes live. Existing SellOnTube tools (Video Ideas Generator, Title Generator, SEO Tool) are available now.
+              Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating scripts at no cost. There is no paid tier.
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Will it generate a full word-for-word script?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Does it generate a full word-for-word script?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. The generator will produce a complete script with hook, body, product bridge, and close. It will be structured around your specific video idea, target customer, and product. You will be able to use it as-is or as a detailed starting point for your own edits.
+              Yes. The generator produces a complete script with hook, setup, body sections, product bridge, and CTA. It is structured around your specific video idea, target customer, and product. You can use it as-is or as a detailed starting point for your own edits.
             </p>
           </div>
 
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How long are the generated scripts?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Script length will be calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes). No padding or filler.
+              Script length is calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes). No padding or filler.
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Will it work with the Video Ideas Generator?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Does it work with the other SellonTube tools?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. The intended workflow is: generate ideas with the <a href="/tools/youtube-video-ideas-generator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Video Ideas Generator</a>, evaluate them with the <a href="/tools/youtube-video-ideas-evaluator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Ideas Evaluator</a>, create a title with the <a href="/tools/youtube-title-generator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Title Generator</a>, then produce the script. Each tool feeds into the next.
+              Yes. The intended workflow is: generate ideas with the <a href="/tools/youtube-video-ideas-generator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Video Ideas Generator</a>, evaluate them with the <a href="/tools/youtube-video-ideas-evaluator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Ideas Evaluator</a>, create a title with the <a href="/tools/youtube-title-generator" class="text-emerald-600 dark:text-emerald-400 hover:underline">Title Generator</a>, then produce the script here. Each tool feeds into the next.
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is the Script Generator free?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is the product pitch forced or natural?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. Like all SellOnTube tools, the Script Generator will be free with an email gate for unlimited use. No paid tier.
+              Natural. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed. It reads like advice from an expert, not a commercial.
             </p>
           </div>
 
@@ -438,30 +593,241 @@ const faqSchema = {
 </Layout>
 
 <script>
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_script_gen_count';
+  const EMAIL_KEY = 'sot_script_gen_email_submitted';
   const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
 
-  async function submitWaitlist(): Promise<void> {
-    const emailInput = document.getElementById('waitlist-email') as HTMLInputElement;
-    const errorEl = document.getElementById('waitlist-error') as HTMLElement;
-    const btn = document.getElementById('waitlist-btn') as HTMLButtonElement;
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-topic');
+      heading?.focus();
+    }
+  }
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited generations unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free generation remaining' : remaining + ' free generations remaining';
+  }
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error').replace('-select', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error').replace('-select', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    const topic = (document.getElementById('topic-input') as HTMLInputElement).value.trim();
+    const customer = (document.getElementById('customer-input') as HTMLInputElement).value.trim();
+    const product = (document.getElementById('product-input') as HTMLInputElement).value.trim();
+
+    let valid = true;
+
+    if (!topic || topic.length < 3) {
+      showFieldError('topic-input', 'Please enter your video topic (min 3 characters).');
+      valid = false;
+    } else { clearFieldError('topic-input'); }
+
+    if (!customer || customer.length < 3) {
+      showFieldError('customer-input', 'Please enter your target customer (min 3 characters).');
+      valid = false;
+    } else { clearFieldError('customer-input'); }
+
+    if (!product || product.length < 2) {
+      showFieldError('product-input', 'Please enter your product or service.');
+      valid = false;
+    } else { clearFieldError('product-input'); }
+
+    return valid;
+  }
+
+  interface ScriptResult {
+    hook: string;
+    setup: string;
+    body: { heading: string; content: string }[];
+    productBridge: string;
+    cta: string;
+    estimatedMinutes: number;
+    wordCount: number;
+  }
+
+  let lastScript: ScriptResult | null = null;
+
+  function escapeHtml(text: string): string {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderScript(script: ScriptResult): void {
+    lastScript = script;
+
+    const topic = (document.getElementById('topic-input') as HTMLInputElement).value.trim();
+    const resultTopic = document.getElementById('result-topic');
+    if (resultTopic) resultTopic.textContent = topic;
+
+    const wordCount = document.getElementById('result-word-count');
+    const duration = document.getElementById('result-duration');
+    if (wordCount) wordCount.textContent = (script.wordCount || '~1,000') + ' words';
+    if (duration) duration.textContent = '~' + (script.estimatedMinutes || 6) + ' min video';
+
+    const sections = document.getElementById('script-sections');
+    if (!sections) return;
+
+    const sectionData = [
+      { label: 'Hook', icon: '1', content: script.hook },
+      { label: 'Setup', icon: '2', content: script.setup },
+      ...script.body.map((b, i) => ({ label: b.heading, icon: String(i + 3), content: b.content })),
+      { label: 'Product Bridge', icon: String(script.body.length + 3), content: script.productBridge },
+      { label: 'CTA', icon: String(script.body.length + 4), content: script.cta },
+    ];
+
+    sections.innerHTML = sectionData.map((s) => {
+      return (
+        '<div class="p-6 sm:p-8">' +
+          '<div class="flex items-start gap-3">' +
+            '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + escapeHtml(s.icon) + '</span>' +
+            '<div class="min-w-0 flex-1">' +
+              '<p class="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">' + escapeHtml(s.label) + '</p>' +
+              '<div class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-line" data-section-text></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    sections.querySelectorAll('[data-section-text]').forEach((el, i) => {
+      (el as HTMLElement).textContent = sectionData[i].content;
+    });
+  }
+
+  function getFullScriptText(): string {
+    if (!lastScript) return '';
+    const parts = [
+      '[HOOK]\n' + lastScript.hook,
+      '\n[SETUP]\n' + lastScript.setup,
+      ...lastScript.body.map((b) => '\n[' + b.heading.toUpperCase() + ']\n' + b.content),
+      '\n[PRODUCT BRIDGE]\n' + lastScript.productBridge,
+      '\n[CTA]\n' + lastScript.cta,
+    ];
+    return parts.join('\n');
+  }
+
+  async function fetchScript(topic: string, videoType: string, targetCustomer: string, product: string): Promise<void> {
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/generate-script', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic, videoType, targetCustomer, product }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate Script \u2192';
+        showFieldError('product-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-script-generator', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) throw new Error('API error ' + res.status);
+
+      const data = await res.json();
+      if (!data?.hook || !Array.isArray(data?.body)) throw new Error('Invalid script structure');
+
+      renderScript(data);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-script-generator' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Generate Script \u2192';
+      showFieldError('product-input', 'Something went wrong on our end. Please try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-script-generator', reason: 'api_error' });
+    }
+  }
+
+  async function generate(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const topic = (document.getElementById('topic-input') as HTMLInputElement).value.trim();
+    const videoType = (document.getElementById('type-select') as HTMLSelectElement).value;
+    const targetCustomer = (document.getElementById('customer-input') as HTMLInputElement).value.trim();
+    const product = (document.getElementById('product-input') as HTMLInputElement).value.trim();
+
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-script-generator' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-script-generator' });
+
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Generating...';
+    showStep('step-loading');
+
+    await fetchScript(topic, videoType, targetCustomer, product);
+  }
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
     const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      errorEl.textContent = 'Please enter a valid email address.';
-      errorEl.classList.remove('hidden');
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
       return;
     }
 
     const domain = email.split('@')[1];
     if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)';
-      errorEl.classList.remove('hidden');
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
       return;
     }
 
-    errorEl.classList.add('hidden');
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
     btn.textContent = 'Submitting...';
     btn.setAttribute('disabled', 'true');
 
@@ -470,21 +836,98 @@ const faqSchema = {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'youtube-script-generator-waitlist' }),
+        body: JSON.stringify({ email, source: 'youtube-script-generator' }),
       });
     } catch { /* no-cors always resolves */ }
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_waitlist_submitted', tool: 'youtube-script-generator' });
+    setEmailSubmitted();
+    updateCounterLabel();
 
-    const form = document.getElementById('waitlist-form') as HTMLElement;
-    const success = document.getElementById('waitlist-success') as HTMLElement;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-script-generator' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
     form.classList.add('hidden');
     success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Generating';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      generate();
+    }, 1200);
   }
 
-  document.getElementById('waitlist-btn')?.addEventListener('click', submitWaitlist);
-  document.getElementById('waitlist-email')?.addEventListener('keydown', (e) => {
-    if ((e as KeyboardEvent).key === 'Enter') submitWaitlist();
+  function reset(): void {
+    (document.getElementById('topic-input') as HTMLInputElement).value = '';
+    clearFieldError('topic-input');
+    (document.getElementById('customer-input') as HTMLInputElement).value = '';
+    clearFieldError('customer-input');
+    (document.getElementById('product-input') as HTMLInputElement).value = '';
+    clearFieldError('product-input');
+    (document.getElementById('type-select') as HTMLSelectElement).selectedIndex = 0;
+    showStep('step-input');
+    (document.getElementById('topic-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Generate Script \u2192';
+    lastScript = null;
+  }
+
+  // Copy full script
+  document.getElementById('copy-all-btn')?.addEventListener('click', () => {
+    const text = getFullScriptText();
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-all-btn') as HTMLButtonElement;
+      btn.textContent = 'Copied!';
+      btn.classList.add('bg-emerald-600');
+      setTimeout(() => {
+        btn.textContent = 'Copy Full Script';
+        btn.classList.remove('bg-emerald-600');
+      }, 1500);
+    });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'script_copied', tool: 'youtube-script-generator' });
   });
+
+  // CTA tracking
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-script-generator' });
+  });
+
+  // Event listeners
+  document.getElementById('generate-btn')?.addEventListener('click', generate);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  document.getElementById('topic-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.getElementById('customer-input') as HTMLInputElement)?.focus();
+    }
+  });
+
+  document.getElementById('customer-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.getElementById('product-input') as HTMLInputElement)?.focus();
+    }
+  });
+
+  document.getElementById('product-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      generate();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
 </script>
