@@ -79,7 +79,7 @@ export default async (request: Request) => {
 
     if (items.length === 0) {
       return new Response(
-        JSON.stringify({ keyword: keyword.trim(), channelId, rank: null, results: [] }),
+        JSON.stringify({ keyword: keyword.trim(), channelInput: channelInput?.trim() || '', userRank: null, userVideo: null, results: [] }),
         { status: 200, headers }
       );
     }
@@ -110,31 +110,35 @@ export default async (request: Request) => {
     }
 
     // --- Build results ---
-    let rank: number | null = null;
+    let userRank: number | null = null;
+    let userVideo: any = null;
     const results = items.map((item: any, index: number) => {
       const videoId = item.id.videoId;
       const itemChannelId = item.snippet.channelId;
       const isOwnVideo = channelId ? itemChannelId === channelId : false;
       const position = index + 1;
 
-      if (isOwnVideo && rank === null) {
-        rank = position;
-      }
-
-      return {
+      const result = {
         position,
         videoId,
         title: item.snippet.title,
-        channelTitle: item.snippet.channelTitle,
+        channelName: item.snippet.channelTitle,
         channelId: itemChannelId,
         viewCount: viewCountMap[videoId] ?? 0,
         publishedAt: item.snippet.publishedAt,
         isOwnVideo,
       };
+
+      if (isOwnVideo && userRank === null) {
+        userRank = position;
+        userVideo = result;
+      }
+
+      return result;
     });
 
     return new Response(
-      JSON.stringify({ keyword: keyword.trim(), channelId, rank, results }),
+      JSON.stringify({ keyword: keyword.trim(), channelInput: channelInput?.trim() || '', userRank, userVideo, results }),
       { status: 200, headers }
     );
   } catch (error) {
