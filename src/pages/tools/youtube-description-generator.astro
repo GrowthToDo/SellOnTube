@@ -8,7 +8,7 @@ const siteUrl = SITE.site || 'https://sellontube.com';
 const metadata = {
   title: 'Free YouTube Description Generator for Business',
   description:
-    'Generate SEO-optimized YouTube descriptions with timestamps and tags. Built for business channels that use YouTube to get customers. Free.',
+    'Paste a YouTube video URL and your CTA link. Get an optimized description with above-the-fold hook, timestamps from the transcript, tags, and UTM tracking. Free.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Description Generator",
   "url": `${siteUrl}/tools/youtube-description-generator`,
-  "description": "Generate SEO-optimized YouTube descriptions with timestamps and tags. Above-the-fold hook, keyword placement, CTA link, and chapter markers. Built for business channels. Free.",
+  "description": "Paste a YouTube video URL and your landing page link. Get an optimized description with above-the-fold hook, transcript-based timestamps, tags, and UTM tracking. Built for business channels. Free.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -58,14 +58,14 @@ const faqSchema = {
     <div class="max-w-3xl mx-auto px-4 text-center">
       <div class="flex flex-wrap justify-center gap-2 mb-6">
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">SEO-optimized</span>
-        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Timestamps included</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Timestamps from transcript</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
         YouTube Descriptions That<br class="hidden sm:block" /> Get Found by Buyers
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Enter your video title, topic, and target keyword. Get a complete description with above-the-fold hook, timestamps, and tags.
+        Paste your video URL and landing page link. Get a complete description with above-the-fold hook, transcript-based timestamps, tags, and UTM tracking.
       </p>
     </div>
   </section>
@@ -79,63 +79,45 @@ const faqSchema = {
         <div class="space-y-5">
 
           <div>
-            <label for="title-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
-              Video title
+            <label for="video-url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              YouTube Video URL
             </label>
             <input
               type="text"
-              id="title-input"
-              placeholder="e.g. Best CRM Tools for Small Business"
+              id="video-url-input"
+              placeholder="e.g. https://youtube.com/watch?v=dQw4w9WgXcQ"
               class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
-              aria-describedby="title-error"
+              aria-describedby="video-url-error"
             />
-            <p id="title-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+            <p id="video-url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           </div>
 
           <div>
-            <label for="summary-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
-              Video topic / summary
-            </label>
-            <textarea
-              id="summary-input"
-              rows="3"
-              placeholder="Brief summary of what the video covers (2-3 sentences)"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
-                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors resize-none"
-              aria-describedby="summary-error"
-            ></textarea>
-            <p id="summary-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
-          </div>
-
-          <div>
-            <label for="keyword-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
-              Target keyword
+            <label for="cta-link-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              CTA Link
             </label>
             <input
               type="text"
-              id="keyword-input"
-              placeholder="e.g. best CRM for small business"
+              id="cta-link-input"
+              placeholder="e.g. https://yoursite.com/demo"
               class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                      focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
-              aria-describedby="keyword-error"
+              aria-describedby="cta-link-error"
             />
-            <p id="keyword-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+            <p id="cta-link-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           </div>
 
-          <div>
-            <label for="website-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
-              Your website URL
-            </label>
+          <div class="flex items-center gap-2">
             <input
-              type="text"
-              id="website-input"
-              placeholder="e.g. https://yoursite.com"
-              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
-                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
-              aria-describedby="website-error"
+              type="checkbox"
+              id="utm-toggle"
+              checked
+              class="w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-emerald-500 focus:ring-emerald-500 focus:ring-offset-0"
             />
-            <p id="website-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+            <label for="utm-toggle" class="text-xs text-gray-500 dark:text-slate-400 select-none">
+              Add UTM tracking parameters
+            </label>
           </div>
 
         </div>
@@ -160,8 +142,8 @@ const faqSchema = {
       >
         <div class="flex flex-col items-center gap-4 py-10">
           <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Writing your description...</p>
-          <p class="text-xs text-gray-400 dark:text-slate-600">Optimizing for search and conversions</p>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Fetching video data and writing your description...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">Analyzing transcript, optimizing for search and conversions</p>
         </div>
       </div>
 
@@ -215,6 +197,7 @@ const faqSchema = {
         <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
           <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">YouTube description for</p>
           <p id="result-title" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+          <p id="transcript-note" class="hidden mt-1.5 text-xs text-emerald-600 dark:text-emerald-400">Timestamps generated from video transcript</p>
         </div>
 
         <!-- Above the fold -->
@@ -230,6 +213,18 @@ const faqSchema = {
             class="mt-3 text-xs border border-emerald-500/30 rounded-lg px-3 py-1.5 text-emerald-600 dark:text-emerald-400 hover:border-emerald-500/60 transition-colors"
           >
             Copy above-the-fold
+          </button>
+        </div>
+
+        <!-- CTA with UTM -->
+        <div id="cta-utm-section" class="hidden p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">CTA link with UTM tracking</p>
+          <p id="cta-utm-text" class="text-sm text-emerald-600 dark:text-emerald-400 font-mono break-all"></p>
+          <button
+            id="copy-cta-btn"
+            class="mt-3 text-xs border border-emerald-500/30 rounded-lg px-3 py-1.5 text-emerald-600 dark:text-emerald-400 hover:border-emerald-500/60 transition-colors"
+          >
+            Copy link
           </button>
         </div>
 
@@ -265,15 +260,23 @@ const faqSchema = {
 
         <!-- Inline CTA -->
         <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
-          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Description done? Check if your full video is optimized for YouTube search.</p>
-          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Run your video through our free YouTube SEO tool.</p>
-          <a
-            id="results-cta"
-            href="/tools/youtube-seo-tool"
-            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
-          >
-            Check your video SEO score &rarr;
-          </a>
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Description done? Now optimize your tags for buyer-intent search.</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Generate tags that attract customers, not just viewers.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              id="results-cta"
+              href="/tools/youtube-tag-generator"
+              class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+            >
+              Generate tags for this video &rarr;
+            </a>
+            <a
+              href="/tools/youtube-seo-tool"
+              class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold border border-slate-200 dark:border-slate-700 text-gray-600 dark:text-slate-400 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+            >
+              Run full SEO audit
+            </a>
+          </div>
         </div>
 
         <!-- Reset -->
@@ -311,18 +314,18 @@ const faqSchema = {
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your video details</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Add your video title, a short summary, the keyword you want to rank for, and your website URL. Four fields. Under 60 seconds.</p>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste your video URL</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Drop in any YouTube video link and the landing page you want to drive traffic to. Two fields. Under 10 seconds.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
-          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a complete description</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI generates an above-the-fold hook, a keyword-rich body, suggested timestamps, and relevant tags. Everything YouTube needs to rank your video.</p>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">We analyze your video</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">We fetch your video's title, existing description, and transcript. Then AI generates an optimized description with accurate timestamps based on your actual content.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
           <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Copy and publish</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Copy the full description with one click. Paste it into YouTube Studio. Adjust timestamps to match your actual video, and you are done.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Copy the full description with one click. Paste it into YouTube Studio. Your CTA link already has UTM parameters so you can track traffic from each video.</p>
         </div>
       </div>
     </div>
@@ -443,24 +446,29 @@ const faqSchema = {
               </thead>
               <tbody class="text-gray-600 dark:text-slate-400">
                 <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Analyzes your actual video</td>
+                  <td class="px-4 py-2.5 text-center">No</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Yes, via transcript</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
                   <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Above-the-fold optimization</td>
                   <td class="px-4 py-2.5 text-center">No</td>
                   <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Yes, with character count</td>
                 </tr>
                 <tr class="border-b border-slate-100 dark:border-slate-800">
-                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">CTA link placement</td>
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">CTA link with UTM tracking</td>
                   <td class="px-4 py-2.5 text-center">Manual</td>
-                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Automatic, above fold</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Automatic</td>
                 </tr>
                 <tr class="border-b border-slate-100 dark:border-slate-800">
                   <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Timestamps</td>
                   <td class="px-4 py-2.5 text-center">Not included</td>
-                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Auto-generated</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">From transcript</td>
                 </tr>
                 <tr class="border-b border-slate-100 dark:border-slate-800">
                   <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Tags</td>
                   <td class="px-4 py-2.5 text-center">Not included</td>
-                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">5-8 relevant tags</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">8-12 relevant tags</td>
                 </tr>
                 <tr>
                   <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Built for</td>
@@ -473,7 +481,7 @@ const faqSchema = {
         </div>
 
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          The tool outputs four separate sections instead of one block of text. The above-the-fold hook is written and measured independently because it is the only part most viewers will read. The full description body is optimized for keyword density without sounding robotic. Timestamps are pre-formatted for YouTube's chapter detection. Tags are selected for relevance, not volume.
+          The tool outputs four separate sections instead of one block of text. The above-the-fold hook is written and measured independently because it is the only part most viewers will read. The full description body is optimized for keyword density without sounding robotic. Timestamps are generated from your video's actual transcript, not guessed from the title. Tags are selected for relevance, not volume.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
           The "Copy Full Description" button combines all four sections into a single formatted block you can paste directly into YouTube Studio. No reformatting needed.
@@ -618,32 +626,23 @@ const faqSchema = {
   }
 
   function validateInputs(): boolean {
-    const title = (document.getElementById('title-input') as HTMLInputElement).value.trim();
-    const summary = (document.getElementById('summary-input') as HTMLTextAreaElement).value.trim();
-    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
-    const website = (document.getElementById('website-input') as HTMLInputElement).value.trim();
+    const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
+    const ctaLink = (document.getElementById('cta-link-input') as HTMLInputElement).value.trim();
 
     let valid = true;
 
-    if (!title || title.length < 3) {
-      showFieldError('title-input', 'Please enter your video title (min 3 characters).');
+    // Basic YouTube URL validation
+    const ytPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
+    const isVideoId = /^[\w-]{11}$/.test(videoUrl);
+    if (!videoUrl || (!ytPattern.test(videoUrl) && !isVideoId)) {
+      showFieldError('video-url-input', 'Please enter a valid YouTube video URL.');
       valid = false;
-    } else { clearFieldError('title-input'); }
+    } else { clearFieldError('video-url-input'); }
 
-    if (!summary || summary.length < 10) {
-      showFieldError('summary-input', 'Please describe what your video covers (min 10 characters).');
+    if (!ctaLink || !ctaLink.match(/^https?:\/\/.+/)) {
+      showFieldError('cta-link-input', 'Please enter a valid URL starting with https://');
       valid = false;
-    } else { clearFieldError('summary-input'); }
-
-    if (!keyword || keyword.length < 2) {
-      showFieldError('keyword-input', 'Please enter a target keyword (min 2 characters).');
-      valid = false;
-    } else { clearFieldError('keyword-input'); }
-
-    if (!website || !website.match(/^https?:\/\/.+/)) {
-      showFieldError('website-input', 'Please enter a valid URL starting with https://');
-      valid = false;
-    } else { clearFieldError('website-input'); }
+    } else { clearFieldError('cta-link-input'); }
 
     return valid;
   }
@@ -651,16 +650,31 @@ const faqSchema = {
   // ===== RESULT RENDERING =====
 
   interface DescriptionResult {
+    videoTitle: string;
     aboveFold: string;
     fullDescription: string;
     timestamps: string[];
     tags: string[];
+    ctaWithUtm: string;
+    hasTranscript: boolean;
   }
 
   function renderResults(data: DescriptionResult): void {
-    const titleInput = (document.getElementById('title-input') as HTMLInputElement).value.trim();
     const resultTitle = document.getElementById('result-title');
-    if (resultTitle) resultTitle.textContent = titleInput;
+    if (resultTitle) resultTitle.textContent = data.videoTitle;
+
+    // Transcript note
+    const transcriptNote = document.getElementById('transcript-note');
+    if (transcriptNote) {
+      if (data.hasTranscript) {
+        transcriptNote.classList.remove('hidden');
+      } else {
+        transcriptNote.textContent = 'No transcript available. Timestamps are estimated based on the video topic.';
+        transcriptNote.classList.remove('hidden');
+        transcriptNote.classList.remove('text-emerald-600', 'dark:text-emerald-400');
+        transcriptNote.classList.add('text-gray-400', 'dark:text-slate-500');
+      }
+    }
 
     // Above the fold
     const aboveFoldEl = document.getElementById('above-fold-text');
@@ -668,6 +682,14 @@ const faqSchema = {
 
     const countEl = document.getElementById('above-fold-count');
     if (countEl) countEl.textContent = data.aboveFold.length + ' characters';
+
+    // CTA with UTM
+    const ctaSection = document.getElementById('cta-utm-section');
+    const ctaText = document.getElementById('cta-utm-text');
+    if (ctaSection && ctaText && data.ctaWithUtm) {
+      ctaText.textContent = data.ctaWithUtm;
+      ctaSection.classList.remove('hidden');
+    }
 
     // Full description
     const fullDescEl = document.getElementById('full-desc-text');
@@ -706,27 +728,31 @@ const faqSchema = {
 
   let lastResult: DescriptionResult | null = null;
 
-  async function fetchDescription(title: string, summary: string, keyword: string, websiteUrl: string): Promise<void> {
+  async function fetchDescription(videoUrl: string, ctaLink: string, addUtm: boolean): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
 
     try {
       const res = await fetch('/api/generate-description', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, summary, keyword, websiteUrl }),
+        body: JSON.stringify({ videoUrl, ctaLink, addUtm }),
       });
 
       if (res.status === 429) {
         showStep('step-input');
         btn.disabled = false;
         btn.textContent = 'Generate Description \u2192';
-        showFieldError('website-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        showFieldError('cta-link-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-description-generator', reason: 'quota_exceeded' });
         return;
       }
 
-      if (!res.ok) throw new Error('API error ' + res.status);
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        const msg = errData?.error || 'API error ' + res.status;
+        throw new Error(msg);
+      }
 
       const data = await res.json();
       if (!data?.aboveFold || !data?.fullDescription || !Array.isArray(data?.timestamps) || !Array.isArray(data?.tags)) {
@@ -743,11 +769,14 @@ const faqSchema = {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-description-generator' });
 
-    } catch {
+    } catch (err) {
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Generate Description \u2192';
-      showFieldError('website-input', 'Something went wrong on our end. Please try again in a moment.');
+      const message = (err instanceof Error && err.message.includes('Video not found'))
+        ? err.message
+        : 'Something went wrong on our end. Please try again in a moment.';
+      showFieldError('video-url-input', message);
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-description-generator', reason: 'api_error' });
     }
@@ -758,10 +787,9 @@ const faqSchema = {
   async function generate(): Promise<void> {
     if (!validateInputs()) return;
 
-    const title = (document.getElementById('title-input') as HTMLInputElement).value.trim();
-    const summary = (document.getElementById('summary-input') as HTMLTextAreaElement).value.trim();
-    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
-    const websiteUrl = (document.getElementById('website-input') as HTMLInputElement).value.trim();
+    const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
+    const ctaLink = (document.getElementById('cta-link-input') as HTMLInputElement).value.trim();
+    const addUtm = (document.getElementById('utm-toggle') as HTMLInputElement).checked;
 
     // Email gate check
     if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
@@ -779,7 +807,7 @@ const faqSchema = {
     btn.textContent = 'Generating...';
     showStep('step-loading');
 
-    await fetchDescription(title, summary, keyword, websiteUrl);
+    await fetchDescription(videoUrl, ctaLink, addUtm);
   }
 
   // ===== EMAIL GATE =====
@@ -862,22 +890,32 @@ const faqSchema = {
   }
 
   handleCopy('copy-above-fold-btn', () => lastResult?.aboveFold || '', 'above_fold');
+  handleCopy('copy-cta-btn', () => lastResult?.ctaWithUtm || '', 'cta_utm');
   handleCopy('copy-full-btn', () => lastResult ? buildFullCopyText(lastResult) : '', 'full');
 
   // ===== RESET =====
 
   function reset(): void {
-    (document.getElementById('title-input') as HTMLInputElement).value = '';
-    clearFieldError('title-input');
-    (document.getElementById('summary-input') as HTMLTextAreaElement).value = '';
-    clearFieldError('summary-input');
-    (document.getElementById('keyword-input') as HTMLInputElement).value = '';
-    clearFieldError('keyword-input');
-    (document.getElementById('website-input') as HTMLInputElement).value = '';
-    clearFieldError('website-input');
+    (document.getElementById('video-url-input') as HTMLInputElement).value = '';
+    clearFieldError('video-url-input');
+    (document.getElementById('cta-link-input') as HTMLInputElement).value = '';
+    clearFieldError('cta-link-input');
+    (document.getElementById('utm-toggle') as HTMLInputElement).checked = true;
     lastResult = null;
+
+    // Hide CTA UTM section and reset transcript note
+    const ctaSection = document.getElementById('cta-utm-section');
+    if (ctaSection) ctaSection.classList.add('hidden');
+    const transcriptNote = document.getElementById('transcript-note');
+    if (transcriptNote) {
+      transcriptNote.classList.add('hidden');
+      transcriptNote.classList.remove('text-gray-400', 'dark:text-slate-500');
+      transcriptNote.classList.add('text-emerald-600', 'dark:text-emerald-400');
+      transcriptNote.textContent = 'Timestamps generated from video transcript';
+    }
+
     showStep('step-input');
-    (document.getElementById('title-input') as HTMLInputElement).focus();
+    (document.getElementById('video-url-input') as HTMLInputElement).focus();
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
     btn.disabled = false;
     btn.textContent = 'Generate Description \u2192';
@@ -897,21 +935,14 @@ const faqSchema = {
   document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
 
   // Enter key navigation
-  document.getElementById('title-input')?.addEventListener('keydown', (e) => {
+  document.getElementById('video-url-input')?.addEventListener('keydown', (e) => {
     if ((e as KeyboardEvent).key === 'Enter') {
       e.preventDefault();
-      (document.getElementById('summary-input') as HTMLTextAreaElement)?.focus();
+      (document.getElementById('cta-link-input') as HTMLInputElement)?.focus();
     }
   });
 
-  document.getElementById('keyword-input')?.addEventListener('keydown', (e) => {
-    if ((e as KeyboardEvent).key === 'Enter') {
-      e.preventDefault();
-      (document.getElementById('website-input') as HTMLInputElement)?.focus();
-    }
-  });
-
-  document.getElementById('website-input')?.addEventListener('keydown', (e) => {
+  document.getElementById('cta-link-input')?.addEventListener('keydown', (e) => {
     if ((e as KeyboardEvent).key === 'Enter') {
       e.preventDefault();
       generate();
