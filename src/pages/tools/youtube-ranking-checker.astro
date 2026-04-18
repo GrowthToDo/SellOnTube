@@ -626,7 +626,7 @@ const faqSchema = {
     const btn = document.getElementById('check-btn') as HTMLButtonElement;
 
     try {
-      const res = await fetch('/.netlify/functions/youtube-rank-check', {
+      const res = await fetch('/api/youtube-rank-check', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ keyword, channelInput, maxResults: 20 }),
