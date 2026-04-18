@@ -1,0 +1,797 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: 'Free YouTube Ranking Checker for Business',
+  description:
+    'Check where your videos rank for any keyword on YouTube. See your position and the top 10 competing videos with view counts and age. Free, no login required.',
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Ranking Checker", "item": `${siteUrl}/tools/youtube-ranking-checker` }
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Ranking Checker",
+  "url": `${siteUrl}/tools/youtube-ranking-checker`,
+  "description": "Check where your videos rank for any keyword on YouTube. See your position and the top 10 competing videos with view counts and age. Free, no login required.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free ranking checks without any signup. After that, enter your business email to keep checking at no cost. There is no paid tier." } },
+    { "@type": "Question", "name": "Do I need to log in?", "acceptedAnswer": { "@type": "Answer", "text": "No. The YouTube ranking checker works without any login or YouTube account access. It searches YouTube's public results for your keyword and matches them against your channel." } },
+    { "@type": "Question", "name": "How accurate is the ranking?", "acceptedAnswer": { "@type": "Answer", "text": "The tool checks YouTube search results in real time. Rankings can vary slightly by location and personalization, but the results reflect what a typical searcher would see for that keyword." } },
+    { "@type": "Question", "name": "How often should I check my rankings?", "acceptedAnswer": { "@type": "Answer", "text": "Check weekly for your most important keywords. YouTube rankings shift faster than Google, so a video that ranks #5 today could move to #2 or #12 within a week depending on engagement and new uploads." } },
+    { "@type": "Question", "name": "Why am I not ranking?", "acceptedAnswer": { "@type": "Answer", "text": "If your channel does not appear in the top 20 results, your video may not target that keyword in the title or description. YouTube ranks videos based on relevance signals: title match, description keywords, tags, engagement, and watch time. Start by optimizing your metadata with the target keyword." } },
+    { "@type": "Question", "name": "Can I check competitor channels?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill." } },
+  ]
+};
+
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Top 20 results</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">No login required</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        Where Does Your Video Rank<br class="hidden sm:block" /> for That Keyword?
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Enter a keyword and your channel. See your position in YouTube search results, plus the top 10 competing videos with view counts and age.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+          <div>
+            <label for="keyword-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Keyword
+            </label>
+            <input
+              type="text"
+              id="keyword-input"
+              placeholder="Enter a keyword, e.g. best crm for agencies"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="keyword-error"
+            />
+            <p id="keyword-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+          <div>
+            <label for="channel-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Your channel URL or handle
+            </label>
+            <input
+              type="text"
+              id="channel-input"
+              placeholder="Your channel URL or @handle"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="channel-error"
+            />
+            <p id="channel-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+        </div>
+
+        <button
+          id="check-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Check My Ranking &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free checks remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Searching YouTube for your keyword...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This takes 10-15 seconds</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free checks</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep checking rankings. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Checking
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Running your ranking check now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-3xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header with ranking position -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Ranking results for</p>
+          <p id="result-keyword" tabindex="-1" class="text-lg font-bold text-gray-900 dark:text-white mb-4"></p>
+          <div id="rank-position-box" class="flex items-center gap-4">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- Top 10 results -->
+        <div class="border-b border-slate-200 dark:border-slate-700/60">
+          <div class="px-6 sm:px-8 pt-6 pb-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Top 10 YouTube results</p>
+          </div>
+          <div id="results-list" class="divide-y divide-slate-200 dark:divide-slate-700/40">
+          </div>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Want to rank higher for this keyword?</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Our YouTube SEO tool scores your video's title, description, and tags so you know exactly what to fix.</p>
+          <a
+            id="results-cta"
+            href="/tools/youtube-seo-tool"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Check your video SEO &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Check Another Keyword
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Rankings show the problem. Strategy fixes it."
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: keyword targeting, metadata, and the path from search to customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your keyword and channel</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Type the keyword your buyers search for and paste your channel URL or @handle. The tool searches YouTube in real time.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">See your position</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">If your channel appears in the top 20 results, you see your exact position. If not, you know that keyword needs work.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Study the competition</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Review the top 10 results with view counts and video age. Understand what is already ranking and what you need to beat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Sections -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why YouTube keyword rank checking matters for businesses</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube is the second largest search engine. When a potential customer searches for a keyword related to your product or service, the video that ranks #1 gets the click. Position #5 gets a fraction of that traffic. Position #20 gets almost nothing.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A YouTube video rank checker tells you exactly where you stand. Without it, you are publishing content and hoping it shows up. That is not a strategy. Checking your rank for specific keywords turns YouTube from a content calendar into a measurable acquisition channel.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          For B2B companies, this matters more than view counts. A video with 500 views that ranks #1 for "best CRM for agencies" will generate more qualified leads than a viral video with 100,000 views from the wrong audience. The YouTube keyword rank checker shows you whether your videos are reaching the right people. For more on this, see our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What the YouTube ranking checker shows you</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          This tool searches YouTube for your keyword and returns the top 20 results. Here is what you get and how to use each data point.
+        </p>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Your ranking position</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              If your channel has a video in the top 20 results, you see your exact position. This is the number that matters for acquisition. Positions 1-3 capture the majority of clicks. Positions 4-10 still get traffic. Below 10, you are effectively invisible for that keyword.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Competing video titles</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The titles of ranking videos reveal what YouTube considers relevant for that keyword. Study them. If every top result uses the keyword in the first 3 words, that is a signal about title structure. If the top results use a different phrasing than your video, your title may need updating.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">View counts</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              View counts on ranking videos show you the size of the opportunity. If the #1 result has 200K views, that keyword drives significant traffic. If the top results have under 1,000 views, the keyword is either niche (which can be good for B2B) or low-intent.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Video age</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The age of ranking videos tells you about competition dynamics. If the top results are all 2-3 years old, there may be an opportunity to create fresher content and outrank them. If the top results are all recent, the keyword is competitive and you will need strong metadata and engagement to compete.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to improve your YouTube ranking</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          If you are not ranking where you want to be, here are the highest-impact fixes. Start with the first one and work down.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Put the keyword in your title</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The single biggest ranking factor is title relevance. If your target keyword is "youtube seo tools" and your title is "5 Tools Every Creator Needs," YouTube cannot connect the two. Rewrite the title to include the exact keyword. Use our <a href="/tools/youtube-title-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">title generator</a> to test alternatives.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Optimize your description</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube reads the first 150 characters of your description to understand what the video covers. Front-load your keyword and a clear summary. Do not start with "Hey guys, welcome back." Start with what the video teaches and who it is for.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Check your tags</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Tags are a secondary ranking signal, but they still matter. Include your target keyword as a tag, along with close variations. Use our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to find the right tags for your keyword.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Improve watch time</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube promotes videos that keep viewers watching. If your video has a high drop-off rate in the first 30 seconds, consider re-editing the intro. Hook the viewer with the outcome they will get, not a long introduction about yourself or your company.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this tool free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free ranking checks without any signup. After that, enter your business email to keep checking at no cost. There is no paid tier.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Do I need to log in?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              No. The YouTube ranking checker works without any login or YouTube account access. It searches YouTube's public results for your keyword and matches them against your channel.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How accurate is the ranking?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The tool checks YouTube search results in real time. Rankings can vary slightly by location and personalization, but the results reflect what a typical searcher would see for that keyword.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How often should I check my rankings?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Check weekly for your most important keywords. YouTube rankings shift faster than Google, so a video that ranks #5 today could move to #2 or #12 within a week depending on engagement and new uploads.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why am I not ranking?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              If your channel does not appear in the top 20 results, your video may not target that keyword in the title or description. YouTube ranks videos based on relevance signals: title match, description keywords, tags, engagement, and watch time. Start by optimizing your metadata with the target keyword.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I check competitor channels?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Score individual videos on title, description, tags, and more.</p>
+        </a>
+        <a href="/tools/youtube-tag-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Tag Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Generate optimized tags for your YouTube videos.</p>
+        </a>
+        <a href="/tools/youtube-channel-audit" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Channel Audit</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Audit your channel's metadata across 4 SEO dimensions.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_rank_checker_count';
+  const EMAIL_KEY = 'sot_rank_checker_email';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-keyword');
+      heading?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited checks unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free check remaining' : remaining + ' free checks remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    let valid = true;
+    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
+    const channel = (document.getElementById('channel-input') as HTMLInputElement).value.trim();
+
+    if (!keyword || keyword.length < 2) {
+      showFieldError('keyword-input', 'Please enter a keyword to check.');
+      valid = false;
+    } else {
+      clearFieldError('keyword-input');
+    }
+
+    if (!channel || channel.length < 2) {
+      showFieldError('channel-input', 'Please enter a YouTube channel URL or @handle.');
+      valid = false;
+    } else {
+      clearFieldError('channel-input');
+    }
+
+    return valid;
+  }
+
+  // ===== HELPERS =====
+
+  function formatAge(publishedAt: string): string {
+    const ageMs = Date.now() - new Date(publishedAt).getTime();
+    const totalMonths = Math.floor(ageMs / (1000 * 60 * 60 * 24 * 30.44));
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    if (years === 0) return months + 'mo';
+    if (months === 0) return years + 'y';
+    return years + 'y ' + months + 'mo';
+  }
+
+  function formatViewCount(n: number): string {
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  }
+
+  function escapeHtml(text: string): string {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // ===== RENDER RESULTS =====
+
+  interface RankResult {
+    position: number;
+    videoId: string;
+    title: string;
+    channelName: string;
+    channelId: string;
+    viewCount: number;
+    publishedAt: string;
+  }
+
+  interface RankCheckResponse {
+    keyword: string;
+    channelInput: string;
+    userRank: number | null;
+    userVideo: RankResult | null;
+    results: RankResult[];
+  }
+
+  function renderResults(data: RankCheckResponse): void {
+    // Keyword
+    const keywordEl = document.getElementById('result-keyword');
+    if (keywordEl) keywordEl.textContent = '"' + data.keyword + '"';
+
+    // Rank position box
+    const rankBox = document.getElementById('rank-position-box');
+    if (rankBox) {
+      if (data.userRank && data.userRank > 0) {
+        rankBox.innerHTML =
+          '<div class="flex items-center justify-center w-20 h-20 flex-shrink-0 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">' +
+            '<span class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">#' + data.userRank + '</span>' +
+          '</div>' +
+          '<div>' +
+            '<p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-1">Your video ranks #' + data.userRank + ' for this keyword</p>' +
+            '<p class="text-xs text-gray-400 dark:text-slate-500">Out of the top 20 YouTube search results</p>' +
+          '</div>';
+      } else {
+        rankBox.innerHTML =
+          '<div class="flex items-center justify-center w-20 h-20 flex-shrink-0 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">' +
+            '<span class="text-2xl font-bold text-gray-400 dark:text-slate-500">--</span>' +
+          '</div>' +
+          '<div>' +
+            '<p class="text-sm font-semibold text-gray-500 dark:text-slate-400 mb-1">Your channel was not found in the top 20 results</p>' +
+            '<p class="text-xs text-gray-400 dark:text-slate-500">Try optimizing your video title and description for this keyword</p>' +
+          '</div>';
+      }
+    }
+
+    // Top 10 results list
+    const resultsList = document.getElementById('results-list');
+    if (resultsList) {
+      const top10 = data.results.slice(0, 10);
+      resultsList.innerHTML = top10.map((r) => {
+        const isUser = data.userVideo && r.videoId === data.userVideo.videoId;
+        const borderClass = isUser ? 'border-l-4 border-l-blue-500' : '';
+        const youBadge = isUser ? ' <span class="inline-flex items-center text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">You</span>' : '';
+        return (
+          '<div class="px-6 sm:px-8 py-4 ' + borderClass + '">' +
+            '<div class="flex items-start gap-3">' +
+              '<span class="flex-shrink-0 w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-gray-400 dark:text-slate-500 text-xs font-bold flex items-center justify-center mt-0.5">' + r.position + '</span>' +
+              '<div class="min-w-0 flex-1">' +
+                '<a href="https://www.youtube.com/watch?v=' + escapeHtml(r.videoId) + '" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-900 dark:text-white mb-1.5 leading-snug hover:text-emerald-600 dark:hover:text-emerald-400 block" data-video-title="' + r.position + '"></a>' +
+                '<div class="flex flex-wrap items-center gap-2 mt-1">' +
+                  '<span class="text-xs text-gray-500 dark:text-slate-400" data-channel-name="' + r.position + '"></span>' +
+                  '<span class="text-xs text-gray-400 dark:text-slate-500">' + escapeHtml(formatViewCount(r.viewCount)) + ' views</span>' +
+                  '<span class="text-xs text-gray-400 dark:text-slate-500">' + escapeHtml(formatAge(r.publishedAt)) + '</span>' +
+                  youBadge +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Set text content safely to prevent XSS
+      top10.forEach((r) => {
+        const titleEl = resultsList.querySelector('[data-video-title="' + r.position + '"]');
+        if (titleEl) (titleEl as HTMLElement).textContent = r.title;
+        const channelEl = resultsList.querySelector('[data-channel-name="' + r.position + '"]');
+        if (channelEl) (channelEl as HTMLElement).textContent = r.channelName;
+      });
+    }
+  }
+
+  // ===== API CALL =====
+
+  async function fetchRankCheck(keyword: string, channelInput: string): Promise<void> {
+    const btn = document.getElementById('check-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/.netlify/functions/youtube-rank-check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ keyword, channelInput, maxResults: 20 }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Check My Ranking \u2192';
+        showFieldError('keyword-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-ranking-checker', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) throw new Error('API error ' + res.status);
+
+      const data: RankCheckResponse = await res.json();
+      if (!Array.isArray(data?.results)) throw new Error('Invalid response structure');
+
+      renderResults(data);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-ranking-checker' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Check My Ranking \u2192';
+      showFieldError('keyword-input', 'Something went wrong on our end. Please try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-ranking-checker', reason: 'api_error' });
+    }
+  }
+
+  // ===== RANK CHECK =====
+
+  async function runRankCheck(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
+    const channelInput = (document.getElementById('channel-input') as HTMLInputElement).value.trim();
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-ranking-checker' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-ranking-checker' });
+
+    const btn = document.getElementById('check-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Checking...';
+    showStep('step-loading');
+
+    await fetchRankCheck(keyword, channelInput);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-ranking-checker' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-ranking-checker' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Checking';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      runRankCheck();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('keyword-input') as HTMLInputElement).value = '';
+    (document.getElementById('channel-input') as HTMLInputElement).value = '';
+    clearFieldError('keyword-input');
+    clearFieldError('channel-input');
+    showStep('step-input');
+    (document.getElementById('keyword-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('check-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Check My Ranking \u2192';
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-ranking-checker' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('check-btn')?.addEventListener('click', runRankCheck);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  document.getElementById('keyword-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      runRankCheck();
+    }
+  });
+
+  document.getElementById('channel-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      runRankCheck();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>

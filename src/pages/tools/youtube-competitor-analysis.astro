@@ -1,0 +1,831 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: 'Free YouTube Competitor Analysis Tool',
+  description:
+    'Analyze YouTube competition for any keyword. See the top 5 videos with view counts, age, and beatable signals. Know if you can win before you hit record.',
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Competitor Analysis", "item": `${siteUrl}/tools/youtube-competitor-analysis` }
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Competitor Analysis",
+  "url": `${siteUrl}/tools/youtube-competitor-analysis`,
+  "description": "Analyze YouTube competition for any keyword. See the top 5 videos with view counts, age, and beatable signals. Know if you can win before you hit record.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free competitor analyses without any signup. After that, enter your business email to continue analyzing keywords at no cost. There is no paid tier." } },
+    { "@type": "Question", "name": "What do the beatable signals mean?", "acceptedAnswer": { "@type": "Answer", "text": "Easy means the video has under 5,000 views or is old with low views. New means a recent video with under 10,000 views. Stale means decent views (10K-50K) but the video is over 18 months old. Solid means decent views and the video is relatively recent. Strong means the video has over 50,000 views and was published within the last year." } },
+    { "@type": "Question", "name": "How is the opportunity score calculated?", "acceptedAnswer": { "@type": "Answer", "text": "The score counts how many of the top 5 videos are marked Easy or New (beatable). A score of 4/5 or 5/5 means high opportunity. 2/5 or 3/5 means moderate. 0/5 or 1/5 means the keyword is dominated by strong competitors." } },
+    { "@type": "Question", "name": "Should I only target Easy keywords?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. A mix of Easy and Stale signals means the topic has demand but the existing content is outdated. That is often the best scenario: proven demand with weak competition. Solid and Strong keywords are worth targeting too, but expect a longer timeline to rank." } },
+    { "@type": "Question", "name": "How accurate is this analysis?", "acceptedAnswer": { "@type": "Answer", "text": "The tool pulls live data from YouTube search results, including real view counts and publish dates. The beatable signals are heuristics based on view velocity and content age. They are directional indicators, not guarantees. Use them alongside your own judgment about content quality and channel authority." } },
+    { "@type": "Question", "name": "Can I analyze multiple keywords at once?", "acceptedAnswer": { "@type": "Answer", "text": "This tool checks one keyword at a time so you can review each competitive landscape carefully. For bulk keyword analysis across your entire content strategy, the SellonTube dashboard handles multi-keyword research in a single workflow." } },
+  ]
+};
+
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">5 competitors analyzed</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Beatable signals</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        Can You Beat What's Already<br class="hidden sm:block" /> Ranking on YouTube?
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Enter a keyword. See the top 5 competing videos with view counts, age, and beatable signals. Know if this keyword is worth targeting before you invest in production.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+          <div>
+            <label for="keyword-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Keyword to analyze
+            </label>
+            <input
+              type="text"
+              id="keyword-input"
+              placeholder="Enter a keyword, e.g. best crm for agencies"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="keyword-error"
+            />
+            <p id="keyword-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+        </div>
+
+        <button
+          id="analyze-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Analyze Competition &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free checks remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Analyzing competition for your keyword...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This takes 5-10 seconds</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free checks</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep analyzing keywords. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Analyzing
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Running your analysis now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-3xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Opportunity verdict -->
+        <div id="verdict-section" class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">YouTube competitor analysis for</p>
+          <p id="result-keyword" tabindex="-1" class="text-lg font-bold text-gray-900 dark:text-white mb-5"></p>
+          <div id="verdict-card" class="rounded-xl p-5">
+            <p id="verdict-score" class="text-2xl sm:text-3xl font-bold mb-2"></p>
+            <p id="verdict-text" class="text-sm font-medium opacity-90"></p>
+          </div>
+        </div>
+
+        <!-- Competitor cards -->
+        <div class="border-b border-slate-200 dark:border-slate-700/60">
+          <div class="px-6 sm:px-8 pt-6 pb-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Top 5 competing videos</p>
+          </div>
+          <div id="competitors-list" class="px-4 sm:px-6 pb-6 space-y-3">
+          </div>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Ready to create content for this keyword?</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Use the YouTube SEO tool to optimize your video's title, description, and tags before you publish.</p>
+          <a
+            id="results-cta"
+            href="/tools/youtube-seo-tool"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Optimize your video SEO &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Analyze Another Keyword
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Spot the gaps. Then fill them."
+    subtitle="A diagnostic call maps your full YouTube acquisition strategy: which keywords to target, what content to create, and how to outrank the competition."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter a keyword</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Type any keyword your buyers might search on YouTube. The tool pulls the top 5 competing videos with real view counts and publish dates.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Read the beatable signals</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Each video gets a signal: Easy, New, Stale, Solid, or Strong. Green signals mean you can likely outrank that video. Red signals mean it will take more effort.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Decide before you record</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The opportunity score tells you at a glance whether this keyword is worth your production budget. Target keywords where you can realistically win.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Sections -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why YouTube competitor analysis matters for business channels</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Creating a YouTube video costs money. Between scripting, filming, editing, and publishing, even a simple talking-head video takes 4-8 hours of work. If you are paying a production team, that number climbs to $1,000-5,000 per video.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube competition analysis tells you whether that investment has a realistic chance of paying off. If the top 5 videos for your keyword each have 500,000+ views and were published within the last 6 months, you are fighting an uphill battle. But if those videos are old, low-view, or poorly optimized, you have a clear opening.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The difference between a video that ranks on page one and a video that gets buried is often not production quality. It is keyword selection. Businesses that analyze the competitive landscape before recording consistently outperform those that guess. For a deeper look at how YouTube search works, see our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Understanding the beatable signals</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Each competing video receives one of five signals based on its view count and age. Here is what each signal means for your content strategy.
+        </p>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <h3 class="text-base font-bold text-gray-900 dark:text-white">Easy</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Under 5,000 views, or an older video with under 10,000 views. These videos have low traction. A well-optimized video on the same topic should be able to outrank them within weeks.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <h3 class="text-base font-bold text-gray-900 dark:text-white">New</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Under 10,000 views and published within the last 12 months. The video is still gaining traction, so it is harder to displace. But the view count is low enough that strong SEO and a better video can overtake it.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <h3 class="text-base font-bold text-gray-900 dark:text-white">Stale</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Between 10,000-50,000 views, but the video is over 18 months old. The content may be outdated. YouTube favors fresh, relevant content. A new video covering the same topic with updated information has a strong chance of ranking above it.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <h3 class="text-base font-bold text-gray-900 dark:text-white">Solid</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Between 10,000-50,000 views and published within the last 18 months. This video is performing well and is still relatively current. You can still compete, but you will need strong SEO, a compelling title, and higher-quality content.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <h3 class="text-base font-bold text-gray-900 dark:text-white">Strong</h3>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Over 50,000 views and published within the last 12 months. This video has significant momentum. Competing directly will require a differentiated angle, strong channel authority, or a much more targeted audience. Consider targeting a long-tail variation of the keyword instead.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to use competitor analysis in your content strategy</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Run a competitor analysis before you commit to any video topic. Here is a practical workflow for B2B businesses.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Start with your buyer's search terms</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              List the 10-20 keywords your ideal customer would type into YouTube. Think about their problems, not your product. "How to reduce SaaS churn" is a buyer keyword. "Our product demo" is not. Use our <a href="/tools/youtube-autocomplete-keywords" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">autocomplete keyword tool</a> to expand your list.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Run each keyword through this tool</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Check the opportunity score for every keyword on your list. Sort them by opportunity: target the keywords with the highest beatable scores first. These are your quick wins.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Study the top videos before recording</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Watch the top-ranking videos for your chosen keyword. Note what they cover, what they miss, and where they lose the viewer's attention. Your video should fill those gaps. Better content combined with better SEO is how smaller channels outrank established ones.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Optimize before you publish</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Once your video is recorded, run it through the <a href="/tools/youtube-seo-tool" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO tool</a> to make sure your title, description, and tags are optimized for the keyword you are targeting. Then use the <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to fill in any gaps.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this tool free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free competitor analyses without any signup. After that, enter your business email to continue analyzing keywords at no cost. There is no paid tier.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What do the beatable signals mean?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Easy means the video has under 5,000 views or is old with low views. New means a recent video with under 10,000 views. Stale means decent views (10K-50K) but the video is over 18 months old. Solid means decent views and the video is relatively recent. Strong means the video has over 50,000 views and was published within the last year.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How is the opportunity score calculated?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The score counts how many of the top 5 videos are marked Easy or New (beatable). A score of 4/5 or 5/5 means high opportunity. 2/5 or 3/5 means moderate opportunity. 0/5 or 1/5 means the keyword is dominated by strong competitors.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Should I only target "Easy" keywords?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Not necessarily. A mix of Easy and Stale signals means the topic has demand but the existing content is outdated. That is often the best scenario: proven demand with weak competition. Solid and Strong keywords are worth targeting too, but expect a longer timeline to rank.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How accurate is this analysis?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The tool pulls live data from YouTube search results, including real view counts and publish dates. The beatable signals are heuristics based on view velocity and content age. They are directional indicators, not guarantees. Use them alongside your own judgment about content quality and channel authority.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I analyze multiple keywords at once?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              This tool checks one keyword at a time so you can review each competitive landscape carefully. For bulk keyword analysis across your entire content strategy, the SellonTube dashboard handles multi-keyword research in a single workflow.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Score individual videos on title, description, tags, and more.</p>
+        </a>
+        <a href="/tools/youtube-autocomplete-keywords" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Autocomplete Keywords</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Find what buyers are actually searching for on YouTube.</p>
+        </a>
+        <a href="/tools/youtube-tag-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Tag Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Generate buyer-intent tags from any video URL.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_competitor_analysis_count';
+  const EMAIL_KEY = 'sot_competitor_analysis_email';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== BEATABLE HEURISTIC =====
+
+  function getVideoSignal(viewCount: number, publishedAt: string): { color: string; label: string } {
+    const ageMs = Date.now() - new Date(publishedAt).getTime();
+    const ageMonths = ageMs / (1000 * 60 * 60 * 24 * 30.44);
+    if (viewCount < 5000) return { color: 'green', label: 'Easy' };
+    if (viewCount < 10000 && ageMonths > 12) return { color: 'green', label: 'Easy' };
+    if (viewCount < 10000 && ageMonths <= 12) return { color: 'amber', label: 'New' };
+    if (viewCount >= 10000 && viewCount <= 50000 && ageMonths > 18) return { color: 'amber', label: 'Stale' };
+    if (viewCount >= 10000 && viewCount <= 50000 && ageMonths <= 18) return { color: 'red', label: 'Solid' };
+    if (viewCount > 50000 && ageMonths < 12) return { color: 'red', label: 'Strong' };
+    return { color: 'red', label: 'Solid' };
+  }
+
+  function formatAge(publishedAt: string): string {
+    const ageMs = Date.now() - new Date(publishedAt).getTime();
+    const totalMonths = Math.floor(ageMs / (1000 * 60 * 60 * 24 * 30.44));
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    if (years === 0) return months + 'mo';
+    if (months === 0) return years + 'y';
+    return years + 'y ' + months + 'mo';
+  }
+
+  function formatViewCount(n: number): string {
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+    return n.toLocaleString();
+  }
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-keyword');
+      heading?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited checks unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free check remaining' : remaining + ' free checks remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
+    if (!keyword || keyword.length < 2) {
+      showFieldError('keyword-input', 'Please enter a keyword to analyze.');
+      return false;
+    }
+    clearFieldError('keyword-input');
+    return true;
+  }
+
+  // ===== SIGNAL COLORS =====
+
+  function signalClasses(color: string): { dot: string; bg: string; text: string; border: string } {
+    if (color === 'green') return { dot: 'bg-emerald-500', bg: 'bg-emerald-500/10', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/20' };
+    if (color === 'amber') return { dot: 'bg-amber-500', bg: 'bg-amber-500/10', text: 'text-amber-600 dark:text-amber-400', border: 'border-amber-500/20' };
+    return { dot: 'bg-rose-500', bg: 'bg-rose-500/10', text: 'text-rose-600 dark:text-rose-400', border: 'border-rose-500/20' };
+  }
+
+  // ===== ESCAPE HTML =====
+
+  function escapeHtml(text: string): string {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // ===== RENDER RESULTS =====
+
+  interface VideoResult {
+    position: number;
+    videoId: string;
+    title: string;
+    channelTitle: string;
+    channelId: string;
+    viewCount: number;
+    publishedAt: string;
+    isOwnVideo: boolean;
+  }
+
+  interface RankCheckResponse {
+    keyword: string;
+    channelId: string | null;
+    rank: number | null;
+    results: VideoResult[];
+  }
+
+  function renderResults(data: RankCheckResponse): void {
+    const keywordEl = document.getElementById('result-keyword');
+    if (keywordEl) keywordEl.textContent = '"' + data.keyword + '"';
+
+    const top5 = data.results.slice(0, 5);
+
+    // Calculate opportunity score
+    const signals = top5.map(v => getVideoSignal(v.viewCount, v.publishedAt));
+    const beatableCount = signals.filter(s => s.label === 'Easy' || s.label === 'New').length;
+
+    // Verdict card
+    const verdictCard = document.getElementById('verdict-card');
+    const verdictScore = document.getElementById('verdict-score');
+    const verdictText = document.getElementById('verdict-text');
+
+    if (verdictCard && verdictScore && verdictText) {
+      verdictScore.textContent = beatableCount + '/5 beatable';
+
+      if (beatableCount >= 4) {
+        verdictCard.className = 'rounded-xl p-5 bg-emerald-500/10 border border-emerald-500/20';
+        verdictScore.className = 'text-2xl sm:text-3xl font-bold mb-2 text-emerald-600 dark:text-emerald-400';
+        verdictText.className = 'text-sm font-medium text-emerald-600/80 dark:text-emerald-400/80';
+        verdictText.textContent = 'High opportunity. The competition is weak for this keyword. A well-optimized video has a strong chance of ranking.';
+      } else if (beatableCount >= 2) {
+        verdictCard.className = 'rounded-xl p-5 bg-amber-500/10 border border-amber-500/20';
+        verdictScore.className = 'text-2xl sm:text-3xl font-bold mb-2 text-amber-600 dark:text-amber-400';
+        verdictText.className = 'text-sm font-medium text-amber-600/80 dark:text-amber-400/80';
+        verdictText.textContent = 'Moderate opportunity. Some openings exist, but you will need strong SEO and better content than what is currently ranking.';
+      } else {
+        verdictCard.className = 'rounded-xl p-5 bg-rose-500/10 border border-rose-500/20';
+        verdictScore.className = 'text-2xl sm:text-3xl font-bold mb-2 text-rose-600 dark:text-rose-400';
+        verdictText.className = 'text-sm font-medium text-rose-600/80 dark:text-rose-400/80';
+        verdictText.textContent = 'Tough competition. Strong videos dominate this keyword. Consider a long-tail variation or a more specific audience angle.';
+      }
+    }
+
+    // Competitor cards
+    const list = document.getElementById('competitors-list');
+    if (list) {
+      list.innerHTML = top5.map((v, i) => {
+        const signal = signals[i];
+        const sc = signalClasses(signal.color);
+        const age = formatAge(v.publishedAt);
+        const views = formatViewCount(v.viewCount);
+        const videoUrl = 'https://www.youtube.com/watch?v=' + encodeURIComponent(v.videoId);
+
+        return (
+          '<div class="rounded-lg bg-gray-950 dark:bg-gray-950 p-4 sm:p-5">' +
+            '<div class="flex items-start gap-3">' +
+              '<span class="flex-shrink-0 w-7 h-7 rounded-full bg-slate-800 text-slate-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
+              '<div class="min-w-0 flex-1">' +
+                '<div class="flex items-start justify-between gap-3">' +
+                  '<div class="min-w-0 flex-1">' +
+                    '<a href="' + escapeHtml(videoUrl) + '" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-white hover:text-emerald-400 transition-colors leading-snug block mb-1" data-video-title="' + i + '"></a>' +
+                    '<p class="text-xs text-slate-500" data-channel-name="' + i + '"></p>' +
+                  '</div>' +
+                  '<div class="flex-shrink-0 text-right">' +
+                    '<p class="text-sm font-semibold text-white">' + escapeHtml(views) + '</p>' +
+                    '<p class="text-xs text-slate-500">' + escapeHtml(age) + '</p>' +
+                    '<span class="inline-flex items-center gap-1.5 mt-1.5 text-[10px] font-semibold px-2 py-0.5 rounded-full ' + sc.bg + ' ' + sc.text + ' border ' + sc.border + '">' +
+                      '<span class="w-1.5 h-1.5 rounded-full ' + sc.dot + '"></span>' +
+                      escapeHtml(signal.label) +
+                    '</span>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Set text content safely (prevent XSS)
+      list.querySelectorAll('[data-video-title]').forEach((el) => {
+        const idx = parseInt((el as HTMLElement).dataset.videoTitle || '0', 10);
+        (el as HTMLElement).textContent = top5[idx].title;
+      });
+      list.querySelectorAll('[data-channel-name]').forEach((el) => {
+        const idx = parseInt((el as HTMLElement).dataset.channelName || '0', 10);
+        (el as HTMLElement).textContent = top5[idx].channelTitle;
+      });
+    }
+  }
+
+  // ===== API CALL =====
+
+  async function fetchAnalysis(keyword: string): Promise<void> {
+    const btn = document.getElementById('analyze-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/youtube-rank-check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ keyword, maxResults: 5 }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Analyze Competition \u2192';
+        showFieldError('keyword-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-competitor-analysis', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) throw new Error('API error ' + res.status);
+
+      const data: RankCheckResponse = await res.json();
+
+      if (!data.results || data.results.length === 0) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Analyze Competition \u2192';
+        showFieldError('keyword-input', 'No YouTube results found for this keyword. Try a different search term.');
+        return;
+      }
+
+      renderResults(data);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-competitor-analysis' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Analyze Competition \u2192';
+      showFieldError('keyword-input', 'Something went wrong on our end. Please try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-competitor-analysis', reason: 'api_error' });
+    }
+  }
+
+  // ===== ANALYZE =====
+
+  async function runAnalysis(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-competitor-analysis' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-competitor-analysis' });
+
+    const btn = document.getElementById('analyze-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Analyzing...';
+    showStep('step-loading');
+
+    await fetchAnalysis(keyword);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-competitor-analysis' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-competitor-analysis' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Analyzing';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      runAnalysis();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('keyword-input') as HTMLInputElement).value = '';
+    clearFieldError('keyword-input');
+    showStep('step-input');
+    (document.getElementById('keyword-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('analyze-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Analyze Competition \u2192';
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-competitor-analysis' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('analyze-btn')?.addEventListener('click', runAnalysis);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  document.getElementById('keyword-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      runAnalysis();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>
