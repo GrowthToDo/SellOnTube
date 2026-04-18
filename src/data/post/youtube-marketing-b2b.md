@@ -74,7 +74,7 @@ A search like "youtube marketing for b2b" has lower monthly volume than "youtube
 
 For B2B YouTube SEO, the keyword targeting process should start with your sales conversations, not with a keyword tool. What questions do prospects ask before signing? What problems do they describe in their own words? What comparisons do they make between you and alternatives? Those phrases are your keyword targets.
 
-From there, apply the standard mechanics: target keyword in the video title, spoken clearly in the first 30 seconds, and written naturally in the first 100 words of the description. Use chapter markers on longer videos. Write descriptions that include natural variations of the target phrase.
+From there, apply the standard mechanics: target keyword in the video title, spoken clearly in the first 30 seconds, and written naturally in the first 100 words of the description. Use chapter markers on longer videos. Write descriptions that include natural variations of the target phrase. The [YouTube description generator](/tools/youtube-description-generator) handles this formatting automatically.
 
 Our [high-intent topic research framework](/blog/high-intent-topic-research-framework) covers the full process for identifying search terms that attract decision-makers rather than browsers.
 

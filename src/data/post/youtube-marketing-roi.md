@@ -50,7 +50,7 @@ Let's put real numbers to this.
 
 Say you're a business coach charging $3,000 for a coaching program. Your cost to deliver it is roughly $500 (your time, platform fees, materials). That leaves $2,500 in margin per customer.
 
-Now say you spend $2,000/month on YouTube content: scripting, filming, editing, optimizing. You need *one* client per month from YouTube to break even. Two clients? You've doubled your investment.
+Now say you spend $2,000/month on YouTube content: scripting, filming, editing, optimizing. Free tools like the [YouTube script generator](/tools/youtube-script-generator) cut production time significantly. You need *one* client per month from YouTube to break even. Two clients? You've doubled your investment.
 
 Compare that to paid ads, where you might spend $50–100 per lead and close at 2–5%. At those rates, you need 20–50 leads (and $1,000–$5,000 in ad spend) to land a single client. Every month. With no compounding.
 

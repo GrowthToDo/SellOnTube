@@ -1,0 +1,864 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: 'Free YouTube Channel Audit for Business',
+  description:
+    'Audit your YouTube channel for buyer-intent SEO. Score your titles, descriptions, posting consistency, and optimization across your last 10 videos. Free.',
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Channel Audit", "item": `${siteUrl}/tools/youtube-channel-audit` }
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Channel Audit",
+  "url": `${siteUrl}/tools/youtube-channel-audit`,
+  "description": "Audit your YouTube channel for buyer-intent SEO. Score titles, descriptions, posting consistency, and optimization across your last 10 videos. Free.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this audit free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free audits without any signup. After that, enter your business email to continue auditing channels at no cost. There is no paid tier." } },
+    { "@type": "Question", "name": "Does it access my YouTube account?", "acceptedAnswer": { "@type": "Answer", "text": "No. The tool only reads publicly available data: your channel name, video titles, descriptions, and publish dates. It does not require login, access your YouTube Studio, or read any private analytics." } },
+    { "@type": "Question", "name": "What score should I aim for?", "acceptedAnswer": { "@type": "Answer", "text": "A score of 71-100 means your channel metadata is well optimized for search and buyer intent. 41-70 means there is meaningful room for improvement. Below 40 means your videos are likely invisible to the buyers searching for what you sell. Focus on the lowest-scoring dimension first." } },
+    { "@type": "Question", "name": "How often should I audit my channel?", "acceptedAnswer": { "@type": "Answer", "text": "Run an audit after every 5-10 new videos. Your titles and descriptions should improve over time as you learn what language your buyers actually search for. Quarterly audits are a good baseline." } },
+    { "@type": "Question", "name": "Can I audit a competitor's channel?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Any public YouTube channel can be audited. Paste their channel URL or handle to see how their metadata compares to yours. This is useful for identifying gaps in your own SEO strategy." } },
+    { "@type": "Question", "name": "What if I only have a few videos?", "acceptedAnswer": { "@type": "Answer", "text": "The tool audits up to your last 10 videos. If you have fewer than 10, it will analyze whatever is available. The scores are still valid, though publishing consistency will naturally score lower with fewer data points." } },
+  ]
+};
+
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">4 audit dimensions</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Last 10 videos scored</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        Is Your YouTube Channel<br class="hidden sm:block" /> Actually Reaching Buyers?
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Paste your channel URL or handle. Get a scored audit across titles, descriptions, posting consistency, and SEO optimization. Based on your last 10 videos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+          <div>
+            <label for="channel-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              YouTube channel URL or handle
+            </label>
+            <input
+              type="text"
+              id="channel-input"
+              placeholder="e.g. https://youtube.com/@YourChannel or @YourChannel"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="channel-error"
+            />
+            <p id="channel-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+        </div>
+
+        <button
+          id="audit-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Audit Channel &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free audits remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Auditing your channel...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This takes 15-20 seconds</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free audits</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep auditing channels. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Auditing
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Running your audit now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-3xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header with overall score -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Channel audit for</p>
+          <p id="result-channel-name" tabindex="-1" class="text-lg font-bold text-gray-900 dark:text-white mb-4"></p>
+          <div class="flex items-center gap-4">
+            <div id="overall-score-ring" class="relative w-20 h-20 flex-shrink-0">
+              <svg class="w-20 h-20 -rotate-90" viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="35" stroke-width="6" fill="none" class="stroke-slate-200 dark:stroke-slate-700"></circle>
+                <circle id="score-circle" cx="40" cy="40" r="35" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="220" class="transition-all duration-1000"></circle>
+              </svg>
+              <span id="overall-score-text" class="absolute inset-0 flex items-center justify-center text-xl font-bold"></span>
+            </div>
+            <div>
+              <p id="overall-score-label" class="text-sm font-semibold mb-1"></p>
+              <p class="text-xs text-gray-400 dark:text-slate-500">Based on your last 10 public videos</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dimension cards -->
+        <div id="dimensions-grid" class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 border-b border-slate-200 dark:border-slate-700/60">
+        </div>
+
+        <!-- Video list -->
+        <div class="border-b border-slate-200 dark:border-slate-700/60">
+          <div class="px-6 sm:px-8 pt-6 pb-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Video-by-video breakdown</p>
+          </div>
+          <div id="videos-list" class="divide-y divide-slate-200 dark:divide-slate-700/40">
+          </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-4">Top recommendations</p>
+          <ol id="recommendations-list" class="space-y-3">
+          </ol>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Want to fix what the audit found?</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Our YouTube SEO tool scores individual videos so you can fix titles and descriptions one by one.</p>
+          <a
+            id="results-cta"
+            href="/tools/youtube-seo-tool"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Check individual video SEO &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Run Another Audit
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Audits reveal the problem. Strategy fixes it."
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: channel positioning, metadata, and the path from search to customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste your channel URL</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Enter any YouTube channel URL or @handle. The tool pulls your last 10 public videos automatically. No login required.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get your audit scores</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI analyzes every title, description, and publish date. You get scores across 4 dimensions, per-video quality ratings, and your overall channel health score.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Fix the weakest areas</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The audit highlights your 3 biggest opportunities with specific recommendations. Start with the lowest-scoring dimension for the fastest improvement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Sections -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What a YouTube channel audit checks (and why businesses skip it)</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A YouTube channel audit examines the metadata that determines whether your videos show up when buyers search. Titles, descriptions, publish frequency, and SEO signals. These are the fields YouTube's algorithm reads to decide who sees your content.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Businesses skip this step because YouTube Studio does not surface these problems clearly. You can see view counts and watch time, but Studio does not tell you that your titles are too long for mobile, that your descriptions waste the first 150 characters on boilerplate, or that your upload gaps are costing you algorithmic momentum.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The result: companies invest in video production, filming, and editing but publish with metadata that buries the video in search results. A $5,000 video with a vague title and empty description will be outranked by a $200 video with optimized metadata. YouTube does not care about production value when deciding search rankings. It cares about relevance signals.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          This audit reads those signals the same way YouTube does. It checks your last 10 videos across the 4 dimensions that determine discoverability, then scores each one so you know exactly where to focus. For a deeper look at how YouTube search works for business channels, see our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">The 4 dimensions that determine if buyers find your videos</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Each dimension is scored 0-25, for a total possible score of 100. Here is what each one measures and why it matters for business channels specifically.
+        </p>
+
+        <div class="space-y-6">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">1. Title quality (0-25)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Are your titles under 60 characters? Do they contain keywords your buyers actually search for? Are they specific to a target audience, or could they apply to anyone?
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">
+              A title like "CRM Software Review" scores lower than "Best CRM for 10-Person SaaS Teams" because the second one names the audience and signals buyer intent. The first attracts everyone and converts no one.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">2. Description quality (0-25)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              YouTube shows the first 150 characters of your description in search results. Are you using that space to reinforce the video's value, or is it wasted on "Thanks for watching" and social links?
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">
+              Strong descriptions open with a keyword-rich summary, include a clear CTA with a link, and provide enough context for YouTube to understand what the video covers.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">3. Publishing consistency (0-25)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              YouTube favors channels that upload on a predictable schedule. Long gaps between videos signal inactivity. Bursts of uploads followed by silence signal inconsistency.
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">
+              For business channels, 1-2 videos per week is the sweet spot. Even 2 per month is fine if the schedule is steady. What hurts is unpredictability: 4 videos in one week, then nothing for 2 months.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">4. SEO optimization (0-25)</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
+              Do your descriptions include timestamps or chapter markers? Are your titles written as queries that someone would type into YouTube search? Is there evidence of intentional keyword targeting across your videos?
+            </p>
+            <p class="text-sm text-gray-500 dark:text-slate-500">
+              Chapters improve watch time by letting viewers jump to the section they need. Searchable titles improve click-through rate because they match the viewer's query. Both signals tell YouTube your content deserves higher rankings.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to improve your YouTube channel audit score</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Start with your lowest-scoring dimension. Fixing one weak area typically has a bigger impact than making small improvements across all four.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Fixing low title quality scores</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Rewrite your titles to be under 60 characters. Front-load the primary keyword. Name your target audience in the title. Replace vague words like "ultimate" or "complete" with specific details. Use our <a href="/tools/youtube-title-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">title generator</a> to test alternatives.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Fixing low description quality scores</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Open every description with a 1-2 sentence summary that includes your target keyword. Add a CTA with a direct link (demo page, free trial, landing page) in the first 3 lines. Fill the rest with timestamps, relevant links, and a brief company description.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Fixing low consistency scores</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Pick a sustainable cadence and commit to it. One video per week is better than four this week and zero next month. Batch-produce content so you have a buffer. Schedule uploads in YouTube Studio so they go live at the same time each week.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Fixing low SEO optimization scores</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Add timestamps to every video description (YouTube auto-generates chapters from these). Write titles as search queries, not marketing slogans. Check the <a href="/tools/youtube-seo-tool" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO tool</a> for a per-video breakdown of optimization opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this audit free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free audits without any signup. After that, enter your business email to continue auditing channels at no cost. There is no paid tier.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Does it access my YouTube account?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              No. The tool only reads publicly available data: your channel name, video titles, descriptions, and publish dates. It does not require login, access your YouTube Studio, or read any private analytics.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What score should I aim for?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              A score of 71-100 means your channel metadata is well optimized for search and buyer intent. 41-70 means there is meaningful room for improvement. Below 40 means your videos are likely invisible to the buyers searching for what you sell. Focus on the lowest-scoring dimension first.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How often should I audit my channel?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Run an audit after every 5-10 new videos. Your titles and descriptions should improve over time as you learn what language your buyers actually search for. Quarterly audits are a good baseline.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I audit a competitor's channel?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Any public YouTube channel can be audited. Paste their channel URL or handle to see how their metadata compares to yours. This is useful for identifying gaps in your own SEO strategy.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What if I only have a few videos?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The tool audits up to your last 10 videos. If you have fewer than 10, it will analyze whatever is available. The scores are still valid, though publishing consistency will naturally score lower with fewer data points.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Score individual videos on title, description, tags, and more.</p>
+        </a>
+        <a href="/tools/youtube-title-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Title Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Generate buyer-intent titles scored for acquisition potential.</p>
+        </a>
+        <a href="/tools/youtube-video-ideas-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Video Ideas Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Get 5 buyer-intent video ideas for your business.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_audit_count';
+  const EMAIL_KEY = 'sot_audit_email_submitted';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-channel-name');
+      heading?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited audits unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free audit remaining' : remaining + ' free audits remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    const channel = (document.getElementById('channel-input') as HTMLInputElement).value.trim();
+    if (!channel || channel.length < 2) {
+      showFieldError('channel-input', 'Please enter a YouTube channel URL or @handle.');
+      return false;
+    }
+    clearFieldError('channel-input');
+    return true;
+  }
+
+  // ===== SCORE HELPERS =====
+
+  function scoreColor(score: number, max: number): { text: string; bg: string; border: string; stroke: string } {
+    const pct = (score / max) * 100;
+    if (pct >= 71) return { text: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', stroke: 'stroke-emerald-500' };
+    if (pct >= 41) return { text: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', stroke: 'stroke-amber-500' };
+    return { text: 'text-rose-600 dark:text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20', stroke: 'stroke-rose-500' };
+  }
+
+  function badgeColor(rating: string): { text: string; bg: string; border: string } {
+    const r = rating.toLowerCase();
+    if (r === 'good') return { text: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' };
+    if (r === 'fair') return { text: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' };
+    return { text: 'text-rose-600 dark:text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20' };
+  }
+
+  // ===== RENDER RESULTS =====
+
+  interface AuditDimension {
+    name: string;
+    score: number;
+    maxScore: number;
+    summary: string;
+  }
+
+  interface AuditVideo {
+    title: string;
+    publishedAt: string;
+    titleScore: string;
+    descriptionScore: string;
+  }
+
+  interface AuditResult {
+    channelName: string;
+    overallScore: number;
+    dimensions: AuditDimension[];
+    videos: AuditVideo[];
+    recommendations: string[];
+  }
+
+  function renderResults(data: AuditResult): void {
+    // Channel name
+    const nameEl = document.getElementById('result-channel-name');
+    if (nameEl) nameEl.textContent = data.channelName;
+
+    // Overall score ring
+    const overall = Math.min(100, Math.max(0, data.overallScore));
+    const colors = scoreColor(overall, 100);
+    const circle = document.getElementById('score-circle');
+    if (circle) {
+      circle.classList.add(colors.stroke);
+      const circumference = 2 * Math.PI * 35;
+      const offset = circumference - (overall / 100) * circumference;
+      setTimeout(() => {
+        circle.style.strokeDasharray = String(circumference);
+        circle.style.strokeDashoffset = String(offset);
+      }, 100);
+    }
+
+    const scoreText = document.getElementById('overall-score-text');
+    if (scoreText) {
+      scoreText.textContent = String(overall);
+      scoreText.className = 'absolute inset-0 flex items-center justify-center text-xl font-bold ' + colors.text;
+    }
+
+    const scoreLabel = document.getElementById('overall-score-label');
+    if (scoreLabel) {
+      let label = 'Needs significant work';
+      if (overall >= 71) label = 'Well optimized';
+      else if (overall >= 41) label = 'Room for improvement';
+      scoreLabel.textContent = label + ' (' + overall + '/100)';
+      scoreLabel.className = 'text-sm font-semibold mb-1 ' + colors.text;
+    }
+
+    // Dimension cards
+    const grid = document.getElementById('dimensions-grid');
+    if (grid) {
+      grid.innerHTML = data.dimensions.map((d, i) => {
+        const dc = scoreColor(d.score, d.maxScore);
+        const pct = Math.round((d.score / d.maxScore) * 100);
+        const borderClass = i < 2 ? 'sm:border-b sm:border-slate-200 sm:dark:border-slate-700/60' : '';
+        const dividerClass = i % 2 === 0 ? 'sm:border-r sm:border-slate-200 sm:dark:border-slate-700/60' : '';
+        return (
+          '<div class="p-5 sm:p-6 ' + borderClass + ' ' + dividerClass + '">' +
+            '<div class="flex items-center justify-between mb-2">' +
+              '<p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">' + escapeHtml(d.name) + '</p>' +
+              '<span class="text-sm font-bold ' + dc.text + '">' + d.score + '/' + d.maxScore + '</span>' +
+            '</div>' +
+            '<div class="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-700 mb-3">' +
+              '<div class="h-2 rounded-full transition-all duration-700 ' + dc.bg.replace('/10', '') + '" style="width: ' + pct + '%"></div>' +
+            '</div>' +
+            '<p class="text-xs text-gray-600 dark:text-slate-400 leading-relaxed" data-dim-summary="' + i + '"></p>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Set summary text safely
+      grid.querySelectorAll('[data-dim-summary]').forEach((el) => {
+        const idx = parseInt((el as HTMLElement).dataset.dimSummary || '0', 10);
+        (el as HTMLElement).textContent = data.dimensions[idx].summary;
+      });
+
+      // Animate progress bars
+      setTimeout(() => {
+        grid.querySelectorAll('[style*="width"]').forEach((bar) => {
+          // bars are already set, just trigger the transition
+        });
+      }, 200);
+    }
+
+    // Videos list
+    const videosList = document.getElementById('videos-list');
+    if (videosList) {
+      videosList.innerHTML = data.videos.map((v, i) => {
+        const tc = badgeColor(v.titleScore);
+        const dc = badgeColor(v.descriptionScore);
+        const dateStr = v.publishedAt ? new Date(v.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
+        return (
+          '<div class="px-6 sm:px-8 py-4">' +
+            '<div class="flex items-start gap-3">' +
+              '<span class="flex-shrink-0 w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-gray-400 dark:text-slate-500 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
+              '<div class="min-w-0 flex-1">' +
+                '<p class="text-sm font-medium text-gray-900 dark:text-white mb-1.5 leading-snug" data-video-title="' + i + '"></p>' +
+                '<div class="flex flex-wrap items-center gap-2">' +
+                  '<span class="text-xs text-gray-400 dark:text-slate-500">' + escapeHtml(dateStr) + '</span>' +
+                  '<span class="inline-flex items-center text-[10px] font-semibold px-2 py-0.5 rounded-full ' + tc.bg + ' ' + tc.text + ' border ' + tc.border + '">Title: ' + escapeHtml(v.titleScore) + '</span>' +
+                  '<span class="inline-flex items-center text-[10px] font-semibold px-2 py-0.5 rounded-full ' + dc.bg + ' ' + dc.text + ' border ' + dc.border + '">Desc: ' + escapeHtml(v.descriptionScore) + '</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Set video titles safely
+      videosList.querySelectorAll('[data-video-title]').forEach((el) => {
+        const idx = parseInt((el as HTMLElement).dataset.videoTitle || '0', 10);
+        (el as HTMLElement).textContent = data.videos[idx].title;
+      });
+    }
+
+    // Recommendations
+    const recList = document.getElementById('recommendations-list');
+    if (recList) {
+      recList.innerHTML = data.recommendations.map((r, i) => {
+        return (
+          '<li class="flex items-start gap-3">' +
+            '<span class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + (i + 1) + '</span>' +
+            '<p class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed" data-rec-text="' + i + '"></p>' +
+          '</li>'
+        );
+      }).join('');
+
+      recList.querySelectorAll('[data-rec-text]').forEach((el) => {
+        const idx = parseInt((el as HTMLElement).dataset.recText || '0', 10);
+        (el as HTMLElement).textContent = data.recommendations[idx];
+      });
+    }
+  }
+
+  function escapeHtml(text: string): string {
+    return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // ===== API CALL =====
+
+  async function fetchAudit(channelInput: string): Promise<void> {
+    const btn = document.getElementById('audit-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/channel-audit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ channelInput }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Audit Channel \u2192';
+        showFieldError('channel-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-channel-audit', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (res.status === 404) {
+        const errData = await res.json();
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Audit Channel \u2192';
+        showFieldError('channel-input', errData.error || 'Channel not found. Check the URL or handle and try again.');
+        return;
+      }
+
+      if (!res.ok) throw new Error('API error ' + res.status);
+
+      const data = await res.json();
+      if (!Array.isArray(data?.dimensions) || data.dimensions.length !== 4) throw new Error('Invalid audit structure');
+
+      renderResults(data);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-channel-audit' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Audit Channel \u2192';
+      showFieldError('channel-input', 'Something went wrong on our end. Please try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-channel-audit', reason: 'api_error' });
+    }
+  }
+
+  // ===== AUDIT =====
+
+  async function runAudit(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const channelInput = (document.getElementById('channel-input') as HTMLInputElement).value.trim();
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-channel-audit' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-channel-audit' });
+
+    const btn = document.getElementById('audit-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Auditing...';
+    showStep('step-loading');
+
+    await fetchAudit(channelInput);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-channel-audit' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-channel-audit' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Auditing';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      runAudit();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('channel-input') as HTMLInputElement).value = '';
+    clearFieldError('channel-input');
+    showStep('step-input');
+    (document.getElementById('channel-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('audit-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Audit Channel \u2192';
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-channel-audit' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('audit-btn')?.addEventListener('click', runAudit);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  document.getElementById('channel-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      runAudit();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>

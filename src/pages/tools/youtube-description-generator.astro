@@ -1,0 +1,926 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: 'Free YouTube Description Generator for Business',
+  description:
+    'Generate SEO-optimized YouTube descriptions with timestamps and tags. Built for business channels that use YouTube to get customers. Free.',
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Description Generator", "item": `${siteUrl}/tools/youtube-description-generator` }
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Description Generator",
+  "url": `${siteUrl}/tools/youtube-description-generator`,
+  "description": "Generate SEO-optimized YouTube descriptions with timestamps and tags. Above-the-fold hook, keyword placement, CTA link, and chapter markers. Built for business channels. Free.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this YouTube description generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating descriptions at no cost. There is no paid tier and no feature gating." } },
+    { "@type": "Question", "name": "How long should a YouTube description be?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube allows up to 5,000 characters. For business channels, aim for 200-500 words in the full description. The critical part is the first 150 characters (above the fold), which is all viewers see before clicking Show more. This tool optimizes that above-the-fold section separately." } },
+    { "@type": "Question", "name": "Do YouTube descriptions affect SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. YouTube uses descriptions to understand what your video is about and match it to search queries. Keywords in your description help YouTube surface your video in search results and suggested videos. The first 2-3 sentences carry the most weight for ranking." } },
+    { "@type": "Question", "name": "Should I put links in my YouTube description?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, and placement matters. Your most important link belongs in the first 150 characters, before the Show more fold. Viewers who are interested enough to check your description are showing buying intent. Make it easy for them to reach your website without scrolling." } },
+    { "@type": "Question", "name": "Do timestamps and chapters help with YouTube SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. YouTube can display timestamps as chapters in the video player and in search results. Chapters increase click-through rate from search because viewers can see the video covers their specific question. They also improve watch time because viewers can jump to the section they care about instead of bouncing." } },
+    { "@type": "Question", "name": "What tags should I use on YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Tags have less ranking impact than titles and descriptions, but they still help YouTube understand your content. Use 5-8 tags that are specific to your video topic. Include your target keyword, variations of it, and your brand name. Avoid stuffing 30+ generic tags. This tool generates relevant tags automatically based on your video topic." } },
+  ]
+};
+
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">SEO-optimized</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Timestamps included</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        YouTube Descriptions That<br class="hidden sm:block" /> Get Found by Buyers
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Enter your video title, topic, and target keyword. Get a complete description with above-the-fold hook, timestamps, and tags.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+
+          <div>
+            <label for="title-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Video title
+            </label>
+            <input
+              type="text"
+              id="title-input"
+              placeholder="e.g. Best CRM Tools for Small Business"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="title-error"
+            />
+            <p id="title-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="summary-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Video topic / summary
+            </label>
+            <textarea
+              id="summary-input"
+              rows="3"
+              placeholder="Brief summary of what the video covers (2-3 sentences)"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors resize-none"
+              aria-describedby="summary-error"
+            ></textarea>
+            <p id="summary-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="keyword-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Target keyword
+            </label>
+            <input
+              type="text"
+              id="keyword-input"
+              placeholder="e.g. best CRM for small business"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="keyword-error"
+            />
+            <p id="keyword-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <div>
+            <label for="website-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Your website URL
+            </label>
+            <input
+              type="text"
+              id="website-input"
+              placeholder="e.g. https://yoursite.com"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="website-error"
+            />
+            <p id="website-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+        </div>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate Description &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free generations remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Writing your description...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">Optimizing for search and conversions</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free generations</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep generating descriptions. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Generating
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Generating your description now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results (wider) -->
+    <div
+      id="step-results"
+      class="hidden max-w-2xl mx-auto px-4 mt-2"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">YouTube description for</p>
+          <p id="result-title" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+        </div>
+
+        <!-- Above the fold -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Above the fold</p>
+            <span id="above-fold-count" class="text-xs text-gray-400 dark:text-slate-500"></span>
+          </div>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-3">This is what viewers see before clicking "Show more"</p>
+          <div id="above-fold-text" class="text-sm text-gray-900 dark:text-white leading-relaxed whitespace-pre-wrap font-medium"></div>
+          <button
+            id="copy-above-fold-btn"
+            class="mt-3 text-xs border border-emerald-500/30 rounded-lg px-3 py-1.5 text-emerald-600 dark:text-emerald-400 hover:border-emerald-500/60 transition-colors"
+          >
+            Copy above-the-fold
+          </button>
+        </div>
+
+        <!-- Full description -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Full description</p>
+          <div id="full-desc-text" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap"></div>
+        </div>
+
+        <!-- Timestamps -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Timestamps</p>
+          <div id="timestamps-list" class="space-y-1"></div>
+        </div>
+
+        <!-- Tags -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Tags</p>
+          <div id="tags-list" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Copy full button -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-slate-100/50 dark:bg-slate-800/30">
+          <button
+            id="copy-full-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Copy Full Description
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-500 mt-2">Copies above-the-fold + full description + timestamps + tags</p>
+        </div>
+
+        <!-- Inline CTA -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Description done? Check if your full video is optimized for YouTube search.</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Run your video through our free YouTube SEO tool.</p>
+          <a
+            id="results-cta"
+            href="/tools/youtube-seo-tool"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Check your video SEO score &rarr;
+          </a>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button
+            id="reset-btn"
+            class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
+          >
+            &larr; Generate another description
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Descriptions bring clicks. Strategy converts them."
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: topics, titles, descriptions, and the path from viewer to customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- How it works -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-10">How it works</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your video details</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Add your video title, a short summary, the keyword you want to rank for, and your website URL. Four fields. Under 60 seconds.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a complete description</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI generates an above-the-fold hook, a keyword-rich body, suggested timestamps, and relevant tags. Everything YouTube needs to rank your video.</p>
+        </div>
+        <div>
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Copy and publish</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Copy the full description with one click. Paste it into YouTube Studio. Adjust timestamps to match your actual video, and you are done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Sections -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Visual: Above-the-fold vs below -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 dark:divide-slate-700">
+          <div class="p-5 sm:p-6 bg-emerald-500/5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-500 mb-3">Above the fold (first 150 chars)</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-3">"Best CRM for small business? We tested 5 options head-to-head."</p>
+            <div class="space-y-2 text-xs text-gray-600 dark:text-slate-400">
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Visible without clicking</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Contains target keyword</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> Hooks the viewer to read more</div>
+              <div class="flex items-center gap-2"><span class="text-emerald-500">&#10003;</span> CTA link right below</div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 bg-rose-500/5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-rose-500 mb-3">Wasted above the fold</p>
+            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-3">"In this video, I talk about CRM tools and share my thoughts..."</p>
+            <div class="space-y-2 text-xs text-gray-600 dark:text-slate-400">
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> Starts with "In this video"</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> Vague, no keyword</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> No hook or reason to read more</div>
+              <div class="flex items-center gap-2"><span class="text-rose-500">&#10005;</span> No CTA link visible</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 1 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why the first 150 characters of your YouTube description matter more than the rest</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube only shows the first 150 characters of your description below the video. Everything else is hidden behind the "Show more" link. That means only 150 characters are doing any work for you by default. The rest requires a deliberate click.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          For business channels, those 150 characters need to do two things. First, include your target keyword so YouTube's algorithm understands what your video is about. Second, include a link to your website or landing page so interested viewers can take the next step without scrolling.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The majority of YouTube descriptions start with "In this video, I talk about..." which wastes the entire above-the-fold space on a sentence that says nothing. The viewer already knows what the video is about from the title. Your description's first sentence should add something the title could not: a specific hook and a clear path to learn more.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          This tool generates the above-the-fold section separately from the full description. It shows you the character count so you know exactly what viewers will see before "Show more." No guesswork, no wasted characters.
+        </p>
+      </div>
+
+      <!-- Section 2 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">YouTube description best practices for business channels</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          Writing a YouTube description is not the same as writing a blog post or social media caption. YouTube descriptions serve three audiences: the algorithm, the viewer, and Google Search (which also indexes YouTube descriptions). Here is what matters for each.
+        </p>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Put your keyword in the first sentence</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube weighs early words more heavily for ranking. If your target keyword is "best CRM for small business," it should appear in your first sentence, not buried in the third paragraph. This tool places the keyword in the above-the-fold hook automatically.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Place your CTA link above the fold</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Your most important link belongs in the first 150 characters. A viewer reading your description is already interested. They clicked on your video. They started reading your description. That is buying intent. Do not make them scroll to find your link.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Use timestamps to boost click-through rate</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube displays timestamps as clickable chapters in the video player and in search results. Chapters make your video look more professional and help viewers find the section they care about. Videos with chapters tend to get higher click-through rates from search because the viewer can see the video covers their specific question. Our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a> covers how timestamps, descriptions, and tags work together for ranking.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Write 200-500 words, not 50</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Many business channels write 1-2 sentences and a link. That is a missed opportunity. YouTube uses your description text to understand your video content and match it to search queries. More relevant text means more keyword signals for the algorithm. Aim for 200-500 words that expand on the video topic and naturally include keyword variations.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Include 5-8 relevant tags</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Tags carry less weight than titles and descriptions, but they help YouTube understand your content category. Use your target keyword, 2-3 variations, and your brand name. Avoid stuffing 30 generic tags. Quality matters more than quantity.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What this description generator does differently</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Generic YouTube description generators produce a block of text and leave you to figure out formatting, keyword placement, and structure. This tool is built specifically for business channels that use YouTube to drive website traffic and customer acquisition.
+        </p>
+
+        <!-- Comparison table -->
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden mb-6">
+          <div class="px-5 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">How this tool compares</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700">
+                  <th class="text-left px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Feature</th>
+                  <th class="text-center px-4 py-3 font-semibold text-gray-500 dark:text-slate-400">Typical generators</th>
+                  <th class="text-center px-4 py-3 font-semibold text-emerald-600 dark:text-emerald-400">SellOnTube</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600 dark:text-slate-400">
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Above-the-fold optimization</td>
+                  <td class="px-4 py-2.5 text-center">No</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Yes, with character count</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">CTA link placement</td>
+                  <td class="px-4 py-2.5 text-center">Manual</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Automatic, above fold</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Timestamps</td>
+                  <td class="px-4 py-2.5 text-center">Not included</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Auto-generated</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Tags</td>
+                  <td class="px-4 py-2.5 text-center">Not included</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">5-8 relevant tags</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-2.5 font-medium text-gray-700 dark:text-slate-300">Built for</td>
+                  <td class="px-4 py-2.5 text-center">Creators</td>
+                  <td class="px-4 py-2.5 text-center text-emerald-600 dark:text-emerald-400 font-medium">Business channels</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The tool outputs four separate sections instead of one block of text. The above-the-fold hook is written and measured independently because it is the only part most viewers will read. The full description body is optimized for keyword density without sounding robotic. Timestamps are pre-formatted for YouTube's chapter detection. Tags are selected for relevance, not volume.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The "Copy Full Description" button combines all four sections into a single formatted block you can paste directly into YouTube Studio. No reformatting needed.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube description generator free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating descriptions at no cost. There is no paid tier and no feature gating.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How long should a YouTube description be?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube allows up to 5,000 characters. For business channels, aim for 200-500 words in the full description. The critical part is the first 150 characters (above the fold), which is all viewers see before clicking "Show more." This tool optimizes that above-the-fold section separately so nothing gets wasted.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Do YouTube descriptions affect SEO?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. YouTube uses descriptions to understand what your video is about and match it to search queries. Keywords in your description help YouTube surface your video in search results and suggested videos. The first 2-3 sentences carry the most weight for ranking. Google also indexes YouTube descriptions, so a well-written description can help your video appear in Google search results too.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Should I put links in my YouTube description?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes, and placement matters. Your most important link belongs in the first 150 characters, before the "Show more" fold. Viewers who check your description are showing buying intent. Make it easy for them to reach your website without scrolling. This tool places your CTA link in the above-the-fold section automatically.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Do timestamps and chapters help with YouTube SEO?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. YouTube can display timestamps as chapters in the video player and in search results. Chapters increase click-through rate from search because viewers can see the video covers their specific question. They also improve watch time because viewers can jump to the section they care about instead of bouncing. This tool generates suggested timestamps that you can adjust to match your actual video.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What tags should I use on YouTube?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Tags have less ranking impact than titles and descriptions, but they still help YouTube understand your content. Use 5-8 tags that are specific to your video topic. Include your target keyword, variations of it, and your brand name. Avoid stuffing 30+ generic tags. This tool generates relevant tags automatically based on your video topic and target keyword.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-8">Related tools</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-title-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Title Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Generate buyer-intent YouTube titles with scoring. Built for B2B.</p>
+        </a>
+        <a href="/tools/youtube-script-generator" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">Script Generator</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Get a full word-for-word script with a natural product pitch built in.</p>
+        </a>
+        <a href="/tools/youtube-seo-tool" class="block rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-emerald-500/50 transition-colors">
+          <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-1">YouTube SEO Tool</h3>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Check your full video SEO score across title, description, tags, and more.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_desc_gen_count';
+  const EMAIL_KEY = 'sot_desc_gen_email_submitted';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwNJSU1oWry-OSkFGit4OCs1f_0W6KX9K9WASHhah5ZXcDSxjZWUQ5Uw2S4PSSoZhgD/exec';
+
+  // ===== STORAGE =====
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      const heading = document.getElementById('result-title');
+      heading?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited generations unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free generation remaining' : remaining + ' free generations remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const errorId = fieldId.replace('-input', '-error');
+    const error = document.getElementById(errorId);
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function validateInputs(): boolean {
+    const title = (document.getElementById('title-input') as HTMLInputElement).value.trim();
+    const summary = (document.getElementById('summary-input') as HTMLTextAreaElement).value.trim();
+    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
+    const website = (document.getElementById('website-input') as HTMLInputElement).value.trim();
+
+    let valid = true;
+
+    if (!title || title.length < 3) {
+      showFieldError('title-input', 'Please enter your video title (min 3 characters).');
+      valid = false;
+    } else { clearFieldError('title-input'); }
+
+    if (!summary || summary.length < 10) {
+      showFieldError('summary-input', 'Please describe what your video covers (min 10 characters).');
+      valid = false;
+    } else { clearFieldError('summary-input'); }
+
+    if (!keyword || keyword.length < 2) {
+      showFieldError('keyword-input', 'Please enter a target keyword (min 2 characters).');
+      valid = false;
+    } else { clearFieldError('keyword-input'); }
+
+    if (!website || !website.match(/^https?:\/\/.+/)) {
+      showFieldError('website-input', 'Please enter a valid URL starting with https://');
+      valid = false;
+    } else { clearFieldError('website-input'); }
+
+    return valid;
+  }
+
+  // ===== RESULT RENDERING =====
+
+  interface DescriptionResult {
+    aboveFold: string;
+    fullDescription: string;
+    timestamps: string[];
+    tags: string[];
+  }
+
+  function renderResults(data: DescriptionResult): void {
+    const titleInput = (document.getElementById('title-input') as HTMLInputElement).value.trim();
+    const resultTitle = document.getElementById('result-title');
+    if (resultTitle) resultTitle.textContent = titleInput;
+
+    // Above the fold
+    const aboveFoldEl = document.getElementById('above-fold-text');
+    if (aboveFoldEl) aboveFoldEl.textContent = data.aboveFold;
+
+    const countEl = document.getElementById('above-fold-count');
+    if (countEl) countEl.textContent = data.aboveFold.length + ' characters';
+
+    // Full description
+    const fullDescEl = document.getElementById('full-desc-text');
+    if (fullDescEl) fullDescEl.textContent = data.fullDescription;
+
+    // Timestamps
+    const timestampsList = document.getElementById('timestamps-list');
+    if (timestampsList) {
+      timestampsList.innerHTML = data.timestamps.map((ts) => {
+        const escaped = ts.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return '<p class="text-sm text-gray-700 dark:text-slate-300 font-mono">' + escaped + '</p>';
+      }).join('');
+    }
+
+    // Tags
+    const tagsList = document.getElementById('tags-list');
+    if (tagsList) {
+      tagsList.innerHTML = data.tags.map((tag) => {
+        const escaped = tag.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return '<span class="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">' + escaped + '</span>';
+      }).join('');
+    }
+  }
+
+  function buildFullCopyText(data: DescriptionResult): string {
+    let text = data.aboveFold + '\n\n';
+    text += data.fullDescription + '\n\n';
+    text += '--- Timestamps ---\n';
+    text += data.timestamps.join('\n') + '\n\n';
+    text += '--- Tags ---\n';
+    text += data.tags.join(', ');
+    return text;
+  }
+
+  // ===== API CALL =====
+
+  let lastResult: DescriptionResult | null = null;
+
+  async function fetchDescription(title: string, summary: string, keyword: string, websiteUrl: string): Promise<void> {
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/generate-description', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, summary, keyword, websiteUrl }),
+      });
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate Description \u2192';
+        showFieldError('website-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-description-generator', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) throw new Error('API error ' + res.status);
+
+      const data = await res.json();
+      if (!data?.aboveFold || !data?.fullDescription || !Array.isArray(data?.timestamps) || !Array.isArray(data?.tags)) {
+        throw new Error('Invalid response structure');
+      }
+
+      lastResult = data as DescriptionResult;
+      renderResults(lastResult);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-description-generator' });
+
+    } catch {
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Generate Description \u2192';
+      showFieldError('website-input', 'Something went wrong on our end. Please try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-description-generator', reason: 'api_error' });
+    }
+  }
+
+  // ===== GENERATE =====
+
+  async function generate(): Promise<void> {
+    if (!validateInputs()) return;
+
+    const title = (document.getElementById('title-input') as HTMLInputElement).value.trim();
+    const summary = (document.getElementById('summary-input') as HTMLTextAreaElement).value.trim();
+    const keyword = (document.getElementById('keyword-input') as HTMLInputElement).value.trim();
+    const websiteUrl = (document.getElementById('website-input') as HTMLInputElement).value.trim();
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-description-generator' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-description-generator' });
+
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Generating...';
+    showStep('step-loading');
+
+    await fetchDescription(title, summary, keyword, websiteUrl);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    // Validate format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    // Block personal domains
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-description-generator' }),
+      });
+    } catch { /* no-cors always resolves */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-description-generator' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    // Proceed with generation after brief confirmation
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Continue Generating';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      generate();
+    }, 1200);
+  }
+
+  // ===== COPY BUTTONS =====
+
+  function handleCopy(btnId: string, textFn: () => string, eventLabel: string): void {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const text = textFn();
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        (btn as HTMLElement).classList.add('text-emerald-600', 'dark:text-emerald-400');
+        setTimeout(() => {
+          btn.textContent = original;
+          (btn as HTMLElement).classList.remove('text-emerald-600', 'dark:text-emerald-400');
+        }, 1500);
+      });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'description_copied', tool: 'youtube-description-generator', section: eventLabel });
+    });
+  }
+
+  handleCopy('copy-above-fold-btn', () => lastResult?.aboveFold || '', 'above_fold');
+  handleCopy('copy-full-btn', () => lastResult ? buildFullCopyText(lastResult) : '', 'full');
+
+  // ===== RESET =====
+
+  function reset(): void {
+    (document.getElementById('title-input') as HTMLInputElement).value = '';
+    clearFieldError('title-input');
+    (document.getElementById('summary-input') as HTMLTextAreaElement).value = '';
+    clearFieldError('summary-input');
+    (document.getElementById('keyword-input') as HTMLInputElement).value = '';
+    clearFieldError('keyword-input');
+    (document.getElementById('website-input') as HTMLInputElement).value = '';
+    clearFieldError('website-input');
+    lastResult = null;
+    showStep('step-input');
+    (document.getElementById('title-input') as HTMLInputElement).focus();
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Generate Description \u2192';
+  }
+
+  // ===== CTA TRACKING =====
+
+  document.getElementById('results-cta')?.addEventListener('click', () => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-description-generator' });
+  });
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('generate-btn')?.addEventListener('click', generate);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+
+  // Enter key navigation
+  document.getElementById('title-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.getElementById('summary-input') as HTMLTextAreaElement)?.focus();
+    }
+  });
+
+  document.getElementById('keyword-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.getElementById('website-input') as HTMLInputElement)?.focus();
+    }
+  });
+
+  document.getElementById('website-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      generate();
+    }
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  updateCounterLabel();
+</script>
