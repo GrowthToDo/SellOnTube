@@ -191,7 +191,7 @@ const faqSchema = {
           <div class="px-6 sm:px-8 pt-6 pb-3">
             <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Top 10 YouTube results</p>
           </div>
-          <div id="results-list" class="divide-y divide-slate-200 dark:divide-slate-700/40">
+          <div id="results-list" class="px-4 sm:px-6 pb-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
           </div>
         </div>
 
@@ -584,33 +584,37 @@ const faqSchema = {
       }
     }
 
-    // Top 10 results list
+    // Top 10 results grid
     const resultsList = document.getElementById('results-list');
     if (resultsList) {
       const top10 = data.results.slice(0, 10);
       resultsList.innerHTML = top10.map((r) => {
         const isUser = data.userVideo && r.videoId === data.userVideo.videoId;
-        const borderClass = isUser ? 'border-l-4 border-l-blue-500' : '';
-        const youBadge = isUser ? ' <span class="inline-flex items-center text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">You</span>' : '';
+        const ringClass = isUser ? 'ring-2 ring-blue-500/40' : '';
+        const youBadge = isUser ? '<span class="absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500 text-white z-10">You</span>' : '';
+        const thumbUrl = 'https://i.ytimg.com/vi/' + encodeURIComponent(r.videoId) + '/mqdefault.jpg';
+        const videoUrl = 'https://www.youtube.com/watch?v=' + encodeURIComponent(r.videoId);
+
         return (
-          '<div class="px-6 sm:px-8 py-4 ' + borderClass + '">' +
-            '<div class="flex items-start gap-3">' +
-              '<span class="flex-shrink-0 w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-gray-400 dark:text-slate-500 text-xs font-bold flex items-center justify-center mt-0.5">' + r.position + '</span>' +
-              '<div class="min-w-0 flex-1">' +
-                '<a href="https://www.youtube.com/watch?v=' + escapeHtml(r.videoId) + '" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-900 dark:text-white mb-1.5 leading-snug hover:text-emerald-600 dark:hover:text-emerald-400 block" data-video-title="' + r.position + '"></a>' +
-                '<div class="flex flex-wrap items-center gap-2 mt-1">' +
-                  '<span class="text-xs text-gray-500 dark:text-slate-400" data-channel-name="' + r.position + '"></span>' +
-                  '<span class="text-xs text-gray-400 dark:text-slate-500">' + escapeHtml(formatViewCount(r.viewCount)) + ' views</span>' +
-                  '<span class="text-xs text-gray-400 dark:text-slate-500">' + escapeHtml(formatAge(r.publishedAt)) + '</span>' +
-                  youBadge +
-                '</div>' +
+          '<a href="' + escapeHtml(videoUrl) + '" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/60 bg-white dark:bg-slate-800/60 hover:border-emerald-500/40 hover:shadow-md transition-all group ' + ringClass + '">' +
+            '<div class="relative">' +
+              '<img src="' + escapeHtml(thumbUrl) + '" alt="" class="w-full aspect-video object-cover bg-slate-100 dark:bg-slate-800" loading="lazy" />' +
+              '<span class="absolute bottom-2 left-2 text-[11px] font-bold px-2 py-0.5 rounded-md bg-black/70 text-white">#' + r.position + '</span>' +
+              youBadge +
+            '</div>' +
+            '<div class="p-3">' +
+              '<p class="text-sm font-semibold text-gray-900 dark:text-white leading-snug line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" data-video-title="' + r.position + '"></p>' +
+              '<p class="text-xs text-gray-500 dark:text-slate-400 mt-1.5" data-channel-name="' + r.position + '"></p>' +
+              '<div class="flex items-center gap-2 mt-1.5 text-xs text-gray-400 dark:text-slate-500">' +
+                '<span>' + escapeHtml(formatViewCount(r.viewCount)) + ' views</span>' +
+                '<span>&middot;</span>' +
+                '<span>' + escapeHtml(formatAge(r.publishedAt)) + ' old</span>' +
               '</div>' +
             '</div>' +
-          '</div>'
+          '</a>'
         );
       }).join('');
 
-      // Set text content safely to prevent XSS
       top10.forEach((r) => {
         const titleEl = resultsList.querySelector('[data-video-title="' + r.position + '"]');
         if (titleEl) (titleEl as HTMLElement).textContent = r.title;
