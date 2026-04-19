@@ -252,6 +252,26 @@ This does not mean LinkedIn is useless. It means that for businesses where the b
 
 ---
 
+## How to Get Clients from YouTube (Not Just Leads)
+
+There is a difference between a lead and a client-ready prospect. Leads fill out forms. Client-ready prospects book calls with budget, authority, and a timeline. YouTube can deliver the second kind if your content and conversion path are built for it.
+
+**The client acquisition funnel looks different from lead generation.** The path is: YouTube video answering a buyer question, then a lead magnet that qualifies intent (audit template, ROI calculator, diagnostic checklist), then a discovery call where the prospect already trusts you because they watched three of your videos.
+
+Video types that attract clients (not tire-kickers):
+
+- **"How to choose a [service provider]" videos.** A viewer searching this phrase is actively evaluating options. If your video helps them build their criteria, you become the default choice.
+- **Case study walkthroughs.** Show the exact process you used to deliver results for a client. Prospects who watch a 12-minute case study and then book a call are pre-sold.
+- **Objection-handling videos.** Address the specific reasons someone might hesitate to hire in your category. "Is [service] worth it for small companies?" turns skeptics into buyers.
+
+For service businesses, the CTA should match the buying stage. Instead of "download our guide," use "book a free 30-minute strategy audit" or "get a custom assessment for your business." This language signals that the next step is a real conversation, not a nurture sequence.
+
+YouTube works better than LinkedIn cold outreach for high-ticket services because the trust transfer is deeper. A prospect who watched you explain their exact problem for 10 minutes, then clicked through to your site, then booked a call, is a fundamentally different conversation than a cold connection request. They already know your approach. They already agree with your framework. The discovery call is a formality.
+
+If you run a consultancy, agency, or coaching practice, see our industry-specific breakdowns for [YouTube for consultants](/youtube-for/consultants) and [YouTube for coaches](/youtube-for/coaches). Both pages include niche-specific topic ideas and conversion strategies.
+
+---
+
 ## What to Do This Week
 
 1. List the five questions your buyers ask most often before purchasing. These are your first five video topics.

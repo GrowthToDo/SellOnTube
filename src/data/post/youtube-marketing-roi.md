@@ -120,7 +120,33 @@ YouTube is almost unfairly effective. A single client from YouTube content could
 
 Now, you might be thinking: "This sounds promising, but I need to see the numbers for *my* business specifically."
 
-That's exactly why we built a free calculator.
+Before we get to the calculator, there are two pieces most businesses skip: tracking where YouTube leads actually come from and proving that ROI to your team.
+
+## How to Track YouTube Attribution
+
+Knowing YouTube "works" is not the same as proving which video brought which customer. Attribution is the gap between "YouTube feels like it's helping" and "YouTube generated $47,000 in pipeline last quarter."
+
+**UTM parameters on every link.** Every URL in your video descriptions, pinned comments, and end screen cards should include UTM tags. Use `utm_source=youtube`, `utm_medium=video`, and `utm_campaign=video-title-slug`. This lets Google Analytics 4 attribute traffic and conversions directly to specific videos.
+
+**GA4 attribution models.** YouTube rarely gets credit in last-click attribution because the buyer journey looks like this: watch video, leave YouTube, Google your brand name two days later, visit your site, and convert. In last-click reporting, Google organic search gets the credit. YouTube gets nothing. Switch to data-driven attribution in GA4 to see the full picture.
+
+**CRM integration.** For B2B businesses with a sales team, the most accurate attribution method is asking "How did you hear about us?" on your intake form and matching the answer against YouTube analytics. It sounds low-tech, but self-reported attribution catches the dark social signals that no tracking pixel can.
+
+**Branded search lift.** YouTube creates a specific, measurable signal: branded search volume. If your Google Search Console data shows a jump in branded queries after you start publishing videos, that is YouTube working even when your UTM data shows zero direct conversions. Track your branded impressions monthly and overlay them against your publishing calendar.
+
+**The dark social problem.** A prospect watches your video, tells a colleague about your product, and the colleague Googles your company name. YouTube never shows up in any attribution report. The fix: compare your total branded search volume and direct traffic trends before and after YouTube. If both trend upward in correlation with publishing, YouTube is the driver even if the attribution chain is invisible.
+
+## How to Prove YouTube ROI to Your Team
+
+Even with solid data, getting buy-in for YouTube is hard. Here is how to build a reporting framework that makes the case.
+
+**The three metrics that matter.** Strip your YouTube report down to three numbers: (1) qualified leads sourced from YouTube this month, (2) cost per YouTube-sourced lead, and (3) total pipeline value influenced by YouTube. Everything else is supporting context.
+
+**Monthly reporting template.** Include these five items and nothing more: total YouTube-sourced leads (UTM-tracked + self-reported), cost per lead (monthly production cost divided by leads), pipeline value (leads multiplied by average deal size multiplied by close rate), branded search trend (month-over-month change), and top three performing videos by lead generation. Skip subscriber count, total views, and watch time from executive reports. Those metrics help you optimize content, not prove ROI.
+
+**Handling the "but we only have 200 subscribers" objection.** This comes up in every YouTube ROI conversation. The answer: subscriber count has zero correlation with lead generation for business channels. A channel with 200 subscribers publishing search-optimized content can generate more qualified leads than a channel with 20,000 subscribers publishing entertainment content. Prove this by showing lead-per-video data, not channel-level vanity metrics.
+
+**Benchmarking against other channels.** The strongest proof of YouTube ROI is a side-by-side comparison with your other acquisition channels. If your [YouTube ROI Calculator](/tools/youtube-roi-calculator) shows a cost-per-lead of $85 from YouTube versus $210 from LinkedIn ads and $340 from Google Ads, the case makes itself.
 
 ## See If the Math Works for Your Business
 
