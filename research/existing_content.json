@@ -1,0 +1,218 @@
+[
+  {
+    "file": "ai-tools-for-youtube.mdx",
+    "title": "AI Tools for YouTube: What Actually Saves Time (2026)",
+    "slug": "ai-tools-for-youtube",
+    "url": "/blog/ai-tools-for-youtube"
+  },
+  {
+    "file": "best-youtube-autocomplete-keyword-tools.md",
+    "title": "Best YouTube Autocomplete Keyword Tools (2026)",
+    "slug": "best-youtube-autocomplete-keyword-tools",
+    "url": "/blog/best-youtube-autocomplete-keyword-tools"
+  },
+  {
+    "file": "best-youtube-seo-tools-for-business.md",
+    "title": "7 Best Tools for YouTube SEO on Business Channels (2026)",
+    "slug": "best-youtube-seo-tools-for-business",
+    "url": "/blog/best-youtube-seo-tools-for-business"
+  },
+  {
+    "file": "best-youtube-transcript-generators.mdx",
+    "title": "Best YouTube Transcript Generators (2026)",
+    "slug": "best-youtube-transcript-generators",
+    "url": "/blog/best-youtube-transcript-generators"
+  },
+  {
+    "file": "best-youtube-video-ideas-generators-for-businesses.md",
+    "title": "14 Best YouTube Video Ideas Generators (2026)",
+    "slug": "best-youtube-video-ideas-generators-for-businesses",
+    "url": "/blog/best-youtube-video-ideas-generators-for-businesses"
+  },
+  {
+    "file": "compounding-effect-four-videos-a-month.md",
+    "title": "How 4 Videos a Month Build a Predictable Pipeline",
+    "slug": "compounding-effect-four-videos-a-month",
+    "url": "/blog/compounding-effect-four-videos-a-month"
+  },
+  {
+    "file": "create-youtube-channel-for-business.mdx",
+    "title": "How to Create a YouTube Channel for Business",
+    "slug": "create-youtube-channel-for-business",
+    "url": "/blog/create-youtube-channel-for-business"
+  },
+  {
+    "file": "high-intent-topic-research-framework.mdx",
+    "title": "High-Intent YouTube Topics: Our Research Framework",
+    "slug": "high-intent-topic-research-framework",
+    "url": "/blog/high-intent-topic-research-framework"
+  },
+  {
+    "file": "how-to-find-youtube-autocomplete-keywords.md",
+    "title": "How to Find YouTube Autocomplete Keywords",
+    "slug": "how-to-find-youtube-autocomplete-keywords",
+    "url": "/blog/how-to-find-youtube-autocomplete-keywords"
+  },
+  {
+    "file": "search-intent-youtube-seo-power.mdx",
+    "title": "YouTube Search Intent: Why It Beats Blog SEO for B2B",
+    "slug": "search-intent-youtube-seo-power",
+    "url": "/blog/search-intent-youtube-seo-power"
+  },
+  {
+    "file": "the-youtube-acquisition-engine.md",
+    "title": "YouTube for Customer Acquisition: Full System",
+    "slug": "the-youtube-acquisition-engine",
+    "url": "/blog/the-youtube-acquisition-engine"
+  },
+  {
+    "file": "why-most-youtube-strategies-fail.mdx",
+    "title": "Why YouTube Strategies Fail (And What Works)",
+    "slug": "why-most-youtube-strategies-fail",
+    "url": "/blog/why-most-youtube-strategies-fail"
+  },
+  {
+    "file": "youtube-channel-optimization-checklist.mdx",
+    "title": "YouTube Channel Optimization: 12-Point Checklist for Lead Gen",
+    "slug": "youtube-channel-optimization-checklist",
+    "url": "/blog/youtube-channel-optimization-checklist"
+  },
+  {
+    "file": "youtube-keyword-research.mdx",
+    "title": "YouTube Keyword Research for Business Channels (2026)",
+    "slug": "youtube-keyword-research",
+    "url": "/blog/youtube-keyword-research"
+  },
+  {
+    "file": "youtube-marketing-b2b.md",
+    "title": "YouTube Marketing for B2B: Generate Leads",
+    "slug": "youtube-marketing-b2b",
+    "url": "/blog/youtube-marketing-b2b"
+  },
+  {
+    "file": "youtube-marketing-roi.md",
+    "title": "YouTube Marketing ROI: 3.25x More Conversions",
+    "slug": "youtube-marketing-roi",
+    "url": "/blog/youtube-marketing-roi"
+  },
+  {
+    "file": "youtube-marketing-strategy.mdx",
+    "title": "YouTube Marketing Strategy: 6-Step Framework",
+    "slug": "youtube-marketing-strategy",
+    "url": "/blog/youtube-marketing-strategy"
+  },
+  {
+    "file": "youtube-script-writing-guide.mdx",
+    "title": "How to Write a YouTube Script That Converts Viewers Into Leads",
+    "slug": "youtube-script-writing-guide",
+    "url": "/blog/youtube-script-writing-guide"
+  },
+  {
+    "file": "youtube-seo-guide.mdx",
+    "title": "YouTube SEO: Rank Business Videos on Page 1 (2026)",
+    "slug": "youtube-seo-guide",
+    "url": "/blog/youtube-seo-guide"
+  },
+  {
+    "file": "youtube-video-ideas-generator-for-b2b.mdx",
+    "title": "YouTube Video Ideas Generator for B2B",
+    "slug": "youtube-video-ideas-generator-for-b2b",
+    "url": "/blog/youtube-video-ideas-generator-for-b2b"
+  },
+  {
+    "file": "youtube-vs-blog-shopify-app-case-study.mdx",
+    "title": "YouTube vs Blog for Shopify Apps: 12-Month Data",
+    "slug": "youtube-vs-blog-shopify-app-case-study",
+    "url": "/blog/youtube-vs-blog-shopify-app-case-study"
+  },
+  {
+    "file": "youtube-autocomplete-keywords.astro",
+    "title": "Tool: youtube-autocomplete-keywords",
+    "slug": "youtube-autocomplete-keywords",
+    "url": "/tools/youtube-autocomplete-keywords"
+  },
+  {
+    "file": "youtube-channel-audit.astro",
+    "title": "Tool: youtube-channel-audit",
+    "slug": "youtube-channel-audit",
+    "url": "/tools/youtube-channel-audit"
+  },
+  {
+    "file": "youtube-competitor-analysis.astro",
+    "title": "Tool: youtube-competitor-analysis",
+    "slug": "youtube-competitor-analysis",
+    "url": "/tools/youtube-competitor-analysis"
+  },
+  {
+    "file": "youtube-description-generator.astro",
+    "title": "Tool: youtube-description-generator",
+    "slug": "youtube-description-generator",
+    "url": "/tools/youtube-description-generator"
+  },
+  {
+    "file": "youtube-ranking-checker.astro",
+    "title": "Tool: youtube-ranking-checker",
+    "slug": "youtube-ranking-checker",
+    "url": "/tools/youtube-ranking-checker"
+  },
+  {
+    "file": "youtube-roi-calculator.astro",
+    "title": "Tool: youtube-roi-calculator",
+    "slug": "youtube-roi-calculator",
+    "url": "/tools/youtube-roi-calculator"
+  },
+  {
+    "file": "youtube-script-generator.astro",
+    "title": "Tool: youtube-script-generator",
+    "slug": "youtube-script-generator",
+    "url": "/tools/youtube-script-generator"
+  },
+  {
+    "file": "youtube-seo-tool.astro",
+    "title": "Tool: youtube-seo-tool",
+    "slug": "youtube-seo-tool",
+    "url": "/tools/youtube-seo-tool"
+  },
+  {
+    "file": "youtube-tag-generator.astro",
+    "title": "Tool: youtube-tag-generator",
+    "slug": "youtube-tag-generator",
+    "url": "/tools/youtube-tag-generator"
+  },
+  {
+    "file": "youtube-title-generator.astro",
+    "title": "Tool: youtube-title-generator",
+    "slug": "youtube-title-generator",
+    "url": "/tools/youtube-title-generator"
+  },
+  {
+    "file": "youtube-transcript-generator.astro",
+    "title": "Tool: youtube-transcript-generator",
+    "slug": "youtube-transcript-generator",
+    "url": "/tools/youtube-transcript-generator"
+  },
+  {
+    "file": "youtube-video-ideas-evaluator.astro",
+    "title": "Tool: youtube-video-ideas-evaluator",
+    "slug": "youtube-video-ideas-evaluator",
+    "url": "/tools/youtube-video-ideas-evaluator"
+  },
+  {
+    "file": "youtube-video-ideas-generator.astro",
+    "title": "Tool: youtube-video-ideas-generator",
+    "slug": "youtube-video-ideas-generator",
+    "url": "/tools/youtube-video-ideas-generator"
+  },
+  {
+    "file": "youtube-for/[slug].astro",
+    "title": "pSEO: YouTube For [niche]",
+    "slug": "youtube-for-*",
+    "url": "/youtube-for/*"
+  },
+  {
+    "file": "youtube-vs/[slug].astro",
+    "title": "pSEO: YouTube Vs [platform]",
+    "slug": "youtube-vs-*",
+    "url": "/youtube-vs/*"
+  }
+]
