@@ -280,7 +280,7 @@ export interface Faqs extends Omit<Headline, 'classes'>, Widget {
 export interface Steps extends Omit<Headline, 'classes'>, Widget {
   items?: Array<Item>;
   callToAction?: string | CallToAction;
-  image?: string | Image;
+  image?: string | Image | ImageMetadata;
   isReversed?: boolean;
 }
 

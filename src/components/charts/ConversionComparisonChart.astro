@@ -49,7 +49,7 @@
         tooltip: {
           callbacks: {
             label: function(context) {
-              return `${context.parsed.y.toLocaleString()} conversions`;
+              return `${context.parsed.y?.toLocaleString() ?? '0'} conversions`;
             }
           }
         }
