@@ -46,7 +46,7 @@ Every keyword in `research/keywords/sot_master.csv` has a `priority_score` (0–
 
 ### The Funnel Mix
 
-**Cadence: 1 post per week. Hard maximum: 2 posts in any 7-day window.** SellonTube is a new, low-authority site — a burst of posts risks Google flagging thin content. Before scheduling any post, count how many fall in the same 7-day window across `src/data/post/`. If adding the new post would push any window above 2, stop and flag it.
+**Cadence: up to 5 posts/week.** pSEO is paused, so all publishing velocity goes to blog. Quality bar unchanged -- every post must meet the checklist at the bottom of this document. See `growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
 
 Posts should cover different funnel stages across the month:
 

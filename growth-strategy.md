@@ -1,172 +1,366 @@
-# SellonTube — Traffic Growth Strategy
+# SellonTube Growth Strategy
+
+**Last updated:** 2026-04-20
+**Status:** ACTIVE
+**Data basis:** DataForSEO (validated Apr 2026), GSC 90d, GA4 90d, sot_master.csv
+
+---
 
 ## Mission
-**Increase high-quality organic traffic to sellontube.com. Google-safe. No shortcuts.**
+
+Increase high-quality organic traffic to sellontube.com. Google-safe. No shortcuts.
 
 High-quality = B2B founders, SaaS operators, and service businesses actively exploring YouTube as a customer acquisition and lead generation channel.
 
-## The Three Pillars
-
-### A. pSEO — 50 pages (in progress)
-- 29 "YouTube For [niche]" pages + 20 "YouTube Vs [channel]" pages + hub pages
-- Publishing cadence: ~4 pages/week on drip schedule (publishDate-gated)
-- Each page goes live on its scheduled date — no bulk publishing
-- Angle: YouTube as a customer acquisition channel for that specific niche/comparison
-- Action on publish: submit each new page for GSC indexing same day
-
-### B. Microtools — 7 tools planned
-- Free tools targeting YouTube-for-business searches
-- **Positioning angle: YouTube for business, acquisition, and lead generation — NOT for creators**
-- This gap is unoccupied by all existing tools (VidIQ, TubeBuddy, Kapwing all target creators)
-- Build order and full specs: `microtool-strategy.md`
-- Tools 1–4: pure client-side JS (fast to ship, no backend cost)
-- Tools 5–7: Netlify Functions + Gemini Flash API (see `agents/08-microtool-builder.md` for the mandatory Gemini Flash integration pattern)
-
-### C. Blog — 1 post/week (hard ceiling: 2/week)
-- **Priority cluster: `youtube_seo`** — validated by DataForSEO (March 2026). 8 winnable keywords, top volume 4,400/month, KD range 0–27. Start every new post here before touching other clusters.
-- All keyword selection must use `sot_master.csv` filtered to `tier = winnable` (KD ≤ 30). Never target `avoid` or `stretch` tier keywords until the site has measurable domain authority. See "Keyword Tier System" below.
-- Next post target: "youtube seo tools" (4,400 vol, KD 23) — highest volume winnable keyword in the CSV
-- 6 topical clusters mapped in `microtool-strategy.md` — Cluster 3 (YouTube SEO) is now Priority 1
-- Each post must target a specific validated keyword and follow the Content Quality Playbook
-- Blog + microtool tandem rule: whenever a blog post targets the `youtube_seo` or `youtube_automation` cluster, it must link to an existing or upcoming tool. The tool and post should ideally launch the same week.
+**No services/agency content.** SellonTube is a product company. All content builds traffic for the product, not for selling YouTube SEO services or agency work.
 
 ---
 
-Last updated: 2026-03-21
+## Core Principle
+
+**Tools are the primary traffic driver. Blogs support tools.**
+
+The Video Ideas Generator (140 vol keyword) already pulls 142 sessions as the #2 page on the site. Tool keywords have 5-40x more volume than blog keywords, all at LOW competition. Build tools fast, rank for utility queries.
 
 ---
 
-## Growth Levers, Prioritised
+## The Tool Opportunity Map (DataForSEO validated)
 
-### Lever 2 — Clean up legacy index pollution *(1-2 hours, frees crawl budget)*
+| # | Tool | Primary Keyword | Vol | Competition | Build Effort | Status |
+|---|------|----------------|-----|-------------|-------------|--------|
+| 1 | YouTube Tag Generator | youtube tag generator | 5,400 | LOW | Low (Gemini) | **APPROVED** |
+| 2 | YouTube Title Generator | youtube title generator | 2,400 | LOW | Low (Gemini) | Pending review |
+| 3 | YouTube Description Generator | youtube description generator | 1,600 | LOW | Low (Gemini) | Pending review |
+| 4 | YouTube Script Generator | youtube script | 1,600 + 2,500 variants | LOW (KD 18) | Low (Gemini, Coming Soon page exists) | Pending review |
+| 5 | YouTube Hashtag Generator | youtube hashtag generator | 880 | LOW | Very Low (client-side) | Pending review |
+| 6 | YouTube Keyword Research Tool | youtube keyword research tool | 880 | LOW | Medium (needs API) | Pending review |
 
-1. Add 301 redirects in `netlify.toml` for old blog post URLs that moved:
-   - `/search-intent-youtube-seo-power` → `/blog/search-intent-youtube-seo-power`
-   - `/the-youtube-acquisition-engine` → `/blog/the-youtube-acquisition-engine`
-2. Use GSC Removals tool to kill pure WordPress junk pages:
-   - `/homes/mobile-app`
-   - `/landing/product`
-3. Investigate `/category/youtube-strategy` — if it has no relevant equity, remove; if it does, redirect to `/blog`
+**Already live:**
+- YouTube SEO Tool (youtube seo tools, 4,400 vol)
+- YouTube Video Ideas Generator (youtube video ideas generator, 140 vol) — 142 sessions
+- YouTube Video Ideas Evaluator
+- YouTube ROI Calculator
+- YouTube Transcript Generator (pos 5 for "youtube to transcript")
 
----
-
-### Lever 3 — pSEO drip execution *(mid-term, volume play)*
-
-49 pages (29 YouTube For + 20 YouTube Vs) are built and scheduled on a drip. These are the site's primary volume bet.
-
-Rules:
-- Never publish ahead of schedule — the drip spacing exists specifically to avoid a templated-content flood flag
-- As each page goes live, submit for indexing via GSC "Request Indexing"
-- Monitor each page's first 30 days in GSC — if impressions = 0 after 3 weeks, the page likely needs a content depth improvement
-- Each page needs 400–600+ words of unique, niche-specific copy (not just templated vars)
-
-**Action:** Set a recurring weekly task to submit that week's newly-live pSEO pages for indexing in GSC.
+**Total untapped tool volume: ~12,760/mo**
 
 ---
 
-### Lever 4 — Blog: publish toward keyword clusters with real search demand *(mid-term)*
+## Execution Sequence
 
-**Updated 2026-03-21 — DataForSEO intelligence applied.**
+| Week | Ship | Volume Captured |
+|------|------|----------------|
+| Week 1 | YouTube Tag Generator (5,400 vol) | 5,400 |
+| Week 2 | YouTube Title Generator (2,400 vol) | 7,800 |
+| Week 3 | YouTube Description Generator (1,600 vol) + YouTube Script Generator (4,100 vol) | 13,500 |
+| Week 4 | YouTube Hashtag Generator (880 vol) + resume blog cadence | 14,380 |
+| Week 5+ | YouTube Keyword Research Tool (2,000+ vol) + blog posts | 16,380+ |
 
-Before writing any new post, check the keyword in `sot_master.csv`:
-1. `tier = winnable` — mandatory. KD ≤ 30 is the only realistic range for SellonTube until domain authority grows.
-2. `status = not-started` — never duplicate a live or planned post.
-3. Sort by `priority_score` — the score now uses live DataForSEO volume and real KD, not GKP estimates.
-
-**Keywords now parked (previously assumed high-value, now avoid/stretch):**
-- "youtube seo" (KD 40), "youtube marketing" (KD 35), "youtube video seo" (KD 41) — revisit at 6–12 months
-- "check youtube channel" (KD 49), "set up company youtube channel" (KD 53) — avoid entirely
-- "youtube marketing platform" (KD 62), "youtube marketing for beginners" (KD 63) — avoid entirely
-- All of the above had inflated GKP volumes. Real volume + high KD = not winnable for a new site.
-
-**Priority cluster right now: `youtube_seo`** — 8 winnable not-started keywords, top volume 4,400/month. Write this cluster out fully before moving to the next.
-
-**Keyword clusters and post list:** See `microtool-strategy.md` Part 2 — Cluster 3 (YouTube SEO) is now Priority 1.
-
-**Cadence:** 1 post/week, hard ceiling 2/week. Quality over quantity — each post must target a specific, validated keyword and meet the Content Quality Playbook standard.
+**After 4 weeks:** 6 new tools live, targeting 14,380 vol/mo of LOW competition keywords. Combined with existing tools (youtube seo tools 4,400 + others), total tool keyword coverage: ~19,000 vol/mo.
 
 ---
 
-### Lever 5 — Backlinks *(highest impact, slowest to build)*
+## Tool Specs
 
-This is the #1 constraint on organic growth. Without backlinks, Google has little reason to trust a new site even with excellent content. No backlink strategy = growth ceiling.
+### Tool #1: YouTube Tag Generator
 
-**Tactics that work within Google's guidelines:**
+**Status: APPROVED**
+**Slug:** `/tools/youtube-tag-generator`
+**Primary keyword:** youtube tag generator (5,400 vol/mo, LOW competition)
 
-1. **Digital PR / data-driven content** — Publish one piece of original research (e.g., "We analysed 100 B2B YouTube channels — here's what actually drives leads"). Pitch to marketing newsletters (Demand Curve, Marketing Examined, The Hustle, etc.). One placement = multiple backlinks.
+**What it does:** User enters a video topic or title. Tool generates 15-20 relevant YouTube tags sorted by relevance. One-click copy all.
 
-2. **Guest posts on B2B marketing publications** — Write one guest post per month on a site with DR > 40 in the B2B/SaaS marketing space. Pitch the brand angle: "YouTube customer acquisition for B2B companies that don't want to record themselves." This is genuinely differentiated.
+**Build approach:** Gemini Flash integration (existing pattern from Video Ideas Generator). Input: topic/title. Output: 15-20 tags with buyer-intent variants for B2B.
 
-3. **Tool / calculator embed** — The YouTube ROI calculator is a linkable asset. Pitch it to marketing newsletters and blogs as a free tool to embed or reference.
+**B2B angle:** Tag suggestions include buyer-intent variants, not just engagement tags. For "CRM comparison" -> suggest "crm for small business", "best crm software", "crm demo" -- not "tech review" or "software haul."
 
-4. **Podcast appearances** — Founder goes on B2B marketing podcasts. Hosts typically link to guest sites from show notes. Low effort for the site, high trust signal for Google.
+**Title:** `Free YouTube Tag Generator | SellOnTube` (40 chars)
+**Meta:** "Generate optimized YouTube tags for any video topic. Free, instant, no signup. Get 15-20 relevant tags ranked by search potential." (131 chars)
 
-5. **Community mentions** — Answer questions in relevant communities (Reddit r/entrepreneur, r/SaaS, Indie Hackers, LinkedIn posts) with genuine depth. Not spam — become the trusted voice on this specific topic. Some of these turn into backlinks.
+**Internal links:**
+- /tools/youtube-seo-tool ("Check your full video SEO score")
+- /tools/youtube-title-generator (once built -- "Need a title first?")
+- /blog/best-youtube-seo-tools-for-business
 
-6. **Partnership / integration mentions** — If any tools are used in the service workflow, reach out to those tools for mutual mention or a case study spot on their site.
+### Tool #2: YouTube Title Generator
 
-**Note:** Never buy links. Never do link exchanges. Never use PBNs. These are high-risk and will destroy the site's standing with Google's latest link spam updates.
+**Status: PENDING USER REVIEW**
+**Slug:** `/tools/youtube-title-generator`
+**Primary keyword:** youtube title generator (2,400 vol/mo, LOW competition)
+**Variants:** yt title generator (2,400), title generator for youtube (2,400), ai youtube title generator (260), youtube video title generator (260)
+
+**What it does:** User enters video topic + optional audience selector. Gemini generates 10 click-worthy title options. Each title shows estimated search-friendliness rating.
+
+**Build approach:** Gemini Flash. Same integration pattern.
+
+### Tool #3: YouTube Description Generator
+
+**Status: PENDING USER REVIEW**
+**Slug:** `/tools/youtube-description-generator`
+**Primary keyword:** youtube description generator (1,600 vol/mo, LOW competition)
+
+**What it does:** User enters video title + topic + optional CTA. Gemini generates a 150-200 word SEO-optimized YouTube description with timestamps placeholder, links section, and keyword integration.
+
+**Build approach:** Gemini Flash. Same integration pattern.
+
+### Tool #4: YouTube Script Generator
+
+**Status: PENDING USER REVIEW**
+**Slug:** `/tools/youtube-script-generator` (existing Coming Soon page)
+**Primary keyword cluster:** youtube script (1,600), youtube video script (480), script for a youtube video (480), youtube video script generator (260), youtube script writer (210), + AI variants totaling ~4,100 vol
+
+**What it does:** User enters topic, selects audience (SaaS founders / agencies / consultants / e-commerce), selects video length (short/medium/long), selects CTA type. Gemini generates a structured script outline: Hook -> Problem -> Solution -> Proof -> CTA. Each section has fill-in prompts.
+
+**Build approach:** Gemini Flash. Replace existing Coming Soon page.
+
+### Tool #5: YouTube Hashtag Generator
+
+**Status: PENDING USER REVIEW**
+**Slug:** `/tools/youtube-hashtag-generator`
+**Primary keyword:** youtube hashtag generator (880 vol/mo, LOW competition)
+
+**What it does:** User enters video topic/title. Tool generates 10-15 relevant hashtags. Explains YouTube's 3-hashtag-above-title rule and 15-hashtag-in-description best practice.
+
+**Build approach:** Can be client-side (simpler) or Gemini-enhanced.
+
+### Tool #6: YouTube Keyword Research Tool
+
+**Status: PENDING USER REVIEW**
+**Slug:** `/tools/youtube-keyword-research-tool`
+**Primary keyword:** youtube keyword research tool (880 vol/mo, LOW competition)
+**Variants:** free youtube keyword tool (590), keyword planner for youtube (390), free youtube keyword research tool (320). Total cluster: ~2,000+ vol.
+
+**What it does:** User enters a seed keyword. Tool returns related YouTube search suggestions with estimated volume indicators. Uses YouTube Autocomplete API (free, no key needed) + optional DataForSEO enrichment.
+
+**Build approach:** Medium complexity. YouTube Autocomplete is free/client-side. Volume estimates would need server-side DataForSEO calls (cost per lookup).
 
 ---
 
-### Lever 6 — Distribution (non-SEO traffic that builds brand authority) *(ongoing)*
+## Killed from Old Plan (Unvalidated)
 
-Google's Helpful Content system rewards real brand signals — direct searches, links from real sites, social mentions. Distribution feeds into Google's trust model, not just traffic volume.
-
-See `content-playbook.md` Section 7 for recommended channels, repurposing strategy, and the underutilized channel mapping framework. Pick 2 channels and commit — don't spread thin.
-
----
-
-### Lever 7 — Technical fixes still outstanding *(small but real impact)*
-
-From the audit, several P1/P2 items remain unresolved. These are not traffic drivers themselves but they affect crawl efficiency and E-E-A-T signals.
-
-| Item | Impact | Status |
-|---|---|---|
-| Author schema missing `url`/`sameAs` in BlogPosting | E-E-A-T signal | **Fixed** — LinkedIn URL added to BlogPosting schema |
-| `lastmod` dates missing from sitemap | Crawl efficiency | **Fixed** — `lastmod: new Date()` added to sitemap config |
+| Old Tool | Old "Estimated Vol" | DataForSEO Reality | Decision |
+|----------|--------------------|--------------------|----------|
+| YouTube Channel Audit for B2B | "3,000-6,000 est" | No matching keyword found | **KILLED** |
+| YouTube vs Blog Calculator | "2,000-4,000 est" | No matching keyword found | **KILLED** |
+| YouTube Topic Fit Checker | "3,000-7,000 est" | youtube video ideas generator = 140 vol | Already live as Video Ideas Evaluator |
+| YouTube Title Analyzer | "4,000-8,000 est" | youtube title generator = 2,400 vol | **Replaced** by Title Generator (tool #2) |
 
 ---
 
+## Blog Strategy (Paused Until Top 4 Tools Ship)
+
+New blog posts resume after tools 1-4 are live. Existing blogs continue to accrue rankings.
+
+**Cadence:** Up to 5 posts/week. pSEO is paused, so all publishing velocity goes to blog. Quality bar unchanged -- every post must meet content-playbook.md standards.
+
+### Current Blog Schedule (Apr 20 - Apr 28, 2026)
+
+All posts drafted. 5/week cadence.
+
+| Day | Post | Primary Keyword | Vol | KD |
+|-----|------|----------------|-----|-----|
+| Apr 20 (Mon) | youtube-script-writing-guide | youtube script | 1,600+ variants | 10-24 |
+| Apr 21 (Tue) | youtube-channel-optimization-checklist | optimizing youtube channel | 640 | 27-29 |
+| Apr 22 (Wed) | youtube-keyword-research | keyword research for youtube | 260 | 41 |
+| Apr 23 (Thu) | youtube-lead-generation | youtube lead gen | 100 | 6-12 |
+| Apr 24 (Fri) | youtube-views-but-no-leads | painpoint (zero-vol JTBD) | 0 | -- |
+| Apr 25 (Sat) | youtube-shorts-for-business | youtube shorts for business | 30 | 0 |
+| Apr 28 (Mon) | youtube-marketing-cost | youtube marketing cost | 10 | 29 |
+
+**Dropped from previous plans:**
+- youtube-seo-services -- killed (conflicts with no-agency rule)
+- youtube-marketing-plan -- killed (cannibalizes marketing-strategy)
+- youtube-marketing-not-working -- merged into youtube-views-but-no-leads
+- ai-tools-for-youtube -- deferred (KD 36, stretch tier)
+- youtube-best-practices-for-business -- deferred (no winnable keyword)
+- youtube-for-small-business -- dropped (pSEO page overlap)
+- youtube-sales-funnel -- dropped (overlaps lead-generation)
+- b2b-video-content-ideas -- dropped (overlaps video ideas tool)
+- is-youtube-worth-it-for-business -- dropped (covered by existing posts)
+
+**Service/agency keywords permanently excluded:**
+youtube seo services (1,600), youtube seo agency (210), youtube agency (260), youtube marketing agency (260), youtube seo company (70), youtube seo expert (90), and 19 others totaling 10,170 vol.
+
+### Blog Cluster Architecture
+
+6 clusters, all under the theme "YouTube for B2B customer acquisition."
+
+| Priority | Cluster | Sub-topic | Existing posts | Winnable keywords | Action |
+|---|---|---|---|---|---|
+| **1** | 3 | YouTube SEO for business | **None** | 8 (top vol: 4,400) | Write now when blogs resume |
+| **2** | 2 | Topic research and strategy | 1 post | 2 | Continue building out |
+| **3** | 1 | Economics of YouTube acquisition | 1 post | 3 | Continue building out |
+| **4** | 4 | Niche application (industry posts) | None | low | After Clusters 3+2+1 are covered |
+| **5** | 5 | Comparison and alternatives | None | low | After authority builds |
+| **6** | 6 | Case studies and data | 1 post | 1 | 1 per 6-8 weeks, backlink play |
+
+### Cluster Post Ideas
+
+**Cluster 1 -- Economics:**
+- "YouTube ROI for SaaS: What a $12k/Year Channel Realistically Returns"
+- "YouTube vs. Paid Ads for B2B: A Cost-Per-Lead Comparison With Real Numbers"
+- "How Much Does a YouTube Customer Acquisition Channel Actually Cost to Run?"
+- "When YouTube Does Not Work for Customer Acquisition (And What to Do Instead)"
+- "The Break-Even Math: How Many Clients Do You Need to Justify YouTube?"
+
+**Cluster 2 -- Topic Research:**
+- "How to Find YouTube Topics Your Competitors Are Not Covering"
+- "The Difference Between Trending YouTube Topics and High-Intent Topics"
+- "How to Use YouTube Search Autocomplete for B2B Topic Research"
+- "What Makes a YouTube Topic 'High Intent' vs. 'High Volume'?"
+- "5 Topic Research Mistakes B2B Companies Make on YouTube"
+- "How to Map Your Product Features to YouTube Search Queries"
+
+**Cluster 3 -- YouTube SEO (priority when blogs resume):**
+- **Pillar:** "YouTube SEO for Business: A Non-Creator's Guide to Ranking for Buyer Queries"
+- "How to Write YouTube Titles That Rank for Buyer-Intent Queries"
+- "YouTube Video Descriptions That Work: Templates for B2B and SaaS"
+- "YouTube Chapters and Timestamps: The Hidden SEO Signal Most Business Channels Ignore"
+- "YouTube Thumbnail Strategy for Business Channels: Not Clickbait, But Not Boring"
+
+**Cluster 4 -- Niche Application:**
+- "YouTube for SaaS: The 3 Video Types That Drive Demo Requests"
+- "YouTube for Agencies: How to Use Video to Win Clients Who Are Already Evaluating You"
+- "YouTube for Consultants: Why 'Personal Brand' Is the Wrong Frame"
+- "YouTube for E-Commerce: The Bottom-of-Funnel Content Mix That Drives Purchase Decisions"
+- "YouTube for Coaches: How to Attract High-Ticket Clients Through Search, Not Audience"
+
+**Cluster 5 -- Comparisons:**
+- "YouTube vs. LinkedIn for B2B Lead Generation: Which One Compounds Faster?"
+- "YouTube vs. Podcast for Customer Acquisition: A Practical Comparison for Service Businesses"
+- "YouTube vs. Webinars: Which Format Produces Better Qualified Leads?"
+- "YouTube vs. Cold Outreach: Why One Scales and One Doesn't"
+
+**Cluster 6 -- Case Studies (highest backlink potential, 1 per 6-8 weeks):**
+- "How a $8k/Month YouTube Channel Replaced a Full SDR Team for One SaaS Startup"
+- "3 SaaS Companies That Use YouTube for Customer Acquisition (And What Their Topics Have in Common)"
+- "We Analysed 50 B2B YouTube Channels. Here Is What the Successful Ones Do Differently."
+- "6 Months, 24 Videos, 14 Enterprise Leads: A B2B YouTube Channel Performance Breakdown"
+
+### Post Type Risk Table
+
+| Post type | Spam risk | Link potential | Conversion potential |
+|---|---|---|---|
+| Economics / ROI posts | Low | Medium | High |
+| Framework / how-to posts | Low | Medium | Medium |
+| Niche application posts | Low | Low | Very high |
+| Comparison posts | Low | Medium | High |
+| Case studies with data | Very low | Very high | High |
+| Tool roundups without unique angle | Medium | Low | Low |
+| Listicles without original data | High | Very low | Low |
+
+Avoid listicles and tool roundups without a genuinely B2B-specific angle that doesn't exist elsewhere.
+
 ---
 
-## Keyword Tier System (added 2026-03-21)
+## pSEO Strategy (PAUSED)
 
-`sot_master.csv` now has a `tier` column based on real DataForSEO keyword difficulty (KD), not GKP estimates:
+pSEO drip publishing is paused. Blog content is the priority. Existing live pSEO pages remain indexed but no new pages are being published.
+
+Focus expansion only on pages with GSC signal:
+- /youtube-for/coaches (pos 16.6, 5 imp)
+- /youtube-for/saas (pos 14, 1 imp)
+
+---
+
+## Keyword Tier System
+
+`sot_master.csv` has a `tier` column based on real DataForSEO keyword difficulty (KD):
 
 | Tier | KD range | What to do |
 |---|---|---|
-| `winnable` | ≤ 30 | Write now. 106 keywords. These are the only blog targets for the current site. |
-| `stretch` | 31–45 | Revisit at 6–12 months when site has more authority. 66 keywords. |
-| `avoid` | > 45 | Do not target. 123 keywords. Many had inflated GKP volumes that made them look attractive. |
-| `pseo` | n/a | pSEO pages — zero GKP volume is intentional. Topical authority play, not volume play. |
+| `winnable` | <= 30 | Write now. 106 keywords. These are the only blog targets for the current site. |
+| `stretch` | 31-45 | Revisit at 6-12 months when site has more authority. 66 keywords. |
+| `avoid` | > 45 | Do not target. 123 keywords. Many had inflated GKP volumes. |
+| `pseo` | n/a | pSEO pages -- zero GKP volume is intentional. Topical authority play, not volume play. |
 
-**Key insight:** 79% of keywords in the CSV had GKP volumes that overstated reality by 30%+. The volume scores were GKP bucketing artefacts. DataForSEO live data corrects this. Trust `search_volume_live` and `kd_real` — not `search_volume` or `keyword_difficulty`.
+**Key insight:** 79% of keywords in the CSV had GKP volumes that overstated reality by 30%+. Trust `search_volume_live` and `kd_real` -- not `search_volume` or `keyword_difficulty`.
 
-**Refresh schedule:** Re-run `scripts/update_keyword_tiers.py` and `scripts/refresh_keyword_volumes.py` quarterly, or whenever new keywords are added to the CSV.
+**Refresh schedule:** Re-run `scripts/update_keyword_tiers.py` and `scripts/refresh_keyword_volumes.py` quarterly, or whenever new keywords are added.
+
+---
+
+## Backlink Strategy
+
+This is the #1 constraint on organic growth. Without backlinks, Google has little reason to trust a new site even with excellent content.
+
+**Tactics within Google's guidelines:**
+
+1. **Digital PR / data-driven content** -- Publish one piece of original research (e.g., "We analysed 100 B2B YouTube channels -- here's what actually drives leads"). Pitch to marketing newsletters (Demand Curve, Marketing Examined, The Hustle). One placement = multiple backlinks.
+
+2. **Guest posts on B2B marketing publications** -- Write one guest post per month on a site with DR > 40 in the B2B/SaaS marketing space. Pitch the brand angle: "YouTube customer acquisition for B2B companies that don't want to record themselves."
+
+3. **Tool / calculator embed** -- The YouTube ROI calculator is a linkable asset. Pitch it to marketing newsletters and blogs as a free tool to reference.
+
+4. **Podcast appearances** -- Founder goes on B2B marketing podcasts. Hosts link to guest sites from show notes.
+
+5. **Community mentions** -- Answer questions in relevant communities (Reddit r/entrepreneur, r/SaaS, Indie Hackers, LinkedIn) with genuine depth. Not spam -- become the trusted voice.
+
+6. **Partnership / integration mentions** -- Reach out to tools used in the service workflow for mutual mention or case study spots.
+
+**Never:** buy links, do link exchanges, use PBNs.
+
+---
+
+## Distribution (Non-SEO Traffic)
+
+Google's Helpful Content system rewards real brand signals -- direct searches, links from real sites, social mentions. Distribution feeds into Google's trust model.
+
+See `content-playbook.md` Section 7 for recommended channels, repurposing strategy, and the underutilized channel mapping framework. Pick 2 channels and commit.
+
+---
+
+## Technical Fixes Still Needed
+
+1. **Double "| SellOnTube | SellOnTube" title suffix** -- still live in current build. Affects ~60 pages.
+2. **7 blog post titles over 70 chars** -- frontmatter changes needed.
+3. **~15 video-ideas pages 404ing** -- pages with past publishDates not appearing in build. Needs investigation.
+4. **Orphan /slides page** -- noindex or remove from sitemap.
 
 ---
 
 ## What NOT to Do
 
-- No bulk pSEO publishing — the drip schedule is intentional
+- No bulk pSEO publishing -- the drip schedule is intentional
 - No link buying, exchanges, or PBNs
-- No AI-mass-generated content posted directly without editing — Google's SpamBrain flags thin AI content
+- No AI-mass-generated content posted directly without editing
 - No keyword stuffing in titles, headings, or body copy
 - No chasing trending topics unrelated to the ICP
-- No social media volume without quality — 3 great LinkedIn posts beats 20 mediocre ones
+- No social media volume without quality -- 3 great LinkedIn posts beats 20 mediocre ones
 
 ---
 
 ## How We Measure Progress
 
-Check these weekly/monthly:
-- GSC: impressions trending up (signal Google is finding more content)
-- GSC: CTR on targeted pages (did the snippet rewrites work?)
-- GA4: organic search sessions (actual traffic arriving)
+Check weekly/monthly:
+- GSC: impressions trending up
+- GSC: CTR on targeted pages
+- GA4: organic search sessions
 - GSC: new pages appearing in impressions as pSEO drips live
-- Backlink count in any backlink tool (Ahrefs, SEMrush, or free Moz alternative)
+- Backlink count (Ahrefs, SEMrush, or free Moz alternative)
 
 **6-month target (conservative):** 500+ organic sessions/month, 20+ GSC pages with impressions, 3+ backlinks from DR40+ domains.
 
-**6-month target (optimistic):** 2,000+ organic sessions/month if pSEO + blog velocity + 1–2 backlink wins land.
+**6-month target (optimistic):** 2,000+ organic sessions/month if pSEO + blog velocity + 1-2 backlink wins land.
+
+---
+
+## Open Decisions
+
+1. **Include "create a company youtube channel" (6,600 vol, KD 27) in product bucket?** This keyword was excluded because it contains "company." User should decide: product-relevant (people creating channels = potential SellonTube users) or service-relevant (implies hiring someone)?
+2. **Review + approve/revise tools #2-6 specs** -- present each for approval before building.
+3. **YouTube Channel Name Generator (2,900 vol)** -- off-ICP but massive traffic. Build as traffic play or skip?
+
+---
+
+## Reference Files
+
+- **Keyword data:** `research/keywords/sot_master.csv` (single source of truth for all content decisions)
+- **Writing quality:** `content-playbook.md` (quality benchmark for blog posts)
+- **Style rules:** `style-guide.md` (sentence-level writing rules)
+- **SEO rules:** `seo-rules.md` (technical SEO constraints)
+- **Content depth:** `content-depth-framework.md` (word count targets by page type)
+- **AI visibility:** `ai-seo-guide.md` (AEO/GEO rules)
+- **ICP definition:** `docs/icp.md`
+- **Tool build pattern:** `agents/08-microtool-builder.md` (Gemini Flash integration standard)
+- **Reference implementation:** `src/pages/tools/youtube-video-ideas-generator.astro` + `netlify/functions/generate-alternatives.ts`

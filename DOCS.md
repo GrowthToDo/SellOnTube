@@ -19,8 +19,7 @@ All project documentation in one place. Start here.
 
 | Doc | Purpose |
 |---|---|
-| [`growth-strategy.md`](growth-strategy.md) | Three pillars (pSEO, microtools, blog), cadence rules, backlink tactics, success metrics. |
-| [`microtool-strategy.md`](microtool-strategy.md) | Full tool pipeline (7 tools), build order, keyword targets, Gemini Flash integration pattern. |
+| [`growth-strategy.md`](growth-strategy.md) | **SINGLE SOURCE OF TRUTH** for growth strategy. Tools-first plan, tool specs, blog clusters, keyword tiers, backlink tactics, success metrics. |
 | [`seo-audit-log.md`](seo-audit-log.md) | Audit history, P0/P1/P2 fixes resolved, GSC indexation strategy. |
 
 ---
@@ -30,7 +29,6 @@ All project documentation in one place. Start here.
 | Doc | Purpose |
 |---|---|
 | [`research/keywords/sot_master.csv`](research/keywords/sot_master.csv) | **SINGLE SOURCE OF TRUTH** — 347 curated keywords with status, cluster, priority_score, content_type. Use for all content decisions. |
-| [`research/keywords/content-plan.md`](research/keywords/content-plan.md) | ⚠️ DEPRECATED — editorial notes only. Data is stale. Use `sot_master.csv` for all decisions. |
 
 ---
 

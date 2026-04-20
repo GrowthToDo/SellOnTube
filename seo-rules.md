@@ -46,9 +46,9 @@ Read this before any SEO decision. These rules override general SEO defaults.
 
 ## Blog Cadence
 
-- Hard max: 1 post/week. Ceiling: 2/week.
-- Before scheduling any post: grep `publishDate` across `src/data/post/` and count posts in the same 7-day window
-- If adding the post pushes any window above 2 — stop and flag to user
+- Up to 5 posts/week. pSEO is paused, so all publishing velocity goes to blog.
+- Quality bar unchanged -- every post must meet content-playbook.md standards.
+- See `growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
 
 ---
 

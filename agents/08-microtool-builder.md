@@ -123,7 +123,7 @@ Existing tools should be re-scored against this scorecard when:
 - A better-fit tool idea emerges that might replace it
 - The ICP or product positioning shifts
 
-Current tools to re-evaluate: see `microtool-strategy.md` for the full pipeline list.
+Current tools to re-evaluate: see `growth-strategy.md` for the full tool opportunity map.
 
 ---
 
@@ -160,7 +160,7 @@ Pick ONE primary keyword for the `<title>` and `<h1>`. It should match the exact
 These go into the on-page copy, the methodology section headings, and the meta description. Look for related terms in the same cluster.
 
 **Step 2c — Confirm the slug:**
-Check `src/pages/` to make sure the slug isn't taken. Use the slug format from `microtool-strategy.md` if the tool was planned there.
+Check `src/pages/` to make sure the slug isn't taken. Use the slug format from `growth-strategy.md` if the tool was planned there.
 
 ---
 
@@ -361,7 +361,7 @@ Never do any of these:
 
 - Reference tool: `src/pages/tools/youtube-roi-calculator.astro`
 - Keyword data: `research/keywords/sot_master.csv` (SSOT — use this, not master_keywords_cleaned.csv)
-- Tool plan: `microtool-strategy.md`
+- Tool plan: `growth-strategy.md`
 - Style rules: `style-guide.md`
 - SEO rules: `seo-rules.md`
 - Booking link: `https://cal.com/gautham-8bdvdx/30min`

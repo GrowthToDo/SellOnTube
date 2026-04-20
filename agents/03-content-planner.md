@@ -14,9 +14,10 @@ Build and maintain a rolling 4-week content calendar. Enforce cadence rules. Nev
 - Output from Agent 02 (keyword picks) — use these to fill open calendar slots
 
 ## Cadence rules (non-negotiable)
-- **Blog posts:** max 1/week. Hard ceiling: 2/week. Never schedule more than 2 blog posts in any rolling 7-day window.
-- **pSEO pages:** ~4/week drip via publishDate. Separate schedule — does NOT count toward blog cadence.
-- These rules exist because SellonTube is a new, low-authority site. Google can penalise a flood of templated content.
+- **Blog posts:** up to 5/week. pSEO is paused -- all publishing velocity goes to blog.
+- **pSEO pages:** drip publishing is PAUSED. Existing live pages remain indexed.
+- Quality bar unchanged -- every post must meet content-playbook.md standards.
+- See `growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
 
 ## Execution steps
 
