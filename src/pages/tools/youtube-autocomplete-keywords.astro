@@ -895,19 +895,16 @@ const geoOptions = [
     }
 
     async function trackLead(email: string, seed: string, geography: string, keywordCount: number) {
-      const webhookUrl = (window as any).__GOOGLE_SHEET_WEBHOOK_URL__;
-      if (!webhookUrl) return;
       try {
-        await fetch(webhookUrl, {
+        await fetch('/.netlify/functions/capture-email', {
           method: 'POST',
-          mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            email, seed_keyword: seed, geography, keyword_count: keywordCount,
-            timestamp: new Date().toISOString()
+            email, source: 'youtube-autocomplete-keywords',
+            seed_keyword: seed, geography, keyword_count: keywordCount
           })
         });
-      } catch (e) { /* silent - don't block user */ }
+      } catch (e) { /* silent */ }
     }
 
     // State
