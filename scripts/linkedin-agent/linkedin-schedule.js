@@ -35,44 +35,9 @@ export function buildScheduledFor(dateStr) {
   return `${dateStr}T03:30:00Z`;
 }
 
-// Upload an image to Zernio's media endpoint, returns the Zernio-hosted URL
-async function uploadImageToZernio(imageUrl, apiKey) {
-  // Download the image
-  const imgRes = await fetch(imageUrl);
-  if (!imgRes.ok) throw new Error(`Failed to download image: HTTP ${imgRes.status}`);
-  const imgBuffer = Buffer.from(await imgRes.arrayBuffer());
-  const fileName = imageUrl.split('/').pop() || 'image.webp';
-
-  // Build multipart form data manually (no dependencies)
-  const boundary = '----ZernioUpload' + Date.now();
-  const bodyParts = [
-    `--${boundary}\r\n`,
-    `Content-Disposition: form-data; name="files"; filename="${fileName}"\r\n`,
-    `Content-Type: application/octet-stream\r\n\r\n`,
-  ];
-  const header = Buffer.from(bodyParts.join(''));
-  const footer = Buffer.from(`\r\n--${boundary}--\r\n`);
-  const body = Buffer.concat([header, imgBuffer, footer]);
-
-  const uploadRes = await fetch('https://zernio.com/api/v1/media', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': `multipart/form-data; boundary=${boundary}`,
-    },
-    body,
-  });
-
-  if (!uploadRes.ok) throw new Error(`Media upload failed: HTTP ${uploadRes.status}`);
-  const uploadData = JSON.parse(await uploadRes.text());
-  if (!uploadData.files || !uploadData.files[0]?.url) {
-    throw new Error('Media upload returned no URL');
-  }
-  return uploadData.files[0].url;
-}
-
 // Pure: build Zernio API payload from a queue post object
-export function buildPayload(post, accountId, zernioMediaUrl) {
+// zernioImageUrl is the uploaded image URL from Zernio's media endpoint (optional)
+export function buildPayload(post, accountId, zernioImageUrl) {
   const payload = {
     content: post.linkedinPost,
     timezone: 'Asia/Kolkata',
@@ -83,8 +48,8 @@ export function buildPayload(post, accountId, zernioMediaUrl) {
   } else {
     payload.scheduledFor = buildScheduledFor(post.scheduledDate);
   }
-  if (zernioMediaUrl) {
-    payload.mediaItems = [{ url: zernioMediaUrl, type: 'image' }];
+  if (zernioImageUrl) {
+    payload.mediaItems = [{ url: zernioImageUrl, type: 'image' }];
   }
   return payload;
 }
@@ -92,6 +57,49 @@ export function buildPayload(post, accountId, zernioMediaUrl) {
 // Sleep helper for retry
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Upload an image to Zernio and return the hosted URL
+async function uploadImageToZernio(imageUrl, apiKey) {
+  // Fetch the image
+  const imgRes = await fetch(imageUrl);
+  if (!imgRes.ok) {
+    throw new Error(`Failed to fetch image ${imageUrl}: HTTP ${imgRes.status}`);
+  }
+  const imgBuffer = await imgRes.arrayBuffer();
+  const contentType = imgRes.headers.get('content-type') || 'image/webp';
+  const ext = contentType.includes('svg') ? 'svg' : contentType.includes('png') ? 'png' : contentType.includes('jpeg') || contentType.includes('jpg') ? 'jpg' : 'webp';
+  const filename = `linkedin-image.${ext}`;
+
+  // Build multipart form
+  const blob = new Blob([imgBuffer], { type: contentType });
+  const form = new FormData();
+  form.append('files', blob, filename);
+
+  const res = await fetch('https://zernio.com/api/v1/media', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${apiKey}` },
+    body: form,
+  });
+
+  const body = await res.text();
+  if (!res.ok) {
+    throw new Error(`Image upload failed: HTTP ${res.status}: ${body.slice(0, 200)}`);
+  }
+
+  const data = JSON.parse(body);
+  // Zernio returns: { files: [{ type, url, filename, size, mimeType }] }
+  if (data.files && Array.isArray(data.files) && data.files.length > 0 && data.files[0].url) {
+    return data.files[0].url;
+  }
+  if (Array.isArray(data) && data.length > 0 && data[0].url) {
+    return data[0].url;
+  }
+  if (data.url) return data.url;
+  if (data.data && Array.isArray(data.data) && data.data.length > 0) {
+    return data.data[0].url || data.data[0];
+  }
+  throw new Error(`Unexpected upload response: ${body.slice(0, 200)}`);
 }
 
 // POST to Zernio with one retry on network failure
@@ -193,22 +201,23 @@ async function main() {
   let failCount = 0;
 
   for (const post of queue) {
-    const label = `${post.scheduledDate} (${post.dayOfWeek}) — ${post.sourceTitle}`;
+    const label = `${post.scheduledDate} (${post.dayOfWeek}) -- ${post.sourceTitle}`;
 
     try {
-      // Upload image to Zernio if provided
-      let zernioMediaUrl = null;
+      // Upload image to Zernio first if present
+      let zernioImageUrl = null;
       if (post.imageUrl) {
-        console.log(`  UPLOADING  image for ${post.dayOfWeek}...`);
-        zernioMediaUrl = await uploadImageToZernio(post.imageUrl, apiKey);
+        console.log(`  UPLOADING  Image for ${post.dayOfWeek}...`);
+        zernioImageUrl = await uploadImageToZernio(post.imageUrl, apiKey);
+        console.log(`             Uploaded: ${zernioImageUrl}`);
       }
 
-      const payload = buildPayload(post, accountId, zernioMediaUrl);
+      const payload = buildPayload(post, accountId, zernioImageUrl);
       await postToZernio(payload, apiKey);
       saveToHistory(post);
       console.log(`  SCHEDULED  ${label}`);
       const when = post.publishNow ? 'now' : payload.scheduledFor;
-      console.log(`             Publish: ${when} | Image: ${zernioMediaUrl ? 'yes' : 'none'}\n`);
+      console.log(`             Publish: ${when} | Image: ${zernioImageUrl ? 'yes' : 'none'}\n`);
       successCount++;
     } catch (err) {
       console.error(`  FAILED     ${label}`);
