@@ -123,6 +123,7 @@ People ask AI engines questions differently than they type into Google. Google q
 
 ---
 
+
 ## Page-Type Guidelines
 
 ### Blog/Educational/Strategy (1,800-3,500+ words)

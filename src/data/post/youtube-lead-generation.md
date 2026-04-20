@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-04-24T00:00:00Z
+publishDate: 2026-04-23T00:00:00Z
 author: Sathyanand
 title: "YouTube Lead Generation: Build a Pipeline That Works While You Sleep"
 excerpt: "Your YouTube channel has views but zero leads. Here is the exact system to turn search traffic into booked calls, without running a single ad."

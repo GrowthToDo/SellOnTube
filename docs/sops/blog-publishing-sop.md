@@ -24,9 +24,8 @@
 
 - [ ] **4. Confirm open calendar slot (Agent 03)**
   - Read all `publishDate` values in `src/data/post/*.{md,mdx}`
-  - Count posts per rolling 7-day window
-  - Confirm the proposed publish date does not put any 7-day window above 2 posts
-  - If violation: propose next open slot
+  - Confirm no duplicate publishDates (two posts on the exact same day)
+  - Blog cadence: up to 5 posts/week. See `growth-strategy.md` for the active schedule.
 
 ---
 
