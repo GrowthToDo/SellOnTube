@@ -10,7 +10,8 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 ## Source files to read before writing
 1. `style-guide.md` — mandatory. All rules apply.
 2. `content-playbook.md` — mandatory. All rules apply.
-3. `content-depth-framework.md` — mandatory. Use the depth decision tree to set coverage level (Deep/Medium/Short) and word range based on topic intent. Apply the "Comprehensive but Tight" checklist and AI/LLM readability rules to every draft.
+3. `blog-production-standard.md` — mandatory. Defines structural, visual, and formatting requirements. Every draft must meet these standards before presenting to user. When this document conflicts with the Style Guide on production/formatting rules, this document takes precedence.
+4. `content-depth-framework.md` — mandatory. Use the depth decision tree to set coverage level (Deep/Medium/Short) and word range based on topic intent. Apply the "Comprehensive but Tight" checklist and AI/LLM readability rules to every draft.
 4. `seo-rules.md` — traditional SEO rules.
 5. `ai-seo-guide.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
 6. An existing blog post from `src/data/post/` — read one for format/tone calibration.

@@ -159,7 +159,7 @@ Good: "YouTube videos targeting 'how-to' queries outperform brand videos 3:1 for
 Bad: "This post explains the difference between search-optimised and brand videos."
 
 ### Table of Contents — mandatory on all posts
-After Key Takeaways (or after intro on posts under 1,000 words). Link to H2s only. Flat structure — no H3 links.
+After Key Takeaways (or after intro on posts under 1,000 words). **Standard posts:** Link to H2s only, flat structure. **Tool/list/comparison posts:** Nest individual items (H3s) under their parent H2 as indented anchor links so readers can jump directly to any item.
 
 ### Quick Answer Block
 For "what is X" / "how does X work" queries: 2-3 sentence direct answer immediately after H1. Competes for position zero. Only use when there's a genuinely concise answer — don't force it onto "it depends" posts.
@@ -187,7 +187,7 @@ Use ✅/❌ in bullet lists to signal positive vs negative outcomes. Use plain b
 For processes: H3 numbered steps, not bullets. Each step gets a bolded action label + 2-4 sentences + one concrete example.
 
 ### Horizontal Rules
-Use `---` between H2 sections on all posts over 800 words.
+**Do not use `---` between sections.** H2 headings provide sufficient visual separation. (Updated: horizontal dividers were removed after user feedback confirmed they add visual clutter without improving scannability.)
 
 ### Paragraphs
 Max 3 sentences per paragraph. One-sentence paragraphs encouraged for emphasis. Never two dense paragraphs back-to-back without a callout, list, or visual break.
@@ -259,8 +259,9 @@ Visual content must help the reader understand something the text alone can't ex
 **Placement rules:**
 - Place the image immediately after the paragraph it supports, never before
 - Write one sentence of context above it: what the reader is looking at and why it matters
-- Max 1 image per H2 section unless it's a step-by-step tutorial
-- Max 4 in-body images per post (hero image excluded)
+- Max 1 image per H2 section unless it's a step-by-step tutorial or tool comparison
+- **Standard posts:** Max 4 in-body images per post (hero image excluded)
+- **Tool/list comparison posts:** One screenshot per tool, no cap. See `blog-production-standard.md` for details.
 - Never stack two images back-to-back without prose between them
 
 **Captions:**
