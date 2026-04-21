@@ -77,7 +77,7 @@ Four things matter.
 
 **Competition context.** Volume alone is misleading. A keyword with 2,000 monthly searches and weak competition is more valuable to a new channel than one with 20,000 searches dominated by established players. A useful tool tells you whether a keyword is winnable, not just popular.
 
-**Metadata diagnosis.** A video can rank without reaching buyers. If the title and description are optimised for curiosity-stage queries, you will get views from people who are nowhere near a purchase. A useful tool catches those misalignments and tells you exactly what to fix.
+**Metadata diagnosis.** A video can rank without reaching buyers. If the title and description are optimised for curiosity-stage queries, you will get views from people who are nowhere near a purchase. A useful tool catches those misalignments and tells you exactly what to fix. Before you can diagnose metadata, you need to know where you rank. Our [YouTube Ranking Checker](/tools/youtube-ranking-checker) shows your exact position for any keyword, free.
 
 **Conversion alignment.** A viewer who finds your video through a decision-stage keyword is more likely to visit your site, sign up, or book a call. A tool that helps you match your video metadata to a commercial outcome delivers more value than one that optimises for watch time.
 

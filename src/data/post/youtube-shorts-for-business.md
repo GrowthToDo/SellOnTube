@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-04-25T00:00:00Z
+publishDate: 2026-05-26T00:00:00Z
 author: Sathyanand
 title: "YouTube Shorts for Business: When They Work and When They Waste Your Time"
 excerpt: "Everyone says your business should post Shorts. But Shorts don't generate B2B leads on their own. Here is when they actually help, when to skip them, and how to repurpose long-form content into Shorts that build awareness."

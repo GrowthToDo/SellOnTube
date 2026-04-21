@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030620"/>
+      <stop offset="100%" stop-color="#0a1540"/>
+    </linearGradient>
+    <linearGradient id="gradText" x1="300" y1="0" x2="900" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="25%" cy="35%" r="55%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#030620" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+  <g opacity="0.05" fill="#ffffff">
+    <circle cx="110" cy="110" r="1.5"/><circle cx="230" cy="110" r="1.5"/><circle cx="350" cy="110" r="1.5"/><circle cx="470" cy="110" r="1.5"/><circle cx="590" cy="110" r="1.5"/><circle cx="710" cy="110" r="1.5"/><circle cx="830" cy="110" r="1.5"/><circle cx="950" cy="110" r="1.5"/><circle cx="1070" cy="110" r="1.5"/>
+    <circle cx="110" cy="230" r="1.5"/><circle cx="230" cy="230" r="1.5"/><circle cx="350" cy="230" r="1.5"/><circle cx="470" cy="230" r="1.5"/><circle cx="590" cy="230" r="1.5"/><circle cx="710" cy="230" r="1.5"/><circle cx="830" cy="230" r="1.5"/><circle cx="950" cy="230" r="1.5"/><circle cx="1070" cy="230" r="1.5"/>
+    <circle cx="110" cy="350" r="1.5"/><circle cx="230" cy="350" r="1.5"/><circle cx="350" cy="350" r="1.5"/><circle cx="470" cy="350" r="1.5"/><circle cx="590" cy="350" r="1.5"/><circle cx="710" cy="350" r="1.5"/><circle cx="830" cy="350" r="1.5"/><circle cx="950" cy="350" r="1.5"/><circle cx="1070" cy="350" r="1.5"/>
+    <circle cx="110" cy="470" r="1.5"/><circle cx="230" cy="470" r="1.5"/><circle cx="350" cy="470" r="1.5"/><circle cx="470" cy="470" r="1.5"/><circle cx="590" cy="470" r="1.5"/><circle cx="710" cy="470" r="1.5"/><circle cx="830" cy="470" r="1.5"/><circle cx="950" cy="470" r="1.5"/><circle cx="1070" cy="470" r="1.5"/>
+    <circle cx="110" cy="590" r="1.5"/><circle cx="230" cy="590" r="1.5"/><circle cx="350" cy="590" r="1.5"/><circle cx="470" cy="590" r="1.5"/><circle cx="590" cy="590" r="1.5"/><circle cx="710" cy="590" r="1.5"/><circle cx="830" cy="590" r="1.5"/><circle cx="950" cy="590" r="1.5"/><circle cx="1070" cy="590" r="1.5"/>
+  </g>
+  <rect x="476" y="85" width="248" height="28" rx="14" fill="#0161EF" fill-opacity="0.18"/>
+  <rect x="476" y="85" width="248" height="28" rx="14" fill="none" stroke="#10b981" stroke-width="1" stroke-opacity="0.45"/>
+  <text x="600" y="104" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="2.5" fill="#34d399" text-anchor="middle">TOOLS &amp; RESOURCES</text>
+  <text x="600" y="200" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="72" font-weight="800" letter-spacing="-2" fill="#ffffff" text-anchor="middle">Rank Checker</text>
+  <text x="600" y="285" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="72" font-weight="800" letter-spacing="-2" fill="url(#gradText)" text-anchor="middle">Tools Compared</text>
+  <rect x="556" y="308" width="88" height="3" rx="1.5" fill="#10b981" fill-opacity="0.65"/>
+  <text x="600" y="350" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="400" fill="rgba(229,236,246,0.55)" text-anchor="middle">10 tools scored for business, not creators.</text>
+  <!-- Tool grid: 5 columns x 2 rows -->
+  <g transform="translate(135, 390)">
+    <!-- Row 1 -->
+    <rect x="0" y="0" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="#10b981" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="14" y="24" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">SellonTube</text>
+    <text x="14" y="42" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="#34d399">Free</text>
+    <text x="145" y="42" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="16" font-weight="800" fill="#34d399" text-anchor="middle">&#10003;</text>
+
+    <rect x="190" y="0" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="204" y="24" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">VideoDubber</text>
+    <text x="204" y="42" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">Free</text>
+
+    <rect x="380" y="0" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="394" y="24" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">TubeLab</text>
+    <text x="394" y="42" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">Free</text>
+
+    <rect x="570" y="0" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="584" y="24" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">TubeRanker</text>
+    <text x="584" y="42" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">$19-49/mo</text>
+
+    <rect x="760" y="0" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="774" y="24" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Morningfame</text>
+    <text x="774" y="42" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">$4.90-12.90/mo</text>
+
+    <!-- Row 2 -->
+    <rect x="0" y="68" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="14" y="92" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">vidIQ</text>
+    <text x="14" y="110" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">$7.50-49/mo</text>
+
+    <rect x="190" y="68" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="204" y="92" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">TubeBuddy</text>
+    <text x="204" y="110" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">$3.99-49/mo</text>
+
+    <rect x="380" y="68" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="394" y="92" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Ahrefs</text>
+    <text x="394" y="110" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">$99-999/mo</text>
+
+    <rect x="570" y="68" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="584" y="92" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">SEMrush</text>
+    <text x="584" y="110" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">$129-499/mo</text>
+
+    <rect x="760" y="68" width="170" height="56" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <text x="774" y="92" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" fill="#ffffff">SEO PowerSuite</text>
+    <text x="774" y="110" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="500" fill="rgba(229,236,246,0.45)">$0-596/yr</text>
+  </g>
+  <text x="600" y="645" font-family="'Inter', ui-sans-serif, system-ui, sans-serif" font-size="14" text-anchor="middle"><tspan font-weight="700" fill="rgba(255,255,255,0.88)">SellOnTube</tspan><tspan font-weight="400" fill="rgba(229,236,246,0.32)"> &#8212; YouTube Acquisition for B2B</tspan></text>
+</svg>

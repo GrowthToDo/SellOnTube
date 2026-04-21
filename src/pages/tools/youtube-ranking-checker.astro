@@ -8,7 +8,7 @@ const siteUrl = SITE.site || 'https://sellontube.com';
 const metadata = {
   title: 'Free YouTube Ranking Checker for Business',
   description:
-    'Check where your videos rank for any keyword on YouTube. See your position and the top 10 competing videos with view counts and age. Free, no login required.',
+    'Free YouTube ranking checker for business. Check where your videos rank for any keyword. See your position and the top 10 competing videos with view counts and age.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Ranking Checker",
   "url": `${siteUrl}/tools/youtube-ranking-checker`,
-  "description": "Check where your videos rank for any keyword on YouTube. See your position and the top 10 competing videos with view counts and age. Free, no login required.",
+  "description": "Free YouTube ranking checker for business. Check where your videos rank for any keyword. See your position and the top 10 competing videos with view counts and age.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -43,6 +43,8 @@ const faqSchema = {
     { "@type": "Question", "name": "How often should I check my rankings?", "acceptedAnswer": { "@type": "Answer", "text": "Check weekly for your most important keywords. YouTube rankings shift faster than Google, so a video that ranks #5 today could move to #2 or #12 within a week depending on engagement and new uploads." } },
     { "@type": "Question", "name": "Why am I not ranking?", "acceptedAnswer": { "@type": "Answer", "text": "If your channel does not appear in the top 20 results, your video may not target that keyword in the title or description. YouTube ranks videos based on relevance signals: title match, description keywords, tags, engagement, and watch time. Start by optimizing your metadata with the target keyword." } },
     { "@type": "Question", "name": "Can I check competitor channels?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill." } },
+    { "@type": "Question", "name": "How do I check what keywords my YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Enter a keyword you want to check and your channel URL above. The tool searches YouTube in real time and tells you your exact position in the top 20 results. For a full walkthrough of three different methods, see our guide on finding your YouTube ranking keywords." } },
+    { "@type": "Question", "name": "How does the YouTube ranking system work?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube ranks videos based on relevance and engagement signals. Relevance comes from title match, description keywords, and tags. Engagement comes from click-through rate, watch time, and viewer satisfaction. This tool lets you check where your video stands for any keyword so you can identify what to improve." } },
   ]
 };
 
@@ -398,6 +400,20 @@ const faqSchema = {
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I check competitor channels?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How do I check what keywords my YouTube video ranks for?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Enter a keyword you want to check and your channel URL above. The tool searches YouTube in real time and tells you your exact position in the top 20 results. For a full walkthrough of three different methods, see our <a href="/blog/how-to-find-youtube-video-ranking-keywords" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">guide on finding your YouTube ranking keywords</a>.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How does the YouTube ranking system work?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube ranks videos based on relevance and engagement signals. Relevance comes from title match, description keywords, and tags. Engagement comes from click-through rate, watch time, and viewer satisfaction. This tool lets you check where your video stands for any keyword so you can identify what to improve.
             </p>
           </div>
 

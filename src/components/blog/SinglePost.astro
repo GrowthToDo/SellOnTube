@@ -154,6 +154,29 @@ const authorData = post.author ? authors[post.author] : null;
       </div>
     )}
 
+    {post.toolCta === 'ranking-checker' && (
+      <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-12 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20 border border-primary/20 dark:border-primary/30 p-8">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+          <div class="flex-1">
+            <p class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Check where your videos rank</p>
+            <p class="text-muted dark:text-slate-400 text-sm leading-relaxed">
+              Enter a keyword and your channel. See your exact position in YouTube search results, plus the top 10 competing videos with view counts and age. Free, no login required.
+            </p>
+          </div>
+          <a
+            href="/tools/youtube-ranking-checker"
+            class="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white font-semibold px-5 py-2.5 rounded-full hover:bg-primary/90 transition-all text-sm whitespace-nowrap"
+            data-cta="ranking-checker"
+          >
+            Try it free
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    )}
+
     {post.toolCta === 'transcript-generator' && (
       <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-12 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20 border border-primary/20 dark:border-primary/30 p-8">
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
@@ -198,6 +221,11 @@ const authorData = post.author ? authors[post.author] : null;
     document.querySelectorAll('[data-cta="video-ideas-generator"]').forEach((el) => {
       el.addEventListener('click', () => {
         window.dataLayer?.push({ event: 'tool_cta_click', tool_name: 'video-ideas-generator', cta_location: 'blog-post' });
+      });
+    });
+    document.querySelectorAll('[data-cta="ranking-checker"]').forEach((el) => {
+      el.addEventListener('click', () => {
+        window.dataLayer?.push({ event: 'tool_cta_click', tool_name: 'ranking-checker', cta_location: 'blog-post' });
       });
     });
   </script>

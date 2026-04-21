@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-04-28T00:00:00Z
+publishDate: 2026-06-02T00:00:00Z
 author: Sathyanand
 title: "YouTube Marketing Cost in 2026: Real Budgets From $0 to $10,000/Month"
 excerpt: "Every article about YouTube marketing costs says 'it depends.' This one gives you actual line-item breakdowns for DIY, freelancer, and agency approaches so you can build a real budget."
