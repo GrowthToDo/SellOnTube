@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-05-19T00:00:00Z
+draft: true
 author: Sathyanand
 title: "23 B2B Video Content Ideas That Actually Generate Pipeline (Organized by Buyer Stage)"
 excerpt: "Creator-style video ideas don't work for B2B. These 23 topic types are organized by buyer journey stage, with the creator version vs. buyer version of each so you can see the difference."

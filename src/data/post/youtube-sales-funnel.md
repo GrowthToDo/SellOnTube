@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-05-05T00:00:00Z
+draft: true
 author: Sathyanand
 title: "YouTube Sales Funnel: From First View to Paying Customer"
 excerpt: "YouTube views mean nothing without a system to convert them. Here is the 4-stage funnel that turns search traffic into booked calls and closed deals."

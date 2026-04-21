@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-05-30T00:00:00Z
+draft: true
 author: Sathyanand
 title: "Is YouTube Worth It for Business? An Honest Decision Framework"
 excerpt: "The honest answer: YouTube is worth it if your customer lifetime value exceeds $2,000 and your buyer researches before purchasing. Here is how to know before you invest six months."

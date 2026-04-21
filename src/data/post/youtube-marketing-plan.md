@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-05-07T00:00:00Z
+draft: true
 author: Sathyanand
 title: "YouTube Marketing Plan: Your 90-Day Strategy for Business Channels"
 excerpt: "A week-by-week YouTube marketing plan built for businesses, not creators. Month 1: foundation. Month 2: optimize. Month 3: scale. Every step has a specific deliverable."

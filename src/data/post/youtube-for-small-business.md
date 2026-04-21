@@ -1,5 +1,5 @@
 ---
-publishDate: 2026-04-30T00:00:00Z
+draft: true
 author: Sathyanand
 title: "YouTube for Small Business: 500 Subscribers Can Outperform 50,000"
 excerpt: "Small business owners think they need thousands of subscribers to get results from YouTube. They don't. 20 optimized videos targeting buyer questions generate more leads than 200 random uploads."

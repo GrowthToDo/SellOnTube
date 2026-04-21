@@ -165,6 +165,7 @@ All posts drafted. 5/week cadence.
 | Apr 23 (Thu) | youtube-lead-generation | youtube lead gen | 100 | 6-12 |
 | Apr 24 (Fri) | youtube-views-but-no-leads | painpoint (zero-vol JTBD) | 0 | -- |
 | Apr 25 (Sat) | youtube-shorts-for-business | youtube shorts for business | 30 | 0 |
+| Apr 27 (Sun) | best-youtube-rank-checker-tools-for-business | youtube rank checker | -- | -- |
 | Apr 28 (Mon) | youtube-marketing-cost | youtube marketing cost | 10 | 29 |
 
 **Dropped from previous plans:**
