@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube Tag Generator for Business | Free Tool',
+  title: 'Free AI YouTube Tag Generator for Business | SellOnTube',
   description:
-    'Generate buyer-intent YouTube tags from any video URL. Analyzes your title, description, and transcript to suggest tags that attract customers, not just viewers.',
+    'Paste any YouTube video URL. Get 15-20 AI-generated tags from your title, description, and transcript. Extract existing tags too. Free, no signup.',
   canonical: `${siteUrl}/tools/youtube-tag-generator`,
 };
 
@@ -27,7 +27,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Tag Generator",
   "url": `${siteUrl}/tools/youtube-tag-generator`,
-  "description": "Generate buyer-intent YouTube tags from any video URL. Analyzes title, description, and transcript to suggest tags that attract customers.",
+  "description": "Free AI YouTube tag generator. Paste any video URL to get 15-20 optimized tags from your title, description, and transcript. Extract and audit existing tags.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -40,6 +40,8 @@ const faqs = [
   { question: "What is the difference between tags and hashtags on YouTube?", answer: "Tags are hidden metadata you add in YouTube Studio. Viewers cannot see them. Hashtags appear visibly above your video title or in the description. Tags help YouTube's algorithm categorize your content. Hashtags help viewers browse related topics. Business channels should use both: tags for SEO, and 1-3 hashtags for discoverability." },
   { question: "Should business channels use branded tags?", answer: "Yes, but sparingly. Include your company name and product name as 1-2 tags. The remaining tags should be keyword-focused terms your buyers search for. Branded tags help YouTube associate all your videos together, which strengthens your channel's topical authority over time." },
   { question: "How do I find what tags competitors use?", answer: "You cannot see competitor tags directly on YouTube anymore. This tool analyzes any public video URL and shows its existing tags alongside optimized suggestions. You can also view a video's page source and search for 'keywords' to find the tag metadata." },
+  { question: "Can I extract tags from an existing YouTube video?", answer: "Yes. Paste any public YouTube video URL and the tool shows all existing tags alongside suggested replacements. You can use this to study competitor tagging strategies. YouTube removed the ability to view tags on video pages, but the tag data is still in the video metadata. This tool extracts it automatically." },
+  { question: "What are YouTube tags?", answer: "YouTube tags are hidden keywords you add to a video in YouTube Studio. They help the algorithm understand your video's topic when the title and description are ambiguous. Tags also influence which videos appear in the related videos sidebar. You can add up to 500 characters of tags per video. Unlike hashtags, tags are invisible to viewers." },
 ];
 
 const faqSchema = {
@@ -70,7 +72,7 @@ const faqSchema = {
         YouTube Tag Generator<br class="hidden sm:block" /> for Business Channels
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Paste any YouTube video URL. Get optimized tags based on your title, description, and transcript. Tags built to attract buyers, not just viewers.
+        Paste any YouTube video URL. This AI tag generator analyzes your title, description, and transcript to suggest 15-20 tags built to attract customers, not viewers.
       </p>
     </div>
   </section>

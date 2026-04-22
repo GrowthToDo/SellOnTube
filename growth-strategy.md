@@ -383,6 +383,44 @@ Comprehensive impressions audit of 6 underperforming blog posts. Data source: li
 
 ---
 
+## Tools Impressions Audit (2026-04-22)
+
+Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (90-day window ending 2026-04-22), SERP analysis, competitor DR profiling. Full diagnosis in `tools-audit-findings-2026-04-22.md`. Run log in `tools-audit-run-log-2026-04-22.md`.
+
+**Baseline:** 122 total impressions, 1 click across 6 pages in 90 days.
+
+### Actions Taken (On-Page Edits)
+
+| Page | Edits | Key Changes | Primary Keyword | Projected 90d Impressions |
+|------|-------|-------------|-----------------|---------------------------|
+| Tag Generator | 6 | Title/meta: added "AI". 2 new FAQs (tag extractor, what are tags) | youtube tag generator (5,400 vol) | 300-900 (40-130x) |
+| Script Generator | 6 | Title/meta: added "AI". Blog cross-link to script writing guide. Badge: "AI-powered scripts" | youtube script generator (1,600 vol) | 345-675 (55-110x) |
+| Description Generator | 7 | **H1 fix** ("Descriptions That Get Found" -> "AI YouTube Description Generator"). Added "AI" throughout. New FAQ | youtube description generator (1,600 vol) | 500-900 (60-110x) |
+| Transcript Generator | 8 | Removed "BoFu"/"GTM" jargon. Added "YouTube-to-text" semantic variants. Fixed stale "(coming soon)". SEO guide cross-link | youtube transcript generator (1,600 vol) | 400-740 (5-10x) |
+| Competitor Analysis | 7 | **Repositioned** from "competitor analysis" (unwinnable, DR 70+) to "competition checker" (pos 7, winnable). Title, H1, meta, schema, breadcrumb all updated | youtube competition checker (100-300 vol) | 150-350 (8-19x) |
+| Channel Audit | 4 | Hygiene only: title, H1, intro, schema. **Ceiling-capped** (10 vol/mo) | youtube channel audit tool (10 vol) | 30-60 (3-7x) |
+
+### Cross-Page Patterns Fixed
+
+1. **"AI" keyword gap** (5 of 6 pages): Every competitor leads with "AI" in titles. Added to Tag, Script, Description, Transcript generators. Competitor Analysis excluded (does not use AI).
+2. **H1 keyword misalignment** (4 of 6 pages): Description ("Descriptions That Get Found"), Channel Audit ("Is Your Channel Reaching Buyers"), Competitor Analysis ("Can You Beat What's Already Ranking"), Script (already had keyword). All replaced with keyword-aligned headings matching "Tool Name for Business Channels" pattern.
+3. **Schema descriptions**: All 6 updated to lead with primary keyword for rich result eligibility.
+
+### Not Yet Done
+
+- **~30 internal links from ~12 blog posts**: The highest-impact remaining fix. Every tool page is missing links from 3-8 high-authority blog posts. This is Phase 2.5 work.
+- **GSC URL Inspection**: Tag Generator, Script Generator, and Description Generator need manual "Request Indexing" via GSC UI (possible indexation issues detected).
+- **Subdomain decision**: `transcript.sellontube.com` dilutes authority for `/tools/youtube-transcript-generator`. Recommended: 301 redirect subdomain to tool page. Pending user decision.
+
+### Projected Impact
+
+- **Aggregate 90-day impressions before:** 122 (1 click)
+- **Aggregate projected after on-page edits:** 1,725-3,625
+- **Aggregate projected after internal links added:** 2,500-5,000+
+- **Measurement window:** Re-check GSC data on 2026-05-22 (30 days) and 2026-07-22 (90 days)
+
+---
+
 ## Open Decisions
 
 1. **Include "create a company youtube channel" (6,600 vol, KD 27) in product bucket?** This keyword was excluded because it contains "company." User should decide: product-relevant (people creating channels = potential SellonTube users) or service-relevant (implies hiring someone)?
@@ -399,6 +437,7 @@ Comprehensive impressions audit of 6 underperforming blog posts. Data source: li
 - **SEO rules:** `seo-rules.md` (technical SEO constraints)
 - **Content depth:** `content-depth-framework.md` (word count targets by page type)
 - **Content audit:** `content-audit-playbook.md` (how to diagnose and fix underperforming blog posts)
+- **Tools audit:** `tools-audit-findings-2026-04-22.md` (per-page diagnosis, keyword ownership map, priority ranking)
 - **AI visibility:** `ai-seo-guide.md` (AEO/GEO rules)
 - **ICP definition:** `docs/icp.md`
 - **Tool build pattern:** `agents/08-microtool-builder.md` (Gemini Flash integration standard)

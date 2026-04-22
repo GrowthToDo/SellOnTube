@@ -240,7 +240,7 @@ Here is how to reset properly:
 
 **Step 1: Audit your existing content.** Go through every video and categorize it. Is the topic based on a keyword or a vague idea? Does the title match a search query? Is there a business CTA? Videos that fail all three checks are not contributing to your business goals.
 
-**Step 2: Build a keyword-first content plan.** Identify 20 to 30 keywords your buyers actually search for. Prioritize by intent (comparison and solution keywords first) and competition (start with lower-competition phrases where you can realistically rank).
+**Step 2: Build a keyword-first content plan.** Identify 20 to 30 keywords your buyers actually search for. Prioritize by intent (comparison and solution keywords first) and competition (start with lower-competition phrases where you can realistically rank). The [YouTube competition checker](/tools/youtube-competitor-analysis) shows you which keywords have beatable videos in the top 5.
 
 **Step 3: Publish 12 search-optimized videos.** One per week, for 12 weeks. Every video targets a specific keyword, has a clear business CTA, and speaks directly to your buyer.
 

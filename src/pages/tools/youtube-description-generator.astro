@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'Free YouTube Description Generator for Business',
+  title: 'Free AI YouTube Description Generator for Business | SellOnTube',
   description:
-    'Paste a YouTube video URL and your CTA link. Get an optimized description with above-the-fold hook, timestamps from the transcript, tags, and UTM tracking. Free.',
+    'Free AI YouTube description generator. Paste a video URL and CTA link. Get above-the-fold hook, transcript timestamps, tags, and UTM tracking. No signup.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Description Generator",
   "url": `${siteUrl}/tools/youtube-description-generator`,
-  "description": "Paste a YouTube video URL and your landing page link. Get an optimized description with above-the-fold hook, transcript-based timestamps, tags, and UTM tracking. Built for business channels. Free.",
+  "description": "Free AI YouTube description generator. Paste a video URL and CTA link. Get an optimized description with above-the-fold hook, transcript-based timestamps, tags, and UTM tracking. Built for business channels.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -43,6 +43,7 @@ const faqSchema = {
     { "@type": "Question", "name": "Should I put links in my YouTube description?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, and placement matters. Your most important link belongs in the first 150 characters, before the Show more fold. Viewers who are interested enough to check your description are showing buying intent. Make it easy for them to reach your website without scrolling." } },
     { "@type": "Question", "name": "Do timestamps and chapters help with YouTube SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. YouTube can display timestamps as chapters in the video player and in search results. Chapters increase click-through rate from search because viewers can see the video covers their specific question. They also improve watch time because viewers can jump to the section they care about instead of bouncing." } },
     { "@type": "Question", "name": "What tags should I use on YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Tags have less ranking impact than titles and descriptions, but they still help YouTube understand your content. Use 5-8 tags that are specific to your video topic. Include your target keyword, variations of it, and your brand name. Avoid stuffing 30+ generic tags. This tool generates relevant tags automatically based on your video topic." } },
+    { "@type": "Question", "name": "Does this tool use AI to write descriptions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tool uses AI to analyze your video's title, existing description, and transcript. It then generates an original description optimized for YouTube search and click-through. The AI writes the above-the-fold hook, full description body, and suggested tags. Timestamps are extracted from the transcript, not generated." } },
   ]
 };
 
@@ -57,15 +58,15 @@ const faqSchema = {
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <div class="flex flex-wrap justify-center gap-2 mb-6">
-        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">SEO-optimized</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">AI-powered</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Timestamps from transcript</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
-        YouTube Descriptions That<br class="hidden sm:block" /> Get Found by Buyers
+        AI YouTube Description Generator<br class="hidden sm:block" /> for Business Channels
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Paste your video URL and landing page link. Get a complete description with above-the-fold hook, transcript-based timestamps, tags, and UTM tracking.
+        This AI description generator analyzes your actual video transcript and writes a complete description with above-the-fold hook, timestamps, tags, and UTM-tracked CTA link.
       </p>
     </div>
   </section>
@@ -532,6 +533,13 @@ const faqSchema = {
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What tags should I use on YouTube?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               Tags have less ranking impact than titles and descriptions, but they still help YouTube understand your content. Use 5-8 tags that are specific to your video topic. Include your target keyword, variations of it, and your brand name. Avoid stuffing 30+ generic tags. This tool generates relevant tags automatically based on your video topic and target keyword.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Does this tool use AI to write descriptions?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. The tool uses AI to analyze your video's title, existing description, and transcript. It then generates an original description optimized for YouTube search and click-through. The AI writes the above-the-fold hook, full description body, and suggested tags. Timestamps are extracted from the transcript, not generated.
             </p>
           </div>
 

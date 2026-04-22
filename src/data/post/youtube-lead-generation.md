@@ -163,7 +163,7 @@ You have five CTA placements on YouTube. They are not equally effective. Here is
 
 **2. Pinned comment.** The first comment viewers see below the video. Use a direct link to your lead magnet with one sentence of context: "Grab the free [resource] I mentioned: [link]." Pinned comments get clicks because they feel personal, not promotional.
 
-**3. Description link (first two lines).** YouTube shows only the first two lines of a description before the "show more" fold. Your CTA link must be above that fold. Below it, the click rate drops to near zero.
+**3. Description link (first two lines).** YouTube shows only the first two lines of a description before the "show more" fold. Your CTA link must be above that fold. Below it, the click rate drops to near zero. The [YouTube description generator](/tools/youtube-description-generator) places your CTA link in the above-the-fold section automatically and adds UTM tracking.
 
 But there's a catch. Most viewers never open the description unless you tell them to. The verbal CTA and the description link work together. One without the other underperforms.
 
