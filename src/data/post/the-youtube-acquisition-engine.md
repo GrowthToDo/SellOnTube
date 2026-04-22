@@ -15,6 +15,7 @@ tags:
   - b2b
 metadata:
   canonical: https://sellontube.com/blog/the-youtube-acquisition-engine
+  description: "YouTube works as a B2B acquisition channel when you treat it as search, not social. Search-led topics, voiceover videos, compounding leads."
 ---
 
 Most YouTube advice is built for creators, not businesses.

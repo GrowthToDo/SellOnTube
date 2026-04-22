@@ -15,6 +15,7 @@ tags:
   - marketing
 metadata:
   canonical: https://sellontube.com/blog/compounding-effect-four-videos-a-month
+  description: "Four strategic YouTube videos a month can build a predictable acquisition engine. High-intent content compounds like SEO, not social media."
 ---
 
 Most founders underestimate how powerful YouTube becomes when you publish just **four high-intent videos every month**.
