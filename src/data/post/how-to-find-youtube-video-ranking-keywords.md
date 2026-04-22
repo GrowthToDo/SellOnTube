@@ -324,8 +324,6 @@ Track 1-2 of these if they are relevant. Ranking for a competitor's name is one 
 
 **The bottleneck is not tracking more keywords. It is tracking the right five.**
 
-> **Read more:** [YouTube Best Practices for Business Channels](/blog/youtube-best-practices-for-business)
-
 ## How to Read Your Ranking Data
 
 A ranking number without context is meaningless. Here is how to interpret what you see.
