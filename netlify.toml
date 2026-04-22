@@ -7,6 +7,27 @@
 [build.processing.html]
   pretty_urls = false
 
+# 410 Gone — draft posts accidentally indexed by Google (Apr 19-20 2026 window)
+[[redirects]]
+  from = "/blog/b2b-video-content-ideas"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/blog/youtube-marketing-not-working"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/blog/youtube-marketing-plan"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/blog/is-youtube-worth-it-for-business"
+  to = "/404"
+  status = 410
+
 [[redirects]]
   from = "/terms"
   to = "/terms-of-service"
