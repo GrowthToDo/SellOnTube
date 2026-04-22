@@ -90,7 +90,7 @@ The video sends them somewhere with a clear, specific call to action. "Book a 30
 
 The landing page converts. The destination has to echo the language and framing of the video. If your video is about YouTube strategy for professional services firms, the landing page should speak to that buyer specifically, not to a generic homepage.
 
-The [acquisition engine we use with clients](/blog/the-youtube-acquisition-engine) covers the full video structure that makes steps two and three work consistently. For the ROI side, see our breakdown of [YouTube marketing ROI benchmarks by business type](/blog/youtube-marketing-roi).
+The [YouTube marketing strategy framework](/blog/youtube-marketing-strategy) covers the full video structure that makes steps two and three work consistently. For the ROI side, see our breakdown of [YouTube marketing ROI benchmarks by business type](/blog/youtube-marketing-roi).
 
 ## The Common Mistake: Starting With Production
 

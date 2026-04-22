@@ -129,7 +129,7 @@ This is not the same as "posting videos and hoping." It is a revenue system.
 
 </figure>
 
-> **Read more:** [YouTube for Customer Acquisition: Full System](/blog/the-youtube-acquisition-engine)
+> **Read more:** [YouTube Marketing Strategy: A 6-Step System for B2B](/blog/youtube-marketing-strategy)
 
 ---
 

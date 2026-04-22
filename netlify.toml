@@ -88,9 +88,15 @@
   to = "/blog/search-intent-youtube-seo-power"
   status = 301
 
+# Post killed in audit 2026-04-22 — severe cannibalization, no viable keyword
+[[redirects]]
+  from = "/blog/the-youtube-acquisition-engine"
+  to = "/blog/youtube-marketing-strategy"
+  status = 301
+
 [[redirects]]
   from = "/the-youtube-acquisition-engine"
-  to = "/blog/the-youtube-acquisition-engine"
+  to = "/blog/youtube-marketing-strategy"
   status = 301
 
 [[redirects]]

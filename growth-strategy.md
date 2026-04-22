@@ -1,6 +1,6 @@
 # SellonTube Growth Strategy
 
-**Last updated:** 2026-04-20
+**Last updated:** 2026-04-22
 **Status:** ACTIVE
 **Data basis:** DataForSEO (validated Apr 2026), GSC 90d, GA4 90d, sot_master.csv
 
@@ -169,6 +169,7 @@ All posts drafted. 5/week cadence.
 | Apr 28 (Mon) | youtube-marketing-cost | youtube marketing cost | 10 | 29 |
 
 **Dropped from previous plans:**
+- the-youtube-acquisition-engine -- killed 2026-04-22 (severe cannibalization with 5 other posts, no viable keyword, 301 to youtube-marketing-strategy)
 - youtube-seo-services -- killed (conflicts with no-agency rule)
 - youtube-marketing-plan -- killed (cannibalizes marketing-strategy)
 - youtube-marketing-not-working -- merged into youtube-views-but-no-leads
@@ -346,6 +347,42 @@ Check weekly/monthly:
 
 ---
 
+## Blog Content Audit (2026-04-22)
+
+Comprehensive impressions audit of 6 underperforming blog posts. Data source: live GSC API (90-day window). Full diagnosis in `audit-findings-2026-04-22.md`.
+
+### Actions Taken
+
+| Post | Slug | Action | Old title | New title | Target keyword | Est. vol |
+|------|------|--------|-----------|-----------|---------------|----------|
+| 1 | the-youtube-acquisition-engine | **Killed (301)** | YouTube for Customer Acquisition: Full System | n/a | n/a | n/a |
+| 2 | why-most-youtube-strategies-fail | **Retargeted** | Why Most YouTube Strategies Fail | 7 YouTube Marketing Mistakes That Kill Business Channels | youtube marketing mistakes | 300-800 |
+| 3 | youtube-keyword-research | **Skipped** | (just published, needs time to index) | -- | -- | -- |
+| 4 | high-intent-topic-research-framework | **Retargeted** | High-Intent Topic Research Framework | YouTube Content Strategy: How to Plan Videos That Bring Customers | youtube content strategy | 220 |
+| 5 | youtube-channel-optimization-checklist | **Expanded** | YouTube Channel Optimization: 12-Point Checklist | YouTube Channel Optimization: 13-Point Checklist for Lead Gen | youtube channel optimization | 200-400 |
+| 6 | search-intent-youtube-seo-power | **Retargeted** | YouTube Search Intent: Why It Beats Blog SEO | YouTube vs Blogging for Business: Why Video Wins for B2B Lead Gen | youtube vs blogging for business | ~2,350 |
+
+### Kill details
+
+- `the-youtube-acquisition-engine` 301-redirected to `youtube-marketing-strategy` (highest-impression post, same topic area)
+- `draft: true` added to frontmatter so Astro skips it; Netlify 301 catches both `/blog/` and bare paths
+- 8 internal links across 4 files updated to point to new target
+
+### Expansion details
+
+- All retargeted posts expanded to 2,000-2,500 words (from 1,050-1,550)
+- Added: key takeaways, table of contents, comparison tables, data tables, callout boxes
+- All posts verified: zero em dashes, zero banned words, zero build errors
+- Post 6 differentiated from `/youtube-vs/blogging` pSEO page (deep guide vs quick comparison, cross-linked)
+
+### Projected impact
+
+- Aggregate 90-day impressions before: 80 (1 click)
+- Aggregate 90-day impressions projected: 1,900-5,200
+- Measurement window: re-check GSC data on 2026-05-22 (30 days) and 2026-07-22 (90 days)
+
+---
+
 ## Open Decisions
 
 1. **Include "create a company youtube channel" (6,600 vol, KD 27) in product bucket?** This keyword was excluded because it contains "company." User should decide: product-relevant (people creating channels = potential SellonTube users) or service-relevant (implies hiring someone)?
@@ -361,6 +398,7 @@ Check weekly/monthly:
 - **Style rules:** `style-guide.md` (sentence-level writing rules)
 - **SEO rules:** `seo-rules.md` (technical SEO constraints)
 - **Content depth:** `content-depth-framework.md` (word count targets by page type)
+- **Content audit:** `content-audit-playbook.md` (how to diagnose and fix underperforming blog posts)
 - **AI visibility:** `ai-seo-guide.md` (AEO/GEO rules)
 - **ICP definition:** `docs/icp.md`
 - **Tool build pattern:** `agents/08-microtool-builder.md` (Gemini Flash integration standard)
