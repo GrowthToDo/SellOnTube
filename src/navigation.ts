@@ -43,6 +43,7 @@ export const footerData = {
         { text: 'Transcript Generator', href: getPermalink('/tools/youtube-transcript-generator') },
         { text: 'Script Generator', href: getPermalink('/tools/youtube-script-generator') },
         { text: 'Ranking Checker', href: getPermalink('/tools/youtube-ranking-checker') },
+        { text: 'Video Keyword Finder', href: getPermalink('/tools/youtube-video-keyword-finder') },
       ],
     },
     {
