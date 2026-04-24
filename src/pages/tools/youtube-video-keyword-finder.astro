@@ -1,0 +1,1347 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+const metadata = {
+  title: 'Free YouTube Video Keyword Finder for Business',
+  description:
+    'Find every keyword your YouTube video ranks for. Paste any URL, see your exact positions, and discover hidden ranking opportunities. Free, no signup.',
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
+    { "@type": "ListItem", "position": 3, "name": "YouTube Video Keyword Finder", "item": `${siteUrl}/tools/youtube-video-keyword-finder` }
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "SellonTube YouTube Video Keyword Finder",
+  "url": `${siteUrl}/tools/youtube-video-keyword-finder`,
+  "description": "Find every keyword your YouTube video ranks for. Paste any URL, see your exact positions, and discover hidden ranking opportunities. Free, no signup.",
+  "applicationCategory": "SEOApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free keyword reports without any signup. After that, enter your business email to keep discovering your video keywords. There is no paid tier." } },
+    { "@type": "Question", "name": "How do I find what keywords my YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Paste your video URL into the tool above. It extracts your video's metadata, scans YouTube autocomplete for real search terms related to your topic, checks your position for each keyword, and gives you a complete report in under 15 seconds. No login required." } },
+    { "@type": "Question", "name": "Can I check a competitor's video?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Paste any public YouTube video URL. Many business owners use this to reverse-engineer which keywords a competitor's top video ranks for, then target the same keywords with better content." } },
+    { "@type": "Question", "name": "How accurate are the keyword suggestions?", "acceptedAnswer": { "@type": "Answer", "text": "The keywords come from YouTube's own autocomplete system, which reflects real search behavior. The ranking positions are checked against live YouTube search results in real time. The keyword list is a focused selection of your 8 highest buyer-intent ranking terms, not every possible keyword." } },
+    { "@type": "Question", "name": "How is this different from VidIQ or TubeBuddy?", "acceptedAnswer": { "@type": "Answer", "text": "Three differences. First, VidIQ and TubeBuddy show rankings only for the tags already on your video. This tool generates keywords independently. Second, this tool uses real YouTube autocomplete data instead of fabricated search volume numbers. Third, VidIQ and TubeBuddy cost $20-49/month for rank tracking. This tool is free." } },
+    { "@type": "Question", "name": "Does YouTube show you what keywords your video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube Studio shows search terms that drove clicks to your video, but only for the last 28 days, only for keywords that reached a minimum traffic threshold, and without position data. Small channels and B2B channels often see almost no search term data because their traffic is too low to meet YouTube's thresholds." } },
+    { "@type": "Question", "name": "How often should I run this?", "acceptedAnswer": { "@type": "Answer", "text": "Check after publishing a new video to see if it's picking up search visibility. Check again 2 weeks later to see how positions have shifted. Run it on your top 5 videos quarterly to catch ranking changes." } },
+    { "@type": "Question", "name": "Why only 8 keywords?", "acceptedAnswer": { "@type": "Answer", "text": "Each keyword check queries YouTube's search results in real time. Eight buyer-intent keywords gives a focused picture of your video's commercial search visibility while keeping the tool fast and free. For a deeper analysis, book a diagnostic call." } },
+
+    { "@type": "Question", "name": "Can I see what keywords a competitor's YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. This works on any public video. Paste a competitor's video URL, see which keywords they rank for, and use the results to find gaps in your own content strategy." } },
+    { "@type": "Question", "name": "How to find what keywords a YouTube video ranks for without paying", "acceptedAnswer": { "@type": "Answer", "text": "This tool does it for free. Paste any video URL and get an 8-keyword buyer-intent report with real-time positions. The alternative is manually searching keywords one by one in an incognito browser, which works but takes 20-30 minutes per video. Paid tools like VidIQ and TubeBuddy charge $20-49/month and only check keywords already in your tags." } },
+    { "@type": "Question", "name": "Can I use this for YouTube keyword research?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Run it on 3-5 top-ranking videos in your niche. The keywords they rank for are proven search terms. Compile the results into a keyword list for your next video. This is faster and more accurate than guessing keywords or using search volume estimates." } },
+    { "@type": "Question", "name": "Why is my YouTube video not showing up in search?", "acceptedAnswer": { "@type": "Answer", "text": "Three common causes. First, your metadata (title, description, tags) does not include the keywords people are searching. This tool shows you exactly which keywords are missing. Second, stronger competitors own the top positions. Third, your video is too new. YouTube typically takes 1-2 weeks to fully index and rank a video." } },
+    { "@type": "Question", "name": "How many keywords should a YouTube video target?", "acceptedAnswer": { "@type": "Answer", "text": "One primary keyword in the title, 2-3 secondary keywords in the description, and 8-15 tags covering variations and related terms. This tool helps you identify which of those keywords are actually working and which are missing from your metadata." } },
+  ]
+};
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">8 buyer-intent keywords</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Real-time positions</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Built for B2B</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        Free YouTube Video Keyword Finder<br class="hidden sm:block" /> for Business
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Paste any video URL and discover every keyword it ranks for in YouTube search. See your exact positions and find the keywords you are missing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div class="space-y-5">
+          <div>
+            <label for="video-url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              YouTube video URL
+            </label>
+            <input
+              type="text"
+              id="video-url-input"
+              placeholder="https://www.youtube.com/watch?v=..."
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="url-helper url-error"
+            />
+            <p id="url-helper" class="mt-1.5 text-xs text-gray-400 dark:text-slate-600">
+              Any public YouTube video URL or video ID. Works with your videos and competitor videos.
+            </p>
+            <p id="url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
+          <button
+            id="try-example-btn"
+            class="text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
+          >
+            Try with an example video
+          </button>
+        </div>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Find my ranking keywords &rarr;
+        </button>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          3 free reports remaining
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p id="loading-status" class="text-sm font-medium text-gray-500 dark:text-slate-400">Reading your video's metadata...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This usually takes 10-15 seconds</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free reports</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">
+            Enter your business email to keep discovering your video keywords. It's free.
+          </p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
+                   bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Unlock unlimited reports
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">You're in. Generating your report now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Step: Results -->
+    <div
+      id="step-results"
+      class="hidden max-w-2xl mx-auto px-4 mt-2 space-y-3"
+      role="status"
+      aria-live="polite"
+    >
+      <!-- Video + Grade + Stats -->
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700/80 shadow-sm overflow-hidden">
+        <div class="p-5 sm:p-6">
+          <div class="flex gap-4">
+            <img id="video-thumbnail" src="" alt="" class="w-24 sm:w-28 aspect-video rounded-xl object-cover flex-shrink-0" loading="lazy" />
+            <div class="flex-1 min-w-0 flex flex-col justify-center">
+              <p id="video-title" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white leading-snug line-clamp-2 mb-1"></p>
+              <p id="video-channel" class="text-xs text-gray-500 dark:text-slate-400"></p>
+            </div>
+            <div id="grade-badge" class="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-black"></div>
+          </div>
+        </div>
+        <div class="px-5 sm:px-6 py-3 bg-slate-50/80 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-x-5 gap-y-1">
+          <span class="text-xs text-gray-500 dark:text-slate-400"><span id="stat-total" class="font-bold text-gray-800 dark:text-white">0</span> checked</span>
+          <span class="text-xs text-gray-500 dark:text-slate-400"><span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1 align-middle"></span><span id="stat-ranking" class="font-bold text-emerald-600 dark:text-emerald-400">0</span> top 5</span>
+          <span class="text-xs text-gray-500 dark:text-slate-400"><span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 mr-1 align-middle"></span><span id="stat-within-reach" class="font-bold text-amber-600 dark:text-amber-400">0</span> within reach</span>
+          <span class="text-xs text-gray-500 dark:text-slate-400"><span class="inline-block w-1.5 h-1.5 rounded-full bg-rose-400 mr-1 align-middle"></span><span id="stat-not-found" class="font-bold text-rose-500 dark:text-rose-400">0</span> invisible</span>
+        </div>
+      </div>
+
+      <!-- Keywords -->
+      <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700/80 shadow-sm overflow-hidden">
+        <div class="px-5 sm:px-6 pt-5 pb-1">
+          <p class="text-[11px] font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider">Keyword positions</p>
+        </div>
+
+        <div id="keywords-ranking"></div>
+        <div id="keywords-within-reach"></div>
+        <div id="keywords-not-found"></div>
+
+        <div class="px-5 sm:px-6 py-3.5 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center gap-2">
+          <button id="copy-report-btn" class="px-3 py-1.5 rounded-lg text-[11px] font-semibold text-gray-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400 transition-colors">Copy report</button>
+          <button id="download-csv-btn" class="px-3 py-1.5 rounded-lg text-[11px] font-semibold text-gray-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 hover:bg-emerald-50 hover:text-emerald-600 dark:hover:bg-emerald-900/20 dark:hover:text-emerald-400 transition-colors">Download CSV</button>
+        </div>
+        <div id="csv-email-gate" class="hidden px-5 sm:px-6 pb-4">
+          <div class="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4">
+            <p class="text-xs font-semibold text-gray-700 dark:text-slate-300 mb-2">Enter your business email to download</p>
+            <div class="flex gap-2">
+              <input type="email" id="csv-gate-email" placeholder="your@company.com"
+                class="flex-1 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none" />
+              <button id="csv-gate-submit" class="px-4 py-2 rounded-lg bg-emerald-500 text-white dark:text-slate-950 text-xs font-bold hover:bg-emerald-400 transition-colors">Unlock</button>
+            </div>
+            <p id="csv-gate-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- What to fix -->
+      <div id="fixes-section" class="hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700/80 shadow-sm overflow-hidden">
+        <div class="p-5 sm:p-6">
+          <p class="text-[11px] font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wider mb-4">What to fix</p>
+
+          <!-- Suggested title -->
+          <div id="suggested-title-block" class="hidden mb-5">
+            <p class="text-[10px] font-semibold text-gray-400 dark:text-slate-500 uppercase tracking-wide mb-2">Suggested title</p>
+            <div class="rounded-xl bg-emerald-50/50 dark:bg-emerald-900/10 border border-emerald-200/60 dark:border-emerald-800/30 p-4 flex items-start gap-3">
+              <p id="suggested-title-text" class="flex-1 text-sm font-medium text-gray-800 dark:text-slate-200 leading-relaxed"></p>
+              <button id="copy-suggested-title" class="flex-shrink-0 text-gray-400 dark:text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Action items -->
+          <div id="fixes-list" class="space-y-1 divide-y divide-slate-100 dark:divide-slate-800"></div>
+        </div>
+      </div>
+
+      <!-- Next steps -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/tools/youtube-seo-tool" class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700/80 shadow-sm p-5 hover:border-emerald-500/30 hover:shadow-md transition-all tool-cta-link" data-destination="seo-tool">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-1">Run a full SEO audit</p>
+          <p class="text-xs text-gray-500 dark:text-slate-400">Get title, description, and tag rewrites for this video.</p>
+        </a>
+        <a href="/tools/youtube-ranking-checker" class="group rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700/80 shadow-sm p-5 hover:border-emerald-500/30 hover:shadow-md transition-all tool-cta-link" data-destination="ranking-checker">
+          <p class="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-1">Check a specific keyword</p>
+          <p class="text-xs text-gray-500 dark:text-slate-400">See who you are competing against and their view counts.</p>
+        </a>
+      </div>
+
+      <!-- Reset -->
+      <button id="reset-btn" class="w-full py-2.5 text-xs font-medium text-gray-400 dark:text-slate-500 hover:text-gray-600 dark:hover:text-slate-300 transition-colors">
+        &larr; Check another video
+      </button>
+    </div>
+  </section>
+
+  <!-- How it works: 3 steps -->
+  <section class="py-10 sm:py-12 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="relative grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
+        <!-- Connecting line (desktop) -->
+        <div class="hidden sm:block absolute top-5 left-[calc(16.67%+20px)] right-[calc(16.67%+20px)] h-px bg-emerald-200 dark:bg-emerald-800" aria-hidden="true"></div>
+
+        <div class="relative flex sm:flex-col items-center sm:text-center gap-4 sm:gap-0">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold flex items-center justify-center relative z-10 bg-white dark:bg-slate-950">1</div>
+          <div class="sm:mt-3">
+            <p class="text-sm font-semibold text-gray-900 dark:text-white">Paste any video URL</p>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Your own or a competitor's</p>
+          </div>
+        </div>
+
+        <div class="relative flex sm:flex-col items-center sm:text-center gap-4 sm:gap-0">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold flex items-center justify-center relative z-10 bg-white dark:bg-slate-950">2</div>
+          <div class="sm:mt-3">
+            <p class="text-sm font-semibold text-gray-900 dark:text-white">We find and check 8 buyer-intent keywords</p>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Real autocomplete data, real positions</p>
+          </div>
+        </div>
+
+        <div class="relative flex sm:flex-col items-center sm:text-center gap-4 sm:gap-0">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500 text-white text-sm font-bold flex items-center justify-center relative z-10">3</div>
+          <div class="sm:mt-3">
+            <p class="text-sm font-semibold text-gray-900 dark:text-white">Get your keyword report</p>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Rankings, metadata gaps, and what to fix</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology -->
+  <section class="py-14 sm:py-16 bg-white dark:bg-slate-950">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">How the YouTube keyword finder works</h2>
+
+      <div class="space-y-4 text-gray-600 dark:text-slate-400 leading-relaxed mb-10">
+        <p>The tool extracts seed terms from your video's title and runs them through YouTube's autocomplete system to find real search terms people type. AI then selects the 8 highest buyer-intent keywords from those results and checks your actual position for each one in real time.</p>
+        <p>This is an intelligent scan, not an exhaustive index. YouTube does not provide a "show all ranking keywords" endpoint to anyone. The difference is that this tool is transparent about that fact, while others present estimates as definitive data.</p>
+      </div>
+
+      <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-3">Why autocomplete data instead of "search volume"</h3>
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-5 mb-10">
+        <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">YouTube's API does not share search volume data with any third party. Every "search volume" number in VidIQ or TubeBuddy is an estimate, and their estimates frequently contradict each other. This tool skips the made-up numbers and focuses on what is verifiable: does your video appear when someone searches this term?</p>
+      </div>
+
+      <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-3">The problem this solves for business channels</h3>
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-5">
+        <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-3">YouTube Studio only shows search terms that drove clicks, not all keywords you appear for. B2B channels with lower view counts see even less data because YouTube hides metrics below undisclosed thresholds.</p>
+        <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">The alternative was manually searching keywords one by one in incognito, or paying $99/month for rank tracking. This tool gives you an 8-keyword scan in seconds, for free. For manual methods and how this tool compares, read our guide on <a href="/blog/how-to-find-youtube-video-ranking-keywords" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">how to find what keywords your YouTube videos rank for</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center">How this compares to other keyword tools</h2>
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left">
+            <thead>
+              <tr class="bg-slate-100 dark:bg-slate-800">
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 whitespace-nowrap">Feature</th>
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 whitespace-nowrap bg-emerald-50/50 dark:bg-emerald-900/10">This Tool</th>
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 whitespace-nowrap">VidIQ ($)</th>
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 whitespace-nowrap">TubeBuddy ($)</th>
+                <th class="px-4 py-3 text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 whitespace-nowrap">YouTube Studio</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+              <tr>
+                <td class="px-4 py-3 text-gray-700 dark:text-slate-300 whitespace-nowrap">Price</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/30 dark:bg-emerald-900/5 whitespace-nowrap">Free</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">$20-49/mo</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">$20-49/mo</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Free</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-700 dark:text-slate-300 whitespace-nowrap">Keyword source</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/30 dark:bg-emerald-900/5">Live YouTube autocomplete</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400">Video tags + estimates</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400">Video tags + estimates</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400">Viewer click data</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-700 dark:text-slate-300 whitespace-nowrap">Position data</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/30 dark:bg-emerald-900/5 whitespace-nowrap">Real-time search check</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Estimated</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Estimated</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Not shown</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-700 dark:text-slate-300 whitespace-nowrap">Works on competitors</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/30 dark:bg-emerald-900/5 whitespace-nowrap">Yes, any public video</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Limited</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Limited</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Your channel only</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-700 dark:text-slate-300 whitespace-nowrap">Buyer intent filter</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/30 dark:bg-emerald-900/5 whitespace-nowrap">Yes, AI-selected</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">No</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">No</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">No</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-700 dark:text-slate-300">Search volume shown</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/30 dark:bg-emerald-900/5">No (YouTube does not share this)</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400">Yes (estimated, often inaccurate)</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400">Yes (estimated, often inaccurate)</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400">Partial (traffic source report)</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-3 text-gray-700 dark:text-slate-300">Title/Description/Tag gap analysis</td>
+                <td class="px-4 py-3 font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50/30 dark:bg-emerald-900/5 whitespace-nowrap">Yes</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Tags only</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">Tags only</td>
+                <td class="px-4 py-3 text-gray-600 dark:text-slate-400 whitespace-nowrap">No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="mt-4 text-xs text-gray-400 dark:text-slate-600 text-center">
+        VidIQ and TubeBuddy pricing as of April 2026. YouTube does not share search volume data with any third party. All search volume numbers from third-party tools are estimates.
+      </p>
+    </div>
+  </section>
+
+  <!-- What to do with your keyword report -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-8 text-center">What to do with your keyword report</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6">
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-3">You rank #3 but the keyword is not in your title</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+            This is the highest-impact quick win. YouTube's algorithm weighs the title heavily. Adding the exact keyword phrase to your title can push you from position 3 to position 1. Do not change the meaning of your title. Insert the keyword naturally so it reads well for both search engines and viewers.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6">
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-3">You have 4 within-reach keywords</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+            These are keywords where you appear in positions 6-20. YouTube already considers your video relevant. The gap is usually metadata: your description does not mention the keyword, or it is missing from your tags. Add the keyword to both, then re-check in 2 weeks.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-6">
+          <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
+          <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-3">A competitor ranks #1 for your target keyword</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+            Run this tool on the competitor's video. See which keywords they own. Then run it on your video targeting the same topic. The overlap shows where you are competing directly. The gaps show keywords they are missing that you could own.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-2xl mx-auto px-4">
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this tool free?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. You get 3 free keyword reports without any signup. After that, enter your business email to keep discovering your video keywords at no cost. There is no paid tier.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How do I find what keywords my YouTube video ranks for?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Paste your video URL into the tool above. It extracts your video's metadata, scans YouTube autocomplete for real search terms related to your topic, checks your position for each keyword, and gives you a complete report in under 15 seconds. No login required.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I check a competitor's video?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Paste any public YouTube video URL. Many business owners use this to reverse-engineer which keywords a competitor's top video ranks for, then target the same keywords with better content.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How accurate are the keyword suggestions?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              The keywords come from YouTube's own autocomplete system, which reflects real search behavior. The ranking positions are checked against live YouTube search results in real time. The keyword list is a focused selection of 8 high buyer-intent terms, not every possible keyword. Think of it as checking the keywords that matter most for generating business rather than scanning every search term on YouTube.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How is this different from VidIQ or TubeBuddy?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Three differences. First, VidIQ and TubeBuddy show rankings only for the tags already on your video. If your video ranks for a keyword that is not in your tags, they will not show it. This tool generates keywords independently. Second, this tool uses real YouTube autocomplete data instead of fabricated search volume numbers. Third, VidIQ and TubeBuddy cost $20-49/month for rank tracking. This tool is free.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Does YouTube show you what keywords your video ranks for?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              YouTube Studio shows search terms that drove clicks to your video, but only for the last 28 days, only for keywords that reached a minimum traffic threshold, and without position data. Small channels and B2B channels often see almost no search term data because their traffic is too low to meet YouTube's thresholds. This tool fills that gap.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How often should I run this?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Check after publishing a new video to see if it is picking up search visibility. Check again 2 weeks later to see how positions have shifted. Run it on your top 5 videos quarterly to catch ranking changes.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why only 8 keywords?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Each keyword check queries YouTube's search results in real time. Eight buyer-intent keywords gives a focused picture of your video's commercial search visibility while keeping the tool fast and free. For a deeper analysis, <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">book a diagnostic call</a>.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I see what keywords a competitor's YouTube video ranks for?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. This works on any public video. Paste a competitor's video URL, see which keywords they rank for, and use the results to find gaps in your own content strategy. The report shows the same keyword scorecard for any video, whether it is yours or someone else's.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How to find what keywords a YouTube video ranks for without paying</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              This tool does it for free. Paste any video URL and get an 8-keyword buyer-intent report with real-time positions. The alternative is manually searching keywords one by one in an incognito browser, which works but takes 20-30 minutes per video. Paid tools like VidIQ and TubeBuddy charge $20-49/month and only check keywords already in your tags.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I use this for YouTube keyword research?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Run it on 3-5 top-ranking videos in your niche. The keywords they rank for are proven search terms. Compile the results into a keyword list for your next video. This is faster and more accurate than guessing keywords or using search volume estimates.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why is my YouTube video not showing up in search?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Three common causes. First, your metadata (title, description, tags) does not include the keywords people are searching. This tool shows you exactly which keywords are missing. Second, stronger competitors own the top positions. Third, your video is too new. YouTube typically takes 1-2 weeks to fully index and rank a video.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How many keywords should a YouTube video target?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              One primary keyword in the title, 2-3 secondary keywords in the description, and 8-15 tags covering variations and related terms. This tool helps you identify which of those keywords are actually working and which are missing from your metadata.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-2">Next step</p>
+      <p class="text-sm text-gray-500 dark:text-slate-400 text-center mb-8">Now that you know your keywords, fix what is holding them back</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-ranking-checker" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">YouTube Ranking Checker</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Rankings</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Found a keyword you want to track? Check your exact position and see who you are competing against.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+        <a href="/tools/youtube-seo-tool" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">YouTube SEO Tool</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">SEO</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Now audit the full metadata: title, description, tags, and CTAs. Get the exact rewrites to improve rankings.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+        <a href="/tools/youtube-tag-generator" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">YouTube Tag Generator</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Tags</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Missing keywords from your tags? Generate a full set of buyer-intent tags based on your video content.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Want a complete YouTube SEO strategy?"
+    subtitle="A keyword report shows you where you stand. A strategy shows you where to go. Book a free 30-minute diagnostic and we will map out your YouTube search plan."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book your diagnostic',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+</Layout>
+
+<script>
+  // ===== TYPE DECLARATIONS =====
+  declare global { interface Window { dataLayer: Record<string, unknown>[]; } }
+
+  interface KeywordResult {
+    keyword: string;
+    position: number | null;
+    status: 'ranking' | 'within_reach' | 'not_found' | 'error';
+    inTags: boolean;
+    inTitle: boolean;
+    inDescription: boolean;
+  }
+
+  interface VideoReport {
+    video: {
+      videoId: string;
+      title: string;
+      channel: string;
+      thumbnail: string;
+      tags: string[];
+    };
+    keywords: KeywordResult[];
+    summary: {
+      total: number;
+      ranking: number;
+      withinReach: number;
+      notFound: number;
+      grade: string;
+    };
+    recommendations: string[];
+    suggestedTitle: string | null;
+  }
+
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 3;
+  const COUNT_KEY = 'sot_keyword_finder_count';
+  const EMAIL_KEY = 'sot_tools_email_unlocked';
+  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
+  const CAPTURE_URL = '/.netlify/functions/capture-email';
+  const EXAMPLE_VIDEO = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+
+  const LOADING_MESSAGES = [
+    "Reading your video's metadata...",
+    'Scanning YouTube autocomplete for real search terms...',
+    'Selecting the 8 highest-intent keywords...',
+    'Checking your position for each keyword...',
+    'Building your keyword report...',
+  ];
+
+  // ===== STORAGE =====
+
+  let currentReport: VideoReport | null = null;
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  function getCachedReport(videoId: string): VideoReport | null {
+    try {
+      const raw = sessionStorage.getItem(`sot_kwf_${videoId}`);
+      return raw ? JSON.parse(raw) : null;
+    } catch { return null; }
+  }
+
+  function setCachedReport(videoId: string, report: VideoReport): void {
+    try { sessionStorage.setItem(`sot_kwf_${videoId}`, JSON.stringify(report)); } catch { /* quota */ }
+  }
+
+  // ===== STEP MANAGEMENT =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+    if (id === 'step-results') {
+      document.getElementById('video-title')?.focus();
+    }
+  }
+
+  // ===== COUNTER LABEL =====
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited reports unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free report remaining' : remaining + ' free reports remaining';
+  }
+
+  // ===== LOADING STATE =====
+
+  let loadingInterval: ReturnType<typeof setInterval> | null = null;
+
+  function startLoadingMessages(): void {
+    let index = 0;
+    const statusEl = document.getElementById('loading-status');
+    if (statusEl) statusEl.textContent = LOADING_MESSAGES[0];
+
+    loadingInterval = setInterval(() => {
+      index = (index + 1) % LOADING_MESSAGES.length;
+      if (statusEl) statusEl.textContent = LOADING_MESSAGES[index];
+    }, 2500);
+  }
+
+  function stopLoadingMessages(): void {
+    if (loadingInterval) {
+      clearInterval(loadingInterval);
+      loadingInterval = null;
+    }
+  }
+
+  // ===== VALIDATION =====
+
+  function showError(message: string): void {
+    const error = document.getElementById('url-error');
+    const input = document.getElementById('video-url-input') as HTMLInputElement;
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearError(): void {
+    const error = document.getElementById('url-error');
+    const input = document.getElementById('video-url-input') as HTMLInputElement;
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  function extractVideoIdClient(input: string): string | null {
+    const trimmed = input.trim();
+    if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
+
+    try {
+      const url = new URL(trimmed.startsWith('http') ? trimmed : 'https://' + trimmed);
+      const vParam = url.searchParams.get('v');
+      if (vParam && /^[a-zA-Z0-9_-]{11}$/.test(vParam)) return vParam;
+
+      const pathPatterns = [
+        /\/(?:embed|shorts|v)\/([a-zA-Z0-9_-]{11})/,
+        /^\/([a-zA-Z0-9_-]{11})$/,
+      ];
+      for (const pattern of pathPatterns) {
+        const match = url.pathname.match(pattern);
+        if (match) return match[1];
+      }
+      if (url.hostname === 'youtu.be') {
+        const id = url.pathname.slice(1).split('/')[0];
+        if (/^[a-zA-Z0-9_-]{11}$/.test(id)) return id;
+      }
+    } catch { /* not a URL */ }
+
+    return null;
+  }
+
+  // ===== RENDER RESULTS =====
+
+  function renderResults(report: VideoReport): void {
+    currentReport = report;
+
+    // Video info
+    const thumbEl = document.getElementById('video-thumbnail') as HTMLImageElement;
+    if (thumbEl) { thumbEl.src = report.video.thumbnail; thumbEl.alt = report.video.title; }
+    const titleEl = document.getElementById('video-title');
+    if (titleEl) titleEl.textContent = report.video.title;
+    const channelEl = document.getElementById('video-channel');
+    if (channelEl) channelEl.textContent = report.video.channel;
+    // Summary stats
+    const setStatText = (id: string, val: number) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = String(val);
+    };
+    setStatText('stat-total', report.summary.total);
+    setStatText('stat-ranking', report.summary.ranking);
+    setStatText('stat-within-reach', report.summary.withinReach);
+    setStatText('stat-not-found', report.summary.notFound);
+
+    // Grade badge
+    const gradeBadge = document.getElementById('grade-badge');
+    if (gradeBadge) {
+      gradeBadge.textContent = report.summary.grade;
+      const gradeColors: Record<string, string> = {
+        A: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
+        B: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+        C: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+        D: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
+        F: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400',
+      };
+      gradeBadge.className = 'flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-black ' + (gradeColors[report.summary.grade] || gradeColors.F);
+    }
+
+    // Keywords by section
+    const ranking = report.keywords.filter((k) => k.status === 'ranking');
+    const withinReach = report.keywords.filter((k) => k.status === 'within_reach');
+    const notFound = report.keywords.filter((k) => k.status === 'not_found' || k.status === 'error');
+
+    renderKeywordSection('keywords-ranking', 'Keywords You Own', 'emerald', ranking, true);
+    renderKeywordSection('keywords-within-reach', 'Within Striking Distance', 'amber', withinReach, true);
+    renderKeywordSection('keywords-not-found', 'Not Ranking', 'rose', notFound, false);
+
+    // Unified fixes section
+    renderFixes(report);
+  }
+
+  // ===== QUICK FIXES =====
+
+  interface QuickFix {
+    priority: number; // 1=title, 2=description, 3=tags
+    text: string;
+  }
+
+  function generateQuickFixes(report: VideoReport): QuickFix[] {
+    const fixes: QuickFix[] = [];
+
+    for (const kw of report.keywords) {
+      const escaped = kw.keyword.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      // Title fixes: ranking keywords (top 5) missing from title
+      if (kw.status === 'ranking' && kw.position && !kw.inTitle) {
+        fixes.push({
+          priority: 1,
+          text: `You rank #${kw.position} for "${escaped}" but it is not in your title. Add it to strengthen your position.`,
+        });
+      }
+
+      // Description fixes: within-reach keywords missing from description
+      if (kw.status === 'within_reach' && kw.position && !kw.inDescription) {
+        fixes.push({
+          priority: 2,
+          text: `You are at #${kw.position} for "${escaped}". Add this keyword to the first two lines of your description.`,
+        });
+      }
+
+      // Tag fixes: any keyword not in tags
+      if (!kw.inTags && (kw.status === 'ranking' || kw.status === 'within_reach')) {
+        fixes.push({
+          priority: 3,
+          text: `Add "${escaped}" to your video tags.`,
+        });
+      }
+    }
+
+    // Sort by priority (title first, then description, then tags)
+    fixes.sort((a, b) => a.priority - b.priority);
+    return fixes;
+  }
+
+  function renderFixes(report: VideoReport): void {
+    const section = document.getElementById('fixes-section');
+    const list = document.getElementById('fixes-list');
+    if (!section || !list) return;
+
+    const quickFixes = generateQuickFixes(report);
+    const hasQuickFixes = quickFixes.length > 0;
+    const hasRecs = report.recommendations.length > 0;
+    const hasSuggestedTitle = !!report.suggestedTitle;
+
+    if (!hasQuickFixes && !hasRecs && !hasSuggestedTitle) {
+      section.classList.add('hidden');
+      return;
+    }
+
+    section.classList.remove('hidden');
+
+    // Suggested title
+    const titleBlock = document.getElementById('suggested-title-block');
+    const titleText = document.getElementById('suggested-title-text');
+    if (titleBlock && titleText && hasSuggestedTitle) {
+      titleBlock.classList.remove('hidden');
+      titleText.textContent = report.suggestedTitle!;
+
+      const copyBtn = document.getElementById('copy-suggested-title');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(report.suggestedTitle!).then(() => {
+            copyBtn.innerHTML = `<svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>`;
+            setTimeout(() => {
+              copyBtn.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>`;
+            }, 1500);
+          });
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'suggested_title_copied', tool: 'video-keyword-finder' });
+        });
+      }
+    } else if (titleBlock) {
+      titleBlock.classList.add('hidden');
+    }
+
+    // Merge quick fixes + AI recommendations into one list
+    const priorityLabels: Record<number, { label: string; color: string }> = {
+      1: { label: 'Title', color: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400' },
+      2: { label: 'Description', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400' },
+      3: { label: 'Tags', color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' },
+    };
+
+    let items = '';
+
+    if (hasQuickFixes) {
+      items += quickFixes.map((fix) => {
+        const pl = priorityLabels[fix.priority] || priorityLabels[3];
+        return `<div class="flex items-start gap-3 py-2.5">
+          <span class="flex-shrink-0 mt-0.5 text-[10px] font-bold rounded px-1.5 py-0.5 ${pl.color}">${pl.label}</span>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">${fix.text}</p>
+        </div>`;
+      }).join('');
+    }
+
+    if (hasRecs) {
+      items += report.recommendations.map((rec) => {
+        const escaped = rec.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return `<div class="flex items-start gap-3 py-2.5">
+          <span class="flex-shrink-0 mt-1 w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">${escaped}</p>
+        </div>`;
+      }).join('');
+    }
+
+    list.innerHTML = items;
+  }
+
+  // ===== CSV DOWNLOAD =====
+
+  function generateCSV(): string {
+    if (!currentReport) return '';
+    const header = 'Keyword,Position,Status,In Title,In Description,In Tags';
+    const rows = currentReport.keywords.map((kw) => {
+      const keyword = kw.keyword.includes(',') ? `"${kw.keyword}"` : kw.keyword;
+      const position = kw.position !== null ? String(kw.position) : '';
+      const statusMap: Record<string, string> = { ranking: 'Top 5', within_reach: 'Within Reach', not_found: 'Not Found', error: 'Error' };
+      const status = statusMap[kw.status] || kw.status;
+      return `${keyword},${position},${status},${kw.inTitle ? 'Yes' : 'No'},${kw.inDescription ? 'Yes' : 'No'},${kw.inTags ? 'Yes' : 'No'}`;
+    });
+    return [header, ...rows].join('\n');
+  }
+
+  function triggerCSVDownload(): void {
+    const csv = generateCSV();
+    if (!csv) return;
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const videoTitle = currentReport?.video.title?.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 40) || 'keywords';
+    a.download = `keyword_report_${videoTitle}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'csv_downloaded', tool: 'video-keyword-finder' });
+  }
+
+  function handleCSVDownload(): void {
+    if (localStorage.getItem(EMAIL_KEY) === 'true') {
+      triggerCSVDownload();
+      return;
+    }
+
+    const gate = document.getElementById('csv-email-gate');
+    if (gate) {
+      gate.classList.toggle('hidden');
+    }
+  }
+
+  async function submitCSVGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('csv-gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('csv-gate-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('csv-gate-submit') as HTMLButtonElement;
+    btn.textContent = 'Unlocking...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(CAPTURE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-video-keyword-finder-csv' }),
+      });
+    } catch { /* silent */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'video-keyword-finder', trigger: 'csv_download' });
+
+    const gate = document.getElementById('csv-email-gate');
+    if (gate) gate.classList.add('hidden');
+
+    btn.textContent = 'Unlock';
+    btn.removeAttribute('disabled');
+    emailInput.value = '';
+
+    triggerCSVDownload();
+  }
+
+  function renderKeywordSection(
+    containerId: string,
+    title: string,
+    color: string,
+    keywords: KeywordResult[],
+    showPosition: boolean
+  ): void {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    if (keywords.length === 0) {
+      const emptyMessages: Record<string, string> = {
+        'keywords-ranking': 'No keywords in top 5 yet. See recommendations below.',
+        'keywords-within-reach': 'No keywords in positions 6-20.',
+        'keywords-not-found': 'Your video ranks for every keyword checked.',
+      };
+      container.innerHTML = `
+        <div class="px-5 sm:px-6 py-4">
+          <p class="text-[11px] font-semibold text-${color}-600 dark:text-${color}-400 uppercase tracking-wider mb-1">${title}</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">${emptyMessages[containerId] || ''}</p>
+        </div>`;
+      return;
+    }
+
+    const rows = keywords.map((kw, i) => {
+      const posLabel = showPosition && kw.position ? `#${kw.position}` : '-';
+      const posClasses = showPosition && kw.position
+        ? `bg-${color}-100 text-${color}-700 dark:bg-${color}-900/30 dark:text-${color}-400`
+        : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400';
+      const escaped = kw.keyword.replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+      return `<div class="flex items-center gap-2.5 py-2.5 px-4 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+        <span class="w-8 text-center text-xs font-bold rounded-md px-1.5 py-0.5 ${posClasses}">${posLabel}</span>
+        <span class="flex-1 text-sm text-gray-800 dark:text-slate-200 min-w-0 truncate">${escaped}</span>
+        <button class="kw-copy-btn flex-shrink-0 text-gray-300 dark:text-slate-600 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" data-kw="${escaped}" data-idx="${i}">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        </button>
+      </div>`;
+    }).join('');
+
+    container.innerHTML = `
+      <div class="px-5 sm:px-6 pt-4 pb-1">
+        <p class="text-[11px] font-semibold text-${color}-600 dark:text-${color}-400 uppercase tracking-wider">${title}</p>
+      </div>
+      <div class="divide-y divide-slate-100 dark:divide-slate-800">${rows}</div>`;
+
+    container.querySelectorAll('.kw-copy-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const keyword = (btn as HTMLElement).dataset.kw || '';
+        const idx = parseInt((btn as HTMLElement).dataset.idx || '0', 10);
+        navigator.clipboard.writeText(keyword).then(() => {
+          btn.innerHTML = `<svg class="w-3.5 h-3.5 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>`;
+          setTimeout(() => {
+            btn.innerHTML = `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>`;
+          }, 1500);
+        });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'keyword_copied', tool: 'video-keyword-finder', keyword_index: idx });
+      });
+    });
+  }
+
+  // ===== COPY FUNCTIONS =====
+
+  function copyFullReport(): void {
+    if (!currentReport) return;
+    const r = currentReport;
+    const now = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const ranking = r.keywords.filter((k) => k.status === 'ranking');
+    const withinReach = r.keywords.filter((k) => k.status === 'within_reach');
+    const notFound = r.keywords.filter((k) => k.status === 'not_found' || k.status === 'error');
+
+    const formatKw = (k: KeywordResult, showPos: boolean) => {
+      const pos = showPos && k.position ? `#${k.position}` : '-';
+      const meta: string[] = [];
+      if (k.inTitle) meta.push('title');
+      if (k.inDescription) meta.push('desc');
+      if (k.inTags) meta.push('tags');
+      const metaLabel = meta.length > 0 ? `[in ${meta.join(', ')}]` : '[not in title/desc/tags]';
+      return `${pos} ${k.keyword} ${metaLabel}`;
+    };
+
+    let text = `YouTube Keyword Report: ${r.video.title}\nChannel: ${r.video.channel}\nGrade: ${r.summary.grade} (${r.summary.ranking} ranking, ${r.summary.withinReach} within reach, ${r.summary.notFound} invisible)\nGenerated: ${now}\n`;
+
+    if (ranking.length > 0) {
+      text += '\nRANKING (Top 5):\n' + ranking.map((k) => formatKw(k, true)).join('\n') + '\n';
+    }
+    if (withinReach.length > 0) {
+      text += '\nWITHIN REACH (6-20):\n' + withinReach.map((k) => formatKw(k, true)).join('\n') + '\n';
+    }
+    if (notFound.length > 0) {
+      text += '\nNOT RANKING:\n' + notFound.map((k) => formatKw(k, false)).join('\n') + '\n';
+    }
+
+    text += '\nGenerated by SellonTube YouTube Video Keyword Finder\nhttps://sellontube.com/tools/youtube-video-keyword-finder';
+
+    navigator.clipboard.writeText(text);
+    const btn = document.getElementById('copy-report-btn');
+    if (btn) {
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy report'; }, 1500);
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'report_copied', tool: 'video-keyword-finder' });
+  }
+
+  // ===== API CALL =====
+
+  async function fetchKeywordReport(videoUrl: string): Promise<void> {
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+
+    try {
+      const res = await fetch('/api/find-video-keywords', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoUrl }),
+      });
+
+      stopLoadingMessages();
+
+      if (res.status === 429) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Find my ranking keywords →';
+        const data = await res.json().catch(() => ({}));
+        if (data.detail?.includes('YouTube')) {
+          showError("YouTube's API limit has been reached for today. Try again tomorrow, or check a specific keyword with our Ranking Checker.");
+        } else {
+          showError('AI analysis is at capacity right now. Free daily limit reached. Check back tomorrow.');
+        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'tool_generate_error', tool: 'video-keyword-finder', reason: 'quota_exceeded' });
+        return;
+      }
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        if (res.status === 400 && data.error) {
+          showStep('step-input');
+          btn.disabled = false;
+          btn.textContent = 'Find my ranking keywords →';
+          showError(data.error);
+          return;
+        }
+        throw new Error('API error ' + res.status);
+      }
+
+      const report: VideoReport = await res.json();
+
+      // Cache the report
+      setCachedReport(report.video.videoId, report);
+
+      renderResults(report);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'tool_generate_success',
+        tool: 'video-keyword-finder',
+        grade: report.summary.grade,
+        ranking_count: report.summary.ranking,
+      });
+
+    } catch {
+      stopLoadingMessages();
+      showStep('step-input');
+      btn.disabled = false;
+      btn.textContent = 'Find my ranking keywords →';
+      showError('Something went wrong on our end. Try again in a moment.');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_generate_error', tool: 'video-keyword-finder', reason: 'api_error' });
+    }
+  }
+
+  // ===== GENERATE =====
+
+  async function generate(): Promise<void> {
+    const input = document.getElementById('video-url-input') as HTMLInputElement;
+    let videoUrl = input.value.trim();
+
+    if (!videoUrl || videoUrl.length < 10) {
+      showError("That doesn't look like a YouTube video URL. Paste a link like https://www.youtube.com/watch?v=... or an 11-character video ID.");
+      return;
+    }
+
+    clearError();
+
+    // Auto-prepend https://
+    if (videoUrl && !videoUrl.startsWith('http') && videoUrl.includes('.')) {
+      videoUrl = 'https://' + videoUrl;
+      input.value = videoUrl;
+    }
+
+    // Client-side video ID check
+    const videoId = extractVideoIdClient(videoUrl);
+    if (!videoId) {
+      showError("That doesn't look like a YouTube video URL. Paste a link like https://www.youtube.com/watch?v=... or an 11-character video ID.");
+      return;
+    }
+
+    // Check session cache
+    const cached = getCachedReport(videoId);
+    if (cached) {
+      renderResults(cached);
+      showStep('step-results');
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    // Email gate check
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'video-keyword-finder' });
+      showStep('step-email-gate');
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_generate_click', tool: 'video-keyword-finder' });
+
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Analyzing...';
+    showStep('step-loading');
+    startLoadingMessages();
+
+    await fetchKeywordReport(videoUrl);
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement;
+    const email = emailInput.value.trim().toLowerCase();
+    const errorEl = document.getElementById('gate-email-error');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    const domain = email.split('@')[1];
+    if (GATE_EMAIL_DOMAINS.includes(domain)) {
+      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      return;
+    }
+
+    if (errorEl) errorEl.classList.add('hidden');
+
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;
+    btn.textContent = 'Submitting...';
+    btn.setAttribute('disabled', 'true');
+
+    try {
+      await fetch(CAPTURE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'youtube-video-keyword-finder' }),
+      });
+    } catch { /* silent */ }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'video-keyword-finder' });
+
+    const form = document.getElementById('gate-form') as HTMLElement;
+    const success = document.getElementById('gate-success') as HTMLElement;
+    form.classList.add('hidden');
+    success.classList.remove('hidden');
+
+    setTimeout(() => {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      btn.textContent = 'Unlock unlimited reports';
+      btn.removeAttribute('disabled');
+      emailInput.value = '';
+      generate();
+    }, 1200);
+  }
+
+  // ===== RESET =====
+
+  function reset(): void {
+    const input = document.getElementById('video-url-input') as HTMLInputElement;
+    input.value = '';
+    clearError();
+    currentReport = null;
+    showStep('step-input');
+    input.focus();
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    btn.disabled = false;
+    btn.textContent = 'Find my ranking keywords →';
+  }
+
+  // ===== EVENT LISTENERS =====
+
+  document.getElementById('generate-btn')?.addEventListener('click', generate);
+  document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+  document.getElementById('copy-report-btn')?.addEventListener('click', copyFullReport);
+  document.getElementById('download-csv-btn')?.addEventListener('click', handleCSVDownload);
+  document.getElementById('csv-gate-submit')?.addEventListener('click', submitCSVGateEmail);
+
+  document.getElementById('csv-gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitCSVGateEmail();
+  });
+
+  document.getElementById('try-example-btn')?.addEventListener('click', () => {
+    const input = document.getElementById('video-url-input') as HTMLInputElement;
+    input.value = EXAMPLE_VIDEO;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_example_click', tool: 'video-keyword-finder' });
+    generate();
+  });
+
+  document.getElementById('video-url-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') generate();
+  });
+
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  // CTA tracking
+  document.querySelectorAll('.tool-cta-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const dest = (link as HTMLElement).dataset.destination || 'unknown';
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'tool_cta_click', tool: 'video-keyword-finder', destination: dest });
+    });
+  });
+
+  updateCounterLabel();
+</script>
