@@ -1,7 +1,7 @@
 ---
 publishDate: 2026-04-23T00:00:00Z
 author: Sathyanand
-title: "YouTube Lead Generation: Build a Pipeline That Works While You Sleep"
+title: "YouTube Lead Generation: Build a Pipeline"
 excerpt: "Your YouTube channel has views but zero leads. Here is the exact system to turn search traffic into booked calls, without running a single ad."
 image: ~/assets/images/blog/youtube-lead-generation-featured.svg
 image_alt: "YouTube lead generation funnel showing viewer journey from search to booked call with conversion metrics at each stage | SellonTube"
