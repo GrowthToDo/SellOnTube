@@ -111,7 +111,8 @@ body{font-family:var(--font);color:#1a1a1a;background:var(--white);line-height:1
 .app-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .app-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all .25s}
 .app-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(0,0,0,.06)}
-.app-num{font-size:.68rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.app-num{font-size:.68rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.app-tag{font-size:.6rem;background:var(--green-glow);color:var(--green-dark);padding:2px 8px;border-radius:100px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
 .app-card h3{font-size:.95rem;font-weight:700;margin-bottom:6px}
 .app-card .problem{font-size:.84rem;color:#4a4a4a;margin-bottom:6px}
 .app-card .impact{font-size:.86rem;color:var(--green-dark);font-weight:600}
@@ -466,55 +467,55 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
     <div class="section-sub">No app store installs. No monthly fees. Built for your exact workflow using Shopify Sidekick.</div>
     <div class="app-grid">
       <div class="app-card">
-        <div class="app-num">App 01</div>
-        <h3>Product Image Processor</h3>
-        <p class="problem">8 hours/day resizing vendor images, removing backgrounds, formatting for ads.</p>
-        <p class="impact">8 hours &rarr; 15 minutes. Automated.</p>
-        <div class="client">UK luxury retailer</div>
+        <div class="app-num">App 01 <span class="app-tag">Visibility</span></div>
+        <h3>Executive Dashboard</h3>
+        <p class="problem">Clicking through 6 Shopify screens for a status update.</p>
+        <p class="impact">Business health in 30 seconds. One screen.</p>
       </div>
       <div class="app-card">
-        <div class="app-num">App 02</div>
-        <h3>Country Sales Dashboard</h3>
-        <p class="problem">Selling in 50+ countries with no way to see which are growing.</p>
-        <p class="impact">Revenue by country, source, time range. Instant.</p>
+        <div class="app-num">App 02 <span class="app-tag">Compliance</span></div>
+        <h3>Staff Activity Monitor</h3>
+        <p class="problem">Teams grow, nobody tracks who changed what.</p>
+        <p class="impact">Full audit trail. Brand compliance painless.</p>
       </div>
       <div class="app-card">
-        <div class="app-num">App 03</div>
+        <div class="app-num">App 03 <span class="app-tag">Compliance</span></div>
         <h3>Market Exclusion Manager</h3>
         <p class="problem">8,000 SKUs across 50 markets. Some can't ship everywhere.</p>
         <p class="impact">400,000 compliance touchpoints. One screen.</p>
         <div class="client">US nutraceuticals store</div>
       </div>
       <div class="app-card">
-        <div class="app-num">App 04</div>
+        <div class="app-num">App 04 <span class="app-tag">Save Revenue</span></div>
         <h3>GTIN / Barcode Scanner</h3>
         <p class="problem">Missing or duplicate barcodes getting products disapproved.</p>
         <p class="impact">Error rate under 1%. Disapprovals nearly gone.</p>
         <div class="client">UK luxury retailer</div>
       </div>
       <div class="app-card">
-        <div class="app-num">App 05</div>
-        <h3>Staff Activity Monitor</h3>
-        <p class="problem">Teams grow, nobody tracks who changed what.</p>
-        <p class="impact">Full audit trail. Brand compliance painless.</p>
+        <div class="app-num">App 05 <span class="app-tag">Save Time</span></div>
+        <h3>Product Image Processor</h3>
+        <p class="problem">8 hours/day resizing vendor images, removing backgrounds, formatting for ads.</p>
+        <p class="impact">8 hours &rarr; 15 minutes. Automated.</p>
+        <div class="client">UK luxury retailer</div>
       </div>
       <div class="app-card">
-        <div class="app-num">App 06</div>
-        <h3>LLM-Readiness Audit</h3>
-        <p class="problem">AI shopping assistants rely on structured data. Most stores have gaps.</p>
-        <p class="impact">Ahead of the next discovery channel.</p>
-      </div>
-      <div class="app-card">
-        <div class="app-num">App 07</div>
+        <div class="app-num">App 06 <span class="app-tag">Increase Revenue</span></div>
         <h3>New Arrivals Auto-Tagger</h3>
         <p class="problem">New products added but never tagged for email campaigns.</p>
         <p class="impact">Auto-tagged &rarr; Klaviyo flows. Zero manual steps.</p>
       </div>
       <div class="app-card">
-        <div class="app-num">App 08</div>
-        <h3>Executive Dashboard</h3>
-        <p class="problem">Clicking through 6 Shopify screens for a status update.</p>
-        <p class="impact">Business health in 30 seconds. One screen.</p>
+        <div class="app-num">App 07 <span class="app-tag">Visibility</span></div>
+        <h3>Country Sales Dashboard</h3>
+        <p class="problem">Selling in 50+ countries with no way to see which are growing.</p>
+        <p class="impact">Revenue by country, source, time range. Instant.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-num">App 08 <span class="app-tag">Future-Proofing</span></div>
+        <h3>LLM-Readiness Audit</h3>
+        <p class="problem">AI shopping assistants rely on structured data. Most stores have gaps.</p>
+        <p class="impact">Ahead of the next discovery channel.</p>
       </div>
     </div>
   </div>
