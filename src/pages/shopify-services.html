@@ -111,7 +111,8 @@ body{font-family:var(--font);color:#1a1a1a;background:var(--white);line-height:1
 .app-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .app-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;transition:all .25s}
 .app-card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(0,0,0,.06)}
-.app-num{font-size:.68rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.app-num{font-size:.68rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.app-tag{font-size:.6rem;background:var(--green-glow);color:var(--green-dark);padding:2px 8px;border-radius:100px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
 .app-card h3{font-size:.95rem;font-weight:700;margin-bottom:6px}
 .app-card .problem{font-size:.84rem;color:#4a4a4a;margin-bottom:6px}
 .app-card .impact{font-size:.86rem;color:var(--green-dark);font-weight:600}
@@ -141,10 +142,10 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
 .case-stat .val{font-size:1.5rem;font-weight:800;color:var(--green)}
 .case-stat .lbl{font-size:.75rem;color:var(--text-dim);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
 .case-narrative{max-width:700px}
-.case-narrative h3{color:var(--text);font-size:1.05rem;margin:28px 0 10px}
-.case-narrative p{color:var(--text-dim);font-size:.92rem;line-height:1.7}
+.case-narrative h3{color:#1a1a1a;font-size:1.05rem;margin:28px 0 10px}
+.case-narrative p{color:#3d3d3d;font-size:.92rem;line-height:1.7}
 .case-narrative ul{list-style:none;margin:12px 0}
-.case-narrative li{color:var(--text-dim);font-size:.88rem;padding:4px 0 4px 18px;position:relative}
+.case-narrative li{color:#3d3d3d;font-size:.88rem;padding:4px 0 4px 18px;position:relative}
 .case-narrative li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--green)}
 
 /* LEAD MAGNETS + PRICING */
@@ -264,7 +265,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
   <div class="proof-inner">
     <div class="proof-stat"><div class="num">$1.5M &rarr; $10M</div><div class="desc">in 18 months</div></div>
     <div class="proof-stat"><div class="num">50+</div><div class="desc">countries served</div></div>
-    <div class="proof-stat"><div class="num">8hrs &rarr; 15min</div><div class="desc">image processing</div></div>
+    <div class="proof-stat"><div class="num">8hrs &rarr; 15min</div><div class="desc">manual work automated</div></div>
     <div class="proof-stat"><div class="num">$1M+/yr</div><div class="desc">from email alone</div></div>
     <div class="proof-stat"><div class="num">10+</div><div class="desc">years in Shopify</div></div>
   </div>
@@ -302,7 +303,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
         <p>Surfacing insights means spreadsheets and hoping someone reads them before they go stale. Trends show up three weeks late.</p>
       </div>
     </div>
-    <p class="pain-closer">These are solvable problems. You just haven't had someone who knows how to solve them inside Shopify.</p>
+    <p class="pain-closer">None of this is "how it is." You just haven't had someone build the fix inside Shopify.</p>
   </div>
 </section>
 
@@ -338,7 +339,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
     </div>
     <div class="qual-bottom">
       <p style="margin-bottom:20px;color:#3d3d3d">If you checked 3+ boxes on the left, we should talk.</p>
-      <a href="#cta" class="btn-primary">Book a Call &mdash; We'll Know in 15 Minutes</a>
+      <a href="#cta" class="btn-primary">Book a Call - We'll Know in 15 Minutes</a>
     </div>
   </div>
 </section>
@@ -348,7 +349,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
   <div class="section-inner">
     <div class="section-label">Our Services</div>
     <div class="section-title">Everything we do inside your store.</div>
-    <div class="section-sub">Organized by what Shopify merchants actually need. Each service maps to a real operational pain point.</div>
+    <div class="section-sub">Organized by what actually breaks when you scale past $5M.</div>
 
     <div style="border-left:4px solid var(--green);background:rgba(52,168,83,.04);border-radius:8px;padding:18px 24px;max-width:720px;margin:0 auto 48px;font-size:.92rem;color:#3d3d3d;line-height:1.65">
       Every service below is powered by Shopify's AI toolkit &mdash; Sidekick, Flow, and the new ChatGPT &amp; Claude connectors. It's how we deliver faster and cheaper than traditional agencies.
@@ -359,7 +360,6 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
       <div class="svc-cat-header">
         <div class="svc-cat-icon">&#9881;</div>
         <h3>Development &amp; Custom Apps</h3>
-        <span class="shopify-tag">Development &amp; Troubleshooting</span>
       </div>
       <div class="svc-items">
         <div class="svc-item">
@@ -392,7 +392,6 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
       <div class="svc-cat-header">
         <div class="svc-cat-icon">&#9881;</div>
         <h3>Store Operations &amp; Management</h3>
-        <span class="shopify-tag">Store Setup &amp; Management</span>
       </div>
       <div class="svc-items">
         <div class="svc-item">
@@ -419,7 +418,6 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
       <div class="svc-cat-header">
         <div class="svc-cat-icon">&#9881;</div>
         <h3>Marketing &amp; Growth</h3>
-        <span class="shopify-tag">Marketing &amp; Sales</span>
       </div>
       <div class="svc-items">
         <div class="svc-item">
@@ -446,7 +444,6 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
       <div class="svc-cat-header">
         <div class="svc-cat-icon">&#9881;</div>
         <h3>Expert Guidance &amp; Expansion</h3>
-        <span class="shopify-tag">Expert Guidance</span>
       </div>
       <div class="svc-items">
         <div class="svc-item">
@@ -478,55 +475,55 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
     <div class="section-sub">No app store installs. No monthly fees. Built for your exact workflow using Shopify Sidekick.</div>
     <div class="app-grid">
       <div class="app-card">
-        <div class="app-num">App 01</div>
-        <h3>Product Image Processor</h3>
-        <p class="problem">8 hours/day resizing vendor images, removing backgrounds, formatting for ads.</p>
-        <p class="impact">8 hours &rarr; 15 minutes. Automated.</p>
-        <div class="client">H.S. Johnson</div>
+        <div class="app-num">App 01 <span class="app-tag">Visibility</span></div>
+        <h3>Executive Dashboard</h3>
+        <p class="problem">Clicking through 6 Shopify screens for a status update.</p>
+        <p class="impact">Business health in 30 seconds. One screen.</p>
       </div>
       <div class="app-card">
-        <div class="app-num">App 02</div>
-        <h3>Country Sales Dashboard</h3>
-        <p class="problem">Selling in 50+ countries with no way to see which are growing.</p>
-        <p class="impact">Revenue by country, source, time range. Instant.</p>
-      </div>
-      <div class="app-card">
-        <div class="app-num">App 03</div>
-        <h3>Market Exclusion Manager</h3>
-        <p class="problem">8,000 SKUs across 50 markets. Some can't ship everywhere.</p>
-        <p class="impact">400,000 compliance touchpoints. One screen.</p>
-        <div class="client">Hebron Nutrition</div>
-      </div>
-      <div class="app-card">
-        <div class="app-num">App 04</div>
-        <h3>GTIN / Barcode Scanner</h3>
-        <p class="problem">Missing or duplicate barcodes getting products disapproved.</p>
-        <p class="impact">Error rate under 1%. Disapprovals nearly gone.</p>
-        <div class="client">H.S. Johnson</div>
-      </div>
-      <div class="app-card">
-        <div class="app-num">App 05</div>
+        <div class="app-num">App 02 <span class="app-tag">Compliance</span></div>
         <h3>Staff Activity Monitor</h3>
         <p class="problem">Teams grow, nobody tracks who changed what.</p>
         <p class="impact">Full audit trail. Brand compliance painless.</p>
       </div>
       <div class="app-card">
-        <div class="app-num">App 06</div>
-        <h3>LLM-Readiness Audit</h3>
-        <p class="problem">Shoppers are asking ChatGPT, Perplexity, and Google AI what to buy. If your product data has gaps &mdash; missing descriptions, weak structured data, no schema &mdash; AI surfaces skip you and recommend your competitor.</p>
-        <p class="impact">Products structured, tagged, and visible across every AI shopping surface.</p>
+        <div class="app-num">App 03 <span class="app-tag">Compliance</span></div>
+        <h3>Market Exclusion Manager</h3>
+        <p class="problem">8,000 SKUs across 50 markets. Some can't ship everywhere.</p>
+        <p class="impact">400,000 compliance touchpoints. One screen.</p>
+        <div class="client">US nutraceuticals store</div>
       </div>
       <div class="app-card">
-        <div class="app-num">App 07</div>
+        <div class="app-num">App 04 <span class="app-tag">Save Revenue</span></div>
+        <h3>GTIN / Barcode Scanner</h3>
+        <p class="problem">Missing or duplicate barcodes getting products disapproved.</p>
+        <p class="impact">Error rate under 1%. Disapprovals nearly gone.</p>
+        <div class="client">UK luxury retailer</div>
+      </div>
+      <div class="app-card">
+        <div class="app-num">App 05 <span class="app-tag">Save Time</span></div>
+        <h3>Product Image Processor</h3>
+        <p class="problem">8 hours/day resizing vendor images, removing backgrounds, formatting for ads.</p>
+        <p class="impact">8 hours &rarr; 15 minutes. Automated.</p>
+        <div class="client">UK luxury retailer</div>
+      </div>
+      <div class="app-card">
+        <div class="app-num">App 06 <span class="app-tag">Increase Revenue</span></div>
         <h3>New Arrivals Auto-Tagger</h3>
         <p class="problem">New products added but never tagged for email campaigns.</p>
         <p class="impact">Auto-tagged &rarr; Klaviyo flows. Zero manual steps.</p>
       </div>
       <div class="app-card">
-        <div class="app-num">App 08</div>
-        <h3>Executive Dashboard</h3>
-        <p class="problem">Clicking through 6 Shopify screens for a status update.</p>
-        <p class="impact">Business health in 30 seconds. One screen.</p>
+        <div class="app-num">App 07 <span class="app-tag">Visibility</span></div>
+        <h3>Country Sales Dashboard</h3>
+        <p class="problem">Selling in 50+ countries with no way to see which are growing.</p>
+        <p class="impact">Revenue by country, source, time range. Instant.</p>
+      </div>
+      <div class="app-card">
+        <div class="app-num">App 08 <span class="app-tag">Future-Proofing</span></div>
+        <h3>LLM-Readiness Audit</h3>
+        <p class="problem">Shoppers are asking ChatGPT, Perplexity, and Google AI what to buy. If your product data has gaps &mdash; missing descriptions, weak structured data, no schema &mdash; AI surfaces skip you and recommend your competitor.</p>
+        <p class="impact">Products structured, tagged, and visible across every AI shopping surface.</p>
       </div>
     </div>
   </div>
@@ -541,7 +538,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
     <table class="compare">
       <thead><tr><th>Area</th><th>Before</th><th>After</th></tr></thead>
       <tbody>
-        <tr><td class="area">Image Processing</td><td class="before">8 hours/day manual</td><td class="after">15 minutes automated</td></tr>
+        <tr><td class="area">Daily Ops</td><td class="before">8 hours/day manual</td><td class="after">15 minutes automated</td></tr>
         <tr><td class="area">Email Revenue</td><td class="before">$0 from Klaviyo</td><td class="after">$1M+/year (20% of revenue)</td></tr>
         <tr><td class="area">Countries</td><td class="before">2 (US, Canada)</td><td class="after">50+ organic + paid</td></tr>
         <tr><td class="area">Compliance</td><td class="before">Manual checks, frequent errors</td><td class="after">Under 1% error rate</td></tr>
@@ -592,8 +589,8 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
 <section class="section" id="case-study">
   <div class="section-inner">
     <div class="section-label">Case Study</div>
-    <div class="section-title">Hebron Nutrition</div>
-    <div class="section-sub">US-based nutraceuticals company. $1.5M to $10M in 18 months.</div>
+    <div class="section-title">US-based nutraceuticals store.</div>
+    <div class="section-sub">$1.5M to $10M in 18 months. Here's how.</div>
     <div class="case-stats">
       <div class="case-stat"><div class="val">$1.5M &rarr; $10M</div><div class="lbl">Revenue in 18 months</div></div>
       <div class="case-stat"><div class="val">$0 &rarr; $1M+/yr</div><div class="lbl">Email revenue (Klaviyo)</div></div>
@@ -625,7 +622,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
   <div class="section-inner">
     <div class="section-label">Start Small</div>
     <div class="section-title">Pick a quick win project.</div>
-    <div class="section-sub">Delivered in 1&ndash;2 weeks. No commitment. You keep everything. A test drive where you keep the car.</div>
+    <div class="section-sub">Delivered in 1&ndash;2 weeks. No commitment. You keep everything we build, even if you walk away.</div>
     <div class="lm-grid">
       <div class="lm-card">
         <h3>Custom App Build</h3>
@@ -671,7 +668,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
         <div class="name">Monthly Retainer</div>
         <div class="price">$1,500&ndash;$3,000</div>
         <div class="freq">/month</div>
-        <div class="desc">Ops management, insights, new automations. Direct access to Manoj.</div>
+        <div class="desc">Ops management, insights, new automations. Direct access to our Shopify team.</div>
       </div>
     </div>
     <p style="text-align:center;margin-top:24px;color:#4a4a4a;font-size:.88rem">Pricing scoped per store. Book a call for a clear quote within 48 hours.</p>
@@ -743,19 +740,6 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
   </div>
 </section>
 
-<!-- SIDEKICK EXPLAINER -->
-<section class="section">
-  <div class="section-inner">
-    <div class="section-label">Shopify Sidekick</div>
-    <div class="section-title">Your store has a tool most merchants have never touched.</div>
-    <div style="max-width:680px">
-      <p style="margin-bottom:14px;color:#444;line-height:1.7">Shopify Sidekick is an AI assistant built into your admin. It can build custom apps, automate workflows, and pull insights from your data in plain English. No extra cost.</p>
-      <p style="margin-bottom:14px;color:#444;line-height:1.7">Here's the catch: getting useful output takes iteration. Each app goes through 4 to 15 rounds of refinement. Most merchants try once, get something mediocre, and give up. We've been building with Sidekick and Flow since they launched. We know what to ask for, what to iterate on, and when the output is production-ready.</p>
-      <p style="color:#444;line-height:1.7">Shopify Flow has been around for 4 years. Most merchants have never opened it. We've built dozens of production apps with it.</p>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="section section-alt">
   <div class="section-inner">
@@ -769,7 +753,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
       <div class="faq-item"><button class="faq-q">Can I cancel the retainer anytime? <span class="arrow">&#9660;</span></button><div class="faq-a"><div class="faq-a-inner">Yes. No contracts. Everything stays in your store even if you stop. We earn it every month.</div></div></div>
       <div class="faq-item"><button class="faq-q">What results can I expect? <span class="arrow">&#9660;</span></button><div class="faq-a"><div class="faq-a-inner">Depends on your store. Our flagship client went from single-market to 50+ countries and added a million-dollar email channel. Another freed up an entire team member's day. We'll give you a realistic picture on the call.</div></div></div>
       <div class="faq-item"><button class="faq-q">What happens during the lead magnet project? <span class="arrow">&#9660;</span></button><div class="faq-a"><div class="faq-a-inner">Pick a package. 30-minute scoping call. We get access, deliver in 1&ndash;2 weeks. If there's a fit, we talk about what's next. If not, you keep what we built.</div></div></div>
-      <div class="faq-item"><button class="faq-q">Why don't you offer a free audit? <span class="arrow">&#9660;</span></button><div class="faq-a"><div class="faq-a-inner">Operational problems are invisible without admin access. Free audits deliver shallow results. Our lead magnet gets us real access, delivers real value, and shows you how we work. We charge because the visit itself finds the cavities.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Why don't you offer a free audit? <span class="arrow">&#9660;</span></button><div class="faq-a"><div class="faq-a-inner">Operational problems are invisible without admin access. Free audits deliver shallow results. Our lead magnet gets us real access, delivers real value, and shows you how we work before you commit to anything bigger.</div></div></div>
       <div class="faq-item"><button class="faq-q">How does AI fit into what you do? <span class="arrow">&#9660;</span></button><div class="faq-a"><div class="faq-a-inner">We use Shopify's native AI tools &mdash; Sidekick, Flow, and the new ChatGPT and Claude connectors &mdash; as part of how we deliver. It's not a separate service you pay extra for. It's baked into every app we build and every workflow we automate. It means things get done faster, cost less, and scale better than manual agency work.</div></div></div>
     </div>
   </div>
