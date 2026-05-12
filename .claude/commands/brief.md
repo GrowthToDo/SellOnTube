@@ -27,7 +27,7 @@ Generate a complete content brief for a keyword or topic, ready for outline appr
 ### 4. Fill the content brief
 Use the template from `docs/templates/content-brief-template.md`. Fill in all fields:
 - Primary keyword, secondary keywords, intent, cluster, priority score
-- Publish date (check cadence per Agent 03 logic — max 1/week)
+- Publish date (up to 5/week Mon-Fri, check for same-day collisions)
 - ICP angle (one sentence: why does this matter for a B2B founder acquiring customers via YouTube?)
 - Competing pages (from SERP data) + what they're missing
 - Internal links to include (check `docs/templates/internal-linking-map.md` + `src/pages/tools/`)
