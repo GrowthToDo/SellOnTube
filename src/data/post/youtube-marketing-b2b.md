@@ -94,7 +94,7 @@ The [YouTube marketing strategy framework](/blog/youtube-marketing-strategy) cov
 
 ## The Common Mistake: Starting With Production
 
-Most B2B companies start a YouTube channel by buying equipment and hiring a videographer.
+Most B2B companies start a YouTube channel by buying equipment and hiring a videographer. Not sure what that actually costs? Our guide on [YouTube marketing costs](/blog/youtube-marketing-cost) breaks down real pricing for every approach, from DIY to full-service agencies.
 
 That is the wrong starting point. The right starting point is a search intent audit. Open YouTube and search the three most specific versions of the problem your service solves. Look at what appears. Are there results? Are they genuinely good? Who made them? Is any of it specifically addressing your buyer? The [YouTube competition checker](/tools/youtube-competitor-analysis) automates this: enter a keyword and see the top 5 videos with view counts, age, and beatable signals.
 

@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-04-25T00:00:00Z
 author: Sathyanand
-title: "YouTube Shorts for Business: When They Work and When They Waste Your Time"
-excerpt: "Everyone says your business should post Shorts. But Shorts don't generate B2B leads on their own. Here is when they actually help, when to skip them, and how to repurpose long-form content into Shorts that build awareness."
+title: "YouTube Shorts for Business: When to Use Them"
+excerpt: "Shorts alone do not generate B2B leads. Here is when they actually help, when to skip them, and how to repurpose long-form videos into Shorts."
 image: ~/assets/images/blog/youtube-shorts-for-business-featured.svg
 image_alt: "Comparison of YouTube Shorts vs long-form video effectiveness for B2B business channels with repurposing workflow | SellonTube"
 featuredImageWidth: 1200
@@ -25,7 +25,7 @@ faqs:
     answer: "Start with long-form. Long-form videos rank in YouTube and Google search, allow detailed CTAs with description links, and can be repurposed into multiple Shorts. Starting with Shorts gives you views but no foundation to convert that attention into leads."
 metadata:
   canonical: https://sellontube.com/blog/youtube-shorts-for-business
-  description: "YouTube Shorts work for B2B as a repurposing tool, not a standalone strategy. Here is when to use them, when to skip them, and how to create them from existing content."
+  description: "YouTube Shorts for business work as a repurposing tool, not a lead gen strategy. When to use them, when to skip, and how to create them fast."
   openGraph:
     url: https://sellontube.com/blog/youtube-shorts-for-business
     siteName: SellOnTube

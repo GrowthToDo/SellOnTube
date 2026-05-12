@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-04-23T00:00:00Z
 author: Sathyanand
-title: "YouTube Lead Generation: Build a Pipeline"
-excerpt: "Your YouTube channel has views but zero leads. Here is the exact system to turn search traffic into booked calls, without running a single ad."
+title: "YouTube Lead Generation: Views to Booked Calls"
+excerpt: "Your YouTube channel has views but zero leads. The exact CTA placement, lead magnet, and attribution system to turn viewers into booked calls."
 image: ~/assets/images/blog/youtube-lead-generation-featured.svg
 image_alt: "YouTube lead generation funnel showing viewer journey from search to booked call with conversion metrics at each stage | SellonTube"
 featuredImageWidth: 1200
@@ -15,7 +15,7 @@ tags:
   - b2b-youtube
 metadata:
   canonical: https://sellontube.com/blog/youtube-lead-generation
-  description: "Turn YouTube views into qualified leads. The exact CTA placement, lead magnet, and attribution system for B2B channels. No ads required."
+  description: "Turn YouTube views into qualified leads with the right CTA placement, lead magnets, and attribution. System for B2B channels, no ads required."
   openGraph:
     url: https://sellontube.com/blog/youtube-lead-generation
     siteName: SellOnTube
@@ -125,7 +125,7 @@ This post covers the exact system: topic selection, CTA placement, lead magnets,
 
 This is different from brand awareness. Brand awareness puts your name in front of people who might need you someday. Lead generation through YouTube puts your solution in front of people who need it right now. They typed a question into YouTube search. Your video answered it. The next step is a conversation.
 
-Here's the thing: most B2B channels skip the conversion layer entirely. They publish helpful content, hope viewers remember their name, and wonder why nobody books a call. The missing piece is almost always the same. No structured path from "watched this video" to "filled out a form."
+Here's the thing: most B2B channels skip the conversion layer entirely. They publish helpful content, hope viewers remember their name, and wonder why nobody books a call. If that sounds familiar, our breakdown of [why YouTube channels get views but no leads](/blog/youtube-views-but-no-leads) covers the six most common reasons. The missing piece is almost always the same. No structured path from "watched this video" to "filled out a form."
 
 > **Read more:** [YouTube Marketing Strategy: A 6-Step System for B2B](/blog/youtube-marketing-strategy)
 

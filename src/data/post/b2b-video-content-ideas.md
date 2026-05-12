@@ -167,4 +167,4 @@ Screenshot this list. Hand it to your team. Film one per week. In 10 weeks, you 
 
 Each of these topics maps directly to search queries your buyers use. You are not guessing what to film. You are answering questions that people are already typing into YouTube. That is the difference between a B2B content strategy and a content calendar full of videos nobody asked for.
 
-For more on making your [B2B YouTube marketing](/blog/youtube-marketing-b2b) work, including how to write the [scripts that convert](/blog/youtube-script-writing-guide) and how to find the [right keywords](/blog/youtube-keyword-research), follow the links.
+For more on making your [B2B YouTube marketing](/blog/youtube-marketing-b2b) work, including how to write the [scripts that convert](/blog/youtube-script-writing-guide) and how to find the [right keywords](/blog/youtube-keyword-research), follow the links. Once your long-form videos are published, learn [when YouTube Shorts make sense for B2B](/blog/youtube-shorts-for-business) as a repurposing strategy.

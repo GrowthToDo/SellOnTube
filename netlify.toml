@@ -15,18 +15,18 @@
 
 [[redirects]]
   from = "/blog/youtube-marketing-not-working"
-  to = "/404"
-  status = 410
+  to = "/blog/youtube-views-but-no-leads"
+  status = 301
 
 [[redirects]]
   from = "/blog/youtube-marketing-plan"
-  to = "/404"
-  status = 410
+  to = "/blog/youtube-marketing-strategy"
+  status = 301
 
 [[redirects]]
   from = "/blog/is-youtube-worth-it-for-business"
-  to = "/404"
-  status = 410
+  to = "/blog/youtube-marketing-roi"
+  status = 301
 
 [[redirects]]
   from = "/blog/youtube-best-practices-for-business"
@@ -35,13 +35,13 @@
 
 [[redirects]]
   from = "/blog/youtube-for-small-business"
-  to = "/404"
-  status = 410
+  to = "/youtube-for/small-business"
+  status = 301
 
 [[redirects]]
   from = "/blog/youtube-sales-funnel"
-  to = "/404"
-  status = 410
+  to = "/blog/youtube-lead-generation"
+  status = 301
 
 [[redirects]]
   from = "/blog/youtube-seo-services"

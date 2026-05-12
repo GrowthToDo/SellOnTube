@@ -150,7 +150,7 @@ The difference is intent. Channel A attracts viewers. Channel B attracts buyers.
 <figcaption style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 0.75rem;">Fewer subscribers, more leads. Intent beats audience size every time.</figcaption>
 </figure>
 
-Want to see what the numbers look like for your specific business? Run your real data through the [YouTube ROI Calculator](/tools/youtube-roi-calculator) and see whether the math works before you record a single video.
+Want to see what the numbers look like for your specific business? Run your real data through the [YouTube ROI Calculator](/tools/youtube-roi-calculator) and see whether the math works before you record a single video. For a full line-item budget breakdown, see our guide to [YouTube marketing costs](/blog/youtube-marketing-cost) across DIY, freelancer, and agency tiers.
 
 > **Read more:** [YouTube Marketing ROI: 3.25x More Conversions](/blog/youtube-marketing-roi)
 
