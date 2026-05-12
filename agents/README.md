@@ -53,7 +53,7 @@ Curated reference files cherry-picked from open-source SEO skill repos. Not stan
 
 ## Key Rules (apply to all agents)
 - Never push to live without explicit user approval
-- Blog cadence: max 1/week, hard ceiling 2/week — always count before scheduling
+- Blog cadence: up to 5 posts/week (Mon-Fri) — quality bar unchanged per content-playbook.md
 - pSEO publishDates are IST (UTC+5:30) — Netlify builds UTC — check before releasing
 - Read seo-rules.md before any SEO recommendation
 - Style Guide + Content Quality Playbook apply to ALL copy touched, not just new writing
