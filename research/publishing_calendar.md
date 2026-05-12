@@ -22,15 +22,15 @@
 
 > **v2 rationale:** Reordered by validated DataForSEO volume and GSC signal. Highest-volume posts first to maximize compounding time. Tool-supported posts prioritized (blog + tool = two ranking surfaces). Low-volume posts from v1 (youtube topics 0 vol, youtube channel not growing 10 vol, vimeo/instagram comparisons 20 vol) dropped or deferred. New posts added for uncovered winnable keywords (youtube marketing tools KD 1, youtube analytics for other channels 390 vol, youtube script examples 480 vol).
 
-### Week 1 (May 12-16): Pillar + High-Volume SEO Cluster
+### Week 1 (May 13-19): Pillar + High-Volume SEO Cluster
 
 | Day | # | Post | Keyword | Vol (DFS) | KD | Source |
 |-----|---|------|---------|-----------|-----|--------|
-| Mon | 1 | YouTube SEO for Business (PILLAR) | youtube seo tools | 4,400 | 23 | sot_master, DFS validated |
-| Tue | 2 | YouTube Content Strategy Guide | youtube strategy | 1,600 | 16 | sot_master, DFS validated, trending UP |
-| Wed | 3 | YouTube Video Descriptions: B2B Templates | youtube description | 880 | ~15 | DFS validated, comp 1 |
-| Thu | 4 | YouTube Chapters and Timestamps | youtube chapters | 880 | ~10 | DFS validated, trending UP |
-| Fri | 5 | YouTube Titles for Buyer-Intent Queries | youtube title | 480 | ~18 | DFS validated, trending UP |
+| Tue 13 | 1 | YouTube SEO for Business (PILLAR) | youtube seo tools | 4,400 | 23 | sot_master, DFS validated |
+| Wed 14 | 2 | YouTube Content Strategy Guide | youtube strategy | 1,600 | 16 | sot_master, DFS validated, trending UP |
+| Thu 15 | 3 | YouTube Video Descriptions: B2B Templates | youtube description | 880 | ~15 | DFS validated, comp 1 |
+| Fri 16 | 4 | YouTube Chapters and Timestamps | youtube chapters | 880 | ~10 | DFS validated, trending UP |
+| Mon 19 | 5 | YouTube Titles for Buyer-Intent Queries | youtube title | 480 | ~18 | DFS validated, trending UP |
 
 **Week 1 addressable volume: 8,240**
 
