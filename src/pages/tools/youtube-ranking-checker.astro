@@ -43,6 +43,7 @@ const faqSchema = {
     { "@type": "Question", "name": "How often should I check my rankings?", "acceptedAnswer": { "@type": "Answer", "text": "Check weekly for your most important keywords. YouTube rankings shift faster than Google, so a video that ranks #5 today could move to #2 or #12 within a week depending on engagement and new uploads." } },
     { "@type": "Question", "name": "Why am I not ranking?", "acceptedAnswer": { "@type": "Answer", "text": "If your channel does not appear in the top 20 results, your video may not target that keyword in the title or description. YouTube ranks videos based on relevance signals: title match, description keywords, tags, engagement, and watch time. Start by optimizing your metadata with the target keyword." } },
     { "@type": "Question", "name": "Can I check competitor channels?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill." } },
+    { "@type": "Question", "name": "Do YouTube tags affect ranking?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tags are a secondary relevance signal that helps YouTube understand your video's topic. They do not override title or description, but they reinforce those signals. If you rank lower than expected for a keyword, check whether that keyword appears in your tags." } },
     { "@type": "Question", "name": "How do I check what keywords my YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Enter a keyword you want to check and your channel URL above. The tool searches YouTube in real time and tells you your exact position in the top 20 results. For a full walkthrough of three different methods, see our guide on finding your YouTube ranking keywords." } },
     { "@type": "Question", "name": "How does the YouTube ranking system work?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube ranks videos based on relevance and engagement signals. Relevance comes from title match, description keywords, and tags. Engagement comes from click-through rate, watch time, and viewer satisfaction. This tool lets you check where your video stands for any keyword so you can identify what to improve." } },
   ]
@@ -371,7 +372,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Check your tags</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Tags are a secondary ranking signal, but they still matter. Include your target keyword as a tag, along with close variations. Use our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to find the right tags for your keyword.
+              Tags are a secondary ranking signal, but they reinforce the relevance signals from your title and description. If your target keyword is missing from your tags, YouTube has one less signal connecting your video to that search. Include the exact keyword as your first tag, then add 2-3 close variations and one broader topic tag. Use our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to find the right tags for your keyword.
             </p>
           </div>
 
@@ -379,6 +380,36 @@ const faqSchema = {
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Improve watch time</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               YouTube promotes videos that keep viewers watching. If your video has a high drop-off rate in the first 30 seconds, consider re-editing the intro. Hook the viewer with the outcome they will get, not a long introduction about yourself or your company.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Tags and ranking -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How YouTube tags affect your video ranking</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube tags are metadata labels that tell the algorithm what your video is about. They are not visible to viewers, but they influence which search queries your video appears for. If you check your rank for a keyword and your video is nowhere in the top 20, misaligned tags are often part of the problem.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Tags work as a confirmation layer. When your title says "best CRM for agencies" and your tags include "best CRM for agencies," "CRM for marketing agencies," and "agency CRM comparison," YouTube has three signals all pointing at the same topic. Remove the tags, and you are relying on the title and description alone.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          The most common tagging mistake for business channels is using broad category tags ("marketing," "business," "SaaS") instead of specific keyword tags. Broad tags put you in competition with millions of videos. Specific tags narrow the field to the exact queries your buyers search for.
+        </p>
+
+        <div class="space-y-4">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">How to audit your tags against your rank</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Use this rank checker to test 3-5 keywords you want to rank for. For each keyword where you rank lower than expected (or not at all), check whether that keyword appears in your video's tags. If it does not, add it. If it does but you still rank poorly, the issue is likely title relevance or engagement, not tags.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Tag structure that supports ranking</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Put your primary keyword as the first tag. Follow it with 2-3 close variations (different word order, singular/plural, common abbreviations). Then add 1-2 broader topic tags to help YouTube categorize the video. Stay under 15 tags total. Our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube tag generator</a> builds this structure automatically from your video URL.
             </p>
           </div>
         </div>
@@ -428,6 +459,13 @@ const faqSchema = {
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I check competitor channels?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Do YouTube tags affect ranking?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Tags are a secondary relevance signal that helps YouTube understand your video's topic. They do not override title or description, but they reinforce those signals. If you rank lower than expected for a keyword, check whether that keyword appears in your tags. Use our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to build a tag set that matches your target keywords.
             </p>
           </div>
 
