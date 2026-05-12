@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-04-28T00:00:00Z
 author: Sathyanand
-title: "YouTube Marketing Cost in 2026: Real Budgets From $0 to $10,000/Month"
-excerpt: "Every article about YouTube marketing costs says 'it depends.' This one gives you actual line-item breakdowns for DIY, freelancer, and agency approaches so you can build a real budget."
+title: "YouTube Marketing Cost in 2026 ($0 to $10K/Mo)"
+excerpt: "Line-item breakdowns for DIY, freelancer, and agency YouTube budgets. No 'it depends.' Real numbers so you can plan your spend today."
 image: ~/assets/images/blog/youtube-marketing-cost-featured.svg
 image_alt: "YouTube marketing cost breakdown showing three budget tiers for business channels with line-item pricing | SellonTube"
 featuredImageWidth: 1200
@@ -25,7 +25,7 @@ faqs:
     answer: "DIY: $0 to $50 per video (your time plus minor costs). Freelance editor: $300 to $1,500 per video. Full production company: $1,500 to $10,000+ per video. For lead generation, production quality matters less than targeting the right topic."
 metadata:
   canonical: https://sellontube.com/blog/youtube-marketing-cost
-  description: "YouTube marketing costs $0-200/mo DIY, $500-2,000/mo with freelancers, $3,000-10,000/mo for agencies. Real line-item breakdowns for business channels."
+  description: "YouTube marketing costs $0-200/mo DIY, $500-2K/mo freelancer, $3K-10K/mo agency. Real line-item breakdowns for business channels."
   openGraph:
     url: https://sellontube.com/blog/youtube-marketing-cost
     siteName: SellOnTube

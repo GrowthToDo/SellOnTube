@@ -2,7 +2,7 @@
 publishDate: 2026-04-16T00:00:00Z
 author: Sathyanand
 title: "How to Find YouTube Autocomplete Keywords (The Right Way)"
-excerpt: "A repeatable system for finding YouTube autocomplete keywords, filtering by buyer intent, and turning raw suggestions into a content plan."
+excerpt: "Use YouTube autocomplete for keyword research in 3 steps: seed, scrape, filter by buyer intent. Free method plus tool shortcut inside."
 image: ~/assets/images/blog/how-to-find-youtube-autocomplete-keywords-featured.svg
 image_alt: "Step-by-step workflow for finding YouTube autocomplete keywords"
 category: YouTube SEO & Growth Strategy
@@ -20,7 +20,7 @@ faqs:
     answer: "Yes. The YouTube search bar itself is a free keyword research tool. Type a seed keyword and note every suggestion. For faster results, SellonTube's autocomplete tool scrapes all variations, tags them by intent, and exports a CSV. No signup required."
 metadata:
   canonical: https://sellontube.com/blog/how-to-find-youtube-autocomplete-keywords
-  description: "Find YouTube autocomplete keywords with a repeatable system. Manual method, tool shortcut, and intent filtering in one workflow."
+  description: "Use YouTube autocomplete for keyword research in 3 steps: seed, scrape, filter by buyer intent. Free method plus tool shortcut included."
   robots:
     index: true
     follow: true
