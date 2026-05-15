@@ -154,7 +154,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
 
     // Drop romanized non-English noise (Hindi, Arabic, etc. typed in Latin script)
     // and "in [language]" patterns that indicate non-English tutorial content
-    const romanizedNoise = /\bkaise\b|\bbanaen\b|\bbanaye\b|\bkya\b|\bhota\b|\bhai\b|\bkaro\b|\bkya hai\b|\bkaise kare\b|\bशرح\b|\bmaroc\b|\bin hindi\b|\bin telugu\b|\bin tamil\b|\bin urdu\b|\bin bangla\b|\bin marathi\b|\ben arabe\b|\ben francais\b|\ben espanol\b/i;
+    const romanizedNoise = /\bkaise\b|\bbanaen\b|\bbanaye\b|\bkya\b|\bhota\b|\bhai\b|\bkaro\b|\bkya hai\b|\bkaise kare\b|\bशرح\b|\bmaroc\b|\bin hindi\b|\bin telugu\b|\bin tamil\b|\bin urdu\b|\bin bangla\b|\bin marathi\b|\ben arabe\b|\ben francais\b|\ben espanol\b|\bkarmayogi\b|\bigot\b/i;
     if (romanizedNoise.test(kw)) return false;
 
     // Drop gaming/sports/entertainment noise
@@ -169,7 +169,10 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     // 1 common word (e.g. "voice engineer interview questions" for seed
     // "video interview tool").
     if (seedWords.length === 2) {
-      const hasBothWords = seedWords.every((w) => kw.includes(w));
+      const hasBothWords = seedWords.every((w) => {
+        const escaped = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        return new RegExp(`\\b${escaped}\\b`).test(kw);
+      });
       if (!hasBothWords) return false;
     } else if (seedPhrases.length > 0) {
       const hasPhraseMatch = seedPhrases.some((phrase) => kw.includes(phrase));
@@ -186,7 +189,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     // if ANY keyword word starts with it but isn't an exact match or common
     // inflection (plural, -ing, -ed, -er), drop the keyword.
     for (const seedWord of seedWords) {
-      if (seedWord.length >= 3) {
+      if (seedWord.length >= 2) {
         const kwWordList = kw.split(/\s+/);
         const allowedForms = new Set([
           seedWord,
@@ -217,7 +220,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
       // Drop very short additions (single chars or 2-char fragments)
       if (extraWord.length < 3) return false;
       // Drop known noise additions (programming, gaming, random nouns)
-      const noiseWords = /^(java|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions)$/i;
+      const noiseWords = /^(java|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions|shorts|memes|meme|compilation|podcast|lyrics|asmr|prank|drama|reaction|costume|yesterday|today|tomorrow|xqc|zhc|xdefiant|xenoblade|joe|you|must|zappa|exposed|cancelled|canceled|mukbang|tiktok)$/i;
       if (noiseWords.test(extraWord)) return false;
     }
 
@@ -226,7 +229,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     // "video interview tool green screen", "video interview tool box talk"
     if (kw.startsWith(seed + ' ') && kwWordList.length > seedWordCount + 1) {
       const extraPhrase = kwWordList.slice(seedWordCount).join(' ');
-      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques)$/i;
+      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques|joe biden|joe rogan|jordan peterson|zach bryan|zach king|youtube shorts|igot karmayogi|you must|you should|you need to)$/i;
       if (multiWordNoise.test(extraPhrase)) return false;
     }
 
