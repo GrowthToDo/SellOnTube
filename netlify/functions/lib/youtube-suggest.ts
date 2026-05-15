@@ -174,7 +174,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     for (const sw of seedWords) {
       const countInKw = kwWordList0.filter(w => w === sw).length;
       const countInSeed = seedWords.filter(w => w === sw).length;
-      if (countInKw > countInSeed + 1) return false;
+      if (countInKw > countInSeed) return false;
     }
 
     // Drop "yourself" meaning shift (upsell yourself ≠ product upselling)
