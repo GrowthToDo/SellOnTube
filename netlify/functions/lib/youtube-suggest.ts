@@ -18,25 +18,40 @@ export interface ExpandOptions extends SuggestOptions {
 //
 // direction: 'prepend' = modifier before seed, 'append' = seed before modifier, 'both' = both
 const MODIFIERS: { text: string; direction: 'prepend' | 'append' | 'both' }[] = [
-  { text: 'best',            direction: 'prepend' },  // "best [seed]" not "[seed] best"
-  { text: 'vs',              direction: 'append' },   // "[seed] vs" not "vs [seed]"
-  { text: 'alternatives to', direction: 'prepend' },  // "alternatives to [seed]"
-  { text: 'how to',          direction: 'prepend' },  // "how to [seed]"
-  { text: 'how to use',      direction: 'prepend' },  // "how to use [seed]"
-  { text: 'how to set up',   direction: 'prepend' },  // "how to set up [seed]"
-  { text: 'mistakes',        direction: 'both' },     // "[seed] mistakes" + "mistakes [seed]"
-  { text: 'results',         direction: 'append' },   // "[seed] results"
-  { text: 'review',          direction: 'both' },     // "[seed] review" + "review [seed]"
-  { text: 'pricing',         direction: 'append' },   // "[seed] pricing"
-  { text: 'cost',            direction: 'append' },   // "[seed] cost"
-  { text: 'worth it',        direction: 'append' },   // "[seed] worth it"
-  { text: 'for beginners',   direction: 'append' },   // "[seed] for beginners"
-  { text: 'tutorial',        direction: 'both' },     // "[seed] tutorial" + "tutorial [seed]"
-  { text: 'why',             direction: 'prepend' },  // "why [seed]"
-  { text: 'switch to',       direction: 'prepend' },  // "switch to [seed]"
-  { text: 'migrate to',      direction: 'prepend' },  // "migrate to [seed]"
-  { text: 'should i',        direction: 'prepend' },  // "should i [seed]"
-  { text: 'is',              direction: 'prepend' },  // "is [seed] worth it" etc.
+  { text: 'best',            direction: 'prepend' },
+  { text: 'top',             direction: 'prepend' },
+  { text: 'vs',              direction: 'append' },
+  { text: 'alternatives to', direction: 'prepend' },
+  { text: 'how to',          direction: 'prepend' },
+  { text: 'how to use',      direction: 'prepend' },
+  { text: 'how to set up',   direction: 'prepend' },
+  { text: 'mistakes',        direction: 'both' },
+  { text: 'results',         direction: 'append' },
+  { text: 'review',          direction: 'both' },
+  { text: 'pricing',         direction: 'append' },
+  { text: 'cost',            direction: 'append' },
+  { text: 'worth it',        direction: 'append' },
+  { text: 'for beginners',   direction: 'append' },
+  { text: 'for small business', direction: 'append' },
+  { text: 'for startups',    direction: 'append' },
+  { text: 'for enterprise',  direction: 'append' },
+  { text: 'tutorial',        direction: 'both' },
+  { text: 'why',             direction: 'prepend' },
+  { text: 'switch to',       direction: 'prepend' },
+  { text: 'migrate to',      direction: 'prepend' },
+  { text: 'should i',        direction: 'prepend' },
+  { text: 'is',              direction: 'prepend' },
+  { text: 'pros and cons',   direction: 'append' },
+  { text: 'features',        direction: 'append' },
+  { text: 'comparison',      direction: 'append' },
+  { text: 'demo',            direction: 'append' },
+  { text: 'setup',           direction: 'append' },
+  { text: 'integration',     direction: 'append' },
+  { text: 'example',         direction: 'append' },
+  { text: 'case study',      direction: 'append' },
+  { text: 'free',            direction: 'append' },
+  { text: '2024',            direction: 'append' },
+  { text: '2025',            direction: 'append' },
 ];
 
 /**
@@ -81,11 +96,6 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-  // For multi-word seeds, also create a reversed version to catch natural word orders
-  // e.g. "shopify upsell" → "upsell shopify" catches "how to upsell in shopify"
-  const seedWordsArr = seed.split(/\s+/);
-  const reversedSeed = seedWordsArr.length >= 2 ? seedWordsArr.slice().reverse().join(' ') : '';
-
   // Base: seed + A-Z appended
   let queries = [seed, ...alphabet.map((letter) => `${seed} ${letter}`)];
 
@@ -94,8 +104,6 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     for (const mod of MODIFIERS) {
       if (mod.direction === 'prepend' || mod.direction === 'both') {
         queries.push(`${mod.text} ${seed}`);
-        // Also query with reversed seed for natural word order
-        if (reversedSeed) queries.push(`${mod.text} ${reversedSeed}`);
       }
       if (mod.direction === 'append' || mod.direction === 'both') {
         queries.push(`${seed} ${mod.text}`);
@@ -208,28 +216,35 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     }
 
     // ── A-Z single-word noise check ──
-    // When A-Z expansion produces "seed + one random word", it's usually noise
-    // for niche topics. Drop if the extra word is very short (< 3 chars),
-    // or is a known noise term (programming languages, random nouns, etc.)
     const kwWordList = kw.split(/\s+/);
     const seedWordCount = seedWords.length;
 
-    // Check if kw starts with the exact seed and adds exactly 1 word
     if (kw.startsWith(seed + ' ') && kwWordList.length === seedWordCount + 1) {
       const extraWord = kwWordList[kwWordList.length - 1];
-      // Drop very short additions (single chars or 2-char fragments)
       if (extraWord.length < 3) return false;
-      // Drop known noise additions (programming, gaming, random nouns)
-      const noiseWords = /^(java|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions|shorts|memes?|compilations?|podcast|lyrics|asmr|prank|drama|reactions?|costumes?|yesterday|today|tomorrow|xqc|zhc|xdefiant|xenoblade|joe|you|must|zappa|exposed|cancell?ed|mukbang|tiktok|xbox|xml|costco|zendaya|zepeto|youtube|walmart|amazon|netflix|spotify|reddit|twitch|discord|instagram)$/i;
-      if (noiseWords.test(extraWord)) return false;
+
+      // For 3+ word seeds: allowlist approach (A-Z expansion is mostly noise)
+      if (seedWords.length >= 3) {
+        const usefulSuffix = /^(review|reviews|pricing|price|prices|cost|costs|free|tutorial|tutorials|guide|comparison|demo|features|feature|integration|integrations|setup|alternative|alternatives|example|examples|beginners?|tips|benefits|pros|cons|explained|overview|introduction|walkthrough|checklist|requirements|requirement|certification|implementation|onboarding|training|audit|assessment|report|reports|templates?|workflow|workflows|api|saas|startups?|enterprise|agencies|agency|freelancers?|ecommerce|b2b|b2c|smb|roi|kpi|dashboard|analytics|automation|security|compliance|regulations?|standard|standards|vendors?|providers?|platforms?|solutions?|options|recommendations?|best|top|worst|cheap|affordable|expensive|premium|basic|advanced|professional|popular|rated|ranked|tested|verified|certified|accredited|approved|legit|legitimate|trusted|reliable|secure|safe|fast|slow|easy|hard|simple|complex|small|large|medium|new|old|latest|updated?|modern|current|2024|2025|2026)$/i;
+        if (!usefulSuffix.test(extraWord)) return false;
+      } else {
+        // For 1-2 word seeds: blocklist approach
+        const noiseWords = /^(java|javascript|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions|shorts|memes?|compilations?|podcast|lyrics|asmr|prank|drama|reactions?|costumes?|yesterday|today|tomorrow|xqc|zhc|xdefiant|xenoblade|joe|you|must|zappa|exposed|cancell?ed|mukbang|tiktok|xbox|xml|costco|zendaya|zepeto|youtube|walmart|amazon|netflix|spotify|reddit|twitch|discord|instagram|kanye|zebra|zion|kevlar|jam|html|css|php|ruby|kotlin|cache|bypass|xray|zybooks|zip|vault|quiz|pdf|logo|login|llc|logic|manual|manga|anime|nasa|nba|nfl|mlb|ufc|wwe|nascar|fifa|fortnite|roblox|minecraft|valorant|overwatch|apex|dota|pubg|gta|sims|batman|superman|marvel|disney|pokemon|zelda|sonic|mario|halo|skyrim|fallout|witcher|cyberpunk|fnaf|skibidi|sigma|ohio|unboxing|haul|vlog|storytime|grwm|pov|troll|clickbait|scam|dropship|glassdoor|indeed|salary|resume|leetcode|hackerrank|kaggle|coursera|udemy|skillshare|edx|khan|codecademy|infosys|tcs|wipro|cognizant|accenture|deloitte|kpmg|mckinsey|group|house|international|inc|ltd|corp|channel|song|movie|series|trailer|season|episode|remix|cover|karaoke|lofi|beats|instrumental|ringtone|wallpaper|aesthetic|vibes|trending|viral|famous|celebrity|actor|actress|singer|rapper|band|concert|festival|tour|album|playlist|soundcloud|bandcamp|deezer|tidal|pandora|shazam)$/i;
+        if (noiseWords.test(extraWord)) return false;
+      }
     }
 
     // ── Multi-word noise after seed ──
-    // Catch "seed + 2-3 random words" noise like "video interview tool costa rica",
-    // "video interview tool green screen", "video interview tool box talk"
     if (kw.startsWith(seed + ' ') && kwWordList.length > seedWordCount + 1) {
       const extraPhrase = kwWordList.slice(seedWordCount).join(' ');
-      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques|joe biden|joe rogan|jordan peterson|zach bryan|zach king|jimmy fallon|jimmy kimmel|youtube shorts|youtube ideas|youtube video|igot karmayogi|you must|you should|you need to)$/i;
+
+      if (seedWords.length >= 3) {
+        // For 3+ word seeds: only keep multi-word additions starting with useful prefixes
+        const usefulPrefix = /^(for |vs |how |not |best |free |pricing |review |with |without |in |on |about |using |and |or |to |the |a |an |pro |top |new |no |open |full |step |real |\d)/i;
+        if (!usefulPrefix.test(extraPhrase)) return false;
+      }
+
+      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques|joe biden|joe rogan|jordan peterson|zach bryan|zach king|jimmy fallon|jimmy kimmel|youtube shorts|youtube ideas|youtube video|igot karmayogi|you must|you should|you need to|kanye west|wb games|logic pro|house ccure|house international)$/i;
       if (multiWordNoise.test(extraPhrase)) return false;
     }
 
