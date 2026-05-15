@@ -220,7 +220,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
       // Drop very short additions (single chars or 2-char fragments)
       if (extraWord.length < 3) return false;
       // Drop known noise additions (programming, gaming, random nouns)
-      const noiseWords = /^(java|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions|shorts|memes|meme|compilation|podcast|lyrics|asmr|prank|drama|reaction|costume|yesterday|today|tomorrow|xqc|zhc|xdefiant|xenoblade|joe|you|must|zappa|exposed|cancelled|canceled|mukbang|tiktok)$/i;
+      const noiseWords = /^(java|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions|shorts|memes?|compilations?|podcast|lyrics|asmr|prank|drama|reactions?|costumes?|yesterday|today|tomorrow|xqc|zhc|xdefiant|xenoblade|joe|you|must|zappa|exposed|cancell?ed|mukbang|tiktok|xbox|xml|costco|zendaya|zepeto|youtube|walmart|amazon|netflix|spotify|reddit|twitch|discord|instagram)$/i;
       if (noiseWords.test(extraWord)) return false;
     }
 
@@ -229,7 +229,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     // "video interview tool green screen", "video interview tool box talk"
     if (kw.startsWith(seed + ' ') && kwWordList.length > seedWordCount + 1) {
       const extraPhrase = kwWordList.slice(seedWordCount).join(' ');
-      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques|joe biden|joe rogan|jordan peterson|zach bryan|zach king|youtube shorts|igot karmayogi|you must|you should|you need to)$/i;
+      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques|joe biden|joe rogan|jordan peterson|zach bryan|zach king|jimmy fallon|jimmy kimmel|youtube shorts|youtube ideas|youtube video|igot karmayogi|you must|you should|you need to)$/i;
       if (multiWordNoise.test(extraPhrase)) return false;
     }
 
