@@ -165,6 +165,21 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
     const romanizedNoise = /\bkaise\b|\bbanaen\b|\bbanaye\b|\bkya\b|\bhota\b|\bhai\b|\bkaro\b|\bkya hai\b|\bkaise kare\b|\bशرح\b|\bmaroc\b|\bin hindi\b|\bin telugu\b|\bin tamil\b|\bin urdu\b|\bin bangla\b|\bin marathi\b|\ben arabe\b|\ben francais\b|\ben espanol\b|\bkarmayogi\b|\bigot\b/i;
     if (romanizedNoise.test(kw)) return false;
 
+    // Drop non-English European language keywords (French, Spanish, German, Italian, Portuguese)
+    const europeanNoise = /\bpanier\b|\bgratis\b|\bdeutsch\b|\btutoriel\b|\bmeilleur\b|\bcomment faire\b|\bcomo\b|\bmejor\b|\bpara que\b|\bque es\b|\bcosa\b|\bmigliore\b|\bcome\b|\bperche\b|\bwarum\b|\bwie\b|\bbeste\b|\bkostenlos\b|\banleitung\b|\btuto\b|\bavis\b|\bguia\b|\bcours\b|\bformation\b|\bfunziona\b|\bgratuito\b|\bgratu?ite?\b|\btutorial em\b/i;
+    if (europeanNoise.test(kw)) return false;
+
+    // Drop circular keywords (seed word repeated beyond its natural occurrence)
+    const kwWordList0 = kw.split(/\s+/);
+    for (const sw of seedWords) {
+      const countInKw = kwWordList0.filter(w => w === sw).length;
+      const countInSeed = seedWords.filter(w => w === sw).length;
+      if (countInKw > countInSeed + 1) return false;
+    }
+
+    // Drop "yourself" meaning shift (upsell yourself ≠ product upselling)
+    if (/\byourself\b/.test(kw)) return false;
+
     // Drop gaming/sports/entertainment noise
     const junkPatterns = /\befootball\b|\bfifa\b|\bvolleyball\b|\bfootball\b|\bsoccer\b|\bpes\b|\bgameplay\b|\bgaming\b|\bfortnite\b|\bminecraft\b|\broblox\b|\bleague of legends\b|\bgmod\b|\bsims \d\b|\bsims\b|\bcall of duty\b|\bgta\b|\bvalorant\b|\boverwatch\b|\bapex legends\b|\bdota\b|\bcounter strike\b/i;
     if (junkPatterns.test(kw)) return false;
@@ -229,7 +244,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
         if (!usefulSuffix.test(extraWord)) return false;
       } else {
         // For 1-2 word seeds: blocklist approach
-        const noiseWords = /^(java|javascript|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions|shorts|memes?|compilations?|podcast|lyrics|asmr|prank|drama|reactions?|costumes?|yesterday|today|tomorrow|xqc|zhc|xdefiant|xenoblade|joe|you|must|zappa|exposed|cancell?ed|mukbang|tiktok|xbox|xml|costco|zendaya|zepeto|youtube|walmart|amazon|netflix|spotify|reddit|twitch|discord|instagram|kanye|zebra|zion|kevlar|jam|html|css|php|ruby|kotlin|cache|bypass|xray|zybooks|zip|vault|quiz|pdf|logo|login|llc|logic|manual|manga|anime|nasa|nba|nfl|mlb|ufc|wwe|nascar|fifa|fortnite|roblox|minecraft|valorant|overwatch|apex|dota|pubg|gta|sims|batman|superman|marvel|disney|pokemon|zelda|sonic|mario|halo|skyrim|fallout|witcher|cyberpunk|fnaf|skibidi|sigma|ohio|unboxing|haul|vlog|storytime|grwm|pov|troll|clickbait|scam|dropship|glassdoor|indeed|salary|resume|leetcode|hackerrank|kaggle|coursera|udemy|skillshare|edx|khan|codecademy|infosys|tcs|wipro|cognizant|accenture|deloitte|kpmg|mckinsey|group|house|international|inc|ltd|corp|channel|song|movie|series|trailer|season|episode|remix|cover|karaoke|lofi|beats|instrumental|ringtone|wallpaper|aesthetic|vibes|trending|viral|famous|celebrity|actor|actress|singer|rapper|band|concert|festival|tour|album|playlist|soundcloud|bandcamp|deezer|tidal|pandora|shazam)$/i;
+        const noiseWords = /^(java|javascript|python|react|vscode|blender|gmod|mod|jar|jet|john|join|zone|xd|xt|league|pack|plan|os|qc|li|link|machine|missing|oxford|costa|green|black|box|record|talk|video|windows|wordpress|premiere|project|operator|making|game|giveaway|banned|tools|tamil|telugu|hindi|zone|zerodha|kit|operating|linkedin|template|questions|shorts|memes?|compilations?|podcast|lyrics|asmr|prank|drama|reactions?|costumes?|yesterday|today|tomorrow|xqc|zhc|xdefiant|xenoblade|joe|you|must|zappa|exposed|cancell?ed|mukbang|tiktok|xbox|xml|costco|zendaya|zepeto|youtube|walmart|amazon|netflix|spotify|reddit|twitch|discord|instagram|kanye|zebra|zion|kevlar|jam|html|css|php|ruby|kotlin|cache|bypass|xray|zybooks|zip|vault|quiz|pdf|logo|login|llc|logic|manual|manga|anime|nasa|nba|nfl|mlb|ufc|wwe|nascar|fifa|fortnite|roblox|minecraft|valorant|overwatch|apex|dota|pubg|gta|sims|batman|superman|marvel|disney|pokemon|zelda|sonic|mario|halo|skyrim|fallout|witcher|cyberpunk|fnaf|skibidi|sigma|ohio|unboxing|haul|vlog|storytime|grwm|pov|troll|clickbait|scam|dropship|glassdoor|indeed|salary|resume|leetcode|hackerrank|kaggle|coursera|udemy|skillshare|edx|khan|codecademy|infosys|tcs|wipro|cognizant|accenture|deloitte|kpmg|mckinsey|group|house|international|inc|ltd|corp|channel|song|movie|series|trailer|season|episode|remix|cover|karaoke|lofi|beats|instrumental|ringtone|wallpaper|aesthetic|vibes|trending|viral|famous|celebrity|actor|actress|singer|rapper|band|concert|festival|tour|album|playlist|soundcloud|bandcamp|deezer|tidal|pandora|shazam|kaiser|liquor|xcode|zaplet|queue|synonym|uphold|nation|respls|slayer|hotel|junk|zap|upscale)$/i;
         if (noiseWords.test(extraWord)) return false;
       }
     }
@@ -244,7 +259,7 @@ export async function getExpandedSuggestions(query: string, opts: ExpandOptions 
         if (!usefulPrefix.test(extraPhrase)) return false;
       }
 
-      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques|joe biden|joe rogan|jordan peterson|zach bryan|zach king|jimmy fallon|jimmy kimmel|youtube shorts|youtube ideas|youtube video|igot karmayogi|you must|you should|you need to|kanye west|wb games|logic pro|house ccure|house international)$/i;
+      const multiWordNoise = /^(costa rica|green screen|box talk|zone \d|windows \d|premiere pro|operating system|tools and equipment|tools and techniques|joe biden|joe rogan|jordan peterson|zach bryan|zach king|jimmy fallon|jimmy kimmel|youtube shorts|youtube ideas|youtube video|igot karmayogi|you must|you should|you need to|kanye west|wb games|logic pro|house ccure|house international|demon slayer|hotel rooms?|junk removal|nation login|x shopify|x wordpress|in an interview|in an email)$/i;
       if (multiWordNoise.test(extraPhrase)) return false;
     }
 
