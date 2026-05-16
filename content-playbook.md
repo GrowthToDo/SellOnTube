@@ -238,19 +238,84 @@ Would SellonTube be proud to share this post on LinkedIn with their name attache
 
 These are the mechanical SEO requirements for every post:
 
+### 5.1 Pre-Writing: GSC + SERP Research (mandatory for every post)
+
+Before writing a single word, run this research. It determines how you title, structure, and differentiate the post.
+
+**Step 1: GSC Query-Level Check.** If an existing page already targets this keyword (or a related one), pull query-level GSC data. Identify what exact queries drive impressions. A post ranking for its own title (vanity query) instead of real search queries needs retargeting.
+
+**Step 2: SERP Feature Audit.** Search the target keyword. Document:
+- Is there a featured snippet? What format (paragraph, list, table)?
+- Are there video carousels, PAA boxes, ads above organic results?
+- What domains rank in positions 1-5? Are they authority sites or small blogs?
+
+**Step 3: Competitor Title Analysis.** List the titles of positions 1-7. If they all use "Guide" or "Ultimate Guide," you must differentiate. If they lack specificity (no numbers, no frameworks), that's your advantage.
+
+**Step 4: Featured Snippet Opportunity.** If a featured snippet exists, plan your snippet-capture block (see structure rules below). Winning pos 0 bypasses CTR problems at pos 5-10.
+
+**Key principle:** If competition is weak (small agency blogs, no authority sites), position 1-3 is achievable. If a featured snippet exists and competitors haven't optimized for it, pos 0 is your fastest path to clicks.
+
+### 5.2 Title + Meta Description (CTR-first writing)
+
+**Title rules:**
+- Must differentiate from competitors AT A GLANCE in the SERP
+- Add specificity signals: numbers ("5-Part"), brackets ("[With Walkthrough]"), named frameworks
+- Keep B2B/lead-gen positioning. NEVER dilute for generic traffic volume
+- Stay under 60 characters for full mobile display
+- If 3+ competitors use the same word (Guide, Ultimate, Best), avoid that word
+
+**Meta description rules:**
+- Under 155 characters
+- Lead with the concrete output/framework, not B2B jargon
+- Must contain at least one specific claim the reader can evaluate
+- Never start with "A practical guide..." or "This post covers..."
+- Include the keyword naturally
+
+**Test:** Would a busy B2B founder, scanning 10 blue links on a phone, stop at YOUR title? If not, rewrite it.
+
+### 5.3 Featured Snippet Capture (mandatory when snippet opportunity exists)
+
+**Structure:**
+1. Add an H2 that closely matches the target query (word-for-word if possible)
+2. Immediately after the H2, provide a concise answer:
+   - **Numbered list** for "how to" queries (5-7 items, each 1 line)
+   - **Paragraph** for "what is" queries (40-60 words)
+   - **Table** for comparison queries
+3. Place BEFORE the Table of Contents (high in document)
+4. Follow with a deeper explanation that gives readers a reason to stay
+
+**Why this works:** Google pulls featured snippets from concise, structured answers directly below H2s matching the query. Winning pos 0 bypasses CTR problems at pos 5-10 entirely.
+
+### 5.4 On-Page Mechanics
+
 **Keyword placement:** Target keyword must appear in the headline, first 100 words, at least one H2, and the meta description. Use it 3-5 times naturally throughout.
 
 **URL slugs:** Short and keyword-rich. No dates. *Example: /youtube-seo-shopify*
 
-**Meta descriptions:** Under 155 characters. Directly address what the reader will learn or solve. Include the keyword.
-
-**Featured snippet target:** Write one section as a direct, concise answer (40-60 words) that Google could pull as a snippet.
-
-**FAQ section:** End with 3 questions pulled from "People Also Ask" related to the keyword.
+**FAQ section:** End with 3-5 questions pulled from "People Also Ask" related to the keyword.
 
 **Related keywords:** Include 2-3 naturally throughout to signal topical depth.
 
 **Internal links:** Every post should link to 2-3 other relevant SellonTube posts and suggest which existing posts should link back to this one.
+
+### 5.5 Post-Publish SEO Sprint
+
+After every publish:
+1. Submit URL to GSC (URL Inspection → Request Indexing)
+2. Submit URL to Bing via Webmaster API
+3. Find 3-5 existing posts topically related → add contextual links FROM them TO the new post
+4. Use keyword-rich anchor text (not "click here" or "read more")
+5. Add links from relevant tool pages where natural
+
+### 5.6 Monthly CTR Audit (existing posts)
+
+Every month, pull GSC page data. Sort by impressions descending. Filter pages with CTR < 1% or clicks = 0. Those pages need:
+- Title/meta rewrite for CTR differentiation
+- Featured snippet block addition
+- Content depth check (comparison table, second walkthrough, SVG diagram)
+- Position distribution check (is it stable or swinging between page 1 and 2?)
+
+**Priority order:** Highest impressions + lowest CTR + position 5-15 = fix first.
 
 ---
 

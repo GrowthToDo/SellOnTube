@@ -227,6 +227,71 @@ Use inline SVG for workflows, decision trees, and process flows. Requirements:
 
 ---
 
+## 5b. Content Depth Requirements (CTR + Ranking Signals)
+
+These requirements ensure every post has enough depth to rank AND enough differentiation to earn clicks at positions 5-10 where CTR is naturally low.
+
+### Multiple Walkthroughs/Examples
+
+Any post teaching a framework, process, or method must include at least 2 worked examples from different industries or contexts. A single example feels narrow and industry-specific. Two examples prove the framework is universal and earn broader topical relevance from Google.
+
+- Example: A script writing post needs a SaaS walkthrough AND a consulting/services walkthrough
+- Example: A keyword research post needs a B2B software example AND a professional services example
+
+### Bucket Brigades (mandatory: 4-5 per post)
+
+Place transitional sentences at natural attention-dip points to keep readers scrolling. These are standalone one-line paragraphs:
+
+- "But there's a catch."
+- "Here's where it gets interesting."
+- "So what does this mean for your business?"
+- "Now, you might be thinking..."
+- "Here's the thing:"
+
+Place them: after the first major section, before the product bridge/CTA section, at any point where 3+ dense paragraphs appear back-to-back, and before the final mistakes/FAQ section.
+
+### Loss Aversion (mandatory: at least 1 per post)
+
+At least one moment in every post must make inaction feel costly. Not just "here's what to do" but "here's what you lose by NOT doing this." Be specific and honest, not manipulative.
+
+### Inline SVG Diagrams
+
+For any post teaching a framework or process, include at least one inline SVG diagram showing the structure visually. Requirements:
+- Include `viewBox`, `role="img"`, `aria-label`
+- Use inline styles (not Tailwind)
+- Show specific data: time allocations, percentages, metrics
+- Wrap in a `<figure>` with header strip + data visualization + metrics footer
+- One concept per diagram
+
+### Styled HTML Comparison Tables (not markdown)
+
+Any table comparing options, approaches, or types that helps readers make a DECISION must be styled HTML. Markdown tables are only acceptable for simple reference data (e.g., word count by video type).
+
+Decision tables require:
+- `overflow-x: auto` wrapper for mobile
+- Bold gray header row (`#f8fafc`, bottom border)
+- Green background (`#f0fdf4`) for the recommended column/option
+- Font size: `0.85rem`, padding: `0.75rem 1rem`
+- Minimum 6 rows of meaningful differentiation
+
+### Styled Callouts (not blockquotes)
+
+Never use plain markdown blockquotes (`>`) for tool recommendations, tips, or related content. All such content must be in styled callout boxes:
+- Related tools/resources → gray background callout (`#f8fafc`)
+- Tips/quick decisions → green background callout (`#f0fdf4`)
+- Warnings/mistakes → yellow left-border callout (`#eab308`)
+
+Plain blockquotes are invisible in the page flow. Styled callouts have visual weight and earn attention.
+
+### Attribution Rule
+
+Never invent or cite specific statistics without a verifiable source. For claims based on consulting experience, use "in our experience" attribution. For claims based on industry data, cite the source in a Sources section after FAQ.
+
+- BAD: "Scripted videos generate 3-5x more leads"
+- GOOD: "In our experience, scripted business videos convert at significantly higher rates"
+
+---
+
 ## 6. Common Production Mistakes
 
 These mistakes have been caught in real drafts. Do not repeat them.
@@ -255,16 +320,35 @@ These mistakes have been caught in real drafts. Do not repeat them.
 
 Specifically, the first draft must include:
 
+**Structure:**
 - [ ] All H2s and H3s at the correct depth for the word count
 - [ ] ToC with proper nesting (flat or nested based on post type)
-- [ ] Key Takeaways callout box
-- [ ] At least 2 additional styled callouts
-- [ ] Comparison table (if comparing anything)
+- [ ] No horizontal dividers (`---`) between sections
+
+**Callouts (minimum 3):**
+- [ ] Key Takeaways callout box (blue left border, immediately after intro)
+- [ ] At least 2 additional styled callouts (warning, tip, decision guide, or related tools)
+- [ ] No plain markdown blockquotes for tips/tools/related content
+
+**Content Depth:**
+- [ ] Featured snippet block (H2 matching target query + concise numbered list or paragraph answer)
+- [ ] At least 2 worked examples/walkthroughs from different industries
+- [ ] Styled HTML comparison table (if comparing anything)
+- [ ] At least 1 inline SVG diagram for frameworks/processes
+- [ ] 4-5 bucket brigades at attention-dip points
+- [ ] At least 1 loss aversion moment (inaction made costly)
+
+**CTR + SEO:**
+- [ ] Title differentiates from SERP competitors (specificity signal: number, bracket, framework name)
+- [ ] Title under 60 characters
+- [ ] Meta description under 155 chars with specific claim (not vague "comprehensive guide")
+- [ ] No invented statistics (use "in our experience" for unverifiable claims)
+
+**Production:**
 - [ ] Screenshots for every tool (if it is a tool post)
 - [ ] Direct links for every tool/resource mentioned
-- [ ] Styled "What to Do This Week" closing
+- [ ] Styled "What to Do This Week" green callout closing
 - [ ] All visuals placed and captioned
-- [ ] No horizontal dividers
 - [ ] All style guide checks passed (em-dash ban, AI phrase ban, etc.)
 - [ ] Internal links verified (exact slugs confirmed against `src/pages/tools/` and `src/data/post/`)
 
