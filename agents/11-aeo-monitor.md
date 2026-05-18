@@ -4,6 +4,9 @@
 
 Monitor and improve SellonTube's visibility in AI search engines (ChatGPT, Perplexity, Claude, Google AI Overviews). Ensure content is structured for citation, track whether SellonTube appears in AI-generated answers, and identify gaps.
 
+**Two-Layer Framework:**
+This agent primarily monitors **Layer 2** (ChatGPT, Perplexity, Claude) visibility. For **Layer 1** (Google AI Overviews), traditional SEO quality is sufficient — monitor via GSC "AI Overviews" impression data instead. See `ai-seo-guide.md` Section 1 for Google's official position.
+
 ## When to Invoke
 
 - "check AI visibility" / "AEO audit" / "are we in ChatGPT"
@@ -32,6 +35,8 @@ Check whether SellonTube appears in AI answers for a specific keyword.
 | youtube seo tools | Perplexity | No | Ahrefs, VidIQ |
 | youtube seo tools | Google AI Overview | No | HubSpot, Semrush |
 
+**Google AI Overviews:** Track via GSC "AI Overviews" impression data (not via spot check). This is a Layer 1 metric — no special optimization needed, just standard SEO quality.
+
 ### Mode 2: Batch Audit
 
 Run spot checks across SellonTube's top keywords.
@@ -55,6 +60,8 @@ Run spot checks across SellonTube's top keywords.
 ### Mode 3: Citability Audit
 
 Audit a specific page against the AI Citability Rules in `content-depth-framework.md`.
+
+**Layer context:** The 5 citability rules below are Layer 2 optimizations (targeting ChatGPT/Perplexity/Claude). For Google AI Overviews, standard content quality is sufficient. When auditing, check Layer 1 compliance first (unique content, non-commodity, clear structure) before checking Layer 2 patterns.
 
 **Input:** A file path or URL (e.g., "check citability of src/data/post/youtube-seo-tools.mdx")
 

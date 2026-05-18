@@ -104,6 +104,11 @@ OUTLINE:
 
 ### Phase 2 — Full draft (after outline approved)
 
+**AI Search Optimization (two-layer approach):**
+- **Layer 1 (Google AI Overviews):** No special optimization needed. Write the best possible content for the query. Google's AI features use the same ranking systems as traditional search.
+- **Layer 2 (ChatGPT, Perplexity, Claude):** Apply content block patterns from `ai-seo-guide.md` Sections 6-7 where they improve the content naturally. Include 1-2 answer blocks, definition blocks for key concepts, and maintain entity consistency.
+- **Never sacrifice human readability for AI extraction.** If a pattern makes the content worse, skip it.
+
 Write complete MDX with frontmatter:
 ```mdx
 ---

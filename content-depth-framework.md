@@ -62,6 +62,8 @@ Make pages scannable for humans and extractable for Google/AI:
 
 ## AI Citability Rules (AEO)
 
+**Google's position (May 2026):** For Google AI Overviews, traditional SEO quality IS AI optimization. These citability rules are primarily Layer 2 optimizations targeting ChatGPT, Perplexity, and Claude. However, every rule below also makes content clearer and more useful for human readers -- so apply them as good writing practice, not as AI-specific tricks. See `ai-seo-guide.md` Section 1 for the full Google guidance.
+
 Extractability (above) means AI can read your content. Citability means AI **chooses to cite it** over competitors. These rules make SellonTube the source AI engines quote when answering YouTube-for-business queries.
 
 ### 1. Answer Blocks (134-167 words)
@@ -114,6 +116,7 @@ People ask AI engines questions differently than they type into Google. Google q
 
 ### Citability Checklist (run before publishing)
 
+- [ ] Content quality first -- does this page follow Google's core guidance (unique perspective, non-commodity content, clear structure)?
 - [ ] At least one answer block (134-167 words, standalone, early in page)?
 - [ ] Entity terms consistent with canonical list above?
 - [ ] At least one first-party data claim (blog posts)?
