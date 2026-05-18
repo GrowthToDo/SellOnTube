@@ -8,7 +8,7 @@ const siteUrl = SITE.site || 'https://sellontube.com';
 const metadata = {
   title: 'Free AI YouTube Script Generator for Business | SellOnTube',
   description:
-    'Free AI YouTube video script generator. Enter your topic and product. Get a complete script with hook, body, product bridge, and CTA. No signup.',
+    'Free AI YouTube script generator that reads your product page and writes a conversion-focused script with hook, body, product bridge, and CTA. Built for B2B.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Script Generator",
   "url": `${siteUrl}/tools/youtube-script-generator`,
-  "description": "Free AI YouTube video script generator with built-in product pitch. Full word-for-word scripts with hook, body, product bridge, and CTA. Built for B2B.",
+  "description": "Free AI YouTube script generator that reads your product page to write scripts with authentic product mentions. Full word-for-word scripts with hook, body, product bridge, and CTA. Built for B2B.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -41,7 +41,7 @@ const faqSchema = {
     { "@type": "Question", "name": "Will it generate a full word-for-word script?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The generator produces a complete script with hook, setup, body sections, product bridge, and CTA. It is structured around your specific video idea, target customer, and product." } },
     { "@type": "Question", "name": "How long are the generated scripts?", "acceptedAnswer": { "@type": "Answer", "text": "Script length is calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes)." } },
     { "@type": "Question", "name": "Will it work with the Video Ideas Generator?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The intended workflow is: generate ideas with the Video Ideas Generator, evaluate them with the Ideas Evaluator, create a title with the Title Generator, then produce the script. Each tool feeds into the next." } },
-    { "@type": "Question", "name": "Is the product pitch forced or natural?", "acceptedAnswer": { "@type": "Answer", "text": "Natural. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed. It reads like advice from an expert, not a commercial." } },
+    { "@type": "Question", "name": "Is the product pitch forced or natural?", "acceptedAnswer": { "@type": "Answer", "text": "Natural. If you provide your product page URL, the script uses real features and pricing from your website instead of generic claims. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed." } },
     { "@type": "Question", "name": "Should I use a teleprompter or memorize the script?", "acceptedAnswer": { "@type": "Answer", "text": "For most B2B videos, a teleprompter delivers better results than memorization. It keeps the content precise and eliminates filler words. If you find teleprompter delivery too stiff, use the generated script as a detailed outline." } },
   ]
 };
@@ -65,7 +65,7 @@ const faqSchema = {
         YouTube Script Generator<br class="hidden sm:block" /> That Converts Viewers Into Leads
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Enter your video topic, target customer, and product. This AI script generator writes a complete video script with a natural product pitch built in. No forced CTAs. No filler.
+        Enter your video topic, target customer, and product page. This AI script generator reads your website, then writes a complete video script with an authentic product pitch built in. No forced CTAs. No filler.
       </p>
     </div>
   </section>
@@ -325,12 +325,12 @@ const faqSchema = {
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
           <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your video details</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Your topic, video type, target customer, and what you sell. Four fields. Under 30 seconds.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Your topic, video type, target customer, what you sell, and your product page URL. Five fields. Under 30 seconds.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
           <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a complete script</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI writes a full script: hook, body sections, and a product pitch that fits naturally into the narrative. Ready for a teleprompter.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI reads your product page for real features and pricing, then writes a full script: hook, body sections, and a product pitch that uses your actual value props. Ready for a teleprompter or voiceover.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
@@ -587,7 +587,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is the product pitch forced or natural?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Natural. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed. It reads like advice from an expert, not a commercial.
+              Natural. If you provide your product page URL, the script uses real features and pricing from your website instead of generic claims. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed.
             </p>
           </div>
 
