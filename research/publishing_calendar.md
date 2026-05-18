@@ -1,7 +1,7 @@
 # SellonTube Blog Content Plan
 
 **Single source of truth for all blog publishing decisions.**
-**Last updated:** 2026-05-12 (v2: data-driven rewrite using GSC + DataForSEO + sot_master.csv)
+**Last updated:** 2026-05-18 (v3: rescheduled Week 1 to May 19-23, Weeks 2-4 shifted accordingly. All 19 posts drafted.)
 **Cadence:** 5 posts/week (Mon-Fri)
 **pSEO publishing:** PAUSED
 **Quality bar:** Every post meets `blog-production-standard.md` + `style-guide.md` + `content-playbook.md` from first draft
@@ -22,51 +22,51 @@
 
 > **v2 rationale:** Reordered by validated DataForSEO volume and GSC signal. Highest-volume posts first to maximize compounding time. Tool-supported posts prioritized (blog + tool = two ranking surfaces). Low-volume posts from v1 (youtube topics 0 vol, youtube channel not growing 10 vol, vimeo/instagram comparisons 20 vol) dropped or deferred. New posts added for uncovered winnable keywords (youtube marketing tools KD 1, youtube analytics for other channels 390 vol, youtube script examples 480 vol).
 
-### Week 1 (May 13-19): Pillar + High-Volume SEO Cluster
+### Week 1 (May 19-23): Pillar + High-Volume SEO Cluster
 
 | Day | # | Post | Keyword | Vol (DFS) | KD | Source |
 |-----|---|------|---------|-----------|-----|--------|
-| Tue 13 | 1 | YouTube SEO for Business (PILLAR) | youtube seo tools | 4,400 | 23 | sot_master, DFS validated |
-| Wed 14 | 2 | YouTube Content Strategy Guide | youtube strategy | 1,600 | 16 | sot_master, DFS validated, trending UP |
-| Thu 15 | 3 | YouTube Video Descriptions: B2B Templates | youtube description | 880 | ~15 | DFS validated, comp 1 |
-| Fri 16 | 4 | YouTube Chapters and Timestamps | youtube chapters | 880 | ~10 | DFS validated, trending UP |
-| Mon 19 | 5 | YouTube Titles for Buyer-Intent Queries | youtube title | 480 | ~18 | DFS validated, trending UP |
+| Mon 19 | 1 | YouTube SEO for Business (PILLAR) | youtube seo tools | 4,400 | 23 | sot_master, DFS validated |
+| Tue 20 | 2 | YouTube Content Strategy Guide | youtube strategy | 1,600 | 16 | sot_master, DFS validated, trending UP |
+| Wed 21 | 3 | YouTube Video Descriptions: B2B Templates | youtube description | 880 | ~15 | DFS validated, comp 1 |
+| Thu 22 | 4 | YouTube Chapters and Timestamps | youtube chapters | 880 | ~10 | DFS validated, trending UP |
+| Fri 23 | 5 | YouTube Titles for Buyer-Intent Queries | youtube title | 480 | ~18 | DFS validated, trending UP |
 
 **Week 1 addressable volume: 8,240**
 
-### Week 2 (May 19-23): Tool-Supported + Uncovered Opportunities
+### Week 2 (May 26-30): Tool-Supported + Uncovered Opportunities
 
 | Day | # | Post | Keyword | Vol (DFS) | KD | Source |
 |-----|---|------|---------|-----------|-----|--------|
-| Mon | 6 | YouTube Script Examples for Business | youtube script (variants) | 480 | 0-10 | sot_master, uncovered cluster |
-| Tue | 7 | YouTube Marketing Tools: Complete Guide | youtube marketing tools | 390 | 1 | sot_master, KD 1 gift keyword |
-| Wed | 8 | YouTube Analytics for Other Channels | youtube analytics for other channels | 390 | 25 | sot_master, uncovered winnable |
-| Thu | 9 | How to Check YouTube Rankings | youtube rank checker | 260 | 0 | DFS validated, 1,874 GSC impr on tool |
-| Fri | 10 | YouTube vs Paid Ads for B2B | -- | ~210 | ~10 | Original plan, comparison angle |
+| Mon 26 | 6 | YouTube Script Examples for Business | youtube script (variants) | 480 | 0-10 | sot_master, uncovered cluster |
+| Tue 27 | 7 | YouTube Marketing Tools: Complete Guide | youtube marketing tools | 390 | 1 | sot_master, KD 1 gift keyword |
+| Wed 28 | 8 | YouTube Analytics for Other Channels | youtube analytics for other channels | 390 | 25 | sot_master, uncovered winnable |
+| Thu 29 | 9 | How to Check YouTube Rankings | youtube rank checker | 260 | 0 | DFS validated, 1,874 GSC impr on tool |
+| Fri 30 | 10 | YouTube vs Paid Ads for B2B | -- | ~210 | ~10 | Original plan, comparison angle |
 
 **Week 2 addressable volume: 1,730 + 1,874 GSC signal**
 
-### Week 3 (May 26-30): Cluster Depth + GSC Signal
+### Week 3 (Jun 2-6): Cluster Depth + GSC Signal
 
 | Day | # | Post | Keyword | Vol (DFS) | KD | Source |
 |-----|---|------|---------|-----------|-----|--------|
-| Mon | 11 | YouTube Autocomplete for B2B Topic Research | youtube autocomplete | 110 | ~12 | DFS validated, strongest organic cluster |
-| Tue | 12 | YouTube Competitor Analysis Guide | youtube competitor analysis | 110+ | low | GSC: 146 impr on tool, zero blog support |
-| Wed | 13 | YouTube Growth Strategy | youtube growth strategy | 70 | 17 | sot_master, uncovered winnable |
-| Thu | 14 | YouTube ROI for SaaS | youtube roi | 50 | ~20 | DFS validated, supports ROI calculator |
-| Fri | 15 | B2B Video Marketing Strategy | b2b video marketing strategy | 30 | 0 | GSC validated, high intent |
+| Mon 2 | 11 | YouTube Autocomplete for B2B Topic Research | youtube autocomplete | 110 | ~12 | DFS validated, strongest organic cluster |
+| Tue 3 | 12 | YouTube Competitor Analysis Guide | youtube competitor analysis | 110+ | low | GSC: 146 impr on tool, zero blog support |
+| Wed 4 | 13 | YouTube Growth Strategy | youtube growth strategy | 70 | 17 | sot_master, uncovered winnable |
+| Thu 5 | 14 | YouTube ROI for SaaS | youtube roi | 50 | ~20 | DFS validated, supports ROI calculator |
+| Fri 6 | 15 | B2B Video Marketing Strategy | b2b video marketing strategy | 30 | 0 | GSC validated, high intent |
 
 **Week 3 addressable volume: 370 (high-intent, GSC-backed)**
 
-### Week 4 (Jun 2-6): Business Economics + Contrarian
+### Week 4 (Jun 9-13): Business Economics + Contrarian
 
 | Day | # | Post | Keyword | Vol (DFS) | KD | Source |
 |-----|---|------|---------|-----------|-----|--------|
-| Mon | 16 | YouTube Business Plan | business plan for youtube channel | 30 | 0 | DFS validated, $16.52 CPC |
-| Tue | 17 | Break-Even Math: Clients to Justify YouTube | -- | low | low | BoFu conversion content |
-| Wed | 18 | When YouTube Doesn't Work for Acquisition | -- | low | low | Contrarian trust-builder, AEO citability |
-| Thu | 19 | YouTube for SaaS: 3 Video Types for Demos | -- | low | low | Niche application, SaaS ICP |
-| Fri | -- | [Content refresh day] | -- | -- | -- | Refresh /blog/create-youtube-channel-for-business (6,600 vol keyword, pos 25.9) |
+| Mon 9 | 16 | YouTube Business Plan | business plan for youtube channel | 30 | 0 | DFS validated, $16.52 CPC |
+| Tue 10 | 17 | Break-Even Math: Clients to Justify YouTube | -- | low | low | BoFu conversion content |
+| Wed 11 | 18 | When YouTube Doesn't Work for Acquisition | -- | low | low | Contrarian trust-builder, AEO citability |
+| Thu 12 | 19 | YouTube for SaaS: 3 Video Types for Demos | -- | low | low | Niche application, SaaS ICP |
+| Fri 13 | -- | [Content refresh day] | -- | -- | -- | Refresh /blog/create-youtube-channel-for-business (6,600 vol keyword, pos 25.9) |
 
 ### Content Refresh Priority
 
