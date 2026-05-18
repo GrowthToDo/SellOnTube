@@ -352,6 +352,13 @@ Specifically, the first draft must include:
 - [ ] All style guide checks passed (em-dash ban, AI phrase ban, etc.)
 - [ ] Internal links verified (exact slugs confirmed against `src/pages/tools/` and `src/data/post/`)
 
+**AI SEARCH OPTIMIZATION:**
+- [ ] Content offers a unique perspective -- not a rehash of existing top 10 results (Google Layer 1)
+- [ ] No over-optimization for AI at expense of human readability (Google warns against this)
+- [ ] At least 1 self-contained answer block that AI platforms can extract (Layer 2)
+- [ ] Definition blocks for key concepts SellonTube wants cited for (Layer 2)
+- [ ] Entity consistency -- canonical terms used throughout (Layer 2)
+
 **The user should review for strategic direction and tone, not for missing formatting, visuals, or structural elements.** Those must be right before the draft is shown.
 
 ---

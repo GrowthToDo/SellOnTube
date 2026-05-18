@@ -167,6 +167,8 @@ QA items are tiered by severity:
 
 **[IMPORTANT]**
 **AI citation (check against `ai-seo-guide.md`):**
+- [ ] **AI over-optimization check (Google Layer 1):** Content must NOT appear to be written specifically for AI systems. Check: Does the content read naturally? Would it make sense if AI search didn't exist? Is it offering a unique perspective or just rehashing existing top results? If over-optimized for AI extraction at the expense of human readability, flag as IMPORTANT violation.
+- [ ] **AI citation patterns (Layer 2 -- ChatGPT/Perplexity/Claude):** The following checks optimize for non-Google AI platforms. They should also improve content quality for humans. If any pattern makes the content worse for human readers, skip it.
 - [ ] Definition Block used for any "What is X?" section
 - [ ] Step-by-Step Block used for any "How to X?" section
 - [ ] At least one Statistic Citation Block present — "According to [Source], [stat]" format with named source

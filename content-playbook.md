@@ -317,6 +317,20 @@ Every month, pull GSC page data. Sort by impressions descending. Filter pages wi
 
 **Priority order:** Highest impressions + lowest CTR + position 5-15 = fix first.
 
+### 5.7 AI Search Optimization (applies to every post)
+
+Google's AI Overviews are powered by the same ranking systems as traditional search. **There is no separate "AI SEO" for Google.** The SEO craft rules above (5.1-5.6) already optimize for Google AI Overviews.
+
+For non-Google AI platforms (ChatGPT, Perplexity, Claude), apply these additional checks:
+- **Content freshness:** Posts targeting competitive keywords must be updated every 90 days. Core cluster posts monthly. (See Section 6, Content Refreshes.)
+- **Answer blocks:** Include 1-2 self-contained, quotable paragraphs per post that AI can extract without surrounding context. See `ai-seo-guide.md` Section 7.
+- **Definition blocks:** For any concept SellonTube wants to be cited for, include a bold term + one-sentence definition as a standalone paragraph.
+- **Entity consistency:** Use exact canonical terms across all pages: "buyer-intent video", "YouTube acquisition channel", "customer acquisition", "B2B YouTube".
+
+**Do not sacrifice human readability for AI optimization.** If an AI-specific pattern makes the content worse for human readers, skip it.
+
+See `ai-seo-guide.md` for the full two-layer framework.
+
 ---
 
 ## 6. CONTENT FORMATS: SUSTAINING A 1 POST PER WEEK CADENCE
@@ -406,6 +420,8 @@ Run every post through these checks before handing it to Gautam.
 - [ ] 2-3 related keywords used naturally
 - [ ] FAQ section with 3 "People Also Ask" questions
 - [ ] 2-3 internal links to other SellonTube posts
+- [ ] AI optimization: post follows Layer 1 (Google) fundamentals -- unique perspective, non-commodity content, clear structure
+- [ ] AI optimization: Layer 2 patterns applied where natural -- answer block, definition block, entity consistency (see ai-seo-guide.md)
 
 **AI QUALITY GATE:**
 - [ ] No fabricated statistics or case studies (see Style Guide Fix #7)

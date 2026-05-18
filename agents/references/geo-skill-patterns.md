@@ -17,6 +17,8 @@ metadata:
   category: seo
 ---
 
+**Google Context (May 2026):** Google's official AI optimization guide states that traditional SEO fundamentals are sufficient for Google AI Overviews. The GEO optimizations below are primarily validated for non-Google AI platforms (ChatGPT, Perplexity, Claude). For Google AI Overviews, prioritize content quality over GEO-specific tactics. See `ai-seo-guide.md` Section 1.
+
 # AI Search / GEO Optimization (February 2026)
 
 ## Key Statistics

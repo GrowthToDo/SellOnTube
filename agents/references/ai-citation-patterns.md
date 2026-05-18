@@ -4,6 +4,8 @@ How different AI systems select and cite content. Understanding these patterns h
 
 ## Google AI Overviews
 
+**Google's Official Position (May 2026):** Traditional SEO best practices ARE AI Overviews optimization. Google explicitly warns against creating content specifically for AI, overemphasizing structured data, or treating AI optimization as separate from SEO. The patterns below are derived from third-party studies and may not reflect Google's actual ranking factors for AI Overviews. Use them as directional guidance, not gospel. Source: https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+
 ### Citation Behavior
 
 **Format preferences**:
