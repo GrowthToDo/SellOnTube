@@ -12,22 +12,22 @@ export const PRICING = {
   /**
    * Current monthly service price
    */
-  current: 6000,
+  current: 5000,
 
   /**
    * Future monthly price (after rate increase)
    */
-  future: 7000,
+  future: 7500,
 
   /**
    * Date when pricing changes
    */
-  rateIncreaseDate: 'April 30, 2026',
+  rateIncreaseDate: 'June 30, 2026',
 
   /**
    * Special priority spot pricing (limited time offer)
    */
-  prioritySpot: 5000,
+  prioritySpot: 6500,
 } as const;
 
 /**
