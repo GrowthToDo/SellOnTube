@@ -10,7 +10,14 @@
 
 export const PRICING = {
   /**
-   * Current monthly service price
+   * Retainer tier prices
+   */
+  foundation: 2500,
+  growth: 5000,
+  scale: 7500,
+
+  /**
+   * Current monthly service price (Growth tier — used for ROI calculator)
    */
   current: 5000,
 
