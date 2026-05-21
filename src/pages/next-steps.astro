@@ -162,11 +162,16 @@ const metadata = {
           WhatsApp Gautham
         </a>
         <a
-          href="mailto:gautham@sellontube.com"
+          id="sot-email"
+          href="#"
           class="w-full sm:w-auto inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold border border-slate-300 dark:border-slate-600 text-gray-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
         >
           Email Gautham
         </a>
+        <script>
+          const el = document.getElementById('sot-email') as HTMLAnchorElement | null;
+          if (el) el.href = ['m','a','i','l','t','o',':','g','a','u','t','h','a','m','@','s','e','l','l','o','n','t','u','b','e','.','c','o','m'].join('');
+        </script>
       </div>
       <p class="mt-4 text-xs text-gray-500 dark:text-slate-500">
         Or book a quick call if you prefer:
