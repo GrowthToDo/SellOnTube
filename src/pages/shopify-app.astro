@@ -1,0 +1,309 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Non-Technical Business Team for Shopify App Owners | SellOnTube',
+  description: 'We handle everything a Shopify app owner needs except the engineering: ASO, user guides, product video, review management, SEO content, UX copy, pricing strategy, and more.',
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Hero *************************** -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a discovery call',
+        href: calLink,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      You built the app.<br />
+      <span class="text-emerald-600 dark:text-emerald-400">We handle everything else.</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      Shopify app owners are engineers. They build great products and have zero non-technical team. We fill that gap completely: positioning, App Store optimisation, user guides, product video, review management, SEO content, in-app copy, and pricing strategy.
+    </Fragment>
+  </Hero>
+
+  <!-- Social Proof Bar **************** -->
+
+  <section class="py-6 bg-slate-50 dark:bg-slate-800/50">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 text-center">
+        <div>
+          <p class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">3.25x</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">more conversions for Logbase apps</p>
+        </div>
+        <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
+        <div>
+          <p class="text-3xl font-bold text-gray-900 dark:text-white">29+</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">user guide articles shipped for Left Foot Software</p>
+        </div>
+        <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
+        <div>
+          <p class="text-3xl font-bold text-gray-900 dark:text-white">$2,500/mo</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">starting retainer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem ******************** -->
+
+  <Features3
+    title="Why good Shopify apps stay invisible"
+    subtitle="The problem is never the product. It is everything around it."
+    columns={2}
+    items={[
+      {
+        title: 'Hidden from the merchants who need you',
+        description: 'Your App Store listing is the first thing a merchant sees. Weak title, vague description, no reviews — they scroll past before reading a word.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Merchants uninstall before they see value',
+        description: 'High early churn is almost always an onboarding and documentation problem. Merchants get confused, get no help, and leave. The app never had a chance.',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'No content working in the background',
+        description: 'User guides, blog posts, and product videos that answer real merchant questions are the compounding layer most apps skip entirely.',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: 'One person doing everything',
+        description: 'You are the engineer, the support team, the marketer, and the founder. Something always gets dropped. It is always the non-technical work.',
+        icon: 'tabler:alert-circle',
+      },
+    ]}
+    classes={{ container: 'max-w-5xl' }}
+  />
+
+  <!-- Case Study ********************* -->
+
+  <section class="py-12 bg-white dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="grid sm:grid-cols-2 gap-8">
+        <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-8 border border-emerald-200 dark:border-emerald-800">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-3">Case study</p>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Logbase: 3.25x more conversions</h3>
+          <p class="text-gray-700 dark:text-slate-300 leading-relaxed">
+            Logbase builds Shopify apps for e-commerce merchants. We ran the content and positioning work around their apps. The result: <strong class="text-gray-900 dark:text-white">3.25x more conversions</strong> compared to their existing content, tracked via Google Analytics across install button clicks.
+          </p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-3">Active engagement</p>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Left Foot Software: full non-technical team</h3>
+          <p class="text-gray-700 dark:text-slate-300 leading-relaxed">
+            Brian runs a multi-app Shopify suite (GS1 Assistant, Label Wizard, Barcode Scanner) solo. We handle his entire non-technical layer: 29+ user guides live, product video shipped, pricing strategy delivered, App Store optimisation done, review management ongoing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do ********************* -->
+
+  <Features
+    id="services"
+    tagline="What we handle"
+    title="The complete non-technical side of your app business"
+    subtitle="You stay in the code. We handle the rest."
+    items={[
+      {
+        title: 'App Store optimisation',
+        description: 'Title, subtitle, description, and search terms rewritten around merchant intent. Your listing works for you before a merchant even clicks through.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'User guides and knowledge base',
+        description: 'Written guides with screenshots covering every feature, edge case, and common support question. Published to your help centre and embedded in-app. Typically 30 to 50 articles per app.',
+        icon: 'tabler:book',
+      },
+      {
+        title: 'Product demo video',
+        description: 'Voiceover and screen capture production. No founder recording required. A professional video for your App Store listing, YouTube channel, and landing page.',
+        icon: 'tabler:video',
+      },
+      {
+        title: 'SEO content and blog',
+        description: 'High-intent educational content targeting merchants before they search for your app. The compounding layer that keeps generating installs after it is published.',
+        icon: 'tabler:pencil',
+      },
+      {
+        title: 'Review management and directory submissions',
+        description: 'Reply to Shopify reviews under your brand, run outreach to surface new reviews, and submit your app to G2, Capterra, Product Hunt, and relevant directories.',
+        icon: 'tabler:star',
+      },
+      {
+        title: 'UX copy, pricing strategy, and product input',
+        description: 'Audit of button labels, error messages, onboarding flows, and empty states. Pricing model recommendations and product strategy input grounded in merchant behaviour.',
+        icon: 'tabler:adjustments',
+      },
+    ]}
+  />
+
+  <!-- Who This Is For ***************** -->
+
+  <section class="py-12 bg-slate-50 dark:bg-slate-800/50">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">Who this is for</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Built for technical founders doing everything alone</h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-slate-400">You have a working product and real installs. You need a non-technical partner, not a freelancer for one task.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <p class="font-semibold text-gray-900 dark:text-white mb-2">Good fit</p>
+          <ul class="space-y-2 text-gray-600 dark:text-slate-400 text-sm">
+            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> Solo technical founder or small engineering team</li>
+            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> Active installs and some revenue — past the first 20 to 100</li>
+            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> No in-house marketing, ops, or content capacity</li>
+            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> High early churn and not sure why</li>
+            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> Multiple apps in portfolio or plans to build more</li>
+          </ul>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <p class="font-semibold text-gray-900 dark:text-white mb-2">Not a fit</p>
+          <ul class="space-y-2 text-gray-600 dark:text-slate-400 text-sm">
+            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> App just launched, fewer than 20 installs</li>
+            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> Looking for paid ads management</li>
+            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> Product still in heavy development</li>
+            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> Already have an in-house marketing team</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work ******************** -->
+
+  <Steps
+    title="How an engagement works"
+    tagline="The process"
+    items={[
+      {
+        title: 'Discovery call (30 min)',
+        description: 'We look at your app, your install curve, your help centre, and your App Store listing. We identify the highest-leverage gap and where to start.',
+        icon: 'tabler:phone',
+      },
+      {
+        title: 'Market and competitor audit',
+        description: 'ICP definition, competitor positioning, and a full review of your App Store presence. You get a clear picture of where you stand.',
+        icon: 'tabler:list',
+      },
+      {
+        title: 'Foundation phase',
+        description: 'ASO rewrite, user guides, product video, and landing page copy. One-time work. The base everything compounds on top of.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Ongoing retainer',
+        description: 'SEO content, review management, directory submissions, support ops, UX copy updates — the monthly layer that keeps working while you build.',
+        icon: 'tabler:refresh',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80',
+      alt: 'Shopify app non-technical team operations',
+    }}
+  />
+
+  <!-- Pricing ************************* -->
+
+  <section class="py-12 bg-white dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">Pricing</p>
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Structured around your app stage</h2>
+      <p class="text-gray-600 dark:text-slate-400 text-lg mb-10">Foundation work is one-time. Ongoing work is monthly. You start where you need to.</p>
+      <div class="grid sm:grid-cols-3 gap-6 text-left">
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <p class="font-bold text-gray-900 dark:text-white mb-1">Foundation</p>
+          <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">$1,500+</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">One-time. ASO, product demo video, user guides, landing page copy. The base every app needs.</p>
+        </div>
+        <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800">
+          <p class="font-bold text-gray-900 dark:text-white mb-1">Retainer</p>
+          <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">from $2,500/mo</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">SEO content, review management, directory submissions, support ops, in-app UX copy.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <p class="font-bold text-gray-900 dark:text-white mb-1">Embedded partner</p>
+          <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">$4,500 – $6,500/mo</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">Multiple apps, website redesign, product strategy, full non-technical partner across your portfolio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs **************************** -->
+
+  <FAQs
+    title="Common questions"
+    tagline="FAQs"
+    classes={{ container: 'max-w-4xl' }}
+    items={[
+      {
+        title: 'How is this different from a marketing agency?',
+        description: 'A marketing agency runs campaigns. We function as the non-engineering half of your company. We handle positioning, content, support infrastructure, product strategy, and operations — not just ads.',
+      },
+      {
+        title: 'How much of my time does this require?',
+        description: 'We need your input at the start — to understand your app, your customers, and what you know about why merchants install and uninstall. After that, involvement stays light. We work with what you have and flag you when we need technical input.',
+      },
+      {
+        title: 'How long does the foundation phase take?',
+        description: 'Typically 6 to 8 weeks per app: ASO, user guides, product video, and landing page copy. Timeline depends on how quickly you can give us product access and review content.',
+      },
+      {
+        title: 'Can you work across multiple apps?',
+        description: 'Yes. The foundation work for the first app — positioning, ICP definition, competitor research — largely applies to the rest of your portfolio. Expanding to additional apps is faster and cheaper.',
+      },
+      {
+        title: 'What results can I expect?',
+        description: 'Logbase saw 3.25x more conversions. For Left Foot Software we delivered 29 user guides, a product video, pricing strategy, and ASO within the first 120 days. Results depend on where your biggest gaps are.',
+      },
+      {
+        title: 'How do we get started?',
+        description: 'Book a 30-minute discovery call. We\'ll look at your app, your listing, and your install curve. If we can help, we\'ll tell you exactly what we\'d propose and what it would cost.',
+      },
+    ]}
+  />
+
+  <!-- CTA **************************** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a discovery call',
+        href: calLink,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Your app deserves a non-technical team.
+    </Fragment>
+    <Fragment slot="subtitle">
+      Book a 30-minute call. We\'ll look at your app, identify the biggest gaps, and tell you exactly where we\'d start.
+    </Fragment>
+  </CallToAction>
+
+</Layout>

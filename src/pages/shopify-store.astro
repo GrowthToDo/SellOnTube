@@ -1,0 +1,863 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Shopify Operations for Scaled Merchants | SellOnTube',
+  description: 'We run the operational layer of scaled Shopify Plus stores. Custom apps, cross-border infrastructure, Klaviyo email, compliance systems. One client went from $1.5M to $10M in 18 months.',
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+---
+
+<Layout metadata={metadata}>
+
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Results', href: '#proof' },
+        { text: 'What We Build', href: '#work' },
+        { text: 'Case Studies', links: [
+          { text: 'Hebron Nutrition', href: '/case-studies/hebron-nutrition' },
+          { text: 'H.S. Johnson', href: '/case-studies/hs-johnson' },
+        ]},
+        { text: 'Pricing', href: '#pricing' },
+      ]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank' }]}
+      showToggleTheme
+    />
+  </Fragment>
+
+  <!-- Hero *************************** -->
+
+  <section class="relative overflow-hidden bg-slate-900 text-white pt-20 sm:pt-28 pb-16 sm:pb-24">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-emerald-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-700/40 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
+        <div>
+          <p class="text-emerald-400 text-xs font-bold uppercase tracking-[0.2em] mb-5">AI-native Shopify operations partner</p>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight mb-6">
+            We run the operational layer<br />
+            <span class="text-emerald-400">of scaled Shopify stores.</span>
+          </h1>
+          <p class="text-slate-300 text-lg leading-relaxed mb-8 max-w-lg">
+            At $5M+ revenue you need more than a developer and a theme. You need someone who knows what breaks at scale and builds the systems before it does.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-10">
+            <span class="bg-slate-800/80 border border-slate-700 text-slate-300 rounded-full px-4 py-1.5 text-sm font-medium">$1.5M to $10M in 18 months</span>
+            <span class="bg-slate-800/80 border border-slate-700 text-slate-300 rounded-full px-4 py-1.5 text-sm font-medium">9-year client relationship</span>
+            <span class="bg-slate-800/80 border border-slate-700 text-slate-300 rounded-full px-4 py-1.5 text-sm font-medium">14+ custom apps built</span>
+          </div>
+          <a href={calLink} target="_blank" rel="noopener noreferrer"
+            class="inline-block bg-emerald-500 hover:bg-emerald-400 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base">
+            Book a discovery call
+          </a>
+        </div>
+
+        <div class="hidden lg:block relative h-[400px]">
+          <div class="browser-frame absolute top-0 left-0 right-12 shadow-2xl rotate-1">
+            <div class="browser-bar-strip">
+              <span class="bdot bdot-r"></span><span class="bdot bdot-y"></span><span class="bdot bdot-g"></span>
+              <span class="browser-url-bar">store-admin.myshopify.com/apps/executive-dashboard</span>
+            </div>
+            <div style="aspect-ratio:16/10;overflow:hidden;">
+              <img src="/images/shopify-portfolio/executive-dashboard.png" alt="Executive Dashboard inside Shopify admin" class="w-full h-full object-cover object-top" />
+            </div>
+          </div>
+          <div class="browser-frame absolute bottom-0 right-0 left-12 shadow-2xl -rotate-1">
+            <div class="browser-bar-strip">
+              <span class="bdot bdot-r"></span><span class="bdot bdot-y"></span><span class="bdot bdot-g"></span>
+              <span class="browser-url-bar">store-admin.myshopify.com/apps/activity-logs</span>
+            </div>
+            <div style="aspect-ratio:16/10;overflow:hidden;">
+              <img src="/images/shopify-portfolio/staff-activity-logs.png" alt="Staff Activity Logs inside Shopify admin" class="w-full h-full object-cover object-top" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points ******************** -->
+
+  <section id="pain" class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="max-w-xl mb-14">
+        <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-3">Sound familiar?</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white leading-snug">These are the problems nobody talks about. Everyone assumes it's just how it is.</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-7xl font-black text-slate-200 dark:text-slate-700 leading-none mb-4 select-none">01</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Your team spends half the day on work that doesn't grow the business.</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Orders, tagging, refunds, fraud checks, catalog updates. You keep hiring and the new people end up doing the same grunt work.</p>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-7xl font-black text-slate-200 dark:text-slate-700 leading-none mb-4 select-none">02</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Someone changed a price and nobody knows who.</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">A brand calls about MAP pricing. You dig through Shopify logs. They don't tell you enough. This happens every week.</p>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-7xl font-black text-slate-200 dark:text-slate-700 leading-none mb-4 select-none">03</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Merchant Center keeps disapproving products.</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Missing GTINs. Duplicate barcodes. An ingredient flagged in Germany. You fix 10, and 15 more pop up.</p>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-7xl font-black text-slate-200 dark:text-slate-700 leading-none mb-4 select-none">04</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Selling in multiple countries but guessing which ones work.</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Shopify analytics don't slice it the way you need. Which countries are growing? Where are ads returning? You go with your gut.</p>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-7xl font-black text-slate-200 dark:text-slate-700 leading-none mb-4 select-none">05</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Paying $500+/month for apps that do 70% of what you need.</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">The other 30% is workarounds, manual steps, or yet another app. Nobody has built something for your exact workflow.</p>
+        </div>
+
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-7xl font-black text-slate-200 dark:text-slate-700 leading-none mb-4 select-none">06</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">There's data in your store that nobody acts on.</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Surfacing insights means spreadsheets and hoping someone reads them. Trends show up three weeks after they started.</p>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-200 dark:border-slate-700 pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <p class="text-xl font-bold text-gray-900 dark:text-white max-w-xl">None of this is "how it is." You just haven't had someone build the fix inside Shopify.</p>
+        <a href="#proof" class="flex-shrink-0 inline-block bg-black dark:bg-white text-white dark:text-black font-semibold text-sm px-6 py-3 rounded-full hover:opacity-80 transition-opacity">See what we've built</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study 1: Hebron ************ -->
+
+  <section id="proof" class="py-20 bg-slate-50 dark:bg-slate-800/40">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="flex items-center gap-4 mb-10">
+        <span class="w-9 h-9 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">01</span>
+        <div>
+          <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em]">Client story</p>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Hebron Nutrition <span class="text-base font-normal text-gray-400 dark:text-slate-500 ml-2">US nutraceuticals · 18-month engagement</span></h2>
+        </div>
+      </div>
+
+      <!-- Big anchor stat -->
+      <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-700 overflow-hidden mb-6">
+        <div class="px-10 py-12 text-center border-b border-slate-100 dark:border-slate-700/50">
+          <p class="text-slate-400 text-xs uppercase tracking-[0.2em] mb-3">Total revenue · 18 months</p>
+          <p class="text-5xl sm:text-7xl lg:text-[7rem] font-black text-gray-900 dark:text-white leading-none tracking-tighter">$10M</p>
+          <p class="text-slate-400 mt-3 text-sm">Started at $1.5M. US and Canada only. Zero email revenue.</p>
+        </div>
+        <div class="grid grid-cols-3 divide-x divide-slate-100 dark:divide-slate-700/50">
+          <div class="px-3 sm:px-8 py-5 sm:py-6 text-center">
+            <p class="text-xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">51%</p>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-tight">YoY Shopify growth</p>
+          </div>
+          <div class="px-3 sm:px-8 py-5 sm:py-6 text-center">
+            <p class="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white">50+</p>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-tight">countries, from 2</p>
+          </div>
+          <div class="px-3 sm:px-8 py-5 sm:py-6 text-center">
+            <p class="text-xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">$1M+/yr</p>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mt-1 leading-tight">email, from zero</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revenue chart -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 mb-6">
+        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Revenue growth</p>
+        <p class="text-sm text-gray-600 dark:text-slate-400 mb-5">$1.5M to $10M in 18 months</p>
+        <canvas id="revenueChart" height="140"></canvas>
+      </div>
+
+      <!-- Outcome cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+          <p class="text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-1">100+</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">localized country subdomains</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">From one English site. Owner still only manages the US version.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+          <p class="text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-1">30</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">Merchant Centers and ad accounts</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">Built from one master product feed. Each localized to currency and language.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+          <p class="text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-1">$1M+/yr</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">email revenue</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">Klaviyo was sitting dormant. We warmed it over 6 weeks and built every flow from scratch.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+          <p class="text-2xl font-black text-gray-900 dark:text-white mb-1">400,000</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">compliance touchpoints</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">100+ brands with MAP pricing rules, managed manually. Now automated from one screen.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+          <p class="text-2xl font-black text-gray-900 dark:text-white mb-1">$100K+</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">saved in one weekend</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">A vendor uploaded rupee pricing across the entire catalog. Daily backups meant full rollback in minutes.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
+          <p class="text-2xl font-black text-gray-900 dark:text-white mb-1">Oracle ERP</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">fraud integration</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500">High-risk orders automatically flagged and blocked before fulfillment. No manual review queue.</p>
+        </div>
+
+      </div>
+
+      <!-- Email callout -->
+      <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-8 border border-emerald-100 dark:border-emerald-800">
+        <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-8">What email looks like now</p>
+        <div class="grid sm:grid-cols-3 gap-6 text-center mb-8">
+          <div>
+            <p class="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-2">$34K</p>
+            <p class="text-sm text-gray-600 dark:text-slate-400">from one Easter campaign email. Single send.</p>
+          </div>
+          <div>
+            <p class="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-2">$12K+</p>
+            <p class="text-sm text-gray-600 dark:text-slate-400">from one clearance email. Products expiring, 10% off. Single send.</p>
+          </div>
+          <div>
+            <p class="text-4xl sm:text-5xl font-black text-emerald-600 dark:text-emerald-400 mb-2">25%</p>
+            <p class="text-sm text-gray-600 dark:text-slate-400">YoY email revenue growth. Every email is double-digit sales.</p>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Revenue per email send</p>
+          <canvas id="emailChart" height="110"></canvas>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="/case-studies/hebron-nutrition" class="inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold text-sm hover:underline">
+          Read the full Hebron Nutrition case study
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Study 2: H.S. Johnson ****** -->
+
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="flex items-center gap-4 mb-10">
+        <span class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs font-bold flex items-center justify-center flex-shrink-0">02</span>
+        <div>
+          <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em]">Client story</p>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">H.S. Johnson <span class="text-base font-normal text-gray-400 dark:text-slate-500 ml-2">UK watches and jewelry · 50+ countries</span></h2>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div>
+          <p class="text-[5rem] sm:text-[7rem] lg:text-[9rem] font-black text-slate-100 dark:text-slate-800 leading-none select-none -mb-2 sm:-mb-4">9</p>
+          <p class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">years.</p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4 text-base">
+            Not a project. Not a retainer that got renewed once. Nine years of knowing exactly what the business needs, where it gets stuck, and what to build next.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed text-base">
+            We scaled them from £1M to £5M+. 50+ countries. Compliance error rate under 1%.
+          </p>
+        </div>
+        <div class="space-y-4">
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div class="bg-slate-50 dark:bg-slate-800/50 px-7 py-5 border-b border-slate-200 dark:border-slate-700">
+              <p class="text-2xl font-black text-emerald-600 dark:text-emerald-400">8 hours to 15 minutes</p>
+            </div>
+            <div class="px-7 py-6">
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">Daily image processing time</p>
+              <div class="space-y-3 mb-4">
+                <div>
+                  <div class="flex justify-between text-xs mb-1.5">
+                    <span class="text-gray-500 dark:text-slate-400">Before</span>
+                    <span class="font-bold text-gray-600 dark:text-slate-300">8 hours / day</span>
+                  </div>
+                  <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-6 overflow-hidden">
+                    <div class="h-full bg-red-400/70 dark:bg-red-500/50 rounded-full flex items-center justify-end pr-3" style="width:100%">
+                      <span class="text-xs font-bold text-white">480 min</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-xs mb-1.5">
+                    <span class="text-gray-500 dark:text-slate-400">After our app</span>
+                    <span class="font-bold text-emerald-600 dark:text-emerald-400">15 minutes / day</span>
+                  </div>
+                  <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-6 overflow-hidden">
+                    <div class="h-full bg-emerald-500 rounded-full" style="width:3.125%"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-xs text-slate-400">97% time reduction. That team member now does work that actually matters.</p>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div class="bg-slate-50 dark:bg-slate-800/50 px-7 py-5 border-b border-slate-200 dark:border-slate-700">
+              <p class="text-2xl font-black text-gray-900 dark:text-white">Under 1% error rate</p>
+            </div>
+            <div class="px-7 py-5">
+              <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Weekly GTIN and barcode health audits run automatically. Missing GTINs and duplicate barcodes get caught before Google flags them. Merchant Center disapprovals are nearly gone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/case-studies/hs-johnson" class="inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold text-sm hover:underline">
+          Read the full H.S. Johnson case study
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Build ****************** -->
+
+  <section id="work" class="py-20 bg-slate-50 dark:bg-slate-800/40">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="max-w-2xl mb-12">
+        <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-3">What we build</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">Custom tools inside your Shopify admin.</h2>
+        <p class="text-gray-600 dark:text-slate-400">No app store installs. No monthly fees. Built for your exact workflow using Shopify Sidekick. 14+ apps across two stores.</p>
+      </div>
+
+      <!-- Featured card -->
+      <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 mb-5 flex flex-col sm:flex-row gap-8 items-center">
+        <div class="flex-1">
+          <div class="inline-block bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Save Time</div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Product Image Processor</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mb-4">One team member, 8 hours every day. Resizing vendor images, removing backgrounds, formatting everything for Google Ads. All done by hand.</p>
+          <p class="font-bold text-emerald-600 dark:text-emerald-400">8 hours to 15 minutes, fully automated. <span class="text-sm font-normal text-gray-400">H.S. Johnson</span></p>
+        </div>
+        <div class="flex-shrink-0 bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl px-10 py-8 text-center border border-emerald-100 dark:border-emerald-800">
+          <p class="text-5xl font-black text-emerald-600 dark:text-emerald-400">97%</p>
+          <p class="text-xs text-gray-500 dark:text-slate-400 mt-2">time saved per day</p>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid sm:grid-cols-2 gap-5 mb-12">
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <div class="inline-block bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Compliance</div>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Market Exclusion Manager</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">8,000 SKUs across 50 markets. Some products can't legally ship everywhere. Toggling them one by one is not a system.</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">400,000 compliance touchpoints managed from one screen. <span class="font-normal text-gray-400">Hebron Nutrition</span></p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <div class="inline-block bg-orange-100 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Compliance</div>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">GTIN / Barcode Scanner</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Missing or duplicate barcodes getting products pulled from Merchant Center. With 1,000+ SKUs you can't catch them by hand.</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Compliance error rate under 1%. Disapprovals nearly gone. <span class="font-normal text-gray-400">H.S. Johnson</span></p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <div class="inline-block bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Visibility</div>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Staff Activity Monitor</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Teams grow, people change things, nobody tracks who did what. A brand calls about a MAP violation and you have nowhere to look.</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Full audit trail. Who changed what, when. Brand compliance becomes painless.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <div class="inline-block bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Visibility</div>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Executive Dashboard</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Clicking through six Shopify screens every morning to get a picture of the business.</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Revenue, top products, countries. Business health in 30 seconds.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <div class="inline-block bg-purple-100 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Revenue</div>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">New Arrivals Auto-Tagger</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">New products added but the email team is always a week behind on tagging them for campaigns.</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Auto-tagged and pushed into Klaviyo flows. Zero manual steps. <span class="font-normal text-gray-400">Hebron Nutrition</span></p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <div class="inline-block bg-blue-100 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Visibility</div>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Country Sales Dashboard</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mb-3">Selling in 50+ countries with no quick way to see which are growing and which are stalling.</p>
+          <p class="text-sm font-semibold text-gray-900 dark:text-white">Revenue by country, source, and time range. Answers the question in seconds. <span class="font-normal text-gray-400">Hebron Nutrition</span></p>
+        </div>
+
+      </div>
+
+      <!-- Portfolio screenshots -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
+          <p class="text-sm font-semibold text-gray-700 dark:text-slate-300">Real screenshots from live Shopify admin installs. Built by us, running in production.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-8">
+
+          <div>
+            <div class="browser-frame mb-3">
+              <div class="browser-bar-strip">
+                <span class="bdot bdot-r"></span><span class="bdot bdot-y"></span><span class="bdot bdot-g"></span>
+                <span class="browser-url-bar">store-admin.myshopify.com/apps/llm-traffic-dashboard</span>
+              </div>
+              <div style="aspect-ratio:16/10;overflow:hidden;">
+                <img src="/images/shopify-portfolio/llm-traffic-dashboard.png" alt="LLM Traffic Dashboard" class="w-full h-full object-cover object-top" loading="lazy" />
+              </div>
+            </div>
+            <div class="px-1">
+              <p class="font-semibold text-gray-900 dark:text-white text-sm">LLM Traffic Dashboard</p>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Tracks which AI shopping surfaces (ChatGPT, Perplexity, Google AI) are sending traffic and converting. Built for Hebron Nutrition.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="browser-frame mb-3">
+              <div class="browser-bar-strip">
+                <span class="bdot bdot-r"></span><span class="bdot bdot-y"></span><span class="bdot bdot-g"></span>
+                <span class="browser-url-bar">store-admin.myshopify.com/apps/executive-dashboard</span>
+              </div>
+              <div style="aspect-ratio:16/10;overflow:hidden;">
+                <img src="/images/shopify-portfolio/executive-dashboard.png" alt="Executive Dashboard" class="w-full h-full object-cover object-top" loading="lazy" />
+              </div>
+            </div>
+            <div class="px-1">
+              <p class="font-semibold text-gray-900 dark:text-white text-sm">Executive Dashboard</p>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Revenue, top products, out-of-stock movers, and country breakdown in one screen. Replaces clicking through six Shopify reports every morning. Built for both clients.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="browser-frame mb-3">
+              <div class="browser-bar-strip">
+                <span class="bdot bdot-r"></span><span class="bdot bdot-y"></span><span class="bdot bdot-g"></span>
+                <span class="browser-url-bar">store-admin.myshopify.com/apps/activity-logs</span>
+              </div>
+              <div style="aspect-ratio:16/10;overflow:hidden;">
+                <img src="/images/shopify-portfolio/staff-activity-logs.png" alt="Staff Activity Logs" class="w-full h-full object-cover object-top" loading="lazy" />
+              </div>
+            </div>
+            <div class="px-1">
+              <p class="font-semibold text-gray-900 dark:text-white text-sm">Staff Activity Monitor</p>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Full audit trail of every product, price, and order change — searchable by staff member, date, and action. Built for both clients.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="browser-frame mb-3">
+              <div class="browser-bar-strip">
+                <span class="bdot bdot-r"></span><span class="bdot bdot-y"></span><span class="bdot bdot-g"></span>
+                <span class="browser-url-bar">store-admin.myshopify.com/apps/llm-readiness</span>
+              </div>
+              <div style="aspect-ratio:16/10;overflow:hidden;">
+                <img src="/images/shopify-portfolio/llm-readiness-scorecard.png" alt="LLM Readiness Scorecard" class="w-full h-full object-cover object-top" loading="lazy" />
+              </div>
+            </div>
+            <div class="px-1">
+              <p class="font-semibold text-gray-900 dark:text-white text-sm">LLM Readiness Scorecard</p>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Scores every product in the catalog for AI shopping surface eligibility. Products with data gaps get skipped by ChatGPT and Perplexity. Built for Hebron Nutrition.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us ************************* -->
+
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="max-w-xl mb-12">
+        <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-3">Why us</p>
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Why merchants choose us over agencies.</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6 mb-14">
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-7 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-2xl mb-4">&#9881;</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-lg">Operators, not consultants.</h3>
+          <p class="text-gray-600 dark:text-slate-400 text-sm leading-relaxed">10+ years inside real stores. Managing orders, fixing catalog data, scaling channels, handling peak-season chaos. We know what breaks when a store grows because we have been the ones fixing it.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-7 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-2xl mb-4">&#8599;</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-lg">Ops AND growth.</h3>
+          <p class="text-gray-600 dark:text-slate-400 text-sm leading-relaxed">Most agencies pick one lane. We combine both. Automate the grunt work, reinvest that time into growth. One client added $1M/year from email while cutting ops workload in half.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-7 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-2xl mb-4">&#128274;</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-lg">Infrastructure, not a vendor.</h3>
+          <p class="text-gray-600 dark:text-slate-400 text-sm leading-relaxed">Once we're managing compliance, fraud workflows, and catalog health inside your store, we're not a line item. We're the plumbing. The switching cost is high because the value is high — our longest client has been with us for nine years.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-7 border border-slate-100 dark:border-slate-700/50">
+          <p class="text-2xl mb-4">&#9889;</p>
+          <h3 class="font-bold text-gray-900 dark:text-white mb-2 text-lg">AI-native from day one.</h3>
+          <p class="text-gray-600 dark:text-slate-400 text-sm leading-relaxed">Shopify now integrates natively with ChatGPT and Claude. We've been building with Sidekick and Flow since they launched. While other agencies figure out what AI means for commerce, we're already deploying it inside stores.</p>
+        </div>
+      </div>
+
+      <!-- Risk reversal -->
+      <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
+        <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-6">Zero risk. Here's how we back that up.</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-500 font-bold flex-shrink-0 mt-0.5">&#10003;</span>
+            <div class="text-sm"><strong class="text-gray-900 dark:text-white">Everything stays in your store.</strong> <span class="text-gray-600 dark:text-slate-400">Every app, workflow, and dashboard lives in your admin. Stop working with us and it all stays.</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-500 font-bold flex-shrink-0 mt-0.5">&#10003;</span>
+            <div class="text-sm"><strong class="text-gray-900 dark:text-white">No long-term contracts.</strong> <span class="text-gray-600 dark:text-slate-400">Monthly retainer, cancel anytime. We earn it every month.</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-500 font-bold flex-shrink-0 mt-0.5">&#10003;</span>
+            <div class="text-sm"><strong class="text-gray-900 dark:text-white">You own the code.</strong> <span class="text-gray-600 dark:text-slate-400">Sidekick apps are built in your admin using your account. They're yours, not ours.</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-500 font-bold flex-shrink-0 mt-0.5">&#10003;</span>
+            <div class="text-sm"><strong class="text-gray-900 dark:text-white">Start with one project, not a long commitment.</strong> <span class="text-gray-600 dark:text-slate-400">Pick one Quick Win. See how we work. Then decide if you want more.</span></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-500 font-bold flex-shrink-0 mt-0.5">&#10003;</span>
+            <div class="text-sm"><strong class="text-gray-900 dark:text-white">Transparent access.</strong> <span class="text-gray-600 dark:text-slate-400">Staff or super admin. Every change logged. You can see exactly what was done and when.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Is This a Fit? ***************** -->
+
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="mb-12">
+        <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-4">Is this a fit?</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">You're a fit if your<br />store looks like this.</h2>
+      </div>
+
+      <div class="divide-y divide-slate-700/60">
+        <div class="py-6 flex items-center gap-6 group">
+          <span class="text-emerald-400 text-lg font-bold flex-shrink-0 w-6">&#10003;</span>
+          <p class="text-lg font-semibold text-white">Shopify Plus with $5M+ revenue and 5,000+ SKUs</p>
+        </div>
+        <div class="py-6 flex items-center gap-6">
+          <span class="text-emerald-400 text-lg font-bold flex-shrink-0 w-6">&#10003;</span>
+          <p class="text-lg font-semibold text-white">Selling internationally, or planning to expand into new markets</p>
+        </div>
+        <div class="py-6 flex items-center gap-6">
+          <span class="text-emerald-400 text-lg font-bold flex-shrink-0 w-6">&#10003;</span>
+          <p class="text-lg font-semibold text-white">Compliance requirements: MAP pricing, brand restrictions, or regulated products</p>
+        </div>
+        <div class="py-6 flex items-center gap-6">
+          <span class="text-emerald-400 text-lg font-bold flex-shrink-0 w-6">&#10003;</span>
+          <p class="text-lg font-semibold text-white">Selling across 2 or more channels (Shopify, Amazon, eBay)</p>
+        </div>
+        <div class="py-6 flex items-center gap-6">
+          <span class="text-emerald-400 text-lg font-bold flex-shrink-0 w-6">&#10003;</span>
+          <p class="text-lg font-semibold text-white">Team of 10 or more and your processes are starting to crack</p>
+        </div>
+        <div class="py-6 flex items-center gap-6">
+          <span class="text-emerald-400 text-lg font-bold flex-shrink-0 w-6">&#10003;</span>
+          <p class="text-lg font-semibold text-white">You're spending more time on operations than on growth</p>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-slate-700/60">
+        <p class="text-slate-400 text-sm leading-relaxed">Not the right fit: stores under $1M, teams looking for a design or development agency, anyone who needs day-to-day paid ads management, or anyone expecting a free audit with no commitment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are ******************** -->
+
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-3xl mx-auto px-6">
+      <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-6">Who you work with</p>
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Operators who have been inside stores like yours for over a decade.</h2>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+        Our team works directly with merchants as a single point of contact for ops, infrastructure, and growth. We have scaled stores from local revenue to global operations, built $1M/yr email channels from nothing, managed 30 Merchant Center feeds across 30 countries, and connected Shopify to Oracle ERP, Glopal, Klaviyo, and international fulfilment networks.
+      </p>
+      <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-10">
+        H.S. Johnson has been a client for nine years. Hebron Nutrition went from $1.5M to $10M while we were running their operational layer. This is not an agency where your store gets handed to someone who has never seen one at scale.
+      </p>
+      <div class="relative">
+        <p class="absolute -top-4 -left-2 text-8xl text-emerald-100 dark:text-emerald-900/60 font-black leading-none select-none">"</p>
+        <blockquote class="relative pl-6 border-l-4 border-emerald-500">
+          <p class="text-lg font-medium text-gray-900 dark:text-white leading-relaxed">Managing 30 Merchant Center feeds, handling Google suspensions, setting up cross-border infrastructure, building Sidekick apps: that is nowhere close to being replaced by a merchant typing into ChatGPT.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 mt-4">SellOnTube team</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process ************************ -->
+
+  <Steps
+    title="How an engagement works"
+    tagline="The process"
+    items={[
+      {
+        title: 'Discovery call (30 min)',
+        description: 'We look at your store, your current operational setup, and where the biggest bottlenecks are. We tell you upfront whether and how we can help.',
+        icon: 'tabler:phone',
+      },
+      {
+        title: 'Store and operations audit',
+        description: 'We review your tech stack, feed infrastructure, integrations, and workflows. You get a prioritised list of what to fix, ranked by operational impact.',
+        icon: 'tabler:list',
+      },
+      {
+        title: 'Scoped proposal',
+        description: 'Clear scope, deliverables, and timeline. Quick Win projects start from $2,000. Retainers start at $3,500/mo. No vague commitments.',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: 'Build and hand over',
+        description: 'We build, test, and document. Every app and workflow is handed over with documentation so your team can own it.',
+        icon: 'tabler:rocket',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80',
+      alt: 'Shopify operations and store management',
+    }}
+  />
+
+  <!-- Pricing ************************ -->
+
+  <section id="pricing" class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-3">Pricing</p>
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Start small. Grow with results.</h2>
+      <p class="text-gray-600 dark:text-slate-400 text-lg mb-10">Pick one project first. See how we work. Then decide if you want more.</p>
+      <div class="grid sm:grid-cols-3 gap-6 text-left">
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
+          <p class="font-bold text-gray-900 dark:text-white mb-1">Quick Win</p>
+          <p class="text-3xl font-black text-emerald-600 dark:text-emerald-400 mb-4">$2,000–$4,000</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">One-time project. One Sidekick app, one Flow automation, one feed repair. Delivered in 1 to 2 weeks. No commitment beyond that.</p>
+        </div>
+        <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-7 border border-emerald-200 dark:border-emerald-800">
+          <p class="font-bold text-gray-900 dark:text-white mb-1">Discovery and Build</p>
+          <p class="text-3xl font-black text-emerald-600 dark:text-emerald-400 mb-4">$3,500–$6,000</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">Full workflow audit plus a scoped build. Best entry point for stores that don't know exactly what they need yet.</p>
+        </div>
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
+          <p class="font-bold text-gray-900 dark:text-white mb-1">Monthly retainer</p>
+          <p class="text-3xl font-black text-emerald-600 dark:text-emerald-400 mb-4">$3,500–$6,000<span class="text-lg font-bold">/mo</span></p>
+          <p class="text-sm text-gray-600 dark:text-slate-400">Ongoing ops, feed management, Klaviyo, new automations. Cancel anytime. Everything we build stays in your store.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs *************************** -->
+
+  <FAQs
+    title="Common questions"
+    tagline="FAQs"
+    classes={{ container: 'max-w-4xl' }}
+    items={[
+      {
+        title: 'What size of Shopify store do you work with?',
+        description: 'Best fit is Shopify Plus merchants doing $5M+ in annual revenue, 5,000+ SKUs, team of 10 or more. Below that, the investment in custom operational infrastructure typically does not pencil out. We\'ll tell you honestly on the discovery call.',
+      },
+      {
+        title: 'How is this different from a Shopify agency?',
+        description: 'Agencies build and maintain stores. We handle the operational infrastructure underneath: feed management, ERP connectors, compliance automation, international expansion, custom Sidekick apps, and analytics. The work that does not fit neatly into a theme or a Shopify app.',
+      },
+      {
+        title: 'What does Sidekick app development actually mean?',
+        description: 'Shopify Sidekick lets us build custom apps that live directly inside your merchant admin. No App Store fees. No approval process. We build internal tools specific to your store: dashboards, exclusion managers, compliance monitors, staff logs. Each app goes through 4 to 15 rounds of refinement to reach production quality.',
+      },
+      {
+        title: 'Can you work alongside our existing development team or agency?',
+        description: 'Yes. Most agencies handle design, dev, or paid marketing. We do operational automation and internal tooling. No overlap. We have worked alongside in-house teams and existing agencies for multiple clients without friction.',
+      },
+      {
+        title: 'What if something goes wrong during the engagement?',
+        description: 'We run daily catalog backups with rollback capability. When a vendor uploads wrong pricing or a third-party app corrupts data, you recover in minutes. Our flagship client avoided an estimated $100K+ loss when a vendor uploaded rupee pricing across an entire catalog over a weekend.',
+      },
+      {
+        title: 'How do we get started?',
+        description: 'Book a 30-minute discovery call. We\'ll look at your store, your current setup, and where operations are costing you time or revenue. If we can help, we\'ll tell you exactly what we\'d propose and what it would cost.',
+      },
+    ]}
+  />
+
+  <!-- CTA **************************** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a discovery call',
+        href: calLink,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Your store is bigger than the systems running it.
+    </Fragment>
+    <Fragment slot="subtitle">
+      Book a 30-minute call. We'll look at your store, identify the biggest operational bottlenecks, and tell you exactly what we'd fix first.
+    </Fragment>
+  </CallToAction>
+
+<script is:inline>
+(function () {
+  const s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js';
+  s.onload = initCharts;
+  document.head.appendChild(s);
+
+  function initCharts() {
+    const dark = document.documentElement.classList.contains('dark');
+    const textColor   = dark ? '#94a3b8' : '#6b7280';
+    const gridColor   = dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
+    const emerald     = '#10b981';
+    const mutedBar    = dark ? 'rgba(148,163,184,0.25)' : 'rgba(148,163,184,0.35)';
+
+    Chart.defaults.font.family = 'inherit';
+    Chart.defaults.color = textColor;
+
+    // Revenue before/after bar chart
+    const revCtx = document.getElementById('revenueChart');
+    if (revCtx) {
+      new Chart(revCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Starting revenue', '18 months later'],
+          datasets: [{
+            data: [1.5, 10],
+            backgroundColor: [mutedBar, emerald],
+            borderRadius: 8,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: { label: (c) => ' $' + c.parsed.y + 'M' }
+            }
+          },
+          scales: {
+            x: { grid: { display: false }, border: { display: false } },
+            y: {
+              grid: { color: gridColor },
+              border: { display: false },
+              ticks: { callback: (v) => '$' + v + 'M' }
+            }
+          }
+        }
+      });
+    }
+
+    // Email campaign horizontal bar chart
+    const emailCtx = document.getElementById('emailChart');
+    if (emailCtx) {
+      new Chart(emailCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Easter campaign', 'Clearance email', 'Regular send'],
+          datasets: [{
+            data: [34000, 12000, 10000],
+            backgroundColor: [emerald, '#34d399', '#6ee7b7'],
+            borderRadius: 6,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: { label: (c) => ' $' + c.parsed.x.toLocaleString() }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: gridColor },
+              border: { display: false },
+              ticks: { callback: (v) => '$' + (v / 1000) + 'K' }
+            },
+            y: { grid: { display: false }, border: { display: false } }
+          }
+        }
+      });
+    }
+  }
+})();
+</script>
+
+</Layout>
+
+<style>
+  .browser-frame {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 8px 32px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  :global(.dark) .browser-frame {
+    background: #1e293b;
+    border-color: rgba(255,255,255,0.08);
+  }
+  .browser-bar-strip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: linear-gradient(180deg, #fafafa, #f0f0f0);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  :global(.dark) .browser-bar-strip {
+    background: linear-gradient(180deg, #334155, #1e293b);
+    border-bottom-color: rgba(255,255,255,0.06);
+  }
+  .bdot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .bdot-r { background: #FF5F57; }
+  .bdot-y { background: #FFBD2E; }
+  .bdot-g { background: #28C840; }
+  .browser-url-bar {
+    flex: 1;
+    margin-left: 10px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 5px;
+    padding: 4px 12px;
+    font-size: 0.68rem;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  :global(.dark) .browser-url-bar {
+    background: #0f172a;
+    border-color: rgba(255,255,255,0.08);
+    color: #64748b;
+  }
+</style>
