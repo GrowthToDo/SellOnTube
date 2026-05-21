@@ -1,12 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import Header from '~/components/widgets/Header.astro';
 
 const metadata = {
   title: 'Non-Technical Business Team for Shopify App Owners | SellOnTube',
@@ -18,292 +12,562 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 
 <Layout metadata={metadata}>
 
-  <!-- Hero *************************** -->
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'The Problem', href: '#problem' },
+        { text: 'What We Do', href: '#work' },
+        { text: 'Pricing', href: '#pricing' },
+      ]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank' }]}
+      showToggleTheme
+    />
+  </Fragment>
 
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Book a discovery call',
-        href: calLink,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      You built the app.<br />
-      <span class="text-emerald-600 dark:text-emerald-400">We handle everything else.</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      Shopify app owners are engineers. They build great products and have zero non-technical team. We fill that gap completely: positioning, App Store optimisation, user guides, product video, review management, SEO content, in-app copy, and pricing strategy.
-    </Fragment>
-  </Hero>
+  <!-- Hero -->
+  <section class="relative bg-slate-900 text-white pt-20 sm:pt-28 pb-16 sm:pb-24 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-emerald-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-900/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-  <!-- Social Proof Bar **************** -->
-
-  <section class="py-6 bg-slate-50 dark:bg-slate-800/50">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 text-center">
         <div>
-          <p class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">3.25x</p>
-          <p class="text-sm text-gray-600 dark:text-slate-400">more conversions for Logbase apps</p>
+          <p class="text-emerald-400 text-xs font-bold uppercase tracking-[0.2em] mb-5">For Shopify app owners</p>
+          <h1 class="text-3xl sm:text-5xl lg:text-5xl font-extrabold leading-[1.05] tracking-tight mb-6">
+            You built the app.<br />
+            <span class="text-emerald-400">We handle<br class="hidden sm:block" /> everything else.</span>
+          </h1>
+          <p class="text-slate-400 text-base leading-relaxed mb-10 max-w-lg">
+            Technical founders build great products and run out of bandwidth before anyone hears about them. We are the non-engineering half of your company.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href={calLink} target="_blank" rel="noopener noreferrer"
+              class="inline-block bg-emerald-500 hover:bg-emerald-400 text-white font-semibold px-8 py-4 rounded-full transition-colors text-base text-center">
+              Book a discovery call
+            </a>
+            <a href="#proof" class="inline-block border border-slate-700 hover:border-slate-500 text-slate-300 font-semibold px-8 py-4 rounded-full transition-colors text-base text-center">
+              See client results
+            </a>
+          </div>
         </div>
-        <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
-        <div>
-          <p class="text-3xl font-bold text-gray-900 dark:text-white">29+</p>
-          <p class="text-sm text-gray-600 dark:text-slate-400">user guide articles shipped for Left Foot Software</p>
+
+        <!-- Team manifest card -->
+        <div class="hidden lg:block">
+          <div class="bg-slate-800/80 backdrop-blur rounded-2xl border border-slate-700/80 overflow-hidden shadow-2xl">
+            <div class="px-6 py-4 border-b border-slate-700/60 flex items-center justify-between">
+              <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Your non-technical layer</p>
+              <span class="text-xs bg-emerald-500/20 text-emerald-400 font-bold px-2 py-0.5 rounded-full">Active</span>
+            </div>
+            <div class="divide-y divide-slate-700/40">
+              <div class="px-6 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                  <span class="text-slate-200 text-sm">App Store optimisation</span>
+                </div>
+                <span class="text-xs text-emerald-400 font-semibold">Done</span>
+              </div>
+              <div class="px-6 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                  <span class="text-slate-200 text-sm">User documentation</span>
+                </div>
+                <span class="text-xs text-emerald-400 font-semibold">Done</span>
+              </div>
+              <div class="px-6 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                  <span class="text-slate-200 text-sm">Product demo video</span>
+                </div>
+                <span class="text-xs text-emerald-400 font-semibold">Done</span>
+              </div>
+              <div class="px-6 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+                  <span class="text-slate-200 text-sm">SEO content</span>
+                </div>
+                <span class="text-xs text-blue-400 font-semibold">Running</span>
+              </div>
+              <div class="px-6 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+                  <span class="text-slate-200 text-sm">Review management</span>
+                </div>
+                <span class="text-xs text-blue-400 font-semibold">Running</span>
+              </div>
+              <div class="px-6 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                  <span class="text-slate-200 text-sm">Pricing strategy</span>
+                </div>
+                <span class="text-xs text-emerald-400 font-semibold">Done</span>
+              </div>
+              <div class="px-6 py-3.5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                  <span class="text-slate-200 text-sm">UX copy audit</span>
+                </div>
+                <span class="text-xs text-emerald-400 font-semibold">Done</span>
+              </div>
+            </div>
+            <div class="px-6 py-4 bg-slate-900/60 border-t border-slate-700/60">
+              <p class="text-slate-500 text-xs">All of this. So you don't have to.</p>
+            </div>
+          </div>
         </div>
-        <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Stat bar -->
+  <section class="bg-slate-800 border-y border-slate-700/60 py-5">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-16 text-center">
         <div>
-          <p class="text-3xl font-bold text-gray-900 dark:text-white">$2,500/mo</p>
-          <p class="text-sm text-gray-600 dark:text-slate-400">starting retainer</p>
+          <p class="text-2xl font-black text-emerald-400">3.25x</p>
+          <p class="text-xs text-slate-400 mt-0.5">more installs: positioning and content work</p>
+        </div>
+        <div class="hidden sm:block w-px h-10 bg-slate-700"></div>
+        <div>
+          <p class="text-2xl font-black text-white">120 days</p>
+          <p class="text-xs text-slate-400 mt-0.5">to build a full non-technical layer from zero</p>
+        </div>
+        <div class="hidden sm:block w-px h-10 bg-slate-700"></div>
+        <div>
+          <p class="text-2xl font-black text-white">From $3,500/mo</p>
+          <p class="text-xs text-slate-400 mt-0.5">retainer, ongoing</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- The Problem ******************** -->
+  <!-- The Problem -->
+  <section id="problem" class="relative py-24 bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-6">
+      <div class="max-w-2xl mb-16">
+        <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-4">The problem</p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-white leading-[1.08] tracking-tight">
+          Good apps stay invisible.<br /><span class="text-slate-500">Not because they're bad.</span>
+        </h2>
+      </div>
 
-  <Features3
-    title="Why good Shopify apps stay invisible"
-    subtitle="The problem is never the product. It is everything around it."
-    columns={2}
-    items={[
-      {
-        title: 'Hidden from the merchants who need you',
-        description: 'Your App Store listing is the first thing a merchant sees. Weak title, vague description, no reviews — they scroll past before reading a word.',
-        icon: 'tabler:eye',
-      },
-      {
-        title: 'Merchants uninstall before they see value',
-        description: 'High early churn is almost always an onboarding and documentation problem. Merchants get confused, get no help, and leave. The app never had a chance.',
-        icon: 'tabler:chart-line',
-      },
-      {
-        title: 'No content working in the background',
-        description: 'User guides, blog posts, and product videos that answer real merchant questions are the compounding layer most apps skip entirely.',
-        icon: 'tabler:file-text',
-      },
-      {
-        title: 'One person doing everything',
-        description: 'You are the engineer, the support team, the marketer, and the founder. Something always gets dropped. It is always the non-technical work.',
-        icon: 'tabler:alert-circle',
-      },
-    ]}
-    classes={{ container: 'max-w-5xl' }}
-  />
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-  <!-- Case Study ********************* -->
+        <div class="relative rounded-2xl p-7 bg-slate-900 border border-slate-800 overflow-hidden group hover:border-emerald-500/40 transition-colors">
+          <p class="absolute -bottom-3 -right-1 text-[7rem] font-black text-emerald-500/8 leading-none select-none z-[-1]">01</p>
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+            <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          </div>
+          <h3 class="font-bold text-white mb-2 relative text-sm">Your listing loses merchants before they click</h3>
+          <p class="text-sm text-slate-400 relative leading-relaxed">A weak title, vague description, and no reviews. Merchants scroll past in under three seconds. The listing is the first sale. Most apps never make it.</p>
+        </div>
 
-  <section class="py-12 bg-white dark:bg-slate-900">
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="grid sm:grid-cols-2 gap-8">
-        <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-8 border border-emerald-200 dark:border-emerald-800">
-          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-3">Case study</p>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Logbase: 3.25x more conversions</h3>
-          <p class="text-gray-700 dark:text-slate-300 leading-relaxed">
-            Logbase builds Shopify apps for e-commerce merchants. We ran the content and positioning work around their apps. The result: <strong class="text-gray-900 dark:text-white">3.25x more conversions</strong> compared to their existing content, tracked via Google Analytics across install button clicks.
+        <div class="relative rounded-2xl p-7 bg-slate-900 border border-slate-800 overflow-hidden group hover:border-emerald-500/40 transition-colors">
+          <p class="absolute -bottom-3 -right-1 text-[7rem] font-black text-emerald-500/8 leading-none select-none z-[-1]">02</p>
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+            <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          </div>
+          <h3 class="font-bold text-white mb-2 relative text-sm">Merchants uninstall in week one</h3>
+          <p class="text-sm text-slate-400 relative leading-relaxed">High early churn is almost always an onboarding and documentation problem. They get confused, find no help, and leave. The product never had a chance.</p>
+        </div>
+
+        <div class="relative rounded-2xl p-7 bg-slate-900 border border-slate-800 overflow-hidden group hover:border-emerald-500/40 transition-colors">
+          <p class="absolute -bottom-3 -right-1 text-[7rem] font-black text-emerald-500/8 leading-none select-none z-[-1]">03</p>
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+            <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          </div>
+          <h3 class="font-bold text-white mb-2 relative text-sm">You answer the same support questions daily</h3>
+          <p class="text-sm text-slate-400 relative leading-relaxed">Without a knowledge base, every merchant who gets stuck emails you. You become the documentation. That time cannot go toward shipping.</p>
+        </div>
+
+        <div class="relative rounded-2xl p-7 bg-slate-900 border border-slate-800 overflow-hidden group hover:border-emerald-500/40 transition-colors">
+          <p class="absolute -bottom-3 -right-1 text-[7rem] font-black text-emerald-500/8 leading-none select-none z-[-1]">04</p>
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+            <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          </div>
+          <h3 class="font-bold text-white mb-2 relative text-sm">Reviews pile up with no response</h3>
+          <p class="text-sm text-slate-400 relative leading-relaxed">Unanswered reviews, good and bad, signal to new merchants that nobody is minding the store. Review velocity also directly affects your App Store ranking.</p>
+        </div>
+
+        <div class="relative rounded-2xl p-7 bg-slate-900 border border-slate-800 overflow-hidden group hover:border-emerald-500/40 transition-colors">
+          <p class="absolute -bottom-3 -right-1 text-[7rem] font-black text-emerald-500/8 leading-none select-none z-[-1]">05</p>
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+            <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          </div>
+          <h3 class="font-bold text-white mb-2 relative text-sm">No content working while you ship</h3>
+          <p class="text-sm text-slate-400 relative leading-relaxed">User guides, SEO content, and product videos compound over time. Most apps skip them entirely. The installs that should be finding you, find a competitor instead.</p>
+        </div>
+
+        <div class="relative rounded-2xl p-7 bg-slate-900 border border-slate-800 overflow-hidden group hover:border-emerald-500/40 transition-colors">
+          <p class="absolute -bottom-3 -right-1 text-[7rem] font-black text-emerald-500/8 leading-none select-none z-[-1]">06</p>
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+            <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+          </div>
+          <h3 class="font-bold text-white mb-2 relative text-sm">You are the engineer and the entire company</h3>
+          <p class="text-sm text-slate-400 relative leading-relaxed">Founder, engineer, support team, marketer. Something always gets dropped. It is always the non-technical work, because the next bug is more urgent.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof: Left Foot Software -->
+  <section id="proof" class="relative py-24 bg-slate-900 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-900/15 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-6">
+
+      <div class="flex items-center gap-4 mb-14">
+        <div class="flex-shrink-0 w-px h-12 bg-emerald-500"></div>
+        <div>
+          <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-1">Client story</p>
+          <h2 class="text-xl font-bold text-white">Left Foot Software <span class="text-sm font-normal text-slate-500 ml-2">Multi-app Shopify suite: barcode, label, and scanner apps</span></h2>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start mb-8">
+        <div>
+          <p class="text-[7rem] sm:text-[10rem] lg:text-[12rem] font-black text-slate-800 leading-none select-none -mb-4 sm:-mb-6">0</p>
+          <p class="text-3xl sm:text-5xl font-extrabold text-white mb-8 leading-tight">to everything.</p>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            A solo technical founder running a multi-app suite. Great product, zero non-technical capacity. No positioning, no documentation, no support ops, no marketing. We built all of it.
+          </p>
+          <p class="text-slate-400 leading-relaxed">
+            ASO rewrite. Product video. Knowledge base. Pricing strategy. Review management. Product strategy input. In 120 days.
           </p>
         </div>
-        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
-          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-3">Active engagement</p>
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Left Foot Software: full non-technical team</h3>
-          <p class="text-gray-700 dark:text-slate-300 leading-relaxed">
-            Brian runs a multi-app Shopify suite (GS1 Assistant, Label Wizard, Barcode Scanner) solo. We handle his entire non-technical layer: 29+ user guides live, product video shipped, pricing strategy delivered, App Store optimisation done, review management ongoing.
-          </p>
+        <div class="space-y-4">
+          <div class="rounded-2xl bg-slate-800/60 border border-slate-700/60 overflow-hidden">
+            <div class="px-7 py-5 border-b border-slate-700/60">
+              <p class="text-xl font-black text-emerald-400">App Store listing rewritten</p>
+            </div>
+            <div class="px-7 py-5">
+              <p class="text-sm text-slate-400 leading-relaxed">Title, subtitle, description, and search terms rebuilt around merchant intent. The listing now explains the product before a merchant reads past the first line. Founder recorded nothing for the product video. We scripted, recorded, and edited it.</p>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-slate-800/60 border border-slate-700/60 overflow-hidden">
+            <div class="px-7 py-5 border-b border-slate-700/60">
+              <p class="text-xl font-black text-white">Pricing strategy delivered</p>
+            </div>
+            <div class="px-7 py-5">
+              <p class="text-sm text-slate-400 leading-relaxed">Free plan removed. Migration to a credit-based model built around actual merchant usage patterns. Full knowledge base published to help centre and embedded in-app. Uninstall rate improving.</p>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Second client callout -->
+      <div class="relative rounded-2xl overflow-hidden">
+        <div class="absolute inset-0 bg-emerald-500/10 rounded-2xl"></div>
+        <div class="relative border border-emerald-500/30 rounded-2xl p-8 flex flex-col sm:flex-row sm:items-center gap-8">
+          <div class="flex-1">
+            <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-3">Separate engagement</p>
+            <p class="text-slate-300 leading-relaxed text-base">Content and positioning work for a Shopify app portfolio. Results tracked via Google Analytics on install button clicks.</p>
+          </div>
+          <div class="flex-shrink-0 text-center sm:text-right">
+            <p class="text-6xl font-black text-emerald-400">3.25x</p>
+            <p class="text-sm text-slate-400 mt-2">more conversions</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section id="work" class="py-24 bg-white dark:bg-slate-950">
+    <div class="max-w-5xl mx-auto px-6">
+
+      <div class="max-w-2xl mb-14">
+        <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-4">What we handle</p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white leading-[1.08] tracking-tight mb-4">The complete non-technical side of your app.</h2>
+        <p class="text-gray-500 dark:text-slate-400 text-lg">You stay in the code. Everything else is ours.</p>
+      </div>
+
+      <!-- Featured service card -->
+      <div class="relative rounded-3xl overflow-hidden mb-5 border border-emerald-200 dark:border-emerald-500/30 bg-gradient-to-br from-emerald-50 to-white dark:from-emerald-500/10 dark:to-slate-900">
+        <div class="p-8 sm:p-10 flex flex-col sm:flex-row gap-10 items-center">
+          <div class="flex-1">
+            <div class="inline-block bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-5">Biggest impact on churn</div>
+            <h3 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-3">User guides and knowledge base</h3>
+            <p class="text-gray-600 dark:text-slate-400 mb-5 leading-relaxed">Merchants uninstall in week one because they get stuck and find no help. A full knowledge base (30 to 50 articles covering every feature, edge case, and support question) fixes this. Published to your help centre, embedded in-app.</p>
+            <p class="font-semibold text-emerald-700 dark:text-emerald-400 text-sm">Uninstall rate improving after knowledge base went live. <span class="font-normal text-gray-400 dark:text-slate-500">Left Foot Software</span></p>
+          </div>
+          <div class="flex-shrink-0 text-center bg-white dark:bg-slate-800/80 rounded-2xl px-10 py-8 border border-emerald-100 dark:border-emerald-700/40 shadow-sm">
+            <p class="text-4xl font-black text-emerald-600 dark:text-emerald-400">Churn</p>
+            <p class="text-xs text-gray-400 dark:text-slate-500 mt-2 font-medium uppercase tracking-wider">improving post-launch</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service grid -->
+      <div class="grid sm:grid-cols-2 gap-4 mb-14">
+
+        <div class="rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col hover:border-emerald-200 dark:hover:border-emerald-500/30 transition-colors">
+          <p class="text-2xl font-black text-gray-900 dark:text-white mb-1">Listing rewrite</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-5">title, subtitle, description, search terms</p>
+          <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-2">App Store optimisation</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 flex-1 leading-relaxed">Rewritten around what merchants actually search for. Your listing converts before they click through to the full description.</p>
+          <p class="text-xs text-emerald-600 dark:text-emerald-500 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 font-semibold uppercase tracking-wider">Foundation</p>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col hover:border-emerald-200 dark:hover:border-emerald-500/30 transition-colors">
+          <p class="text-2xl font-black text-emerald-600 dark:text-emerald-400 mb-1">No recording needed</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-5">voiceover and screen capture, fully produced</p>
+          <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Product demo video</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 flex-1 leading-relaxed">We script, record, and edit. A professional video for your App Store listing, YouTube channel, and landing page. Founder does not need to appear on camera.</p>
+          <p class="text-xs text-emerald-600 dark:text-emerald-500 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 font-semibold uppercase tracking-wider">Foundation</p>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col hover:border-emerald-200 dark:hover:border-emerald-500/30 transition-colors">
+          <p class="text-2xl font-black text-gray-900 dark:text-white mb-1">Compounding installs</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-5">2 to 4 posts/month, permanently indexed</p>
+          <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-2">SEO content</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 flex-1 leading-relaxed">Educational content targeting merchants before they search for your app. Keeps generating installs after it publishes. We research, write, and publish.</p>
+          <p class="text-xs text-blue-600 dark:text-blue-400 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 font-semibold uppercase tracking-wider">Ongoing</p>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col hover:border-emerald-200 dark:hover:border-emerald-500/30 transition-colors">
+          <p class="text-2xl font-black text-gray-900 dark:text-white mb-1">Every review answered</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-5">under your brand voice, plus new review outreach</p>
+          <h3 class="font-bold text-gray-900 dark:text-white text-sm mb-2">Review management</h3>
+          <p class="text-sm text-gray-500 dark:text-slate-400 flex-1 leading-relaxed">Shopify reviews replied to. G2, Capterra, Product Hunt submitted. Outreach sequences to surface new reviews from active merchants.</p>
+          <p class="text-xs text-blue-600 dark:text-blue-400 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 font-semibold uppercase tracking-wider">Ongoing</p>
+        </div>
+
+        <div class="rounded-2xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col sm:col-span-2 hover:border-emerald-200 dark:hover:border-emerald-500/30 transition-colors">
+          <p class="text-2xl font-black text-gray-900 dark:text-white mb-1">UX copy and pricing strategy</p>
+          <p class="text-xs text-gray-400 dark:text-slate-500 mb-5">onboarding, button labels, error messages, empty states, pricing model</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 flex-1 leading-relaxed">Audit of every word a merchant sees that isn't a feature. Pricing model recommendations grounded in merchant behaviour, not what competitors charge.</p>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 font-semibold uppercase tracking-wider">Project-based</p>
+        </div>
+
+      </div>
+
+      <!-- Is this a fit -->
+      <div class="relative bg-slate-950 rounded-3xl overflow-hidden border border-slate-800">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/8 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative px-8 sm:px-12 pt-12 pb-8">
+          <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-4">Is this a fit?</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight mb-10">You are a fit if your app<br class="hidden sm:block" /> looks like this.</h2>
+          <div class="divide-y divide-slate-800">
+            <div class="py-4 flex items-center gap-5">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center flex-shrink-0">
+                <svg class="w-2.5 h-2.5 text-emerald-400" fill="currentColor" viewBox="0 0 12 12"><path d="M10 3L5 8.5 2 5.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="text-slate-200 font-medium">Solo technical founder or small engineering team with no non-technical staff</p>
+            </div>
+            <div class="py-4 flex items-center gap-5">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center flex-shrink-0">
+                <svg class="w-2.5 h-2.5 text-emerald-400" fill="currentColor" viewBox="0 0 12 12"><path d="M10 3L5 8.5 2 5.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="text-slate-200 font-medium">Active installs and some revenue, past the first 20 to 100</p>
+            </div>
+            <div class="py-4 flex items-center gap-5">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center flex-shrink-0">
+                <svg class="w-2.5 h-2.5 text-emerald-400" fill="currentColor" viewBox="0 0 12 12"><path d="M10 3L5 8.5 2 5.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="text-slate-200 font-medium">High early churn you cannot fully explain</p>
+            </div>
+            <div class="py-4 flex items-center gap-5">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center flex-shrink-0">
+                <svg class="w-2.5 h-2.5 text-emerald-400" fill="currentColor" viewBox="0 0 12 12"><path d="M10 3L5 8.5 2 5.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="text-slate-200 font-medium">Support inbox stealing time from building</p>
+            </div>
+            <div class="py-4 flex items-center gap-5">
+              <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center flex-shrink-0">
+                <svg class="w-2.5 h-2.5 text-emerald-400" fill="currentColor" viewBox="0 0 12 12"><path d="M10 3L5 8.5 2 5.5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="text-slate-200 font-medium">Multiple apps in portfolio, or plans to build more</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative px-8 sm:px-12 py-5 border-t border-slate-800">
+          <p class="text-slate-600 text-sm">Not the right fit: apps with fewer than 20 installs, teams already running in-house marketing, or founders looking purely for paid ads management.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="relative py-24 bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-emerald-500/5 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-6">
+
+      <div class="max-w-2xl mb-14">
+        <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-4">Pricing</p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-white leading-[1.08] tracking-tight mb-4">Start where you need to.<br class="hidden sm:block" /> Expand as you grow.</h2>
+        <p class="text-slate-400 text-base">Foundation work is one-time. Ongoing is monthly. Most engagements start with both running in parallel.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="bg-slate-900 rounded-2xl p-7 border border-slate-800 flex flex-col">
+          <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Foundation</p>
+          <p class="text-4xl font-black text-white mb-1">$2,500<span class="text-2xl text-slate-500">+</span></p>
+          <p class="text-xs text-slate-500 mb-8">one-time per app</p>
+          <div class="space-y-3 text-sm text-slate-400 flex-1">
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>App Store optimisation rewrite</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>Product demo video</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>User guide library (30 to 50 articles)</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>Landing page copy</span>
+            </div>
+          </div>
+          <a href={calLink} target="_blank" rel="noopener noreferrer" class="mt-8 block text-center border border-slate-700 text-slate-300 font-semibold py-3.5 rounded-xl hover:border-slate-600 hover:text-white transition-colors text-sm">
+            Book a call
+          </a>
+        </div>
+
+        <div class="relative bg-slate-900 rounded-2xl p-7 border border-emerald-500/40 flex flex-col ring-1 ring-emerald-500/20 shadow-[0_0_40px_-10px_rgba(16,185,129,0.2)]">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between mb-4">
+              <p class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Retainer</p>
+              <span class="text-xs bg-emerald-500 text-white font-bold px-2.5 py-0.5 rounded-full">Most popular</span>
+            </div>
+            <p class="text-4xl font-black text-white mb-1">$3,500<span class="text-xl text-slate-400">/mo</span></p>
+            <p class="text-xs text-slate-500 mb-8">ongoing, per app</p>
+            <div class="space-y-3 text-sm text-slate-300 flex-1">
+              <div class="flex items-start gap-2.5">
+                <span class="w-1 h-1 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></span>
+                <span>SEO content (2 to 4 posts/mo)</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <span class="w-1 h-1 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></span>
+                <span>Review management and outreach</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <span class="w-1 h-1 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></span>
+                <span>Directory submissions</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <span class="w-1 h-1 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></span>
+                <span>Support inbox drafts from knowledge base</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <span class="w-1 h-1 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></span>
+                <span>In-app UX copy updates</span>
+              </div>
+            </div>
+            <a href={calLink} target="_blank" rel="noopener noreferrer" class="mt-8 block text-center bg-emerald-500 hover:bg-emerald-400 text-white font-semibold py-3.5 rounded-xl transition-colors text-sm">
+              Book a call
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl p-7 border border-slate-800 flex flex-col">
+          <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Embedded partner</p>
+          <p class="text-4xl font-black text-white mb-1">$6,000<span class="text-2xl text-slate-500">+/mo</span></p>
+          <p class="text-xs text-slate-500 mb-8">portfolio-wide</p>
+          <div class="space-y-3 text-sm text-slate-400 flex-1">
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>All retainer deliverables across multiple apps</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>Website redesign for the app company site</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>Pricing strategy consulting</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>Product strategy input</span>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="w-1 h-1 rounded-full bg-slate-600 mt-2 flex-shrink-0"></span>
+              <span>EDI/enterprise support expansion</span>
+            </div>
+          </div>
+          <a href={calLink} target="_blank" rel="noopener noreferrer" class="mt-8 block text-center border border-slate-700 text-slate-300 font-semibold py-3.5 rounded-xl hover:border-slate-600 hover:text-white transition-colors text-sm">
+            Book a call
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-24 bg-white dark:bg-slate-900">
+    <div class="max-w-3xl mx-auto px-6">
+      <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-4">Common questions</p>
+      <h2 class="text-4xl font-extrabold text-gray-900 dark:text-white mb-14 tracking-tight">FAQs</h2>
+      <div class="divide-y divide-slate-100 dark:divide-slate-800">
+
+        <div class="py-7">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3 text-base">How is this different from a marketing agency?</h3>
+          <p class="text-gray-500 dark:text-slate-400 text-sm leading-relaxed">A marketing agency runs campaigns. We function as the non-engineering half of your company. We handle positioning, content, support infrastructure, product strategy, and operations. Not just ads or social posts.</p>
+        </div>
+
+        <div class="py-7">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3 text-base">How much of my time does this require?</h3>
+          <p class="text-gray-500 dark:text-slate-400 text-sm leading-relaxed">Heavy input at the start: we need to understand your app, your customers, and what you already know about why merchants install and uninstall. After the first few weeks, involvement stays light. We flag you when we need technical input.</p>
+        </div>
+
+        <div class="py-7">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3 text-base">How long does the foundation phase take?</h3>
+          <p class="text-gray-500 dark:text-slate-400 text-sm leading-relaxed">Six to eight weeks per app for ASO, user guides, product video, and landing page copy. Timeline depends mostly on how quickly you can give us product access and turn around content reviews.</p>
+        </div>
+
+        <div class="py-7">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3 text-base">Can you work across multiple apps?</h3>
+          <p class="text-gray-500 dark:text-slate-400 text-sm leading-relaxed">Yes. The positioning and ICP work for your first app largely carries over to the rest of your portfolio. Expanding is faster and cheaper than starting fresh each time.</p>
+        </div>
+
+        <div class="py-7">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3 text-base">What results can I expect?</h3>
+          <p class="text-gray-500 dark:text-slate-400 text-sm leading-relaxed">One client saw 3.25x more conversions from positioning and content work. Left Foot Software went from zero non-technical capacity to a full knowledge base, product video, pricing strategy, and ASO rewrite, all delivered in the first 120 days. Where you see the biggest lift depends on where your gaps are.</p>
+        </div>
+
+        <div class="py-7">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3 text-base">How do we get started?</h3>
+          <p class="text-gray-500 dark:text-slate-400 text-sm leading-relaxed">Book a 30-minute discovery call. We look at your app, your listing, and your install curve. If we can help, we tell you exactly what we would propose and what it would cost. No pitch deck, no follow-up sequence.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- What We Do ********************* -->
-
-  <Features
-    id="services"
-    tagline="What we handle"
-    title="The complete non-technical side of your app business"
-    subtitle="You stay in the code. We handle the rest."
-    items={[
-      {
-        title: 'App Store optimisation',
-        description: 'Title, subtitle, description, and search terms rewritten around merchant intent. Your listing works for you before a merchant even clicks through.',
-        icon: 'tabler:search',
-      },
-      {
-        title: 'User guides and knowledge base',
-        description: 'Written guides with screenshots covering every feature, edge case, and common support question. Published to your help centre and embedded in-app. Typically 30 to 50 articles per app.',
-        icon: 'tabler:book',
-      },
-      {
-        title: 'Product demo video',
-        description: 'Voiceover and screen capture production. No founder recording required. A professional video for your App Store listing, YouTube channel, and landing page.',
-        icon: 'tabler:video',
-      },
-      {
-        title: 'SEO content and blog',
-        description: 'High-intent educational content targeting merchants before they search for your app. The compounding layer that keeps generating installs after it is published.',
-        icon: 'tabler:pencil',
-      },
-      {
-        title: 'Review management and directory submissions',
-        description: 'Reply to Shopify reviews under your brand, run outreach to surface new reviews, and submit your app to G2, Capterra, Product Hunt, and relevant directories.',
-        icon: 'tabler:star',
-      },
-      {
-        title: 'UX copy, pricing strategy, and product input',
-        description: 'Audit of button labels, error messages, onboarding flows, and empty states. Pricing model recommendations and product strategy input grounded in merchant behaviour.',
-        icon: 'tabler:adjustments',
-      },
-    ]}
-  />
-
-  <!-- Who This Is For ***************** -->
-
-  <section class="py-12 bg-slate-50 dark:bg-slate-800/50">
-    <div class="max-w-4xl mx-auto px-4">
-      <div class="text-center mb-10">
-        <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">Who this is for</p>
-        <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Built for technical founders doing everything alone</h2>
-        <p class="mt-4 text-lg text-gray-600 dark:text-slate-400">You have a working product and real installs. You need a non-technical partner, not a freelancer for one task.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
-          <p class="font-semibold text-gray-900 dark:text-white mb-2">Good fit</p>
-          <ul class="space-y-2 text-gray-600 dark:text-slate-400 text-sm">
-            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> Solo technical founder or small engineering team</li>
-            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> Active installs and some revenue — past the first 20 to 100</li>
-            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> No in-house marketing, ops, or content capacity</li>
-            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> High early churn and not sure why</li>
-            <li class="flex gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold">+</span> Multiple apps in portfolio or plans to build more</li>
-          </ul>
-        </div>
-        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
-          <p class="font-semibold text-gray-900 dark:text-white mb-2">Not a fit</p>
-          <ul class="space-y-2 text-gray-600 dark:text-slate-400 text-sm">
-            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> App just launched, fewer than 20 installs</li>
-            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> Looking for paid ads management</li>
-            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> Product still in heavy development</li>
-            <li class="flex gap-2"><span class="text-gray-400 font-bold">-</span> Already have an in-house marketing team</li>
-          </ul>
-        </div>
-      </div>
+  <!-- CTA -->
+  <section class="relative py-28 bg-slate-950 text-white overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-emerald-500/8 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-emerald-500/10 rounded-full blur-2xl"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-6 text-center">
+      <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-6">Ready to start?</p>
+      <h2 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-[1.05] tracking-tight">Your app deserves<br class="hidden sm:block" /> a non-technical team.</h2>
+      <p class="text-slate-400 text-lg mb-12 leading-relaxed">Book a 30-minute call. We look at your app, find the biggest gaps, and tell you exactly where we would start.</p>
+      <a href={calLink} target="_blank" rel="noopener noreferrer"
+        class="inline-block bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-12 py-5 rounded-full transition-colors text-base shadow-[0_0_40px_-5px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_-5px_rgba(16,185,129,0.5)]">
+        Book a discovery call
+      </a>
+      <p class="text-slate-600 text-sm mt-6">No pitch deck. No follow-up sequence. Just a direct conversation.</p>
     </div>
   </section>
-
-  <!-- How We Work ******************** -->
-
-  <Steps
-    title="How an engagement works"
-    tagline="The process"
-    items={[
-      {
-        title: 'Discovery call (30 min)',
-        description: 'We look at your app, your install curve, your help centre, and your App Store listing. We identify the highest-leverage gap and where to start.',
-        icon: 'tabler:phone',
-      },
-      {
-        title: 'Market and competitor audit',
-        description: 'ICP definition, competitor positioning, and a full review of your App Store presence. You get a clear picture of where you stand.',
-        icon: 'tabler:list',
-      },
-      {
-        title: 'Foundation phase',
-        description: 'ASO rewrite, user guides, product video, and landing page copy. One-time work. The base everything compounds on top of.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Ongoing retainer',
-        description: 'SEO content, review management, directory submissions, support ops, UX copy updates — the monthly layer that keeps working while you build.',
-        icon: 'tabler:refresh',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80',
-      alt: 'Shopify app non-technical team operations',
-    }}
-  />
-
-  <!-- Pricing ************************* -->
-
-  <section class="py-12 bg-white dark:bg-slate-900">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">Pricing</p>
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Structured around your app stage</h2>
-      <p class="text-gray-600 dark:text-slate-400 text-lg mb-10">Foundation work is one-time. Ongoing work is monthly. You start where you need to.</p>
-      <div class="grid sm:grid-cols-3 gap-6 text-left">
-        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
-          <p class="font-bold text-gray-900 dark:text-white mb-1">Foundation</p>
-          <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">$1,500+</p>
-          <p class="text-sm text-gray-600 dark:text-slate-400">One-time. ASO, product demo video, user guides, landing page copy. The base every app needs.</p>
-        </div>
-        <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-6 border border-emerald-200 dark:border-emerald-800">
-          <p class="font-bold text-gray-900 dark:text-white mb-1">Retainer</p>
-          <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">from $2,500/mo</p>
-          <p class="text-sm text-gray-600 dark:text-slate-400">SEO content, review management, directory submissions, support ops, in-app UX copy.</p>
-        </div>
-        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
-          <p class="font-bold text-gray-900 dark:text-white mb-1">Embedded partner</p>
-          <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">$4,500 – $6,500/mo</p>
-          <p class="text-sm text-gray-600 dark:text-slate-400">Multiple apps, website redesign, product strategy, full non-technical partner across your portfolio.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQs **************************** -->
-
-  <FAQs
-    title="Common questions"
-    tagline="FAQs"
-    classes={{ container: 'max-w-4xl' }}
-    items={[
-      {
-        title: 'How is this different from a marketing agency?',
-        description: 'A marketing agency runs campaigns. We function as the non-engineering half of your company. We handle positioning, content, support infrastructure, product strategy, and operations — not just ads.',
-      },
-      {
-        title: 'How much of my time does this require?',
-        description: 'We need your input at the start — to understand your app, your customers, and what you know about why merchants install and uninstall. After that, involvement stays light. We work with what you have and flag you when we need technical input.',
-      },
-      {
-        title: 'How long does the foundation phase take?',
-        description: 'Typically 6 to 8 weeks per app: ASO, user guides, product video, and landing page copy. Timeline depends on how quickly you can give us product access and review content.',
-      },
-      {
-        title: 'Can you work across multiple apps?',
-        description: 'Yes. The foundation work for the first app — positioning, ICP definition, competitor research — largely applies to the rest of your portfolio. Expanding to additional apps is faster and cheaper.',
-      },
-      {
-        title: 'What results can I expect?',
-        description: 'Logbase saw 3.25x more conversions. For Left Foot Software we delivered 29 user guides, a product video, pricing strategy, and ASO within the first 120 days. Results depend on where your biggest gaps are.',
-      },
-      {
-        title: 'How do we get started?',
-        description: 'Book a 30-minute discovery call. We\'ll look at your app, your listing, and your install curve. If we can help, we\'ll tell you exactly what we\'d propose and what it would cost.',
-      },
-    ]}
-  />
-
-  <!-- CTA **************************** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Book a discovery call',
-        href: calLink,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Your app deserves a non-technical team.
-    </Fragment>
-    <Fragment slot="subtitle">
-      Book a 30-minute call. We\'ll look at your app, identify the biggest gaps, and tell you exactly where we\'d start.
-    </Fragment>
-  </CallToAction>
 
 </Layout>
