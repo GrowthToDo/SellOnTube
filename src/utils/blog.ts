@@ -68,8 +68,13 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   } = data;
 
   const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
-  const publishDate = new Date(rawPublishDate);
-  const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
+  const toIST = (d: Date | string) => {
+    const date = d instanceof Date ? d : new Date(String(d));
+    const istDate = new Date(date.getTime() + 5.5 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    return new Date(istDate + 'T00:00:00+05:30');
+  };
+  const publishDate = toIST(rawPublishDate);
+  const updateDate = rawUpdateDate ? toIST(rawUpdateDate) : undefined;
 
   const category = rawCategory
     ? {
@@ -127,6 +132,7 @@ const load = async function (): Promise<Array<Post>> {
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
   const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
+  cutoff.setHours(23, 59, 59, 999);
 
   const results = (await Promise.all(normalizedPosts))
     .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
