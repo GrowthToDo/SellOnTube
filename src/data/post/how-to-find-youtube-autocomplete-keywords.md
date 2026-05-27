@@ -68,6 +68,15 @@ Finding YouTube autocomplete keywords the right way means building a repeatable 
 
 They are not guesses. They are real queries that real people type, updated continuously.
 
+**How to find YouTube autocomplete keywords in 6 steps:**
+
+1. **Pick a seed keyword.** Choose a broad, 1-2 word term that describes your product or topic (e.g., "CRM software" or "email marketing").
+2. **Open YouTube in incognito mode.** This prevents your search history from biasing the autocomplete suggestions.
+3. **Type your seed keyword and pause.** YouTube displays 8-10 predicted completions based on real search demand.
+4. **Append each letter A through Z.** After your seed, add a space and each letter of the alphabet. "CRM software a" gives you different suggestions than "CRM software b." One seed keyword typically yields 80-100 variations this way.
+5. **Tag each suggestion by search intent.** Mark keywords as comparison (buyer-ready), how-to (mid-funnel), or research (top-of-funnel) so you can prioritize the ones closest to a purchase decision.
+6. **Export and filter by intent priority.** Pull all comparison and evaluation keywords to the top of your list. These become your next video topics.
+
 To find YouTube autocomplete keywords, start with a broad seed keyword related to your product or service and type it into YouTube's search bar. YouTube will display 8-10 suggested completions. Expand the results by appending each letter of the alphabet ("keyword a," "keyword b," etc.) to capture long-tail variations. For faster results at scale, use an autocomplete scraping tool that runs all A-Z variations and buyer-intent modifiers automatically, then tags each suggestion by search intent (comparison, how-to, research) so you can prioritize keywords closest to a purchase decision. Export the results as a CSV and filter by intent priority before building your content calendar.
 
 Unlike Google Keyword Planner data, which buckets volume into rough ranges and often overstates demand for niche terms, autocomplete reflects actual search behavior on YouTube specifically. A keyword with zero volume in GKP can still appear in YouTube autocomplete because people search for it on YouTube, not Google.

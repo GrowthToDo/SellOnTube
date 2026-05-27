@@ -33,6 +33,16 @@ The gap between "getting views" and "getting leads" is not a content quality pro
 
 This post covers the exact system: topic selection, CTA placement, lead magnets, and attribution. No YouTube lead generation ads required.
 
+<div style="background: #f0f9ff; border: 1px solid #bae6fd; border-left: 4px solid #0284c7; border-radius: 8px; padding: 1rem 1.5rem; margin: 1.5rem 0;">
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0c4a6e; margin: 0 0 0.5rem 0;">YouTube Lead Generation: Key Metrics</p>
+<p style="color: #0c4a6e; font-size: 0.88rem; margin: 0 0 0.5rem 0;"><strong>YouTube lead generation</strong> turns viewers into leads you can actually follow up with. You target search queries that buyers type before making a decision, build a conversion path into every video (verbal CTA, lead magnet, tracked link in the description), and trace each form submission back to the video that drove it. Unlike YouTube ads, organic leads compound. The video you publish today still generates enquiries 12 months from now.</p>
+<ul style="margin: 0; padding-left: 1.25rem; color: #0c4a6e; font-size: 0.85rem;">
+<li style="margin-bottom: 0.3rem;">B2B channels with a structured CTA system convert 3 to 5x more viewers into leads than channels that rely on description links alone.</li>
+<li style="margin-bottom: 0.3rem;">A single YouTube video answering a high-intent buyer query generates leads for 12 to 24 months, compared to 24 to 48 hours for a LinkedIn post.</li>
+<li style="margin-bottom: 0;">Channels publishing one buyer-intent video per week typically see consistent inbound leads within 3 to 4 months of starting.</li>
+</ul>
+</div>
+
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
 <ul style="margin: 0; padding-left: 1.25rem;">
