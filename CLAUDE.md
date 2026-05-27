@@ -45,3 +45,7 @@ LSP queries are cheaper, faster, and more precise than reading entire files or r
 5. **Implementation** -- Semantic HTML. Pages fully crawlable without JS. No render-blocking resources above the fold.
 
 **Every page/feature deliverable includes:** SEO risks, canonical/indexation risks, recommended structured data, performance notes.
+
+## Mistakes to Avoid
+
+- **Any code that compares publishDate must use IST conversion.** Astro's `blog.ts` converts all publishDates to IST via `toIST()` before filtering. Any other script that checks whether a post is draft/future/published (e.g. `scripts/validate-build.js`) MUST use the identical `toIST()` conversion and end-of-day cutoff (`setHours(23, 59, 59, 999)`). Raw UTC comparison will disagree with Astro and cause false build failures. This broke a Netlify deploy on 2026-05-27. If you add a new script or check that touches publishDate, copy the `toIST()` logic from `blog.ts`.
