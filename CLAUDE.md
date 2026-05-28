@@ -1,24 +1,33 @@
 # Claude Code — Operational Instructions
 
-## Purpose
+## Project Overview
 
-Claude Code must rely on Language Server Protocol (LSP) tools as the primary method for understanding and navigating codebases. LSP provides accurate, real-time information about symbols, types, definitions, and references — eliminating guesswork.
+SellonTube is a static marketing site built with Astro 5, Tailwind CSS, and MDX, deployed on Netlify. Target audience: B2B founders and SaaS operators evaluating YouTube for customer acquisition.
 
-## Core Rules
+## Project Ethos: Simple, Robust, Pragmatic, Non-hacky
 
-- **Always prioritize the LSP tool** when working with source code. It is the authoritative source for codebase structure.
-- **Use LSP for symbol lookup, definitions, references, and type information.** Do not infer signatures, types, or module exports without querying LSP first.
-- **Do not assume file structure or function signatures.** Verify via LSP before acting on assumptions.
-- **Before implementing changes, query LSP** to understand existing implementations, call sites, and type constraints.
-- **Use LSP navigation to locate relevant files** instead of broad glob/grep searching when the target is a known symbol, class, or function.
-- **Fall back to Grep/Glob only** when LSP is unavailable, the target is a string literal or comment, or the query is pattern-based rather than symbol-based.
+Every decision — new feature, dependency, abstraction, refactor — must pass through these four filters:
 
-## Workflow
+- **Simple:** Fewer moving parts. Flat over nested. Obvious over clever.
+- **Robust:** Handles edge cases without duct tape. Fails predictably.
+- **Pragmatic:** Solves real problems today, not theoretical ones tomorrow.
+- **Non-hacky:** No workarounds disguised as solutions. If a shortcut is unavoidable, flag it as tech debt with a TODO and explain why.
 
-1. **Locate** — Use LSP to find relevant symbols (functions, classes, variables, types).
-2. **Inspect** — Query definitions and references to understand how the symbol is used across the codebase.
-3. **Understand** — Check type information, parameter signatures, and dependency relationships via LSP.
-4. **Implement** — Modify or write code with full knowledge of the existing structure and contracts.
+**Rules:**
+- Before adding any new feature, dependency, or abstraction, check it against these four principles.
+- If it breaks any of them, push back — explain what breaks and suggest an alternative that preserves the ethos.
+- Prefer standard patterns over custom abstractions.
+- When in doubt, ask before adding complexity.
+
+## LSP-First Navigation
+
+Use Language Server Protocol (LSP) as the primary method for understanding and navigating the codebase. LSP provides accurate, real-time symbol lookup, definitions, references, and type information.
+
+**Workflow:** Locate symbols via LSP → Inspect definitions and references → Check types and dependencies → Implement with full context.
+
+**Fallback to Grep/Glob only** when LSP is unavailable, the target is a string literal or comment, or the query is pattern-based.
+
+> LSP queries are cheaper, faster, and more precise than reading entire files or running broad searches. Use them first, read files second, search broadly last.
 
 ## New Tool Integration Rule
 
@@ -29,12 +38,6 @@ Claude Code must rely on Language Server Protocol (LSP) tools as the primary met
 4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing)
 
 See `agents/08-microtool-builder.md` Phase 7 for full details.
-
-## Key Principle
-
-> Prioritize using the LSP tool for context-efficient and accurate implementation.
-
-LSP queries are cheaper, faster, and more precise than reading entire files or running broad searches. Use them first, read files second, search broadly last.
 
 ## Build Standards
 
@@ -49,3 +52,17 @@ LSP queries are cheaper, faster, and more precise than reading entire files or r
 ## Mistakes to Avoid
 
 - **Any code that compares publishDate must use IST conversion.** Astro's `blog.ts` converts all publishDates to IST via `toIST()` before filtering. Any other script that checks whether a post is draft/future/published (e.g. `scripts/validate-build.js`) MUST use the identical `toIST()` conversion and end-of-day cutoff (`setHours(23, 59, 59, 999)`). Raw UTC comparison will disagree with Astro and cause false build failures. This broke a Netlify deploy on 2026-05-27. If you add a new script or check that touches publishDate, copy the `toIST()` logic from `blog.ts`.
+
+- **Never push to live without asking the user first.** Show the commit message, wait for explicit "yes", THEN commit and push. Do not combine showing, committing, and pushing into one action.
+
+- **Plan before coding, get approval before implementing, commit only when asked.** Diagnose → present plan → get explicit "yes" → implement → user says "commit" → commit.
+
+- **Never return HTTP 502 from Netlify functions.** Cloudflare intercepts 502 responses and replaces the body with `error code: 502`, hiding actual error details. Use HTTP 503 for upstream API failures instead.
+
+- **Gemini model rule:** Always use `gemini-flash-latest` (auto-updating alias). Never pin to versioned models like `gemini-2.0-flash` — they get deprecated and return 404. Set `maxOutputTokens` to at least `2048` (gemini-2.5-flash thinking tokens count toward the output limit).
+
+- **Netlify redirect syntax:** `:placeholder` only works between `/` separators. For within-segment patterns (e.g. `/youtube-for-*`), use splat syntax: `from = "/youtube-for-*"` + `to = "/youtube-for/:splat"`.
+
+- **Read SEO docs before any SEO suggestion.** Check `seo-rules.md` and `seo-audit-log.md` first. Project-specific rules override general SEO knowledge.
+
+- **Style guide applies to ALL copy, not just new writing.** When any copy task is performed, check ALL existing copy on touched pages against `style-guide.md` and `content-playbook.md`. Grep for every banned pattern before finishing.
