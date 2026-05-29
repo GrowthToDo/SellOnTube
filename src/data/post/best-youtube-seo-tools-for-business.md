@@ -184,7 +184,7 @@ vidIQ's headline feature is its daily ideas feed: a stream of trending keywords 
 
 **Verdict:** Worth using for competitive research. Not worth relying on for keyword strategy if your channel is meant to attract decision-stage buyers rather than general viewers.
 
-Shopify store owners, agency founders, and SaaS operators are rarely served by chasing what is trending. The keyword ideas that come back from vidIQ often reflect the creator content world rather than the B2B buying journey.
+Shopify store owners, agency founders, and SaaS operators are rarely served by chasing what is trending. The keyword ideas that come back from vidIQ often reflect the creator content world rather than the B2B buying journey. For a deeper look at where vidIQ falls short for businesses and what to use instead, see [Is vidIQ Worth It? Only If You Want Views, Not Leads](/blog/is-vidiq-worth-it-for-business).
 
 ### 4. [RyRob's YouTube Keyword Tool](https://www.ryrob.com/youtube-keyword-tool/)
 
