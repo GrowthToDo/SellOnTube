@@ -47,8 +47,8 @@ Curated reference files cherry-picked from open-source SEO skill repos. Not stan
 | `ai-writing-detection.md` | Agent 05 | 50+ AI writing markers (extends em-dash ban) |
 | `schema-templates.json` | Agent 07 | VideoObject, BroadcastEvent, Clip schema templates |
 | `knowledge-graph-guide.md` | Agent 07 | Knowledge Graph, Wikidata, entity optimization playbook |
-| `ai-citation-patterns.md` | Agent 11 | How each AI system selects and cites content |
-| `geo-skill-patterns.md` | Agent 11 | GEO optimization scoring framework |
+| ~~`ai-citation-patterns.md`~~ | Deleted — merged into `ai-seo-guide.md` §6 | Platform-specific citation patterns |
+| ~~`geo-skill-patterns.md`~~ | Deleted — merged into `ai-seo-guide.md` §7 | GEO scoring framework |
 | `backlink-analysis-skill.md` | (standalone) | Free backlink analysis via CommonCrawl, Moz, Bing Webmaster — no dedicated agent yet |
 
 ## Key Rules (apply to all agents)
