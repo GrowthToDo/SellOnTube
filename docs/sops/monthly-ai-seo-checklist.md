@@ -1,7 +1,7 @@
 # Monthly AI SEO Checklist
 
 > **Owner: Agent 07.** Run once per month as part of the weekly SEO review.
-> Extracted from `ai-seo-guide.md` §10 — that section is the canonical source; this is the executable SOP.
+> Extracted from `ai-seo-guide.md` §15 — that section is the canonical source; this is the executable SOP.
 
 ## Run This Monthly
 
