@@ -51,7 +51,9 @@ See `agents/08-microtool-builder.md` Phase 7 for full details.
 
 ## Mistakes to Avoid
 
-- **Any code that compares publishDate must use IST conversion.** Astro's `blog.ts` converts all publishDates to IST via `toIST()` before filtering. Any other script that checks whether a post is draft/future/published (e.g. `scripts/validate-build.js`) MUST use the identical `toIST()` conversion and end-of-day cutoff (`setHours(23, 59, 59, 999)`). Raw UTC comparison will disagree with Astro and cause false build failures. This broke a Netlify deploy on 2026-05-27. If you add a new script or check that touches publishDate, copy the `toIST()` logic from `blog.ts`.
+- **publishDate determines when a post goes live. Get it right the first time.** This is a static site — Netlify builds filter out any post where `publishDate > today`. A future date means a 404. Three rules: (1) If the post should go live NOW, use today's date from the `currentDate` context variable, never tomorrow. (2) If the post is scheduled for a future date, use that exact date. (3) Always double-check: "Is this date today or in the past?" before committing. Format: `YYYY-MM-DDT00:00:00Z`. This mistake has caused 404s on deploy multiple times.
+
+- **Any code that compares publishDate must use IST conversion.** Astro's `blog.ts` converts all publishDates to IST via `toIST()` before filtering. Any other script that checks whether a post is draft/future/published (e.g. `scripts/validate-build.js`) MUST use the identical `toIST()` conversion and end-of-day cutoff (`setHours(23, 59, 59, 999)`). Raw UTC comparison will disagree with Astro and cause false build failures. If you add a new script or check that touches publishDate, copy the `toIST()` logic from `blog.ts`.
 
 - **Never push to live without asking the user first.** Show the commit message, wait for explicit "yes", THEN commit and push. Do not combine showing, committing, and pushing into one action.
 

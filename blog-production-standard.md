@@ -354,6 +354,7 @@ Specifically, the first draft must include:
 - [ ] No invented statistics (use "in our experience" for unverifiable claims)
 
 **Production:**
+- [ ] publishDate is today or in the past (NOT tomorrow, NOT a future date — future dates cause 404 on the live site because the static build filters them out)
 - [ ] FAQ content written manually in MDX body (frontmatter `faqs` only generates schema.org JSON-LD, NOT visible content. Every FAQ must be an H3 + paragraph in the body)
 - [ ] Screenshots for every tool (if it is a tool post)
 - [ ] Direct links for every tool/resource mentioned
