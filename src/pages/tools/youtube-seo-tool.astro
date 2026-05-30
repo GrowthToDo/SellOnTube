@@ -918,20 +918,34 @@ const faqSchema = {
       }
     }
 
-    // Business summary
+    // Business summary — hide section when empty or generic
     const bizEl = document.getElementById('result-business-summary');
-    if (bizEl) bizEl.textContent = data.business_summary;
+    if (bizEl) {
+      const bizSection = bizEl.closest('[class*="border-b"]') ?? bizEl.parentElement;
+      if (!data.business_summary || data.business_summary.startsWith('Business context detected') || data.business_summary.startsWith('No website provided')) {
+        if (bizSection) (bizSection as HTMLElement).style.display = 'none';
+      } else {
+        if (bizSection) (bizSection as HTMLElement).style.display = '';
+        bizEl.textContent = data.business_summary;
+      }
+    }
 
-    // Keywords
+    // Keywords — hide section when empty
     const kwEl = document.getElementById('result-keywords');
+    const kwSection = kwEl?.closest('[class*="border-b"]') ?? kwEl?.parentElement;
     if (kwEl) {
       kwEl.innerHTML = '';
-      data.recommended_keywords.slice(0, 3).forEach((kw) => {
-        const pill = document.createElement('span');
-        pill.className = 'inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1';
-        pill.textContent = kw;
-        kwEl.appendChild(pill);
-      });
+      if (data.recommended_keywords.length === 0) {
+        if (kwSection) (kwSection as HTMLElement).style.display = 'none';
+      } else {
+        if (kwSection) (kwSection as HTMLElement).style.display = '';
+        data.recommended_keywords.slice(0, 3).forEach((kw) => {
+          const pill = document.createElement('span');
+          pill.className = 'inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1';
+          pill.textContent = kw;
+          kwEl.appendChild(pill);
+        });
+      }
     }
 
     // Score breakdown

@@ -489,12 +489,10 @@ export default async (request: Request) => {
       console.error('Gemini API error:', geminiRes.status, errText);
       if (geminiRes.status === 429) {
         const fallback = buildFallbackAnalysis(title, description, videoTags, websiteText);
-        fallback.business_summary = '[Basic analysis — AI scoring temporarily unavailable] ' + fallback.business_summary;
         return new Response(JSON.stringify(fallback), { status: 200, headers });
       }
       // Use fallback for other Gemini errors too
       const fallback = buildFallbackAnalysis(title, description, videoTags, websiteText);
-      fallback.business_summary = '[Basic analysis — AI scoring temporarily unavailable] ' + fallback.business_summary;
       return new Response(JSON.stringify(fallback), { status: 200, headers });
     }
 
