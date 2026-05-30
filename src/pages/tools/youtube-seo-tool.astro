@@ -820,6 +820,27 @@ const faqSchema = {
     if (error) { error.textContent = ''; error.classList.add('hidden'); }
   }
 
+  function isNonVideoYouTubeUrl(url: string): string | null {
+    const lower = url.toLowerCase();
+    const isYouTube = lower.includes('youtube.com') || lower.includes('youtu.be');
+    if (!isYouTube) return null;
+
+    // Channel URLs
+    if (lower.includes('/@') || lower.includes('/channel/') || lower.includes('/c/') || lower.includes('/user/')) {
+      return "That's a YouTube channel URL. Paste a link to a specific video instead.";
+    }
+    // Playlist URLs
+    if (lower.includes('/playlist?') || lower.includes('&list=')) {
+      return "That's a playlist URL. Paste a link to a specific video from the playlist instead.";
+    }
+    // Homepage
+    if (/^(https?:\/\/)?(www\.)?youtube\.com\/?(\?.*)?$/.test(lower)) {
+      return "That's the YouTube homepage. Paste a link to a specific video instead.";
+    }
+
+    return null;
+  }
+
   function validateInputs(): boolean {
     const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
     let websiteUrl = (document.getElementById('website-url-input') as HTMLInputElement).value.trim();
@@ -829,7 +850,13 @@ const faqSchema = {
       showFieldError('video-url-input', 'Please enter a YouTube video URL.');
       valid = false;
     } else {
-      clearFieldError('video-url-input');
+      const nonVideoMsg = isNonVideoYouTubeUrl(videoUrl);
+      if (nonVideoMsg) {
+        showFieldError('video-url-input', nonVideoMsg);
+        valid = false;
+      } else {
+        clearFieldError('video-url-input');
+      }
     }
 
     // Auto-prepend https:// for website URL if bare domain entered
