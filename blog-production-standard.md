@@ -40,11 +40,11 @@ Example for a list post:
 
 ### Section Separation
 
-**Do not use horizontal dividers (`---`) between sections.** H2 headings provide sufficient visual separation. This overrides any earlier guidance in the Style Guide.
+**Do not use `---` between H2 sections.** One `---` is allowed after the Table of Contents, before the first H2. H2 headings provide sufficient visual separation. This overrides any earlier guidance in the Style Guide.
 
 ### Closing Section
 
-The "What to Do This Week" section must be a styled green callout box with numbered action items. Never plain text. Use this exact pattern:
+The "What to Do This Week" section must be a styled green callout box with 5-7 numbered action items. Never plain text. Use this exact pattern:
 
 ```html
 <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #10b981; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
@@ -62,7 +62,7 @@ The "What to Do This Week" section must be a styled green callout box with numbe
 Use styled HTML callouts for key information. Never present important summaries, warnings, or action steps as plain text. Four standard callout types:
 
 ### Key Takeaways (blue left border)
-Place immediately after the intro. Use for 4-6 standalone insights.
+Place immediately after the intro. Use for 5-6 standalone insights.
 
 ```html
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
@@ -202,6 +202,55 @@ This is not bias. It is domain expertise. You know more about your own tool, so 
 - Viewport: 1280x800 for consistency
 - If a site blocks automated capture (Cloudflare, bot detection), keep the styled HTML mockup card as a fallback
 
+---
+
+## 8. MDX Gotchas
+
+These rules apply to all `.mdx` blog post files. Violations cause build failures.
+
+1. **Never nest `<ul>` inside `<li>` with newlines.** MDX treats newlines between HTML tags as paragraph boundaries. A nested list structure like `<li><a>Parent</a>\n<ul><li>Child</li></ul>\n</li>` will break. Use flat structures with `padding-left` for visual indentation, or use plain markdown lists instead.
+
+2. **Escape markdown-significant characters inside HTML.** `*` becomes `&#42;`, `<` becomes `&lt;`, `{` becomes `&#123;`. MDX parses markdown inside HTML blocks. A bare `*` in a `<span>` triggers emphasis parsing and breaks the build.
+
+3. **For Table of Contents, use plain markdown.** Write `## Contents` followed by a markdown list of anchor links. Custom HTML ToC with styled `<div>` tags is fragile in MDX. Every existing blog post uses plain markdown for ToC. Match them.
+
+4. **Astro compiles ALL `.mdx` files on dev server start.** A broken MDX file anywhere in `src/data/post/` blocks viewing ANY page. When the dev server shows an MDX error, check the file path in the error message. It may be a pre-existing bug in a different file, not your new post.
+
+5. **All blog posts with inline HTML or SVG must be `.mdx`, not `.md`.** But: the more HTML you put in MDX, the more parser edge cases you hit. Prefer markdown where possible. Use HTML only for callout boxes, tables, SVGs, and embeds.
+
+---
+
+## 9. Draft QA Checklist (Run Before Presenting Draft)
+
+Run these checks AFTER writing the draft and BEFORE showing it to the user. The first-draft quality bar means all checks pass on the first presentation.
+
+### Mandatory Passes
+
+- [ ] **Full Agent 05 checklist** — run every item, not just em-dash + banned word grep
+- [ ] **Anti-AI humanizer two-pass** — Agent 04 Phase 2.5. Identify AI tells (Pass 1), check for pulse (Pass 2). Do this during drafting, not as a separate review step.
+- [ ] **Em-dash grep** returns zero matches
+- [ ] **Banned AI vocabulary grep** returns zero matches
+- [ ] **"Read more:" link count** — max 3-4 per post. Convert excess to inline contextual links.
+- [ ] **At least one `/tools/*` link** — every post should link to a relevant SellonTube tool
+- [ ] **Zero duplicate internal link URLs** — grep each `/blog/` URL, verify none appear twice
+- [ ] **All Sources have clickable URLs** — find source URLs during research, not after drafting
+- [ ] **Paragraph max 3 sentences** — spot-check all prose paragraphs
+- [ ] **FAQ questions include "I" or "my"** — conversational tone for AEO
+
+### Visual Design Checks
+
+- [ ] **Inline SVGs match the blog's light theme** — use `#f8fafc` backgrounds, `#e2e8f0` borders, dark text. Do NOT use dark palette (#0f172a) for inline diagrams. Dark palette is for featured images only.
+- [ ] **Pull quotes are subtle** — thin gray left border (`#e2e8f0`), no background, dark text. No dark backgrounds with white text.
+- [ ] **Tables described before built** — state column count, headers, and cell style to user before coding. Avoids rebuild cycles.
+- [ ] **Case study boxes used sparingly** — max 2-3 per post. More dilutes visual impact.
+- [ ] **Callout boxes min 3** — Key Takeaways + at least 2 others (warning, tip, decision guide)
+
+### Pre-Presentation Verify
+
+- [ ] Page loads at `localhost:4321/blog/[slug]` with 200 status, no error overlay
+- [ ] All HTML elements render (SVGs, tables, callouts, embeds, pull quotes)
+- [ ] Internal links point to live posts (not draft:true or future-dated)
+
 ### Styled HTML Visual Elements
 
 For process explanations, before/after comparisons, or data visualization where a screenshot is not appropriate, use inline styled HTML. Examples from approved posts:
@@ -233,7 +282,7 @@ These mistakes have been caught in real drafts. Do not repeat them.
 
 | Mistake | Correct Approach |
 |---|---|
-| Using `---` horizontal dividers between sections | H2 headings provide separation. No dividers. |
+| Using `---` between H2 sections | H2 headings provide separation. One `---` allowed after ToC only. |
 | Only 4 H2s on a 3,000-word post | Minimum 8 H2s for posts over 3,000 words |
 | "What to do this week" as plain text | Always use the styled green callout box |
 | Only 6 tools in a "best tools" comparison | Minimum 8, target 10 |

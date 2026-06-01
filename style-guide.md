@@ -54,6 +54,8 @@ Every H2/H3 must state a clear benefit, ask a question the reader actually has, 
 
 **Rule:** Write the punchy version first, then slot in the keyword. A longer heading that achieves both beats a short heading that achieves only one. Single word additions are often enough — "YouTube," "Marketing," or "Business" in the right place.
 
+**Heading case:** Use title case for all H2 and H3 headings (capitalize each major word).
+
 ---
 
 ## Fix #6: Kill Empty Conclusions
@@ -63,6 +65,8 @@ Never use as a heading: "Conclusion," "Final Thoughts," "Wrapping Up," "In Summa
 Never: restate main points in bullets at the end, close with vague motivation ("The time to start is now").
 
 End with: a specific next action, a sharp provocative thought, or the book-a-call CTA. If a SellonTube tool is relevant, a tool CTA can appear once mid-body — the final line still closes with book-a-call.
+
+The `toolCta` frontmatter field adds a tool CTA to the post layout. Set it only when the post body has no inline link to a SellonTube tool. Do not stack both `toolCta` and an inline tool link to the same tool.
 
 ---
 
@@ -187,7 +191,7 @@ Use ✅/❌ in bullet lists to signal positive vs negative outcomes. Use plain b
 For processes: H3 numbered steps, not bullets. Each step gets a bolded action label + 2-4 sentences + one concrete example.
 
 ### Horizontal Rules
-**Do not use `---` between sections.** H2 headings provide sufficient visual separation. (Updated: horizontal dividers were removed after user feedback confirmed they add visual clutter without improving scannability.)
+**Do not use `---` between H2 sections.** One `---` is allowed after the Table of Contents, before the first H2. H2 headings provide sufficient visual separation. (Updated: horizontal dividers were removed after user feedback confirmed they add visual clutter without improving scannability.)
 
 ### Paragraphs
 Max 3 sentences per paragraph. One-sentence paragraphs encouraged for emphasis. Never two dense paragraphs back-to-back without a callout, list, or visual break.
@@ -310,6 +314,6 @@ For posts teaching video structure or description optimization, show timestamps 
 - **URL slug:** Short, keyword-rich, no dates. Example: `/youtube-seo-shopify`
 - **Meta description:** Under 155 characters. Include the keyword. State what the reader will learn or solve.
 - **Featured snippet:** One section written as a 40-60 word direct answer.
-- **FAQ:** 3 questions from "People Also Ask" for the target keyword.
+- **FAQ:** 3-5 questions from "People Also Ask" for the target keyword.
 - **Related keywords:** 2-3 used naturally throughout.
-- **Internal links:** 2-3 to other SellonTube posts.
+- **Internal links:** At least 4 internal links total per post (mix of blog posts, tools, and pSEO pages).
