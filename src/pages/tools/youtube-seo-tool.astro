@@ -820,6 +820,27 @@ const faqSchema = {
     if (error) { error.textContent = ''; error.classList.add('hidden'); }
   }
 
+  function isNonVideoYouTubeUrl(url: string): string | null {
+    const lower = url.toLowerCase();
+    const isYouTube = lower.includes('youtube.com') || lower.includes('youtu.be');
+    if (!isYouTube) return null;
+
+    // Channel URLs
+    if (lower.includes('/@') || lower.includes('/channel/') || lower.includes('/c/') || lower.includes('/user/')) {
+      return "That's a YouTube channel URL. Paste a link to a specific video instead.";
+    }
+    // Playlist URLs
+    if (lower.includes('/playlist?') || lower.includes('&list=')) {
+      return "That's a playlist URL. Paste a link to a specific video from the playlist instead.";
+    }
+    // Homepage
+    if (/^(https?:\/\/)?(www\.)?youtube\.com\/?(\?.*)?$/.test(lower)) {
+      return "That's the YouTube homepage. Paste a link to a specific video instead.";
+    }
+
+    return null;
+  }
+
   function validateInputs(): boolean {
     const videoUrl = (document.getElementById('video-url-input') as HTMLInputElement).value.trim();
     let websiteUrl = (document.getElementById('website-url-input') as HTMLInputElement).value.trim();
@@ -829,7 +850,13 @@ const faqSchema = {
       showFieldError('video-url-input', 'Please enter a YouTube video URL.');
       valid = false;
     } else {
-      clearFieldError('video-url-input');
+      const nonVideoMsg = isNonVideoYouTubeUrl(videoUrl);
+      if (nonVideoMsg) {
+        showFieldError('video-url-input', nonVideoMsg);
+        valid = false;
+      } else {
+        clearFieldError('video-url-input');
+      }
     }
 
     // Auto-prepend https:// for website URL if bare domain entered
@@ -891,20 +918,34 @@ const faqSchema = {
       }
     }
 
-    // Business summary
+    // Business summary — hide section when empty or generic
     const bizEl = document.getElementById('result-business-summary');
-    if (bizEl) bizEl.textContent = data.business_summary;
+    if (bizEl) {
+      const bizSection = bizEl.closest('[class*="border-b"]') ?? bizEl.parentElement;
+      if (!data.business_summary || data.business_summary.startsWith('Business context detected') || data.business_summary.startsWith('No website provided')) {
+        if (bizSection) (bizSection as HTMLElement).style.display = 'none';
+      } else {
+        if (bizSection) (bizSection as HTMLElement).style.display = '';
+        bizEl.textContent = data.business_summary;
+      }
+    }
 
-    // Keywords
+    // Keywords — hide section when empty
     const kwEl = document.getElementById('result-keywords');
+    const kwSection = kwEl?.closest('[class*="border-b"]') ?? kwEl?.parentElement;
     if (kwEl) {
       kwEl.innerHTML = '';
-      data.recommended_keywords.slice(0, 3).forEach((kw) => {
-        const pill = document.createElement('span');
-        pill.className = 'inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1';
-        pill.textContent = kw;
-        kwEl.appendChild(pill);
-      });
+      if (data.recommended_keywords.length === 0) {
+        if (kwSection) (kwSection as HTMLElement).style.display = 'none';
+      } else {
+        if (kwSection) (kwSection as HTMLElement).style.display = '';
+        data.recommended_keywords.slice(0, 3).forEach((kw) => {
+          const pill = document.createElement('span');
+          pill.className = 'inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1';
+          pill.textContent = kw;
+          kwEl.appendChild(pill);
+        });
+      }
     }
 
     // Score breakdown

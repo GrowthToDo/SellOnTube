@@ -4,6 +4,9 @@
 
 Monitor and improve SellonTube's visibility in AI search engines (ChatGPT, Perplexity, Claude, Google AI Overviews). Ensure content is structured for citation, track whether SellonTube appears in AI-generated answers, and identify gaps.
 
+**Two-Layer Framework:**
+This agent primarily monitors **Layer 2** (ChatGPT, Perplexity, Claude) visibility. For **Layer 1** (Google AI Overviews), traditional SEO quality is sufficient — monitor via GSC "AI Overviews" impression data instead. See `ai-seo-guide.md` Section 1 for Google's official position.
+
 ## When to Invoke
 
 - "check AI visibility" / "AEO audit" / "are we in ChatGPT"
@@ -32,6 +35,8 @@ Check whether SellonTube appears in AI answers for a specific keyword.
 | youtube seo tools | Perplexity | No | Ahrefs, VidIQ |
 | youtube seo tools | Google AI Overview | No | HubSpot, Semrush |
 
+**Google AI Overviews:** Track via GSC "AI Overviews" impression data (not via spot check). This is a Layer 1 metric — no special optimization needed, just standard SEO quality.
+
 ### Mode 2: Batch Audit
 
 Run spot checks across SellonTube's top keywords.
@@ -55,6 +60,8 @@ Run spot checks across SellonTube's top keywords.
 ### Mode 3: Citability Audit
 
 Audit a specific page against the AI Citability Rules in `content-depth-framework.md`.
+
+**Layer context:** The 5 citability rules below are Layer 2 optimizations (targeting ChatGPT/Perplexity/Claude). For Google AI Overviews, standard content quality is sufficient. When auditing, check Layer 1 compliance first (unique content, non-commodity, clear structure) before checking Layer 2 patterns.
 
 **Input:** A file path or URL (e.g., "check citability of src/data/post/youtube-seo-tools.mdx")
 
@@ -103,8 +110,8 @@ The recommended publishing flow with AEO added:
 - `research/aeo/` — output directory for batch audit CSVs
 - `public/llms.txt` — update when new tools or major pages ship
 - `public/llms-full.txt` — full content map for AI systems
-- `agents/references/ai-citation-patterns.md` — how each AI system (Google AI Overviews, ChatGPT, Perplexity, Claude) selects and cites content. Includes citation frequency, format preferences, authority signals, and optimal content structures for citation (definition blocks, stat blocks, Q&A pairs, comparison tables, step-by-step, before/after). Use when advising on content structure for citability. (Source: seo-geo-claude-skills)
-- `agents/references/geo-skill-patterns.md` — GEO optimization prompt patterns including citability scoring (25%), structural readability (20%), multi-modal content (15%), authority signals (20%), and technical accessibility (20%). Key insight: "Brand mentions correlate 3x more strongly with AI visibility than backlinks." Use as scoring framework for Mode 3 citability audits. (Source: claude-seo)
+- `ai-seo-guide.md` Section 6 (Platform-Specific Ranking Factors and Citation Patterns) — how each AI system (Google AI Overviews, ChatGPT, Perplexity, Claude) selects and cites content. Includes citation frequency, format preferences, authority signals, and optimal content structures for citation (definition blocks, stat blocks, Q&A pairs, comparison tables, step-by-step, before/after). Use when advising on content structure for citability.
+- `ai-seo-guide.md` Section 7 (GEO Scoring Framework) — GEO optimization prompt patterns including citability scoring (25%), structural readability (20%), multi-modal content (15%), authority signals (20%), and technical accessibility (20%). Key insight: "Brand mentions correlate 3x more strongly with AI visibility than backlinks." Use as scoring framework for Mode 3 citability audits.
 
 ## Rules
 

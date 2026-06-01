@@ -48,9 +48,9 @@ The "What to Do This Week" section must be a styled green callout box with 5-7 n
 
 ```html
 <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #10b981; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #166534; margin: 0 0 0.75rem 0;">What to Do This Week</p>
+<p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #166534; margin: 0 0 0.75rem 0;">What to Do This Week</p>
 <ol style="margin: 0; padding-left: 1.25rem;">
-<li style="margin-bottom: 0.5rem; color: #14532d; font-size: 0.9rem;">Action item here.</li>
+<li style="margin-bottom: 0.5rem; color: #14532d; font-size: 1rem;">Action item here.</li>
 </ol>
 </div>
 ```
@@ -66,9 +66,9 @@ Place immediately after the intro. Use for 5-6 standalone insights.
 
 ```html
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
+<p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
 <ul style="margin: 0; padding-left: 1.25rem;">
-<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">Insight here.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 1rem;">Insight here.</li>
 </ul>
 </div>
 ```
@@ -78,8 +78,8 @@ Use for common mistakes, caveats, or "watch out for this" moments.
 
 ```html
 <div style="background: #fefce8; border: 1px solid #fde68a; border-left: 4px solid #eab308; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
-<p style="font-size: 0.85rem; font-weight: 600; color: #854d0e; margin: 0 0 0.5rem 0;">Warning title</p>
-<p style="color: #713f12; font-size: 0.85rem; margin: 0;">Warning content.</p>
+<p style="font-size: 1rem; font-weight: 600; color: #854d0e; margin: 0 0 0.5rem 0;">Warning title</p>
+<p style="color: #713f12; font-size: 1rem; margin: 0;">Warning content.</p>
 </div>
 ```
 
@@ -88,8 +88,8 @@ Use for decision rules, quick summaries, or "try this now" moments.
 
 ```html
 <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
-<p style="font-size: 0.85rem; font-weight: 600; color: #166534; margin: 0 0 0.5rem 0;">Quick decision rule</p>
-<p style="color: #14532d; font-size: 0.85rem; margin: 0;">Rule content here.</p>
+<p style="font-size: 1rem; font-weight: 600; color: #166534; margin: 0 0 0.5rem 0;">Quick decision rule</p>
+<p style="color: #14532d; font-size: 1rem; margin: 0;">Rule content here.</p>
 </div>
 ```
 
@@ -98,8 +98,8 @@ Use for "how to choose" sections with multiple conditional recommendations.
 
 ```html
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
-<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 1rem 0;">Decision Guide</p>
-<p style="color: #334155; font-size: 0.9rem; margin: 0 0 0.75rem 0;">Recommendation here.</p>
+<p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 1rem 0;">Decision Guide</p>
+<p style="color: #334155; font-size: 1rem; margin: 0 0 0.75rem 0;">Recommendation here.</p>
 </div>
 ```
 
@@ -116,7 +116,7 @@ Every post that compares two or more options must include a styled HTML comparis
 - Use `overflow-x: auto` wrapper for mobile responsiveness
 - Header row: bold, gray background (`#f8fafc`), bottom border
 - Row highlighting: use green background (`#f0fdf4`) for the recommended option
-- Font size: `0.85rem` for readability
+- Font size: `0.95rem` for readability
 - Padding: `0.75rem 1rem` per cell
 - Minimum columns: 4 (name, type/category, key differentiator, cost/verdict)
 - Number column: include a `#` column for list/comparison posts
@@ -273,6 +273,80 @@ Use inline SVG for workflows, decision trees, and process flows. Requirements:
 - Include `viewBox`, `role="img"`, and `aria-label`
 - Use inline styles (not Tailwind classes) for markdown compatibility
 - Keep diagrams simple: one concept per diagram
+- **Text sizing rule:** Inline SVG text must be legible alongside blog body text (~16-18px rendered). Use minimum font-size 14 for body text and 15-16 for headings within SVGs. Never use font-size below 14 in an inline SVG.
+- **Visual design rules for inline SVGs:**
+  - **No excess whitespace.** Size the viewBox tightly to content. Cards and containers should wrap text with consistent padding (12-20px), not leave large blank areas below the last line of text.
+  - **Use the site's dark palette for diagrams.** Background: `#0f172a` (navy). Card fill: `#1e293b`. Card border: `#334155`. Heading text: `#f8fafc` (white). Body text: `#94a3b8` (light gray). Accent: `#f97316` (orange) for top-bar highlights or emphasis. This matches the featured image palette and looks premium.
+  - **Never use washed-out light backgrounds** (`#f8fafc` fill with `#e2e8f0` border) for diagram containers. These look flat and cheap against blog body text.
+  - **Card top-bar accent pattern.** For multi-card layouts, add a thin accent bar (`height="6"`, same `rx` as card) at the top of each card to add visual hierarchy without clutter.
+  - **Contrast check.** Heading text must have >7:1 contrast ratio against card fill. Body text must have >4.5:1. White on dark navy passes. Blue on light blue does not.
+  - **Center alignment.** Wrap SVG in `<figure style="margin: 2rem auto; text-align: center;">`. Add `display: block; margin: 0 auto;` to the SVG element itself. Both are needed for consistent centering across browsers and markdown renderers.
+  - **Reference implementation:** See the 4-pillar diagram in `is-vidiq-worth-it-for-business.mdx`.
+
+---
+
+## 5b. Content Depth Requirements (CTR + Ranking Signals)
+
+These requirements ensure every post has enough depth to rank AND enough differentiation to earn clicks at positions 5-10 where CTR is naturally low.
+
+### Multiple Walkthroughs/Examples
+
+Any post teaching a framework, process, or method must include at least 2 worked examples from different industries or contexts. A single example feels narrow and industry-specific. Two examples prove the framework is universal and earn broader topical relevance from Google.
+
+- Example: A script writing post needs a SaaS walkthrough AND a consulting/services walkthrough
+- Example: A keyword research post needs a B2B software example AND a professional services example
+
+### Bucket Brigades (mandatory: 4-5 per post)
+
+Place transitional sentences at natural attention-dip points to keep readers scrolling. These are standalone one-line paragraphs:
+
+- "But there's a catch."
+- "Here's where it gets interesting."
+- "So what does this mean for your business?"
+- "Now, you might be thinking..."
+- "Here's the thing:"
+
+Place them: after the first major section, before the product bridge/CTA section, at any point where 3+ dense paragraphs appear back-to-back, and before the final mistakes/FAQ section.
+
+### Loss Aversion (mandatory: at least 1 per post)
+
+At least one moment in every post must make inaction feel costly. Not just "here's what to do" but "here's what you lose by NOT doing this." Be specific and honest, not manipulative.
+
+### Inline SVG Diagrams
+
+For any post teaching a framework or process, include at least one inline SVG diagram showing the structure visually. Requirements:
+- Include `viewBox`, `role="img"`, `aria-label`
+- Use inline styles (not Tailwind)
+- Show specific data: time allocations, percentages, metrics
+- Wrap in a `<figure>` with header strip + data visualization + metrics footer
+- One concept per diagram
+
+### Styled HTML Comparison Tables (not markdown)
+
+Any table comparing options, approaches, or types that helps readers make a DECISION must be styled HTML. Markdown tables are only acceptable for simple reference data (e.g., word count by video type).
+
+Decision tables require:
+- `overflow-x: auto` wrapper for mobile
+- Bold gray header row (`#f8fafc`, bottom border)
+- Green background (`#f0fdf4`) for the recommended column/option
+- Font size: `0.95rem`, padding: `0.75rem 1rem`
+- Minimum 6 rows of meaningful differentiation
+
+### Styled Callouts (not blockquotes)
+
+Never use plain markdown blockquotes (`>`) for tool recommendations, tips, or related content. All such content must be in styled callout boxes:
+- Related tools/resources → gray background callout (`#f8fafc`)
+- Tips/quick decisions → green background callout (`#f0fdf4`)
+- Warnings/mistakes → yellow left-border callout (`#eab308`)
+
+Plain blockquotes are invisible in the page flow. Styled callouts have visual weight and earn attention.
+
+### Attribution Rule
+
+Never invent or cite specific statistics without a verifiable source. For claims based on consulting experience, use "in our experience" attribution. For claims based on industry data, cite the source in a Sources section after FAQ.
+
+- BAD: "Scripted videos generate 3-5x more leads"
+- GOOD: "In our experience, scripted business videos convert at significantly higher rates"
 
 ---
 
@@ -304,20 +378,145 @@ These mistakes have been caught in real drafts. Do not repeat them.
 
 Specifically, the first draft must include:
 
+**Structure:**
 - [ ] All H2s and H3s at the correct depth for the word count
 - [ ] ToC with proper nesting (flat or nested based on post type)
-- [ ] Key Takeaways callout box
-- [ ] At least 2 additional styled callouts
-- [ ] Comparison table (if comparing anything)
+- [ ] No horizontal dividers (`---`) between sections
+
+**Callouts (minimum 3):**
+- [ ] Key Takeaways callout box (blue left border, immediately after intro)
+- [ ] At least 2 additional styled callouts (warning, tip, decision guide, or related tools)
+- [ ] No plain markdown blockquotes for tips/tools/related content
+
+**Content Depth:**
+- [ ] Featured snippet block (H2 matching target query + concise numbered list or paragraph answer)
+- [ ] At least 2 worked examples/walkthroughs from different industries
+- [ ] Styled HTML comparison table (if comparing anything)
+- [ ] At least 1 inline SVG diagram for frameworks/processes
+- [ ] 4-5 bucket brigades at attention-dip points
+- [ ] At least 1 loss aversion moment (inaction made costly)
+
+**CTR + SEO:**
+- [ ] Title differentiates from SERP competitors (specificity signal: number, bracket, framework name)
+- [ ] Title under 60 characters
+- [ ] Meta description under 155 chars with specific claim (not vague "comprehensive guide")
+- [ ] No invented statistics (use "in our experience" for unverifiable claims)
+
+**Production:**
+- [ ] publishDate is today or in the past (NOT tomorrow, NOT a future date — future dates cause 404 on the live site because the static build filters them out)
+- [ ] FAQ content written manually in MDX body (frontmatter `faqs` only generates schema.org JSON-LD, NOT visible content. Every FAQ must be an H3 + paragraph in the body)
 - [ ] Screenshots for every tool (if it is a tool post)
 - [ ] Direct links for every tool/resource mentioned
-- [ ] Styled "What to Do This Week" closing
+- [ ] Styled "What to Do This Week" green callout closing
 - [ ] All visuals placed and captioned
-- [ ] No horizontal dividers
 - [ ] All style guide checks passed (em-dash ban, AI phrase ban, etc.)
 - [ ] Internal links verified (exact slugs confirmed against `src/pages/tools/` and `src/data/post/`)
 
+**AI SEARCH OPTIMIZATION:**
+- [ ] Content offers a unique perspective -- not a rehash of existing top 10 results (Google Layer 1)
+- [ ] No over-optimization for AI at expense of human readability (Google warns against this)
+- [ ] At least 1 self-contained answer block that AI platforms can extract (Layer 2)
+- [ ] Definition blocks for key concepts SellonTube wants cited for (Layer 2)
+- [ ] Entity consistency -- canonical terms used throughout (Layer 2)
+
 **The user should review for strategic direction and tone, not for missing formatting, visuals, or structural elements.** Those must be right before the draft is shown.
+
+---
+
+## 8. Content Quality Gates (Measurable Specs)
+
+These are exact values, not guidelines. Copy them. Do not approximate.
+
+### Font Sizes in HTML Components
+
+| Component | Element | Font Size | Notes |
+|---|---|---|---|
+| Callout boxes | Uppercase label | `0.8rem` | All callout types |
+| Callout boxes | Body text / list items | `1rem` | Matches blog body |
+| Comparison tables | All cell text | `0.95rem` | Slightly smaller than body for density |
+| Table of Contents | Link text | `1rem` | |
+| ToC / Callout | Section label (uppercase) | `0.8rem` | |
+| Figcaption | Caption text | `0.85rem` | Intentionally smaller |
+| Green CTA box | Action items | `1rem` | |
+
+**Rule:** If any HTML text inside a blog post renders noticeably smaller than surrounding paragraph text, the font-size is wrong. Fix it before showing the draft.
+
+### SVG Diagram Specs
+
+| Element | Min Font Size | Color |
+|---|---|---|
+| Heading text | 15 | `#f8fafc` (white) |
+| Body text | 14 | `#94a3b8` (light gray) |
+| Background | N/A | `#0f172a` (navy) |
+| Card fill | N/A | `#1e293b` (dark slate) |
+| Card border | N/A | `#334155` (slate) |
+| Accent bar | N/A | `#f97316` (orange) |
+
+**Centering:** `<figure style="margin: 2rem auto; text-align: center;">` + `display: block; margin: 0 auto;` on the SVG element.
+
+**ViewBox:** Size tightly to content. No blank space below the last line of text in any container. If cards have 4 lines of body text ending at y=206, card bottom should be at ~225, not 320.
+
+### FAQ Rendering
+
+Frontmatter `faqs` array generates schema.org FAQPage JSON-LD only (invisible). Visible FAQ content MUST be written manually in the MDX body:
+
+```markdown
+## FAQ
+
+### Question text here?
+
+Answer paragraph here with [internal links](/tools/tool-name) where relevant.
+```
+
+Every question in the frontmatter `faqs` array must have a matching H3 + paragraph in the body. No exceptions.
+
+---
+
+## 9. Pre-Publish Verification (Mandatory)
+
+Run these checks AFTER writing and BEFORE showing the draft to the user. Every check must pass.
+
+### Automated Checks (grep commands)
+
+```
+# Em-dash ban
+grep -r "—" [post-file]
+
+# Banned AI transitions
+grep -riE "Moreover|Furthermore|Additionally|Interestingly|Let's break this down|It's worth noting|delve|pivotal|tapestry|testament|showcase|vibrant|intricate|underscore|garner|foster|leverage|comprehensive|actionable" [post-file]
+
+# Banned sentence structures
+grep -riE "Not only .+, but also|Whether you're|Let's dive in|Without further ado|In the world of|When it comes to" [post-file]
+
+# Wrong font sizes (should find zero matches)
+grep -c "font-size: 0.85rem\|font-size: 0.7rem" [post-file]
+
+# FAQ body check (must have H3s after ## FAQ)
+grep -A2 "## FAQ" [post-file]
+
+# Internal links exist
+grep -oE "/tools/[a-z-]+" [post-file]
+# then verify each slug exists in src/pages/tools/
+```
+
+All grep checks must return zero matches (for banned patterns) or confirm expected content exists (for FAQ, links).
+
+### Visual Checks (browser inspection)
+
+Start the dev server (`npm run dev`) and check the post at its URL:
+
+- [ ] SVG diagrams render with readable text (not tiny compared to body)
+- [ ] SVG diagrams are centered in the content column
+- [ ] Callout box text is same size or near-same size as body paragraphs
+- [ ] Table text is readable and not significantly smaller than body
+- [ ] FAQ section has visible question/answer content (not just a heading)
+- [ ] Comparison table highlights the recommended row in green
+- [ ] "What to Do This Week" renders as a green callout, not plain text
+- [ ] All internal links are clickable and resolve to real pages
+- [ ] Featured image renders correctly (no broken SVG, no layout issues)
+- [ ] No excessive whitespace in any visual element
+
+**If any visual check fails, fix it before presenting the draft.**
 
 ---
 

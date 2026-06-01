@@ -1,7 +1,7 @@
 # SellonTube Blog Content Plan
 
 **Single source of truth for all blog publishing decisions.**
-**Last updated:** 2026-05-18 (v3: rescheduled Week 1 to May 19-23, Weeks 2-4 shifted accordingly. All 19 posts drafted.)
+**Last updated:** 2026-05-27 (v4: full status audit. Published count 25→35, schedule gap Jun 1 identified, GSC cross-ref done.)
 **Cadence:** 5 posts/week (Mon-Fri)
 **pSEO publishing:** PAUSED
 **Quality bar:** Every post meets `blog-production-standard.md` + `style-guide.md` + `content-playbook.md` from first draft
@@ -672,35 +672,104 @@
 
 ---
 
-## Published (25 posts)
+## Published (35 posts)
 
 | # | Date | Slug | Title |
 |---|------|------|-------|
-| 1 | 2025-12-23 | why-most-youtube-strategies-fail | 7 YouTube Marketing Mistakes That Kill Business Channels |
-| 2 | 2025-12-25 | compounding-effect-four-videos-a-month | How 4 Videos a Month Build a Predictable Pipeline |
-| 3 | 2025-12-26 | high-intent-topic-research-framework | YouTube Content Strategy: Plan Videos That Convert |
-| 4 | 2025-12-27 | youtube-vs-blog-shopify-app-case-study | YouTube vs Blog for Shopify Apps: 12-Month Data |
-| 5 | 2025-12-28 | best-youtube-transcript-generators | Best YouTube Transcript Generators (2026) |
-| 6 | 2026-02-27 | youtube-marketing-roi | YouTube Marketing ROI: 3.25x More Conversions |
-| 7 | 2026-03-04 | youtube-marketing-b2b | YouTube Marketing for B2B: Generate Leads |
-| 8 | 2026-03-10 | create-youtube-channel-for-business | How to Create a YouTube Channel for Business |
-| 9 | 2026-03-11 | youtube-marketing-strategy | YouTube Marketing Strategy: 6-Step Framework |
-| 10 | 2026-03-13 | best-youtube-video-ideas-generators-for-businesses | 14 Best YouTube Video Ideas Generators (2026) |
-| 11 | 2026-03-18 | youtube-seo-guide | YouTube SEO: Rank Business Videos on Page 1 (2026) |
-| 12 | 2026-03-25 | best-youtube-seo-tools-for-business | 7 Best Tools for YouTube SEO on Business Channels (2026) |
-| 13 | 2026-03-30 | youtube-video-ideas-generator-for-b2b | YouTube Video Ideas Generator for B2B |
-| 14 | 2026-04-06 | search-intent-youtube-seo-power | YouTube vs Blogging: Which Drives More B2B Leads? |
-| 15 | 2026-04-16 | best-youtube-autocomplete-keyword-tools | 10+ Best YouTube Autocomplete Keyword Tools (Free and Paid) |
-| 16 | 2026-04-16 | how-to-find-youtube-autocomplete-keywords | How to Find YouTube Autocomplete Keywords (The Right Way) |
-| 17 | 2026-04-20 | youtube-script-writing-guide | How to Write a YouTube Script That Converts |
-| 18 | 2026-04-21 | youtube-channel-optimization-checklist | YouTube Channel Optimization: 13-Point Checklist |
-| 19 | 2026-04-22 | youtube-keyword-research | YouTube Keyword Research for Business Channels (2026) |
-| 20 | 2026-04-23 | youtube-lead-generation | YouTube Lead Generation: Build a Pipeline |
-| 21 | 2026-04-23 | how-to-find-youtube-video-ranking-keywords | How to Find What Keywords Your YouTube Videos Rank For |
-| 22 | 2026-04-24 | youtube-views-but-no-leads | Getting YouTube Views But No Leads? 6 Reasons |
-| 23 | 2026-04-25 | youtube-shorts-for-business | YouTube Shorts for Business |
-| 24 | 2026-04-27 | best-youtube-rank-checker-tools-for-business | 10 Best YouTube Rank Checker Tools for Business (2026) |
-| 25 | 2026-04-28 | youtube-marketing-cost | YouTube Marketing Cost in 2026 |
+| 1 | 2025-12-22 | the-youtube-acquisition-engine | YouTube for Customer Acquisition: Full System |
+| 2 | 2025-12-23 | why-most-youtube-strategies-fail | 7 YouTube Marketing Mistakes That Kill Business Channels |
+| 3 | 2025-12-25 | compounding-effect-four-videos-a-month | How 4 Videos a Month Build a Predictable Pipeline |
+| 4 | 2025-12-26 | high-intent-topic-research-framework | YouTube Content Strategy: Plan Videos That Convert |
+| 5 | 2025-12-27 | youtube-vs-blog-shopify-app-case-study | YouTube vs Blog for Shopify Apps: 12-Month Data |
+| 6 | 2025-12-28 | best-youtube-transcript-generators | Best YouTube Transcript Generators (2026) |
+| 7 | 2026-02-27 | youtube-marketing-roi | YouTube Marketing ROI: 3.25x More Conversions |
+| 8 | 2026-03-04 | youtube-marketing-b2b | YouTube Marketing for B2B: Generate Leads |
+| 9 | 2026-03-10 | create-youtube-channel-for-business | How to Create a YouTube Channel for Business |
+| 10 | 2026-03-11 | youtube-marketing-strategy | YouTube Marketing Strategy: 6-Step Framework |
+| 11 | 2026-03-13 | best-youtube-video-ideas-generators-for-businesses | 14 Best YouTube Video Ideas Generators (2026) |
+| 12 | 2026-03-18 | youtube-seo-guide | YouTube SEO: Rank Business Videos on Page 1 (2026) |
+| 13 | 2026-03-25 | best-youtube-seo-tools-for-business | 7 Best Tools for YouTube SEO on Business Channels (2026) |
+| 14 | 2026-03-30 | youtube-video-ideas-generator-for-b2b | YouTube Video Ideas Generator for B2B |
+| 15 | 2026-04-06 | search-intent-youtube-seo-power | YouTube vs Blogging: Which Drives More B2B Leads? |
+| 16 | 2026-04-16 | best-youtube-autocomplete-keyword-tools | 10+ Best YouTube Autocomplete Keyword Tools (Free and Paid) |
+| 17 | 2026-04-16 | how-to-find-youtube-autocomplete-keywords | How to Find YouTube Autocomplete Keywords (The Right Way) |
+| 18 | 2026-04-20 | youtube-script-writing-guide | How to Write a YouTube Script That Converts |
+| 19 | 2026-04-21 | youtube-channel-optimization-checklist | YouTube Channel Optimization: 13-Point Checklist |
+| 20 | 2026-04-22 | youtube-keyword-research | YouTube Keyword Research for Business Channels (2026) |
+| 21 | 2026-04-23 | youtube-lead-generation | YouTube Lead Generation: Build a Pipeline |
+| 22 | 2026-04-23 | how-to-find-youtube-video-ranking-keywords | How to Find What Keywords Your YouTube Videos Rank For |
+| 23 | 2026-04-24 | youtube-views-but-no-leads | Getting YouTube Views But No Leads? 6 Reasons |
+| 24 | 2026-04-25 | youtube-shorts-for-business | YouTube Shorts for Business |
+| 25 | 2026-04-27 | best-youtube-rank-checker-tools-for-business | 10 Best YouTube Rank Checker Tools for Business (2026) |
+| 26 | 2026-04-28 | youtube-marketing-cost | YouTube Marketing Cost in 2026 |
+| 27 | 2026-05-19 | youtube-seo-for-business | YouTube SEO for Business: The Non-Creator's Guide to Ranking |
+| 28 | 2026-05-20 | how-to-check-youtube-ranking | How to Check Your YouTube Keyword Ranking (3 Methods) |
+| 29 | 2026-05-20 | youtube-content-strategy-guide | YouTube Content Strategy: Plan Videos That Bring Customers |
+| 30 | 2026-05-21 | youtube-description-templates | YouTube Video Descriptions: B2B Templates That Rank |
+| 31 | 2026-05-22 | youtube-chapters-timestamps | YouTube Chapters and Timestamps: One Video, Five Search Results |
+| 32 | 2026-05-23 | youtube-titles-for-business | YouTube Titles for Business: Rank for Buyer Queries |
+| 33 | 2026-05-26 | youtube-b2b-buyer-journey-data | Google's B2B Data: YouTube Drives 82% of Vendor Picks |
+| 34 | 2026-05-26 | youtube-script-examples-business | 5 YouTube Script Examples for Business Channels You Can Copy Today |
+| 35 | 2026-05-27 | youtube-marketing-tools | YouTube Marketing Tools: The Complete B2B Stack (2026) |
+
+---
+
+## Scheduled (12 posts, auto-publish on publishDate)
+
+All have full content committed to main. No `draft: true`. Will go live on next Netlify build after their publishDate.
+
+| # | Date | Day | Slug | Title |
+|---|------|-----|------|-------|
+| 1 | 2026-05-28 | Wed | youtube-analytics-other-channels | YouTube Analytics for Other Channels: Competitive Research Guide |
+| 2 | 2026-05-29 | Thu | how-to-check-youtube-rankings | How to Check YouTube Rankings: 3 Methods That Work |
+| 3 | 2026-05-30 | Fri | youtube-vs-paid-ads-b2b | YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison |
+| 4 | 2026-06-02 | Mon | youtube-autocomplete-b2b-research | YouTube Autocomplete for B2B: Find Topics Buyers Search For |
+| 5 | 2026-06-03 | Tue | youtube-competitor-analysis | YouTube Competitor Analysis: The 5-Point Framework for B2B |
+| 6 | 2026-06-04 | Wed | youtube-growth-strategy | YouTube Growth Strategy: The 4-Phase Model for Business Channels |
+| 7 | 2026-06-05 | Thu | youtube-roi-for-saas | YouTube ROI for SaaS: What a $12k/Year Channel Returns |
+| 8 | 2026-06-06 | Fri | b2b-video-marketing-strategy | B2B Video Marketing Strategy: The Revenue Playbook |
+| 9 | 2026-06-09 | Mon | youtube-business-plan | YouTube Business Plan: Build a Channel That Pays for Itself |
+| 10 | 2026-06-10 | Tue | youtube-break-even-math | The Break-Even Math: How Many Clients Justify YouTube? |
+| 11 | 2026-06-11 | Wed | when-youtube-doesnt-work | When YouTube Doesn't Work for Customer Acquisition |
+| 12 | 2026-06-12 | Thu | youtube-for-saas-demos | YouTube for SaaS: 3 Video Types That Drive Demo Requests |
+
+### Schedule Gaps
+
+| Date | Day | Status | Action |
+|------|-----|--------|--------|
+| 2026-06-01 | Mon | **CONTENT REFRESH** | Refresh create-youtube-channel-for-business (6,600 vol, pos 25.9) |
+| 2026-06-13 | Fri | **EMPTY** | Was content refresh day in v3 plan |
+| 2026-06-16+ | -- | **NOTHING SCHEDULED** | Pipeline ends Jun 12 |
+
+### GSC-Backed Candidate for Jun 1
+
+**Decision: Content refresh day.**
+No new post on Jun 1. Instead, refresh `/blog/create-youtube-channel-for-business` (6,600 vol keyword, position 25.9). Added: new sections (phone verification, custom URL, channel permissions, Shorts mention), production standard fixes (Key Takeaways, ToC, closing callout), removed dividers.
+
+**Rationale:** All GSC striking-distance B2B queries already have dedicated posts. AI Overviews eat clicks on informational page-1 rankings (1,988 impressions, 0 clicks across 5 posts). A content refresh on the highest-volume winnable keyword has more upside than a new post starting from zero.
+
+**Also completed (same session):**
+- CTR rewrite on `best-youtube-seo-tools-for-business` (title/meta/excerpt)
+- AIO citation-bait blocks added to 4 page-1 posts (script-writing-guide, search-intent, autocomplete-keywords, lead-generation)
+- Humanizer audit on all new copy
+
+---
+
+## Unscheduled Drafts (9 posts, `draft: true`, not live)
+
+All have full content but are deliberately held back. Reasons documented in Killed/Dropped section below.
+
+| # | File | Title | Content | Decision |
+|---|------|-------|---------|----------|
+| 1 | ai-tools-for-youtube.mdx | AI Tools for YouTube: What Actually Saves Time (2026) | 14K chars | DEFERRED (KD 43) |
+| 2 | b2b-video-content-ideas.md | 23 B2B Video Content Ideas That Generate Pipeline | 15K chars | DROPPED (overlaps tool) |
+| 3 | is-youtube-worth-it-for-business.md | Is YouTube Worth It for Business? Decision Framework | 15K chars | DROPPED (covered by ROI+cost) |
+| 4 | youtube-best-practices-for-business.md | 12 YouTube Best Practices for Business Channels | 23K chars | DEFERRED (no keyword) |
+| 5 | youtube-for-small-business.md | YouTube for Small Business: 500 Subscribers Can Outperform 50,000 | 28K chars | DROPPED (pSEO overlap) |
+| 6 | youtube-marketing-not-working.md | YouTube Marketing Not Working? 6 Diagnostic Checks | 18K chars | MERGED into views-but-no-leads |
+| 7 | youtube-marketing-plan.md | YouTube Marketing Plan: 90-Day Strategy | 17K chars | DROPPED (cannibalizes strategy) |
+| 8 | youtube-sales-funnel.md | YouTube Sales Funnel: First View to Paying Customer | 20K chars | DROPPED (overlaps lead-gen) |
+| 9 | youtube-seo-services.md | YouTube SEO Services: What They Include, Cost, DIY | 14K chars | KILLED (product-only rule) |
 
 ---
 
@@ -740,6 +809,22 @@
 | saas-youtube-acquisition-examples | DROPPED v2 | User dropped all case study posts |
 | b2b-youtube-channel-analysis | DROPPED v2 | User dropped all case study posts |
 | youtube-enterprise-lead-generation-case | DROPPED v2 | User dropped all case study posts |
+
+---
+
+## GSC Indexing: Priority Submissions (2026-05-27 audit)
+
+4 published posts with ZERO Google impressions after 14+ days. Submit via GSC URL Inspection > Request Indexing:
+
+| # | URL | Title | Days Live | Priority |
+|---|-----|-------|--------:|----------|
+| 1 | https://sellontube.com/blog/compounding-effect-four-videos-a-month | How 4 Videos a Month Build a Predictable Pipeline | 153 | URGENT |
+| 2 | https://sellontube.com/blog/youtube-video-ideas-generator-for-b2b | YouTube Video Ideas Generator for B2B | 58 | HIGH |
+| 3 | https://sellontube.com/blog/best-youtube-rank-checker-tools-for-business | 10 Best YouTube Rank Checker Tools for Business (2026) | 30 | HIGH |
+| 4 | https://sellontube.com/blog/youtube-marketing-cost | YouTube Marketing Cost in 2026 | 29 | HIGH |
+
+6 more posts under 14 days old (normal indexing window, monitor only):
+youtube-seo-for-business, youtube-content-strategy-guide, youtube-b2b-buyer-journey-data, youtube-script-examples-business, youtube-marketing-tools, how-to-check-youtube-ranking
 
 ---
 

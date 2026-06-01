@@ -238,6 +238,56 @@ Would SellonTube be proud to share this post on LinkedIn with their name attache
 
 These are the mechanical SEO requirements for every post:
 
+### 5.1 Pre-Writing: GSC + SERP Research (mandatory for every post)
+
+Before writing a single word, run this research. It determines how you title, structure, and differentiate the post.
+
+**Step 1: GSC Query-Level Check.** If an existing page already targets this keyword (or a related one), pull query-level GSC data. Identify what exact queries drive impressions. A post ranking for its own title (vanity query) instead of real search queries needs retargeting.
+
+**Step 2: SERP Feature Audit.** Search the target keyword. Document:
+- Is there a featured snippet? What format (paragraph, list, table)?
+- Are there video carousels, PAA boxes, ads above organic results?
+- What domains rank in positions 1-5? Are they authority sites or small blogs?
+
+**Step 3: Competitor Title Analysis.** List the titles of positions 1-7. If they all use "Guide" or "Ultimate Guide," you must differentiate. If they lack specificity (no numbers, no frameworks), that's your advantage.
+
+**Step 4: Featured Snippet Opportunity.** If a featured snippet exists, plan your snippet-capture block (see structure rules below). Winning pos 0 bypasses CTR problems at pos 5-10.
+
+**Key principle:** If competition is weak (small agency blogs, no authority sites), position 1-3 is achievable. If a featured snippet exists and competitors haven't optimized for it, pos 0 is your fastest path to clicks.
+
+### 5.2 Title + Meta Description (CTR-first writing)
+
+**Title rules:**
+- Must differentiate from competitors AT A GLANCE in the SERP
+- Add specificity signals: numbers ("5-Part"), brackets ("[With Walkthrough]"), named frameworks
+- Keep B2B/lead-gen positioning. NEVER dilute for generic traffic volume
+- Stay under 60 characters for full mobile display
+- If 3+ competitors use the same word (Guide, Ultimate, Best), avoid that word
+
+**Meta description rules:**
+- Under 155 characters
+- Lead with the concrete output/framework, not B2B jargon
+- Must contain at least one specific claim the reader can evaluate
+- Never start with "A practical guide..." or "This post covers..."
+- Include the keyword naturally
+
+**Test:** Would a busy B2B founder, scanning 10 blue links on a phone, stop at YOUR title? If not, rewrite it.
+
+### 5.3 Featured Snippet Capture (mandatory when snippet opportunity exists)
+
+**Structure:**
+1. Add an H2 that closely matches the target query (word-for-word if possible)
+2. Immediately after the H2, provide a concise answer:
+   - **Numbered list** for "how to" queries (5-7 items, each 1 line)
+   - **Paragraph** for "what is" queries (40-60 words)
+   - **Table** for comparison queries
+3. Place BEFORE the Table of Contents (high in document)
+4. Follow with a deeper explanation that gives readers a reason to stay
+
+**Why this works:** Google pulls featured snippets from concise, structured answers directly below H2s matching the query. Winning pos 0 bypasses CTR problems at pos 5-10 entirely.
+
+### 5.4 On-Page Mechanics
+
 **Keyword placement:** Target keyword must appear in the headline, first 100 words, at least one H2, and the meta description. Use it 3-5 times naturally throughout.
 
 **URL slugs:** Short and keyword-rich. No dates. *Example: /youtube-seo-shopify*
@@ -246,11 +296,45 @@ These are the mechanical SEO requirements for every post:
 
 **Featured snippet target:** Write one section as a direct, concise answer (40-60 words) that Google could pull as a snippet.
 
+
 **FAQ section:** End with 3-5 questions pulled from "People Also Ask" related to the keyword.
 
 **Related keywords:** Include 2-3 naturally throughout to signal topical depth.
 
 **Internal links:** At least 4 internal links total per post (mix of blog posts, tools, and pSEO pages). Suggest which existing posts should link back to this one.
+
+### 5.5 Post-Publish SEO Sprint
+
+After every publish:
+1. Submit URL to GSC (URL Inspection → Request Indexing)
+2. Submit URL to Bing via Webmaster API
+3. Find 3-5 existing posts topically related → add contextual links FROM them TO the new post
+4. Use keyword-rich anchor text (not "click here" or "read more")
+5. Add links from relevant tool pages where natural
+
+### 5.6 Monthly CTR Audit (existing posts)
+
+Every month, pull GSC page data. Sort by impressions descending. Filter pages with CTR < 1% or clicks = 0. Those pages need:
+- Title/meta rewrite for CTR differentiation
+- Featured snippet block addition
+- Content depth check (comparison table, second walkthrough, SVG diagram)
+- Position distribution check (is it stable or swinging between page 1 and 2?)
+
+**Priority order:** Highest impressions + lowest CTR + position 5-15 = fix first.
+
+### 5.7 AI Search Optimization (applies to every post)
+
+Google's AI Overviews are powered by the same ranking systems as traditional search. **There is no separate "AI SEO" for Google.** The SEO craft rules above (5.1-5.6) already optimize for Google AI Overviews.
+
+For non-Google AI platforms (ChatGPT, Perplexity, Claude), apply these additional checks:
+- **Content freshness:** Posts targeting competitive keywords must be updated every 90 days. Core cluster posts monthly. (See Section 6, Content Refreshes.)
+- **Answer blocks:** Include 1-2 self-contained, quotable paragraphs per post that AI can extract without surrounding context. See `ai-seo-guide.md` Section 7.
+- **Definition blocks:** For any concept SellonTube wants to be cited for, include a bold term + one-sentence definition as a standalone paragraph.
+- **Entity consistency:** Use exact canonical terms across all pages: "buyer-intent video", "YouTube acquisition channel", "customer acquisition", "B2B YouTube".
+
+**Do not sacrifice human readability for AI optimization.** If an AI-specific pattern makes the content worse for human readers, skip it.
+
+See `ai-seo-guide.md` for the full two-layer framework.
 
 ---
 
@@ -341,6 +425,8 @@ Run every post through these checks before handing it to Gautam.
 - [ ] 2-3 related keywords used naturally
 - [ ] FAQ section with 3-5 "People Also Ask" questions
 - [ ] At least 4 internal links (mix of blog posts, tools, and pSEO pages)
+- [ ] AI optimization: post follows Layer 1 (Google) fundamentals -- unique perspective, non-commodity content, clear structure
+- [ ] AI optimization: Layer 2 patterns applied where natural -- answer block, definition block, entity consistency (see ai-seo-guide.md)
 
 **AI QUALITY GATE:**
 - [ ] No fabricated statistics or case studies (see Style Guide Fix #7)

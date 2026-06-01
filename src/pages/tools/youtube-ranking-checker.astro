@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'Free YouTube Ranking Checker for Business',
+  title: 'YouTube Rank Checker: Free Video Keyword Ranking Tool',
   description:
-    'Free YouTube ranking checker. See where your videos rank for any keyword, your position, and the top 10 competing videos with view counts.',
+    'Free YouTube rank checker. Enter a keyword and your channel to see your exact ranking position in the top 20 results, plus competing videos with view counts.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Ranking Checker",
   "url": `${siteUrl}/tools/youtube-ranking-checker`,
-  "description": "Free YouTube ranking checker. See where your videos rank for any keyword, your position, and the top 10 competing videos with view counts.",
+  "description": "Free YouTube rank checker. Enter a keyword and your channel to see your exact ranking position in the top 20 results, plus competing videos with view counts.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -43,6 +43,7 @@ const faqSchema = {
     { "@type": "Question", "name": "How often should I check my rankings?", "acceptedAnswer": { "@type": "Answer", "text": "Check weekly for your most important keywords. YouTube rankings shift faster than Google, so a video that ranks #5 today could move to #2 or #12 within a week depending on engagement and new uploads." } },
     { "@type": "Question", "name": "Why am I not ranking?", "acceptedAnswer": { "@type": "Answer", "text": "If your channel does not appear in the top 20 results, your video may not target that keyword in the title or description. YouTube ranks videos based on relevance signals: title match, description keywords, tags, engagement, and watch time. Start by optimizing your metadata with the target keyword." } },
     { "@type": "Question", "name": "Can I check competitor channels?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill." } },
+    { "@type": "Question", "name": "Do YouTube tags affect ranking?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tags are a secondary relevance signal that helps YouTube understand your video's topic. They do not override title or description, but they reinforce those signals. If you rank lower than expected for a keyword, check whether that keyword appears in your tags." } },
     { "@type": "Question", "name": "How do I check what keywords my YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Enter a keyword you want to check and your channel URL above. The tool searches YouTube in real time and tells you your exact position in the top 20 results. For a full walkthrough of three different methods, see our guide on finding your YouTube ranking keywords." } },
     { "@type": "Question", "name": "How does the YouTube ranking system work?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube ranks videos based on relevance and engagement signals. Relevance comes from title match, description keywords, and tags. Engagement comes from click-through rate, watch time, and viewer satisfaction. This tool lets you check where your video stands for any keyword so you can identify what to improve." } },
   ]
@@ -63,16 +64,35 @@ const faqSchema = {
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">No login required</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
-        Where Does Your Video Rank<br class="hidden sm:block" /> for That Keyword?
+        YouTube Rank Checker
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Enter a keyword and your channel. See your position in YouTube search results, plus the top 10 competing videos with view counts and age.
+        Where does your video rank for that keyword? Enter a keyword and your channel to see your exact position in YouTube search results, plus the top 10 competing videos with view counts and age.
       </p>
     </div>
   </section>
 
   <!-- Tool -->
   <section class="bg-white dark:bg-slate-950 pb-20">
+
+    <!-- Shared results banner (visible only when visiting a shared URL) -->
+    <div id="shared-banner" class="hidden max-w-xl mx-auto px-4 mb-4">
+      <div class="rounded-2xl border border-blue-200 dark:border-blue-800/40 bg-blue-50/60 dark:bg-blue-950/40 p-6">
+        <p class="text-xs font-semibold uppercase tracking-wider text-blue-500 dark:text-blue-400 mb-3">Shared ranking result</p>
+        <div class="flex items-center gap-4 mb-4">
+          <div id="shared-rank-box" class="flex items-center justify-center w-16 h-16 flex-shrink-0 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+            <span id="shared-rank-num" class="text-2xl font-bold text-emerald-600 dark:text-emerald-400"></span>
+          </div>
+          <div>
+            <p id="shared-summary" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+            <p id="shared-keyword-label" class="text-sm text-gray-600 dark:text-slate-400"></p>
+            <p id="shared-date-label" class="text-xs text-gray-400 dark:text-slate-500 mt-0.5"></p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-slate-300">Want to check your own ranking? Enter your keyword and channel below.</p>
+      </div>
+    </div>
+
     <div id="tool-container" class="max-w-xl mx-auto px-4">
 
       <!-- Step: Input -->
@@ -210,8 +230,17 @@ const faqSchema = {
           </a>
         </div>
 
-        <!-- Reset -->
-        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+        <!-- Share + Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6 space-y-3">
+          <div class="relative flex justify-center">
+            <button
+              id="share-btn"
+              class="w-full py-3 rounded-xl border border-emerald-200 dark:border-emerald-800/40 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
+            >
+              Copy share link
+            </button>
+            <span id="share-toast" class="hidden absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-700 whitespace-nowrap">Link copied!</span>
+          </div>
           <button
             id="reset-btn"
             class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors"
@@ -268,21 +297,21 @@ const faqSchema = {
 
       <!-- Section 1 -->
       <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why YouTube keyword rank checking matters for businesses</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why checking your YouTube rank matters for businesses</h2>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
           YouTube is the second largest search engine. When a potential customer searches for a keyword related to your product or service, the video that ranks #1 gets the click. Position #5 gets a fraction of that traffic. Position #20 gets almost nothing.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          A YouTube video rank checker tells you exactly where you stand. Without it, you are publishing content and hoping it shows up. That is not a strategy. Checking your rank for specific keywords turns YouTube from a content calendar into a measurable acquisition channel.
+          A YouTube rank checker tells you exactly where you stand. Without it, you are publishing content and hoping it shows up. That is not a strategy. Checking your video rank for specific keywords turns YouTube from a content calendar into a measurable acquisition channel.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          For B2B companies, this matters more than view counts. A video with 500 views that ranks #1 for "best CRM for agencies" will generate more qualified leads than a viral video with 100,000 views from the wrong audience. The YouTube keyword rank checker shows you whether your videos are reaching the right people. For more on this, see our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
+          For B2B companies, this matters more than view counts. A video with 500 views that ranks #1 for "best CRM for agencies" will generate more qualified leads than a viral video with 100,000 views from the wrong audience. The YouTube rank checker shows you whether your videos are reaching the right people. For more on this, see our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
         </p>
       </div>
 
       <!-- Section 2 -->
       <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What the YouTube ranking checker shows you</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What the YouTube rank checker shows you</h2>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
           This tool searches YouTube for your keyword and returns the top 20 results. Here is what you get and how to use each data point.
         </p>
@@ -320,7 +349,7 @@ const faqSchema = {
 
       <!-- Section 3 -->
       <div>
-        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to improve your YouTube ranking</h2>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How to improve your YouTube video rank</h2>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
           If you are not ranking where you want to be, here are the highest-impact fixes. Start with the first one and work down.
         </p>
@@ -343,7 +372,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Check your tags</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Tags are a secondary ranking signal, but they still matter. Include your target keyword as a tag, along with close variations. Use our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to find the right tags for your keyword.
+              Tags are a secondary ranking signal, but they reinforce the relevance signals from your title and description. If your target keyword is missing from your tags, YouTube has one less signal connecting your video to that search. Include the exact keyword as your first tag, then add 2-3 close variations and one broader topic tag. Use our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to find the right tags for your keyword.
             </p>
           </div>
 
@@ -351,6 +380,36 @@ const faqSchema = {
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Improve watch time</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               YouTube promotes videos that keep viewers watching. If your video has a high drop-off rate in the first 30 seconds, consider re-editing the intro. Hook the viewer with the outcome they will get, not a long introduction about yourself or your company.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Tags and ranking -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">How YouTube tags affect your video ranking</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube tags are metadata labels that tell the algorithm what your video is about. They are not visible to viewers, but they influence which search queries your video appears for. If you check your rank for a keyword and your video is nowhere in the top 20, misaligned tags are often part of the problem.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Tags work as a confirmation layer. When your title says "best CRM for agencies" and your tags include "best CRM for agencies," "CRM for marketing agencies," and "agency CRM comparison," YouTube has three signals all pointing at the same topic. Remove the tags, and you are relying on the title and description alone.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-6">
+          The most common tagging mistake for business channels is using broad category tags ("marketing," "business," "SaaS") instead of specific keyword tags. Broad tags put you in competition with millions of videos. Specific tags narrow the field to the exact queries your buyers search for.
+        </p>
+
+        <div class="space-y-4">
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">How to audit your tags against your rank</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Use this rank checker to test 3-5 keywords you want to rank for. For each keyword where you rank lower than expected (or not at all), check whether that keyword appears in your video's tags. If it does not, add it. If it does but you still rank poorly, the issue is likely title relevance or engagement, not tags.
+            </p>
+          </div>
+
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Tag structure that supports ranking</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Put your primary keyword as the first tag. Follow it with 2-3 close variations (different word order, singular/plural, common abbreviations). Then add 1-2 broader topic tags to help YouTube categorize the video. Stay under 15 tags total. Our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube tag generator</a> builds this structure automatically from your video URL.
             </p>
           </div>
         </div>
@@ -400,6 +459,13 @@ const faqSchema = {
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can I check competitor channels?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               Yes. Enter any channel URL or handle alongside a keyword to see where that channel ranks. This is useful for understanding which competitors own specific search terms and where there are gaps you can fill.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Do YouTube tags affect ranking?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Yes. Tags are a secondary relevance signal that helps YouTube understand your video's topic. They do not override title or description, but they reinforce those signals. If you rank lower than expected for a keyword, check whether that keyword appears in your tags. Use our <a href="/tools/youtube-tag-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">tag generator</a> to build a tag set that matches your target keywords.
             </p>
           </div>
 
@@ -660,6 +726,79 @@ const faqSchema = {
     }
   }
 
+  // ===== SHARE FUNCTIONALITY =====
+
+  function displayChannel(input: string): string {
+    const match = input.match(/@[\w.-]+/);
+    if (match) return match[0];
+    if (input.length > 35) return input.slice(0, 35) + '...';
+    return input;
+  }
+
+  function updateShareUrl(data: RankCheckResponse): void {
+    const params = new URLSearchParams();
+    params.set('k', data.keyword);
+    params.set('ch', data.channelInput);
+    params.set('r', data.userRank ? data.userRank.toString() : '0');
+    params.set('d', new Date().toISOString().split('T')[0]);
+    history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+  }
+
+  function copyShareUrl(): void {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const toast = document.getElementById('share-toast');
+      if (toast) {
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2000);
+      }
+    });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'tool_share_click', tool: 'youtube-ranking-checker' });
+  }
+
+  function loadSharedResult(): void {
+    const params = new URLSearchParams(window.location.search);
+    const keyword = params.get('k');
+    const channel = params.get('ch');
+    const rank = params.get('r');
+    const date = params.get('d');
+
+    if (!keyword || !channel) return;
+
+    const keywordInput = document.getElementById('keyword-input') as HTMLInputElement;
+    if (keywordInput) keywordInput.value = keyword;
+
+    const banner = document.getElementById('shared-banner');
+    if (!banner) return;
+
+    const rankNum = parseInt(rank || '0', 10);
+    const rankEl = document.getElementById('shared-rank-num');
+    const rankBox = document.getElementById('shared-rank-box');
+    const summaryEl = document.getElementById('shared-summary');
+    const keywordLabel = document.getElementById('shared-keyword-label');
+    const dateLabel = document.getElementById('shared-date-label');
+    const channelDisplay = displayChannel(channel);
+
+    if (rankEl && rankBox) {
+      if (rankNum > 0) {
+        rankEl.textContent = '#' + rankNum;
+      } else {
+        rankEl.textContent = '--';
+        rankBox.className = 'flex items-center justify-center w-16 h-16 flex-shrink-0 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700';
+        rankEl.className = 'text-2xl font-bold text-gray-400 dark:text-slate-500';
+      }
+    }
+
+    if (summaryEl) summaryEl.textContent = rankNum > 0 ? channelDisplay + ' ranked #' + rankNum : channelDisplay + ' was not in the top 20';
+    if (keywordLabel) keywordLabel.textContent = 'for “' + keyword + '”';
+    if (dateLabel && date) {
+      const d = new Date(date + 'T00:00:00');
+      dateLabel.textContent = 'Checked ' + d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    banner.classList.remove('hidden');
+  }
+
   // ===== API CALL =====
 
   async function fetchRankCheck(keyword: string, channelInput: string): Promise<void> {
@@ -688,6 +827,7 @@ const faqSchema = {
       if (!Array.isArray(data?.results)) throw new Error('Invalid response structure');
 
       renderResults(data);
+      updateShareUrl(data);
       incrementCount();
       updateCounterLabel();
       showStep('step-results');
@@ -795,6 +935,9 @@ const faqSchema = {
     clearFieldError('keyword-input');
     clearFieldError('channel-input');
     showStep('step-input');
+    history.replaceState(null, '', window.location.pathname);
+    const banner = document.getElementById('shared-banner');
+    if (banner) banner.classList.add('hidden');
     (document.getElementById('keyword-input') as HTMLInputElement).focus();
     const btn = document.getElementById('check-btn') as HTMLButtonElement;
     btn.disabled = false;
@@ -812,6 +955,7 @@ const faqSchema = {
 
   document.getElementById('check-btn')?.addEventListener('click', runRankCheck);
   document.getElementById('reset-btn')?.addEventListener('click', reset);
+  document.getElementById('share-btn')?.addEventListener('click', copyShareUrl);
   document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
 
   document.getElementById('keyword-input')?.addEventListener('keydown', (e) => {
@@ -833,4 +977,5 @@ const faqSchema = {
   });
 
   updateCounterLabel();
+  loadSharedResult();
 </script>

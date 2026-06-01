@@ -249,9 +249,17 @@ function checkSitemap(distRoot) {
 // Check 3: Draft/future leak detection
 // ---------------------------------------------------------------------------
 
+function toIST(d) {
+  const date = d instanceof Date ? d : new Date(String(d));
+  const istDateStr = new Date(date.getTime() + 5.5 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  return new Date(istDateStr + 'T00:00:00+05:30');
+}
+
 function checkDraftLeaks(distRoot, postDir) {
   const violations = [];
   const now = new Date();
+  const cutoff = new Date(now);
+  cutoff.setHours(23, 59, 59, 999);
   let totalPosts = 0;
   let drafts = 0;
   let futurePosts = 0;
@@ -273,7 +281,7 @@ function checkDraftLeaks(distRoot, postDir) {
       fs.existsSync(distPath + '.html');
 
     const isDraft = fm.draft === 'true';
-    const isFuture = fm.publishDate ? new Date(fm.publishDate) > now : false;
+    const isFuture = fm.publishDate ? toIST(new Date(fm.publishDate)) > cutoff : false;
 
     if (isDraft) {
       drafts++;

@@ -1,24 +1,33 @@
 # Claude Code — Operational Instructions
 
-## Purpose
+## Project Overview
 
-Claude Code must rely on Language Server Protocol (LSP) tools as the primary method for understanding and navigating codebases. LSP provides accurate, real-time information about symbols, types, definitions, and references — eliminating guesswork.
+SellonTube is a static marketing site built with Astro 5, Tailwind CSS, and MDX, deployed on Netlify. Target audience: B2B founders and SaaS operators evaluating YouTube for customer acquisition.
 
-## Core Rules
+## Project Ethos: Simple, Robust, Pragmatic, Non-hacky
 
-- **Always prioritize the LSP tool** when working with source code. It is the authoritative source for codebase structure.
-- **Use LSP for symbol lookup, definitions, references, and type information.** Do not infer signatures, types, or module exports without querying LSP first.
-- **Do not assume file structure or function signatures.** Verify via LSP before acting on assumptions.
-- **Before implementing changes, query LSP** to understand existing implementations, call sites, and type constraints.
-- **Use LSP navigation to locate relevant files** instead of broad glob/grep searching when the target is a known symbol, class, or function.
-- **Fall back to Grep/Glob only** when LSP is unavailable, the target is a string literal or comment, or the query is pattern-based rather than symbol-based.
+Every decision — new feature, dependency, abstraction, refactor — must pass through these four filters:
 
-## Workflow
+- **Simple:** Fewer moving parts. Flat over nested. Obvious over clever.
+- **Robust:** Handles edge cases without duct tape. Fails predictably.
+- **Pragmatic:** Solves real problems today, not theoretical ones tomorrow.
+- **Non-hacky:** No workarounds disguised as solutions. If a shortcut is unavoidable, flag it as tech debt with a TODO and explain why.
 
-1. **Locate** — Use LSP to find relevant symbols (functions, classes, variables, types).
-2. **Inspect** — Query definitions and references to understand how the symbol is used across the codebase.
-3. **Understand** — Check type information, parameter signatures, and dependency relationships via LSP.
-4. **Implement** — Modify or write code with full knowledge of the existing structure and contracts.
+**Rules:**
+- Before adding any new feature, dependency, or abstraction, check it against these four principles.
+- If it breaks any of them, push back — explain what breaks and suggest an alternative that preserves the ethos.
+- Prefer standard patterns over custom abstractions.
+- When in doubt, ask before adding complexity.
+
+## LSP-First Navigation
+
+Use Language Server Protocol (LSP) as the primary method for understanding and navigating the codebase. LSP provides accurate, real-time symbol lookup, definitions, references, and type information.
+
+**Workflow:** Locate symbols via LSP → Inspect definitions and references → Check types and dependencies → Implement with full context.
+
+**Fallback to Grep/Glob only** when LSP is unavailable, the target is a string literal or comment, or the query is pattern-based.
+
+> LSP queries are cheaper, faster, and more precise than reading entire files or running broad searches. Use them first, read files second, search broadly last.
 
 ## New Tool Integration Rule
 
@@ -29,12 +38,6 @@ Claude Code must rely on Language Server Protocol (LSP) tools as the primary met
 4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing)
 
 See `agents/08-microtool-builder.md` Phase 7 for full details.
-
-## Key Principle
-
-> Prioritize using the LSP tool for context-efficient and accurate implementation.
-
-LSP queries are cheaper, faster, and more precise than reading entire files or running broad searches. Use them first, read files second, search broadly last.
 
 ## Build Standards
 

@@ -8,7 +8,7 @@ const siteUrl = SITE.site || 'https://sellontube.com';
 const metadata = {
   title: 'Free AI YouTube Script Generator for Business | SellOnTube',
   description:
-    'Free AI YouTube video script generator. Enter your topic and product. Get a complete script with hook, body, product bridge, and CTA. No signup.',
+    'Free AI YouTube script generator that reads your product page and writes a conversion-focused script with hook, body, product bridge, and CTA. Built for B2B.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Script Generator",
   "url": `${siteUrl}/tools/youtube-script-generator`,
-  "description": "Free AI YouTube video script generator with built-in product pitch. Full word-for-word scripts with hook, body, product bridge, and CTA. Built for B2B.",
+  "description": "Free AI YouTube script generator that reads your product page to write scripts with authentic product mentions. Full word-for-word scripts with hook, body, product bridge, and CTA. Built for B2B.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -41,7 +41,7 @@ const faqSchema = {
     { "@type": "Question", "name": "Will it generate a full word-for-word script?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The generator produces a complete script with hook, setup, body sections, product bridge, and CTA. It is structured around your specific video idea, target customer, and product." } },
     { "@type": "Question", "name": "How long are the generated scripts?", "acceptedAnswer": { "@type": "Answer", "text": "Script length is calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes)." } },
     { "@type": "Question", "name": "Will it work with the Video Ideas Generator?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The intended workflow is: generate ideas with the Video Ideas Generator, evaluate them with the Ideas Evaluator, create a title with the Title Generator, then produce the script. Each tool feeds into the next." } },
-    { "@type": "Question", "name": "Is the product pitch forced or natural?", "acceptedAnswer": { "@type": "Answer", "text": "Natural. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed. It reads like advice from an expert, not a commercial." } },
+    { "@type": "Question", "name": "Is the product pitch forced or natural?", "acceptedAnswer": { "@type": "Answer", "text": "Natural. If you provide your product page URL, the script uses real features and pricing from your website instead of generic claims. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed." } },
     { "@type": "Question", "name": "Should I use a teleprompter or memorize the script?", "acceptedAnswer": { "@type": "Answer", "text": "For most B2B videos, a teleprompter delivers better results than memorization. It keeps the content precise and eliminates filler words. If you find teleprompter delivery too stiff, use the generated script as a detailed outline." } },
   ]
 };
@@ -65,7 +65,7 @@ const faqSchema = {
         YouTube Script Generator<br class="hidden sm:block" /> That Converts Viewers Into Leads
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Enter your video topic, target customer, and product. This AI script generator writes a complete video script with a natural product pitch built in. No forced CTAs. No filler.
+        Enter your video topic, target customer, and product page. This AI script generator reads your website, then writes a complete video script with an authentic product pitch built in. No forced CTAs. No filler.
       </p>
     </div>
   </section>
@@ -140,6 +140,22 @@ const faqSchema = {
             <p id="product-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
           </div>
 
+          <div>
+            <label for="url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+              Your website or product page
+            </label>
+            <input
+              type="url"
+              id="url-input"
+              placeholder="https://yourproduct.com"
+              class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                     focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+              aria-describedby="url-error"
+            />
+            <p class="mt-1.5 text-xs text-gray-400 dark:text-slate-600">We'll read your page to write a more specific product pitch. Optional but recommended.</p>
+            <p id="url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          </div>
+
         </div>
 
         <button
@@ -162,8 +178,8 @@ const faqSchema = {
       >
         <div class="flex flex-col items-center gap-4 py-10">
           <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Writing your script...</p>
-          <p class="text-xs text-gray-400 dark:text-slate-600">This takes 10-15 seconds for a full script</p>
+          <p id="loading-message" class="text-sm font-medium text-gray-500 dark:text-slate-400">Understanding your product and audience...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This takes 15-20 seconds for a full script</p>
         </div>
       </div>
 
@@ -207,31 +223,50 @@ const faqSchema = {
     <!-- Step: Results (wider) -->
     <div
       id="step-results"
-      class="hidden max-w-2xl mx-auto px-4 mt-2"
+      class="hidden max-w-3xl mx-auto px-4 mt-2"
       role="status"
       aria-live="polite"
     >
       <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
 
-        <!-- Header -->
+        <!-- Header / Metadata bar -->
         <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
-          <div class="flex items-center justify-between mb-1">
+          <div class="flex items-center justify-between mb-2">
             <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Your YouTube Script</p>
-            <div class="flex items-center gap-2 text-xs text-gray-400 dark:text-slate-500">
-              <span id="result-word-count"></span>
-              <span>&middot;</span>
-              <span id="result-duration"></span>
+            <span id="url-scraped-badge" class="hidden text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Product page read</span>
+          </div>
+          <p id="result-topic" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white mb-3"></p>
+          <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500 dark:text-slate-400">
+            <span class="inline-flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span id="result-duration"></span></span>
+            <span class="inline-flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><span id="result-word-count"></span></span>
+            <span id="result-keyword" class="hidden inline-flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg><span id="result-keyword-text"></span></span>
+          </div>
+        </div>
+
+        <!-- Full script (primary view) -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between mb-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Full Script</p>
+            <div class="flex items-center gap-2">
+              <button id="copy-text-btn" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">Copy as Text</button>
+              <span class="text-gray-300 dark:text-slate-600">|</span>
+              <button id="copy-md-btn" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">Copy as Markdown</button>
             </div>
           </div>
-          <p id="result-topic" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
+          <div id="full-script-display" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-line max-h-[600px] overflow-y-auto pr-2"></div>
         </div>
 
-        <!-- Script sections -->
-        <div id="script-sections" class="divide-y divide-slate-200 dark:divide-slate-700/60">
+        <!-- Section breakdown (collapsible) -->
+        <div class="border-b border-slate-200 dark:border-slate-700/60">
+          <button id="toggle-sections-btn" class="w-full px-6 sm:px-8 py-4 flex items-center justify-between text-left hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors">
+            <span class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Section Breakdown</span>
+            <svg id="toggle-sections-icon" class="w-4 h-4 text-gray-400 dark:text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="script-sections" class="hidden divide-y divide-slate-200 dark:divide-slate-700/60"></div>
         </div>
 
-        <!-- Copy all -->
-        <div class="p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
+        <!-- Copy all (big button) -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
           <button
             id="copy-all-btn"
             class="w-full inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-base font-bold
@@ -242,7 +277,7 @@ const faqSchema = {
         </div>
 
         <!-- Inline CTA -->
-        <div class="p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60">
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
           <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Got your script? Now make sure your video metadata matches.</p>
           <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Run your published video through our free YouTube SEO tool.</p>
           <a
@@ -290,12 +325,12 @@ const faqSchema = {
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
           <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Enter your video details</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Your topic, video type, target customer, and what you sell. Four fields. Under 30 seconds.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Your topic, video type, target customer, what you sell, and your product page URL. Five fields. Under 30 seconds.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
           <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Get a complete script</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI writes a full script: hook, body sections, and a product pitch that fits naturally into the narrative. Ready for a teleprompter.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">AI reads your product page for real features and pricing, then writes a full script: hook, body sections, and a product pitch that uses your actual value props. Ready for a teleprompter or voiceover.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">3</div>
@@ -552,7 +587,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is the product pitch forced or natural?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Natural. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed. It reads like advice from an expert, not a commercial.
+              Natural. If you provide your product page URL, the script uses real features and pricing from your website instead of generic claims. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed.
             </p>
           </div>
 
@@ -660,6 +695,7 @@ const faqSchema = {
     const topic = (document.getElementById('topic-input') as HTMLInputElement).value.trim();
     const customer = (document.getElementById('customer-input') as HTMLInputElement).value.trim();
     const product = (document.getElementById('product-input') as HTMLInputElement).value.trim();
+    const url = (document.getElementById('url-input') as HTMLInputElement).value.trim();
 
     let valid = true;
 
@@ -678,23 +714,106 @@ const faqSchema = {
       valid = false;
     } else { clearFieldError('product-input'); }
 
+    if (url) {
+      if (!/^https?:\/\//i.test(url)) {
+        showFieldError('url-input', 'URL must start with http:// or https://');
+        valid = false;
+      } else if (/youtube\.com|youtu\.be/i.test(url)) {
+        showFieldError('url-input', 'Please enter your website URL, not a YouTube link.');
+        valid = false;
+      } else {
+        clearFieldError('url-input');
+      }
+    } else {
+      clearFieldError('url-input');
+    }
+
     return valid;
   }
 
+  // Loading message cycling
+  let loadingInterval: ReturnType<typeof setInterval> | null = null;
+
+  function startLoadingMessages(hasUrl: boolean): void {
+    const el = document.getElementById('loading-message');
+    if (!el) return;
+
+    const messages = hasUrl
+      ? [
+          'Reading your website...',
+          'Understanding your product and audience...',
+          'Writing your hook...',
+          'Building the body sections...',
+          'Crafting the product bridge...',
+          'Polishing the final script...',
+        ]
+      : [
+          'Understanding your product and audience...',
+          'Writing your hook...',
+          'Building the body sections...',
+          'Crafting the product bridge...',
+          'Polishing the final script...',
+        ];
+
+    let index = 0;
+    el.textContent = messages[0];
+
+    loadingInterval = setInterval(() => {
+      index++;
+      if (index < messages.length) {
+        el.textContent = messages[index];
+      } else {
+        el.textContent = messages[messages.length - 1];
+        if (loadingInterval) clearInterval(loadingInterval);
+      }
+    }, 3000);
+  }
+
+  function stopLoadingMessages(): void {
+    if (loadingInterval) {
+      clearInterval(loadingInterval);
+      loadingInterval = null;
+    }
+  }
+
+  // Script result types
+  interface BodySection {
+    section_number: number;
+    title: string;
+    writing_mode: string;
+    content: string;
+    transition_to_next?: string;
+  }
+
   interface ScriptResult {
-    hook: string;
-    setup: string;
-    body: { heading: string; content: string }[];
-    productBridge: string;
-    cta: string;
-    estimatedMinutes: number;
-    wordCount: number;
+    script_metadata?: {
+      video_type?: string;
+      target_length_words?: number;
+      target_duration_minutes?: string;
+      target_keyword_suggestion?: string;
+    };
+    hook: { writing_mode: string; duration_seconds: string; content: string };
+    setup: { writing_mode: string; duration_seconds: string; content: string };
+    body_sections: BodySection[];
+    product_bridge: { writing_mode: string; duration_seconds: string; problem_it_solves?: string; content: string };
+    cta: { writing_mode: string; duration_seconds: string; action?: string; content: string };
+    full_script_text: string;
+    word_count: number;
+    estimated_duration_minutes: number;
+    url_scraped?: boolean;
   }
 
   let lastScript: ScriptResult | null = null;
 
   function escapeHtml(text: string): string {
     return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function writingModeBadge(mode: string): string {
+    if (mode === 'word_for_word') {
+      return '<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Word for word</span>';
+    }
+    return '<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">Prose</span>';
   }
 
   function renderScript(script: ScriptResult): void {
@@ -704,35 +823,86 @@ const faqSchema = {
     const resultTopic = document.getElementById('result-topic');
     if (resultTopic) resultTopic.textContent = topic;
 
+    // Metadata
     const wordCount = document.getElementById('result-word-count');
     const duration = document.getElementById('result-duration');
-    if (wordCount) wordCount.textContent = (script.wordCount || '~1,000') + ' words';
-    if (duration) duration.textContent = '~' + (script.estimatedMinutes || 6) + ' min video';
+    if (wordCount) wordCount.textContent = (script.word_count || '~1,000') + ' words';
+    if (duration) duration.textContent = '~' + (script.estimated_duration_minutes || 6) + ' min video';
 
+    // Keyword suggestion
+    const keywordEl = document.getElementById('result-keyword');
+    const keywordText = document.getElementById('result-keyword-text');
+    if (script.script_metadata?.target_keyword_suggestion && keywordEl && keywordText) {
+      keywordText.textContent = script.script_metadata.target_keyword_suggestion;
+      keywordEl.classList.remove('hidden');
+    }
+
+    // URL scraped badge
+    const scrapedBadge = document.getElementById('url-scraped-badge');
+    if (scrapedBadge && script.url_scraped) {
+      scrapedBadge.classList.remove('hidden');
+    }
+
+    // Full script text (primary view)
+    const fullScriptDisplay = document.getElementById('full-script-display');
+    if (fullScriptDisplay) {
+      fullScriptDisplay.textContent = script.full_script_text || '';
+    }
+
+    // Section breakdown (collapsible)
     const sections = document.getElementById('script-sections');
     if (!sections) return;
 
     const sectionData = [
-      { label: 'Hook', icon: '1', content: script.hook },
-      { label: 'Setup', icon: '2', content: script.setup },
-      ...script.body.map((b, i) => ({ label: b.heading, icon: String(i + 3), content: b.content })),
-      { label: 'Product Bridge', icon: String(script.body.length + 3), content: script.productBridge },
-      { label: 'CTA', icon: String(script.body.length + 4), content: script.cta },
+      { label: 'Hook', icon: '1', content: script.hook.content, mode: script.hook.writing_mode, timing: script.hook.duration_seconds },
+      { label: 'Setup', icon: '2', content: script.setup.content, mode: script.setup.writing_mode, timing: script.setup.duration_seconds },
+      ...script.body_sections.map((b, i) => ({
+        label: b.title,
+        icon: String(i + 3),
+        content: b.content + (b.transition_to_next ? '\n\n' + b.transition_to_next : ''),
+        mode: b.writing_mode,
+        timing: '',
+      })),
+      {
+        label: 'Product Bridge',
+        icon: String(script.body_sections.length + 3),
+        content: script.product_bridge.content,
+        mode: script.product_bridge.writing_mode,
+        timing: script.product_bridge.duration_seconds,
+      },
+      {
+        label: 'CTA' + (script.cta.action ? ': ' + script.cta.action : ''),
+        icon: String(script.body_sections.length + 4),
+        content: script.cta.content,
+        mode: script.cta.writing_mode,
+        timing: script.cta.duration_seconds,
+      },
     ];
 
-    sections.innerHTML = sectionData.map((s) => {
-      return (
-        '<div class="p-6 sm:p-8">' +
+    sections.innerHTML = sectionData
+      .map((s) => {
+        const timingHtml = s.timing ? '<span class="text-[10px] text-gray-400 dark:text-slate-500 ml-2">' + escapeHtml(s.timing) + 's</span>' : '';
+        return (
+          '<div class="p-6 sm:p-8">' +
           '<div class="flex items-start gap-3">' +
-            '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' + escapeHtml(s.icon) + '</span>' +
-            '<div class="min-w-0 flex-1">' +
-              '<p class="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">' + escapeHtml(s.label) + '</p>' +
-              '<div class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-line" data-section-text></div>' +
-            '</div>' +
+          '<span class="flex-shrink-0 w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold flex items-center justify-center mt-0.5">' +
+          escapeHtml(s.icon) +
+          '</span>' +
+          '<div class="min-w-0 flex-1">' +
+          '<div class="flex items-center gap-2 mb-2">' +
+          '<p class="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">' +
+          escapeHtml(s.label) +
+          '</p>' +
+          writingModeBadge(s.mode) +
+          timingHtml +
           '</div>' +
-        '</div>'
-      );
-    }).join('');
+          '<div class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-line" data-section-text></div>' +
+          '</div>' +
+          '</div>' +
+          '</div>'
+        );
+      })
+      .join('');
 
     sections.querySelectorAll('[data-section-text]').forEach((el, i) => {
       (el as HTMLElement).textContent = sectionData[i].content;
@@ -741,25 +911,48 @@ const faqSchema = {
 
   function getFullScriptText(): string {
     if (!lastScript) return '';
-    const parts = [
-      '[HOOK]\n' + lastScript.hook,
-      '\n[SETUP]\n' + lastScript.setup,
-      ...lastScript.body.map((b) => '\n[' + b.heading.toUpperCase() + ']\n' + b.content),
-      '\n[PRODUCT BRIDGE]\n' + lastScript.productBridge,
-      '\n[CTA]\n' + lastScript.cta,
-    ];
-    return parts.join('\n');
+    return lastScript.full_script_text || '';
   }
 
-  async function fetchScript(topic: string, videoType: string, targetCustomer: string, product: string): Promise<void> {
+  function getFullScriptMarkdown(): string {
+    if (!lastScript) return '';
+    const s = lastScript;
+    const parts = [
+      '## Hook\n\n' + s.hook.content,
+      '## Setup\n\n' + s.setup.content,
+      ...s.body_sections.map((b) => '## ' + b.title + '\n\n' + b.content + (b.transition_to_next ? '\n\n*' + b.transition_to_next + '*' : '')),
+      '## Product Bridge\n\n' + s.product_bridge.content,
+      '## CTA\n\n' + s.cta.content,
+    ];
+    return parts.join('\n\n---\n\n');
+  }
+
+  function copyToClipboard(text: string, btnId: string, originalLabel: string): void {
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById(btnId);
+      if (btn) {
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = originalLabel; }, 1500);
+      }
+    });
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'script_copied', tool: 'youtube-script-generator' });
+  }
+
+  async function fetchScript(topic: string, videoType: string, targetCustomer: string, product: string, websiteUrl: string): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
 
     try {
+      const payload: Record<string, string> = { topic, videoType, targetCustomer, product };
+      if (websiteUrl) payload.websiteUrl = websiteUrl;
+
       const res = await fetch('/api/generate-script', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic, videoType, targetCustomer, product }),
+        body: JSON.stringify(payload),
       });
+
+      stopLoadingMessages();
 
       if (res.status === 429) {
         showStep('step-input');
@@ -774,7 +967,7 @@ const faqSchema = {
       if (!res.ok) throw new Error('API error ' + res.status);
 
       const data = await res.json();
-      if (!data?.hook || !Array.isArray(data?.body)) throw new Error('Invalid script structure');
+      if (!data?.hook?.content || !Array.isArray(data?.body_sections) || !data?.full_script_text) throw new Error('Invalid script structure');
 
       renderScript(data);
       incrementCount();
@@ -786,6 +979,7 @@ const faqSchema = {
       window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-script-generator' });
 
     } catch {
+      stopLoadingMessages();
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Generate Script \u2192';
@@ -802,6 +996,7 @@ const faqSchema = {
     const videoType = (document.getElementById('type-select') as HTMLSelectElement).value;
     const targetCustomer = (document.getElementById('customer-input') as HTMLInputElement).value.trim();
     const product = (document.getElementById('product-input') as HTMLInputElement).value.trim();
+    const websiteUrl = (document.getElementById('url-input') as HTMLInputElement).value.trim();
 
     if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
       window.dataLayer = window.dataLayer || [];
@@ -817,8 +1012,9 @@ const faqSchema = {
     btn.disabled = true;
     btn.textContent = 'Generating...';
     showStep('step-loading');
+    startLoadingMessages(!!websiteUrl);
 
-    await fetchScript(topic, videoType, targetCustomer, product);
+    await fetchScript(topic, videoType, targetCustomer, product, websiteUrl);
   }
 
   async function submitGateEmail(): Promise<void> {
@@ -880,7 +1076,20 @@ const faqSchema = {
     clearFieldError('customer-input');
     (document.getElementById('product-input') as HTMLInputElement).value = '';
     clearFieldError('product-input');
+    (document.getElementById('url-input') as HTMLInputElement).value = '';
+    clearFieldError('url-input');
     (document.getElementById('type-select') as HTMLSelectElement).selectedIndex = 0;
+
+    // Reset results state
+    const keywordEl = document.getElementById('result-keyword');
+    if (keywordEl) keywordEl.classList.add('hidden');
+    const scrapedBadge = document.getElementById('url-scraped-badge');
+    if (scrapedBadge) scrapedBadge.classList.add('hidden');
+    const sectionsPanel = document.getElementById('script-sections');
+    if (sectionsPanel) sectionsPanel.classList.add('hidden');
+    const toggleIcon = document.getElementById('toggle-sections-icon');
+    if (toggleIcon) toggleIcon.style.transform = '';
+
     showStep('step-input');
     (document.getElementById('topic-input') as HTMLInputElement).focus();
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
@@ -889,20 +1098,27 @@ const faqSchema = {
     lastScript = null;
   }
 
-  // Copy full script
+  // Section breakdown toggle
+  document.getElementById('toggle-sections-btn')?.addEventListener('click', () => {
+    const panel = document.getElementById('script-sections');
+    const icon = document.getElementById('toggle-sections-icon');
+    if (panel) {
+      const isHidden = panel.classList.toggle('hidden');
+      if (icon) icon.style.transform = isHidden ? '' : 'rotate(180deg)';
+    }
+  });
+
+  // Copy buttons
   document.getElementById('copy-all-btn')?.addEventListener('click', () => {
-    const text = getFullScriptText();
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('copy-all-btn') as HTMLButtonElement;
-      btn.textContent = 'Copied!';
-      btn.classList.add('bg-emerald-600');
-      setTimeout(() => {
-        btn.textContent = 'Copy Full Script';
-        btn.classList.remove('bg-emerald-600');
-      }, 1500);
-    });
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'script_copied', tool: 'youtube-script-generator' });
+    copyToClipboard(getFullScriptText(), 'copy-all-btn', 'Copy Full Script');
+  });
+
+  document.getElementById('copy-text-btn')?.addEventListener('click', () => {
+    copyToClipboard(getFullScriptText(), 'copy-text-btn', 'Copy as Text');
+  });
+
+  document.getElementById('copy-md-btn')?.addEventListener('click', () => {
+    copyToClipboard(getFullScriptMarkdown(), 'copy-md-btn', 'Copy as Markdown');
   });
 
   // CTA tracking
@@ -931,6 +1147,13 @@ const faqSchema = {
   });
 
   document.getElementById('product-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.getElementById('url-input') as HTMLInputElement)?.focus();
+    }
+  });
+
+  document.getElementById('url-input')?.addEventListener('keydown', (e) => {
     if ((e as KeyboardEvent).key === 'Enter') {
       e.preventDefault();
       generate();

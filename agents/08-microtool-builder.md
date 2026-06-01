@@ -290,6 +290,11 @@ This is the framing section. Contrast "creator metrics" (views, subs) with "acqu
 - No "let's dive in", no "it's worth noting", no "comprehensive"
 - The last sentence on the page should be a specific next action or a thought that sticks
 
+**AI Search Optimization:**
+- Tool page copy follows the two-layer approach (`ai-seo-guide.md`).
+- Layer 1 (Google): Write the best content for the query. No special AI tricks.
+- Layer 2 (non-Google): Include 1 definition block for the tool's core concept and 1 self-contained answer block in the "Why [Key Metric] Matters" section. Maintain entity consistency with canonical SellonTube terms.
+
 ---
 
 ### Phase 6: QA Checklist

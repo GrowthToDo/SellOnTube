@@ -10,24 +10,31 @@
 
 export const PRICING = {
   /**
-   * Current monthly service price
+   * Retainer tier prices
    */
-  current: 6000,
+  foundation: 2500,
+  growth: 5000,
+  scale: 7500,
+
+  /**
+   * Current monthly service price (Growth tier — used for ROI calculator)
+   */
+  current: 5000,
 
   /**
    * Future monthly price (after rate increase)
    */
-  future: 7000,
+  future: 7500,
 
   /**
    * Date when pricing changes
    */
-  rateIncreaseDate: 'April 30, 2026',
+  rateIncreaseDate: 'June 30, 2026',
 
   /**
    * Special priority spot pricing (limited time offer)
    */
-  prioritySpot: 5000,
+  prioritySpot: 6500,
 } as const;
 
 /**

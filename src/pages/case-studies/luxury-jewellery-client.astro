@@ -1,0 +1,445 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+
+const metadata = {
+  title: 'UK Jewellery Brand Case Study: Nine Years. Still Building. | SellOnTube',
+  description: 'Full case study: nine years with UK Jewellery Brand, UK watches and jewelry. 8 hours to 15 minutes with a custom image processor. Under 1% compliance error rate. £1M to £5M+.',
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+---
+
+<Layout metadata={metadata}>
+
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Results', href: '/shopify-store#proof' },
+        { text: 'What We Build', href: '/shopify-store#work' },
+        { text: 'Case Studies', links: [
+          { text: 'US Supplements Brand', href: '/case-studies/us-supplements-brand' },
+          { text: 'UK Jewellery Brand', href: '/case-studies/luxury-jewellery-client' },
+        ]},
+        { text: 'Pricing', href: '/shopify-store#pricing' },
+      ]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank' }]}
+      showToggleTheme
+    />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="relative bg-slate-900 text-white pt-24 pb-20 overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/8 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-700/40 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-6">
+      <div class="flex items-center gap-2 text-sm text-slate-500 mb-8">
+        <a href="/shopify-store" class="hover:text-slate-300 transition-colors">Shopify Services</a>
+        <span>/</span>
+        <span class="text-slate-400">Case Study</span>
+      </div>
+      <p class="text-emerald-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">Case Study</p>
+      <h1 class="text-5xl sm:text-7xl font-black leading-none tracking-tight mb-2">Nine years.</h1>
+      <h1 class="text-5xl sm:text-7xl font-black leading-none tracking-tight mb-8 text-emerald-400">Our longest client relationship.</h1>
+      <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
+        This is what a decade of operational partnership looks like: from £1M to £5M+, 8 hours of daily work automated to 15 minutes, and a compliance error rate under 1%.
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm">
+        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">UK Jewellery Brand</span>
+        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">UK watches and jewelry</span>
+        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">~1,000 active SKUs</span>
+        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">50+ countries</span>
+        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">9-year engagement</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <section class="bg-slate-800 border-b border-slate-700 py-8">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-white">
+        <div>
+          <p class="text-2xl sm:text-3xl font-black text-emerald-400">9 yrs</p>
+          <p class="text-slate-400 text-xs mt-1">active engagement</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-3xl font-black">8h → 15m</p>
+          <p class="text-slate-400 text-xs mt-1">image processing time</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-3xl font-black text-emerald-400">&lt;1%</p>
+          <p class="text-slate-400 text-xs mt-1">compliance error rate</p>
+        </div>
+        <div>
+          <p class="text-2xl sm:text-3xl font-black">50+</p>
+          <p class="text-slate-400 text-xs mt-1">countries</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The relationship -->
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-4">The relationship</p>
+      <div class="grid sm:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6 leading-tight">Not a project. Not a vendor. An operational partner.</h2>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+            UK Jewellery Brand sells luxury watches and jewelry in the UK and internationally. When they first came to us they were doing around £1M in annual revenue, selling on a handful of markets, and dealing with the operational friction that comes with a large, complex catalog.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+            Nine years later, we've scaled them to £5M+, expanded to 50+ countries, and built a suite of custom tools that handle compliance, image processing, staff accountability, and Google Shopping automatically.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+            The relationship works because we're embedded in how the business runs. We know the catalog, the supplier relationships, the compliance requirements, and the growth priorities. Every year we identify the next problem worth solving and build the system for it.
+          </p>
+        </div>
+        <div>
+          <!-- Revenue comparison chart -->
+          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Revenue growth</p>
+            <p class="text-sm text-gray-500 dark:text-slate-400 mb-5">Over the engagement</p>
+            <canvas id="revenueChart" height="180"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 1: Image Processor -->
+  <section class="py-20 bg-slate-50 dark:bg-slate-800/40">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 01</p>
+      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">8 hours of manual work. Automated to 15 minutes.</h2>
+      <div class="grid sm:grid-cols-2 gap-10 mb-10">
+        <div>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+            One team member spent 8 hours every working day on product images. Every vendor delivered images in different sizes, formats, and backgrounds. Each one had to be resized to the right dimensions, backgrounds removed, and formatted separately for Shopify listings, Google Shopping, and paid ads.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+            That's a full-time job for one person, producing nothing that grows the business. Just keeping the catalog in a usable state.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+            We built the Product Image Processor as a custom Sidekick app inside the Shopify admin. It ingests vendor images in any format, applies the transformation pipeline, and outputs correctly sized, correctly formatted images for every channel. Automatically. The entire workflow that took 8 hours now takes 15 minutes of review.
+          </p>
+        </div>
+        <div>
+          <!-- Animated time bars -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl p-7 border border-slate-200 dark:border-slate-700">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Daily image processing time</p>
+            <div class="space-y-5 mb-5" id="timeBars">
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="text-gray-500 dark:text-slate-400 font-medium">Before</span>
+                  <span class="font-bold text-gray-700 dark:text-slate-200">8 hours / day</span>
+                </div>
+                <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-8 overflow-hidden">
+                  <div class="time-bar-before h-full bg-red-400/70 dark:bg-red-500/50 rounded-full flex items-center justify-end pr-4 transition-all duration-1000 ease-out" style="width:0%">
+                    <span class="text-xs font-bold text-white opacity-0 bar-label transition-opacity duration-300">480 min</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="text-gray-500 dark:text-slate-400 font-medium">After our app</span>
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400">15 min / day</span>
+                </div>
+                <div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-8 overflow-hidden">
+                  <div class="time-bar-after h-full bg-emerald-500 rounded-full transition-all duration-1000 ease-out delay-300" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pt-4 border-t border-slate-100 dark:border-slate-700">
+              <p class="text-4xl font-black text-emerald-600 dark:text-emerald-400">97%</p>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">time reduction. That team member now does work that actually matters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2: GTIN Scanner -->
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 02</p>
+      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">Merchant Center disapprovals. Nearly gone.</h2>
+      <div class="grid sm:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+            With ~1,000 active SKUs across 50+ countries, Google Merchant Center product disapprovals were a constant drain. Missing GTINs, duplicate barcodes, products flagged for ingredient restrictions in specific markets. Every disapproval is a product not showing in Google Shopping: lost revenue.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+            Fixing them manually meant someone monitoring a dashboard, identifying issues, chasing the right data, and updating records one by one. Mistakes got caught weeks after they happened, if at all.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+            The GTIN and Barcode Scanner we built runs weekly health audits automatically. It checks every SKU for missing or duplicate GTINs, flags issues before they reach Google, and generates a prioritised fix list. Compliance errors dropped to under 1%. Disapprovals are nearly gone.
+          </p>
+        </div>
+
+        <!-- Error rate ring -->
+        <div class="flex flex-col items-center">
+          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 w-full">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 text-center">Compliance error rate</p>
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+              <div class="relative flex-shrink-0">
+                <canvas id="errorRateChart" width="160" height="160"></canvas>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="text-center">
+                    <p class="text-2xl font-black text-emerald-600 dark:text-emerald-400">&lt;1%</p>
+                    <p class="text-xs text-gray-500 dark:text-slate-400">error rate</p>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-3 flex-1">
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 rounded-full bg-red-400 flex-shrink-0"></div>
+                  <div>
+                    <p class="text-xs font-semibold text-gray-700 dark:text-slate-300">Before: high error rate</p>
+                    <p class="text-xs text-gray-500 dark:text-slate-400">Regular Merchant Center disapprovals</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-3 h-3 rounded-full bg-emerald-500 flex-shrink-0"></div>
+                  <div>
+                    <p class="text-xs font-semibold text-gray-700 dark:text-slate-300">After: under 1%</p>
+                    <p class="text-xs text-gray-500 dark:text-slate-400">Weekly automated audits. Issues caught before Google flags them.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3: Staff Accountability -->
+  <section class="py-20 bg-slate-50 dark:bg-slate-800/40">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 03</p>
+      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">Who changed what. Searchable.</h2>
+      <div class="grid sm:grid-cols-2 gap-10">
+        <div>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+            As teams grow and more people have access to the Shopify admin, accountability becomes a real problem. A price changes. A product goes unavailable. An order gets incorrectly fulfilled. Shopify's native logs don't give you enough.
+          </p>
+          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+            The Staff Activity Monitor captures every product change, price edit, and order action, searchable by staff member, date, and action type. When a brand calls about a pricing issue, the answer is there in seconds.
+          </p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
+          <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-5">What's logged</p>
+          <div class="space-y-3">
+            {[
+              'Product price changes: who, when, from what to what',
+              'Inventory updates and out-of-stock events',
+              'Order modifications and fulfilment actions',
+              'Discount and promotion changes',
+              'Staff login and access events',
+            ].map(item => (
+              <div class="flex items-start gap-3 text-sm">
+                <span class="text-emerald-500 font-bold flex-shrink-0 mt-0.5">&#10003;</span>
+                <span class="text-gray-600 dark:text-slate-400">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 4: ERP -->
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 04</p>
+      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">Moving to Oracle ERP. In progress.</h2>
+      <div class="max-w-2xl">
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          UK Jewellery Brand is currently migrating to Oracle ERP. We're managing the integration: mapping product data, syncing order flows between Shopify and Oracle, and ensuring the transition doesn't interrupt live operations.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          ERP migrations are the kind of project that breaks stores when managed badly. Products vanish from feeds. Orders fail to sync. Price data corrupts. We've been in the store long enough to know every edge case.
+        </p>
+        <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-5 mt-6">
+          <p class="text-sm font-semibold text-amber-700 dark:text-amber-400">Currently live</p>
+          <p class="text-sm text-amber-600 dark:text-amber-500 mt-1">This engagement is active and ongoing. The Oracle ERP migration is in progress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-4">Nine years of work</p>
+      <h2 class="text-3xl font-black mb-12">What it adds up to.</h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-12">
+        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
+          <p class="text-3xl font-black text-emerald-400 mb-1">9 yrs</p>
+          <p class="text-sm font-semibold text-white mb-1">active partnership</p>
+          <p class="text-xs text-slate-400">Ongoing. Not a project.</p>
+        </div>
+        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
+          <p class="text-3xl font-black text-white mb-1">£1M+</p>
+          <p class="text-sm font-semibold text-white mb-1">revenue at start</p>
+          <p class="text-xs text-slate-400">Scaled to £5M+.</p>
+        </div>
+        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
+          <p class="text-3xl font-black text-emerald-400 mb-1">50+</p>
+          <p class="text-sm font-semibold text-white mb-1">countries</p>
+          <p class="text-xs text-slate-400">5 paid, 30+ organic.</p>
+        </div>
+        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
+          <p class="text-3xl font-black text-white mb-1">97%</p>
+          <p class="text-sm font-semibold text-white mb-1">time saved</p>
+          <p class="text-xs text-slate-400">Image processing: 8h to 15 min/day.</p>
+        </div>
+        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
+          <p class="text-3xl font-black text-emerald-400 mb-1">&lt;1%</p>
+          <p class="text-sm font-semibold text-white mb-1">compliance errors</p>
+          <p class="text-xs text-slate-400">Merchant Center disapprovals nearly eliminated.</p>
+        </div>
+        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
+          <p class="text-3xl font-black text-white mb-1">1,000+</p>
+          <p class="text-sm font-semibold text-white mb-1">active SKUs</p>
+          <p class="text-xs text-slate-400">Managed across 50+ markets.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-700 pt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div>
+          <p class="text-xl font-bold text-white mb-1">Want an operational partner like this?</p>
+          <p class="text-slate-400 text-sm">Book a 30-minute call. We'll tell you where we'd start.</p>
+        </div>
+        <a href={calLink} target="_blank" rel="noopener noreferrer"
+          class="flex-shrink-0 inline-block bg-emerald-500 hover:bg-emerald-400 text-white font-semibold px-8 py-4 rounded-full transition-colors">
+          Book a discovery call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Also see -->
+  <section class="py-12 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Also read</p>
+        <p class="text-gray-900 dark:text-white font-semibold">US Supplements Brand: From $1.5M to $10M in 18 months.</p>
+        <p class="text-sm text-gray-500 dark:text-slate-400 mt-1">Cross-border expansion, $1M+/yr email, 30 Merchant Centers, and a $100K+ disaster recovery.</p>
+      </div>
+      <a href="/case-studies/us-supplements-brand" class="flex-shrink-0 inline-block border border-slate-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold text-sm px-6 py-3 rounded-full transition-colors">
+        Read case study
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<script is:inline>
+(function () {
+  const chartScript = document.createElement('script');
+  chartScript.src = 'https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js';
+  chartScript.onload = initCharts;
+  document.head.appendChild(chartScript);
+
+  // Animate time bars on scroll
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const before = entry.target.querySelector('.time-bar-before');
+        const afterBar = entry.target.querySelector('.time-bar-after');
+        const label = entry.target.querySelector('.bar-label');
+        if (before) {
+          setTimeout(() => {
+            before.style.width = '100%';
+            setTimeout(() => { if (label) label.style.opacity = '1'; }, 600);
+          }, 100);
+        }
+        if (afterBar) {
+          setTimeout(() => { afterBar.style.width = '3.125%'; }, 400);
+        }
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  const timeBars = document.getElementById('timeBars');
+  if (timeBars) barObserver.observe(timeBars);
+
+  function initCharts() {
+    const dark = document.documentElement.classList.contains('dark');
+    const textColor = dark ? '#94a3b8' : '#6b7280';
+    const gridColor = dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
+    const emerald = '#10b981';
+    const muted = dark ? 'rgba(148,163,184,0.25)' : 'rgba(148,163,184,0.35)';
+
+    Chart.defaults.font.family = 'inherit';
+    Chart.defaults.color = textColor;
+
+    // Revenue comparison bar chart
+    const revCtx = document.getElementById('revenueChart');
+    if (revCtx) {
+      new Chart(revCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Start of engagement', 'Peak revenue'],
+          datasets: [{
+            data: [1, 5],
+            backgroundColor: [muted, emerald],
+            borderRadius: 8,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: (c) => ' £' + c.parsed.y + 'M+' } }
+          },
+          scales: {
+            x: { grid: { display: false }, border: { display: false } },
+            y: {
+              grid: { color: gridColor },
+              border: { display: false },
+              ticks: { callback: (v) => '£' + v + 'M' }
+            }
+          }
+        }
+      });
+    }
+
+    // Error rate donut
+    const errorCtx = document.getElementById('errorRateChart');
+    if (errorCtx) {
+      new Chart(errorCtx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            data: [0.8, 99.2],
+            backgroundColor: [emerald, dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)'],
+            borderWidth: 0,
+            hoverOffset: 0,
+          }]
+        },
+        options: {
+          responsive: false,
+          cutout: '72%',
+          animation: {
+            animateRotate: true,
+            duration: 1400,
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false }
+          }
+        }
+      });
+    }
+  }
+})();
+</script>

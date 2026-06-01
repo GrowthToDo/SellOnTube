@@ -8,6 +8,8 @@
 <meta property="og:title" content="SellOnTube — We Handle the Boring Parts of Your Shopify Store">
 <meta property="og:description" content="We automate operations for Shopify Plus merchants doing $5M+ using AI-native workflows, Shopify Sidekick, and custom automation. Start with a $500 project.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://sellontube.com/shopify-services">
+<meta property="og:image" content="https://sellontube.com/images/shopify-portfolio/executive-dashboard.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Instrument+Serif&display=swap" rel="stylesheet">
 <style>
@@ -117,6 +119,51 @@ body{font-family:var(--font);color:#1a1a1a;background:var(--white);line-height:1
 .app-card .problem{font-size:.84rem;color:#4a4a4a;margin-bottom:6px}
 .app-card .impact{font-size:.86rem;color:var(--green-dark);font-weight:600}
 .app-card .client{font-size:.78rem;color:#707070;margin-top:6px}
+
+/* PORTFOLIO SHOWCASE */
+.showcase-section{background:linear-gradient(180deg,#f0f4f2 0%,#e8eeeb 100%);position:relative;overflow:hidden}
+.showcase-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(52,168,83,.045) 1px,transparent 0);background-size:28px 28px;pointer-events:none}
+.showcase-section .section-inner{position:relative;z-index:1}
+
+/* Browser frame */
+.browser-frame{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06),0 8px 32px rgba(0,0,0,.08);transition:all .4s cubic-bezier(.4,0,.2,1)}
+.browser-frame:hover{box-shadow:0 4px 12px rgba(0,0,0,.08),0 16px 48px rgba(0,0,0,.12);transform:translateY(-6px)}
+.browser-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:linear-gradient(180deg,#fafafa,#f0f0f0);border-bottom:1px solid rgba(0,0,0,.06)}
+.browser-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-dot.r{background:#FF5F57}
+.browser-dot.y{background:#FFBD2E}
+.browser-dot.g{background:#28C840}
+.browser-url{flex:1;margin-left:10px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:5px;padding:4px 12px;font-size:.68rem;color:#888;font-family:var(--font);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browser-img{aspect-ratio:16/10;overflow:hidden;position:relative}
+.browser-img img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.browser-img::after{content:'';position:absolute;inset:0;box-shadow:inset 0 -40px 40px -20px rgba(255,255,255,.4);pointer-events:none}
+
+/* Showcase layout */
+.showcase-hero{margin-bottom:24px}
+.showcase-mid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px}
+.showcase-caption{padding:18px 22px 20px}
+.showcase-tag{display:inline-block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:4px 12px;border-radius:100px;margin-bottom:8px}
+.showcase-tag.visibility{background:rgba(52,168,83,.1);color:var(--green-dark)}
+.showcase-tag.compliance{background:rgba(33,150,243,.1);color:#1565C0}
+.showcase-tag.revenue{background:rgba(255,152,0,.1);color:#E65100}
+.showcase-tag.future{background:rgba(156,39,176,.1);color:#7B1FA2}
+.showcase-caption h3{font-size:.95rem;font-weight:700;margin-bottom:5px;color:#1a1a1a}
+.showcase-caption p{font-size:.84rem;color:#4a4a4a;line-height:1.55}
+
+/* Sidebar closing strip */
+.showcase-strip{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;padding:36px 40px;background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.showcase-strip-sidebar{border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,.08);box-shadow:0 2px 12px rgba(0,0,0,.06);max-width:220px}
+.showcase-strip-sidebar img{display:block;width:100%}
+.showcase-strip-text{text-align:center;max-width:400px;margin:0 auto}
+.showcase-strip-text h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:#1a1a1a}
+.showcase-strip-text .strip-num{font-size:2.4rem;font-weight:800;color:var(--green);line-height:1;margin-bottom:8px}
+.showcase-strip-text p{font-size:.88rem;color:#4a4a4a;line-height:1.6}
+
+@media(max-width:768px){
+  .showcase-mid{grid-template-columns:1fr}
+  .showcase-strip{grid-template-columns:1fr;text-align:center;gap:24px;padding:28px 24px}
+  .showcase-strip-sidebar{max-width:180px;margin:0 auto}
+}
 
 /* COMPARE */
 table.compare{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;font-size:.9rem}
@@ -307,6 +354,124 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
   </div>
 </section>
 
+<!-- PORTFOLIO SHOWCASE -->
+<section class="section showcase-section" id="portfolio">
+  <div class="section-inner">
+    <div class="section-label">Proof of Work</div>
+    <div class="section-title">Real tools. Real stores. Real dashboards.</div>
+    <div class="section-sub">Every screenshot below is from a live Shopify admin we built and manage. Not mockups. Not Figma files.</div>
+
+    <!-- Hero: LLM Traffic Dashboard -->
+    <div class="showcase-hero">
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="browser-dot r"></span>
+          <span class="browser-dot y"></span>
+          <span class="browser-dot g"></span>
+          <span class="browser-url">store-admin.myshopify.com/apps/llm-traffic-dashboard</span>
+        </div>
+        <div class="browser-img">
+          <img src="/images/shopify-portfolio/llm-traffic-dashboard.png" alt="LLM Traffic Dashboard showing 24 AI-referred orders, $1,810 revenue from ChatGPT and Copilot traffic" loading="lazy">
+        </div>
+        <div class="showcase-caption">
+          <span class="showcase-tag future">Future-Proofing</span>
+          <h3>LLM Traffic Dashboard</h3>
+          <p>24 orders/month from ChatGPT and Copilot alone. $1,810 in attributable revenue. 22.3% conversion lift. Most stores can't even see this data.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2x2 Grid -->
+    <div class="showcase-mid">
+
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="browser-dot r"></span>
+          <span class="browser-dot y"></span>
+          <span class="browser-dot g"></span>
+          <span class="browser-url">store-admin.myshopify.com/apps/llm-readiness</span>
+        </div>
+        <div class="browser-img">
+          <img src="/images/shopify-portfolio/llm-readiness-scorecard.png" alt="LLM AI Readiness Scorecard showing 107/100 overall score with field-level product data breakdown" loading="lazy">
+        </div>
+        <div class="showcase-caption">
+          <span class="showcase-tag future">Future-Proofing</span>
+          <h3>LLM / AI Readiness Scorecard</h3>
+          <p>250 products scored across Title, Description, Tags, GTIN, SEO, and Alt Text. AI shopping surfaces skip products with gaps.</p>
+        </div>
+      </div>
+
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="browser-dot r"></span>
+          <span class="browser-dot y"></span>
+          <span class="browser-dot g"></span>
+          <span class="browser-url">store-admin.myshopify.com/apps/executive-dashboard</span>
+        </div>
+        <div class="browser-img">
+          <img src="/images/shopify-portfolio/executive-dashboard.png" alt="Executive Dashboard showing revenue by country, US state breakdown, unfulfilled orders, and fulfillment time" loading="lazy">
+        </div>
+        <div class="showcase-caption">
+          <span class="showcase-tag visibility">Visibility</span>
+          <h3>Executive Dashboard</h3>
+          <p>Revenue by country, top US states, fulfillment speed, unfulfilled alerts. Business health in one screen.</p>
+        </div>
+      </div>
+
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="browser-dot r"></span>
+          <span class="browser-dot y"></span>
+          <span class="browser-dot g"></span>
+          <span class="browser-url">store-admin.myshopify.com/apps/seo-audit</span>
+        </div>
+        <div class="browser-img">
+          <img src="/images/shopify-portfolio/aeo-seo-readiness.png" alt="AEO SEO Readiness table showing product-level scores for Description, Tags, GTIN, SEO, and Alt Text" loading="lazy">
+        </div>
+        <div class="showcase-caption">
+          <span class="showcase-tag compliance">Compliance</span>
+          <h3>SEO Audit Dashboard</h3>
+          <p>Product-by-product scoring. Red means missing, green means ready. Descriptions, GTINs, alt text, SEO fields. No guesswork.</p>
+        </div>
+      </div>
+
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="browser-dot r"></span>
+          <span class="browser-dot y"></span>
+          <span class="browser-dot g"></span>
+          <span class="browser-url">store-admin.myshopify.com/apps/activity-logs</span>
+        </div>
+        <div class="browser-img">
+          <img src="/images/shopify-portfolio/staff-activity-logs.png" alt="Staff Activity Logs showing critical activity alerts, event tracking, and resource type filters" loading="lazy">
+        </div>
+        <div class="showcase-caption">
+          <span class="showcase-tag compliance">Compliance</span>
+          <h3>Activity &amp; Staff Logs</h3>
+          <p>Critical alerts, change tracking by staff member, resource filters. When a brand asks about a MAP violation, you know who changed what.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Closing strip: both sidebars + center stat -->
+    <div class="showcase-strip">
+      <div class="showcase-strip-sidebar">
+        <img src="/images/shopify-portfolio/custom-apps-sidebar-1.png" alt="Custom Shopify apps: GTIN Barcode Scanner, SEO Audit Dashboard, LLM/AI Readiness Scorecard, New Arrivals Tagger, LLM Traffic Dashboard, Activity and Staff Logs" loading="lazy">
+      </div>
+      <div class="showcase-strip-text">
+        <div class="strip-num">14+</div>
+        <h3>Custom apps across two stores.</h3>
+        <p>Every app lives inside the Shopify admin. No app store subscriptions. No monthly fees. Built for each store's exact workflow.</p>
+      </div>
+      <div class="showcase-strip-sidebar">
+        <img src="/images/shopify-portfolio/custom-apps-sidebar-2.webp" alt="Custom Shopify apps: LLM Traffic Dashboard, Market Exclusion Manager, Smart Pricing, HS Code Scanner, PayPal Order Verifier, Allegro CSV Exporter" loading="lazy" width="800" height="745">
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- QUALIFIER -->
 <section class="section">
   <div class="section-inner">
@@ -338,7 +503,7 @@ table.compare .after{color:var(--green-dark);font-weight:600;background:rgba(52,
       </div>
     </div>
     <div class="qual-bottom">
-      <p style="margin-bottom:20px;color:#3d3d3d">If you checked 3+ boxes on the left, we should talk.</p>
+      <p style="margin-bottom:20px;color:#3d3d3d">If you checked 3+ of the green checks above, we should talk.</p>
       <a href="#cta" class="btn-primary">Book a Call - We'll Know in 15 Minutes</a>
     </div>
   </div>

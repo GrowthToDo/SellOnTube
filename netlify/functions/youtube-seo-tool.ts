@@ -29,6 +29,16 @@ function extractVideoId(input: string): string | null {
   return null;
 }
 
+function getNonVideoYouTubeError(url: string): string | null {
+  if (/youtube\.com\/([@]|channel\/|c\/|user\/)/i.test(url))
+    return 'That looks like a YouTube channel URL. Paste a link to a specific video instead.';
+  if (/youtube\.com\/playlist\?|[?&]list=/i.test(url))
+    return 'That looks like a playlist URL. Paste a link to a specific video from the playlist instead.';
+  if (/^https?:\/\/(www\.)?youtube\.com\/?(\?.*)?$/i.test(url))
+    return 'That looks like the YouTube homepage. Paste a link to a specific video instead.';
+  return null;
+}
+
 function stripHtml(html: string): string {
   // Remove script and style blocks entirely
   let text = html.replace(/<script[\s\S]*?<\/script>/gi, ' ');
@@ -220,6 +230,79 @@ ${websiteSection}
 Score each dimension as specified. Return only the JSON object.`;
 }
 
+function buildFallbackAnalysis(title: string, description: string, tags: string[], websiteText: string | null): SeoToolResponse {
+  const desc150 = description.slice(0, 150).toLowerCase();
+  const descLower = description.toLowerCase();
+  const titleLower = title.toLowerCase();
+
+  const buyerWords = ['best', 'vs', 'review', 'cost', 'pricing', 'alternative', 'compare', 'how to choose', 'setup', 'tutorial', 'fix', 'demo'];
+  const ctaWords = ['book', 'call', 'trial', 'download', 'sign up', 'subscribe', 'get started', 'free', 'schedule', 'contact'];
+  const tofuWords = ['what is', 'introduction', 'my experience', 'how i', 'a day in', 'vlog', 'storytime'];
+  const timestampRegex = /\d{1,2}:\d{2}/g;
+
+  // Title scoring
+  const hasBuyerTitle = buyerWords.some(w => titleLower.includes(w));
+  const hasTofuTitle = tofuWords.some(w => titleLower.includes(w));
+  let titleScore = hasTofuTitle ? 4 : hasBuyerTitle ? 16 : 10;
+  const titleFix = titleScore < 15 ? `Your title "${title}" lacks buyer-intent signals. Add words like "vs", "review", "pricing", or "how to choose" to attract people ready to buy.` : null;
+
+  // Description scoring
+  const hasKeywordInOpening = buyerWords.some(w => desc150.includes(w));
+  const hasValueProp = desc150.length > 50;
+  const hasBuyerKeywordsInBody = buyerWords.filter(w => descLower.includes(w)).length;
+  let descScore = (hasKeywordInOpening ? 6 : 2) + (hasValueProp ? 4 : 0) + Math.min(hasBuyerKeywordsInBody * 3, 8);
+  descScore = Math.min(20, descScore);
+  const descFix = descScore < 15 ? `Your first 150 characters should include a buyer keyword and clear value prop. Current opening: "${description.slice(0, 80)}..."` : null;
+
+  // Keyword scoring
+  const buyerTagCount = tags.filter(t => buyerWords.some(w => t.toLowerCase().includes(w))).length;
+  const keywordScore = Math.min(20, tags.length === 0 ? 3 : 5 + Math.min(buyerTagCount * 5, 15));
+  const keywordFix = keywordScore < 15 ? `Add buyer-intent tags. Current tags: ${tags.length === 0 ? 'none' : tags.slice(0, 5).join(', ')}. Add tags with words like "best", "vs", "review", "pricing".` : null;
+
+  // CTA scoring
+  const hasCta = ctaWords.some(w => descLower.includes(w));
+  const hasCtaAboveFold = ctaWords.some(w => desc150.includes(w));
+  const hasUrl = /https?:\/\//.test(description);
+  let ctaScore = hasCta ? (hasCtaAboveFold ? 17 : 10) : (hasUrl ? 4 : 1);
+  const ctaFix = ctaScore < 15 ? `Add a clear call-to-action in the first 150 characters. Example: "Book a free strategy call: [your URL]" or "Start your free trial: [URL]"` : null;
+
+  // Chapter scoring
+  const timestamps = description.match(timestampRegex);
+  const timestampCount = timestamps?.length ?? 0;
+  let chapterScore = timestampCount === 0 ? 0 : timestampCount >= 3 ? 14 : 8;
+  const chapterFix = chapterScore < 15 ? (timestampCount === 0
+    ? `No timestamps found. Add chapter markers like:\n00:00 [Topic that buyers search for]\n01:30 [Specific problem you solve]\n03:00 [How to get started]`
+    : `Your ${timestampCount} timestamps are a good start. Make labels more searchable with buyer-intent phrases instead of generic labels like "Intro" or "Part 1".`) : null;
+
+  const totalScore = titleScore + descScore + keywordScore + ctaScore + chapterScore;
+
+  const businessSummary = websiteText
+    ? `Business context detected from website. Analyse the video against your product positioning.`
+    : `No website provided. Analysis based on video metadata only.`;
+
+  const diagnosis = hasTofuTitle
+    ? `This title targets curiosity browsers, not buyers. Someone searching for a solution will scroll past it.`
+    : !hasBuyerTitle
+    ? `The title is missing buyer-intent signals. Buyers search with words like "best", "vs", "pricing" -- this title does not match those searches.`
+    : ctaScore < 5
+    ? `The video lacks a clear call-to-action. Viewers who are ready to buy have no next step.`
+    : `The biggest gap is keyword coverage. Buyer-intent terms are missing from the description and tags.`;
+
+  return {
+    business_summary: businessSummary,
+    recommended_keywords: [],
+    scores: {
+      title: { score: titleScore, label: 'Title Relevance', fix: titleFix },
+      description: { score: descScore, label: 'Description Opening', fix: descFix },
+      keywords: { score: keywordScore, label: 'Keyword Coverage', fix: keywordFix },
+      cta: { score: ctaScore, label: 'CTA Quality', fix: ctaFix },
+      chapters: { score: chapterScore, label: 'Chapter Labels', fix: chapterFix },
+    },
+    total_score: totalScore,
+    headline_diagnosis: diagnosis,
+  };
+}
+
 interface DataFetchVideoResponse {
   title?: string;
   description?: string;
@@ -296,8 +379,9 @@ export default async (request: Request) => {
     // Step 1: Extract video ID
     const videoId = extractVideoId(videoUrl.trim());
     if (!videoId) {
+      const specificError = getNonVideoYouTubeError(videoUrl.trim());
       return new Response(
-        JSON.stringify({ error: 'That doesn\'t look like a valid YouTube URL. Try pasting the full link from your browser.' }),
+        JSON.stringify({ error: specificError || 'That doesn\'t look like a valid YouTube video URL. Try pasting the full link from your browser.' }),
         { status: 400, headers }
       );
     }
@@ -404,13 +488,12 @@ export default async (request: Request) => {
       const errText = await geminiRes.text();
       console.error('Gemini API error:', geminiRes.status, errText);
       if (geminiRes.status === 429) {
-        return new Response(JSON.stringify({ error: 'quota_exceeded' }), { status: 429, headers });
+        const fallback = buildFallbackAnalysis(title, description, videoTags, websiteText);
+        return new Response(JSON.stringify(fallback), { status: 200, headers });
       }
-      // Use 503 not 502: Cloudflare intercepts 502 and replaces the response body
-      return new Response(
-        JSON.stringify({ error: 'AI service unavailable', geminiStatus: geminiRes.status, detail: errText.slice(0, 500) }),
-        { status: 503, headers }
-      );
+      // Use fallback for other Gemini errors too
+      const fallback = buildFallbackAnalysis(title, description, videoTags, websiteText);
+      return new Response(JSON.stringify(fallback), { status: 200, headers });
     }
 
     const geminiData = await geminiRes.json();

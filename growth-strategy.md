@@ -421,6 +421,32 @@ Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (
 
 ---
 
+## AI Search Visibility (Pillar E)
+
+**Approach:** Two-layer framework. See `ai-seo-guide.md` for full details.
+
+**Layer 1 -- Google AI Overviews:** No special optimization. Every SEO improvement above automatically improves AI Overviews visibility. Google's official position (May 2026): traditional SEO best practices ARE AI optimization.
+
+**Layer 2 -- ChatGPT, Perplexity, Claude:**
+- Maintain `public/llms.txt` and `public/llms-full.txt` (update when new tools/pages ship)
+- All AI crawlers allowed in `robots.txt` (already configured)
+- Content freshness: competitive posts updated every 90 days, core cluster posts monthly
+- AEO agent (Agent 11) runs monthly batch audit against top 15-20 winnable keywords
+- Citability audit (Agent 11 Mode 3) runs before every blog publish
+
+**Targets:**
+- Track GSC "AI Overviews" impressions monthly (baseline TBD -- start tracking now)
+- Quarterly AEO batch audit: compare against `research/aeo/` baseline
+- 5+ quotable passages per blog post (content-depth-framework.md standard)
+
+**What NOT to do:**
+- Do not create content specifically for AI systems (Google misconception)
+- Do not overemphasize structured data as an AI lever
+- Do not pursue inauthentic brand mentions
+- Do not sacrifice human readability for AI extraction patterns
+
+---
+
 ## Open Decisions
 
 1. **Include "create a company youtube channel" (6,600 vol, KD 27) in product bucket?** This keyword was excluded because it contains "company." User should decide: product-relevant (people creating channels = potential SellonTube users) or service-relevant (implies hiring someone)?

@@ -28,6 +28,7 @@ faqs:
   - question: "Is YouTube marketing different for B2B vs B2C?"
     answer: "Yes. B2C YouTube often works through the algorithm and viral content. B2B YouTube works through search. Your buyer is typing specific questions into YouTube before making a purchase decision. If your strategy optimizes for the algorithm instead of search, you are using the wrong playbook."
 metadata:
+  title: "Getting YouTube Views But No Leads? 6 Fixes"
   canonical: https://sellontube.com/blog/youtube-views-but-no-leads
   description: "Getting YouTube views but no leads? Here are 6 diagnostic checks with specific fixes for each one. The problem is usually topic selection, not content quality."
   openGraph:
