@@ -69,10 +69,10 @@ See `agents/08-microtool-builder.md` Phase 7 for full details.
 
 - **Style guide applies to ALL copy, not just new writing.** When any copy task is performed, check ALL existing copy on touched pages against `style-guide.md` and `content-playbook.md`. Grep for every banned pattern before finishing.
 
-- **Callout box and table font sizes must match blog body text.** Template code in `blog-production-standard.md` defines the reference sizes: labels `0.8rem`, body text `1rem`, table text `0.95rem`. Never use `0.85rem` or `0.9rem` for content text in callouts or tables — it renders too small against the blog's ~18px body font. Copy sizes from the template, don't guess.
+- **Callout box and table font sizes:** labels `0.7-0.8rem`, callout body text `0.85-0.9rem`, table text `0.95rem`. These are the sizes used in the actual HTML templates in `blog-production-standard.md`. Copy sizes from the templates, do not guess.
 
 - **FAQ content must be written manually in MDX body.** Frontmatter `faqs` array ONLY generates schema.org FAQPage JSON-LD (invisible to readers). The visible FAQ section requires an `## FAQ` heading followed by `### Question` + paragraph answer for each item. Every other blog post does this manually. The template does NOT auto-render frontmatter FAQs.
 
-- **Inline SVG diagrams must use the dark palette and proper sizing.** Background `#0f172a`, card fill `#1e293b`, white headings, light gray body, orange accent bar. Minimum font-size 14. Center with `margin: 2rem auto; text-align: center` on figure + `display: block; margin: 0 auto` on SVG. Never use washed-out light backgrounds. Full spec in `blog-production-standard.md` under SVG Diagrams.
+- **Inline SVG diagrams in blog posts must use the light palette:** background `#f8fafc`, borders `#e2e8f0`, dark text. Match the blog page's light theme. Featured images (the hero SVG at the top) keep the dark palette: background `#030620` to `#0a1540`. Do not use the dark palette for inline diagrams.
 
 - **Run the pre-publish QA checklist before showing any blog draft.** After writing, run verification greps (em-dashes, banned patterns, font sizes) and visually check in browser (SVG rendering, callout readability, table responsiveness, FAQ visibility). The draft shown to the user must be production-ready. The user reviews strategy and tone, not missing formatting.

@@ -230,7 +230,7 @@ Every post should demonstrate competence through the content itself, not through
 
 ### The Quality Bar
 
-Would SellonTube be proud to share this post on LinkedIn with their name attached? If not, it needs more work or should be shelved. One excellent post per week outperforms three mediocre ones. Mediocre posts dilute your brand. Excellent ones get shared, earn links, and build the reputation that makes everything else easier.
+Would SellonTube be proud to share this post on LinkedIn with their name attached? If not, it needs more work or should be shelved. One excellent post outperforms three mediocre ones. Mediocre posts dilute your brand. Excellent ones get shared, earn links, and build the reputation that makes everything else easier.
 
 ---
 
@@ -292,11 +292,16 @@ Before writing a single word, run this research. It determines how you title, st
 
 **URL slugs:** Short and keyword-rich. No dates. *Example: /youtube-seo-shopify*
 
+**Meta descriptions:** Under 155 characters. Directly address what the reader will learn or solve. Include the keyword.
+
+**Featured snippet target:** Write one section as a direct, concise answer (40-60 words) that Google could pull as a snippet.
+
+
 **FAQ section:** End with 3-5 questions pulled from "People Also Ask" related to the keyword.
 
 **Related keywords:** Include 2-3 naturally throughout to signal topical depth.
 
-**Internal links:** Every post should link to 2-3 other relevant SellonTube posts and suggest which existing posts should link back to this one.
+**Internal links:** At least 4 internal links total per post (mix of blog posts, tools, and pSEO pages). Suggest which existing posts should link back to this one.
 
 ### 5.5 Post-Publish SEO Sprint
 
@@ -333,7 +338,7 @@ See `ai-seo-guide.md` for the full two-layer framework.
 
 ---
 
-## 6. CONTENT FORMATS: SUSTAINING A 1 POST PER WEEK CADENCE
+## 6. CONTENT FORMATS: SUSTAINING QUALITY AT SCALE
 
 Not every post needs to be a 3,000-word thought leadership piece. These formats produce strong results with less effort:
 
@@ -418,8 +423,8 @@ Run every post through these checks before handing it to Gautam.
 - [ ] URL slug is short and keyword-rich
 - [ ] Featured snippet section included (40-60 words)
 - [ ] 2-3 related keywords used naturally
-- [ ] FAQ section with 3 "People Also Ask" questions
-- [ ] 2-3 internal links to other SellonTube posts
+- [ ] FAQ section with 3-5 "People Also Ask" questions
+- [ ] At least 4 internal links (mix of blog posts, tools, and pSEO pages)
 - [ ] AI optimization: post follows Layer 1 (Google) fundamentals -- unique perspective, non-commodity content, clear structure
 - [ ] AI optimization: Layer 2 patterns applied where natural -- answer block, definition block, entity consistency (see ai-seo-guide.md)
 

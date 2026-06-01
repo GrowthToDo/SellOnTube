@@ -145,6 +145,8 @@ metadata:
 
 > **Note on `faqs:` field:** This generates FAQ JSON-LD schema automatically via the blog template. Always populate it — it is the schema source of truth. Also render the same FAQs inline in the post body at the end (the inline FAQ section is for readers; the frontmatter field is for Google).
 
+**Definition block:** Bold the key term on first use as a standalone paragraph. Format: **[Term]** is [definition]. Place immediately after the H2/H3 that introduces the concept.
+
 Then full body in MDX, followed by:
 - **FAQ section**
 - **Bottom CTA** (book a call)
@@ -232,11 +234,7 @@ After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to th
 5. No broken em-dashes: grep for word-hyphen-word with no spaces (e.g., `assets-and`) — these are broken em-dashes
 
 ## Word count guidance
-- Listicle / tool roundup: 800–1200 words
-- How-to guide: 1200–2000 words
-- Strategy / framework piece: 1500–2500 words
-- Comparison post: 1000–1800 words
-- Never pad to hit a word count — cut ruthlessly
+Every article should be as long as it needs to be to fully cover the topic. Minimum 1,200 words. Use the content-depth-framework.md decision tree for guidance, not fixed ranges.
 
 ---
 
@@ -259,10 +257,10 @@ Read the full post file. Then check every item below. Fix anything that fails be
 - [ ] `metadata.openGraph` and `metadata.twitter` blocks are present
 
 **Structure — check these exist; add them if missing**
-- [ ] Key Takeaways amber box immediately after the intro (mandatory on posts >1,000 words)
+- [ ] Key Takeaways blue left-border box immediately after the intro (mandatory on posts >1,000 words)
 - [ ] Table of Contents slate box immediately after Key Takeaways (anchor links to every H2)
 - [ ] Exactly ONE `---` horizontal rule in the post body — placed after the ToC box, before the first H2. Grep for `^---$` and count. Remove every extra.
-- [ ] "What to Do This Week" is a styled blue HTML box (`background: #eff6ff; border-left: 4px solid #3b82f6`) — NOT a bare markdown list
+- [ ] "What to Do This Week" is a styled green HTML box (`background: #f0fdf4; border-left: 4px solid #10b981`) — NOT a bare markdown list
 - [ ] FAQ section is present inline in the post body (separate from frontmatter — both are needed)
 
 **Content quality — check before writing**
@@ -270,7 +268,7 @@ Read the full post file. Then check every item below. Fix anything that fails be
 - [ ] All H2s include the target keyword where natural — H2s double as ToC anchors and YouTube chapter titles
 - [ ] H2 numbering: only number the "problems/mistakes" list items. The solution section (final H2) must NOT be numbered.
 - [ ] Second person throughout: no "most businesses", "many founders", "they" — replace with "you/your"
-- [ ] At least 4 internal links: a mix of blog posts, tools (`/youtube-roi-calculator`), and pSEO pages (`/youtube-for/`, `/youtube-vs/`)
+- [ ] At least 4 internal links total (mix of blog posts, tools at /tools/*, and pSEO pages). Every post should link to at least one SellonTube tool.
 
 **Diagrams (if adding or repositioning)**
 - [ ] Framework/process diagrams (buyer journey, pillars, steps): place immediately below the H2, before any explanatory prose. The diagram orients the reader before the detail arrives.

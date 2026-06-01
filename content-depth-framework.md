@@ -52,7 +52,7 @@ Make pages scannable for humans and extractable for Google/AI:
 
 - Clear H2/H3 headings (e.g., "YouTube SEO for SaaS: Thumbnail Best Practices")
 - Concise definitions (1 sentence)
-- Short paragraphs (3-5 lines)
+- Short paragraphs (max 3 sentences)
 - Tables/checklists/bullets
 - Standalone blocks (e.g., "Top 3 SaaS Video Hooks: 1. Problem-agitate...")
 - SaaS/YouTube entities: activation, onboarding, CTR, AVD, conversion funnels
