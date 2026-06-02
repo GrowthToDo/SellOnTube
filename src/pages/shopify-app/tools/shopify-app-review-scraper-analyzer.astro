@@ -1,0 +1,761 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+
+const metadata = {
+  title: 'Free Shopify App Reviews Scraper - Extract & Download Reviews | SellOnTube',
+  description: 'Extract reviews from any Shopify app listing for free. View ratings, sentiment analysis, and download a CSV. No account needed.',
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+const siteUrl = 'https://sellontube.com';
+const pageUrl = `${siteUrl}/shopify-app/tools/shopify-app-review-scraper-analyzer`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Shopify App Services", "item": `${siteUrl}/shopify-app` },
+    { "@type": "ListItem", "position": 3, "name": "Tools", "item": `${siteUrl}/shopify-app/tools` },
+    { "@type": "ListItem", "position": 4, "name": "Reviews Scraper", "item": pageUrl },
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Shopify App Reviews Scraper",
+  "url": pageUrl,
+  "description": "Extract reviews from any Shopify app listing for free. View ratings, sentiment analysis, and download a CSV.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "How do I extract reviews from a Shopify app?", "acceptedAnswer": { "@type": "Answer", "text": "Paste the Shopify App Store URL (e.g. https://apps.shopify.com/loox) into the tool above and click Scrape Reviews. The tool extracts the most recent reviews directly from the public listing page." } },
+    { "@type": "Question", "name": "Can I download Shopify app reviews as a CSV?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. After the reviews are extracted, click Download CSV, enter your business email address, and the file downloads immediately. The CSV includes author, rating, date, country, review text, and developer replies." } },
+    { "@type": "Question", "name": "Is this tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Completely free. The tool extracts up to 50 of the most recent reviews per app. No account or credit card required." } },
+    { "@type": "Question", "name": "What data is included in the export?", "acceptedAnswer": { "@type": "Answer", "text": "Each row includes: Author, Rating (1-5), Date, Country, Time Using App, Review Text, Helpful Count, Developer Reply, and Developer Reply Date." } },
+  ]
+};
+
+const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','aol.com','icloud.com','mail.com','protonmail.com','zoho.com','ymail.com','live.com'];
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Case Studies', href: '/shopify-app#proof', links: [
+          { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
+          { text: 'YouTube Video Marketing: Inventory App Case Study', href: '/shopify-app/case-studies/shopify-app-growth-youtube-marketing' },
+        ]},
+        { text: 'Services', href: '/shopify-app#work' },
+        { text: 'Tools', href: '/shopify-app/tools' },
+        { text: 'Pricing', href: '/shopify-app#pricing' },
+      ]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <Fragment slot="footer"></Fragment>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoLink = document.querySelector('#header a[href="/"]');
+      if (logoLink) logoLink.setAttribute('href', '/shopify-app');
+    });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
+    .sfy { font-family: 'Inter', system-ui, sans-serif; }
+    .sfy-grad { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 50%, #C7D2FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; }
+    .sfy-light { --bg: #FAFAF8; --bg2: #F2F2EE; --card: #FFFFFF; --border: #E2E2DD; --text: #111113; --muted: #6B6B73; --dim: #9CA3AF; --accent: #6366F1; --accent-l: #818CF8; }
+
+    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
+    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
+
+    .rating-bar { height: 6px; border-radius: 3px; transition: width 0.6s ease; }
+
+    .review-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: border-color 0.2s ease; }
+    .review-card:hover { border-color: rgba(99,102,241,0.3); }
+
+    .star-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
+    .star-5, .star-4 { background: rgba(16,185,129,0.12); color: #059669; }
+    .star-3 { background: rgba(217,119,6,0.12); color: #D97706; }
+    .star-2 { background: rgba(234,88,12,0.12); color: #EA580C; }
+    .star-1 { background: rgba(220,38,38,0.12); color: #DC2626; }
+
+    .analysis-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+
+    .blur-gate { position: relative; }
+    .blur-gate::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
+
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; }
+    .modal-backdrop.active { display: flex; }
+
+    .truncate-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+
+    .copy-toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 0.5rem 1.5rem; border-radius: 8px; font-size: 0.85rem; z-index: 200; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    .copy-toast.show { opacity: 1; }
+  </style>
+
+  <div class="sfy">
+
+    <!-- ===== HERO (dark) ===== -->
+    <section class="sfy-dark relative pt-28 pb-12 overflow-hidden" style="background: var(--bg);">
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 30%, rgba(129,140,248,0.06) 0%, transparent 60%);"></div>
+      <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">Free Tool</p>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5 leading-[1.08] tracking-[-0.02em] sfy-h" style="color: var(--text);">
+          Shopify App Reviews Scraper
+        </h1>
+        <p class="text-base sm:text-lg leading-relaxed max-w-xl mx-auto" style="color: var(--muted);">
+          Paste any Shopify App Store URL. Extract reviews, see rating breakdowns and review analysis, then download everything as a CSV.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== TOOL INPUT (dark) ===== -->
+    <section class="sfy-dark py-6 pb-10" style="background: var(--bg);">
+      <div class="max-w-2xl mx-auto px-6">
+        <div id="step-input" class="rounded-2xl p-6 sm:p-8" style="background: var(--card); border: 1px solid var(--border);">
+          <label for="app-url" class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted);">Shopify App URL</label>
+          <input type="url" id="app-url" placeholder="https://apps.shopify.com/loox"
+            class="w-full text-base font-medium px-4 py-3 rounded-xl outline-none transition-colors"
+            style="background: var(--bg); border: 1px solid var(--border); color: var(--text);" />
+          <p id="url-error" class="hidden mt-2 text-sm" style="color: #EF4444;"></p>
+          <button id="scrape-btn"
+            class="sfy-btn-primary mt-5 w-full font-bold px-6 py-3.5 rounded-xl text-base sfy-h"
+            style="box-shadow: 0 0 30px -8px rgba(129,140,248,0.3);">
+            Scrape Reviews
+          </button>
+        </div>
+
+        <!-- Loading -->
+        <div id="step-loading" class="hidden rounded-2xl p-8 text-center mt-4" style="background: var(--card); border: 1px solid var(--border);">
+          <div class="flex flex-col items-center gap-4 py-8">
+            <div class="spinner"></div>
+            <p class="text-sm font-medium" style="color: var(--muted);">Extracting reviews...</p>
+            <p class="text-xs" style="color: var(--dim);">This may take a few seconds</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESULTS (light) ===== -->
+    <section id="step-results" class="hidden sfy-light py-10" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6 space-y-8">
+
+        <!-- App summary + Rating distribution -->
+        <div id="app-summary" class="analysis-card p-6 sm:p-8"></div>
+
+        <!-- Review Analysis -->
+        <div id="analysis-section" class="hidden analysis-card">
+          <div class="flex items-center justify-between px-6 pt-5 pb-3">
+            <div class="flex items-center gap-3">
+              <h2 class="text-lg font-bold sfy-h" style="color: var(--text);">Review Analysis</h2>
+              <span id="analysis-count-label" class="text-xs px-2 py-0.5 rounded-full" style="background: var(--bg2); color: var(--muted);"></span>
+            </div>
+            <button id="copy-analysis-btn" class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors" style="background: var(--bg2); color: var(--muted);" title="Copy analysis">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <div id="analysis-content" class="px-6 pb-6"></div>
+        </div>
+
+        <!-- Review preview + gate -->
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <p id="review-count-label" class="text-sm font-medium" style="color: var(--muted);"></p>
+          </div>
+          <div id="reviews-preview" class="space-y-4"></div>
+          <div id="review-gate" class="hidden mt-6 text-center rounded-2xl p-8" style="background: var(--card); border: 1px solid var(--border);">
+            <p class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);" id="gate-headline"></p>
+            <p class="text-sm mb-5 max-w-md mx-auto" style="color: var(--muted);">
+              Download the full dataset as CSV. Use it for competitor research, upload to AI tools, or analyze in Excel.
+            </p>
+            <button id="download-csv-btn" class="sfy-btn-primary font-semibold px-8 py-3 rounded-xl text-sm sfy-h">
+              Download CSV
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrape another -->
+        <div class="text-center">
+          <button id="reset-btn" class="text-sm font-medium px-6 py-2 rounded-lg transition-colors" style="color: var(--accent);">
+            Scrape another app
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA (dark) ===== -->
+    <section id="cta-section" class="hidden sfy-dark py-14" style="background: var(--bg);">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h2 class="text-xl sm:text-2xl font-bold mb-3 sfy-h" style="color: var(--text);">Need help managing your app reviews?</h2>
+        <p class="text-sm mb-6 max-w-lg mx-auto" style="color: var(--muted);">
+          SellOnTube replies to every Shopify review under your brand voice and runs outreach to surface new 5-star reviews.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/shopify-app" class="sfy-btn-primary font-semibold px-6 py-2.5 rounded-lg text-sm sfy-h">See how we manage reviews</a>
+          <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer"
+            class="font-semibold px-6 py-2.5 rounded-lg text-sm sfy-h" style="border: 1px solid var(--border); color: var(--muted);">
+            Book a discovery call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ (light) ===== -->
+    <section class="sfy-light py-14" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-2xl font-bold mb-8 sfy-h" style="color: var(--text);">FAQ</h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">How do I extract reviews from a Shopify app?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Paste the Shopify App Store URL (e.g. https://apps.shopify.com/loox) into the tool above and click Scrape Reviews. The tool extracts the most recent reviews directly from the public listing page.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">Can I download Shopify app reviews as a CSV?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Yes. After the reviews are extracted, click Download CSV, enter your business email address, and the file downloads immediately. The CSV includes author, rating, date, country, review text, and developer replies.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">Is this tool free to use?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Completely free. The tool extracts up to 50 of the most recent reviews per app. No account or credit card required.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">What data is included in the export?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Each row includes: Author, Rating (1-5), Date, Country, Time Using App, Review Text, Helpful Count, Developer Reply, and Developer Reply Date.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER (dark) ===== -->
+    <footer class="sfy-dark py-8" style="background: var(--bg); border-top: 1px solid var(--border);">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="text-xs text-center mb-6" style="color: var(--dim);">
+          Review data is sourced from public Shopify App Store listings and belongs to the original reviewers. SellOnTube is not affiliated with or endorsed by Shopify.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
+          <div class="flex items-center gap-6 text-xs" style="color: var(--dim);">
+            <a href="/shopify-app" class="hover:underline">Back to Services</a>
+            <a href="/privacy" class="hover:underline">Privacy</a>
+            <a href="/terms" class="hover:underline">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== EMAIL MODAL ===== -->
+    <div id="email-modal" class="modal-backdrop">
+      <div class="sfy-dark rounded-2xl p-8" style="background: var(--card); border: 1px solid var(--border); max-width: 420px; width: 90%;">
+        <h3 class="text-lg font-bold mb-1 sfy-h" style="color: var(--text);">Download your CSV</h3>
+        <p class="text-sm mb-5" style="color: var(--muted);">Enter your business email to download the full review dataset.</p>
+        <input type="email" id="modal-email" placeholder="your@company.com"
+          class="w-full text-sm px-4 py-3 rounded-xl outline-none mb-2"
+          style="background: var(--bg); border: 1px solid var(--border); color: var(--text);" />
+        <p id="modal-email-error" class="hidden text-xs mb-3" style="color: #EF4444;"></p>
+        <label class="flex items-start gap-2 mt-3 mb-5 cursor-pointer">
+          <input type="checkbox" id="modal-consent" class="mt-0.5 accent-indigo-500" />
+          <span class="text-xs leading-snug" style="color: var(--muted);">
+            I agree to receive this CSV and occasional emails from SellOnTube.
+            <a href="/privacy-policy" target="_blank" class="underline" style="color: var(--accent);">Privacy Policy</a>
+          </span>
+        </label>
+        <button id="modal-download-btn" disabled
+          class="sfy-btn-primary w-full font-semibold px-5 py-3 rounded-xl text-sm sfy-h opacity-50 cursor-not-allowed">
+          Download CSV
+        </button>
+        <button id="modal-close-btn" class="w-full mt-3 text-sm font-medium py-2" style="color: var(--dim);">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Copy toast -->
+    <div id="copy-toast" class="copy-toast">Copied to clipboard</div>
+  </div>
+
+  <script is:inline define:vars={{ PERSONAL_DOMAINS }}>
+    (function () {
+      const PREVIEW_COUNT = 3;
+
+      let allReviews = [];
+      let appInfo = null;
+      let analysis = null;
+      let currentPage = 0;
+      let hasMore = false;
+      let loading = false;
+      let appUrl = '';
+
+      const $ = (id) => document.getElementById(id);
+      const show = (el) => el.classList.remove('hidden');
+      const hide = (el) => el.classList.add('hidden');
+
+      const $input = $('step-input');
+      const $loading = $('step-loading');
+      const $results = $('step-results');
+      const $cta = $('cta-section');
+      const $urlInput = $('app-url');
+      const $urlError = $('url-error');
+      const $scrapeBtn = $('scrape-btn');
+      const $appSummary = $('app-summary');
+      const $analysisSection = $('analysis-section');
+      const $analysisContent = $('analysis-content');
+      const $analysisCountLabel = $('analysis-count-label');
+      const $reviewCountLabel = $('review-count-label');
+      const $reviewsPreview = $('reviews-preview');
+      const $reviewGate = $('review-gate');
+      const $gateHeadline = $('gate-headline');
+      const $downloadBtn = $('download-csv-btn');
+      const $resetBtn = $('reset-btn');
+      const $copyBtn = $('copy-analysis-btn');
+      const $copyToast = $('copy-toast');
+
+      const $modal = $('email-modal');
+      const $modalEmail = $('modal-email');
+      const $modalEmailError = $('modal-email-error');
+      const $modalConsent = $('modal-consent');
+      const $modalDownloadBtn = $('modal-download-btn');
+      const $modalCloseBtn = $('modal-close-btn');
+
+      function showError(msg) {
+        $urlError.textContent = msg;
+        show($urlError);
+      }
+
+      function isValidUrl(url) {
+        return /^https?:\/\/(apps\.shopify\.com)\/[a-z0-9-]+(\/reviews)?/i.test(url.trim());
+      }
+
+      function isBusinessEmail(email) {
+        var domain = email.split('@')[1];
+        if (!domain) return false;
+        return !PERSONAL_DOMAINS.includes(domain.toLowerCase());
+      }
+
+      function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function escapeCsvField(val) {
+        var str = String(val || '');
+        if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+          return '"' + str.replace(/"/g, '""') + '"';
+        }
+        return str;
+      }
+
+      function starBadge(rating) {
+        var cls = rating >= 4 ? 'star-' + rating : rating === 3 ? 'star-3' : rating === 2 ? 'star-2' : 'star-1';
+        return '<span class="star-badge ' + cls + '">' + '★'.repeat(rating) + '☆'.repeat(5 - rating) + ' ' + rating + '</span>';
+      }
+
+      // --- App summary with rating bars ---
+      function renderAppSummary(info) {
+        var dist = info.rating_distribution || {};
+        var total = Object.values(dist).reduce(function(a, b) { return a + b; }, 0) || 1;
+
+        var barsHtml = '';
+        for (var s = 5; s >= 1; s--) {
+          var count = dist[String(s)] || 0;
+          var pct = Math.round((count / total) * 100);
+          barsHtml += '<div class="flex items-center gap-3 text-sm" style="color: var(--muted);">' +
+            '<span class="w-4 text-right font-semibold" style="color: var(--text);">' + s + '</span>' +
+            '<span class="text-xs" style="color: var(--dim);">★</span>' +
+            '<div class="flex-1 h-2 rounded-full overflow-hidden" style="background: var(--border);">' +
+            (pct > 0 ? '<div class="rating-bar h-full rounded-full" style="width: ' + pct + '%; background: var(--accent);"></div>' : '') +
+            '</div>' +
+            '<span class="w-20 text-right text-xs tabular-nums">' + count.toLocaleString() + ' (' + pct + '%)</span>' +
+          '</div>';
+        }
+
+        $appSummary.innerHTML =
+          '<div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">' +
+            '<div>' +
+              '<h2 class="text-xl font-bold sfy-h" style="color: var(--text);">' + escapeHtml(info.app_name) + '</h2>' +
+              '<div class="flex items-center gap-2 mt-1">' +
+                '<span class="text-2xl font-bold sfy-m" style="color: var(--accent);">' + info.overall_rating + '</span>' +
+                '<span class="text-sm" style="color: var(--muted);">out of 5</span>' +
+                '<span class="text-sm" style="color: var(--dim);">·</span>' +
+                '<span class="text-sm" style="color: var(--muted);">' + info.total_reviews.toLocaleString() + ' total reviews</span>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="space-y-2.5">' + barsHtml + '</div>';
+      }
+
+      // --- Review Analysis ---
+      function renderAnalysis(a, reviewCount, totalReviews) {
+        if (!a) { hide($analysisSection); return; }
+
+        $analysisCountLabel.textContent = 'Based on ' + reviewCount + ' of ' + totalReviews.toLocaleString() + ' reviews';
+
+        var html = '';
+
+        // Executive summary
+        html += '<div class="mb-6">' +
+          '<p class="text-sm leading-relaxed" style="color: var(--muted);">' + escapeHtml(a.executive_summary || '') + '</p>' +
+        '</div>';
+
+        // Overall perception
+        if (a.overall_perception) {
+          html += '<div class="rounded-lg p-4 mb-6" style="background: var(--bg2); border: 1px solid var(--border);">' +
+            '<p class="text-sm font-medium" style="color: var(--text);">' + escapeHtml(a.overall_perception) + '</p>' +
+          '</div>';
+        }
+
+        // Key strengths + weaknesses side by side
+        var hasStrengths = a.key_strengths && a.key_strengths.length;
+        var hasWeaknesses = a.key_weaknesses && a.key_weaknesses.length;
+        if (hasStrengths || hasWeaknesses) {
+          html += '<div class="grid sm:grid-cols-2 gap-4 mb-6">';
+          if (hasStrengths) {
+            html += '<div class="rounded-lg p-4" style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15);">' +
+              '<p class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: #059669;">Key Strengths</p>' +
+              '<ul class="space-y-2">';
+            a.key_strengths.forEach(function(s) {
+              html += '<li class="flex items-start gap-2 text-sm" style="color: var(--text);"><span style="color: #059669;">+</span> ' + escapeHtml(s) + '</li>';
+            });
+            html += '</ul></div>';
+          }
+          if (hasWeaknesses) {
+            html += '<div class="rounded-lg p-4" style="background: rgba(220,38,38,0.05); border: 1px solid rgba(220,38,38,0.12);">' +
+              '<p class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: #DC2626;">Key Weaknesses</p>' +
+              '<ul class="space-y-2">';
+            a.key_weaknesses.forEach(function(s) {
+              html += '<li class="flex items-start gap-2 text-sm" style="color: var(--text);"><span style="color: #DC2626;">−</span> ' + escapeHtml(s) + '</li>';
+            });
+            html += '</ul></div>';
+          }
+          html += '</div>';
+        }
+
+        // What merchants love (detailed)
+        if (a.loves && a.loves.length) {
+          html += '<div class="mb-5">' +
+            '<p class="text-sm font-semibold mb-3 sfy-h" style="color: var(--text);">What Merchants Love</p>' +
+            '<div class="space-y-3">';
+          a.loves.forEach(function(l) {
+            var theme = typeof l === 'string' ? l : l.theme;
+            var detail = typeof l === 'string' ? '' : l.detail;
+            html += '<div class="flex items-start gap-3">' +
+              '<span class="mt-0.5 text-sm" style="color: #059669;">✓</span>' +
+              '<div>' +
+                '<span class="text-sm font-medium" style="color: var(--text);">' + escapeHtml(theme) + '</span>' +
+                (detail ? '<p class="text-xs mt-0.5" style="color: var(--muted);">' + escapeHtml(detail) + '</p>' : '') +
+              '</div>' +
+            '</div>';
+          });
+          html += '</div></div>';
+        }
+
+        // Common complaints (detailed)
+        if (a.complaints && a.complaints.length) {
+          html += '<div>' +
+            '<p class="text-sm font-semibold mb-3 sfy-h" style="color: var(--text);">Common Complaints</p>' +
+            '<div class="space-y-3">';
+          a.complaints.forEach(function(c) {
+            var theme = typeof c === 'string' ? c : c.theme;
+            var detail = typeof c === 'string' ? '' : c.detail;
+            html += '<div class="flex items-start gap-3">' +
+              '<span class="mt-0.5 text-sm" style="color: #DC2626;">✗</span>' +
+              '<div>' +
+                '<span class="text-sm font-medium" style="color: var(--text);">' + escapeHtml(theme) + '</span>' +
+                (detail ? '<p class="text-xs mt-0.5" style="color: var(--muted);">' + escapeHtml(detail) + '</p>' : '') +
+              '</div>' +
+            '</div>';
+          });
+          html += '</div></div>';
+        }
+
+        $analysisContent.innerHTML = html;
+        show($analysisSection);
+      }
+
+      // --- Review card ---
+      function reviewCardHtml(r) {
+        if (!r.body && r.body !== '') return '';
+        var bodyText = r.body || '';
+        var bodyTruncated = bodyText.length > 300;
+        var bodyId = 'rb-' + Math.random().toString(36).slice(2, 8);
+        var replyHtml = '';
+        if (r.developer_reply) {
+          replyHtml = '<div class="mt-3 pl-4" style="border-left: 2px solid var(--border);">' +
+            '<p class="text-xs font-semibold mb-1" style="color: var(--dim);">Developer reply' + (r.developer_reply_date ? ' · ' + escapeHtml(r.developer_reply_date) : '') + '</p>' +
+            '<p class="text-sm leading-relaxed" style="color: var(--dim);">' + escapeHtml(r.developer_reply) + '</p>' +
+          '</div>';
+        }
+        return '<div class="review-card">' +
+          '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">' +
+            '<div class="flex items-center gap-3">' + starBadge(r.rating) +
+              '<span class="text-sm font-medium" style="color: var(--text);">' + escapeHtml(r.author) + '</span>' +
+            '</div>' +
+            '<div class="flex items-center gap-2 text-xs" style="color: var(--dim);">' +
+              '<span>' + escapeHtml(r.country) + '</span><span>·</span><span>' + escapeHtml(r.date) + '</span>' +
+            '</div>' +
+          '</div>' +
+          (r.time_using_app ? '<p class="text-xs mb-2" style="color: var(--dim);">' + escapeHtml(r.time_using_app) + '</p>' : '') +
+          '<div id="' + bodyId + '" class="text-sm leading-relaxed ' + (bodyTruncated ? 'truncate-3' : '') + '" style="color: var(--muted);">' + escapeHtml(bodyText) + '</div>' +
+          (bodyTruncated ? '<button onclick="var el=document.getElementById(\'' + bodyId + '\');el.classList.toggle(\'truncate-3\');this.textContent=el.classList.contains(\'truncate-3\')?\'Show more\':\'Show less\';" class="text-xs mt-1 font-medium" style="color: var(--accent);">Show more</button>' : '') +
+          replyHtml +
+        '</div>';
+      }
+
+      // --- Render reviews (preview only) ---
+      function renderReviews() {
+        var analyzedCount = allReviews.length;
+        var totalCount = appInfo.total_reviews;
+        $reviewCountLabel.textContent = 'Analyzed ' + analyzedCount + ' of ' + totalCount.toLocaleString() + ' reviews';
+
+        // Show only PREVIEW_COUNT reviews
+        var previewReviews = allReviews.slice(0, PREVIEW_COUNT);
+        $reviewsPreview.innerHTML = previewReviews.map(reviewCardHtml).join('');
+
+        // Gate
+        var remaining = analyzedCount - PREVIEW_COUNT;
+        if (remaining > 0) {
+          $gateHeadline.textContent = remaining + ' more reviews extracted. Download CSV to access all ' + analyzedCount + ' reviews.';
+          show($reviewGate);
+        } else if (analyzedCount > 0) {
+          $gateHeadline.textContent = analyzedCount + ' reviews extracted. Download the full dataset as CSV.';
+          show($reviewGate);
+        }
+      }
+
+      // --- Fetch ---
+      function scrapeReviews(page) {
+        loading = true;
+        return fetch('/.netlify/functions/scrape-reviews', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: appUrl, page: page }),
+        }).then(function(res) { return res.json(); }).then(function(data) {
+          loading = false;
+          if (data.error && !data.reviews) throw new Error(data.error);
+          return data;
+        }).catch(function(err) {
+          loading = false;
+          throw err;
+        });
+      }
+
+      // --- Start scrape ---
+      function startScrape() {
+        var url = $urlInput.value.trim();
+        hide($urlError);
+        if (!url) { showError('Please enter a Shopify app URL.'); return; }
+        if (!isValidUrl(url)) { showError('Please enter a valid Shopify app URL (e.g. https://apps.shopify.com/loox)'); return; }
+
+        appUrl = url;
+        allReviews = [];
+        appInfo = null;
+        analysis = null;
+        currentPage = 1;
+
+        show($loading);
+        hide($results);
+        hide($cta);
+        $scrapeBtn.disabled = true;
+        $scrapeBtn.textContent = 'Scraping...';
+
+        scrapeReviews(1).then(function(data) {
+          appInfo = data.app_info;
+          analysis = data.sentiment;
+          allReviews = data.reviews || [];
+          hasMore = data.has_more;
+          currentPage = data.page;
+
+          // Auto-fetch remaining pages
+          return fetchRemainingPages();
+        }).then(function() {
+          hide($loading);
+          show($results);
+          show($cta);
+          $scrapeBtn.disabled = false;
+          $scrapeBtn.textContent = 'Scrape Reviews';
+
+          renderAppSummary(appInfo);
+          renderAnalysis(analysis, allReviews.length, appInfo.total_reviews);
+
+          // Fallback to Shopify summary
+          if (!analysis && appInfo.shopify_summary && appInfo.shopify_summary !== 'N/A') {
+            $analysisContent.innerHTML =
+              '<p class="text-sm leading-relaxed" style="color: var(--muted);">' + escapeHtml(appInfo.shopify_summary) + '</p>';
+            $analysisCountLabel.textContent = 'Shopify summary';
+            show($analysisSection);
+          }
+
+          renderReviews();
+          $results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }).catch(function(err) {
+          hide($loading);
+          $scrapeBtn.disabled = false;
+          $scrapeBtn.textContent = 'Scrape Reviews';
+          showError(err.message || "We couldn't extract reviews. Please check the URL and try again.");
+        });
+      }
+
+      // Auto-fetch all pages up to MAX_PAGES
+      function fetchRemainingPages() {
+        if (!hasMore || currentPage >= 5) return Promise.resolve();
+        var nextPage = currentPage + 1;
+        return scrapeReviews(nextPage).then(function(data) {
+          if (data.reviews) allReviews = allReviews.concat(data.reviews);
+          hasMore = data.has_more;
+          currentPage = data.page;
+          return fetchRemainingPages();
+        }).catch(function() {
+          // Stop on error, use what we have
+          return Promise.resolve();
+        });
+      }
+
+      // --- Reset ---
+      function resetTool() {
+        hide($results);
+        hide($cta);
+        $urlInput.value = '';
+        $urlInput.focus();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // --- Copy analysis ---
+      function copyAnalysis() {
+        if (!analysis) return;
+        var text = 'Review Analysis\n\n';
+        text += analysis.executive_summary + '\n\n';
+        if (analysis.overall_perception) text += 'Overall: ' + analysis.overall_perception + '\n\n';
+        if (analysis.key_strengths && analysis.key_strengths.length) {
+          text += 'Key Strengths:\n';
+          analysis.key_strengths.forEach(function(s) { text += '+ ' + s + '\n'; });
+          text += '\n';
+        }
+        if (analysis.key_weaknesses && analysis.key_weaknesses.length) {
+          text += 'Key Weaknesses:\n';
+          analysis.key_weaknesses.forEach(function(s) { text += '- ' + s + '\n'; });
+          text += '\n';
+        }
+        if (analysis.loves && analysis.loves.length) {
+          text += 'What Merchants Love:\n';
+          analysis.loves.forEach(function(l) {
+            var theme = typeof l === 'string' ? l : l.theme;
+            var detail = typeof l === 'string' ? '' : l.detail;
+            text += '✓ ' + theme + (detail ? ' - ' + detail : '') + '\n';
+          });
+          text += '\n';
+        }
+        if (analysis.complaints && analysis.complaints.length) {
+          text += 'Common Complaints:\n';
+          analysis.complaints.forEach(function(c) {
+            var theme = typeof c === 'string' ? c : c.theme;
+            var detail = typeof c === 'string' ? '' : c.detail;
+            text += '✗ ' + theme + (detail ? ' - ' + detail : '') + '\n';
+          });
+        }
+
+        navigator.clipboard.writeText(text).then(function() {
+          $copyToast.classList.add('show');
+          setTimeout(function() { $copyToast.classList.remove('show'); }, 2000);
+        });
+      }
+
+      // --- CSV ---
+      function buildCsv() {
+        var headers = ['Author', 'Rating', 'Date', 'Country', 'Time Using App', 'Review', 'Helpful Count', 'Developer Reply', 'Developer Reply Date'];
+        var rows = allReviews.map(function(r) {
+          return [
+            escapeCsvField(r.author), r.rating, escapeCsvField(r.date), escapeCsvField(r.country),
+            escapeCsvField(r.time_using_app || ''), escapeCsvField(r.body), r.helpful_count || 0,
+            escapeCsvField(r.developer_reply), escapeCsvField(r.developer_reply_date || '')
+          ].join(',');
+        });
+        return headers.join(',') + '\n' + rows.join('\n');
+      }
+
+      function downloadCsv() {
+        var csv = buildCsv();
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        var name = (appInfo && appInfo.app_name || 'reviews').replace(/[^a-zA-Z0-9]/g, '_');
+        a.href = url;
+        a.download = name + '_reviews.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      // --- Modal ---
+      function openModal() { $modal.classList.add('active'); }
+      function closeModal() { $modal.classList.remove('active'); }
+
+      function updateModalBtn() {
+        var emailOk = $modalEmail.value.trim() && isBusinessEmail($modalEmail.value.trim());
+        var consentOk = $modalConsent.checked;
+        if (emailOk && consentOk) {
+          $modalDownloadBtn.disabled = false;
+          $modalDownloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        } else {
+          $modalDownloadBtn.disabled = true;
+          $modalDownloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+      }
+
+      function handleModalDownload() {
+        var email = $modalEmail.value.trim();
+        hide($modalEmailError);
+        if (!email) { $modalEmailError.textContent = 'Please enter your email.'; show($modalEmailError); return; }
+        if (!isBusinessEmail(email)) { $modalEmailError.textContent = 'Please enter your business email address.'; show($modalEmailError); return; }
+        if (!$modalConsent.checked) return;
+
+        downloadCsv();
+        closeModal();
+        $modalEmail.value = '';
+        $modalConsent.checked = false;
+        updateModalBtn();
+      }
+
+      // --- Events ---
+      $scrapeBtn.addEventListener('click', startScrape);
+      $urlInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') startScrape(); });
+      $downloadBtn.addEventListener('click', openModal);
+      $resetBtn.addEventListener('click', resetTool);
+      $copyBtn.addEventListener('click', copyAnalysis);
+      $modalCloseBtn.addEventListener('click', closeModal);
+      $modal.addEventListener('click', function(e) { if (e.target === $modal) closeModal(); });
+      $modalEmail.addEventListener('input', function() { hide($modalEmailError); updateModalBtn(); });
+      $modalConsent.addEventListener('change', updateModalBtn);
+      $modalDownloadBtn.addEventListener('click', handleModalDownload);
+    })();
+  </script>
+
+</Layout>
