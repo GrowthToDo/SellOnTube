@@ -32,13 +32,20 @@ const monthlyData = [
       links={[
         { text: 'Back to Services', href: '/shopify-app' },
       ]}
-      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank' }]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
       isSticky
       showToggleTheme
     />
   </Fragment>
 
   <Fragment slot="footer"></Fragment>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoLink = document.querySelector('#header a[href="/"]');
+      if (logoLink) logoLink.setAttribute('href', '/shopify-app');
+    });
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
