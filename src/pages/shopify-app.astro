@@ -3,8 +3,8 @@ import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 
 const metadata = {
-  title: 'Non-Technical Business Team for Shopify App Owners | SellOnTube',
-  description: 'We handle everything a Shopify app owner needs except the engineering: ASO, user guides, product video, review management, SEO content, UX copy, pricing strategy, and more.',
+  title: 'Shopify App Marketing — ASO, SEO Content, Product Video',
+  description: 'Shopify app growth is all we do. ASO, SEO content, product video, user guides, review management. One client saw 3.25x more conversions.',
 };
 
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
@@ -15,10 +15,11 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
   <Fragment slot="header">
     <Header
       links={[
-        { text: 'The Problem', href: '#problem' },
-        { text: 'Results', href: '#proof' },
-        { text: 'What We Do', href: '#work' },
-        { text: 'How It Works', href: '#how' },
+        { text: 'Case Studies', href: '#proof', links: [
+          { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
+          { text: 'YouTube vs Blog: 3.25x', href: '/shopify-app/case-studies/shopify-app-growth-youtube-marketing' },
+        ]},
+        { text: 'Services', href: '#work' },
         { text: 'Pricing', href: '#pricing' },
         { text: 'FAQ', href: '#faq' },
       ]}
@@ -222,66 +223,66 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
       </div>
     </section>
 
-    <!-- ===== PROOF / CLIENT STORY (light, moved up) ===== -->
+    <!-- ===== PROOF / CASE STUDIES (light, equal weight) ===== -->
     <section id="proof" class="sfy-light py-20" style="background: var(--bg2);">
       <div class="max-w-5xl mx-auto px-6">
-        <div class="flex items-center gap-4 mb-14">
-          <div class="flex-shrink-0 w-px h-12" style="background: var(--accent);"></div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-1 sfy-h" style="color: var(--accent);">Case study</p>
-            <h2 class="text-xl font-bold sfy-h" style="color: var(--text);">Left Foot Software <span class="text-sm font-normal ml-2" style="color: var(--dim);">Multi-app Shopify suite</span></h2>
-          </div>
-        </div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">Case studies</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight tracking-[-0.02em] mb-14" style="color: var(--text);">
+          Two clients. Two types of proof.
+        </h2>
 
-        <div class="grid lg:grid-cols-2 gap-12 items-start mb-8">
-          <div>
-            <p class="text-[7rem] sm:text-[10rem] font-black leading-none select-none sfy-m" style="color: var(--border); margin-bottom: -0.25rem;">0</p>
-            <p class="text-3xl sm:text-5xl font-extrabold mb-8 leading-tight" style="color: var(--text);">to everything.</p>
-            <p class="leading-relaxed mb-4" style="color: var(--muted);">
-              A Shopify app company running a multi-app suite. Great product, zero growth infrastructure. No positioning, no documentation, no support ops, no marketing. We built all of it.
-            </p>
-            <p class="leading-relaxed mb-6" style="color: var(--muted);">
-              ASO rewrite. Product video. Knowledge base. Pricing strategy. Review management. Product strategy input. In 120 days.
-            </p>
-            <a href="/shopify-app/case-studies/left-foot-software" class="inline-flex items-center gap-2 text-sm font-semibold sfy-h" style="color: var(--accent);">
-              Read the full case study
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </a>
-          </div>
-          <div class="space-y-4">
-            <div class="sfy-card-light overflow-hidden">
-              <div class="px-7 py-5" style="border-bottom: 1px solid var(--border);">
-                <p class="text-xl font-black sfy-h" style="color: var(--accent);">App Store listing rewritten</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- CS1: Left Foot Software -->
+          <div class="sfy-card-light overflow-hidden flex flex-col">
+            <div class="px-7 py-5 flex items-center justify-between" style="border-bottom: 1px solid var(--border);">
+              <div>
+                <p class="font-bold text-base sfy-h" style="color: var(--text);">Left Foot Software</p>
+                <p class="text-xs mt-0.5" style="color: var(--dim);">Multi-app Shopify suite</p>
               </div>
-              <div class="px-7 py-5">
-                <p class="text-sm leading-relaxed" style="color: var(--muted);">Title, subtitle, description, and search terms rebuilt around merchant intent. The listing now converts before they click through. We scripted, recorded, and edited the product video.</p>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full sfy-m" style="background: rgba(99,102,241,0.08); color: var(--accent);">Transformation</span>
+            </div>
+            <div class="px-7 py-6 flex-1">
+              <p class="text-4xl font-black mb-1 sfy-m" style="color: var(--accent);">120 days</p>
+              <p class="text-sm font-semibold mb-4 sfy-h" style="color: var(--text);">Zero growth infrastructure to full growth layer</p>
+              <div class="space-y-2.5 text-sm mb-6" style="color: var(--muted);">
+                <p>ASO rewrite. Now ranking #1 on Google for "gs1 assistant."</p>
+                <p>Product video scripted, recorded, and edited. Founder never on camera.</p>
+                <p>30-50 article knowledge base. Uninstall rate improving.</p>
+                <p>Pricing strategy rebuilt around real merchant usage.</p>
               </div>
             </div>
-            <div class="sfy-card-light overflow-hidden">
-              <div class="px-7 py-5" style="border-bottom: 1px solid var(--border);">
-                <p class="text-xl font-black sfy-h" style="color: var(--text);">Pricing strategy delivered</p>
-              </div>
-              <div class="px-7 py-5">
-                <p class="text-sm leading-relaxed" style="color: var(--muted);">Free plan removed. Migration to a credit-based model built around actual merchant usage. Full knowledge base published. Uninstall rate improving.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3.25x callout (separate company, not Left Foot) -->
-        <div class="relative rounded-2xl overflow-hidden" style="background: rgba(99,102,241,0.04); border: 1px solid rgba(99,102,241,0.15);">
-          <div class="p-8 flex flex-col sm:flex-row sm:items-center gap-8">
-            <div class="flex-1">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 sfy-h" style="color: var(--accent);">Separate client engagement</p>
-              <p class="leading-relaxed mb-3" style="color: var(--muted);">A Shopify app company saw 3.25x more conversions from YouTube content vs blog, tracked via Google Analytics on install-button clicks over 12 months of data.</p>
-              <a href="/shopify-app/case-studies/shopify-app-growth-youtube-marketing" class="inline-flex items-center gap-2 text-sm font-semibold sfy-h" style="color: var(--accent);">
+            <div class="px-7 py-5" style="border-top: 1px solid var(--border);">
+              <a href="/shopify-app/case-studies/left-foot-software" class="inline-flex items-center gap-2 text-sm font-semibold sfy-h" style="color: var(--accent);">
                 Read the full case study
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </a>
             </div>
-            <div class="flex-shrink-0 text-center sm:text-right">
-              <p class="text-6xl font-black sfy-m sfy-grad">3.25x</p>
-              <p class="text-sm mt-2" style="color: var(--dim);">more conversions</p>
+          </div>
+
+          <!-- CS2: YouTube vs Blog -->
+          <div class="sfy-card-light overflow-hidden flex flex-col">
+            <div class="px-7 py-5 flex items-center justify-between" style="border-bottom: 1px solid var(--border);">
+              <div>
+                <p class="font-bold text-base sfy-h" style="color: var(--text);">Shopify App Company</p>
+                <p class="text-xs mt-0.5" style="color: var(--dim);">Inventory & operations category</p>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full sfy-m" style="background: rgba(99,102,241,0.08); color: var(--accent);">12-month data</span>
+            </div>
+            <div class="px-7 py-6 flex-1">
+              <p class="text-4xl font-black mb-1 sfy-m sfy-grad">3.25x</p>
+              <p class="text-sm font-semibold mb-4 sfy-h" style="color: var(--text);">More conversions from YouTube vs blog</p>
+              <div class="space-y-2.5 text-sm mb-6" style="color: var(--muted);">
+                <p>YouTube: 1,257 conversions. Blog: 411. Same topics, same offers.</p>
+                <p>48 videos over 12 months. Bottom-of-funnel keywords only.</p>
+                <p>Gap widened every month. Started at 2.5x, ended at 4.9x.</p>
+                <p>Tracked via Google Analytics on install-button clicks.</p>
+              </div>
+            </div>
+            <div class="px-7 py-5" style="border-top: 1px solid var(--border);">
+              <a href="/shopify-app/case-studies/shopify-app-growth-youtube-marketing" class="inline-flex items-center gap-2 text-sm font-semibold sfy-h" style="color: var(--accent);">
+                Read the full case study
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </a>
             </div>
           </div>
         </div>
