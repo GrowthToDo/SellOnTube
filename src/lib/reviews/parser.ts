@@ -41,7 +41,7 @@ function num(s: string | undefined): number {
   return parseInt(cleaned, 10) || 0;
 }
 
-function extractRatingFromAria(el: cheerio.Cheerio<cheerio.Element>): number {
+function extractRatingFromAria(el: cheerio.Cheerio<any>): number {
   // aria-label="5 out of 5 stars" or "4.9 out of 5 stars"
   const label = el.attr('aria-label') || '';
   const m = label.match(/([\d.]+)\s+out\s+of\s+5/);
