@@ -1,0 +1,77 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+
+const metadata = {
+  title: 'Free Tools for Shopify App Growth | SellOnTube',
+  description: 'Free tools to help Shopify app companies grow installs, reduce churn, and improve activation. Coming soon.',
+  robots: { index: false, follow: true },
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+---
+
+<Layout metadata={metadata}>
+
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Case Studies', href: '/shopify-app#proof', links: [
+          { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
+          { text: 'YouTube vs Blog: 3.25x', href: '/shopify-app/case-studies/shopify-app-growth-youtube-marketing' },
+        ]},
+        { text: 'Services', href: '/shopify-app#work' },
+        { text: 'Tools', href: '/shopify-app/tools' },
+        { text: 'Pricing', href: '/shopify-app#pricing' },
+      ]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank' }]}
+      showToggleTheme
+    />
+  </Fragment>
+
+  <Fragment slot="footer"></Fragment>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
+    .sfy { font-family: 'Inter', system-ui, sans-serif; }
+    .sfy-grad { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 50%, #C7D2FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; }
+    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
+    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
+  </style>
+
+  <div class="sfy">
+    <section class="sfy-dark relative py-40 overflow-hidden" style="background: var(--bg);">
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(129,140,248,0.06) 0%, transparent 60%);"></div>
+      <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-6 sfy-h" style="color: var(--accent);">Tools</p>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-[1.05] tracking-[-0.02em]" style="color: var(--text);">Free tools for Shopify<br class="hidden sm:block" /> app growth.</h1>
+        <p class="text-lg mb-4 leading-relaxed" style="color: var(--muted);">We are building tools that help Shopify app companies diagnose and fix their growth. First ones launching soon.</p>
+        <p class="text-sm mb-12" style="color: var(--dim);">Want to know when they launch? Book a call and we will keep you in the loop.</p>
+        <a href={calLink} target="_blank" rel="noopener noreferrer"
+          class="sfy-btn-primary inline-block font-bold px-10 py-4 rounded-full text-sm sfy-h" style="box-shadow: 0 0 40px -5px rgba(129,140,248,0.4);">
+          Book a discovery call
+        </a>
+      </div>
+    </section>
+
+    <footer class="sfy-dark py-12" style="background: var(--bg2); border-top: 1px solid var(--border);">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
+          <div class="flex items-center gap-6 text-xs" style="color: var(--dim);">
+            <a href="/shopify-app" class="hover:underline">Back to Services</a>
+            <a href="/privacy" class="hover:underline">Privacy</a>
+            <a href="/terms" class="hover:underline">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</Layout>
