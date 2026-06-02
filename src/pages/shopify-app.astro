@@ -16,7 +16,9 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     <Header
       links={[
         { text: 'The Problem', href: '#problem' },
+        { text: 'Results', href: '#proof' },
         { text: 'What We Do', href: '#work' },
+        { text: 'How It Works', href: '#how' },
         { text: 'Pricing', href: '#pricing' },
         { text: 'FAQ', href: '#faq' },
       ]}
@@ -25,7 +27,6 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     />
   </Fragment>
 
-  <!-- Suppress default SellOnTube footer -->
   <Fragment slot="footer"></Fragment>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,13 +38,9 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
     .sfy { font-family: 'Inter', system-ui, sans-serif; }
 
-    /* Indigo palette */
     .sfy-grad { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 50%, #C7D2FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    /* Dark sections */
     .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; --accent-glow: rgba(129,140,248,0.15); }
-
-    /* Light sections */
     .sfy-light { --bg: #FAFAF8; --bg2: #F2F2EE; --card: #FFFFFF; --border: #E6E6E1; --text: #111113; --muted: #6B6B73; --dim: #9CA3AF; --accent: #6366F1; --accent-l: #818CF8; --accent-glow: rgba(99,102,241,0.08); }
 
     .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
@@ -78,12 +75,12 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
             </div>
 
             <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-[-0.02em] mb-7" style="color: var(--text);">
-              You built the app.<br />
-              <span class="sfy-grad">We handle<br class="hidden sm:block" /> everything else.</span>
+              You build the app.<br />
+              <span class="sfy-grad">We help you<br class="hidden sm:block" /> grow it.</span>
             </h1>
 
             <p class="text-base leading-relaxed mb-10 max-w-lg" style="color: var(--muted);">
-              Technical founders build great products and run out of bandwidth before anyone hears about them. We are the non-engineering half of your company.
+              More installs, less churn, merchants who actually stick around. Shopify app growth is a specialty. It is all we do.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-3">
@@ -98,14 +95,13 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
             </div>
           </div>
 
-          <!-- Manifest card (glass + indigo glow) -->
           <div class="hidden lg:block">
             <div class="rounded-2xl overflow-hidden sfy-glow" style="background: rgba(19,19,22,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(129,140,248,0.12);">
               <div class="px-6 py-4 flex items-center justify-between" style="border-bottom: 1px solid rgba(28,28,33,0.8);">
-                <p class="text-xs font-semibold uppercase tracking-[0.15em] sfy-h" style="color: var(--dim);">Your non-technical layer</p>
+                <p class="text-xs font-semibold uppercase tracking-[0.15em] sfy-h" style="color: var(--dim);">Your growth layer</p>
                 <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full sfy-m" style="background: rgba(129,140,248,0.12); color: var(--accent-l);">Active</span>
               </div>
-              {['App Store optimisation|Done', 'User documentation|Done', 'Product demo video|Done', 'SEO content|Running', 'Review management|Running', 'Pricing strategy|Done', 'UX copy audit|Done'].map((row) => {
+              {['App Store optimization|Done', 'User documentation|Done', 'Product demo video|Done', 'SEO content|Running', 'Review management|Running', 'Pricing strategy|Done', 'UX copy audit|Done'].map((row) => {
                 const [name, status] = row.split('|');
                 return (
                   <div class="px-6 py-3.5 flex items-center justify-between" style="border-bottom: 1px solid rgba(28,28,33,0.6);">
@@ -133,12 +129,12 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
         <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 text-center">
           <div>
             <p class="text-3xl font-bold sfy-m sfy-grad">3.25x</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">more installs from positioning + content</p>
+            <p class="text-xs mt-1" style="color: var(--dim);">more conversions via YouTube vs blog</p>
           </div>
           <div class="hidden sm:block w-px h-10" style="background: var(--border);"></div>
           <div>
             <p class="text-3xl font-bold sfy-m" style="color: var(--text);">120 days</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">full non-technical layer from zero</p>
+            <p class="text-xs mt-1" style="color: var(--dim);">from listing rewrite to live knowledge base</p>
           </div>
           <div class="hidden sm:block w-px h-10" style="background: var(--border);"></div>
           <div>
@@ -152,43 +148,87 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     <!-- ===== TRANSITION: dark to light ===== -->
     <div style="height: 80px; background: linear-gradient(to bottom, #0E0E11, #FAFAF8);"></div>
 
-    <!-- ===== PROBLEM (light) ===== -->
+    <!-- ===== PROBLEM (light, pillar-grouped) ===== -->
     <section id="problem" class="sfy-light py-20" style="background: var(--bg);">
       <div class="max-w-5xl mx-auto px-6">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">The problem</p>
-        <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.02em] mb-14" style="color: var(--text);">
+        <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.02em] mb-6" style="color: var(--text);">
           Good apps stay invisible.<br /><span style="color: #C8C8C4;">Not because they're bad.</span>
         </h2>
+        <p class="text-lg mb-14 max-w-2xl" style="color: var(--muted);">
+          Your listing underperforms. Support tickets pile up that docs should handle. Content that should drive installs does not exist or does not rank. This work is either missing or half-done. Every month it stays that way, merchants who need your app install a competitor instead.
+        </p>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {[
-            { num: '01', title: 'Your listing loses merchants before they click', desc: 'A weak title, vague description, and no reviews. Merchants scroll past in under three seconds.' },
-            { num: '02', title: 'Merchants uninstall in week one', desc: 'High early churn is almost always an onboarding and documentation problem. They get confused, find no help, and leave.' },
-            { num: '03', title: 'You answer the same support questions daily', desc: 'Without a knowledge base, every merchant who gets stuck emails you. You become the documentation.' },
-            { num: '04', title: 'Reviews pile up with no response', desc: 'Unanswered reviews signal to new merchants that nobody is minding the store. Review velocity affects your ranking.' },
-            { num: '05', title: 'No content working while you ship', desc: 'User guides, SEO content, and product videos compound over time. Most apps skip them entirely.' },
-            { num: '06', title: 'You are the engineer and the entire company', desc: 'Founder, engineer, support team, marketer. Something always gets dropped. It is always the non-technical work.' },
-          ].map((card) => (
+        <!-- Discovery problems -->
+        <div class="mb-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] mb-4 sfy-h" style="color: var(--accent);">Discovery</p>
+          <div class="grid sm:grid-cols-2 gap-4">
             <div class="sfy-card-light relative p-7 overflow-hidden">
-              <p class="absolute -bottom-3 -right-1 text-[7rem] font-black leading-none select-none sfy-m" style="color: rgba(99,102,241,0.04);">{card.num}</p>
+              <p class="absolute -bottom-3 -right-1 text-[7rem] font-black leading-none select-none sfy-m" style="color: rgba(99,102,241,0.04);">01</p>
               <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-5" style="background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.1);">
                 <div class="w-2 h-2 rounded-full" style="background: var(--accent);"></div>
               </div>
-              <h3 class="font-bold mb-2 text-sm sfy-h" style="color: var(--text);">{card.title}</h3>
-              <p class="text-sm leading-relaxed" style="color: var(--muted);">{card.desc}</p>
+              <h3 class="font-bold mb-2 text-sm sfy-h" style="color: var(--text);">Your listing is not converting like it should</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Generic title, vague value prop, screenshots that do not sell. Merchants scroll past in under three seconds. The listing is the first sale and most apps lose it.</p>
             </div>
-          ))}
+            <div class="sfy-card-light relative p-7 overflow-hidden">
+              <p class="absolute -bottom-3 -right-1 text-[7rem] font-black leading-none select-none sfy-m" style="color: rgba(99,102,241,0.04);">02</p>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-5" style="background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.1);">
+                <div class="w-2 h-2 rounded-full" style="background: var(--accent);"></div>
+              </div>
+              <h3 class="font-bold mb-2 text-sm sfy-h" style="color: var(--text);">Reviews are not working for you</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Replies are late or generic. No outreach to happy merchants. No presence on G2 or Capterra. Review velocity affects your App Store ranking and you are leaving it to chance.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evaluation problems -->
+        <div class="mb-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] mb-4 sfy-h" style="color: var(--accent);">Evaluation</p>
+          <div class="grid sm:grid-cols-1 gap-4 max-w-xl">
+            <div class="sfy-card-light relative p-7 overflow-hidden">
+              <p class="absolute -bottom-3 -right-1 text-[7rem] font-black leading-none select-none sfy-m" style="color: rgba(99,102,241,0.04);">03</p>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-5" style="background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.1);">
+                <div class="w-2 h-2 rounded-full" style="background: var(--accent);"></div>
+              </div>
+              <h3 class="font-bold mb-2 text-sm sfy-h" style="color: var(--text);">Content is not generating installs</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Blog that stalled after two posts. Product video that was never made or never updated. The apps that grow past 500 installs all have content compounding for them. Yours probably does not.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Retention problems -->
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.15em] mb-4 sfy-h" style="color: var(--accent);">Retention</p>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="sfy-card-light relative p-7 overflow-hidden">
+              <p class="absolute -bottom-3 -right-1 text-[7rem] font-black leading-none select-none sfy-m" style="color: rgba(99,102,241,0.04);">04</p>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-5" style="background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.1);">
+                <div class="w-2 h-2 rounded-full" style="background: var(--accent);"></div>
+              </div>
+              <h3 class="font-bold mb-2 text-sm sfy-h" style="color: var(--text);">Merchants churn in the first week</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Early churn is almost always an onboarding and documentation gap. The product works. Merchants just never figure that out before they leave.</p>
+            </div>
+            <div class="sfy-card-light relative p-7 overflow-hidden">
+              <p class="absolute -bottom-3 -right-1 text-[7rem] font-black leading-none select-none sfy-m" style="color: rgba(99,102,241,0.04);">05</p>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center mb-5" style="background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.1);">
+                <div class="w-2 h-2 rounded-full" style="background: var(--accent);"></div>
+              </div>
+              <h3 class="font-bold mb-2 text-sm sfy-h" style="color: var(--text);">Support is reactive, not scalable</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Same questions, answered one at a time. No knowledge base deflecting the repeats. No onboarding docs preventing the confusion in the first place. Support costs time that should go to building.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== PROOF (light, accent panel) ===== -->
+    <!-- ===== PROOF / CLIENT STORY (light, moved up) ===== -->
     <section id="proof" class="sfy-light py-20" style="background: var(--bg2);">
       <div class="max-w-5xl mx-auto px-6">
         <div class="flex items-center gap-4 mb-14">
           <div class="flex-shrink-0 w-px h-12" style="background: var(--accent);"></div>
           <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-1 sfy-h" style="color: var(--accent);">Client story</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-1 sfy-h" style="color: var(--accent);">Case study</p>
             <h2 class="text-xl font-bold sfy-h" style="color: var(--text);">Left Foot Software <span class="text-sm font-normal ml-2" style="color: var(--dim);">Multi-app Shopify suite</span></h2>
           </div>
         </div>
@@ -198,11 +238,15 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
             <p class="text-[7rem] sm:text-[10rem] font-black leading-none select-none sfy-m" style="color: var(--border); margin-bottom: -0.25rem;">0</p>
             <p class="text-3xl sm:text-5xl font-extrabold mb-8 leading-tight" style="color: var(--text);">to everything.</p>
             <p class="leading-relaxed mb-4" style="color: var(--muted);">
-              A solo technical founder running a multi-app suite. Great product, zero non-technical capacity. No positioning, no documentation, no support ops, no marketing. We built all of it.
+              A Shopify app company running a multi-app suite. Great product, zero growth infrastructure. No positioning, no documentation, no support ops, no marketing. We built all of it.
             </p>
-            <p class="leading-relaxed" style="color: var(--muted);">
+            <p class="leading-relaxed mb-6" style="color: var(--muted);">
               ASO rewrite. Product video. Knowledge base. Pricing strategy. Review management. Product strategy input. In 120 days.
             </p>
+            <a href="/shopify-app/case-studies/left-foot-software" class="inline-flex items-center gap-2 text-sm font-semibold sfy-h" style="color: var(--accent);">
+              Read the full case study
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
           </div>
           <div class="space-y-4">
             <div class="sfy-card-light overflow-hidden">
@@ -224,12 +268,12 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
           </div>
         </div>
 
-        <!-- 3.25x callout -->
+        <!-- 3.25x callout (separate company, not Left Foot) -->
         <div class="relative rounded-2xl overflow-hidden" style="background: rgba(99,102,241,0.04); border: 1px solid rgba(99,102,241,0.15);">
           <div class="p-8 flex flex-col sm:flex-row sm:items-center gap-8">
             <div class="flex-1">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 sfy-h" style="color: var(--accent);">Separate engagement</p>
-              <p class="leading-relaxed" style="color: var(--muted);">Content and positioning work for a Shopify app portfolio. Results tracked via Google Analytics on install button clicks.</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 sfy-h" style="color: var(--accent);">Separate client engagement</p>
+              <p class="leading-relaxed" style="color: var(--muted);">A Shopify app company saw 3.25x more conversions from YouTube content vs blog, tracked via Google Analytics on install-button clicks over 12 months of data.</p>
             </div>
             <div class="flex-shrink-0 text-center sm:text-right">
               <p class="text-6xl font-black sfy-m sfy-grad">3.25x</p>
@@ -240,55 +284,212 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
       </div>
     </section>
 
-    <!-- ===== SERVICES (light) ===== -->
-    <section id="work" class="sfy-light py-20" style="background: var(--bg);">
+    <!-- ===== OLD WAY vs NEW WAY (light → dark inset) ===== -->
+    <section class="sfy-light py-20" style="background: var(--bg);">
       <div class="max-w-5xl mx-auto px-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">The comparison</p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.02em] mb-14" style="color: var(--text);">
+          Two ways to run<br class="hidden sm:block" /> a Shopify app company.
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Old Way -->
+          <div class="rounded-2xl p-8 relative overflow-hidden" style="background: #FEF2F2; border: 1px solid #FECACA;">
+            <div class="flex items-center gap-3 mb-8">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center" style="background: #FEE2E2;">
+                <svg class="w-4 h-4" style="color: #EF4444;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+              </span>
+              <p class="font-bold text-lg sfy-h" style="color: #991B1B;">Without Shopify app growth expertise</p>
+            </div>
+            <div class="space-y-5">
+              {[
+                'Listing copy written by whoever had 20 minutes between sprints',
+                'Same five support questions, answered from scratch, every single day',
+                'No product video. Merchants install blind and churn.',
+                'Reviews answered late, if at all. No outreach to happy merchants.',
+                'Blog or content plan that stalled after the first two posts',
+                'Pricing set at launch and never stress-tested against real usage',
+              ].map((text) => (
+                <div class="flex items-start gap-3">
+                  <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #EF4444;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                  <p class="text-sm leading-relaxed" style="color: #7F1D1D;">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- New Way -->
+          <div class="rounded-2xl p-8 relative overflow-hidden" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
+            <div class="flex items-center gap-3 mb-8">
+              <span class="w-8 h-8 rounded-full flex items-center justify-center" style="background: #DCFCE7;">
+                <svg class="w-4 h-4" style="color: #22C55E;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              </span>
+              <p class="font-bold text-lg sfy-h" style="color: #14532D;">With SellOnTube</p>
+            </div>
+            <div class="space-y-5">
+              {[
+                'Listing rewritten by ASO specialists. Converts before the click.',
+                'Knowledge base deflects the repeat questions. Support scales.',
+                'Product video scripted, recorded, and edited by our team. Reusable everywhere.',
+                'Every review answered on-brand. G2, Capterra, Product Hunt covered.',
+                'SEO content publishes monthly. Installs come in from search.',
+                'Pricing model built on actual merchant usage patterns. Not guesswork.',
+              ].map((text) => (
+                <div class="flex items-start gap-3">
+                  <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color: #22C55E;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  <p class="text-sm leading-relaxed" style="color: #14532D;">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRANSITION: light to dark ===== -->
+    <div style="height: 60px; background: linear-gradient(to bottom, #FAFAF8, #08080A);"></div>
+
+    <!-- ===== SERVICES (dark, hybrid 4-pillar + cards) ===== -->
+    <section id="work" class="sfy-dark relative py-24 overflow-hidden" style="background: var(--bg);">
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 30% 20%, rgba(129,140,248,0.05) 0%, transparent 50%);"></div>
+      <div class="relative max-w-5xl mx-auto px-6">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">What we handle</p>
-        <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.02em] mb-4" style="color: var(--text);">The complete non-technical side of your app.</h2>
-        <p class="text-lg mb-14" style="color: var(--muted);">You stay in the code. Everything else is ours.</p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.02em] mb-4" style="color: var(--text);">Shopify app growth.<br class="hidden sm:block" /> That is all we do.</h2>
+        <p class="text-lg mb-6" style="color: var(--muted);">The work that actually moves installs and keeps merchants around.</p>
+        <p class="text-sm mb-16 max-w-2xl" style="color: var(--dim);">We build the content layer around your product. From the App Store listing to the help center article a merchant reads at 11 PM.</p>
 
-        <!-- Featured card -->
-        <div class="relative rounded-3xl overflow-hidden mb-5" style="border: 1px solid rgba(99,102,241,0.2); background: linear-gradient(135deg, rgba(99,102,241,0.04), rgba(255,255,255,0.8));">
-          <div class="p-8 sm:p-10 flex flex-col sm:flex-row gap-10 items-center">
-            <div class="flex-1">
-              <div class="inline-block text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-5" style="background: var(--accent);">Biggest impact on churn</div>
-              <h3 class="text-2xl font-extrabold mb-3 sfy-h" style="color: var(--text);">User guides and knowledge base</h3>
-              <p class="mb-5 leading-relaxed" style="color: var(--muted);">Merchants uninstall in week one because they get stuck and find no help. A full knowledge base (30 to 50 articles covering every feature, edge case, and support question) fixes this.</p>
-              <p class="font-semibold text-sm" style="color: var(--accent);">Uninstall rate improving after knowledge base went live. <span class="font-normal" style="color: var(--dim);">Left Foot Software</span></p>
+        <!-- Pillar 1: ASO → Discovery -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold sfy-m" style="background: rgba(129,140,248,0.12); color: var(--accent-l);">1</span>
+            <p class="text-xs font-semibold uppercase tracking-[0.15em] sfy-h" style="color: var(--accent-l);">App Store Optimization &rarr; Discovery</p>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="sfy-card-dark p-6">
+              <p class="text-lg font-black mb-1 sfy-h" style="color: var(--text);">Listing rewrite</p>
+              <p class="text-xs mb-4" style="color: var(--dim);">title, subtitle, description, search terms</p>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Rewritten for what merchants actually type into the search bar. Your listing converts before they even click through.</p>
             </div>
-            <div class="flex-shrink-0 text-center rounded-2xl px-10 py-8" style="background: var(--card); border: 1px solid rgba(99,102,241,0.12); box-shadow: 0 2px 12px rgba(99,102,241,0.06);">
-              <p class="text-4xl font-black sfy-h" style="color: var(--accent);">Churn</p>
-              <p class="text-xs mt-2 font-medium uppercase tracking-wider" style="color: var(--dim);">improving post-launch</p>
+            <div class="sfy-card-dark p-6">
+              <p class="text-lg font-black mb-1 sfy-h" style="color: var(--text);">Product demo video</p>
+              <p class="text-xs mb-4" style="color: var(--dim);">voiceover + screen capture, fully produced</p>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">We script, record, and edit. A professional video for your App Store listing, YouTube, and landing page. You never touch a camera.</p>
+            </div>
+            <div class="sfy-card-dark p-6">
+              <p class="text-lg font-black mb-1 sfy-h" style="color: var(--text);">Review management</p>
+              <p class="text-xs mb-4" style="color: var(--dim);">every review answered, new ones surfaced</p>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Shopify reviews replied to under your brand voice. G2, Capterra, Product Hunt submitted. Outreach sequences to surface new reviews.</p>
             </div>
           </div>
         </div>
 
-        <!-- Service grid -->
-        <div class="grid sm:grid-cols-2 gap-4 mb-14">
-          {[
-            { big: 'Listing rewrite', sub: 'title, subtitle, description, search terms', title: 'App Store optimisation', desc: 'Rewritten around what merchants actually search for. Your listing converts before they click through to the full description.', tag: 'Foundation', tagColor: 'var(--accent)' },
-            { big: 'No recording needed', sub: 'voiceover and screen capture, fully produced', title: 'Product demo video', desc: 'We script, record, and edit. A professional video for your App Store listing, YouTube channel, and landing page.', tag: 'Foundation', tagColor: 'var(--accent)' },
-            { big: 'Compounding installs', sub: '2 to 4 posts/month, permanently indexed', title: 'SEO content', desc: 'Educational content targeting merchants before they search for your app. Keeps generating installs after it publishes.', tag: 'Ongoing', tagColor: '#6366F1' },
-            { big: 'Every review answered', sub: 'under your brand voice, plus new review outreach', title: 'Review management', desc: 'Shopify reviews replied to. G2, Capterra, Product Hunt submitted. Outreach sequences to surface new reviews.', tag: 'Ongoing', tagColor: '#6366F1' },
-          ].map((s) => (
-            <div class="sfy-card-light p-6 flex flex-col">
-              <p class="text-2xl font-black mb-1 sfy-h" style="color: var(--text);">{s.big}</p>
-              <p class="text-xs mb-5" style="color: var(--dim);">{s.sub}</p>
-              <h3 class="font-bold text-sm mb-2 sfy-h" style="color: var(--text);">{s.title}</h3>
-              <p class="text-sm flex-1 leading-relaxed" style="color: var(--muted);">{s.desc}</p>
-              <p class="text-xs mt-5 pt-4 font-semibold uppercase tracking-wider sfy-h" style={`border-top: 1px solid var(--border); color: ${s.tagColor};`}>{s.tag}</p>
+        <!-- Pillar 2: Website & SEO → Evaluation -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold sfy-m" style="background: rgba(129,140,248,0.12); color: var(--accent-l);">2</span>
+            <p class="text-xs font-semibold uppercase tracking-[0.15em] sfy-h" style="color: var(--accent-l);">Website &amp; SEO Content &rarr; Evaluation</p>
+          </div>
+          <div class="grid sm:grid-cols-1 gap-4 max-w-2xl">
+            <div class="sfy-card-dark p-6">
+              <p class="text-lg font-black mb-1 sfy-h" style="color: var(--text);">SEO content</p>
+              <p class="text-xs mb-4" style="color: var(--dim);">2 to 4 posts/month, permanently indexed</p>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Content that reaches merchants before they search for your app. Landing pages, use-case pages, comparison guides. Publishes once, keeps generating installs.</p>
             </div>
-          ))}
-
-          <div class="sfy-card-light p-6 flex flex-col sm:col-span-2">
-            <p class="text-2xl font-black mb-1 sfy-h" style="color: var(--text);">UX copy and pricing strategy</p>
-            <p class="text-xs mb-5" style="color: var(--dim);">onboarding, button labels, error messages, empty states, pricing model</p>
-            <p class="text-sm flex-1 leading-relaxed" style="color: var(--muted);">Audit of every word a merchant sees that is not a feature. Pricing model recommendations grounded in merchant behaviour, not what competitors charge.</p>
-            <p class="text-xs mt-5 pt-4 font-semibold uppercase tracking-wider sfy-h" style="border-top: 1px solid var(--border); color: var(--dim);">Project-based</p>
           </div>
         </div>
 
-        <!-- Fit check (dark inset) -->
+        <!-- Pillar 3: YouTube & Video → Understanding -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold sfy-m" style="background: rgba(129,140,248,0.12); color: var(--accent-l);">3</span>
+            <p class="text-xs font-semibold uppercase tracking-[0.15em] sfy-h" style="color: var(--accent-l);">YouTube &amp; Video &rarr; Understanding</p>
+          </div>
+          <div class="grid sm:grid-cols-1 gap-4 max-w-2xl">
+            <div class="sfy-card-dark p-6">
+              <p class="text-lg font-black mb-1 sfy-h" style="color: var(--text);">Video marketing for Shopify apps</p>
+              <p class="text-xs mb-4" style="color: var(--dim);">demo, tutorial, onboarding, feature explainers</p>
+              <p class="text-sm leading-relaxed" style="color: var(--muted);">Demo videos, feature walkthroughs, onboarding tutorials. Goes on your listing, landing page, and YouTube. We scripted, recorded, and edited Left Foot's product demo. The founder never touched a camera.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 4: Docs → Retention (featured) -->
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold sfy-m" style="background: rgba(129,140,248,0.12); color: var(--accent-l);">4</span>
+            <p class="text-xs font-semibold uppercase tracking-[0.15em] sfy-h" style="color: var(--accent-l);">User Guides &amp; Documentation &rarr; Retention</p>
+          </div>
+          <div class="relative rounded-2xl overflow-hidden" style="border: 1px solid rgba(129,140,248,0.25); background: linear-gradient(135deg, rgba(129,140,248,0.06), rgba(19,19,22,0.8));">
+            <div class="p-8 flex flex-col sm:flex-row gap-8 items-center">
+              <div class="flex-1">
+                <div class="inline-block text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-5" style="background: var(--accent);">Biggest impact on churn</div>
+                <p class="text-lg font-black mb-1 sfy-h" style="color: var(--text);">Knowledge base and user guides</p>
+                <p class="text-xs mb-4" style="color: var(--dim);">30 to 50 articles, help center + embedded in-app</p>
+                <p class="text-sm leading-relaxed" style="color: var(--muted);">Merchants uninstall in week one because they get stuck and find no help. A 30-to-50-article knowledge base turns that around.</p>
+                <p class="font-semibold text-sm mt-4" style="color: var(--accent);">Uninstall rate improving after knowledge base went live. <span class="font-normal" style="color: var(--dim);">Left Foot Software</span></p>
+              </div>
+              <div class="flex-shrink-0 text-center rounded-2xl px-10 py-8" style="background: var(--card); border: 1px solid rgba(129,140,248,0.15);">
+                <p class="text-4xl font-black sfy-h" style="color: var(--accent);">Churn</p>
+                <p class="text-xs mt-2 font-medium uppercase tracking-wider" style="color: var(--dim);">improving post-launch</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cross-cutting: UX copy + pricing -->
+        <div class="sfy-card-dark p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-6 h-6 rounded-md flex items-center justify-center text-xs font-bold sfy-m" style="background: rgba(85,85,90,0.3); color: var(--dim);">+</span>
+            <p class="text-xs font-semibold uppercase tracking-[0.15em] sfy-h" style="color: var(--dim);">Project-based add-on</p>
+          </div>
+          <p class="text-lg font-black mb-1 sfy-h" style="color: var(--text);">UX copy and pricing strategy</p>
+          <p class="text-xs mb-4" style="color: var(--dim);">onboarding, button labels, error messages, empty states, pricing model</p>
+          <p class="text-sm leading-relaxed" style="color: var(--muted);">We audit the words merchants see that are not features: onboarding, empty states, error messages. Pricing model based on merchant behavior, not what competitors charge.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS (dark → light transition) ===== -->
+    <div style="height: 60px; background: linear-gradient(to bottom, #08080A, #FAFAF8);"></div>
+
+    <section id="how" class="sfy-light py-20" style="background: var(--bg);">
+      <div class="max-w-5xl mx-auto px-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">How it works</p>
+        <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.02em] mb-14" style="color: var(--text);">
+          Three steps. No guesswork.
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="relative">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15);">
+              <span class="text-lg font-bold sfy-m" style="color: var(--accent);">1</span>
+            </div>
+            <h3 class="font-bold text-lg mb-3 sfy-h" style="color: var(--text);">Book a discovery call</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">30 minutes. We review your app, listing, install curve, and top support tickets. If we can help, we tell you exactly what we would propose and what it costs.</p>
+          </div>
+
+          <div class="relative">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15);">
+              <span class="text-lg font-bold sfy-m" style="color: var(--accent);">2</span>
+            </div>
+            <h3 class="font-bold text-lg mb-3 sfy-h" style="color: var(--text);">We audit and propose</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Specific deliverables scoped to your app. Listing rewrite, knowledge base plan, video brief, content calendar. No surprises once we start.</p>
+          </div>
+
+          <div class="relative">
+            <div class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style="background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15);">
+              <span class="text-lg font-bold sfy-m" style="color: var(--accent);">3</span>
+            </div>
+            <h3 class="font-bold text-lg mb-3 sfy-h" style="color: var(--text);">We build, you ship</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Foundation phase: 6 to 8 weeks. We handle listing, docs, video, and content while your team ships features. Retainer kicks in for ongoing content, reviews, and support infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FIT CHECK (dark inset inside light) ===== -->
+    <section class="sfy-light py-4" style="background: var(--bg);">
+      <div class="max-w-5xl mx-auto px-6">
         <div class="sfy-dark relative rounded-3xl overflow-hidden" style="background: var(--bg); border: 1px solid var(--border);">
           <div class="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl pointer-events-none" style="background: rgba(129,140,248,0.06);"></div>
           <div class="relative px-8 sm:px-12 pt-12 pb-8">
@@ -296,8 +497,8 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
             <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-10" style="color: var(--text);">You are a fit if your app<br class="hidden sm:block" /> looks like this.</h2>
             <div style="border-top: 1px solid var(--border);">
               {[
-                'Solo technical founder or small engineering team with no non-technical staff',
-                'Active installs and some revenue, past the first 20 to 100',
+                'Shopify app company that wants more installs, better activation, or lower churn',
+                'Active installs and some revenue, past the early experimental stage',
                 'High early churn you cannot fully explain',
                 'Support inbox stealing time from building',
                 'Multiple apps in portfolio, or plans to build more',
@@ -312,7 +513,7 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
             </div>
           </div>
           <div class="relative px-8 sm:px-12 py-5" style="border-top: 1px solid var(--border);">
-            <p class="text-sm" style="color: var(--dim);">Not the right fit: apps with fewer than 20 installs, teams already running in-house marketing, or founders looking purely for paid ads management.</p>
+            <p class="text-sm" style="color: var(--dim);">Not the right fit: apps in the very early experimental stage, teams that already have Shopify-app-specific growth expertise in-house, or teams looking purely for paid ads management.</p>
           </div>
         </div>
       </div>
@@ -321,13 +522,29 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     <!-- ===== TRANSITION: light to dark ===== -->
     <div style="height: 80px; background: linear-gradient(to bottom, #FAFAF8, #08080A);"></div>
 
-    <!-- ===== PRICING (dark) ===== -->
+    <!-- ===== RISK REVERSAL + PRICING (dark) ===== -->
     <section id="pricing" class="sfy-dark relative py-24 overflow-hidden" style="background: var(--bg);">
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 30% at 50% 80%, rgba(129,140,248,0.05) 0%, transparent 60%);"></div>
       <div class="relative max-w-5xl mx-auto px-6">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">Pricing</p>
         <h2 class="text-4xl sm:text-5xl font-extrabold leading-[1.08] tracking-[-0.02em] mb-4" style="color: var(--text);">Start where you need to.<br class="hidden sm:block" /> Expand as you grow.</h2>
-        <p class="text-base mb-14" style="color: var(--muted);">Foundation work is one-time. Ongoing is monthly. Most engagements start with both running in parallel.</p>
+        <p class="text-base mb-6" style="color: var(--muted);">Foundation work is one-time. Ongoing is monthly. Most clients start both at once.</p>
+
+        <!-- Risk reversal strip -->
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 mb-14 py-4 px-6 rounded-xl" style="background: rgba(129,140,248,0.04); border: 1px solid rgba(129,140,248,0.1);">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-4 h-4" style="color: var(--accent);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <span class="text-sm font-medium" style="color: var(--muted);">Month-to-month</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <svg class="w-4 h-4" style="color: var(--accent);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <span class="text-sm font-medium" style="color: var(--muted);">No lock-in contract</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <svg class="w-4 h-4" style="color: var(--accent);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            <span class="text-sm font-medium" style="color: var(--muted);">Cancel anytime</span>
+          </div>
+        </div>
 
         <div class="grid sm:grid-cols-3 gap-4">
           <!-- Foundation -->
@@ -336,7 +553,7 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
             <p class="font-bold mb-1 sfy-m" style="color: var(--text);"><span class="text-4xl">$2,500</span><span class="text-2xl" style="color: var(--dim);">+</span></p>
             <p class="text-xs mb-8" style="color: var(--dim);">one-time per app</p>
             <div class="space-y-3 text-sm flex-1" style="color: var(--muted);">
-              {['App Store optimisation rewrite', 'Product demo video', 'User guide library (30-50 articles)', 'Landing page copy'].map((item) => (
+              {['App Store optimization rewrite', 'Product demo video', 'User guide library (30-50 articles)', 'Landing page copy'].map((item) => (
                 <div class="flex items-start gap-2.5">
                   <span class="w-1 h-1 rounded-full mt-2 flex-shrink-0" style="background: var(--dim);"></span>
                   <span>{item}</span>
@@ -387,7 +604,7 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
       </div>
     </section>
 
-    <!-- ===== TRANSITION: dark to light (pricing to faq) ===== -->
+    <!-- ===== TRANSITION: dark to light ===== -->
     <div style="height: 60px; background: linear-gradient(to bottom, #08080A, #FAFAF8);"></div>
 
     <!-- ===== FAQ (light) ===== -->
@@ -397,11 +614,11 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
         <h2 class="text-4xl font-extrabold mb-14 tracking-tight" style="color: var(--text);">FAQs</h2>
         <div>
           {[
-            { q: 'How is this different from a marketing agency?', a: 'A marketing agency runs campaigns. We function as the non-engineering half of your company. We handle positioning, content, support infrastructure, product strategy, and operations. Not just ads or social posts.' },
+            { q: 'How is this different from a marketing agency?', a: 'A marketing agency runs campaigns across industries. We only do Shopify app growth: ASO, content, video, documentation, reviews, pricing. We know what moves installs and retention in the Shopify ecosystem because that is all we work on.' },
             { q: 'How much of my time does this require?', a: 'Heavy input at the start: we need to understand your app, your customers, and what you already know about why merchants install and uninstall. After the first few weeks, involvement stays light.' },
             { q: 'How long does the foundation phase take?', a: 'Six to eight weeks per app for ASO, user guides, product video, and landing page copy. Timeline depends mostly on how quickly you can give us product access and turn around content reviews.' },
-            { q: 'Can you work across multiple apps?', a: 'Yes. The positioning and ICP work for your first app largely carries over to the rest of your portfolio. Expanding is faster and cheaper than starting fresh each time.' },
-            { q: 'What results can I expect?', a: 'One client saw 3.25x more conversions from positioning and content work. Left Foot Software went from zero non-technical capacity to a full knowledge base, product video, pricing strategy, and ASO rewrite in 120 days.' },
+            { q: 'Can you work across multiple apps?', a: 'Yes. The positioning and customer research for your first app largely carries over to the rest of your portfolio. Expanding is faster and cheaper than starting fresh each time.' },
+            { q: 'What results can I expect?', a: 'Left Foot Software: uninstall rate improving, support load cut, app ranking #1 on Google for its category. All in 120 days. A separate client saw 3.25x more conversions from YouTube content vs blog over 12 months. Results depend on your starting point. The discovery call tells us what is realistic for your app.' },
             { q: 'How do we get started?', a: 'Book a 30-minute discovery call. We look at your app, your listing, and your install curve. If we can help, we tell you exactly what we would propose and what it would cost. No pitch deck, no follow-up sequence.' },
           ].map((faq) => (
             <div class="py-7" style="border-bottom: 1px solid var(--border);">
@@ -413,16 +630,16 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
       </div>
     </section>
 
-    <!-- ===== TRANSITION: light to dark (faq to cta) ===== -->
+    <!-- ===== TRANSITION: light to dark ===== -->
     <div style="height: 60px; background: linear-gradient(to bottom, #FAFAF8, #08080A);"></div>
 
-    <!-- ===== CTA (dark, bookend) ===== -->
+    <!-- ===== CTA (dark) ===== -->
     <section class="sfy-dark relative py-28 overflow-hidden" style="background: var(--bg);">
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(129,140,248,0.06) 0%, transparent 60%);"></div>
       <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 30% 25% at 50% 50%, rgba(129,140,248,0.08) 0%, transparent 50%);"></div>
       <div class="relative max-w-3xl mx-auto px-6 text-center">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-6 sfy-h" style="color: var(--accent);">Ready to start?</p>
-        <h2 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-[1.05] tracking-[-0.02em]" style="color: var(--text);">Your app deserves<br class="hidden sm:block" /> a non-technical team.</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-6 sfy-h" style="color: var(--accent);">Next step</p>
+        <h2 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-[1.05] tracking-[-0.02em]" style="color: var(--text);">Let's grow<br class="hidden sm:block" /> your Shopify app.</h2>
         <p class="text-lg mb-12 leading-relaxed" style="color: var(--muted);">Book a 30-minute call. We look at your app, find the biggest gaps, and tell you exactly where we would start.</p>
         <a href={calLink} target="_blank" rel="noopener noreferrer"
           class="sfy-btn-primary inline-block font-bold px-12 py-5 rounded-full text-base sfy-h" style="box-shadow: 0 0 40px -5px rgba(129,140,248,0.4), 0 0 80px -10px rgba(129,140,248,0.2);">
@@ -438,24 +655,24 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
         <div class="grid sm:grid-cols-3 gap-8 mb-10">
           <div>
             <p class="font-bold text-sm mb-4 sfy-h" style="color: var(--text);">SellOnTube for Shopify Apps</p>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">The non-engineering half of your app company. Positioning, content, support infrastructure, growth.</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Shopify app growth specialists. ASO, content, video, documentation, reviews, pricing strategy.</p>
           </div>
           <div>
             <p class="font-semibold text-xs uppercase tracking-wider mb-4 sfy-h" style="color: var(--dim);">Services</p>
             <div class="space-y-2.5 text-sm" style="color: var(--muted);">
-              <p>App Store Optimisation</p>
+              <p>App Store Optimization</p>
               <p>User Guides & Knowledge Base</p>
               <p>Product Demo Video</p>
               <p>SEO Content</p>
+              <p>Video Marketing</p>
               <p>Review Management</p>
-              <p>UX Copy & Pricing Strategy</p>
             </div>
           </div>
           <div>
             <p class="font-semibold text-xs uppercase tracking-wider mb-4 sfy-h" style="color: var(--dim);">Get started</p>
             <div class="space-y-2.5 text-sm">
               <a href={calLink} target="_blank" rel="noopener noreferrer" class="block" style="color: var(--accent);">Book a discovery call</a>
-              <a href="/shopify-store" class="block" style="color: var(--muted);">Shopify Store Operations</a>
+              <a href="/shopify-app/case-studies/left-foot-software" class="block" style="color: var(--muted);">Case Studies</a>
               <a href="/blog" class="block" style="color: var(--muted);">Blog</a>
               <a href="/tools" class="block" style="color: var(--muted);">Free Tools</a>
             </div>
