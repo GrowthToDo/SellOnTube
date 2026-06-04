@@ -5,6 +5,11 @@ import Header from '~/components/widgets/Header.astro';
 const metadata = {
   title: 'Free Shopify App Store Listing Grader - Grade Your Listing | SellOnTube',
   description: 'Find out what\'s costing you installs. Grade your Shopify app listing against 30+ official rules and best practices. Free, instant, actionable.',
+  openGraph: {
+    type: 'website',
+    title: 'Shopify App Store Listing Grader - Free Audit Tool',
+    description: 'Grade your Shopify app listing against 30+ official rules. Get a score, see what\'s hurting your installs, and a prioritized fix plan.',
+  },
 };
 
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
@@ -248,7 +253,7 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
       </div>
     </section>
 
-    <!-- ===== CTA (dark) ===== -->
+    <!-- ===== CTA (dark, shown after grading) ===== -->
     <section id="cta-section" class="hidden sfy-dark py-14" style="background: var(--bg);">
       <div class="max-w-2xl mx-auto px-6 text-center">
         <h2 class="text-xl sm:text-2xl font-bold mb-3 sfy-h" style="color: var(--text);">Want us to rewrite your listing?</h2>
@@ -265,6 +270,118 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
       </div>
     </section>
 
+    <!-- ===== HOW IT WORKS (dark) ===== -->
+    <section class="sfy-dark py-14" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-2xl font-bold mb-10 text-center sfy-h" style="color: var(--text);">How It Works</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 sfy-m" style="background: rgba(99,102,241,0.15); color: var(--accent); font-size: 1.25rem; font-weight: 700;">1</div>
+            <h3 class="text-sm font-bold mb-2 sfy-h" style="color: var(--text);">Paste your URL</h3>
+            <p class="text-xs leading-relaxed" style="color: var(--muted);">Enter your Shopify App Store listing URL. We fetch your listing data directly from the public page.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 sfy-m" style="background: rgba(99,102,241,0.15); color: var(--accent); font-size: 1.25rem; font-weight: 700;">2</div>
+            <h3 class="text-sm font-bold mb-2 sfy-h" style="color: var(--text);">We check 30+ rules</h3>
+            <p class="text-xs leading-relaxed" style="color: var(--muted);">Your listing is graded against Shopify's official requirements and the patterns that top-rated apps use. Structure and copy quality are scored separately.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 sfy-m" style="background: rgba(99,102,241,0.15); color: var(--accent); font-size: 1.25rem; font-weight: 700;">3</div>
+            <h3 class="text-sm font-bold mb-2 sfy-h" style="color: var(--text);">Get your fix plan</h3>
+            <p class="text-xs leading-relaxed" style="color: var(--muted);">See your score, every issue ranked by impact, and a prioritized fix plan. Make changes, come back, and re-grade to track improvement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT WE CHECK (light) ===== -->
+    <section class="sfy-light py-14" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-2xl font-bold mb-3 sfy-h" style="color: var(--text);">What We Check</h2>
+        <p class="text-sm mb-8" style="color: var(--muted);">Every listing is graded across two tiers. Structure (30% of your score) checks whether the basics are in place. Quality (70%) checks whether your copy actually converts.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--accent);">Search Visibility</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Keywords in your app name, intro, and SEO fields. Category assignment. Consistency across listing sections. This is how merchants find you in the App Store.</p>
+          </div>
+          <div class="rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--accent);">Screenshots & Video</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Screenshot count, alt text quality, demo video presence, and demo store link. Shopify requires a demo screencast. Screenshots are the primary visual conversion driver.</p>
+          </div>
+          <div class="rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--accent);">Listing Copy</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Character limits, description depth, benefit-led intro, feature count. Whether your description explains outcomes or just lists features. This is the most important section for conversion.</p>
+          </div>
+          <div class="rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--accent);">Shopify Rules</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Compliance checks from Shopify's official listing requirements. Superlative claims ("best", "#1"), promotional stats in your intro, and description structure rules that could get your listing flagged.</p>
+          </div>
+          <div class="rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--accent);">Install Triggers</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Free plan or trial availability, pricing transparency, and Built for Shopify badge status. Free plans earn better search impressions. Transparent pricing builds merchant trust.</p>
+          </div>
+          <div class="rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--accent);">Standout Score</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Buzzword density, generic language detection, readability, and copy distinctiveness. Flags filler words and cookie-cutter descriptions that make your listing blend in with every other app.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHY IT MATTERS + WHO IS THIS FOR (dark) ===== -->
+    <section class="sfy-dark py-14" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+          <div>
+            <h2 class="text-xl font-bold mb-4 sfy-h" style="color: var(--text);">Why Listing Quality Matters</h2>
+            <p class="text-sm leading-relaxed mb-3" style="color: var(--muted);">Your App Store listing is the first thing merchants evaluate. A weak listing loses installs to competitors with better copy, even if your app is better.</p>
+            <p class="text-sm leading-relaxed mb-3" style="color: var(--muted);">Most developers build a great product and write their listing in 20 minutes. The listing becomes the bottleneck. Merchants scan 5-10 apps and click 1-2. If your intro, screenshots, or description don't convert that scan into a click, nothing else matters.</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">This tool shows you exactly what to fix, in order of impact on installs.</p>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold mb-4 sfy-h" style="color: var(--text);">Who Is This For</h2>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <span style="color: #10B981; margin-top: 2px;">✓</span>
+                <p class="text-sm" style="color: var(--muted);">Shopify app developers launching a new app and want to get the listing right before going live</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span style="color: #10B981; margin-top: 2px;">✓</span>
+                <p class="text-sm" style="color: var(--muted);">Founders with a live app who aren't getting the installs they expected and want to diagnose why</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span style="color: #10B981; margin-top: 2px;">✓</span>
+                <p class="text-sm" style="color: var(--muted);">App marketing teams running ASO and need a quick audit before publishing listing changes</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span style="color: #10B981; margin-top: 2px;">✓</span>
+                <p class="text-sm" style="color: var(--muted);">Anyone comparing their listing quality against what top-rated apps in their category do differently</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10 rounded-xl p-5 text-center" style="background: var(--card); border: 1px solid var(--border);">
+          <p class="text-xs" style="color: var(--dim);">This tool grades your listing's quality, not your app's success. Apps with strong brand recognition may convert well despite listing gaps. The score measures how well your listing is written and structured, not how well your product performs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RELATED TOOL (light) ===== -->
+    <section class="sfy-light py-10" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="rounded-xl p-5" style="background: var(--card); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--accent);">Related Tool</p>
+              <p class="text-sm font-bold sfy-h" style="color: var(--text);">Shopify App Reviews Scraper</p>
+              <p class="text-xs mt-1" style="color: var(--muted);">Extract and analyze reviews from any Shopify app listing. View ratings, sentiment analysis, and download as CSV.</p>
+            </div>
+            <a href="/shopify-app/tools/shopify-app-review-scraper-analyzer" class="sfy-btn-primary font-semibold px-5 py-2 rounded-lg text-xs sfy-h whitespace-nowrap">Try it free</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== FAQ (light) ===== -->
     <section class="sfy-light py-14" style="background: var(--bg);">
       <div class="max-w-3xl mx-auto px-6">
@@ -272,23 +389,35 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
         <div class="space-y-6">
           <div>
             <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">What does this tool check?</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">30+ rules across 6 categories: Search Visibility, Screenshots & Video, Listing Copy, Shopify Rules, Install Triggers, and Standout Score. Each maps to Shopify's official listing requirements and evidence-based ASO practices.</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">30+ rules across 6 categories: Search Visibility, Screenshots & Video, Listing Copy, Shopify Rules, Install Triggers, and Standout Score. Each check maps to Shopify's official listing requirements or evidence-based ASO practices that drive installs.</p>
           </div>
           <div>
             <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">How is the score calculated?</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Transparent 0-100 rubric. Six sections weighted by install impact: Search Visibility (25%), Screenshots & Video (25%), Listing Copy (20%), Shopify Rules (10%), Install Triggers (10%), Standout Score (10%). Every point is explainable.</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Your score has two parts. Structure (30 points) checks whether the basics are filled out correctly. Quality (70 points) checks whether your copy is effective. Quality drives most of your score because listing completeness is table stakes, but copy quality is what converts. Every check is transparent and explainable.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">Is this completely free?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Yes. Grade your listing, see your full score breakdown, and view all issues found. The detailed prioritized fix plan requires a business email. No credit card, no account needed.</p>
           </div>
           <div>
             <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">Is my listing data stored?</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Results are cached for up to 6 hours to speed up re-grades. Anonymized score data helps improve the tool. Your listing URL and email are never shared with third parties.</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Results are cached for up to 6 hours to speed up re-grades. Anonymized score data helps improve the tool over time. Your listing URL and email are never shared with third parties.</p>
           </div>
           <div>
             <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">Can I re-grade after making changes?</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Yes. Update your listing, come back, and grade again. The tool detects content changes and runs a fresh analysis automatically, even within the cache window.</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Yes. Update your listing, come back, and grade again. The tool detects content changes and runs a fresh analysis automatically, even within the cache window. You can grade up to 5 listings per day.</p>
           </div>
           <div>
             <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">What's in the full fix plan?</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Up to 7 prioritized fixes ordered by install impact. Each includes the specific issue, a concrete action, and a structural pattern to follow. Risk issues (compliance) come first, then growth issues.</p>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Up to 7 prioritized fixes ordered by impact on installs. Each fix includes the specific issue, a concrete action to take, and a structural pattern you can follow. The plan starts with compliance risks (things that could get your listing flagged) and then covers growth opportunities (things that directly increase installs).</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">How accurate is the scoring?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Structure checks (character limits, media counts, compliance rules) are deterministic and 100% accurate. Quality checks (benefit-led copy, distinctiveness) use AI analysis calibrated against Shopify's official documentation. Scores may vary by 3-5 points between runs due to the AI component. The overall ranking and diagnosis are consistent.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">What if I disagree with a finding?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Some quality checks involve judgment. If a finding doesn't apply to your situation, skip it and focus on the ones you agree with. The numbered priority order helps you pick the highest-impact changes first. Fix what matters, ignore what doesn't.</p>
           </div>
         </div>
       </div>
