@@ -480,7 +480,7 @@ export function runRules(listing: Listing): Finding[] {
     findings.push(
       finding(
         sec3,
-        'Feature count in range',
+        'Too many features listed',
         pass,
         pass ? 'pass' : 'warning',
         'growth',
@@ -627,24 +627,8 @@ export function runRules(listing: Listing): Finding[] {
     );
   }
 
-  // 24. Built for Shopify badge (3pts, info severity)
-  {
-    const pass = listing.built_for_shopify;
-    findings.push(
-      finding(
-        sec5,
-        'Built for Shopify badge',
-        pass,
-        'info',
-        'growth',
-        pass
-          ? 'Built for Shopify badge earned'
-          : 'No Built for Shopify badge. Meeting Shopify quality standards earns prominent placement and merchant trust.',
-        pass ? 3 : 0,
-        3,
-      ),
-    );
-  }
+  // Built for Shopify badge — shown in context panel only, NOT scored.
+  // Developers can't toggle this by editing copy; it requires meeting Shopify's technical standards.
 
   // ═══════════════════════════════════════════════
   // STANDOUT SCORE (~10 pts)
@@ -674,7 +658,7 @@ export function runRules(listing: Listing): Finding[] {
     findings.push(
       finding(
         sec6,
-        'Buzzword density low',
+        'Generic language found',
         pass,
         sev,
         'growth',

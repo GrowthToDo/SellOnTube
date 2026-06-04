@@ -182,10 +182,12 @@ export function scoreListing(
       detail: f.detail,
       points_possible: weight,
     };
-    if (rank === 1) {
-      const lowEst = Math.min(weight - 2, weight);
-      const highEst = weight + 2;
-      fix.score_range_estimate = `Fixing this could improve your score by ~${lowEst}-${highEst} points`;
+    if (rank === 1 && weight > 3) {
+      const isQuality = QUALITY_CHECKS.has(f.check);
+      const estImpact = isQuality ? Math.round(weight * QUALITY_WEIGHT / qualityRaw.possible * coherenceMultiplier) : Math.round(weight * STRUCTURAL_WEIGHT / structural.possible);
+      const low = Math.max(1, estImpact - 2);
+      const high = estImpact + 2;
+      fix.score_range_estimate = `Fixing this could improve your score by ~${low}-${high} points`;
     }
     return fix;
   });

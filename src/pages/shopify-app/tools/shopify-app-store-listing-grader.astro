@@ -803,18 +803,19 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
 
       // Growth roadmap
       function renderRoadmap(fixes, issueCount) {
-        var topFix = fixes && fixes.length > 0 ? fixes[0] : null;
+        if (issueCount === 0) {
+          return '<h3 class="sfy-h" style="font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;">Your listing is well-optimized.</h3>' +
+            '<p style="font-size: 0.8rem; color: var(--muted);">Focus on getting more reviews and maintaining quality.</p>';
+        }
         return '<h3 class="sfy-h" style="font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 1rem;">Your Next 48 Hours</h3>' +
           '<div style="display: flex; flex-direction: column; gap: 1rem;">' +
             '<div style="display: flex; gap: 0.75rem; align-items: start;">' +
               '<span class="sfy-m" style="font-size: 0.875rem; font-weight: 700; color: var(--accent);">1</span>' +
-              '<div><span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">Fix the top issue:</span> <span style="font-size: 0.8rem; color: var(--muted);">' + (topFix ? esc(topFix.check) : 'All checks passed') + '</span>' +
-              (topFix && topFix.score_range_estimate ? '<br/><span style="font-size: 0.75rem; color: var(--accent);">' + esc(topFix.score_range_estimate) + '</span>' : '') +
-              '</div>' +
+              '<div><span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">Work through your ' + issueCount + ' fixes above</span> <span style="font-size: 0.8rem; color: var(--muted);">starting with #1 (highest impact)</span></div>' +
             '</div>' +
             '<div style="display: flex; gap: 0.75rem; align-items: start;">' +
               '<span class="sfy-m" style="font-size: 0.875rem; font-weight: 700; color: var(--accent);">2</span>' +
-              '<div><span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">Get your full fix plan</span> <span style="font-size: 0.8rem; color: var(--muted);">(' + issueCount + ' issues ranked by impact)</span></div>' +
+              '<div><span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">Get your detailed fix plan</span> <span style="font-size: 0.8rem; color: var(--muted);">with step-by-step instructions and patterns</span></div>' +
             '</div>' +
             '<div style="display: flex; gap: 0.75rem; align-items: start;">' +
               '<span class="sfy-m" style="font-size: 0.875rem; font-weight: 700; color: var(--accent);">3</span>' +
@@ -826,7 +827,7 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
       // Email gate
       function renderEmailGate(issueCount) {
         return '<p class="sfy-h" style="font-size: 1.125rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;">We found ' + issueCount + ' issues affecting your installs</p>' +
-          '<p style="font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 420px; margin-left: auto; margin-right: auto;">Get the full breakdown with every issue ranked by impact, character budgets, and fix patterns you can apply today.</p>' +
+          '<p style="font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 420px; margin-left: auto; margin-right: auto;">Get a detailed fix plan with step-by-step instructions, structural patterns, and example formats for each issue.</p>' +
           '<button id="get-fixplan-btn" class="sfy-btn-primary font-semibold px-8 py-3 rounded-xl text-sm sfy-h">Get Fix Plan</button>';
       }
 

@@ -18,6 +18,34 @@ interface DistinctivenessResult {
   rewrite_pattern: string;
 }
 
+/**
+ * Post-process AI text to strip remaining AI patterns the prompt didn't catch.
+ * Deterministic, no API call.
+ */
+function humanizeText(text: string): string {
+  let s = text;
+  s = s.replace(/\s*—\s*/g, '. ');
+  s = s.replace(/\s*–\s*/g, ', ');
+  const swaps: [RegExp, string][] = [
+    [/\bleverage\b/gi, 'use'], [/\butilize\b/gi, 'use'],
+    [/\bcrucial\b/gi, 'important'], [/\bvital\b/gi, 'important'],
+    [/\boptimal\b/gi, 'best'], [/\brobust\b/gi, 'strong'],
+    [/\bcomprehensive\b/gi, 'complete'], [/\bfacilitate\b/gi, 'help'],
+    [/\bharness\b/gi, 'use'], [/\bdelve\b/gi, 'look into'],
+    [/\binnovative\b/gi, 'new'], [/\bstreamline\b/gi, 'simplify'],
+  ];
+  for (const [re, rep] of swaps) s = s.replace(re, rep);
+  s = s.replace(/It's worth noting that /gi, '');
+  s = s.replace(/It's important to remember that /gi, '');
+  s = s.replace(/It's important to note that /gi, '');
+  s = s.replace(/In today's competitive landscape,? /gi, '');
+  s = s.replace(/In today's fast-paced,? /gi, '');
+  s = s.replace(/By implementing (these|this|the) /gi, '');
+  s = s.replace(/\.\./g, '.');
+  s = s.replace(/\. \./g, '.');
+  return s.trim();
+}
+
 function distinctivenessPoints(score: number): { points: number; severity: FindingSeverity } {
   if (score >= 8) return { points: 5, severity: 'pass' };
   if (score >= 5) return { points: 3, severity: 'warning' };
@@ -54,7 +82,7 @@ export async function qualitativeFindings(listing: Listing): Promise<Finding[]> 
       passed: introPass,
       severity: introPass ? 'pass' : 'fail',
       impact: 'growth',
-      detail: qualResult.intro_benefit_led.reason,
+      detail: humanizeText(qualResult.intro_benefit_led.reason),
       points_earned: introPass ? 3 : 0,
       points_possible: 3,
     });
@@ -67,7 +95,7 @@ export async function qualitativeFindings(listing: Listing): Promise<Finding[]> 
       passed: descPass,
       severity: descPass ? 'pass' : 'fail',
       impact: 'growth',
-      detail: qualResult.details_just_a_feature_list.reason,
+      detail: humanizeText(qualResult.details_just_a_feature_list.reason),
       points_earned: descPass ? 3 : 0,
       points_possible: 3,
     });
@@ -80,7 +108,7 @@ export async function qualitativeFindings(listing: Listing): Promise<Finding[]> 
       passed: clarityPass,
       severity: clarityPass ? 'pass' : 'fail',
       impact: 'growth',
-      detail: qualResult.five_second_clarity.reason,
+      detail: humanizeText(qualResult.five_second_clarity.reason),
       points_earned: clarityPass ? 3 : 0,
       points_possible: 3,
     });
@@ -95,8 +123,8 @@ export async function qualitativeFindings(listing: Listing): Promise<Finding[]> 
     const passed = severity === 'pass';
 
     const detailParts = [`Score: ${score}/10`];
-    if (distResult.worst_line) detailParts.push(`Worst line: "${distResult.worst_line}"`);
-    if (distResult.rewrite_pattern) detailParts.push(`Pattern: ${distResult.rewrite_pattern}`);
+    if (distResult.worst_line) detailParts.push(`Worst line: "${humanizeText(distResult.worst_line)}"`);
+    if (distResult.rewrite_pattern) detailParts.push(`Pattern: ${humanizeText(distResult.rewrite_pattern)}`);
 
     findings.push({
       section: 'standout_score' as ScoreSection,
@@ -104,7 +132,7 @@ export async function qualitativeFindings(listing: Listing): Promise<Finding[]> 
       passed,
       severity,
       impact: 'growth',
-      detail: detailParts.join('. '),
+      detail: humanizeText(detailParts.join('. ')),
       points_earned: points,
       points_possible: 5,
     });
@@ -113,44 +141,6 @@ export async function qualitativeFindings(listing: Listing): Promise<Finding[]> 
   }
 
   return findings;
-}
-
-/**
- * Post-process AI text to strip remaining AI patterns the prompt didn't catch.
- * Deterministic, no API call.
- */
-function humanizeText(text: string): string {
-  let s = text;
-  // Em-dashes → period or comma
-  s = s.replace(/\s*—\s*/g, '. ');
-  s = s.replace(/\s*–\s*/g, ', ');
-  // AI vocabulary replacements
-  const swaps: [RegExp, string][] = [
-    [/\bleverage\b/gi, 'use'],
-    [/\butilize\b/gi, 'use'],
-    [/\bcrucial\b/gi, 'important'],
-    [/\bvital\b/gi, 'important'],
-    [/\boptimal\b/gi, 'best'],
-    [/\brobust\b/gi, 'strong'],
-    [/\bcomprehensive\b/gi, 'complete'],
-    [/\bfacilitate\b/gi, 'help'],
-    [/\bharness\b/gi, 'use'],
-    [/\bdelve\b/gi, 'look into'],
-    [/\binnovative\b/gi, 'new'],
-    [/\bstreamline\b/gi, 'simplify'],
-  ];
-  for (const [re, rep] of swaps) s = s.replace(re, rep);
-  // Strip throat-clearing openers
-  s = s.replace(/It's worth noting that /gi, '');
-  s = s.replace(/It's important to remember that /gi, '');
-  s = s.replace(/It's important to note that /gi, '');
-  s = s.replace(/In today's competitive landscape,? /gi, '');
-  s = s.replace(/In today's fast-paced,? /gi, '');
-  s = s.replace(/By implementing (these|this|the) /gi, '');
-  // Double-period cleanup
-  s = s.replace(/\.\./g, '.');
-  s = s.replace(/\. \./g, '.');
-  return s.trim();
 }
 
 /**
