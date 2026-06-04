@@ -9,6 +9,7 @@ import {
   type ListingContext,
   type ListingMeta,
 } from '../../src/lib/grader/config.js';
+import { buildReportId, buildReportUrl, saveReport, saveAnalytics, type AnalyticsRecord } from '../../src/lib/grader/storage.js';
 
 // In-memory rate limit + cache (acceptable for v1 per spec; upgrade to KV for production traffic)
 const rateMap = new Map<string, { count: number; resetAt: number }>();
@@ -176,7 +177,44 @@ export default async (request: Request) => {
       expiresAt: Date.now() + CACHE_TTL_SECONDS * 1000,
     });
 
-    return new Response(JSON.stringify(result), { status: 200, headers });
+    // Save report snapshot + analytics (non-blocking, don't fail the response)
+    const reportId = buildReportId(handle);
+    const reportUrl = buildReportUrl(reportId);
+    try {
+      await Promise.all([
+        saveReport(reportId, result as unknown as Record<string, unknown>),
+        saveAnalytics({
+          reportId,
+          timestamp: new Date().toISOString(),
+          appName: listing.app_name,
+          appHandle: handle,
+          appUrl: listing.url,
+          developerName: listing.developer_name,
+          category: listing.category,
+          rating: listing.rating,
+          reviewCount: listing.review_count,
+          healthScore: scoreResult.health_score,
+          grade: scoreResult.grade,
+          structuralScore: scoreResult.structural_score,
+          qualityScore: scoreResult.quality_score,
+          coherenceMultiplier: scoreResult.coherence_multiplier,
+          screenshotCount: listing.screenshot_count,
+          hasVideo: listing.has_demo_video,
+          hasFreeplan: listing.has_free_plan,
+          builtForShopify: listing.built_for_shopify,
+          titleLength: listing.seo_title.length,
+          introLength: listing.introduction.length,
+          descriptionLength: listing.app_details.length,
+          findingsCount: scoreResult.issues.length,
+          overridesCount: scoreResult.overrides_applied.length,
+          topIssue: scoreResult.prioritized_fixes[0]?.check || 'none',
+        } satisfies AnalyticsRecord),
+      ]);
+    } catch (err) {
+      console.error('[grade-listing] Storage save failed (non-fatal):', err instanceof Error ? err.message : err);
+    }
+
+    return new Response(JSON.stringify({ ...result, reportId, reportUrl }), { status: 200, headers });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return new Response(
