@@ -2,6 +2,12 @@
   publish = "dist"
   command = "npm run build && node scripts/validate-build.js"
 
+# Listing grader report clean URLs
+[[redirects]]
+  from = "/shopify-app/tools/shopify-app-store-listing-grader/report/*"
+  to = "/shopify-app/tools/shopify-app-store-listing-grader/report/?id=:splat"
+  status = 200
+
 [functions]
   node_bundler = "esbuild"
 [build.processing.html]

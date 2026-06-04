@@ -1,0 +1,304 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+
+const metadata = {
+  title: 'Listing Grade Report | Shopify App Store Listing Grader | SellOnTube',
+  description: 'Shopify app listing audit report. See the full score breakdown, issues found, and prioritized fix plan.',
+  robots: { index: false, follow: true },
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Case Studies', href: '/shopify-app#proof', links: [
+          { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
+          { text: 'YouTube Video Marketing: Inventory App Case Study', href: '/shopify-app/case-studies/shopify-app-growth-youtube-marketing' },
+        ]},
+        { text: 'Services', href: '/shopify-app#work' },
+        { text: 'Tools', href: '/shopify-app/tools' },
+        { text: 'Pricing', href: '/shopify-app#pricing' },
+      ]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <Fragment slot="footer"></Fragment>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoLink = document.querySelector('#header a[href="/"]');
+      if (logoLink) logoLink.setAttribute('href', '/shopify-app');
+    });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
+    .sfy { font-family: 'Inter', system-ui, sans-serif; }
+    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; }
+    .sfy-light { --bg: #FAFAF8; --bg2: #F2F2EE; --card: #FFFFFF; --border: #E2E2DD; --text: #111113; --muted: #6B6B73; --dim: #9CA3AF; --accent: #6366F1; --accent-l: #818CF8; }
+    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
+    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
+    .score-ring { transition: stroke-dashoffset 1.5s ease-out; }
+    @media (prefers-reduced-motion: reduce) { .score-ring { transition: none; } }
+    .section-bar-fill { transition: width 0.8s ease-out; }
+    @media (prefers-reduced-motion: reduce) { .section-bar-fill { transition: none; } }
+    .char-bar { height: 8px; border-radius: 4px; }
+    .char-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+    .finding-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; transition: border-color 0.2s ease; }
+    .finding-card:hover { border-color: rgba(99,102,241,0.3); }
+    .search-card-mock { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; max-width: 360px; }
+    .truncation-line { border-top: 2px dashed #EF4444; position: relative; margin: 0.5rem 0; }
+    .truncation-line::after { content: 'Truncated in search results'; position: absolute; top: -10px; right: 0; font-size: 0.65rem; color: #EF4444; background: var(--bg); padding: 0 4px; }
+    .copy-toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 0.5rem 1.5rem; border-radius: 8px; font-size: 0.85rem; z-index: 200; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    .copy-toast.show { opacity: 1; }
+  </style>
+
+  <div class="sfy">
+    <!-- Report header (dark) -->
+    <section class="sfy-dark relative pt-28 pb-8" style="background: var(--bg);">
+      <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-3 sfy-h" style="color: var(--accent);">Listing Grade Report</p>
+        <h1 id="report-title" class="text-2xl sm:text-3xl font-extrabold mb-2 leading-tight sfy-h" style="color: var(--text);">Loading report...</h1>
+        <p id="report-meta" class="text-xs" style="color: var(--dim);"></p>
+      </div>
+    </section>
+
+    <!-- Report content (light) -->
+    <section class="sfy-light py-10" style="background: var(--bg);">
+      <div id="report-content" class="max-w-3xl mx-auto px-6 space-y-8">
+        <div id="report-loading" class="text-center py-16">
+          <p class="text-sm" style="color: var(--muted);">Loading report...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error state (hidden) -->
+    <section id="report-error" class="hidden sfy-light py-16" style="background: var(--bg);">
+      <div class="max-w-md mx-auto px-6 text-center">
+        <p class="text-lg font-bold mb-3 sfy-h" style="color: var(--text);">Report Not Found</p>
+        <p class="text-sm mb-6" style="color: var(--muted);">This report may have expired (reports are available for 30 days) or the link may be incorrect.</p>
+        <a href="/shopify-app/tools/shopify-app-store-listing-grader" class="sfy-btn-primary font-semibold px-6 py-2.5 rounded-lg text-sm sfy-h inline-block">Grade your own listing</a>
+      </div>
+    </section>
+
+    <!-- CTA (dark) -->
+    <section id="report-cta" class="hidden sfy-dark py-14" style="background: var(--bg);">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h2 class="text-xl sm:text-2xl font-bold mb-3 sfy-h" style="color: var(--text);">Want to grade your own listing?</h2>
+        <p class="text-sm mb-6" style="color: var(--muted);">Get a free audit with 30+ checks against Shopify's official listing requirements.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/shopify-app/tools/shopify-app-store-listing-grader" class="sfy-btn-primary font-semibold px-6 py-2.5 rounded-lg text-sm sfy-h">Grade my listing</a>
+          <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer"
+            class="font-semibold px-6 py-2.5 rounded-lg text-sm sfy-h" style="border: 1px solid var(--border); color: var(--muted);">
+            Book a discovery call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="sfy-dark py-10" style="background: var(--bg2); border-top: 1px solid var(--border);">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+          <div>
+            <p class="text-sm font-semibold sfy-h" style="color: var(--text);">SellOnTube</p>
+            <p class="text-xs mt-1" style="color: var(--muted);">Growth tools for Shopify app companies.</p>
+          </div>
+          <div class="flex items-center gap-6 text-xs font-medium" style="color: var(--muted);">
+            <a href="/shopify-app" class="hover:underline">Services</a>
+            <a href="/shopify-app/tools" class="hover:underline">Tools</a>
+            <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" class="hover:underline" style="color: var(--accent);">Book a call</a>
+          </div>
+        </div>
+        <div style="border-top: 1px solid var(--border); padding-top: 1rem;" class="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
+          <div class="flex items-center gap-4 text-xs" style="color: var(--dim);">
+            <a href="/privacy" class="hover:underline">Privacy</a>
+            <a href="/terms" class="hover:underline">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="copy-toast" class="copy-toast">Link copied to clipboard</div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var $ = function(id) { return document.getElementById(id); };
+      var show = function(el) { el.classList.remove('hidden'); };
+      var hide = function(el) { el.classList.add('hidden'); };
+      var esc = function(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+
+      function scoreColor(pct) {
+        if (pct >= 80) return '#10B981';
+        if (pct >= 60) return '#F59E0B';
+        if (pct >= 40) return '#F97316';
+        return '#EF4444';
+      }
+      function impactColor(label) {
+        if (label === 'Highest impact') return '#EF4444';
+        if (label === 'High impact') return '#F97316';
+        if (label === 'Medium impact') return '#F59E0B';
+        return '#6B7280';
+      }
+
+      // Get report ID from URL params
+      var params = new URLSearchParams(window.location.search);
+      var reportId = params.get('id');
+
+      if (!reportId) {
+        hide($('report-content'));
+        show($('report-error'));
+        $('report-title').textContent = 'No Report ID';
+        return;
+      }
+
+      // Fetch the report
+      fetch('/.netlify/functions/get-report?id=' + encodeURIComponent(reportId))
+        .then(function(res) { return res.json(); })
+        .then(function(snapshot) {
+          if (snapshot.error) {
+            hide($('report-content'));
+            show($('report-error'));
+            $('report-title').textContent = 'Report Not Found';
+            return;
+          }
+
+          var data = snapshot.gradeResult;
+          var meta = data.listing_meta;
+          var ctx = data.context;
+
+          // Update header
+          $('report-title').textContent = meta.app_name + ' — ' + data.health_score + '/100 (' + data.grade + ')';
+          $('report-meta').textContent = 'Graded on ' + new Date(snapshot.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + ' · Expires ' + new Date(snapshot.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+          // Build report content
+          var html = '';
+
+          // Listing mirror
+          var iconHtml = meta.icon_url
+            ? '<img src="' + esc(meta.icon_url) + '" alt="" style="width: 48px; height: 48px; border-radius: 10px; border: 1px solid var(--border);" />'
+            : '<div style="width: 48px; height: 48px; border-radius: 10px; background: var(--bg2);"></div>';
+          html += '<div class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);">' +
+            '<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">' + iconHtml +
+            '<div><h2 class="sfy-h" style="font-size: 1.125rem; font-weight: 700; color: var(--text);">' + esc(meta.app_name) + '</h2>' +
+            '<p style="font-size: 0.8rem; color: var(--muted);">' + esc(ctx.developer_name) + ' · ' + esc(ctx.category) + '</p></div></div>' +
+            '<p style="font-size: 0.875rem; color: var(--muted); line-height: 1.5;">' + esc(meta.introduction) + '</p></div>';
+
+          // Score ring
+          var color = scoreColor(data.health_score);
+          var circ = 2 * Math.PI * 54;
+          var offset = circ - (data.health_score / 100) * circ;
+          var stPct = Math.round(data.structural_score / 30 * 100);
+          var qtPct = Math.round(data.quality_score / 70 * 100);
+
+          html += '<div class="rounded-2xl p-8 text-center" style="background: var(--card); border: 1px solid var(--border);">' +
+            '<div style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">' +
+            '<div style="position: relative; width: 160px; height: 160px;">' +
+            '<svg viewBox="0 0 120 120" style="width: 160px; height: 160px; transform: rotate(-90deg);">' +
+            '<circle cx="60" cy="60" r="54" fill="none" stroke="var(--border)" stroke-width="8"/>' +
+            '<circle class="score-ring" cx="60" cy="60" r="54" fill="none" stroke="' + color + '" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + circ + '" stroke-dashoffset="' + circ + '" data-target="' + offset + '"/>' +
+            '</svg>' +
+            '<div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">' +
+            '<span class="sfy-m" style="font-size: 2.5rem; font-weight: 700; color: ' + color + ';">' + data.health_score + '</span>' +
+            '<span style="font-size: 0.75rem; color: var(--muted);">out of 100</span></div></div>' +
+            '<div class="sfy-h" style="font-size: 1.25rem; font-weight: 700; color: var(--text);">Grade: ' + data.grade + '</div>' +
+            '<div style="width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 0.75rem;">' +
+            '<div><div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;"><span style="font-size: 0.75rem; font-weight: 600; color: var(--text);">Structure</span><span class="sfy-m" style="font-size: 0.75rem; color: ' + scoreColor(stPct) + ';">' + data.structural_score + '/30</span></div>' +
+            '<div class="char-bar" style="background: var(--border);"><div class="section-bar-fill" style="width: 0%; background: ' + scoreColor(stPct) + ';" data-target="' + stPct + '%"></div></div></div>' +
+            '<div><div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;"><span style="font-size: 0.75rem; font-weight: 600; color: var(--text);">Quality</span><span class="sfy-m" style="font-size: 0.75rem; color: ' + scoreColor(qtPct) + ';">' + data.quality_score + '/70</span></div>' +
+            '<div class="char-bar" style="background: var(--border);"><div class="section-bar-fill" style="width: 0%; background: ' + scoreColor(qtPct) + ';" data-target="' + qtPct + '%"></div></div></div></div></div></div>';
+
+          // Section scores
+          html += '<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">';
+          for (var i = 0; i < data.section_scores.length; i++) {
+            var s = data.section_scores[i];
+            var sc = scoreColor(s.percentage);
+            html += '<div class="rounded-xl p-4" style="background: var(--card); border: 1px solid var(--border);">' +
+              '<div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">' +
+              '<span class="sfy-h" style="font-size: 0.8rem; font-weight: 600; color: var(--text);">' + esc(s.label) + '</span>' +
+              '<span class="sfy-m" style="font-size: 0.8rem; font-weight: 600; color: ' + sc + ';">' + s.grade + ' · ' + s.percentage + '%</span></div>' +
+              '<div class="char-bar" style="background: var(--border);"><div class="section-bar-fill" style="width: 0%; background: ' + sc + ';" data-target="' + s.percentage + '%"></div></div></div>';
+          }
+          html += '</div>';
+
+          // Prioritized fixes
+          var fixes = data.prioritized_fixes || [];
+          if (fixes.length > 0) {
+            html += '<div><h3 class="sfy-h" style="font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;">Fixes, In Order of Impact</h3>' +
+              '<p style="font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem;">' + fixes.length + ' issues found.</p>' +
+              '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
+            for (var j = 0; j < fixes.length; j++) {
+              var f = fixes[j];
+              var ic = impactColor(f.impact_label);
+              var rawDetail = f.detail.replace('[Override] ', '');
+              var parts = rawDetail.split(/\.\s+/);
+              var issuePart = parts[0] + '.';
+              var fixPart = parts.length > 1 ? parts.slice(1).join('. ') : '';
+              html += '<div class="finding-card" style="border-left: 3px solid ' + ic + ';">' +
+                '<div style="display: flex; align-items: start; gap: 0.75rem;">' +
+                '<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; background: ' + ic + ';">' + f.rank + '</div>' +
+                '<div style="flex: 1;"><div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.4rem;">' +
+                '<span style="font-size: 0.85rem; font-weight: 700; color: var(--text);">' + esc(f.check) + '</span>' +
+                '<span style="font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; background: ' + ic + '15; color: ' + ic + '; font-weight: 600;">' + esc(f.impact_label) + '</span></div>' +
+                '<p style="font-size: 0.8rem; color: var(--text); line-height: 1.5; font-weight: 500;">' + esc(issuePart) + '</p>' +
+                (fixPart ? '<p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.5;">' + esc(fixPart) + '</p>' : '') +
+                '</div></div></div>';
+            }
+            html += '</div></div>';
+          }
+
+          // Context
+          html += '<div class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);">' +
+            '<h3 class="sfy-h" style="font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 1rem;">Context</h3>' +
+            '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem;">';
+          var items = [
+            { label: 'Rating', value: ctx.rating + ' ★' },
+            { label: 'Reviews', value: String(ctx.review_count) },
+            { label: 'Developer', value: ctx.developer_name },
+            { label: 'Category', value: ctx.category },
+          ];
+          if (ctx.built_for_shopify) items.push({ label: 'Built for Shopify', value: '✓ Earned' });
+          for (var k = 0; k < items.length; k++) {
+            html += '<div style="padding: 0.5rem 0;"><div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); margin-bottom: 0.25rem;">' + esc(items[k].label) + '</div>' +
+              '<div style="font-size: 0.9rem; font-weight: 600; color: var(--text);">' + esc(items[k].value) + '</div></div>';
+          }
+          html += '</div>' +
+            '<p style="font-size: 0.7rem; color: var(--dim); margin-top: 1rem;">This tool grades listing quality, not app success. Apps with strong brand recognition may convert well despite listing gaps.</p></div>';
+
+          // Grade your own CTA
+          html += '<div class="text-center" style="padding: 1rem 0;"><a href="/shopify-app/tools/shopify-app-store-listing-grader" class="text-sm font-medium" style="color: var(--accent);">Grade your own listing</a></div>';
+
+          $('report-content').innerHTML = html;
+          show($('report-cta'));
+
+          // Animate
+          requestAnimationFrame(function() {
+            var ring = document.querySelector('.score-ring');
+            if (ring) requestAnimationFrame(function() { ring.style.strokeDashoffset = ring.getAttribute('data-target'); });
+            document.querySelectorAll('.section-bar-fill').forEach(function(bar) {
+              requestAnimationFrame(function() { bar.style.width = bar.getAttribute('data-target'); });
+            });
+          });
+        })
+        .catch(function() {
+          hide($('report-content'));
+          show($('report-error'));
+          $('report-title').textContent = 'Error Loading Report';
+        });
+    })();
+  </script>
+</Layout>
