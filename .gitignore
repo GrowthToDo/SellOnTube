@@ -2,6 +2,9 @@
 dist/
 .output/
 
+# grader test fixtures
+src/lib/grader/__fixtures__/
+
 # dependencies
 node_modules/
 
