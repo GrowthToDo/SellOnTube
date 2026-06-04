@@ -90,7 +90,7 @@ export const STRUCTURAL_CHECKS = new Set([
   'Built for Shopify badge',
   'Readability',
   'Introduction length sufficient', 'Introduction character usage',
-  'Feature count in range', 'Feature count',
+  'Feature count in range', 'Feature count', 'Too many features listed',
 ]);
 
 export const QUALITY_CHECKS = new Set([
@@ -98,7 +98,7 @@ export const QUALITY_CHECKS = new Set([
   'Screenshot alt text descriptive',
   'Description depth',
   'Introduction readability',
-  'Buzzword density low', 'Low buzzword density',
+  'Buzzword density low', 'Low buzzword density', 'Generic language found',
   'Intro benefit-led',
   'Description not feature-list-only',
   'Five-second clarity',
@@ -116,6 +116,7 @@ export const QUALITY_REWEIGHTS: Record<string, number> = {
   'Keyword consistency': 6,
   'Buzzword density low': 8,
   'Low buzzword density': 8,
+  'Generic language found': 8,
   'Screenshot alt text descriptive': 4,
   'Description depth': 6,
   'Introduction readability': 6,
