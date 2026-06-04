@@ -110,8 +110,8 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
     .finding-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; transition: border-color 0.2s ease; }
     .finding-card:hover { border-color: rgba(99,102,241,0.3); }
 
-    .char-bar { height: 6px; border-radius: 3px; }
-    .char-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+    .char-bar { height: 8px; border-radius: 4px; }
+    .char-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
 
     .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; }
     .modal-backdrop.active { display: flex; }
@@ -227,6 +227,9 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
         <!-- Email gate for fix plan -->
         <div id="email-gate" class="hidden text-center rounded-2xl p-8" style="background: var(--card); border: 1px solid var(--border);"></div>
 
+        <!-- Context panel -->
+        <div id="context-panel" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);"></div>
+
         <!-- Pre-submission checklist -->
         <div id="checklist-section" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);">
           <h3 class="text-base font-bold mb-4 sfy-h" style="color: var(--text);">Your Pre-Submission Checklist</h3>
@@ -240,9 +243,6 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
             <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-indigo-500" /><span class="text-sm" style="color: var(--text);">App icon is legible at 48x48px</span></label>
           </div>
         </div>
-
-        <!-- Context panel -->
-        <div id="context-panel" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);"></div>
 
         <!-- Grade another -->
         <div class="text-center">
@@ -631,7 +631,7 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
           html += '</div>';
         }
 
-        html += '<p style="font-size: 0.8rem; color: var(--muted); max-width: 400px; text-align: center;">Structure = did you fill out the listing correctly. Quality = is your copy effective. Quality drives 70% of your score.</p>';
+        html += '<p style="font-size: 0.8rem; color: var(--muted); max-width: 400px; text-align: center;">Structure = did you fill out the listing correctly.<br/>Quality = is your copy effective. Quality drives 70% of your score.</p>';
         html += '</div>';
         return html;
       }
@@ -682,10 +682,10 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
           : '<div style="width: 40px; height: 40px; border-radius: 8px; background: var(--bg2);"></div>';
 
         var issues = [];
-        if (meta.introduction.length > 60) issues.push('⚠ Your intro gets cut at ~60 chars in search results');
-        if (meta.app_name.length > 25) issues.push('⚠ App name may be truncated in some views');
-        if (ctx.rating >= 4.5) issues.push('✓ Rating above 4.5 stands out in search');
-        if (ctx.review_count < 20) issues.push('⚠ Low review count (' + ctx.review_count + ') may reduce click-through');
+        if (ctx.rating >= 4.5) issues.push({ type: 'pass', text: 'Rating above 4.5 stands out in search' });
+        if (meta.introduction.length > 60) issues.push({ type: 'warn', text: 'Your intro gets cut at ~60 chars in search results' });
+        if (meta.app_name.length > 25) issues.push({ type: 'warn', text: 'App name may be truncated in some views' });
+        if (ctx.review_count < 20) issues.push({ type: 'warn', text: 'Low review count (' + ctx.review_count + ') may reduce click-through' });
 
         return '<h3 class="sfy-h" style="font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 1rem;">What Merchants See in Search Results</h3>' +
           '<div class="search-card-mock" style="margin: 0 auto;">' +
@@ -703,7 +703,13 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
             '</div>' +
           '</div>' +
           (issues.length > 0 ? '<div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">' +
-            issues.map(function(i) { return '<p style="font-size: 0.75rem; color: var(--muted);">' + i + '</p>'; }).join('') +
+            issues.map(function(i) {
+              var dotColor = i.type === 'pass' ? '#10B981' : '#F59E0B';
+              var textColor = i.type === 'pass' ? '#10B981' : 'var(--muted)';
+              return '<div style="display: flex; align-items: center; gap: 0.5rem;">' +
+                '<span style="width: 6px; height: 6px; border-radius: 50%; background: ' + dotColor + '; flex-shrink: 0;"></span>' +
+                '<span style="font-size: 0.75rem; color: ' + textColor + ';">' + esc(i.text) + '</span></div>';
+            }).join('') +
           '</div>' : '');
       }
 
@@ -715,18 +721,24 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
           var f = fixes[i];
           var ic = impactColor(f.impact_label);
           var isOverride = f.detail.startsWith('[Override]');
-          var cleanDetail = f.detail.replace('[Override] ', '');
-          html += '<div class="finding-card">' +
+          var rawDetail = f.detail.replace('[Override] ', '');
+          // Split detail into issue + actionable part at first period boundary
+          var parts = rawDetail.split(/\.\s+/);
+          var issuePart = parts[0] + '.';
+          var fixPart = parts.length > 1 ? parts.slice(1).join('. ') : '';
+
+          html += '<div class="finding-card" style="border-left: 3px solid ' + ic + ';">' +
             '<div style="display: flex; align-items: start; gap: 0.75rem;">' +
               '<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; background: ' + ic + ';">' + f.rank + '</div>' +
               '<div style="flex: 1; min-width: 0;">' +
-                '<div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">' +
-                  '<span style="font-size: 0.8rem; font-weight: 600; color: var(--text);">' + esc(f.check) + '</span>' +
-                  '<span style="font-size: 0.65rem; padding: 1px 6px; border-radius: 4px; background: ' + ic + '20; color: ' + ic + ';">' + esc(f.impact_label) + '</span>' +
-                  (isOverride ? '<span style="font-size: 0.65rem; padding: 1px 6px; border-radius: 4px; background: rgba(239,68,68,0.1); color: #EF4444;">Override</span>' : '') +
+                '<div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.4rem;">' +
+                  '<span style="font-size: 0.85rem; font-weight: 700; color: var(--text);">' + esc(f.check) + '</span>' +
+                  '<span style="font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; background: ' + ic + '15; color: ' + ic + '; font-weight: 600; letter-spacing: 0.02em;">' + esc(f.impact_label) + '</span>' +
+                  (isOverride ? '<span style="font-size: 0.6rem; padding: 2px 8px; border-radius: 4px; background: rgba(239,68,68,0.08); color: #EF4444; font-weight: 600;">Override</span>' : '') +
                 '</div>' +
-                '<p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; line-height: 1.4;">' + esc(cleanDetail) + '</p>' +
-                (f.score_range_estimate ? '<p style="font-size: 0.75rem; color: var(--accent); margin-top: 0.35rem; font-weight: 500;">' + esc(f.score_range_estimate) + '</p>' : '') +
+                '<p style="font-size: 0.8rem; color: var(--text); line-height: 1.5; font-weight: 500;">' + esc(issuePart) + '</p>' +
+                (fixPart ? '<p style="font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; line-height: 1.5;">' + esc(fixPart) + '</p>' : '') +
+                (f.score_range_estimate ? '<p style="font-size: 0.72rem; color: var(--accent); margin-top: 0.4rem; font-weight: 600;">' + esc(f.score_range_estimate) + '</p>' : '') +
               '</div>' +
             '</div>' +
           '</div>';
@@ -827,8 +839,8 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
       // Email gate
       function renderEmailGate(issueCount) {
         return '<p class="sfy-h" style="font-size: 1.125rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;">We found ' + issueCount + ' issues affecting your installs</p>' +
-          '<p style="font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 420px; margin-left: auto; margin-right: auto;">Get a detailed fix plan with step-by-step instructions, structural patterns, and example formats for each issue.</p>' +
-          '<button id="get-fixplan-btn" class="sfy-btn-primary font-semibold px-8 py-3 rounded-xl text-sm sfy-h">Get Fix Plan</button>';
+          '<p style="font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 420px; margin-left: auto; margin-right: auto;">Get a detailed fix plan with step-by-step instructions, structural copy patterns, and example formats for each issue.</p>' +
+          '<button id="get-fixplan-btn" style="display: inline-block; background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; font-weight: 700; padding: 0.75rem 2rem; border-radius: 0.75rem; border: none; cursor: pointer; font-size: 0.9rem; box-shadow: 0 0 30px -8px rgba(129,140,248,0.4); transition: all 0.2s ease;" onmouseover="this.style.transform=\'translateY(-1px)\';this.style.boxShadow=\'0 0 30px -5px rgba(129,140,248,0.5)\'" onmouseout="this.style.transform=\'none\';this.style.boxShadow=\'0 0 30px -8px rgba(129,140,248,0.4)\'">Get my fix plan</button>';
       }
 
       // Render all results
