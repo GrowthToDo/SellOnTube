@@ -1,0 +1,932 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+
+const metadata = {
+  title: 'Free Shopify App Store Listing Grader - Grade Your Listing | SellOnTube',
+  description: 'Find out what\'s costing you installs. Grade your Shopify app listing against 30+ official rules and best practices. Free, instant, actionable.',
+};
+
+const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+const siteUrl = 'https://sellontube.com';
+const pageUrl = `${siteUrl}/shopify-app/tools/shopify-app-store-listing-grader`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+    { "@type": "ListItem", "position": 2, "name": "Shopify App Services", "item": `${siteUrl}/shopify-app` },
+    { "@type": "ListItem", "position": 3, "name": "Tools", "item": `${siteUrl}/shopify-app/tools` },
+    { "@type": "ListItem", "position": 4, "name": "Listing Grader", "item": pageUrl },
+  ]
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Shopify App Store Listing Grader",
+  "url": pageUrl,
+  "description": "Grade your Shopify app listing against 30+ official rules and best practices that drive installs.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What does this tool check?", "acceptedAnswer": { "@type": "Answer", "text": "The grader checks 30+ rules across 6 categories: Search Visibility, Screenshots & Video, Listing Copy, Shopify Rules, Install Triggers, and Standout Score. Each check maps to Shopify's official listing requirements and evidence-based ASO best practices." } },
+    { "@type": "Question", "name": "How is the score calculated?", "acceptedAnswer": { "@type": "Answer", "text": "The score is a transparent 0-100 rubric. Each check earns points based on whether your listing passes. The six sections are weighted by their impact on installs: Search Visibility (25%), Screenshots & Video (25%), Listing Copy (20%), Shopify Rules (10%), Install Triggers (10%), and Standout Score (10%). No black box — every point is explainable." } },
+    { "@type": "Question", "name": "Is my listing data stored?", "acceptedAnswer": { "@type": "Answer", "text": "We cache results for up to 6 hours to speed up re-grades. Anonymized score data may be used to improve the tool. We never share your listing URL or email with third parties." } },
+    { "@type": "Question", "name": "Can I re-grade after making changes?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you update your listing, come back and grade it again. The tool detects content changes and runs a fresh analysis automatically — even within the cache window." } },
+    { "@type": "Question", "name": "What's in the full fix plan?", "acceptedAnswer": { "@type": "Answer", "text": "The fix plan is a prioritized list of up to 7 fixes, ordered by impact on installs. Each fix includes the specific issue, a concrete action to take, and a structural pattern to follow. Risk issues (compliance) come first, then growth issues (install impact)." } },
+  ]
+};
+
+const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','aol.com','icloud.com','mail.com','protonmail.com','zoho.com','ymail.com','live.com'];
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Case Studies', href: '/shopify-app#proof', links: [
+          { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
+          { text: 'YouTube Video Marketing: Inventory App Case Study', href: '/shopify-app/case-studies/shopify-app-growth-youtube-marketing' },
+        ]},
+        { text: 'Services', href: '/shopify-app#work' },
+        { text: 'Tools', href: '/shopify-app/tools' },
+        { text: 'Pricing', href: '/shopify-app#pricing' },
+      ]}
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <Fragment slot="footer"></Fragment>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoLink = document.querySelector('#header a[href="/"]');
+      if (logoLink) logoLink.setAttribute('href', '/shopify-app');
+    });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
+    .sfy { font-family: 'Inter', system-ui, sans-serif; }
+    .sfy-grad { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 50%, #C7D2FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; }
+    .sfy-light { --bg: #FAFAF8; --bg2: #F2F2EE; --card: #FFFFFF; --border: #E2E2DD; --text: #111113; --muted: #6B6B73; --dim: #9CA3AF; --accent: #6366F1; --accent-l: #818CF8; }
+
+    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
+    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
+
+    .score-ring { transition: stroke-dashoffset 1.5s ease-out; }
+    @media (prefers-reduced-motion: reduce) { .score-ring { transition: none; } }
+
+    .section-bar-fill { transition: width 0.8s ease-out; }
+    @media (prefers-reduced-motion: reduce) { .section-bar-fill { transition: none; } }
+
+    .finding-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; transition: border-color 0.2s ease; }
+    .finding-card:hover { border-color: rgba(99,102,241,0.3); }
+
+    .char-bar { height: 6px; border-radius: 3px; }
+    .char-bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; }
+    .modal-backdrop.active { display: flex; }
+
+    .copy-toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 0.5rem 1.5rem; border-radius: 8px; font-size: 0.85rem; z-index: 200; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    .copy-toast.show { opacity: 1; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+
+    @keyframes countUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-in { animation: countUp 0.4s ease-out forwards; }
+
+    .search-card-mock { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; max-width: 360px; }
+    .truncation-line { border-top: 2px dashed #EF4444; position: relative; margin: 0.5rem 0; }
+    .truncation-line::after { content: 'Truncated in search results ↓'; position: absolute; top: -10px; right: 0; font-size: 0.65rem; color: #EF4444; background: var(--bg); padding: 0 4px; }
+  </style>
+
+  <div class="sfy">
+
+    <!-- ===== HERO + INPUT (dark) ===== -->
+    <section class="sfy-dark relative pt-28 pb-12 overflow-hidden" style="background: var(--bg);">
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 30%, rgba(129,140,248,0.06) 0%, transparent 60%);"></div>
+      <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">Free Tool · For Shopify App Developers</p>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5 leading-[1.08] tracking-[-0.02em] sfy-h" style="color: var(--text);">
+          Shopify App Store Listing Grader
+        </h1>
+        <p class="text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-2" style="color: var(--muted);">
+          Find out what's costing you installs. 30+ checks against Shopify's listing rules and the patterns top-rated apps use.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== INPUT (dark) ===== -->
+    <section class="sfy-dark py-6 pb-10" style="background: var(--bg);">
+      <div class="max-w-2xl mx-auto px-6">
+        <div id="step-input" class="rounded-2xl p-6 sm:p-8" style="background: var(--card); border: 1px solid var(--border);">
+          <label for="app-url" class="block text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted);">Shopify App Store URL</label>
+          <input type="url" id="app-url" placeholder="https://apps.shopify.com/your-app"
+            class="w-full text-base font-medium px-4 py-3 rounded-xl outline-none transition-colors"
+            style="background: var(--bg); border: 1px solid var(--border); color: var(--text);" />
+          <p id="url-error" class="hidden mt-2 text-sm" style="color: #EF4444;"></p>
+          <button id="grade-btn"
+            class="sfy-btn-primary mt-5 w-full font-bold px-6 py-3.5 rounded-xl text-base sfy-h"
+            style="box-shadow: 0 0 30px -8px rgba(129,140,248,0.3);">
+            Grade my listing
+          </button>
+          <p class="text-center text-xs mt-3" style="color: var(--dim);">Free · No account needed · Takes ~15 seconds</p>
+        </div>
+
+        <!-- What we check (preview cards) -->
+        <div id="check-preview" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
+          <div class="rounded-xl p-3 text-center" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="text-lg mb-1">🔍</div>
+            <p class="text-xs font-medium" style="color: var(--muted);">Search Visibility</p>
+          </div>
+          <div class="rounded-xl p-3 text-center" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="text-lg mb-1">📸</div>
+            <p class="text-xs font-medium" style="color: var(--muted);">Screenshots & Video</p>
+          </div>
+          <div class="rounded-xl p-3 text-center" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="text-lg mb-1">✍️</div>
+            <p class="text-xs font-medium" style="color: var(--muted);">Listing Copy</p>
+          </div>
+          <div class="rounded-xl p-3 text-center" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="text-lg mb-1">📋</div>
+            <p class="text-xs font-medium" style="color: var(--muted);">Shopify Rules</p>
+          </div>
+          <div class="rounded-xl p-3 text-center" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="text-lg mb-1">⚡</div>
+            <p class="text-xs font-medium" style="color: var(--muted);">Install Triggers</p>
+          </div>
+          <div class="rounded-xl p-3 text-center" style="background: var(--card); border: 1px solid var(--border);">
+            <div class="text-lg mb-1">✨</div>
+            <p class="text-xs font-medium" style="color: var(--muted);">Standout Score</p>
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="step-loading" class="hidden rounded-2xl p-8 text-center mt-4" style="background: var(--card); border: 1px solid var(--border);">
+          <div class="flex flex-col items-center gap-4 py-8">
+            <div class="spinner"></div>
+            <p id="loading-msg" class="text-sm font-medium" style="color: var(--muted);">Fetching your listing...</p>
+            <p class="text-xs" style="color: var(--dim);">This takes about 15 seconds</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESULTS (light) ===== -->
+    <section id="step-results" class="hidden sfy-light py-10" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6 space-y-8">
+
+        <!-- Listing mirror -->
+        <div id="listing-mirror" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);"></div>
+
+        <!-- Score hero -->
+        <div id="score-hero" class="rounded-2xl p-8 text-center" style="background: var(--card); border: 1px solid var(--border);"></div>
+
+        <!-- Search card preview -->
+        <div id="search-card-section" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);"></div>
+
+        <!-- Section scorecard -->
+        <div id="section-scores" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+
+        <!-- Issues list (Risk + Growth) -->
+        <div id="issues-section" class="space-y-6"></div>
+
+        <!-- Your Growth Roadmap -->
+        <div id="roadmap-section" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);"></div>
+
+        <!-- Email gate for fix plan -->
+        <div id="email-gate" class="hidden text-center rounded-2xl p-8" style="background: var(--card); border: 1px solid var(--border);"></div>
+
+        <!-- Pre-submission checklist -->
+        <div id="checklist-section" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);">
+          <h3 class="text-base font-bold mb-4 sfy-h" style="color: var(--text);">Your Pre-Submission Checklist</h3>
+          <p class="text-xs mb-4" style="color: var(--muted);">These rules require a human eye. Check them before updating your listing.</p>
+          <div class="space-y-3" id="manual-checks">
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-indigo-500" /><span class="text-sm" style="color: var(--text);">First screenshot shows the primary use case clearly</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-indigo-500" /><span class="text-sm" style="color: var(--text);">Screenshots show real app UI, not mockups or generic graphics</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-indigo-500" /><span class="text-sm" style="color: var(--text);">Screenshots have annotation text explaining what they show</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-indigo-500" /><span class="text-sm" style="color: var(--text);">No pricing or promotional text baked into screenshot images</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-indigo-500" /><span class="text-sm" style="color: var(--text);">Demo store link works and loads quickly</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5 accent-indigo-500" /><span class="text-sm" style="color: var(--text);">App icon is legible at 48x48px</span></label>
+          </div>
+        </div>
+
+        <!-- Context panel -->
+        <div id="context-panel" class="rounded-2xl p-6" style="background: var(--card); border: 1px solid var(--border);"></div>
+
+        <!-- Grade another -->
+        <div class="text-center">
+          <button id="reset-btn" class="text-sm font-medium px-6 py-2 rounded-lg transition-colors" style="color: var(--accent);">
+            Grade another listing
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA (dark) ===== -->
+    <section id="cta-section" class="hidden sfy-dark py-14" style="background: var(--bg);">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <h2 class="text-xl sm:text-2xl font-bold mb-3 sfy-h" style="color: var(--text);">Want us to rewrite your listing?</h2>
+        <p class="text-sm mb-6 max-w-lg mx-auto" style="color: var(--muted);">
+          We rebuilt the GS1 Assistant listing from scratch. It's now #1 on Google and 4.9 stars on the App Store.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="/shopify-app" class="sfy-btn-primary font-semibold px-6 py-2.5 rounded-lg text-sm sfy-h">See how we help apps grow</a>
+          <a href="https://cal.com/gautham-8bdvdx/30min" target="_blank" rel="noopener noreferrer"
+            class="font-semibold px-6 py-2.5 rounded-lg text-sm sfy-h" style="border: 1px solid var(--border); color: var(--muted);">
+            Book a discovery call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ (light) ===== -->
+    <section class="sfy-light py-14" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-2xl font-bold mb-8 sfy-h" style="color: var(--text);">FAQ</h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">What does this tool check?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">30+ rules across 6 categories: Search Visibility, Screenshots & Video, Listing Copy, Shopify Rules, Install Triggers, and Standout Score. Each maps to Shopify's official listing requirements and evidence-based ASO practices.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">How is the score calculated?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Transparent 0-100 rubric. Six sections weighted by install impact: Search Visibility (25%), Screenshots & Video (25%), Listing Copy (20%), Shopify Rules (10%), Install Triggers (10%), Standout Score (10%). Every point is explainable.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">Is my listing data stored?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Results are cached for up to 6 hours to speed up re-grades. Anonymized score data helps improve the tool. Your listing URL and email are never shared with third parties.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">Can I re-grade after making changes?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Yes. Update your listing, come back, and grade again. The tool detects content changes and runs a fresh analysis automatically, even within the cache window.</p>
+          </div>
+          <div>
+            <h3 class="text-base font-semibold mb-2 sfy-h" style="color: var(--text);">What's in the full fix plan?</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--muted);">Up to 7 prioritized fixes ordered by install impact. Each includes the specific issue, a concrete action, and a structural pattern to follow. Risk issues (compliance) come first, then growth issues.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER (dark) ===== -->
+    <footer class="sfy-dark py-8" style="background: var(--bg); border-top: 1px solid var(--border);">
+      <div class="max-w-3xl mx-auto px-6">
+        <p class="text-xs text-center mb-6" style="color: var(--dim);">
+          Listing data is sourced from public Shopify App Store pages. SellOnTube is not affiliated with or endorsed by Shopify.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
+          <div class="flex items-center gap-6 text-xs" style="color: var(--dim);">
+            <a href="/shopify-app" class="hover:underline">Back to Services</a>
+            <a href="/privacy" class="hover:underline">Privacy</a>
+            <a href="/terms" class="hover:underline">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== EMAIL MODAL ===== -->
+    <div id="email-modal" class="modal-backdrop">
+      <div class="sfy-dark rounded-2xl p-8" style="background: var(--card); border: 1px solid var(--border); max-width: 420px; width: 90%;">
+        <h3 class="text-lg font-bold mb-1 sfy-h" style="color: var(--text);">Get your full fix plan</h3>
+        <p class="text-sm mb-5" style="color: var(--muted);">Enter your business email to unlock the complete prioritized fix plan with character budgets and structural patterns.</p>
+        <input type="email" id="modal-email" placeholder="your@company.com"
+          class="w-full text-sm px-4 py-3 rounded-xl outline-none mb-2"
+          style="background: var(--bg); border: 1px solid var(--border); color: var(--text);" />
+        <p id="modal-email-error" class="hidden text-xs mb-3" style="color: #EF4444;"></p>
+        <label class="flex items-start gap-2 mt-3 mb-5 cursor-pointer">
+          <input type="checkbox" id="modal-consent" class="mt-0.5 accent-indigo-500" />
+          <span class="text-xs leading-snug" style="color: var(--muted);">
+            I agree to receive this report and occasional emails from SellOnTube.
+            <a href="/privacy-policy" target="_blank" class="underline" style="color: var(--accent);">Privacy Policy</a>
+          </span>
+        </label>
+        <button id="modal-submit-btn" disabled
+          class="sfy-btn-primary w-full font-semibold px-5 py-3 rounded-xl text-sm sfy-h opacity-50 cursor-not-allowed">
+          Get Fix Plan
+        </button>
+        <button id="modal-close-btn" class="w-full mt-3 text-sm font-medium py-2" style="color: var(--dim);">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Fix plan reveal (shown after email) -->
+    <section id="fix-plan-section" class="hidden sfy-light py-10" style="background: var(--bg);">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="rounded-2xl p-6 sm:p-8" style="background: var(--card); border: 1px solid var(--border);">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-bold sfy-h" style="color: var(--text);">Your Fix Plan</h2>
+            <button id="copy-fixplan-btn" class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors" style="background: var(--bg2); color: var(--muted);" title="Copy fix plan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <div id="fix-plan-content" class="prose prose-sm max-w-none" style="color: var(--text);"></div>
+        </div>
+      </div>
+    </section>
+
+    <div id="copy-toast" class="copy-toast">Copied to clipboard</div>
+  </div>
+
+  <script is:inline define:vars={{ PERSONAL_DOMAINS }}>
+    (function () {
+      var gradeData = null;
+
+      var $ = function(id) { return document.getElementById(id); };
+      var show = function(el) { el.classList.remove('hidden'); };
+      var hide = function(el) { el.classList.add('hidden'); };
+      var esc = function(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+      var impactColor = function(label) {
+        if (label === 'Highest impact') return '#EF4444';
+        if (label === 'High impact') return '#F97316';
+        if (label === 'Medium impact') return '#F59E0B';
+        return '#6B7280';
+      };
+
+      var $input = $('step-input');
+      var $loading = $('step-loading');
+      var $results = $('step-results');
+      var $cta = $('cta-section');
+      var $checkPreview = $('check-preview');
+      var $urlInput = $('app-url');
+      var $urlError = $('url-error');
+      var $gradeBtn = $('grade-btn');
+      var $loadingMsg = $('loading-msg');
+      var $resetBtn = $('reset-btn');
+
+      var $modal = $('email-modal');
+      var $modalEmail = $('modal-email');
+      var $modalEmailError = $('modal-email-error');
+      var $modalConsent = $('modal-consent');
+      var $modalSubmitBtn = $('modal-submit-btn');
+      var $modalCloseBtn = $('modal-close-btn');
+
+      var loadingMessages = [
+        'Fetching your listing...',
+        'Checking character limits and copy structure...',
+        'Analyzing search visibility...',
+        'Evaluating screenshots and video...',
+        'Scoring against 30+ rules...',
+        'Preparing your results...'
+      ];
+
+      function showError(msg) {
+        $urlError.textContent = msg;
+        show($urlError);
+      }
+
+      function isValidUrl(url) {
+        return /^https?:\/\/(apps\.shopify\.com)\/[a-z0-9-]+\/?$/i.test(url.trim());
+      }
+
+      function isBusinessEmail(email) {
+        var domain = email.split('@')[1];
+        if (!domain) return false;
+        return !PERSONAL_DOMAINS.includes(domain.toLowerCase());
+      }
+
+      function scoreColor(pct) {
+        if (pct >= 80) return '#10B981';
+        if (pct >= 60) return '#F59E0B';
+        if (pct >= 40) return '#F97316';
+        return '#EF4444';
+      }
+
+      function severityIcon(sev) {
+        if (sev === 'pass') return '<span style="color: #10B981;">✓</span>';
+        if (sev === 'warning') return '<span style="color: #F59E0B;">⚠</span>';
+        if (sev === 'fail') return '<span style="color: #EF4444;">✗</span>';
+        return '<span style="color: var(--dim);">ℹ</span>';
+      }
+
+      function severityBg(sev) {
+        if (sev === 'pass') return 'rgba(16,185,129,0.08)';
+        if (sev === 'warning') return 'rgba(245,158,11,0.08)';
+        if (sev === 'fail') return 'rgba(239,68,68,0.08)';
+        return 'rgba(99,102,241,0.08)';
+      }
+
+      // Progressive loading messages
+      function animateLoading() {
+        var i = 0;
+        var iv = setInterval(function() {
+          i++;
+          if (i < loadingMessages.length) {
+            $loadingMsg.textContent = loadingMessages[i];
+          } else {
+            clearInterval(iv);
+          }
+        }, 2500);
+        return iv;
+      }
+
+      // Score hero with two-tier breakdown
+      function renderScoreHero(data) {
+        var score = data.health_score;
+        var grade = data.grade;
+        var color = scoreColor(score);
+        var circumference = 2 * Math.PI * 54;
+        var offset = circumference - (score / 100) * circumference;
+        var st = data.structural_score;
+        var qt = data.quality_score;
+        var stPct = Math.round(st / 30 * 100);
+        var qtPct = Math.round(qt / 70 * 100);
+
+        var html = '<div style="display: flex; flex-direction: column; align-items: center; gap: 1.25rem;">' +
+          '<div style="position: relative; width: 160px; height: 160px;">' +
+            '<svg viewBox="0 0 120 120" style="width: 160px; height: 160px; transform: rotate(-90deg);">' +
+              '<circle cx="60" cy="60" r="54" fill="none" stroke="var(--border)" stroke-width="8"/>' +
+              '<circle class="score-ring" cx="60" cy="60" r="54" fill="none" stroke="' + color + '" stroke-width="8" stroke-linecap="round" stroke-dasharray="' + circumference + '" stroke-dashoffset="' + circumference + '" data-target="' + offset + '"/>' +
+            '</svg>' +
+            '<div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">' +
+              '<span class="sfy-m" style="font-size: 2.5rem; font-weight: 700; color: ' + color + ';">' + score + '</span>' +
+              '<span style="font-size: 0.75rem; color: var(--muted);">out of 100</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="sfy-h" style="font-size: 1.25rem; font-weight: 700; color: var(--text);">Grade: ' + grade + '</div>';
+
+        // Two-tier breakdown bars
+        html += '<div style="width: 100%; max-width: 340px; display: flex; flex-direction: column; gap: 0.75rem;">' +
+          '<div>' +
+            '<div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">' +
+              '<span style="font-size: 0.75rem; font-weight: 600; color: var(--text);">Structure</span>' +
+              '<span class="sfy-m" style="font-size: 0.75rem; color: ' + scoreColor(stPct) + ';">' + st + '/30</span>' +
+            '</div>' +
+            '<div class="char-bar" style="background: var(--border);">' +
+              '<div class="section-bar-fill" style="width: 0%; background: ' + scoreColor(stPct) + ';" data-target="' + stPct + '%"></div>' +
+            '</div>' +
+          '</div>' +
+          '<div>' +
+            '<div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">' +
+              '<span style="font-size: 0.75rem; font-weight: 600; color: var(--text);">Quality</span>' +
+              '<span class="sfy-m" style="font-size: 0.75rem; color: ' + scoreColor(qtPct) + ';">' + qt + '/70</span>' +
+            '</div>' +
+            '<div class="char-bar" style="background: var(--border);">' +
+              '<div class="section-bar-fill" style="width: 0%; background: ' + scoreColor(qtPct) + ';" data-target="' + qtPct + '%"></div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+        // Overrides + coherence
+        if (data.overrides_applied && data.overrides_applied.length > 0) {
+          html += '<div style="width: 100%; max-width: 340px; margin-top: 0.25rem;">';
+          for (var i = 0; i < data.overrides_applied.length; i++) {
+            html += '<p style="font-size: 0.7rem; color: #EF4444; margin-top: 0.25rem;">⛔ ' + esc(data.overrides_applied[i]) + '</p>';
+          }
+          html += '</div>';
+        }
+
+        html += '<p style="font-size: 0.8rem; color: var(--muted); max-width: 400px; text-align: center;">Structure = did you fill out the listing correctly. Quality = is your copy effective. Quality drives 70% of your score.</p>';
+        html += '</div>';
+        return html;
+      }
+
+      // Section bars
+      function renderSectionScores(sections) {
+        var html = '';
+        for (var i = 0; i < sections.length; i++) {
+          var s = sections[i];
+          var color = scoreColor(s.percentage);
+          html += '<div class="rounded-xl p-4" style="background: var(--card); border: 1px solid var(--border);">' +
+            '<div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">' +
+              '<span class="sfy-h" style="font-size: 0.8rem; font-weight: 600; color: var(--text);">' + esc(s.label) + '</span>' +
+              '<span class="sfy-m" style="font-size: 0.8rem; font-weight: 600; color: ' + color + ';">' + s.grade + ' · ' + s.percentage + '%</span>' +
+            '</div>' +
+            '<div class="char-bar" style="background: var(--border);">' +
+              '<div class="section-bar-fill" style="width: 0%; background: ' + color + ';" data-target="' + s.percentage + '%"></div>' +
+            '</div>' +
+          '</div>';
+        }
+        return html;
+      }
+
+      // Listing mirror (shows their listing data back)
+      function renderListingMirror(meta, ctx) {
+        var iconHtml = meta.icon_url
+          ? '<img src="' + esc(meta.icon_url) + '" alt="" style="width: 48px; height: 48px; border-radius: 10px; border: 1px solid var(--border);" />'
+          : '<div style="width: 48px; height: 48px; border-radius: 10px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📦</div>';
+
+        return '<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">' +
+          iconHtml +
+          '<div>' +
+            '<h2 class="sfy-h" style="font-size: 1.125rem; font-weight: 700; color: var(--text);">' + esc(meta.app_name) + '</h2>' +
+            '<p style="font-size: 0.8rem; color: var(--muted);">' + esc(ctx.developer_name) + ' · ' + esc(ctx.category) + '</p>' +
+          '</div>' +
+        '</div>' +
+        '<p style="font-size: 0.875rem; color: var(--muted); line-height: 1.5;">' + esc(meta.introduction) + '</p>';
+      }
+
+      // Search card mock
+      function renderSearchCard(meta, ctx) {
+        var introTrunc = meta.introduction.length > 60 ? meta.introduction.substring(0, 57) + '...' : meta.introduction;
+        var nameTrunc = meta.app_name.length > 30 ? meta.app_name.substring(0, 27) + '...' : meta.app_name;
+        var isTruncated = meta.introduction.length > 60;
+
+        var iconHtml = meta.icon_url
+          ? '<img src="' + esc(meta.icon_url) + '" alt="" style="width: 40px; height: 40px; border-radius: 8px;" />'
+          : '<div style="width: 40px; height: 40px; border-radius: 8px; background: var(--bg2);"></div>';
+
+        var issues = [];
+        if (meta.introduction.length > 60) issues.push('⚠ Your intro gets cut at ~60 chars in search results');
+        if (meta.app_name.length > 25) issues.push('⚠ App name may be truncated in some views');
+        if (ctx.rating >= 4.5) issues.push('✓ Rating above 4.5 stands out in search');
+        if (ctx.review_count < 20) issues.push('⚠ Low review count (' + ctx.review_count + ') may reduce click-through');
+
+        return '<h3 class="sfy-h" style="font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 1rem;">What Merchants See in Search Results</h3>' +
+          '<div class="search-card-mock" style="margin: 0 auto;">' +
+            '<div style="display: flex; gap: 0.75rem; align-items: start;">' +
+              iconHtml +
+              '<div style="flex: 1; min-width: 0;">' +
+                '<div style="font-weight: 600; font-size: 0.875rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + esc(nameTrunc) + '</div>' +
+                '<div style="font-size: 0.75rem; color: var(--muted); margin-top: 2px;">' + esc(introTrunc) + '</div>' +
+                (isTruncated ? '<div class="truncation-line"></div>' : '') +
+                '<div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">' +
+                  '<span style="font-size: 0.75rem; font-weight: 600; color: var(--text);">' + ctx.rating + ' ★</span>' +
+                  '<span style="font-size: 0.7rem; color: var(--dim);">(' + ctx.review_count + ')</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+          (issues.length > 0 ? '<div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.35rem;">' +
+            issues.map(function(i) { return '<p style="font-size: 0.75rem; color: var(--muted);">' + i + '</p>'; }).join('') +
+          '</div>' : '');
+      }
+
+      // Prioritized fixes (numbered with impact labels)
+      function renderPrioritizedFixes(fixes) {
+        if (!fixes || fixes.length === 0) return '<p style="font-size: 0.875rem; color: #10B981;">All checks passed. Your listing is well-optimized.</p>';
+        var html = '<div style="display: flex; flex-direction: column; gap: 0.75rem;">';
+        for (var i = 0; i < fixes.length; i++) {
+          var f = fixes[i];
+          var ic = impactColor(f.impact_label);
+          var isOverride = f.detail.startsWith('[Override]');
+          var cleanDetail = f.detail.replace('[Override] ', '');
+          html += '<div class="finding-card">' +
+            '<div style="display: flex; align-items: start; gap: 0.75rem;">' +
+              '<div style="flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: white; background: ' + ic + ';">' + f.rank + '</div>' +
+              '<div style="flex: 1; min-width: 0;">' +
+                '<div style="display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap;">' +
+                  '<span style="font-size: 0.8rem; font-weight: 600; color: var(--text);">' + esc(f.check) + '</span>' +
+                  '<span style="font-size: 0.65rem; padding: 1px 6px; border-radius: 4px; background: ' + ic + '20; color: ' + ic + ';">' + esc(f.impact_label) + '</span>' +
+                  (isOverride ? '<span style="font-size: 0.65rem; padding: 1px 6px; border-radius: 4px; background: rgba(239,68,68,0.1); color: #EF4444;">Override</span>' : '') +
+                '</div>' +
+                '<p style="font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; line-height: 1.4;">' + esc(cleanDetail) + '</p>' +
+                (f.score_range_estimate ? '<p style="font-size: 0.75rem; color: var(--accent); margin-top: 0.35rem; font-weight: 500;">' + esc(f.score_range_estimate) + '</p>' : '') +
+              '</div>' +
+            '</div>' +
+          '</div>';
+        }
+        html += '</div>';
+        return html;
+      }
+
+      // Passing checks (collapsed)
+      function renderPassingChecks(findings) {
+        var passed = findings.filter(function(f) { return f.passed; });
+        if (passed.length === 0) return '';
+        return '<details style="margin-top: 0.5rem;">' +
+          '<summary style="font-size: 0.8rem; font-weight: 600; color: var(--muted); cursor: pointer; padding: 0.5rem 0;">Passing checks (' + passed.length + ')</summary>' +
+          '<div style="display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.5rem;">' +
+          passed.map(function(f) {
+            return '<div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0;">' +
+              '<span style="color: #10B981; font-size: 0.8rem;">✓</span>' +
+              '<span style="font-size: 0.75rem; color: var(--muted);">' + esc(f.check) + '</span>' +
+            '</div>';
+          }).join('') +
+          '</div></details>';
+      }
+
+      // Context panel with benchmark insights
+      function renderContext(ctx) {
+        var items = [];
+
+        // Rating — directional insights based on Shopify's documented practices
+        var ri = ctx.rating >= 4.5 ? 'Strong. Higher-rated apps rank better in Shopify search.'
+          : ctx.rating >= 4.0 ? 'Good. Aim for 4.5+ to stand out in search results.'
+          : ctx.rating >= 3.0 ? 'Below average. Low ratings reduce search visibility and merchant trust.'
+          : 'Needs attention. Ratings under 3.0 significantly hurt discoverability.';
+        items.push({ label: 'Rating', value: ctx.rating + ' ★', insight: ri });
+
+        // Reviews
+        var rvi = ctx.review_count >= 100 ? 'Strong social proof. Review count is a Shopify search ranking signal.'
+          : ctx.review_count >= 20 ? 'Decent. More reviews strengthen search ranking and merchant confidence.'
+          : ctx.review_count >= 5 ? 'Low. Shopify search weights review count. Active review outreach helps.'
+          : 'Very few reviews. New merchants hesitate to install apps without social proof.';
+        items.push({ label: 'Reviews', value: String(ctx.review_count), insight: rvi });
+
+        if (ctx.latest_review_date && ctx.latest_review_date !== 'N/A') {
+          items.push({ label: 'Latest review', value: ctx.latest_review_date, insight: '' });
+        }
+        if (ctx.developer_name && ctx.developer_name !== 'N/A') {
+          items.push({ label: 'Developer', value: ctx.developer_name, insight: '' });
+        }
+        if (ctx.built_for_shopify) {
+          items.push({ label: 'Built for Shopify', value: '✓ Earned', insight: 'Improves search placement and merchant trust.' });
+        }
+        if (ctx.category && ctx.category !== 'N/A') {
+          items.push({ label: 'Category', value: ctx.category, insight: '' });
+        }
+        if (ctx.launched_date && ctx.launched_date !== 'N/A') {
+          items.push({ label: 'Launched', value: ctx.launched_date, insight: '' });
+        }
+
+        var html = '<h3 class="sfy-h" style="font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Context</h3>' +
+          '<p style="font-size: 0.7rem; color: var(--dim); margin-bottom: 1rem;">Not scored. You can\'t change these by editing copy.</p>' +
+          '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem;">';
+
+        for (var i = 0; i < items.length; i++) {
+          var it = items[i];
+          html += '<div style="padding: 0.5rem 0;">' +
+            '<div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); margin-bottom: 0.25rem;">' + esc(it.label) + '</div>' +
+            '<div style="font-size: 0.9rem; font-weight: 600; color: var(--text);">' + esc(it.value) + '</div>' +
+            (it.insight ? '<div style="font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem;">' + esc(it.insight) + '</div>' : '') +
+          '</div>';
+        }
+        html += '</div>';
+        return html;
+      }
+
+      // Growth roadmap
+      function renderRoadmap(fixes, issueCount) {
+        var topFix = fixes && fixes.length > 0 ? fixes[0] : null;
+        return '<h3 class="sfy-h" style="font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 1rem;">Your Next 48 Hours</h3>' +
+          '<div style="display: flex; flex-direction: column; gap: 1rem;">' +
+            '<div style="display: flex; gap: 0.75rem; align-items: start;">' +
+              '<span class="sfy-m" style="font-size: 0.875rem; font-weight: 700; color: var(--accent);">1</span>' +
+              '<div><span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">Fix the top issue:</span> <span style="font-size: 0.8rem; color: var(--muted);">' + (topFix ? esc(topFix.check) : 'All checks passed') + '</span>' +
+              (topFix && topFix.score_range_estimate ? '<br/><span style="font-size: 0.75rem; color: var(--accent);">' + esc(topFix.score_range_estimate) + '</span>' : '') +
+              '</div>' +
+            '</div>' +
+            '<div style="display: flex; gap: 0.75rem; align-items: start;">' +
+              '<span class="sfy-m" style="font-size: 0.875rem; font-weight: 700; color: var(--accent);">2</span>' +
+              '<div><span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">Get your full fix plan</span> <span style="font-size: 0.8rem; color: var(--muted);">(' + issueCount + ' issues ranked by impact)</span></div>' +
+            '</div>' +
+            '<div style="display: flex; gap: 0.75rem; align-items: start;">' +
+              '<span class="sfy-m" style="font-size: 0.875rem; font-weight: 700; color: var(--accent);">3</span>' +
+              '<div><span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">Re-grade your listing</span> <span style="font-size: 0.8rem; color: var(--muted);">after changes to track improvement</span></div>' +
+            '</div>' +
+          '</div>';
+      }
+
+      // Email gate
+      function renderEmailGate(issueCount) {
+        return '<p class="sfy-h" style="font-size: 1.125rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;">We found ' + issueCount + ' issues affecting your installs</p>' +
+          '<p style="font-size: 0.875rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 420px; margin-left: auto; margin-right: auto;">Get the full breakdown with every issue ranked by impact, character budgets, and fix patterns you can apply today.</p>' +
+          '<button id="get-fixplan-btn" class="sfy-btn-primary font-semibold px-8 py-3 rounded-xl text-sm sfy-h">Get Fix Plan</button>';
+      }
+
+      // Render all results
+      function renderResults(data) {
+        // Listing mirror
+        $('listing-mirror').innerHTML = renderListingMirror(data.listing_meta, data.context);
+
+        // Score hero (two-tier)
+        $('score-hero').innerHTML = renderScoreHero(data);
+
+        // Animate score ring + bars
+        requestAnimationFrame(function() {
+          var ring = document.querySelector('.score-ring');
+          if (ring) {
+            requestAnimationFrame(function() {
+              ring.style.strokeDashoffset = ring.getAttribute('data-target');
+            });
+          }
+          var bars = document.querySelectorAll('.section-bar-fill');
+          bars.forEach(function(bar) {
+            requestAnimationFrame(function() {
+              bar.style.width = bar.getAttribute('data-target');
+            });
+          });
+        });
+
+        // Search card
+        $('search-card-section').innerHTML = renderSearchCard(data.listing_meta, data.context);
+
+        // Section scores
+        $('section-scores').innerHTML = renderSectionScores(data.section_scores);
+
+        // Prioritized fixes (replaces old risk/growth split)
+        var fixes = data.prioritized_fixes || [];
+        var issuesHtml = '<h3 class="sfy-h" style="font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem;">Your Fixes, In Order of Impact</h3>' +
+          '<p style="font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem;">' + fixes.length + ' issue' + (fixes.length !== 1 ? 's' : '') + ' found. Fix #1 first for the biggest improvement.</p>';
+        issuesHtml += renderPrioritizedFixes(fixes);
+        issuesHtml += renderPassingChecks(data.findings);
+        $('issues-section').innerHTML = issuesHtml;
+
+        // Roadmap
+        $('roadmap-section').innerHTML = renderRoadmap(fixes, fixes.length);
+
+        // Email gate
+        if (fixes.length > 0) {
+          $('email-gate').innerHTML = renderEmailGate(fixes.length);
+          show($('email-gate'));
+          var fpBtn = $('get-fixplan-btn');
+          if (fpBtn) {
+            fpBtn.addEventListener('click', function() {
+              $modal.classList.add('active');
+            });
+          }
+        }
+
+        // Context panel
+        $('context-panel').innerHTML = renderContext(data.context);
+
+        // Disclaimer
+        var disclaimerHtml = '<p style="font-size: 0.7rem; color: var(--dim); text-align: center; margin-top: 1rem;">This tool grades your listing\'s quality, not your app\'s success. Apps with strong brand recognition may convert well despite listing gaps.</p>';
+        $('context-panel').innerHTML += disclaimerHtml;
+      }
+
+      // Main grade flow
+      async function doGrade() {
+        var url = $urlInput.value.trim();
+        hide($urlError);
+
+        if (!url) { showError('Please enter a URL.'); return; }
+        if (!isValidUrl(url)) { showError('Please enter a valid Shopify app URL (e.g. https://apps.shopify.com/loox)'); return; }
+
+        // Show loading
+        hide($input);
+        hide($checkPreview);
+        show($loading);
+        $loadingMsg.textContent = loadingMessages[0];
+        var loadingInterval = animateLoading();
+
+        try {
+          var res = await fetch('/.netlify/functions/grade-listing', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: url }),
+          });
+
+          clearInterval(loadingInterval);
+
+          if (res.status === 429) {
+            hide($loading);
+            show($input);
+            show($checkPreview);
+            showError('Daily limit reached. You can grade up to 5 listings per day.');
+            return;
+          }
+
+          var data = await res.json();
+
+          if (!res.ok || data.error) {
+            hide($loading);
+            show($input);
+            show($checkPreview);
+            showError(data.error || 'Something went wrong. Please try again.');
+            return;
+          }
+
+          gradeData = data;
+          hide($loading);
+          show($results);
+          show($cta);
+          renderResults(data);
+
+        } catch (err) {
+          clearInterval(loadingInterval);
+          hide($loading);
+          show($input);
+          show($checkPreview);
+          showError('Network error. Please check your connection and try again.');
+        }
+      }
+
+      // Fix plan submission
+      async function submitFixPlan() {
+        var email = $modalEmail.value.trim();
+        hide($modalEmailError);
+
+        if (!email || !email.includes('@')) {
+          $modalEmailError.textContent = 'Please enter a valid email address.';
+          show($modalEmailError);
+          return;
+        }
+
+        if (!isBusinessEmail(email)) {
+          $modalEmailError.textContent = 'Please enter a business email (not Gmail, Yahoo, etc.)';
+          show($modalEmailError);
+          return;
+        }
+
+        $modalSubmitBtn.textContent = 'Generating...';
+        $modalSubmitBtn.disabled = true;
+
+        try {
+          var res = await fetch('/.netlify/functions/send-grader-report', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: email,
+              findings: gradeData.findings,
+              appName: gradeData.listing_meta.app_name,
+            }),
+          });
+
+          var data = await res.json();
+
+          if (!res.ok || data.error) {
+            $modalEmailError.textContent = data.error || 'Something went wrong.';
+            show($modalEmailError);
+            $modalSubmitBtn.textContent = 'Get Fix Plan';
+            $modalSubmitBtn.disabled = false;
+            return;
+          }
+
+          // Close modal and show fix plan
+          $modal.classList.remove('active');
+          hide($('email-gate'));
+
+          if (data.fixPlan) {
+            var fpSection = $('fix-plan-section');
+            var fpContent = $('fix-plan-content');
+            // Simple markdown-to-html (headers, bold, lists)
+            var md = data.fixPlan
+              .replace(/### (.*)/g, '<h4 class="sfy-h" style="font-size: 0.9rem; font-weight: 700; color: var(--text); margin-top: 1.5rem; margin-bottom: 0.5rem;">$1</h4>')
+              .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--text);">$1</strong>')
+              .replace(/^- (.*)/gm, '<li style="font-size: 0.8rem; color: var(--muted); margin-left: 1rem;">$1</li>')
+              .replace(/\n\n/g, '<br/><br/>')
+              .replace(/\n/g, '<br/>');
+            fpContent.innerHTML = md;
+            show(fpSection);
+            fpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+
+        } catch (err) {
+          $modalEmailError.textContent = 'Network error. Please try again.';
+          show($modalEmailError);
+          $modalSubmitBtn.textContent = 'Get Fix Plan';
+          $modalSubmitBtn.disabled = false;
+        }
+      }
+
+      // Event listeners
+      $gradeBtn.addEventListener('click', doGrade);
+      $urlInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') doGrade(); });
+
+      $resetBtn.addEventListener('click', function() {
+        hide($results);
+        hide($cta);
+        hide($('fix-plan-section'));
+        show($input);
+        show($checkPreview);
+        $urlInput.value = '';
+        gradeData = null;
+      });
+
+      // Modal controls
+      $modalConsent.addEventListener('change', function() {
+        var enabled = $modalConsent.checked && $modalEmail.value.trim().length > 3;
+        $modalSubmitBtn.disabled = !enabled;
+        $modalSubmitBtn.classList.toggle('opacity-50', !enabled);
+        $modalSubmitBtn.classList.toggle('cursor-not-allowed', !enabled);
+      });
+      $modalEmail.addEventListener('input', function() {
+        $modalConsent.dispatchEvent(new Event('change'));
+      });
+      $modalSubmitBtn.addEventListener('click', submitFixPlan);
+      $modalCloseBtn.addEventListener('click', function() { $modal.classList.remove('active'); });
+      $modal.addEventListener('click', function(e) { if (e.target === $modal) $modal.classList.remove('active'); });
+
+      // Copy fix plan
+      var $copyFP = $('copy-fixplan-btn');
+      if ($copyFP) {
+        $copyFP.addEventListener('click', function() {
+          var text = $('fix-plan-content').innerText;
+          navigator.clipboard.writeText(text).then(function() {
+            var toast = $('copy-toast');
+            toast.classList.add('show');
+            setTimeout(function() { toast.classList.remove('show'); }, 2000);
+          });
+        });
+      }
+    })();
+  </script>
+</Layout>
