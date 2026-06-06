@@ -1,5 +1,5 @@
 ---
-draft: true
+publishDate: 2026-06-06T00:00:00Z
 author: Sathyanand
 title: "YouTube Marketing Not Working? 6 Diagnostic Checks Before You Quit"
 excerpt: "You followed the YouTube playbook for six months and have nothing to show for it. Before you quit, run these 6 diagnostic checks. The problem is almost always strategy, not content."

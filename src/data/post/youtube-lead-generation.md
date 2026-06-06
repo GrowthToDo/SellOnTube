@@ -1,8 +1,8 @@
 ---
 publishDate: 2026-04-23T00:00:00Z
 author: Sathyanand
-title: "YouTube Lead Generation: Views to Booked Calls"
-excerpt: "Your YouTube channel has views but zero leads. The exact CTA placement, lead magnet, and attribution system to turn viewers into booked calls."
+title: "YouTube Lead Generation for B2B: From Views to Booked Calls"
+excerpt: "Your YouTube channel has views but zero leads. Here is the CTA placement, lead magnet, and attribution setup that actually gets viewers to book calls."
 image: ~/assets/images/blog/youtube-lead-generation-featured.svg
 image_alt: "YouTube lead generation funnel showing viewer journey from search to booked call with conversion metrics at each stage | SellonTube"
 featuredImageWidth: 1200
@@ -15,7 +15,7 @@ tags:
   - b2b-youtube
 metadata:
   canonical: https://sellontube.com/blog/youtube-lead-generation
-  description: "Turn YouTube views into qualified leads with the right CTA placement, lead magnets, and attribution. System for B2B channels, no ads required."
+  description: "Your channel has views but no leads. Fix your CTA placement, pick the right lead magnet, and set up attribution that tracks what YouTube actually brings in."
   openGraph:
     url: https://sellontube.com/blog/youtube-lead-generation
     siteName: SellOnTube
