@@ -331,7 +331,7 @@ Run your top-performing video through the [YouTube SEO Tool](/tools/youtube-seo-
 2. **Run the numbers.** Use the [YouTube ROI Calculator](/tools/youtube-roi-calculator) with your real customer lifetime value and production cost estimate. If the math works on paper, it will work on YouTube.
 3. **Pick your first 4 topics.** Use the [Video Ideas Generator](/tools/youtube-video-ideas-generator) to validate which topics have search demand and buyer intent.
 4. **Record your first video this week.** Phone camera, natural lighting, direct answer to a buyer question. Ten minutes max. Done beats perfect.
-5. **Optimize before publishing.** Run your title, description, and tags through the [YouTube SEO Tool](/tools/youtube-seo-tool). This takes two minutes and determines whether buyers find your video or nobody does.
+5. **Optimize before publishing.** Run your title, description, and tags through the [YouTube SEO Tool](/tools/youtube-seo-tool). This takes two minutes and determines whether buyers find your video or nobody does. If you want to compare multiple tools, our [best YouTube SEO tools for business](/blog/best-youtube-seo-tools-for-business) guide covers seven options ranked by lead generation impact.
 6. **Set your calendar.** Block four 1-hour slots next month. One video per week. Consistency matters more than production quality for the first 90 days.
 
 The small businesses winning on YouTube right now did not start with big budgets or big audiences. They started with one buyer question, one camera, and one video. Then they did it again the next week.

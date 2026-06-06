@@ -88,7 +88,7 @@ When you run Facebook or Google ads, you pay for every click. Stop paying, traff
 
 YouTube doesn't work that way. A video you publish in January keeps ranking in search, keeps appearing in suggested videos, and keeps driving traffic in June, September, and the following January. Your production cost is fixed, but the returns stretch over months, sometimes years.
 
-This is why month-one YouTube ROI almost always looks terrible. You spent $2,000 on content and got 3 leads. But by month six, those same videos (plus the 20 others you've published since) are collectively driving 30–40 leads per month. Your per-lead cost has dropped by 90% while your ad-running competitor is still paying the same rate per click.
+This is why month-one YouTube ROI almost always looks terrible. You spent $2,000 on content and got 3 leads. But by month six, those same videos (plus the 20 others you've published since) are collectively driving 30-40 leads per month. Your per-lead cost has dropped by 90% while your ad-running competitor is still paying the same rate per click. The key is having a [YouTube lead generation system](/blog/youtube-lead-generation) that converts those views into pipeline, not just watch time.
 
 We wrote a full breakdown of this mechanism in [how four videos a month creates a compounding content engine](/blog/compounding-effect-four-videos-a-month), if you want to go deeper on the math behind it.
 

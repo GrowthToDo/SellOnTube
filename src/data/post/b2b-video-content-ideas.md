@@ -61,7 +61,7 @@ Open any "YouTube video ideas for business" article and you will find the same r
 
 The problem is that these lists are written for creators who monetize attention. Creators need watch time and subscriber counts. B2B companies need qualified leads and booked demos.
 
-Here is the thing. B2B buyers search differently than general audiences. They use purchase-intent language: "best [tool] for [use case]," "how to choose a [category]," "[Product A] vs [Product B]." They are not browsing for entertainment. They are evaluating solutions.
+Here is the thing. B2B buyers search differently than general audiences. They use purchase-intent language: "best [tool] for [use case]," "how to choose a [category]," "[Product A] vs [Product B]." They are not browsing for entertainment. They are evaluating solutions. Google's own research confirms this: [82% of B2B buyers choose vendors already on their Day 1 shortlist](/blog/youtube-b2b-buyer-journey-data), and YouTube plays a role at every stage of that journey.
 
 When you target these buyer-intent queries, you do not need millions of views. You need 200 views from the right 200 people. That requires organizing your content around the buyer journey, not around what is fun to film.
 

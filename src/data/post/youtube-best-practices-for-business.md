@@ -143,7 +143,7 @@ Here is what catches businesses off guard.
 
 **What actually works:** Script a CTA into the middle of the video (not just the end). Mention a specific next step the viewer can take. Reference a resource, a tool, or a booking link at the exact moment the viewer's pain point is sharpest.
 
-The [YouTube script generator](/tools/youtube-script-generator) structures scripts around a conversion arc, not just an information arc.
+The [YouTube script generator](/tools/youtube-script-generator) structures scripts around a conversion arc, not just an information arc. For a step-by-step breakdown of the conversion arc structure, see the [YouTube script writing guide](/blog/youtube-script-writing-guide).
 
 > **Read more:** [YouTube SEO: Rank Business Videos on Page 1](/blog/youtube-seo-guide)
 

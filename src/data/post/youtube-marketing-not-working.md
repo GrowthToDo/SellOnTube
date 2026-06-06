@@ -142,7 +142,7 @@ Here is what business CTAs look like:
 
 Notice the pattern. Every CTA moves the viewer one step closer to becoming a customer. The CTA matches the viewer's current stage of awareness. You are not asking someone who just learned about a problem to book a sales call. You are not asking someone who is comparing solutions to watch another educational video.
 
-The rule is simple: before you script any video, write down the single action you want the viewer to take afterward. If you cannot define that action, the video does not have a business purpose, and you should either reframe it or skip it entirely.
+The rule is simple: before you script any video, write down the single action you want the viewer to take afterward. If you cannot define that action, the video does not have a business purpose, and you should either reframe it or skip it entirely. Our [YouTube scriptwriting guide](/blog/youtube-script-writing-guide) walks through this process step by step, from defining the CTA to building it into the script structure.
 
 This does not mean every video needs a hard sell. It means every video needs a next step. Even a soft CTA like "check out the link in the description for the full checklist" is infinitely better than "smash that subscribe button."
 
@@ -182,7 +182,7 @@ YouTube marketing not working after six months of a creator strategy does not me
 
 Here is how to reset properly:
 
-**Step 1: Audit your existing content.** Go through every video and categorize it. Is the topic based on a keyword or a vague idea? Does the title match a search query? Is there a business CTA? Be ruthless. Videos that fail all three checks are not contributing to your business goals.
+**Step 1: Audit your existing content.** [Run a free channel audit](/tools/youtube-channel-audit) to get a baseline score, then go through every video and categorize it. Is the topic based on a keyword or a vague idea? Does the title match a search query? Is there a business CTA? Be ruthless. Videos that fail all three checks are not contributing to your business goals.
 
 **Step 2: Build a keyword-first content plan.** Identify 20 to 30 keywords your buyers actually search for. Prioritize by intent (comparison and solution keywords first) and competition (start with lower-competition phrases where you can realistically rank).
 

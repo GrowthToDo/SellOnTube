@@ -285,7 +285,7 @@ If you run a consultancy, agency, or coaching practice, see our industry-specifi
 ## What to Do This Week
 
 1. List the five questions your buyers ask most often before purchasing. These are your first five video topics.
-2. Pick one topic and script a video around it. Include a verbal CTA at the midpoint directing viewers to a specific resource.
+2. Pick one topic and [script a video](/blog/youtube-script-writing-guide) around it. Include a verbal CTA at the midpoint directing viewers to a specific resource. Use these [B2B script templates](/blog/youtube-script-examples-business) for copy-paste structures with CTAs already built in.
 3. Create a simple lead magnet that matches that video topic: a checklist, template, or calculator.
 4. Set up a landing page with a form that captures UTM parameters. Link to it from the video description and pinned comment.
 5. Use the [YouTube Video Ideas Generator](/tools/youtube-video-ideas-generator) to find 10 more buyer-intent topics in your niche.

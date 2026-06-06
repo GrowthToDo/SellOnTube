@@ -175,7 +175,7 @@ Write down what you find. This is not a casual glance. Spend 60 to 90 minutes go
 
 ### Week 6: Re-optimize Your Best Performer
 
-Take the video with the highest CTR or best retention and improve it. Update the title. Rewrite the description with the [YouTube SEO Tool](/tools/youtube-seo-tool). Add cards linking to your other three videos.
+Take the video with the highest CTR or best retention and improve it. Update the title. Rewrite the description with the [YouTube SEO Tool](/tools/youtube-seo-tool). Add cards linking to your other three videos. While you are in optimization mode, run through the [YouTube channel optimization checklist](/blog/youtube-channel-optimization-checklist) to make sure your channel page itself is converting the traffic your videos are earning.
 
 Then publish video 5. Use what you learned from the analytics review to improve your scripting, pacing, and hook.
 
