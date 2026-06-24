@@ -1,5 +1,5 @@
 ---
-draft: true
+publishDate: 2026-06-25T00:00:00Z
 author: Sathyanand
 title: "YouTube SEO Services: What They Include, What They Cost, and When to DIY"
 excerpt: "80% of what YouTube SEO agencies charge for can be done with free tools. Here is exactly what services include, what each tier costs, and how to decide if you need one."
