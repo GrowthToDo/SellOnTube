@@ -48,4 +48,44 @@ export default async () => {
   } catch (err) {
     console.error('IndexNow: Failed to submit URLs', err);
   }
+
+  // --- Bing Webmaster URL Submission (changed-only, quota-aware) ---
+  // Bing's index grounds Microsoft Copilot + Bing AI, so submitting here makes
+  // pages citation-eligible faster. Daily quota is small (~100), so submit only
+  // URLs not submitted before (tracked in a Netlify Blobs manifest) and cap the
+  // batch to stay under quota. Never throws (background function must not fail).
+  try {
+    const bingKey = process.env.BING_WEBMASTER_API_KEY;
+    if (!bingKey) {
+      console.log('Bing: BING_WEBMASTER_API_KEY not set, skipping.');
+      return;
+    }
+    const urls = await fetchSitemapUrls();
+    const { getStore } = await import('@netlify/blobs');
+    const store = getStore('bing-submitted-urls');
+    const prev = JSON.parse((await store.get('manifest')) || '[]');
+    const submitted = new Set(prev);
+    const fresh = urls.filter((u) => !submitted.has(u)).slice(0, 90); // < 100/day quota
+
+    if (fresh.length === 0) {
+      console.log('Bing: no new URLs to submit.');
+      return;
+    }
+
+    const bingRes = await fetch(`https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch?apikey=${bingKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({ siteUrl: SITE_URL, urlList: fresh }),
+    });
+
+    if (bingRes.ok) {
+      fresh.forEach((u) => submitted.add(u));
+      await store.set('manifest', JSON.stringify([...submitted]));
+      console.log(`Bing: submitted ${fresh.length} new URLs. HTTP ${bingRes.status}`);
+    } else {
+      console.error(`Bing: submission failed HTTP ${bingRes.status}: ${(await bingRes.text()).slice(0, 200)}`);
+    }
+  } catch (err) {
+    console.error('Bing: submission error', err);
+  }
 };
