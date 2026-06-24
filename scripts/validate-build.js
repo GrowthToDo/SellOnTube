@@ -6,6 +6,7 @@
  *   1. Internal link integrity (every href="/..." resolves to a file in dist/)
  *   2. Sitemap integrity (every <loc> in sitemap XML resolves to a file in dist/)
  *   3. Draft/future leak detection (draft or future posts must NOT have HTML in dist/)
+ *   4. Featured image existence (every published post's image: file must exist in src/)
  *
  * Exit 0 = clean, Exit 1 = violations found.
  * Uses only Node.js built-in modules.
@@ -24,6 +25,7 @@ const __dirname = path.dirname(__filename);
 
 const DIST_DIR = path.resolve(__dirname, '..', 'dist');
 const POST_DIR = path.resolve(__dirname, '..', 'src', 'data', 'post');
+const SRC_DIR = path.resolve(__dirname, '..', 'src');
 const NETLIFY_TOML = path.resolve(__dirname, '..', 'netlify.toml');
 
 // Asset extensions to ignore when checking internal links
@@ -310,6 +312,70 @@ function checkDraftLeaks(distRoot, postDir) {
 }
 
 // ---------------------------------------------------------------------------
+// Check 4: Featured image existence
+// ---------------------------------------------------------------------------
+
+/** Resolve a frontmatter `~/assets/...` image path to an absolute source path. */
+function resolveImagePath(imageValue) {
+  if (!imageValue) return null;
+  let p = imageValue.trim();
+  // Strip the Astro `~` alias (maps to src/)
+  if (p.startsWith('~/')) p = p.slice(2);
+  else if (p.startsWith('/')) p = p.slice(1);
+  return path.join(SRC_DIR, p);
+}
+
+/**
+ * Every PUBLISHED post (not draft, not future) must declare an `image:` whose
+ * file exists in src/. Draft/future posts only get a warning so the asset can
+ * be created before go-live. This is the safety net for the recurring
+ * "post published with a missing featured image" mistake.
+ */
+function checkFeaturedImages(postDir, srcDir) {
+  const violations = []; // published posts with missing/absent image -> FAIL
+  const warnings = [];   // draft/future posts with missing image -> warn only
+  const now = new Date();
+  const cutoff = new Date(now);
+  cutoff.setHours(23, 59, 59, 999);
+  let totalPosts = 0;
+  let published = 0;
+
+  if (!fs.existsSync(postDir)) {
+    return { totalPosts: 0, published: 0, violations, warnings };
+  }
+
+  const postFiles = fs.readdirSync(postDir).filter(f => /\.(md|mdx)$/.test(f));
+
+  for (const file of postFiles) {
+    totalPosts++;
+    const content = fs.readFileSync(path.join(postDir, file), 'utf-8');
+    const fm = parseFrontmatter(content);
+    const slug = file.replace(/\.(md|mdx)$/, '');
+
+    const isDraft = fm.draft === 'true';
+    const isFuture = fm.publishDate ? toIST(new Date(fm.publishDate)) > cutoff : false;
+    const isLive = !isDraft && !isFuture;
+
+    const imgPath = resolveImagePath(fm.image);
+    const imgExists = imgPath ? fs.existsSync(imgPath) : false;
+
+    if (isLive) {
+      published++;
+      if (!fm.image) {
+        violations.push({ slug, file, reason: 'Published post has no `image:` frontmatter (no featured image)' });
+      } else if (!imgExists) {
+        violations.push({ slug, file, reason: `Featured image file not found: ${fm.image}` });
+      }
+    } else if (fm.image && !imgExists) {
+      // Draft or future: warn so the asset gets created before go-live
+      warnings.push({ slug, image: fm.image });
+    }
+  }
+
+  return { totalPosts, published, violations, warnings };
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -392,6 +458,29 @@ function main() {
     }
   } else {
     console.log('  OK: No draft or future posts leaked into build.');
+  }
+  console.log();
+
+  // -- Check 4: Featured image existence --
+  console.log('--- Check 4: Featured Image Existence ---');
+  const imgResult = checkFeaturedImages(POST_DIR, SRC_DIR);
+  console.log(`  Posts scanned: ${imgResult.totalPosts} (published: ${imgResult.published})`);
+  if (imgResult.warnings.length > 0) {
+    console.log(`  NOTE: ${imgResult.warnings.length} draft/future post(s) reference a missing image (create before go-live):`);
+    for (const w of imgResult.warnings) {
+      console.log(`    - /blog/${w.slug} -> ${w.image}`);
+    }
+  }
+  if (imgResult.violations.length > 0) {
+    hasViolations = true;
+    console.log(`  VIOLATIONS: ${imgResult.violations.length} published post(s) missing a featured image:\n`);
+    for (const v of imgResult.violations) {
+      console.log(`    MISSING IMAGE: /blog/${v.slug}`);
+      console.log(`      File: ${v.file}`);
+      console.log(`      Reason: ${v.reason}`);
+    }
+  } else {
+    console.log('  OK: All published posts have an existing featured image.');
   }
   console.log();
 
