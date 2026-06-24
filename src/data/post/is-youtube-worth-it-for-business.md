@@ -56,6 +56,18 @@ So, is YouTube worth it for business? The answer is not "yes" or "no." It depend
 </ul>
 </div>
 
+## Contents
+
+- [The Honest Answer: It Depends on Three Things](#the-honest-answer-it-depends-on-three-things)
+- [YouTube Is Worth It If Your Business Meets These Criteria](#youtube-is-worth-it-if-your-business-meets-these-criteria)
+- [YouTube Is Not Worth It If This Describes Your Business](#youtube-is-not-worth-it-if-this-describes-your-business)
+- [The Real Math: What YouTube Costs vs What It Returns](#the-real-math-what-youtube-costs-vs-what-it-returns)
+- [YouTube vs the Alternatives: Where Does It Actually Rank?](#youtube-vs-the-alternatives-where-does-it-actually-rank)
+- [How to Test YouTube Without Betting the Farm](#how-to-test-youtube-without-betting-the-farm)
+- [FAQ](#faq)
+
+**YouTube is worth it for a business when customer lifetime value exceeds $2,000, buyers research before purchasing, and the team can publish weekly for at least six months.** If any one of those three conditions is missing, the time investment rarely matures into returns, and a channel that fits your business model will produce faster results.
+
 ## The Honest Answer: It Depends on Three Things
 
 Every "is YouTube worth it for business" article eventually says yes. This one might not.
@@ -159,3 +171,21 @@ You do not need to go all-in. Here is a 90-day test that gives you a clear answe
 If you generated even 2 to 3 qualified leads from 12 videos, the math is almost certainly in your favor. Those 12 videos will continue working. The next 12 will compound on top of them. By month six, the channel starts looking like a genuine acquisition asset.
 
 Is YouTube worth it for business? Run the 90-day test and let the data answer. No commitment beyond 12 videos and a few hours per week. If it works, you will know. If it does not, you will have spent $500 on equipment and a few months of part-time effort. That is a small price for a definitive answer.
+
+## FAQ
+
+### How long does it take for a business YouTube channel to generate leads?
+
+With a search-first strategy targeting buyer-intent keywords, expect the first leads within 3 to 6 months of consistent weekly publishing. Channels that publish without keyword research may wait 12+ months and still see nothing because the traffic they attract has no purchase intent.
+
+### Is YouTube better than blogging for business marketing?
+
+They complement each other. YouTube builds trust faster because video creates a personal connection. Blogging is easier to produce and ranks in Google. For businesses where trust matters (consulting, SaaS, high-ticket services), YouTube typically delivers higher-quality leads than blogging alone.
+
+### How much does it cost to start YouTube for a business?
+
+Zero to $500 for equipment (smartphone, $50 microphone, free editing software). The real cost is 4 to 8 hours per week for research, filming, and optimization. That time investment is what most businesses underestimate.
+
+### Can a small business with no subscribers get results from YouTube?
+
+Yes. YouTube search does not care about subscriber count. A video targeting a specific buyer keyword can rank and generate leads with zero subscribers. Search-driven channels produce results based on content relevance, not audience size.

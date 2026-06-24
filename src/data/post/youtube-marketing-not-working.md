@@ -53,7 +53,21 @@ Before you shut down the channel, run these six diagnostic checks. In almost eve
 </ul>
 </div>
 
+## Contents
+
+- [The Creator vs. Business YouTube Problem](#the-creator-vs-business-youtube-problem)
+- [Check #1: Are You Targeting Keywords or Just Topics?](#check-1-are-you-targeting-keywords-or-just-topics)
+- [Check #2: Are You Optimizing for YouTube Search or the Algorithm?](#check-2-are-you-optimizing-for-youtube-search-or-the-algorithm)
+- [Check #3: Does Every Video Have One Clear Business Outcome?](#check-3-does-every-video-have-one-clear-business-outcome)
+- [Check #4: Are You Publishing for Your Buyers or Your Peers?](#check-4-are-you-publishing-for-your-buyers-or-your-peers)
+- [Check #5: Have You Given It Enough Time with the Right Strategy?](#check-5-have-you-given-it-enough-time-with-the-right-strategy)
+- [Check #6: Are You Measuring the Right Metrics?](#check-6-are-you-measuring-the-right-metrics)
+- [What to Do Next](#what-to-do-next)
+- [FAQ](#faq)
+
 ## The Creator vs. Business YouTube Problem
+
+**Business YouTube marketing is a search-first acquisition strategy that uses buyer-intent keywords to put your videos in front of people actively researching a purchase.** It optimizes for relevance and qualified leads, not for views, subscribers, or algorithmic reach.
 
 This is where 90% of "youtube marketing not working" complaints originate. You studied what successful YouTubers do, applied their methods, and wondered why the same approach did not produce business results.
 
@@ -216,6 +230,14 @@ Stop comparing your 500-view business video to a creator's 500,000-view entertai
 
 When you measure what matters, you often discover that your youtube marketing is not working is actually "my youtube marketing is working slowly but I was comparing myself to creators." Slow, consistent search traffic that converts at 2% to 5% is a business asset. A viral video that converts at 0% is a vanity metric.
 
+| Vanity metric (creator) | Pipeline metric (business) | Why the pipeline metric wins |
+| --- | --- | --- |
+| Total views | Search impressions | Shows whether real keywords are surfacing your videos |
+| Subscribers | Click-through rate from search | Confirms the title matches what buyers searched for |
+| Watch time (all traffic) | Watch time from search viewers | Tells you the content delivered on the title's promise |
+| Likes and comments | Website clicks from YouTube | Measures the bridge from view to business outcome |
+| Viral video reach | Leads or conversions from YouTube traffic | The only number that ultimately affects revenue |
+
 ## What to Do Next
 
 If you ran through all six checks and found problems (which is normal), do not try to fix everything at once. Start with Check #1 (keywords vs. topics) because it has the largest downstream impact. Every other fix becomes easier once you are targeting the right audience with the right search terms.
@@ -225,3 +247,21 @@ The pattern we see repeatedly: someone announces that YouTube marketing is not w
 YouTube works for businesses. But it works through search, not virality. Through buyer intent, not broad reach. Through patient, keyword-driven publishing, not volume and frequency.
 
 Fix the strategy, and the results follow.
+
+## FAQ
+
+### How long should I try YouTube marketing before giving up?
+
+Give a search-first YouTube strategy at least 90 days and 12 published videos before evaluating results. If you have been publishing for 6 months using a creator-style strategy (no keyword research, no buyer-intent topics), reset with a search-first approach and restart the 90-day clock.
+
+### Why do my YouTube videos get views but no business results?
+
+Views from the wrong audience are worthless. If your topics attract curious browsers instead of active buyers, your view count will grow while leads stay at zero. Switch from broad educational topics to buyer-intent keywords like comparisons, how-to-choose guides, and problem-specific searches.
+
+### Is YouTube marketing different for B2B vs B2C?
+
+Yes. B2C YouTube often works through the algorithm and viral content. B2B YouTube works through search. Your buyer is typing specific questions into YouTube before making a purchase decision. If your strategy optimizes for the algorithm instead of search, you are using the wrong playbook.
+
+### How do I know if YouTube is the right channel for my business?
+
+YouTube works for businesses where the buyer researches before purchasing, the customer lifetime value exceeds $2,000, and you can commit to publishing weekly for at least six months. If your product is a low-ticket impulse purchase or your audience does not use search to evaluate options, YouTube may not be the right fit.

@@ -32,9 +32,22 @@ metadata:
 
 You posted 40 videos this year. Your analytics show a few hundred views each. Your website traffic from YouTube sits at single digits per week, no enquiries, no leads, no one reaching out to buy. Every idea came from a YouTube video ideas generator built for creators optimising for watch time. Not for businesses optimising for revenue.
 
-The problem is not effort. Most YouTube video idea generators ask for your niche and return topics calibrated for the algorithm. They do not know what your customers search before they buy. They cannot tell the difference between a video that builds purchase intent and one that just performs well in suggested feeds. A business channel needs a fundamentally different kind of idea. (If you haven't set yours up yet, here's [how to create a YouTube channel for your business](/blog/create-youtube-channel-for-business).)
+The problem is not effort. Many YouTube video idea generators ask for your niche and return topics calibrated for the algorithm. They do not know what your customers search before they buy. They cannot tell the difference between a video that builds purchase intent and one that just performs well in suggested feeds. A business channel needs a fundamentally different kind of idea. (If you haven't set yours up yet, here's [how to create a YouTube channel for your business](/blog/create-youtube-channel-for-business).)
 
 This list covers the 14 best YouTube video ideas generators available in 2026, ranked for business use. SellonTube's tool is listed first because it was built for this specific problem.
+
+**A YouTube video ideas generator is a tool that turns a topic, niche, or business description into a list of suggested video concepts you can film.** The best ones for businesses generate ideas tied to what buyers search before purchasing, not topics calibrated only for views and watch time.
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
+<ul style="margin: 0; padding-left: 1.25rem;">
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">SellonTube ranks first because it maps ideas to buyer intent and business outcomes, not trending topics built for watch time.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">vidIQ and TubeBuddy suit established channels that want data-backed, SEO-informed ideation tied to existing analytics.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">1of10 and TubeMagic are strongest for research: outlier detection and competitor channel analysis before you pick a topic.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">UTubeKit, RyRob, SpeakNotes, and Embarque give free, zero-friction ideas with no account required.</li>
+<li style="margin-bottom: 0; color: #334155; font-size: 0.9rem;">Tools were rated on business relevance, idea specificity, input flexibility, and workflow fit.</li>
+</ul>
+</div>
 
 ---
 
@@ -94,9 +107,9 @@ Every tool on this list was evaluated against four criteria. First, business rel
 
 ## 1. [SellonTube YouTube Video Ideas Generator](https://sellontube.com/tools/youtube-video-ideas-generator)
 
-![SellonTube YouTube Video Ideas Generator — input form: product, URL, target customer, problem your product solves](../../assets/images/blog/tools/screenshots/sellontube-form.png)
+![SellonTube YouTube Video Ideas Generator - input form: product, URL, target customer, problem your product solves](../../assets/images/blog/tools/screenshots/sellontube-form.png)
 
-![SellonTube YouTube Video Ideas Generator — 5 buyer-intent video ideas output for a B2B product](../../assets/images/blog/tools/screenshots/sellontube-results.png)
+![SellonTube YouTube Video Ideas Generator - 5 buyer-intent video ideas output for a B2B product](../../assets/images/blog/tools/screenshots/sellontube-results.png)
 
 **SellonTube pros:**
 
@@ -120,7 +133,7 @@ You describe your business, your audience, and what you sell. The tool returns v
 
 ## 2. [vidIQ](https://vidiq.com/ai-video-ideas-generator/)
 
-![vidIQ — AI video ideas generator interface](../../assets/images/blog/tools/screenshots/vidiq.png)
+![vidIQ - AI video ideas generator interface](../../assets/images/blog/tools/screenshots/vidiq.png)
 
 **vidIQ pros:**
 
@@ -144,7 +157,7 @@ Where it falls short for business channels is intent. vidIQ optimises for perfor
 
 ## 3. [1of10](https://1of10.com/idea-generator/)
 
-![1of10 — outlier video detection and idea generator](../../assets/images/blog/tools/screenshots/1of10.png)
+![1of10 - outlier video detection and idea generator](../../assets/images/blog/tools/screenshots/1of10.png)
 
 **1of10 pros:**
 
@@ -168,7 +181,7 @@ The trade-off is time. 1of10 rewards patience. You need to spend time in the Com
 
 ## 4. [TubeMagic](https://tubemagic.com/features/video-ideas)
 
-![TubeMagic — channel URL idea generation feature](../../assets/images/blog/tools/screenshots/tubemagic.png)
+![TubeMagic - channel URL idea generation feature](../../assets/images/blog/tools/screenshots/tubemagic.png)
 
 **TubeMagic pros:**
 
@@ -192,7 +205,7 @@ The limitation is that the channel-link feature, which is TubeMagic's strongest 
 
 ## 5. [Embarque](https://www.embarque.io/ai-tools/free-ai-youtube-video-idea-generator)
 
-![Embarque — AI YouTube video idea generator with input fields](../../assets/images/blog/tools/screenshots/embarque.png)
+![Embarque - AI YouTube video idea generator with input fields](../../assets/images/blog/tools/screenshots/embarque.png)
 
 **Embarque pros:**
 
@@ -215,7 +228,7 @@ The depth is limited. This is a free tool designed to attract potential clients 
 
 ## 6. [RyRob / RightBlogger](https://www.ryrob.com/youtube-video-idea-generator/)
 
-![RyRob — YouTube video idea generator with tone options](../../assets/images/blog/tools/screenshots/ryrob.png)
+![RyRob - YouTube video idea generator with tone options](../../assets/images/blog/tools/screenshots/ryrob.png)
 
 **RyRob / RightBlogger pros:**
 
@@ -226,7 +239,7 @@ The depth is limited. This is a free tool designed to attract potential clients 
 
 - Built primarily for bloggers, so business-specific YouTube ideation requires careful prompting to get relevant output
 
-Powered by the RightBlogger platform built by Ryan Robinson, this generator stands out for tone control. Twenty-plus style options let you match the ideas to your brand voice before you even start scripting. A financial services firm and a streetwear brand need different kinds of YouTube content ideas. Most generators ignore that. This one gives you a dial.
+Powered by the RightBlogger platform built by Ryan Robinson, this generator stands out for tone control. Twenty-plus style options let you match the ideas to your brand voice before you even start scripting. A financial services firm and a streetwear brand need different kinds of YouTube content ideas. Many generators ignore that. This one gives you a dial.
 
 Each run produces 10 ideas, and the free version allows unlimited runs with an hourly rate limit. No login required. The paid RightBlogger plan adds 30+ languages and saves generated ideas to your account, which helps if you are building a backlog.
 
@@ -238,7 +251,7 @@ The tool was designed for bloggers first. YouTube idea generation is one of many
 
 ## 7. [UTubeKit](https://utubekit.com/tools/video-ideas-generator)
 
-![UTubeKit — video ideas generator with strategic reasoning output](../../assets/images/blog/tools/screenshots/utubekit.png)
+![UTubeKit - video ideas generator with strategic reasoning output](../../assets/images/blog/tools/screenshots/utubekit.png)
 
 **UTubeKit pros:**
 
@@ -261,7 +274,7 @@ For a business owner who wants more than a list of titles but does not need a fu
 
 ## 8. [SpeakNotes](https://speaknotes.io/free-tools/youtube-ideas-generator)
 
-![SpeakNotes — YouTube ideas generator simple input](../../assets/images/blog/tools/screenshots/speaknotes.png)
+![SpeakNotes - YouTube ideas generator simple input](../../assets/images/blog/tools/screenshots/speaknotes.png)
 
 **SpeakNotes pros:**
 
@@ -285,7 +298,7 @@ It is part of SpeakNotes' free tools collection. Their core product is AI audio 
 
 ## 9. [Toolsaday](https://toolsaday.com/writing/youtube-video-ideas-generator)
 
-![Toolsaday — YouTube video ideas generator within the writing suite](../../assets/images/blog/tools/screenshots/toolsaday.png)
+![Toolsaday - YouTube video ideas generator within the writing suite](../../assets/images/blog/tools/screenshots/toolsaday.png)
 
 **Toolsaday pros:**
 
@@ -308,7 +321,7 @@ For a business owner juggling multiple content formats, the convenience of gener
 
 ## 10. [LenosTube](https://www.lenostube.com/en/youtube-video-idea-generator/)
 
-![LenosTube — topic input and 5-idea output](../../assets/images/blog/tools/screenshots/lenostube.png)
+![LenosTube - topic input and 5-idea output](../../assets/images/blog/tools/screenshots/lenostube.png)
 
 **LenosTube pros:**
 
@@ -332,7 +345,7 @@ The ideas are oriented toward virality rather than business outcomes. LenosTube'
 
 ## 11. [Renderforest](https://www.renderforest.com/youtube-video-ideas)
 
-![Renderforest — keyword-based YouTube video ideas generator](../../assets/images/blog/tools/screenshots/renderforest.png)
+![Renderforest - keyword-based YouTube video ideas generator](../../assets/images/blog/tools/screenshots/renderforest.png)
 
 **Renderforest pros:**
 
@@ -355,7 +368,7 @@ Generic keywords produce generic ideas. The more specific you get with your inpu
 
 ## 12. [VEED.io](https://www.veed.io/tools/script-generator/video-idea-generator)
 
-![VEED.io — multi-platform video idea generator with vibe selector](../../assets/images/blog/tools/screenshots/veed.png)
+![VEED.io - multi-platform video idea generator with vibe selector](../../assets/images/blog/tools/screenshots/veed.png)
 
 **VEED.io pros:**
 
@@ -378,7 +391,7 @@ The trade-off is depth. VEED.io is a production platform first. The idea generat
 
 ## 13. [TubeBuddy Video Topic Planner](https://www.tubebuddy.com/tools/video-topic-planner)
 
-![TubeBuddy — Video Topic Planner with keyword explorer integration](../../assets/images/blog/tools/screenshots/tubebuddy.png)
+![TubeBuddy - Video Topic Planner with keyword explorer integration](../../assets/images/blog/tools/screenshots/tubebuddy.png)
 
 **TubeBuddy pros:**
 
@@ -402,7 +415,7 @@ The downside is that you are paying for an entire optimisation suite. If all you
 
 ## 14. [Instapage](https://instapage.com/en/ai-tools/ai-youtube-video-ideas-generator)
 
-![Instapage — AI YouTube video ideas generator page](../../assets/images/blog/tools/screenshots/instapage.png)
+![Instapage - AI YouTube video ideas generator page](../../assets/images/blog/tools/screenshots/instapage.png)
 
 **Instapage pros:**
 
@@ -431,12 +444,12 @@ Start with what your business actually needs from YouTube. Then pick the tool th
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #10b981; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Pick by use case</p>
 <ul style="margin: 0; padding-left: 1.25rem;">
-<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want ideas tied to buyer intent and revenue, not views</strong> — SellonTube. Built specifically for this.</li>
-<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You have an established channel and want data-backed SEO ideation</strong> — vidIQ or TubeBuddy. Both plug into your existing analytics.</li>
-<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want to research what is already performing before committing to a topic</strong> — 1of10. Its outlier detection shows you what is breaking through.</li>
-<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want to reverse-engineer a competitor's content strategy</strong> — TubeMagic. Channel URL in, content patterns out.</li>
-<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You just need free, zero-friction ideas to get started</strong> — UTubeKit, RyRob, or SpeakNotes. Any of the three gets you moving in under a minute.</li>
-<li style="margin-bottom: 0; color: #334155; font-size: 0.9rem;"><strong>You want to go from idea straight into video production</strong> — VEED.io handles the full workflow end-to-end.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want ideas tied to buyer intent and revenue, not views</strong> - SellonTube. Built specifically for this.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You have an established channel and want data-backed SEO ideation</strong> - vidIQ or TubeBuddy. Both plug into your existing analytics.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want to research what is already performing before committing to a topic</strong> - 1of10. Its outlier detection shows you what is breaking through.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You want to reverse-engineer a competitor's content strategy</strong> - TubeMagic. Channel URL in, content patterns out.</li>
+<li style="margin-bottom: 0.6rem; color: #334155; font-size: 0.9rem;"><strong>You just need free, zero-friction ideas to get started</strong> - UTubeKit, RyRob, or SpeakNotes. Any of the three gets you moving in under a minute.</li>
+<li style="margin-bottom: 0; color: #334155; font-size: 0.9rem;"><strong>You want to go from idea straight into video production</strong> - VEED.io handles the full workflow end-to-end.</li>
 </ul>
 </div>
 
@@ -471,4 +484,4 @@ Start with what your customers search before they buy. Use a YouTube video ideas
 
 ### Are YouTube video idea generators free to use?
 
-Most are free or offer a free tier. SellonTube, Embarque, UTubeKit, SpeakNotes, RyRob, LenosTube, and Renderforest are all free with no account required. vidIQ, TubeBuddy, and TubeMagic offer free tiers with paid plans that unlock advanced features like channel analytics and keyword research data.
+Nearly all are free or offer a free tier. SellonTube, Embarque, UTubeKit, SpeakNotes, RyRob, LenosTube, and Renderforest are all free with no account required. vidIQ, TubeBuddy, and TubeMagic offer free tiers with paid plans that unlock advanced features like channel analytics and keyword research data.
