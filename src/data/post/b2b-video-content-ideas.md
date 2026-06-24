@@ -1,5 +1,5 @@
 ---
-draft: true
+publishDate: 2026-06-30T00:00:00Z
 author: Sathyanand
 title: "23 B2B Video Content Ideas That Actually Generate Pipeline (Organized by Buyer Stage)"
 excerpt: "Creator-style video ideas don't work for B2B. These 23 topic types are organized by buyer journey stage, with the creator version vs. buyer version of each so you can see the difference."
@@ -54,6 +54,18 @@ This post gives you 23 proven B2B video topic types, organized by where they fit
 <li>Your sales team's FAQ list is your single best source of video topics</li>
 </ul>
 </div>
+
+**B2B video content ideas are YouTube topics organized by buyer journey stage rather than by creator-style entertainment formats.** Each idea answers a specific question your buyer types into YouTube while researching, comparing, or deciding on a purchase, so the video attracts qualified prospects instead of a broad, non-buying audience.
+
+## Contents
+
+- [Why "50 YouTube Video Ideas" Lists Don't Work for B2B](#why-50-youtube-video-ideas-lists-dont-work-for-b2b)
+- [Top-of-Funnel Ideas: Attract the Right Audience (8 Topic Types)](#top-of-funnel-ideas-attract-the-right-audience-8-topic-types)
+- [Middle-of-Funnel Ideas: Build Trust with Evaluators (8 Topic Types)](#middle-of-funnel-ideas-build-trust-with-evaluators-8-topic-types)
+- [Bottom-of-Funnel Ideas: Close the Deal (7 Topic Types)](#bottom-of-funnel-ideas-close-the-deal-7-topic-types)
+- [How to Validate a B2B Video Idea Before You Film](#how-to-validate-a-b2b-video-idea-before-you-film)
+- [Your First 10 Videos: A Starting Lineup for Any B2B Company](#your-first-10-videos-a-starting-lineup-for-any-b2b-company)
+- [FAQ](#faq)
 
 ## Why "50 YouTube Video Ideas" Lists Don't Work for B2B
 
@@ -168,3 +180,21 @@ Screenshot this list. Hand it to your team. Film one per week. In 10 weeks, you 
 Each of these topics maps directly to search queries your buyers use. You are not guessing what to film. You are answering questions that people are already typing into YouTube. That is the difference between a B2B content strategy and a content calendar full of videos nobody asked for.
 
 For more on making your [B2B YouTube marketing](/blog/youtube-marketing-b2b) work, including how to write the [scripts that convert](/blog/youtube-script-writing-guide) and how to find the [right keywords](/blog/youtube-keyword-research), follow the links. Once your long-form videos are published, learn [when YouTube Shorts make sense for B2B](/blog/youtube-shorts-for-business) as a repurposing strategy.
+
+## FAQ
+
+### How many YouTube videos should a B2B company publish per month?
+
+Four videos per month is a strong starting point. Consistency matters more than volume. One well-researched, keyword-targeted video per week outperforms daily uploads with no search strategy. Start with four per month and increase once you have a repeatable production workflow.
+
+### What types of YouTube videos generate the most leads for B2B?
+
+Bottom-of-funnel videos generate the most direct leads. Product comparisons, objection-handling videos, pricing explainers, and migration guides attract viewers who are actively evaluating solutions. But you need top-of-funnel content to build the audience that eventually reaches those videos.
+
+### Should B2B companies make short-form or long-form YouTube videos?
+
+Long-form videos (8 to 15 minutes) work better for B2B because your buyer needs depth to make a purchase decision. Shorts can build awareness, but they rarely generate qualified leads on their own. Use Shorts to repurpose clips from your best long-form content.
+
+### How do I come up with YouTube video ideas my B2B audience actually wants?
+
+Start with your sales team's most common questions. Then check YouTube autocomplete for buyer-intent modifiers like "best," "vs," "for [specific role]," and "how to choose." Validate each idea against search volume and competition before filming.

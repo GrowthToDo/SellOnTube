@@ -1,5 +1,5 @@
 ---
-draft: true
+publishDate: 2026-06-27T00:00:00Z
 author: Sathyanand
 title: "YouTube for Small Business: 500 Subscribers Can Outperform 50,000"
 excerpt: "Small business owners think they need thousands of subscribers to get results from YouTube. They don't. 20 optimized videos targeting buyer questions generate more leads than 200 random uploads."
@@ -13,6 +13,13 @@ tags:
   - small-business-marketing
   - youtube-marketing
   - customer-acquisition
+faqs:
+  - question: "How many YouTube subscribers does a small business need to generate leads?"
+    answer: "You do not need a specific subscriber count. YouTube for small businesses works through search, not subscriptions. A channel with 200 subscribers can generate consistent leads if each video targets a keyword that buyers type before making a purchase decision. The subscriber number is a vanity metric. The keyword strategy is what drives leads."
+  - question: "How much does YouTube marketing for small business cost?"
+    answer: "The production cost for a small business ranges from $0 (phone camera, free editing software) to $500 per video (professional editing, basic graphics). At four videos per month, that is $0 to $2,000 monthly. After 90 days, the cost per lead typically drops below $25 as older videos continue generating traffic at no additional cost. Compare that to Google Ads, where every click costs money regardless of how long you have been running campaigns."
+  - question: "How long before YouTube starts generating leads for a small business?"
+    answer: "Expect 60 to 90 days before seeing consistent inbound leads from YouTube, assuming you publish four search-optimized videos per month. The first leads typically come from videos targeting very specific, low-competition buyer queries. By month six, your library of 20+ videos creates enough coverage that leads become predictable rather than sporadic. The compounding effect accelerates from there."
 metadata:
   canonical: https://sellontube.com/blog/youtube-for-small-business
   description: "YouTube works for small businesses with under 1,000 subscribers. 20 search-optimized videos targeting buyer questions generate consistent leads within 90 days."
@@ -30,6 +37,8 @@ metadata:
 A plumbing company in Austin has 487 YouTube subscribers. They publish two videos a month answering questions like "tankless water heater worth it?" and "how to tell if your sewer line is cracked." Those 22 videos generate 15 to 20 inbound calls every month. A fitness influencer in the same city has 53,000 subscribers, posts three times a week, and sells nothing. YouTube for small business works. But not the way you've been told it works.
 
 The common advice is wrong. You don't need a big audience, expensive equipment, or a content calendar that takes over your life. You need 20 well-optimized videos that answer the exact questions your buyers type into YouTube search before they make a purchase decision.
+
+**YouTube for small business is a customer acquisition strategy that uses a small library of search-optimized videos to answer the questions buyers ask before purchasing, rather than chasing subscribers or viral reach.** A few videos targeting buyer-intent search queries generate more leads than hundreds of random uploads, because they reach people at the exact moment they are making a purchase decision.
 
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
@@ -51,7 +60,7 @@ The common advice is wrong. You don't need a big audience, expensive equipment, 
 - [The 4-Videos-a-Month Framework](#the-4-videos-a-month-framework)
 - [YouTube vs. Other Marketing Channels for Small Businesses](#youtube-vs-other-marketing-channels-for-small-businesses)
 - [What to Do This Week](#what-to-do-this-week)
-- [Common Questions](#common-questions)
+- [FAQ](#faq)
 
 ---
 
@@ -338,7 +347,7 @@ The small businesses winning on YouTube right now did not start with big budgets
 
 ---
 
-## Common Questions
+## FAQ
 
 ### How many YouTube subscribers does a small business need to generate leads?
 
