@@ -2,14 +2,15 @@
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import KeyTakeaways from '~/components/tools/KeyTakeaways.astro';
 import { PRICING, formatPrice } from '~/utils/pricing';
 import { SITE } from 'astrowind:config';
 
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube ROI Calculator',
-  description: 'Free YouTube ROI calculator for businesses. Enter your numbers and see if YouTube customer acquisition makes financial sense.',
+  title: 'YouTube ROI Calculator: B2B Breakeven in Seconds',
+  description: 'Free YouTube ROI calculator for B2B. Enter your LTV and costs to see your breakeven point and whether YouTube customer acquisition pays off. Not a ROAS tool.',
 };
 
 const breadcrumbSchema = {
@@ -27,9 +28,10 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube ROI Calculator",
   "url": `${siteUrl}/tools/youtube-roi-calculator`,
-  "description": "Calculate if YouTube customer acquisition makes sense for your business. Enter your LTV and costs, see your potential ROI in seconds. Free, unlimited use.",
+  "description": "Calculate if YouTube customer acquisition makes sense for your business. Enter your LTV and costs, see your breakeven point in seconds. Free, unlimited use.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
+  "featureList": "Breakeven calculation, LTV-based ROI, Profit projection by customer volume, Channel CAC comparison",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
@@ -38,12 +40,14 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How do I calculate YouTube ROI for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "Subtract your total YouTube investment (production, management, tools) from the lifetime value of customers acquired through YouTube. Divide by the investment. The result is your ROI as a multiple." } },
-    { "@type": "Question", "name": "What is a good YouTube ROI for a business channel?", "acceptedAnswer": { "@type": "Answer", "text": "For B2B, a 3-5x return on YouTube investment within the first 12 months is strong. The best channels reach 10x+ by month 18-24 because the content library compounds." } },
-    { "@type": "Question", "name": "How long does it take for YouTube to generate ROI?", "acceptedAnswer": { "@type": "Answer", "text": "Expect 3-6 months before YouTube generates consistent leads. The first month is setup and publishing. Months 2-3 build YouTube search authority. Month 4+ is when organic discovery kicks in." } },
-    { "@type": "Question", "name": "What does LTV mean in this calculator?", "acceptedAnswer": { "@type": "Answer", "text": "LTV is customer lifetime value: the total revenue you expect from an average customer over the entire relationship." } },
-    { "@type": "Question", "name": "What should I include in COGS?", "acceptedAnswer": { "@type": "Answer", "text": "Include any cost directly tied to delivering the product or service to one additional customer: hosting, support, fulfillment, onboarding, license fees. Do not include fixed costs like office rent or your salary." } },
-    { "@type": "Question", "name": "Is this calculator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The calculator is free with no limits. You can run as many scenarios as you want." } },
+    { "@type": "Question", "name": "What is the YouTube ROI formula for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube ROI = (revenue from YouTube − cost of YouTube) ÷ cost of YouTube. For B2B, the revenue figure is the lifetime value (LTV) of customers acquired through YouTube, minus COGS. So if you spent $5,000 and acquired 3 customers worth $15,000 each in margin, your ROI is roughly 8x ($45,000 returned on $5,000 invested)." } },
+    { "@type": "Question", "name": "How many customers do I need to break even on YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Breakeven customers per month = monthly YouTube cost ÷ gross margin per customer (LTV − COGS). At a $7,000/month investment and a $3,500 margin per customer, you break even at 2 customers per month. For most high-LTV B2B businesses, breakeven is 1-2 customers per month." } },
+    { "@type": "Question", "name": "How do you calculate CAC for a YouTube channel?", "acceptedAnswer": { "@type": "Answer", "text": "Divide total YouTube cost (production, editing, management) over a period by the number of customers acquired through YouTube in that period. Organic YouTube CAC for B2B typically lands between $50 and $250 per customer once the content library matures, lower than most paid channels." } },
+    { "@type": "Question", "name": "How do you attribute revenue to YouTube for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "Use two layers. First, self-reported attribution: add an open-text 'How did you first hear about us?' field on demo, trial, and pricing forms (open text, not a drop-down, because drop-downs hide channels you did not anticipate). Second, CRM tracking: tag YouTube links with UTM parameters and configure your CRM to keep the first-touch value. Combine both, because most B2B buyers watch over weeks and convert through a different channel, so neither layer alone is complete." } },
+    { "@type": "Question", "name": "Why does YouTube show low ROI in my CRM?", "acceptedAnswer": { "@type": "Answer", "text": "Last-click attribution is usually the cause. It credits the entire deal to the final touch (often a demo form) and erases the YouTube video that started the journey. YouTube's view-through window is 14-30 days, so measuring on a 7-day last-click view makes the channel look broken. Measure on a 30-60 day view-through plus assisted pipeline instead. The calculator tells you if YouTube pays back; attribution tells you whether you are crediting it correctly." } },
+    { "@type": "Question", "name": "How do you measure ROI of organic (non-ad) YouTube content?", "acceptedAnswer": { "@type": "Answer", "text": "Measure the lifetime value of customers sourced from organic YouTube videos against the cost of producing and managing the channel, not against ad spend. This is customer-acquisition ROI, not YouTube ad ROAS. ROAS measures return on paid ad spend per view; organic ROI measures return on content investment per acquired customer." } },
+    { "@type": "Question", "name": "What is a good YouTube ROI for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "For B2B, a 3-5x return on YouTube investment within the first 12 months is strong. The best channels reach 10x+ by month 18-24 because the content library compounds and cost per lead falls over time as older videos keep generating traffic." } },
+    { "@type": "Question", "name": "How long does YouTube take to show ROI for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "Expect 3-6 months before YouTube generates consistent leads. The first month is setup and publishing, months 2-3 build YouTube search authority, and month 4+ is when organic discovery compounds. B2B companies with high LTV (over $5,000) often break even by month 4-5." } },
   ]
 };
 
@@ -54,8 +58,8 @@ const faqSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <HeroText
-    title="YouTube ROI Calculator"
-    subtitle="Does YouTube make sense for your business? Enter your numbers and find out."
+    title="Free YouTube ROI Calculator for B2B"
+    subtitle="Ad-ROI calculators tell you if a campaign profited. This tells you whether building an organic YouTube channel is worth it, in two numbers you already know: your customer LTV and COGS."
   />
 
   <section class="py-10 sm:py-12">
@@ -69,7 +73,7 @@ const faqSchema = {
           <div class="space-y-6">
             <!-- LTV Input -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+              <label for="revenue-input" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
                 Customer LTV
               </label>
               <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">
@@ -91,7 +95,7 @@ const faqSchema = {
 
             <!-- COGS Input -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
+              <label for="cogs-input" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">
                 COGS per customer
               </label>
               <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">
@@ -130,11 +134,11 @@ const faqSchema = {
             <p class="text-5xl sm:text-6xl font-bold text-emerald-600 dark:text-emerald-400 mb-3">
               <span id="breakeven-display">2</span> <span class="text-2xl sm:text-3xl">customers/month</span>
             </p>
-            <p class="text-xs text-gray-400 dark:text-slate-500">
-              Our pricing: {formatPrice(PRICING.current)}/month for done-for-you YouTube acquisition
-            </p>
             <p class="text-xs text-gray-400 dark:text-slate-500 mt-3" id="breakeven-math">
               {formatPrice(PRICING.current)}/month ÷ $3,500 margin = 2 customers
+            </p>
+            <p class="text-xs text-gray-400 dark:text-slate-500 mt-2 max-w-sm mx-auto">
+              Based on our <a href="/product-pricing" class="underline hover:text-gray-600 dark:hover:text-slate-300">done-for-you price</a> of {formatPrice(PRICING.current)}/month. Producing in-house? Divide your own monthly cost by your margin.
             </p>
           </div>
 
@@ -145,39 +149,18 @@ const faqSchema = {
             </p>
           </div>
 
-          <!-- Channel Validation CTA -->
-          <div class="py-6 border-b border-slate-200 dark:border-slate-700">
+          <!-- Result-congruent next step -->
+          <div class="pt-6">
             <div class="text-center mb-4">
               <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                But here's what really matters:
+                The economics work. The next question is whether buyers are searching for you.
               </p>
               <p class="text-sm text-gray-600 dark:text-slate-400">
-                The economics work if you can get the customers. The real question: <span class="font-medium text-gray-900 dark:text-white">are people actively searching for solutions like yours on YouTube?</span>
+                Get your full projection by email. Add your product URL and we'll also map real YouTube search demand in your space, free, so you know whether you can hit that breakeven number.
               </p>
             </div>
 
-            <div class="p-4 rounded-xl bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700">
-              <p class="text-xs font-medium text-gray-700 dark:text-slate-300 mb-2">We'll analyze:</p>
-              <ul class="text-xs text-gray-600 dark:text-slate-400 space-y-1">
-                <li>• Search volume for keywords in your space</li>
-                <li>• Existing demand and competition</li>
-                <li>• Whether YouTube is a viable acquisition channel for your product</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Email & Product URL Capture -->
-          <div class="pt-6">
-            <p class="text-sm font-medium text-gray-900 dark:text-white mb-4 text-center">
-              Get your free keyword & demand analysis
-            </p>
-
-            <div id="email-form" class="space-y-3">
-              <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl px-4 py-2.5">
-                <p class="text-xs font-medium text-amber-900 dark:text-amber-200 text-center">
-                  ⚠️ Only <span id="spots-remaining" class="font-bold">4</span> free analyses left (normally $199)
-                </p>
-              </div>
+            <div id="email-form" class="space-y-3 max-w-sm mx-auto">
               <input
                 type="email"
                 id="email-input"
@@ -189,7 +172,7 @@ const faqSchema = {
               <input
                 type="url"
                 id="product-url-input"
-                placeholder="Your product/website URL"
+                placeholder="Your product/website URL (optional)"
                 class="w-full px-4 py-3 rounded-xl border border-slate-300
                        dark:border-slate-600 dark:bg-slate-800 dark:text-white
                        focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
@@ -200,13 +183,16 @@ const faqSchema = {
                        bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
                        transition-colors"
               >
-                Analyze my product's YouTube potential
+                Email me my projection &rarr;
               </button>
+              <p class="text-xs text-center text-gray-400 dark:text-slate-500">
+                Prefer to talk it through? <a href="https://cal.com/gautham-8bdvdx/30min?utm_source=roi-calc&utm_medium=tool&utm_campaign=diagnostic" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600 dark:hover:text-slate-300">Book a 15-min diagnostic &rarr;</a>
+              </p>
             </div>
 
             <div id="success-message" class="hidden mt-4 text-center">
               <p class="text-lg font-semibold text-emerald-600 dark:text-emerald-400">Thanks!</p>
-              <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">We'll analyze the keyword demand in your space and reach out with our findings.</p>
+              <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">Your projection is on its way. If you shared your product URL, we'll include a free demand check for your space.</p>
             </div>
           </div>
 
@@ -235,13 +221,13 @@ const faqSchema = {
   </section>
 
   <CallToAction
-    title="Prefer to talk through the numbers?"
-    subtitle="In our diagnostic, we map whether YouTube makes financial sense for your specific business."
+    title="Your breakeven is low. Let's pressure-test whether you can hit it."
+    subtitle="15 minutes. We map real YouTube search demand for your product and tell you straight whether the channel works, or doesn't."
     actions={[
       {
         variant: 'primary',
         text: 'Book a diagnostic call',
-        href: 'https://cal.com/gautham-8bdvdx/30min',
+        href: 'https://cal.com/gautham-8bdvdx/30min?utm_source=roi-calc&utm_medium=tool&utm_campaign=diagnostic',
         target: '_blank',
         rel: 'noopener noreferrer',
       },
@@ -272,9 +258,45 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- Key takeaways (answer-first / standalone definition for AI extraction) -->
+  <KeyTakeaways
+    answer="A YouTube ROI calculator for business measures whether YouTube customer acquisition is profitable by comparing customer lifetime value (LTV) against the cost of producing the channel, not ad revenue, views, or subscribers."
+    points={[
+      "Breakeven customers/month = <strong>monthly YouTube cost ÷ (LTV − COGS)</strong>. For most high-LTV B2B, that lands at 1-2 customers/month.",
+      "It measures return on <strong>organic</strong> customer acquisition, not return on YouTube ad spend (ROAS), a different calculation from ad-ROI tools.",
+      "It needs only two inputs, LTV and COGS, because ROI is a financial question; views, subscribers, and watch time are excluded by design.",
+      "YouTube compounds: a video keeps generating leads 12-24 months later, so the honest comparison vs paid ads is cumulative cost-per-lead, not monthly spend.",
+      "Attribution matters: last-click undercounts YouTube by 40-60%, so measure on a 30-60 day view-through plus assisted pipeline.",
+    ]}
+  />
+
   <!-- SEO Content -->
   <section class="py-16 sm:py-20">
     <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Formula block (answer-first, AI-extractable) -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+        <div class="px-5 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">The YouTube ROI formula (for business)</p>
+        </div>
+        <div class="px-5 py-5 space-y-3">
+          <div>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mb-1">Margin per customer</p>
+            <p class="font-mono text-sm text-gray-900 dark:text-white">LTV − COGS</p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mb-1">Breakeven customers / month</p>
+            <p class="font-mono text-sm text-gray-900 dark:text-white">Monthly YouTube cost ÷ (LTV − COGS)</p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 dark:text-slate-400 mb-1">YouTube ROI %</p>
+            <p class="font-mono text-sm text-gray-900 dark:text-white">(Revenue − Cost) ÷ Cost × 100</p>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+            This is customer-acquisition ROI, not YouTube ad ROAS. Ad ROAS measures return on ad spend per view; this measures return on content investment per acquired customer. <strong class="font-semibold text-gray-700 dark:text-slate-300">Not a ROAS calculator.</strong> If you are measuring return on YouTube ad spend, or chasing views and AdSense, this is not built for you.
+          </p>
+        </div>
+      </div>
 
       <!-- Visual: Channel comparison -->
       <div class="rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
@@ -459,44 +481,58 @@ const faqSchema = {
         <div class="space-y-6">
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How do I calculate YouTube ROI for B2B?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What is the YouTube ROI formula for B2B?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Subtract your total YouTube investment (production, management, tools) from the lifetime value of customers acquired through YouTube. Divide by the investment. The result is your ROI as a multiple. If you spent $5,000/month and acquired 3 customers worth $15,000 each in lifetime value, your ROI is 8x after accounting for COGS.
+              YouTube ROI = (revenue from YouTube − cost of YouTube) ÷ cost of YouTube. For B2B, the revenue figure is the lifetime value (LTV) of customers acquired through YouTube, minus COGS. So if you spent $5,000 and acquired 3 customers worth $15,000 each in margin, your ROI is roughly 8x ($45,000 returned on $5,000 invested).
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What is a good YouTube ROI for a business channel?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How many customers do I need to break even on YouTube?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              For B2B, a 3-5x return on YouTube investment within the first 12 months is strong. The best channels reach 10x+ by month 18-24 because the content library compounds. Unlike paid ads, your cost per lead decreases over time as older videos continue generating traffic.
+              Breakeven customers per month = monthly YouTube cost ÷ gross margin per customer (LTV − COGS). At a $7,000/month investment and a $3,500 margin per customer, you break even at 2 customers per month. For most high-LTV B2B businesses, breakeven is 1-2 customers per month.
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How long does it take for YouTube to generate ROI?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How do you calculate CAC for a YouTube channel?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Expect 3-6 months before YouTube generates consistent leads. The first month is setup and publishing. Months 2-3 build YouTube search authority. Month 4+ is when organic discovery kicks in. B2B companies with high LTV (over $5,000) often break even by month 4-5.
+              Divide total YouTube cost (production, editing, management) over a period by the number of customers acquired through YouTube in that period. Organic YouTube CAC for B2B typically lands between $50 and $250 per customer once the content library matures, lower than most paid channels.
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What does LTV mean in this calculator?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How do you attribute revenue to YouTube for B2B?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              LTV is customer lifetime value: the total revenue you expect from an average customer over the entire relationship. For a SaaS company, this is typically monthly price multiplied by average retention in months. For a one-time purchase business, it is the average order value multiplied by average repeat purchases.
+              Use two layers. First, self-reported attribution: add an open-text "How did you first hear about us?" field on demo, trial, and pricing forms (open text, not a drop-down, because drop-downs hide channels you did not anticipate). Second, CRM tracking: tag YouTube links with UTM parameters and configure your CRM to keep the first-touch value. Combine both, because most B2B buyers watch over weeks and convert through a different channel, so neither layer alone is complete.
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What should I include in COGS?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Why does YouTube show low ROI in my CRM?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Include any cost directly tied to delivering the product or service to one additional customer: hosting, support, fulfillment, onboarding, license fees. Do not include fixed costs like office rent or your salary. The goal is to isolate the margin you earn per customer so the breakeven calculation is accurate.
+              Last-click attribution is usually the cause. It credits the entire deal to the final touch (often a demo form) and erases the YouTube video that started the journey. YouTube's view-through window is 14-30 days, so measuring on a 7-day last-click view makes the channel look broken. Measure on a 30-60 day view-through plus assisted pipeline instead. The calculator tells you if YouTube pays back; attribution tells you whether you are crediting it correctly.
             </p>
           </div>
 
           <div>
-            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this calculator free?</h3>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How do you measure ROI of organic (non-ad) YouTube content?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. The calculator is free with no limits. You can run as many scenarios as you want. The optional email capture is for a free keyword demand analysis of your product's YouTube potential.
+              Measure the lifetime value of customers sourced from organic YouTube videos against the cost of producing and managing the channel, not against ad spend. This is customer-acquisition ROI, not YouTube ad ROAS. ROAS measures return on paid ad spend per view; organic ROI measures return on content investment per acquired customer.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What is a good YouTube ROI for B2B?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              For B2B, a 3-5x return on YouTube investment within the first 12 months is strong. The best channels reach 10x+ by month 18-24 because the content library compounds and cost per lead falls over time as older videos keep generating traffic.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How long does YouTube take to show ROI for B2B?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Expect 3-6 months before YouTube generates consistent leads. The first month is setup and publishing, months 2-3 build YouTube search authority, and month 4+ is when organic discovery compounds. B2B companies with high LTV (over $5,000) often break even by month 4-5.
             </p>
           </div>
 
@@ -557,29 +593,6 @@ const faqSchema = {
   const getProjectionBtn = document.getElementById('get-projection-btn');
   const emailForm = document.getElementById('email-form');
   const successMessage = document.getElementById('success-message');
-  const spotsRemainingEl = document.getElementById('spots-remaining');
-
-  // Calculate spots remaining based on day of month
-  function getSpotsRemaining() {
-    const today = new Date();
-    const dayOfMonth = today.getDate();
-
-    if (dayOfMonth <= 7) return 4;
-    if (dayOfMonth <= 14) return 3;
-    if (dayOfMonth <= 21) return 2;
-    return 1; // Days 22-31
-  }
-
-  // Update spots remaining display
-  function updateSpotsDisplay() {
-    const spots = getSpotsRemaining();
-    if (spotsRemainingEl) {
-      spotsRemainingEl.textContent = spots;
-    }
-  }
-
-  // Initialize spots display
-  updateSpotsDisplay();
 
   // Check for URL params on load
   function checkUrlParams() {
@@ -608,15 +621,8 @@ const faqSchema = {
 
   function calculate() {
     try {
-      console.log('Calculate function called');
-      console.log('revenueInput.value:', revenueInput?.value);
-      console.log('cogsInput.value:', cogsInput?.value);
-
       const revenue = parseFloat(revenueInput.value);
       const cogs = parseFloat(cogsInput.value) || 0;
-
-      console.log('Parsed revenue:', revenue);
-      console.log('Parsed cogs:', cogs);
 
       if (!revenue || revenue <= 0) {
         alert('Please enter a valid customer LTV');
@@ -661,10 +667,10 @@ const faqSchema = {
       // Show results
       stepInput?.classList.add('hidden');
       stepResults?.classList.remove('hidden');
-      console.log('Results displayed successfully');
+      window.splitbee?.track('roi_calculated');
     } catch (error) {
       console.error('Error in calculate function:', error);
-      alert('An error occurred. Check the console for details.');
+      alert('An error occurred. Please try again.');
     }
   }
 
@@ -685,11 +691,6 @@ const faqSchema = {
       return;
     }
 
-    if (!productUrl) {
-      alert('Please enter your product URL');
-      return;
-    }
-
     // Disable button while submitting
     if (getProjectionBtn) {
       getProjectionBtn.textContent = 'Submitting...';
@@ -697,7 +698,7 @@ const faqSchema = {
     }
 
     try {
-      await fetch('/.netlify/functions/capture-email', {
+      const res = await fetch('/.netlify/functions/capture-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -711,29 +712,23 @@ const faqSchema = {
         }),
       });
 
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
       emailForm?.classList.add('hidden');
       successMessage?.classList.remove('hidden');
+      window.splitbee?.track('roi_email_submit');
     } catch (error) {
       console.error('Error submitting:', error);
       alert('Something went wrong. Please try again.');
       if (getProjectionBtn) {
-        getProjectionBtn.textContent = 'Analyze my product\'s YouTube potential';
+        getProjectionBtn.textContent = 'Email me my projection →';
         getProjectionBtn.removeAttribute('disabled');
       }
     }
   }
 
-  // Debug logging
-  console.log('Calculator script loaded');
-  console.log('calculateBtn:', calculateBtn);
-  console.log('revenueInput:', revenueInput);
-  console.log('cogsInput:', cogsInput);
-
   // Event listeners
-  calculateBtn?.addEventListener('click', () => {
-    console.log('Calculate button clicked!');
-    calculate();
-  });
+  calculateBtn?.addEventListener('click', () => calculate());
   recalculateBtn?.addEventListener('click', recalculate);
   getProjectionBtn?.addEventListener('click', submitEmail);
 
