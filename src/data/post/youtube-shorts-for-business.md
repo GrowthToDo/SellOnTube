@@ -53,6 +53,19 @@ The problem is not Shorts themselves. It is the advice surrounding them. "Post d
 </ul>
 </div>
 
+## Contents
+
+- [The Short Answer: Shorts Are a Supplement, Not a Strategy](#the-short-answer-shorts-are-a-supplement-not-a-strategy)
+- [Why Shorts Feel Like They Should Work for B2B (But Usually Don't)](#why-shorts-feel-like-they-should-work-for-b2b-but-usually-dont)
+- [Three Scenarios Where Shorts Actually Help a B2B Channel](#three-scenarios-where-shorts-actually-help-a-b2b-channel)
+- [How to Use YouTube Shorts for Selling (Without Sounding Like a Pitch)](#how-to-use-youtube-shorts-for-selling-without-sounding-like-a-pitch)
+- [How to Repurpose Long-Form Videos into Shorts (Step-by-Step)](#how-to-repurpose-long-form-videos-into-shorts-step-by-step)
+- [B2B Shorts Mistakes That Waste Your Budget](#b2b-shorts-mistakes-that-waste-your-budget)
+- [The Honest Verdict: Should Your Business Post YouTube Shorts?](#the-honest-verdict-should-your-business-post-youtube-shorts)
+- [FAQ](#faq)
+
+**YouTube Shorts for business are 60-second vertical videos used as a repurposing layer to amplify existing long-form content, not as a standalone acquisition channel.** They build awareness and test hooks, but the conversion still happens on the long-form videos they point toward.
+
 ## The Short Answer: Shorts Are a Supplement, Not a Strategy
 
 YouTube Shorts are 60-second vertical videos served in an algorithmically driven feed. They generate high view counts because the format is designed for passive consumption: users swipe through dozens of Shorts in a single session. That volume is real. What is not real is the assumption that those views translate into business outcomes for B2B companies.
@@ -122,7 +135,7 @@ This is a low-cost validation method. But it is still a supplement to long-form,
 
 ## How to Use YouTube Shorts for Selling (Without Sounding Like a Pitch)
 
-Most Shorts advice stops at "build awareness." But there is a selling workflow that B2B companies overlook because it requires patience and sequencing.
+Much of the Shorts advice out there stops at "build awareness." But there is a selling workflow that B2B companies overlook because it requires patience and sequencing.
 
 The mistake is treating a Short as a standalone sales tool. It is not. A Short is the top of a funnel that you build deliberately. Here is how the sequence works for YouTube Shorts selling in a B2B context.
 
@@ -199,3 +212,25 @@ If you are earlier in your YouTube journey, start with the fundamentals. Our gui
 And if you are looking for industry-specific approaches, explore our [YouTube strategies by industry](/youtube-for/) to see how companies in your vertical are using the platform to acquire customers.
 
 The companies getting the best results from YouTube Shorts are the ones that barely think about Shorts at all. They focus on long-form content that ranks, converts, and compounds. Then they clip the best parts and let Shorts handle the awareness. That is the order of operations. Get it right, and Shorts become a free amplifier. Get it backwards, and you will join the long list of businesses that got views but not revenue.
+
+## FAQ
+
+### Do YouTube Shorts help with SEO for business channels?
+
+Shorts do not rank in Google search results the way long-form videos do. They live in YouTube's Shorts feed, which is algorithmic and not search-driven. For search visibility and SEO value, long-form content is the stronger investment.
+
+### How often should a B2B company post YouTube Shorts?
+
+Two to three Shorts per week is enough if you are repurposing clips from existing long-form videos. Daily posting is unnecessary for B2B and leads to content fatigue without proportional returns in leads or pipeline.
+
+### Can YouTube Shorts generate leads for B2B companies?
+
+Not directly. Shorts have no clickable links in the video itself. They build brand awareness that may lead to a Google search or a long-form video view, which then converts. The path from Short to lead is indirect and difficult to attribute.
+
+### Can you use YouTube Shorts for selling products or services?
+
+Yes, but not directly from the Short itself. The selling workflow is: post a Short that names a specific buyer pain point, pin a comment linking to a long-form video with your full solution, and let the long-form video handle the conversion with description links and CTAs. This Short-to-long-form sequence builds a qualified viewer pipeline over 60 to 90 days.
+
+### Should I start with YouTube Shorts or long-form videos for my business?
+
+Start with long-form. Long-form videos rank in YouTube and Google search, allow detailed CTAs with description links, and can be repurposed into multiple Shorts. Starting with Shorts gives you views but no foundation to convert that attention into leads.
