@@ -34,9 +34,32 @@ The advice sounded reasonable: YouTube is great for brand awareness, just start 
 
 Here's the problem: you were measuring the wrong thing.
 
-Most businesses evaluate YouTube marketing ROI by looking at views, subscribers, and engagement rates. These metrics feel productive. They look good in a report. But they tell you almost nothing about whether YouTube is actually making you money.
+B2B businesses often evaluate YouTube marketing ROI by looking at views, subscribers, and engagement rates. These metrics feel productive. They look good in a report. But they tell you almost nothing about whether YouTube is actually making you money.
 
 The real question isn't "how many people watched my video?" It's "can YouTube bring me enough customers to justify what I spend on it?" That's a math problem, and it has a surprisingly clear answer for most businesses.
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
+<p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
+<ul style="margin: 0; padding-left: 1.25rem;">
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">In a 12-month case study, YouTube delivered 1,257 conversions versus 411 from blog content, 3.25x more conversions from video.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">Monthly YouTube ROI = (new customers from YouTube x customer LTV) minus (monthly content cost + COGS per customer).</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">A coach with $2,500 margin per client and a $2,000 monthly content budget needs just one client per month to break even.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">Returns compound: month-six videos can drive 30-40 leads per month, dropping per-lead cost by 90% while paid ads reset to zero.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">Most businesses see meaningful returns in months 6-12; judging YouTube on a 90-day window quits too early.</li>
+<li style="margin-bottom: 0; color: #334155; font-size: 0.9rem;">Track leads, cost per lead, and pipeline value, not views or subscribers. Subscriber count has zero correlation with lead generation.</li>
+</ul>
+</div>
+
+## Contents
+
+- [The YouTube ROI Formula That Actually Works](#the-youtube-roi-formula-that-actually-works)
+- [Why Views and Subscribers Are the Wrong Metrics](#why-views-and-subscribers-are-the-wrong-metrics)
+- [The Compounding Effect Most Businesses Miss](#the-compounding-effect-most-businesses-miss)
+- [How to Calculate YouTube ROI for Your Specific Business](#how-to-calculate-youtube-roi-for-your-specific-business)
+- [How to Track YouTube Attribution](#how-to-track-youtube-attribution)
+- [How to Prove YouTube ROI to Your Team](#how-to-prove-youtube-roi-to-your-team)
+- [See If the Math Works for Your Business](#see-if-the-math-works-for-your-business)
+- [FAQ](#faq)
 
 ## The YouTube ROI Formula That Actually Works
 
@@ -52,7 +75,7 @@ Say you're a business coach charging $3,000 for a coaching program. Your cost to
 
 Now say you spend $2,000/month on YouTube content: scripting, filming, editing, optimizing. Free tools like the [YouTube script generator](/tools/youtube-script-generator) cut production time significantly. You need *one* client per month from YouTube to break even. Two clients? You've doubled your investment.
 
-Compare that to paid ads, where you might spend $50–100 per lead and close at 2–5%. At those rates, you need 20–50 leads (and $1,000–$5,000 in ad spend) to land a single client. Every month. With no compounding.
+Compare that to paid ads, where you might spend $50-100 per lead and close at 2-5%. At those rates, you need 20-50 leads (and $1,000-$5,000 in ad spend) to land a single client. Every month. With no compounding.
 
 So what does this actually mean for your business? It means the viability of YouTube marketing depends almost entirely on two numbers: your YouTube customer acquisition cost and your content production budget. Views are irrelevant until they connect to these.
 
@@ -72,7 +95,7 @@ How many viewers leave YouTube and visit your landing page, lead magnet, or book
 
 ### Lead-to-customer conversion rate
 
-Of the people who click through, how many eventually buy? For most service businesses and course creators, this number ranges from 2–10% depending on how warm the traffic is.
+Of the people who click through, how many eventually buy? For most service businesses and course creators, this number ranges from 2-10% depending on how warm the traffic is.
 
 ### Time to first sale
 
@@ -92,29 +115,36 @@ This is why month-one YouTube ROI almost always looks terrible. You spent $2,000
 
 We wrote a full breakdown of this mechanism in [how four videos a month creates a compounding content engine](/blog/compounding-effect-four-videos-a-month), if you want to go deeper on the math behind it.
 
-We saw this firsthand in a 12-month case study with a Shopify app client. Over the year, their YouTube channel delivered **1,257 conversions** compared to 411 from blog content alone. That's 3.25x more conversions from video. But here's the detail most people miss: the majority of those YouTube conversions came from videos published in months 1–6, generating returns in months 7–12. The early investment paid off later.
+We saw this firsthand in a 12-month case study with a Shopify app client. Over the year, their YouTube channel delivered **1,257 conversions** compared to 411 from blog content alone. That's 3.25x more conversions from video. But here's the detail most people miss: the majority of those YouTube conversions came from videos published in months 1-6, generating returns in months 7-12. The early investment paid off later.
 
 You can read the full data from that experiment in our [YouTube vs. blog Shopify app case study](/blog/youtube-vs-blog-shopify-app-case-study).
 
-This compounding effect is what makes YouTube marketing ROI so counterintuitive. Businesses that evaluate it on a 90-day window almost always quit too early. The ones who commit to 6–12 months with a clear [YouTube marketing strategy](/blog/youtube-marketing-strategy) tend to see returns that make every other channel look expensive by comparison.
+This compounding effect is what makes YouTube marketing ROI so counterintuitive. Businesses that evaluate it on a 90-day window almost always quit too early. The ones who commit to 6-12 months with a clear [YouTube marketing strategy](/blog/youtube-marketing-strategy) tend to see returns that make every other channel look expensive by comparison.
 
 ## How to Calculate YouTube ROI for Your Specific Business
 
 Let's walk through this step by step for four common business types.
 
-### Coaches and consultants (LTV: $2,000–$10,000+)
+| Business type | Customer LTV | YouTube ROI verdict |
+|---|---|---|
+| Coaches and consultants | $2,000-$10,000+ | Almost always worth it. One client per month likely covers the entire content budget. |
+| Course creators and digital products | $200-$2,000 | Depends on volume. Needs enough funnel traffic, but educational content performs well. |
+| SaaS companies | $500-$5,000+ | Works best for product-led content. Longer conversion path, but LTV usually justifies it. |
+| Agencies | $5,000-$50,000+ | Almost unfairly effective. A single client could fund six months of production. |
+
+### Coaches and consultants (LTV: $2,000-$10,000+)
 
 YouTube is almost always worth it. Your margins are high, your audience needs to trust you before buying, and video builds that trust faster than any other medium. Even one client per month from YouTube likely covers your entire content budget.
 
-### Course creators and digital products (LTV: $200–$2,000)
+### Course creators and digital products (LTV: $200-$2,000)
 
 The math depends on volume. YouTube needs to drive enough traffic to your funnel to make the numbers work. The good news: educational content performs exceptionally well on YouTube, and course buyers actively search for the topics you teach.
 
-### SaaS companies (LTV: $500–$5,000+)
+### SaaS companies (LTV: $500-$5,000+)
 
 YouTube works best for product-led content (tutorials, use cases, comparisons) that captures people actively searching for solutions in your category. The conversion path is longer, but the LTV usually justifies it.
 
-### Agencies (LTV: $5,000–$50,000+)
+### Agencies (LTV: $5,000-$50,000+)
 
 YouTube is almost unfairly effective. A single client from YouTube content could fund six months of production. The catch is that agency buyers do extensive research before reaching out, so you need depth of content, not just volume. Our [high-intent topic research framework](/blog/high-intent-topic-research-framework) covers exactly how to find the topics that attract serious buyers, not casual browsers.
 
@@ -168,11 +198,11 @@ If the numbers look strong and you want help building a YouTube strategy that ac
 
 ### How long does it take to see ROI from YouTube marketing?
 
-Most businesses see meaningful returns between months 6–12. Early months are an investment period where you're building a library of searchable content. The compounding effect (where older videos continue driving traffic and leads) is what makes YouTube ROI improve dramatically over time rather than staying flat like paid advertising.
+B2B businesses typically see meaningful returns between months 6-12. Early months are an investment period where you're building a library of searchable content. The compounding effect (where older videos continue driving traffic and leads) is what makes YouTube ROI improve dramatically over time rather than staying flat like paid advertising.
 
 ### What is a good ROI for YouTube marketing?
 
-A strong YouTube marketing ROI for service businesses and course creators typically means your customer acquisition cost through YouTube is 50–80% lower than paid ads within the first year. For our Shopify app client, YouTube delivered 3.25x more conversions than blog content over 12 months, making it the highest-ROI content channel by a wide margin.
+A strong YouTube marketing ROI for service businesses and course creators typically means your customer acquisition cost through YouTube is 50-80% lower than paid ads within the first year. For our Shopify app client, YouTube delivered 3.25x more conversions than blog content over 12 months, making it the highest-ROI content channel by a wide margin.
 
 ### How much should a small business spend on YouTube marketing?
 
@@ -180,7 +210,7 @@ The right budget depends on your customer LTV and margins. A business coach with
 
 ### How do I use a YouTube ROI calculator for my business?
 
-A YouTube ROI calculator needs three inputs: your average customer LTV, your monthly content production cost, and your estimated conversion rate from viewer to customer. With those numbers, it can project your break-even point and expected returns at 6 and 12 months. The tricky part is estimating conversion rates if you're starting from scratch. For most service businesses, 2–5% viewer-to-lead and 10–20% lead-to-customer is a reasonable baseline.
+A YouTube ROI calculator needs three inputs: your average customer LTV, your monthly content production cost, and your estimated conversion rate from viewer to customer. With those numbers, it can project your break-even point and expected returns at 6 and 12 months. The tricky part is estimating conversion rates if you're starting from scratch. For most service businesses, 2-5% viewer-to-lead and 10-20% lead-to-customer is a reasonable baseline.
 
 ### Is YouTube marketing worth it for B2B businesses?
 

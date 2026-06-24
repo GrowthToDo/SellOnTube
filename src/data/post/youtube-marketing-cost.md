@@ -55,7 +55,18 @@ This guide skips the hand-waving. Below you will find three complete youtube mar
 
 </div>
 
+## Contents
+
+- [What YouTube Marketing Actually Costs (The Three-Tier Breakdown)](#what-youtube-marketing-actually-costs-the-three-tier-breakdown)
+- [DIY YouTube Marketing: Line-Item Costs](#diy-youtube-marketing-line-item-costs)
+- [Hiring Freelancers: What Each Role Costs](#hiring-freelancers-what-each-role-costs)
+- [Full-Service YouTube Agencies: What $3K to $10K/Month Gets You](#full-service-youtube-agencies-what-3k-to-10kmonth-gets-you)
+- [The Hidden Cost Nobody Talks About (Opportunity Cost)](#the-hidden-cost-nobody-talks-about-opportunity-cost)
+- [How to Set Your YouTube Marketing Budget (A Practical Framework)](#how-to-set-your-youtube-marketing-budget-a-practical-framework)
+
 ## What YouTube Marketing Actually Costs (The Three-Tier Breakdown)
+
+**YouTube marketing cost is the total monthly investment a business makes to produce, optimize, and publish video content for customer acquisition, ranging from $0 (DIY) to $10,000+ (full-service agency).** That figure covers equipment, editing, thumbnails, keyword research, and labor, and the largest variable is almost always who does the work rather than what gear you buy.
 
 Here is the full picture before we get into the details. Every youtube marketing cost falls into one of three tiers, depending on how much of the work you do yourself.
 
