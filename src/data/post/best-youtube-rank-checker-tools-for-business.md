@@ -59,6 +59,13 @@ We tested ten YouTube rank checker tools against business-owner criteria. Some a
 
 <p style="font-size: 0.85rem; color: #64748b; margin: 0.5rem 0 1.5rem 0;"><strong>Last updated: June 2026.</strong> Methodology: each tool was evaluated hands-on against the four business criteria below (time-to-insight, single-video vs channel-wide, competitive context, and cost relative to channel size). Ratings shown are real third-party ratings with the platform and source linked; where a tool has no meaningful third-party rating, we say so rather than invent one.</p>
 
+<figure style="margin: 2rem 0;">
+  <div style="position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000;">
+    <iframe src="https://www.youtube-nocookie.com/embed/lvj5DXK-bi4" title="How To Check YouTube Keyword Ranking" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
+  </div>
+  <figcaption style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; text-align: center;">Video: a hands-on walkthrough of checking where your videos rank for a keyword (Nate Woodbury). A quick visual primer before the tool-by-tool breakdown below.</figcaption>
+</figure>
+
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
 <ul style="margin: 0; padding-left: 1.25rem;">
