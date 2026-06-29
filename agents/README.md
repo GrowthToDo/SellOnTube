@@ -35,16 +35,19 @@ Just speak naturally. Examples that trigger each agent:
 | 07-technical-seo.md | Redirects, schema, technical health | Read netlify.toml, JsonLd.astro |
 | 08-microtool-builder.md | Build interactive tools — single source of truth for tool strategy, pipeline, build standards, publishing workflow | Title Generator reference, keyword CSV, style guide, schema templates |
 | 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | reddit-marketing-playbook.md, style guide, ICP |
-| 11-aeo-monitor.md | AI search visibility — spot checks, batch audits, citability scoring | sot_master.csv, content-depth-framework.md, research/aeo/ |
+| 11-aeo-monitor.md | AI search visibility — spot checks, batch audits, citability scoring | sot_master.csv, ai-seo-guide.md §16-19, research/aeo/ |
 
 ### Reference Library (`agents/references/`)
 
 Curated reference files cherry-picked from open-source SEO skill repos. Not standalone agents — they enrich existing agents.
 
+**Canonical AEO SSOT:** `ai-seo-guide.md` is the single source of truth for AI-search rules. Section 16 = AI Citability Rules (the 5 rules + pre-publish gate), Section 17 = Citation-Ready Language Rules, Section 18 = Media Policy, Section 19 = proven evidence (the cited archetype, the 9 citation signals, the visible-FAQ gap). `content-depth-framework.md` is depth / word-count only and points at `ai-seo-guide.md` §16 for citability. Agents 04/05/11 enforce §16 (draft → hard gate → audit).
+
 | File | Used by | What it adds |
 |---|---|---|
 | `core-eeat-benchmark.md` | Agent 05 | 80-item structured E-E-A-T scoring framework |
 | `ai-writing-detection.md` | Agent 05 | 50+ AI writing markers (extends em-dash ban) |
+| `comparison-content-playbook.md` | Agents 04, 11 | Page structure standard for comparison / alternatives / best-tools (listicle) posts |
 | `schema-templates.json` | Agent 07 | VideoObject, BroadcastEvent, Clip schema templates |
 | `knowledge-graph-guide.md` | Agent 07 | Knowledge Graph, Wikidata, entity optimization playbook |
 | ~~`ai-citation-patterns.md`~~ | Deleted — merged into `ai-seo-guide.md` §6 | Platform-specific citation patterns |

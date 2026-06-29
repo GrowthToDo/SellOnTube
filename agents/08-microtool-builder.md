@@ -68,12 +68,17 @@ Layout (metadata) →
 
 ## Content Depth Rules
 
-Read `content-depth-framework.md` before writing any tool page copy. Tool pages target **700-2,000 words**. Key rules:
+Read `content-depth-framework.md` before writing any tool page copy — it owns word-count/depth tiers. Tool pages target **700-2,000 words**. Key rules:
 - Tool-first: usage, examples, outputs, mistakes, FAQs. No blog bloat.
 - Every section must pass the editorial gate: answers a real question, adds specificity, useful to buyers/operators.
 - Target 5+ quotable passages for AI/snippet extractability.
 - AI/LLM readability: clear H2/H3 headings, short paragraphs, tables/checklists where appropriate.
 - Apply the "Comprehensive but Tight" checklist where relevant (What is it? How to use? Mistakes to avoid? FAQs? Next steps?).
+
+**Citability and media (mandatory):**
+- Tool pages must meet the citability gate in `ai-seo-guide.md` Section 16 (AI Citability Rules + pre-publish gate). Run the gate before showing the finished page.
+- Any media on the page must follow the media policy in `ai-seo-guide.md` Section 18 (perf-safe).
+- If a tool page compares against competitor tools, follow `agents/references/comparison-content-playbook.md` for the comparison/listicle structure.
 
 ---
 

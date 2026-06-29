@@ -39,6 +39,18 @@ Use Language Server Protocol (LSP) as the primary method for understanding and n
 
 See `agents/08-microtool-builder.md` Phase 7 for full details.
 
+## AEO / AI Citation (canonical)
+
+`ai-seo-guide.md` is the single source of truth for AI-search optimization. Do not restate AEO rules in other docs; point to the canonical sections:
+- **Section 16** = the five citability rules + the hard pre-publish citability gate.
+- **Section 17** = citation-ready language rules.
+- **Section 18** = media policy (every post: relevant image + video, perf-safe, never padding).
+- **Section 19** = what actually gets cited at SellonTube (proven archetype + 9 signals; visible-FAQ-in-body is the biggest gap).
+- `agents/references/comparison-content-playbook.md` = page structure for comparison / alternatives / best-tools posts.
+- `content-depth-framework.md` = word-count and depth tiers only.
+
+Agent 05 hard-fails any post that misses the Section 16 gate. Third-party ratings only where a real listing exists (never fabricated); SellonTube's own tools use first-party proof plus disclosure.
+
 ## Build Standards
 
 1. **Performance** -- Optimize LCP on tool pages (Gemini loading states). Lazy-load below-fold images. Reserve space for media to prevent CLS. Defer non-critical JS.

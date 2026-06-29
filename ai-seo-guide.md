@@ -12,7 +12,16 @@ This is the only document agents and humans need to read before creating or upda
 
 **The principle:** Build for Google first (Layer 1). Then add Layer 2 optimizations that also make content better for human readers. Never sacrifice Layer 1 quality for Layer 2 tricks.
 
-Read this alongside `seo-rules.md` (traditional SEO rules) before any content or technical SEO decision.
+Read this alongside `seo-rules.md` (traditional SEO rules) before any content or technical SEO decision. For comparison, alternatives, and "best tools" posts, also read `agents/references/comparison-content-playbook.md` — it owns the page architecture for tool-comparison content; this file owns the AEO mechanics underneath it.
+
+**Canonical homes (no rule lives in two places):**
+- Citability rules + pre-publish gate: Section 16 (this file).
+- Citation-ready language rules: Section 17 (this file).
+- Media policy: Section 18 (this file).
+- What actually gets cited at SellonTube (proven evidence): Section 19 (this file).
+- Comparison/listicle page structure: `comparison-content-playbook.md`.
+- Word-count and depth tiers: `content-depth-framework.md`.
+Other docs (`seo-rules.md`, `content-playbook.md`, `blog-production-standard.md`, `content-depth-framework.md`) point here for AEO; they do not restate the rules.
 
 **Sources:**
 - https://developers.google.com/search/docs/appearance/ai-features
@@ -462,10 +471,12 @@ Use for topic pages with multiple common questions. Required for FAQPage schema.
 ```
 
 **FAQ rules:**
-- Use natural question phrasing ("How do I..." not "How does one...")
-- Match "People Also Ask" queries from Google
-- Keep answers 50-100 words
-- Always pair with FAQPage schema in JSON-LD
+- **The FAQ must be written in the page body (visible to readers).** Frontmatter `faqs` only generates FAQPage JSON-LD, which is invisible. A frontmatter-only FAQ is the single most common citation gap on this site (see Section 19) — AI engines lift visible Q&A, not hidden schema.
+- Use natural, conversational question phrasing the way people prompt AI, not keyword-stuffed form. Write "What tools should I use to improve my YouTube video's search ranking?" not "What are YouTube SEO tools?". Include "I" and "my" where natural, and cover "why" and "should I" questions Google FAQ schema usually misses.
+- Match "People Also Ask" queries from Google.
+- Keep answers 50-100 words, each self-contained so it works as a standalone quote.
+- On comparison/listicle posts, group FAQs into 3-5 themes (Basics, Comparisons, Pricing, Performance), not a flat list (see `comparison-content-playbook.md`).
+- Pair with FAQPage schema in JSON-LD (helps Perplexity and Google understanding; no SERP rich result since May 2026 — see Section 13).
 
 ### Statistic Citation Block
 
@@ -586,6 +597,8 @@ ChatGPT cites content updated within the last 30 days 3.2x more than older conte
 
 Simply changing the `publishDate` without adding content does not count. Google explicitly lists "artificially updating publication dates" as a red flag.
 
+**Show the freshness.** When a post is genuinely updated, surface a visible "Last updated [date]" near the top. Comparison and listicle posts should also carry a one-line methodology note ("how we tested/evaluated"). Both are trust and freshness signals AI engines read; an invisible date change is not.
+
 ---
 
 ## 13. Schema Priority for AI Citation
@@ -597,7 +610,8 @@ Schema helps AI systems understand content, but Google explicitly warns against 
 | `Article` | Google AI Overviews (high), ChatGPT (medium) | Pending implementation | Highest priority — directly supports Layer 1 |
 | `HowTo` | Google AI Overviews (high) | Pending implementation | Use only on genuine how-to content |
 | `BreadcrumbList` | Google AI Overviews (medium) | Pending implementation | Navigation signal |
-| `FAQPage` | Perplexity (high), Google understanding (medium) | Pending implementation | **Demoted from #1.** FAQ rich results killed May 7, 2026. Markup still helps Google understanding and Perplexity citation, but no visual SERP benefit. |
+| `FAQPage` | Perplexity (high), Google understanding (medium) | Pending implementation | **Demoted from #1.** FAQ rich results killed May 7, 2026. Markup still helps Google understanding and Perplexity citation, but no visual SERP benefit. Requires a visible FAQ in the body (Section 9). |
+| `Review` / `ItemList` | Comparison/listicle posts (medium) | Use where tools are rated | On comparison or "best tools" posts that show ratings, mark up the ratings/ranked list. Match visible content only — never mark up a rating that is not shown on the page. See `comparison-content-playbook.md`. |
 | `Organization` | All platforms (baseline trust signal) | Implemented | |
 | `WebSite` | All platforms (baseline trust signal) | Implemented | |
 
@@ -636,5 +650,120 @@ Run this once a month. Executable SOP version: `docs/sops/monthly-ai-seo-checkli
 - [ ] Update at least 2 high-priority blog posts (add section, refresh stat, new FAQ)
 - [ ] Submit updated URLs to GSC + IndexNow
 - [ ] Check GSC for any new "AI Overviews" impressions — identify which pages are being cited
+- [ ] **Manually test target queries** in ChatGPT, Perplexity, and Copilot — record which pages get cited and which competitors win the queries we want. Log in the monthly tracking sheet.
+- [ ] **Pull the Bing Webmaster AI Performance report** (`research/bing-webmaster-ai-performance.md`) — did Copilot citations grow? Which pages?
+- [ ] **Visible-FAQ coverage check** — find posts with frontmatter `faqs` but no `## FAQ` section in the body and fix them (highest-leverage gap, see Section 19)
 - [ ] Review schema implementation status in Agent 07 — flag next schema type to implement
 - [ ] Check pSEO pages against scaled content abuse guardrails (Section 3) — does each page have genuine unique value?
+
+**Measurement loop:** the point of this checklist is a feedback loop, not a chore. Each month, compare citations and AI impressions to last month, attribute movement to specific pages, and feed the winners and losers back into what we write next. The proven archetype (Section 19) came from exactly this loop.
+
+---
+
+## 16. AI Citability Rules (the pre-publish standard)
+
+This is the canonical home for the five citability rules. Agent 04 applies them while drafting; Agent 05 enforces them as a hard gate before publish; Agent 11 audits against them. Extractability means AI *can* read your content. Citability means AI *chooses to cite it* over competitors.
+
+Google's position (May 2026): for Google AI Overviews, traditional SEO quality is the optimization (Section 1). These five rules are primarily Layer 2 (ChatGPT, Perplexity, Claude, Copilot). But every one also makes content clearer for humans, so apply them as good writing, not as AI tricks.
+
+### Rule 1 — Answer blocks (134-167 words)
+Every page has at least one self-contained answer block that directly answers the page's primary query in 134-167 words (the optimal citation length).
+- Standalone paragraph, no dependency on surrounding context.
+- Placed in the first 30% of the page (AI weights early content).
+- Starts with the answer, not the question.
+
+### Rule 2 — Entity consistency
+Use identical phrasing for key concepts across every page. AI engines build entity graphs; inconsistent naming weakens the signal. Canonical terms (use these exact phrases):
+- "buyer-intent video" (not "purchase-driven content" or "sales-focused video")
+- "YouTube acquisition channel" (not "YouTube marketing channel" or "growth channel")
+- "customer acquisition" (not "lead generation" when referring to the full funnel)
+- "B2B YouTube" (not "business YouTube" or "enterprise YouTube")
+
+Introduce the canonical term first, then any variation. Never use a variation without establishing the canonical term on the same page.
+
+### Rule 3 — First-party data claims
+AI preferentially cites sources with original data or unique claims.
+- At least one first-party claim per blog post ("Based on our analysis of 50+ B2B YouTube channels...").
+- Quantify where possible; numbers are more citable than qualitative statements.
+- Attribute to SellonTube or the founders by name (builds entity recognition).
+- Never fabricate data. Use real observations from client work, tool usage, or research.
+
+### Rule 4 — Definition blocks
+For any concept you want to be the cited source for, include a clean standalone definition.
+- Format: **[Term]** is [definition]. (Bold term, plain sentence, period.)
+- Place immediately after the H2/H3 introducing the concept.
+- 1-2 sentences max; AI pulls concise definitions, not paragraphs.
+
+### Rule 5 — FAQ-to-conversational alignment
+People prompt AI in conversational form, not terse Google queries. Full FAQ rules and formatting live in Section 9 (including the visible-body requirement). The citability essentials:
+- Write questions the way people ask AI ("What tools should I use to...?"), with "I"/"my" where natural.
+- Cover "why" and "should I" questions.
+- FAQ must be visible in the body, never frontmatter-only.
+
+### Citability checklist (run before publishing — hard gate)
+- [ ] Content quality first — unique perspective, non-commodity, clear structure (Section 2)?
+- [ ] At least one answer block (134-167 words, standalone, early in page)?
+- [ ] Entity terms consistent with the canonical list?
+- [ ] At least one first-party data claim (blog posts)?
+- [ ] Definition blocks for key concepts introduced on the page?
+- [ ] FAQ written in the body, conversational phrasing?
+- [ ] Citation-ready language rules applied (Section 17)?
+- [ ] Media present and perf-safe (Section 18)?
+- [ ] `llms.txt` updated if this page adds a new tool or major section?
+- [ ] For comparison/listicle posts: the `comparison-content-playbook.md` gate also passes.
+
+---
+
+## 17. Citation-Ready Language Rules
+
+How a sentence is written decides whether an AI can lift it as a standalone quote. Apply these everywhere; they are the difference between content AI *can* read and content AI *quotes*.
+
+- **Mirror the heading in the opening sentence.** A section headed "What is AI visibility?" starts "AI visibility is...", not "When thinking about modern search...". The first sentence answers the heading directly.
+- **Answer immediately.** Lead with the complete, direct answer; supporting detail comes after.
+- **Use specific, verifiable claims.** "Impressions rose from 280 to 1,400 between March and June 2026", not "our metrics improved significantly".
+- **Cut figurative language that obscures meaning.** No analogies, idioms, or metaphors standing in for the actual claim. Write "visible FAQs are the highest-leverage citation gap", not "FAQs are the north star guiding us through the fog".
+- **Eliminate unclear antecedents.** Name the subject. "The rank checker updates daily", not "It updates daily" three sentences after the tool was last named.
+- **Be declarative about recommendations and rankings.** "vidIQ is the better choice for high-volume creators; SellonTube is the better choice for B2B lead generation." Hedged, vague verdicts do not get cited.
+- **Pre-calculate comparative data.** Do the math for the reader: percentage + dollar amount + timeframe. AI cites computed numbers; it rarely computes them from a raw price table.
+- **Objective over promotional.** Balanced analysis (including where we lose) gets cited; marketing language gets skipped.
+
+---
+
+## 18. Media Policy
+
+**Every blog post includes relevant media: at least one image/screenshot, and at least one relevant video.** Comparison and listicle posts include a screenshot per tool. Media earns citations (multi-modal pages see materially higher AI selection rates) and serves readers.
+
+Two non-negotiable guardrails:
+
+1. **Relevance, never padding.** Media must inform (show the tool, illustrate the data, demonstrate the step). A decorative image or an unrelated video is filler and violates the project ethos — cut it. "Required" means "must include something that adds value", not "must add something".
+2. **Performance-safe.** Protect LCP and CLS (see `CLAUDE.md` build standards):
+   - Lazy-load below-fold images; reserve width/height to prevent layout shift.
+   - Embed YouTube via a click-to-load facade, not a raw autoloading iframe.
+   - Descriptive, keyword-relevant alt text and visible captions on every image and video (also an accessibility and AI-context signal).
+   - Descriptive file names (`best-rank-checker-tools-comparison.png`, not `image1.png`).
+
+---
+
+## 19. What Actually Gets Cited at SellonTube (Proven Evidence)
+
+Everything above is principle. This section is evidence — what has actually earned citations on this domain. Treat the archetype as the target to replicate. Sources: `research/aeo/extractability-audit-2026-06-24.md`, `research/bing-webmaster-ai-performance.md`.
+
+### The proven archetype
+`/blog/how-to-find-youtube-autocomplete-keywords` scored 10/10 on the extractability rubric and earned 6 Microsoft Copilot citations — the most-cited page on the site. Reverse-engineer new content to match it.
+
+### The 9 signals that correlate with citation (extractability rubric)
+1. **Visible FAQ** in the body (not frontmatter-only) — the single highest-leverage gap on the site. Copilot lifted Q&A directly from the cited page.
+2. **Definition blocks** (Rule 4).
+3. **Answer blocks** 134-167 words (Rule 1).
+4. **Table of contents** with anchors (especially tool pages).
+5. **Question-style H2s**.
+6. **Comparison/data tables**.
+7. **First-party data** (Rule 3).
+8. **Fresh dates** — recent, genuine updates (Section 12).
+9. **Internal links** — cluster + `/tools` links for topical authority.
+
+### Biggest open gap
+Multiple posts carry a frontmatter `faqs` array but render no visible `## FAQ` section, so the Q&A never reaches the page. Fixing this across the site is the highest-leverage citation work available. Caught in the monthly checklist (Section 15).
+
+### How Copilot/Bing citations are earned (mechanism)
+Copilot grounds answers in Bing's top-ranked results, then quotes the most answer-shaped, extractable passage. So citation = good Bing rank × answer-shaped content. The practitioner tactics (mine grounding queries, build compact high-intent pages, route authority, analyze citation share) live in `research/bing-webmaster-ai-performance.md`.

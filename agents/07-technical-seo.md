@@ -38,16 +38,9 @@ Read all `[[redirects]]` entries.
 - [ ] No page redirects to itself
 
 ### Step 1b — AI bot access audit (`netlify.toml` + `public/robots.txt`)
-Check that no AI crawler is blocked. Required bots (from `ai-seo-guide.md`):
-- [ ] GPTBot — allowed
-- [ ] ChatGPT-User — allowed
-- [ ] PerplexityBot — allowed
-- [ ] ClaudeBot — allowed
-- [ ] anthropic-ai — allowed
-- [ ] Google-Extended — allowed
-- [ ] Bingbot — allowed
+Check that no AI crawler is blocked. The canonical AI-bot allowlist lives in `ai-seo-guide.md` Section 8 — verify every bot on that list is allowed. Do not maintain a duplicate list here; read the canonical source.
 
-If `robots.txt` or `netlify.toml` blocks any of these, flag as critical — the platform cannot cite SellonTube content.
+If `robots.txt` or `netlify.toml` blocks any bot on the Section 8 allowlist, flag as critical → the platform cannot cite SellonTube content.
 
 Also check:
 - [ ] Bing Webmaster Tools — site submitted (required for Copilot citation)
@@ -76,8 +69,11 @@ Read the schema component.
 | `HowTo` | How-to guide blog posts | Step-by-step rich results |
 | `VideoObject` | Tool pages, blog posts with YouTube embeds | Video rich results, video carousel |
 | `BroadcastEvent` | Live stream landing pages (future) | LIVE badge in search results |
+| `Review` / `ItemList` | Comparison/listicle posts that display tool ratings | Review snippet / rating stars in search results |
 
-When running a schema audit, report these as "pending implementation" in the schema health output. Do not mark them as errors — they are documented gaps, not regressions. See `agents/references/schema-templates.json` for ready-to-use templates.
+For comparison/listicle posts that display tool ratings, implement `Review` or `ItemList` schema (canonical priority list in `ai-seo-guide.md` Section 13). Match schema to visible content only → never add ratings markup unless the ratings appear on-page.
+
+When running a schema audit, report these as "pending implementation" in the schema health output. Do not mark them as errors → they are documented gaps, not regressions. See `agents/references/schema-templates.json` for ready-to-use templates.
 
 ### Step 3 — Astro config (`astro.config.ts`)
 Read and check:
