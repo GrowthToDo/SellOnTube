@@ -42,3 +42,4 @@ research/**/*.xls
 
 # Local Netlify folder
 .netlify
+.gstack/
