@@ -9,6 +9,9 @@ Captured before the AEO retrofit so the measurement loop (ai-seo-guide §19) can
 | /blog/best-youtube-rank-checker-tools-for-business | 1 | 8,539 | 31.4 | 0.01% |
 | /blog/is-vidiq-worth-it-for-business | 0 | 68 | 16.4 | 0% |
 | /blog/ai-tools-for-youtube | 0 | 1 | 18.0 | 0% |
+| /blog/best-youtube-autocomplete-keyword-tools (batch 2, retrofitted 2026-06-29) | 8 | 4,487 | 9.9 | 0.18% |
+
+**Batch-2 note (autocomplete-tools):** already page 1 (pos 9.9, 4,487 impr). Dominant query cluster is intent-based ("keyword intent io youtube", ~700+ impr, pos 6-8) which maps to SellonTube's buyer-intent tagging. "best free youtube keyword tool" buried at pos 87-92 = upside. Watch for movement on both after the retrofit.
 
 **Read:** the rank-checker post has huge latent demand (8.5k impr) buried at position ~31 with near-zero CTR. Biggest opportunity by far. The other two have little current demand; retrofit value there is structural/AEO + freshness, not immediate click upside.
 
