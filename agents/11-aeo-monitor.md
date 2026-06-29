@@ -59,7 +59,7 @@ Run spot checks across SellonTube's top keywords.
 
 ### Mode 3: Citability Audit
 
-Audit a specific page against the AI Citability Rules in `content-depth-framework.md`.
+Audit a specific page against the AI Citability Rules in `ai-seo-guide.md` Section 16 (the canonical home for the five citability rules + pre-publish gate).
 
 **Layer context:** The 5 citability rules below are Layer 2 optimizations (targeting ChatGPT/Perplexity/Claude). For Google AI Overviews, standard content quality is sufficient. When auditing, check Layer 1 compliance first (unique content, non-commodity, clear structure) before checking Layer 2 patterns.
 
@@ -72,12 +72,28 @@ Audit a specific page against the AI Citability Rules in `content-depth-framewor
 | Rule | Check | Pass/Fail |
 |---|---|---|
 | Answer block | Self-contained block of 134-167 words answering the primary query? | |
-| Entity consistency | Key terms match canonical list in content-depth-framework.md? | |
+| Entity consistency | Key terms match the canonical entity list in `ai-seo-guide.md` Section 16? | |
 | First-party data | At least one claim attributed to SellonTube or founders? (blog posts only) | |
 | Definition blocks | Key concepts have standalone 1-2 sentence definitions? | |
 | FAQ alignment | FAQ questions written in conversational form? | |
 
-3. Score against GEO optimization dimensions (from `agents/references/geo-skill-patterns.md`):
+3. Score against the 9 proven citation signals in `ai-seo-guide.md` Section 19 (the extractability rubric — what has actually earned citations on this domain; the archetype is `/blog/how-to-find-youtube-autocomplete-keywords`):
+
+| Signal | Check | Pass/Fail |
+|---|---|---|
+| Visible FAQ | `## FAQ` section rendered in the body (not frontmatter-only)? | |
+| Definition blocks | Standalone definitions for key concepts? | |
+| Answer blocks | 134-167 word self-contained answer present? | |
+| Table of contents | ToC with anchors (especially tool pages)? | |
+| Question-style H2s | Subheadings phrased as questions? | |
+| Comparison/data tables | At least one comparison or data table? | |
+| First-party data | A claim attributed to SellonTube or founders? | |
+| Fresh dates | Recent, genuine update reflected in dates? | |
+| Internal links | Cluster + `/tools` links for topical authority? | |
+
+4. **Visible-FAQ gap flag (highest-leverage):** Explicitly check whether the page carries a frontmatter `faqs` array but has NO visible `## FAQ` section in the body. If so, flag it as the biggest citation gap per `ai-seo-guide.md` Section 19 → the Q&A never reaches the page, so AI engines cannot lift it. Recommend rendering the FAQ in the body.
+
+5. Score against GEO optimization dimensions (from `ai-seo-guide.md` Section 7):
 
 | Dimension | Weight | Check |
 |---|---|---|
@@ -87,9 +103,9 @@ Audit a specific page against the AI Citability Rules in `content-depth-framewor
 | Authority signals | 20% | Author credentials, publication dates, source citations, cross-platform presence |
 | Technical accessibility | 20% | Server-side rendered (Astro = yes), AI crawlers allowed |
 
-4. For each fail, provide a specific fix suggestion with example text
+6. For each fail, provide a specific fix suggestion with example text
 
-**Output:** Pass/fail table with fix suggestions. Overall score: X/5 citability rules passed + GEO dimension scores.
+**Output:** Pass/fail tables with fix suggestions. Overall score: X/5 citability rules passed + X/9 proven signals + GEO dimension scores. Surface any frontmatter-`faqs`-without-visible-`## FAQ` finding at the top as the priority fix.
 
 **When to run:** After content-qa (agent 05) and before publishing. Mode 3 is the AEO equivalent of the style guide QA pass.
 
@@ -105,7 +121,11 @@ The recommended publishing flow with AEO added:
 
 ## Key Files
 
-- `content-depth-framework.md` — AI Citability Rules section (the rules Mode 3 checks against)
+- `ai-seo-guide.md` Section 16 — AI Citability Rules (canonical source for the 5 rules + pre-publish gate that Mode 3 checks against)
+- `ai-seo-guide.md` Section 17 — Citation-Ready Language Rules
+- `ai-seo-guide.md` Section 18 — Media Policy
+- `ai-seo-guide.md` Section 19 — proven evidence: the cited archetype, the 9 citation signals, and the visible-FAQ gap (Mode 3 scores against these)
+- `content-depth-framework.md` — word-count / depth only (citability rules now live in `ai-seo-guide.md` Section 16)
 - `research/keywords/sot_master.csv` — keyword source for Mode 2
 - `research/aeo/` — output directory for batch audit CSVs
 - `public/llms.txt` — update when new tools or major pages ship

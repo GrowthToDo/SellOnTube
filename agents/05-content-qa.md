@@ -40,6 +40,19 @@ QA items are tiered by severity:
 
 ## CRITICAL (blocks publish — zero violations allowed)
 
+**[CRITICAL — AEO CITABILITY GATE]**
+**Pre-publish citability gate (blocking — see `ai-seo-guide.md` §16-§18 and `agents/references/comparison-content-playbook.md`)**
+> This is a hard gate. If ANY item below is missing, the post FAILS. Do not downgrade to a warning.
+- [ ] **(a) §16 citability checklist** — all of:
+  - [ ] At least one answer block present, each 134-167 words
+  - [ ] Entity consistency: key concepts use the canonical terms throughout, no synonym cycling
+  - [ ] At least one first-party data claim (required on blog posts)
+  - [ ] Definition blocks present for every key concept introduced
+  - [ ] A VISIBLE FAQ rendered in the post body (frontmatter `faqs:` alone does NOT satisfy this — the inline `## FAQ` section must exist)
+- [ ] **(b) §17 citation-ready language applied** — opening sentence mirrors the heading, no unclear antecedents, no figurative language, claims are specific and verifiable, numbers are pre-calculated, verdicts are declarative
+- [ ] **(c) §18 media policy** — a relevant image AND a relevant video are present and perf-safe (lazy-load, YouTube facade, reserved dimensions, alt + caption); media is relevant, never padding
+- [ ] **(d) Comparison / listicle / best-tools / alternatives posts only:** the `agents/references/comparison-content-playbook.md` pre-publish checklist also passes in full
+
 **Em-dashes and punctuation**
 - [ ] Grep for `—` (em-dash character) — banned in all copy. Replace with comma, colon, or restructure sentence.
 - [ ] Grep for word-hyphen-word with no spaces (regex: `\w-\w`) — may be a broken em-dash. Review each match. If it's actually a compound word (e.g., "B2B-focused"), it's fine. If it joins two separate ideas, it's a broken em-dash — fix it.

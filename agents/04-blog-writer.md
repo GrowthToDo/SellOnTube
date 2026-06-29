@@ -106,8 +106,13 @@ OUTLINE:
 
 **AI Search Optimization (two-layer approach):**
 - **Layer 1 (Google AI Overviews):** No special optimization needed. Write the best possible content for the query. Google's AI features use the same ranking systems as traditional search.
-- **Layer 2 (ChatGPT, Perplexity, Claude):** Apply content block patterns from `ai-seo-guide.md` Sections 6-7 where they improve the content naturally. Include 1-2 answer blocks, definition blocks for key concepts, and maintain entity consistency.
+- **Layer 2 (ChatGPT, Perplexity, Claude):** Apply the canonical AEO rules from `ai-seo-guide.md` while drafting:
+  - **Citability rules (§16)** — apply the 5 citability rules and meet the hard pre-publish citability checklist (at least one answer block, entity consistency with canonical terms, first-party data claim, definition blocks for key concepts, visible FAQ in the body).
+  - **Citation-ready language (§17)** — mirror the heading in the opening sentence, kill unclear antecedents, kill figurative language, make claims specific and verifiable, pre-calculate numbers, and use declarative verdicts.
+  - **Media policy (§18)** — include a relevant image and a relevant video, perf-safe (lazy-load, YouTube facade, reserved dimensions, alt + caption). Relevance always — never padding.
 - **Never sacrifice human readability for AI extraction.** If a pattern makes the content worse, skip it.
+
+**If the post is a comparison, alternatives, or best-tools post**, follow `agents/references/comparison-content-playbook.md` for structure: answer-first opener + Key Takeaways table, problem-solution arc, a standalone evaluation-criteria section, a rigid per-tool template with sections scaling to substance, a decision tree, a use-case cheat sheet, a categorized FAQ, third-party ratings (real-only, never fabricated), pre-calculated savings math, and internal cluster links. Its own hard pre-publish checklist must also pass before handoff.
 
 Write complete MDX with frontmatter:
 ```mdx

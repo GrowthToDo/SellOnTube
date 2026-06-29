@@ -326,15 +326,9 @@ Every month, pull GSC page data. Sort by impressions descending. Filter pages wi
 
 Google's AI Overviews are powered by the same ranking systems as traditional search. **There is no separate "AI SEO" for Google.** The SEO craft rules above (5.1-5.6) already optimize for Google AI Overviews.
 
-For non-Google AI platforms (ChatGPT, Perplexity, Claude), apply these additional checks:
-- **Content freshness:** Posts targeting competitive keywords must be updated every 90 days. Core cluster posts monthly. (See Section 6, Content Refreshes.)
-- **Answer blocks:** Include 1-2 self-contained, quotable paragraphs per post that AI can extract without surrounding context. See `ai-seo-guide.md` Section 7.
-- **Definition blocks:** For any concept SellonTube wants to be cited for, include a bold term + one-sentence definition as a standalone paragraph.
-- **Entity consistency:** Use exact canonical terms across all pages: "buyer-intent video", "YouTube acquisition channel", "customer acquisition", "B2B YouTube".
+For non-Google AI platforms (ChatGPT, Perplexity, Claude, Copilot), the citability rules, citation-ready language rules, and media policy are canonical in `ai-seo-guide.md` §16-18. Apply them at draft time; do not restate them here.
 
-**Do not sacrifice human readability for AI optimization.** If an AI-specific pattern makes the content worse for human readers, skip it.
-
-See `ai-seo-guide.md` for the full two-layer framework.
+**Do not sacrifice human readability for AI optimization.** If a pattern from `ai-seo-guide.md` §16-18 makes the content worse for human readers, skip it. Human readability wins.
 
 ---
 

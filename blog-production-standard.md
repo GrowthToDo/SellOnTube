@@ -413,11 +413,7 @@ Specifically, the first draft must include:
 - [ ] Internal links verified (exact slugs confirmed against `src/pages/tools/` and `src/data/post/`)
 
 **AI SEARCH OPTIMIZATION:**
-- [ ] Content offers a unique perspective -- not a rehash of existing top 10 results (Google Layer 1)
-- [ ] No over-optimization for AI at expense of human readability (Google warns against this)
-- [ ] At least 1 self-contained answer block that AI platforms can extract (Layer 2)
-- [ ] Definition blocks for key concepts SellonTube wants cited for (Layer 2)
-- [ ] Entity consistency -- canonical terms used throughout (Layer 2)
+- [ ] AI citability: the first draft must pass the citability gate (`ai-seo-guide.md` Section 16), apply the citation-ready language rules (Section 17), and include perf-safe media (Section 18). Comparison/listicle posts must also pass `agents/references/comparison-content-playbook.md`.
 
 **The user should review for strategic direction and tone, not for missing formatting, visuals, or structural elements.** Those must be right before the draft is shown.
 

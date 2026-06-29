@@ -97,22 +97,13 @@ Two distinct cases — never give blanket advice:
 
 ## AI Search Optimization
 
-SellonTube uses a two-layer approach. See `ai-seo-guide.md` for full details.
+SellonTube uses a two-layer approach:
+- **Layer 1 — Google (primary):** traditional SEO. Good SEO is AI SEO; no special tactics.
+- **Layer 2 — ChatGPT / Perplexity / Claude / Copilot (secondary):** citation mechanics apply.
 
-**Layer 1 — Google AI Overviews (primary):**
-- Google's official position: good SEO IS AI SEO. No special tactics needed.
-- Do NOT create content specifically for AI. Create the best content for the query.
-- Schema helps understanding but is not a magic lever. Use where it matches visible content.
-- Misconceptions (per Google): llms.txt as ranking signal, content chunking for AI, rewriting for AI systems, overemphasizing structured data.
+Full rules are canonical in `ai-seo-guide.md`: citability rules §16, citation-ready language §17, media policy §18, robots AI-bot allowlist §8, schema priority §13. Do not restate them here.
 
-**Layer 2 — ChatGPT, Perplexity, Claude (secondary):**
-- Platform-specific citation mechanics apply. See `ai-seo-guide.md` Sections 6-7.
-- Content freshness critical for ChatGPT (30-day update = 3.2x citation boost).
-- Answer blocks, definition blocks, entity consistency — valid for these platforms.
-- Keep `public/llms.txt` and `public/llms-full.txt` updated (not a Google signal, but low-cost Layer 2).
-- All AI crawlers allowed in `robots.txt` (GPTBot, PerplexityBot, ClaudeBot, etc.).
-
-**FAQ Schema (updated May 2026):** FAQ rich results killed by Google on May 7, 2026. Keep FAQPage markup (still helps Google understanding + Perplexity citation) but no visual SERP benefit. Article schema is now highest priority.
+**FAQ Schema:** FAQPage is demoted (no SERP rich result). See `ai-seo-guide.md` §13 for current schema priority.
 
 ---
 
