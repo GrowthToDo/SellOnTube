@@ -30,3 +30,17 @@ Read this file at the start of work so past mistakes don't repeat.
 - **Lesson:** harvest tactics, not defaults. Map every "always do X" to our model (own tools vs competitor tools), our build (Astro frontmatter), and our ethos (no padding, perf budget) before adopting.
 - **Prevention rule:** third-party ratings only where a real listing exists, never fabricated; own tools use first-party proof + disclosure. Media is required but must be relevant and perf-safe (lazy-load, YouTube facade, reserved dimensions), never padding. Frontmatter follows our Astro post schema, not any external template.
 - **Category:** aeo
+
+### 2026-06-30 — Started SEO edits on the stale `ahrefs` branch (94 commits behind `main`)
+- **What happened:** User said "open ahrefs branch," so the fix branch for SEO title/meta work was cut off `ahrefs`. Computed title lengths came back already-short and several flagged pages "didn't exist," which looked like the work was already done. In fact `ahrefs` was 94 commits behind `main`; the live site = `main`, where every Ahrefs finding reproduced exactly and all "missing" files existed. Re-cut the branch off `main` and redid the analysis.
+- **Root cause:** conflated "the branch the user named for reading research files" with "the branch the live content lives on." Did not check divergence before editing.
+- **Lesson:** the branch holding research/data is not necessarily the branch to edit code on. A 5-day-stale Ahrefs/GSC export only matches reality on the branch that was live when it was crawled.
+- **Prevention rule:** before any SEO/content edit, run `git rev-list --left-right --count origin/main...HEAD`; if behind, rebuild the work branch off `origin/main`. Cross-check a couple of "flagged" findings against the live branch before trusting stale audit data.
+- **Category:** process
+
+### 2026-06-30 — Ahrefs "title too long" list was the wrong roadmap; GSC reframed the whole plan
+- **What happened:** Plan started as "fix 23 long titles + 7 long metas." Pulling live GSC (API + user export) showed the title-length pages barely overlap the pages that earn impressions. Real picture: ~77k impr/90d but 0.27% CTR; ~63% of impressions stuck on page 3-5 for the "youtube rank checker/tracker" cluster (already well-optimized on-page, so ceiling = domain authority), plus genuine page-1 pages converting ~0% CTR. Demoted the title project; reprioritized to CTR rescue on the autocomplete listicle, script-post cannibalization, off-page authority, and an honest "rank tracker" content section on the tool page (did NOT falsely relabel the checker as a tracker).
+- **Root cause:** an Ahrefs health flag (vanity, pixel-width truncation) was treated as a growth roadmap without grounding in GSC impression/CTR/position data first.
+- **Lesson:** Ahrefs audit flags = hygiene, not strategy. Always intersect with GSC (which pages earn impressions, at what position, for what queries) before deciding what to optimize. A title only matters if the page already earns impressions at a position where CTR is addressable.
+- **Prevention rule:** for any "improve SEO" task, pull live GSC per-URL (clicks/impr/CTR/position + top queries) and the live SERP landscape BEFORE writing any title/meta. Optimize by impression volume and position band, not by audit-tool flags. Never claim a tool feature it lacks (e.g. "Tracker") to chase a query; capture the query with honest content instead.
+- **Category:** process
