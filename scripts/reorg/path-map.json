@@ -1,0 +1,42 @@
+{
+  "_comment": "Single source of truth for the Jul-2026 docs+analytics reorg. Consumed by rewrite-refs.mjs (docs[].old token -> new path) and verify-reorg.mjs (all new paths must exist, no old paths remain).",
+  "docs": [
+    { "old": "blog-production-standard.md", "new": "docs/blog/blog-production-standard.md" },
+    { "old": "content-playbook.md", "new": "docs/blog/content-playbook.md" },
+    { "old": "style-guide.md", "new": "docs/blog/style-guide.md" },
+    { "old": "content-depth-framework.md", "new": "docs/blog/content-depth-framework.md" },
+    { "old": "blog-strategy-lessons.md", "new": "docs/blog/blog-strategy-lessons.md" },
+
+    { "old": "ai-seo-guide.md", "new": "docs/seo/ai-seo-guide.md" },
+    { "old": "seo-rules.md", "new": "docs/seo/seo-rules.md" },
+    { "old": "seo-audit-log.md", "new": "docs/seo/seo-audit-log.md" },
+    { "old": "ms-clarity-strategy.md", "new": "docs/seo/ms-clarity-strategy.md" },
+    { "old": "_memory-url-rules.md", "new": "docs/seo/_memory-url-rules.md" },
+    { "old": "redirects-log.txt", "new": "docs/seo/redirects-log.txt" },
+
+    { "old": "growth-strategy.md", "new": "docs/strategy/growth-strategy.md" },
+    { "old": "ranking-checker-amplification-strategy.md", "new": "docs/strategy/ranking-checker-amplification-strategy.md" },
+    { "old": "analytics-toolkit.md", "new": "docs/strategy/analytics-toolkit.md" },
+    { "old": "reddit-marketing-playbook.md", "new": "docs/strategy/reddit-marketing-playbook.md" },
+
+    { "old": "content-audit-playbook.md", "new": "docs/audits/content-audit-playbook.md" },
+    { "old": "sellontube-tools-audit-playbook.md", "new": "docs/audits/sellontube-tools-audit-playbook.md" },
+    { "old": "audit-findings-2026-04-22.md", "new": "docs/audits/reports/2026-04-22/audit-findings-2026-04-22.md" },
+    { "old": "audit-run-log-2026-04-22.md", "new": "docs/audits/reports/2026-04-22/audit-run-log-2026-04-22.md" },
+    { "old": "tools-audit-findings-2026-04-22.md", "new": "docs/audits/reports/2026-04-22/tools-audit-findings-2026-04-22.md" },
+    { "old": "tools-audit-run-log-2026-04-22.md", "new": "docs/audits/reports/2026-04-22/tools-audit-run-log-2026-04-22.md" },
+
+    { "old": "youtube-for-audit.txt", "new": "docs/pseo/youtube-for-audit.txt" },
+
+    { "old": "youtube-video-keyword-finder-spec.md", "new": "docs/specs/youtube-video-keyword-finder-spec.md" }
+  ],
+  "data": [
+    { "old": "research/ahrefs report", "new": "research/analytics/ahrefs" },
+    { "old": "research/google search console data", "new": "research/analytics/gsc" },
+    { "old": "research/gsc_all_queries.csv", "new": "research/analytics/gsc/gsc_all_queries.csv" },
+    { "old": "research/gsc_opportunities.csv", "new": "research/analytics/gsc/gsc_opportunities.csv" },
+    { "old": "research/gsc_queries_28d.csv", "new": "research/analytics/gsc/gsc_queries_28d.csv" },
+    { "old": "research/gsc_raw_90d.json", "new": "research/analytics/gsc/gsc_raw_90d.json" }
+  ],
+  "stays_at_root": ["CLAUDE.md", "README.md", "DOCS.md", "LICENSE.md", "mistakes-lessons.md"]
+}

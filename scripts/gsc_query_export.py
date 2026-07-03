@@ -1,6 +1,6 @@
 """
 Pull Google Search Console query data for the past 28 days.
-Outputs CSV to research/gsc_queries_28d.csv and prints top 50 to stdout.
+Outputs CSV to research/analytics/gsc/gsc_queries_28d.csv and prints top 50 to stdout.
 """
 
 import csv
@@ -14,7 +14,7 @@ from googleapiclient.discovery import build
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(SCRIPT_DIR)
 CREDENTIALS_FILE = os.path.join(SCRIPT_DIR, "credentials.json")
-OUTPUT_CSV = os.path.join(REPO_ROOT, "research", "gsc_queries_28d.csv")
+OUTPUT_CSV = os.path.join(REPO_ROOT, "research", "analytics", "gsc", "gsc_queries_28d.csv")
 
 SITE_URL = "sc-domain:sellontube.com"
 SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
