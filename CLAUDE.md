@@ -4,6 +4,27 @@
 
 SellonTube is a static marketing site built with Astro 5, Tailwind CSS, and MDX, deployed on Netlify. Target audience: B2B founders and SaaS operators evaluating YouTube for customer acquisition.
 
+## Where docs live (filing convention)
+
+Project docs are organized into topic folders. `DOCS.md` is the full index; start there. Do not
+drop new docs at the repo root. File new work as follows:
+
+| Kind of doc | Goes in |
+|---|---|
+| Blog / writing standards (production, playbook, style, depth, lessons) | `docs/blog/` |
+| SEO + AEO (SEO rules, AI-citation guide, audit log, URL rules) | `docs/seo/` |
+| Growth / channel strategy (growth SSOT, amplification, reddit) | `docs/strategy/` |
+| Audit **playbooks** (reusable) | `docs/audits/`; dated audit **reports** → `docs/audits/reports/<date>/` |
+| pSEO notes (content itself is wired in `src/`) | `docs/pseo/` |
+| Tool / feature specs | `docs/specs/` |
+| SOPs / templates | `docs/sops/` and `docs/templates/` |
+| Ahrefs / GSC exports | `research/analytics/ahrefs/` and `research/analytics/gsc/` |
+
+Stays at repo root (do not move): `CLAUDE.md`, `README.md`, `DOCS.md`, `LICENSE.md`,
+`mistakes-lessons.md`. Untouched, own structure: `src/` (the sitemap), `shopify-app-marketing/`,
+`research/keywords/` (scripts hardcode its path). When you add a doc, add a one-line pointer to
+`DOCS.md`.
+
 ## Project Ethos: Simple, Robust, Pragmatic, Non-hacky
 
 Every decision — new feature, dependency, abstraction, refactor — must pass through these four filters:
