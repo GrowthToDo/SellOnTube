@@ -29,10 +29,10 @@ If it could appear on VidIQ or TubeBuddy without modification, reframe it. See `
 
 | Doc | What it covers |
 |---|---|
-| `style-guide.md` | Em-dash ban, AI pattern detection, sentence structure, formatting fixes #1-#21 |
-| `content-playbook.md` | Quality standards, priority score formula, excerpt rules, quality checklist |
-| `ai-seo-guide.md` | AEO/GEO content blocks, citation patterns, author bio requirements |
-| `content-depth-framework.md` | Word count ranges by intent, editorial checklist, AI readability rules |
+| `docs/blog/style-guide.md` | Em-dash ban, AI pattern detection, sentence structure, formatting fixes #1-#21 |
+| `docs/blog/content-playbook.md` | Quality standards, priority score formula, excerpt rules, quality checklist |
+| `docs/seo/ai-seo-guide.md` | AEO/GEO content blocks, citation patterns, author bio requirements |
+| `docs/blog/content-depth-framework.md` | Word count ranges by intent, editorial checklist, AI readability rules |
 
 ## Banned patterns (quick checklist)
 
@@ -43,4 +43,4 @@ If it could appear on VidIQ or TubeBuddy without modification, reframe it. See `
 - Filler: "In today's digital landscape", "Now more than ever"
 - Jargon the ICP wouldn't search: "High-LTV", "Compounding Flywheel"
 
-Full banned list: `style-guide.md` Fix #2 + Fix #3.
+Full banned list: `docs/blog/style-guide.md` Fix #2 + Fix #3.

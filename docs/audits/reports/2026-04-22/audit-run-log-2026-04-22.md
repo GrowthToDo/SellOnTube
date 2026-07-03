@@ -4,7 +4,7 @@
 - **Time:** 2026-04-22
 - **Scope:** 6 blog posts for impressions amplification
 - **GSC MCP:** Not connected this session — used CSV exports from `research/` directory
-- **Strategy doc:** `sellontube-strategy-framework.md` not found; used `growth-strategy.md` for positioning context
+- **Strategy doc:** `sellontube-strategy-framework.md` not found; used `docs/strategy/growth-strategy.md` for positioning context
 - **Playbook:** No prior playbook exists; will create in Phase 4
 
 ## Phase 1: Discovery & Diagnosis
@@ -13,7 +13,7 @@
 - Read GSC CSV exports: `gsc_raw_90d.json`, `gsc_all_queries.csv`, `gsc_opportunities.csv`
 - Confirmed blog source files in `src/data/post/` (not `src/content/blog/`)
 - Read all 6 post frontmatter for metadata
-- Read `growth-strategy.md` for positioning context
+- Read `docs/strategy/growth-strategy.md` for positioning context
 
 ### GSC Data Summary (from CSV exports)
 | Post | GSC Impressions (90d) | Notes |
@@ -57,7 +57,7 @@
 | 6 | ~6 | ~2 | ~4 | 17 |
 
 ### Artifacts produced
-- `audit-findings-2026-04-22.md` — full diagnosis document with all 6 cards + cross-post synthesis
+- `docs/audits/reports/2026-04-22/audit-findings-2026-04-22.md` — full diagnosis document with all 6 cards + cross-post synthesis
 
 ### Decisions & Rationale
 1. **Post 1 → KILL:** No viable keyword + severe cannibalization + thin content + zero ROI potential. User confirmed kills are acceptable with good logic.

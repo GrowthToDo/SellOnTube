@@ -10,11 +10,11 @@ Produce a full first draft from an approved brief or topic.
 
 ### 1. Load writing standards
 Read these files before writing (do not skip):
-1. `style-guide.md`
-2. `content-playbook.md`
-3. `content-depth-framework.md`
-4. `seo-rules.md`
-5. `ai-seo-guide.md`
+1. `docs/blog/style-guide.md`
+2. `docs/blog/content-playbook.md`
+3. `docs/blog/content-depth-framework.md`
+4. `docs/seo/seo-rules.md`
+5. `docs/seo/ai-seo-guide.md`
 6. `docs/icp.md`
 7. One existing post from `src/data/post/` for format/tone calibration
 

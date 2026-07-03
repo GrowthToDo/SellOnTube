@@ -2,7 +2,7 @@
 
 The page-architecture standard for comparison, alternatives, and "best tools" content. Source of proven structure: a practitioner getting strong LLM citations, adapted to SellonTube's B2B-YouTube model.
 
-**Read this alongside `ai-seo-guide.md`.** That file is the single source of truth for AEO mechanics (platform behavior, citation-ready language rules, media policy, schema, robots.txt, GEO scoring). This file owns only the page structure for comparison-type posts. Where they overlap, `ai-seo-guide.md` wins.
+**Read this alongside `docs/seo/ai-seo-guide.md`.** That file is the single source of truth for AEO mechanics (platform behavior, citation-ready language rules, media policy, schema, robots.txt, GEO scoring). This file owns only the page structure for comparison-type posts. Where they overlap, `docs/seo/ai-seo-guide.md` wins.
 
 ---
 
@@ -16,7 +16,7 @@ Use it for any post whose primary job is helping a reader choose between tools o
 | **Top alternatives to X** | "vidIQ alternatives for business" | Problems-with-X arc + alternatives listicle |
 | **Best tools for X** | `best-youtube-rank-checker-tools-for-business` | Evaluation criteria + ranked listicle |
 
-Do NOT apply the full per-tool template to pure strategy, how-to, or educational posts. Those follow `blog-production-standard.md` + `ai-seo-guide.md`. Forcing a rigid tool template on a strategy post produces filler, which breaks the project ethos.
+Do NOT apply the full per-tool template to pure strategy, how-to, or educational posts. Those follow `docs/blog/blog-production-standard.md` + `docs/seo/ai-seo-guide.md`. Forcing a rigid tool template on a strategy post produces filler, which breaks the project ethos.
 
 ---
 
@@ -25,7 +25,7 @@ Do NOT apply the full per-tool template to pure strategy, how-to, or educational
 The proven checklist assumes an affiliate site reviewing other companies' tools. SellonTube is different: it has its **own** 14 tools AND it compares **competitor** tools (vidIQ, TubeBuddy, etc.). Apply the rules accordingly:
 
 1. **Own tools vs competitor tools.** For competitor tools, cite real third-party ratings (see Third-Party Validation). For SellonTube's own tools, use first-party proof (usage data, outcomes, real ratings where a listing exists). Never present a SellonTube tool as a neutral third-party pick without disclosing it is ours.
-2. **Positioning axis is "buyer-intent / business outcomes," not "views / creator growth."** Every comparison frames the decision around `customer acquisition` and `buyer-intent video` (canonical entity terms, see `content-depth-framework.md`). This is the angle competitors do not cover and the reason LLMs should cite us.
+2. **Positioning axis is "buyer-intent / business outcomes," not "views / creator growth."** Every comparison frames the decision around `customer acquisition` and `buyer-intent video` (canonical entity terms, see `docs/blog/content-depth-framework.md`). This is the angle competitors do not cover and the reason LLMs should cite us.
 3. **Honesty builds citation trust.** Name where competitor tools genuinely win and where SellonTube tools fall short. Balanced tradeoffs get cited; one-sided promotion does not.
 
 ---
@@ -36,7 +36,7 @@ A comparison post must contain these sections, in this order. Each is independen
 
 ### 1. Answer-first opening
 - One-sentence direct verdict in the first sentence (which option wins, for whom).
-- Follow `ai-seo-guide.md` Citation-Ready Language Rules (mirror the title in the opening sentence, no figurative throat-clearing).
+- Follow `docs/seo/ai-seo-guide.md` Citation-Ready Language Rules (mirror the title in the opening sentence, no figurative throat-clearing).
 - Then a **Key Takeaways** block (styled box) with 3 to 5 bullets.
 
 ### 2. Key Takeaways table
@@ -102,13 +102,13 @@ A styled box with 3 to 5 decision questions, each with branching recommendations
 Numbered anti-patterns + the corrective action. Adds practical, citable value.
 
 ### 10. Categorized FAQ
-Organize into 3 to 5 thematic groups (Basics, Comparisons, Pricing & free options, Performance, etc.), 2 to 4 questions each. Not a flat list. Each answer self-contained and citation-ready. Follow FAQ rules in `ai-seo-guide.md` Section 9 and the visible-FAQ requirement (FAQ must be written in the MDX body, not frontmatter-only).
+Organize into 3 to 5 thematic groups (Basics, Comparisons, Pricing & free options, Performance, etc.), 2 to 4 questions each. Not a flat list. Each answer self-contained and citation-ready. Follow FAQ rules in `docs/seo/ai-seo-guide.md` Section 9 and the visible-FAQ requirement (FAQ must be written in the MDX body, not frontmatter-only).
 
 ---
 
 ## Cross-cutting requirements
 
-These apply to the whole post. Most are governed by `ai-seo-guide.md`; this is the comparison-specific application.
+These apply to the whole post. Most are governed by `docs/seo/ai-seo-guide.md`; this is the comparison-specific application.
 
 ### Third-Party Validation
 - **Competitor tools:** cite specific ratings from named platforms with a direct link to the review page, not the homepage (for example "4.6/5 on G2 from 1,200+ reviews"). Include an honest user-quote snippet where it sharpens the analysis.
@@ -123,24 +123,24 @@ These apply to the whole post. Most are governed by `ai-seo-guide.md`; this is t
 ### Internal cluster links
 - Link the first mention of each competitor tool to our existing review or comparison post for it, where one exists.
 - Every comparison post links to 2 to 3 of our deeper related pieces (1:1 comparisons, the relevant tool page, the strategy pillar).
-- Goal: a topical cluster that signals comprehensive coverage. See the comparison hub in `growth-strategy.md` once formalized.
+- Goal: a topical cluster that signals comprehensive coverage. See the comparison hub in `docs/strategy/growth-strategy.md` once formalized.
 
 ### Media (perf-safe, required)
-Per `ai-seo-guide.md` media policy: every comparison post includes a relevant tool screenshot per tool and at least one relevant video. Apply the perf rules (lazy-load, click-to-load YouTube facade, reserved dimensions to prevent CLS, descriptive alt text and captions). Media must illustrate, never pad. A screenshot with no informational value is filler and should be cut.
+Per `docs/seo/ai-seo-guide.md` media policy: every comparison post includes a relevant tool screenshot per tool and at least one relevant video. Apply the perf rules (lazy-load, click-to-load YouTube facade, reserved dimensions to prevent CLS, descriptive alt text and captions). Media must illustrate, never pad. A screenshot with no informational value is filler and should be cut.
 
 ### Authority and freshness
 - Visible **"Last updated [date]"** near the top.
 - One-line methodology note ("how we tested / evaluated"), linking the methodology page where it exists.
-- Author byline auto-renders from frontmatter; do not duplicate in body (see `ai-seo-guide.md` Section 11).
+- Author byline auto-renders from frontmatter; do not duplicate in body (see `docs/seo/ai-seo-guide.md` Section 11).
 
 ### Schema
-- `Article` (always). `Review` or `ItemList` where the post rates tools (matches visible ratings only). `FAQPage` for the FAQ block (helps Perplexity and Google understanding; no SERP rich result since May 2026). Match schema to visible content only. See `ai-seo-guide.md` Section 13.
+- `Article` (always). `Review` or `ItemList` where the post rates tools (matches visible ratings only). `FAQPage` for the FAQ block (helps Perplexity and Google understanding; no SERP rich result since May 2026). Match schema to visible content only. See `docs/seo/ai-seo-guide.md` Section 13.
 
 ---
 
 ## Pre-publish comparison checklist (hard gate)
 
-Agent 05 fails the post if any required item is missing. This extends the general citability gate in `ai-seo-guide.md`.
+Agent 05 fails the post if any required item is missing. This extends the general citability gate in `docs/seo/ai-seo-guide.md`.
 
 - [ ] Answer-first opening with one-sentence verdict + Key Takeaways block
 - [ ] Key Takeaways table (3-5 rows) before the body
@@ -157,5 +157,5 @@ Agent 05 fails the post if any required item is missing. This extends the genera
 - [ ] Relevant screenshot per tool + at least one relevant video, all perf-safe
 - [ ] Visible "Last updated" date + methodology note
 - [ ] Canonical entity terms used (buyer-intent video, YouTube acquisition channel, customer acquisition, B2B YouTube)
-- [ ] Citation-ready language rules applied (see `ai-seo-guide.md`)
+- [ ] Citation-ready language rules applied (see `docs/seo/ai-seo-guide.md`)
 - [ ] No em dashes; banned AI phrases checked

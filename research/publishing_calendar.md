@@ -4,7 +4,7 @@
 **Last updated:** 2026-05-27 (v4: full status audit. Published count 25→35, schedule gap Jun 1 identified, GSC cross-ref done.)
 **Cadence:** 5 posts/week (Mon-Fri)
 **pSEO publishing:** PAUSED
-**Quality bar:** Every post meets `blog-production-standard.md` + `style-guide.md` + `content-playbook.md` from first draft
+**Quality bar:** Every post meets `docs/blog/blog-production-standard.md` + `docs/blog/style-guide.md` + `docs/blog/content-playbook.md` from first draft
 
 ---
 

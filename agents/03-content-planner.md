@@ -16,8 +16,8 @@ Build and maintain a rolling 4-week content calendar. Enforce cadence rules. Nev
 ## Cadence rules (non-negotiable)
 - **Blog posts:** up to 5/week. pSEO is paused -- all publishing velocity goes to blog.
 - **pSEO pages:** drip publishing is PAUSED. Existing live pages remain indexed.
-- Quality bar unchanged -- every post must meet content-playbook.md standards.
-- See `growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
+- Quality bar unchanged -- every post must meet `docs/blog/content-playbook.md` standards.
+- See `docs/strategy/growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
 
 ## Execution steps
 

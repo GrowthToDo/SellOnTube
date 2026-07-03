@@ -12,7 +12,7 @@ This is the only document agents and humans need to read before creating or upda
 
 **The principle:** Build for Google first (Layer 1). Then add Layer 2 optimizations that also make content better for human readers. Never sacrifice Layer 1 quality for Layer 2 tricks.
 
-Read this alongside `seo-rules.md` (traditional SEO rules) before any content or technical SEO decision. For comparison, alternatives, and "best tools" posts, also read `agents/references/comparison-content-playbook.md` — it owns the page architecture for tool-comparison content; this file owns the AEO mechanics underneath it.
+Read this alongside `docs/seo/seo-rules.md` (traditional SEO rules) before any content or technical SEO decision. For comparison, alternatives, and "best tools" posts, also read `agents/references/comparison-content-playbook.md` — it owns the page architecture for tool-comparison content; this file owns the AEO mechanics underneath it.
 
 **Canonical homes (no rule lives in two places):**
 - Citability rules + pre-publish gate: Section 16 (this file).
@@ -20,8 +20,8 @@ Read this alongside `seo-rules.md` (traditional SEO rules) before any content or
 - Media policy: Section 18 (this file).
 - What actually gets cited at SellonTube (proven evidence): Section 19 (this file).
 - Comparison/listicle page structure: `comparison-content-playbook.md`.
-- Word-count and depth tiers: `content-depth-framework.md`.
-Other docs (`seo-rules.md`, `content-playbook.md`, `blog-production-standard.md`, `content-depth-framework.md`) point here for AEO; they do not restate the rules.
+- Word-count and depth tiers: `docs/blog/content-depth-framework.md`.
+Other docs (`docs/seo/seo-rules.md`, `docs/blog/content-playbook.md`, `docs/blog/blog-production-standard.md`, `docs/blog/content-depth-framework.md`) point here for AEO; they do not restate the rules.
 
 **Sources:**
 - https://developers.google.com/search/docs/appearance/ai-features

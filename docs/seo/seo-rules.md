@@ -47,8 +47,8 @@ Read this before any SEO decision. These rules override general SEO defaults.
 ## Blog Cadence
 
 - Up to 5 posts/week. pSEO is paused, so all publishing velocity goes to blog.
-- Quality bar unchanged -- every post must meet content-playbook.md standards.
-- See `growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
+- Quality bar unchanged -- every post must meet `docs/blog/content-playbook.md` standards.
+- See `docs/strategy/growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
 
 ---
 
@@ -101,9 +101,9 @@ SellonTube uses a two-layer approach:
 - **Layer 1 — Google (primary):** traditional SEO. Good SEO is AI SEO; no special tactics.
 - **Layer 2 — ChatGPT / Perplexity / Claude / Copilot (secondary):** citation mechanics apply.
 
-Full rules are canonical in `ai-seo-guide.md`: citability rules §16, citation-ready language §17, media policy §18, robots AI-bot allowlist §8, schema priority §13. Do not restate them here.
+Full rules are canonical in `docs/seo/ai-seo-guide.md`: citability rules §16, citation-ready language §17, media policy §18, robots AI-bot allowlist §8, schema priority §13. Do not restate them here.
 
-**FAQ Schema:** FAQPage is demoted (no SERP rich result). See `ai-seo-guide.md` §13 for current schema priority.
+**FAQ Schema:** FAQPage is demoted (no SERP rich result). See `docs/seo/ai-seo-guide.md` §13 for current schema priority.
 
 ---
 

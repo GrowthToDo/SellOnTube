@@ -8,10 +8,10 @@ All project documentation in one place. Start here.
 
 | Doc | Purpose |
 |---|---|
-| [`style-guide.md`](style-guide.md) | Writing rules: em-dash ban, AI pattern detection, sentence structure, tone. **Mandatory for ALL copy.** |
-| [`content-playbook.md`](content-playbook.md) | Quality standards: priority score formula, blog cadence, excerpt rules, quality checklist. |
-| [`seo-rules.md`](seo-rules.md) | SEO cheat sheet: URL structure, canonicals, redirects, pSEO IST timezone. **Read before any SEO decision.** |
-| [`ai-seo-guide.md`](ai-seo-guide.md) | AI citation optimisation: AEO/GEO content blocks, robot access, schema priority, monthly checklist. |
+| [`docs/blog/style-guide.md`](docs/blog/style-guide.md) | Writing rules: em-dash ban, AI pattern detection, sentence structure, tone. **Mandatory for ALL copy.** |
+| [`docs/blog/content-playbook.md`](docs/blog/content-playbook.md) | Quality standards: priority score formula, blog cadence, excerpt rules, quality checklist. |
+| [`docs/seo/seo-rules.md`](docs/seo/seo-rules.md) | SEO cheat sheet: URL structure, canonicals, redirects, pSEO IST timezone. **Read before any SEO decision.** |
+| [`docs/seo/ai-seo-guide.md`](docs/seo/ai-seo-guide.md) | AI citation optimisation: AEO/GEO content blocks, robot access, schema priority, monthly checklist. |
 
 ---
 
@@ -19,8 +19,8 @@ All project documentation in one place. Start here.
 
 | Doc | Purpose |
 |---|---|
-| [`growth-strategy.md`](growth-strategy.md) | **SINGLE SOURCE OF TRUTH** for growth strategy. Tools-first plan, tool specs, blog clusters, keyword tiers, backlink tactics, success metrics. |
-| [`seo-audit-log.md`](seo-audit-log.md) | Audit history, P0/P1/P2 fixes resolved, GSC indexation strategy. |
+| [`docs/strategy/growth-strategy.md`](docs/strategy/growth-strategy.md) | **SINGLE SOURCE OF TRUTH** for growth strategy. Tools-first plan, tool specs, blog clusters, keyword tiers, backlink tactics, success metrics. |
+| [`docs/seo/seo-audit-log.md`](docs/seo/seo-audit-log.md) | Audit history, P0/P1/P2 fixes resolved, GSC indexation strategy. |
 
 ---
 

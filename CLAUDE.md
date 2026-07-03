@@ -41,13 +41,13 @@ See `agents/08-microtool-builder.md` Phase 7 for full details.
 
 ## AEO / AI Citation (canonical)
 
-`ai-seo-guide.md` is the single source of truth for AI-search optimization. Do not restate AEO rules in other docs; point to the canonical sections:
+`docs/seo/ai-seo-guide.md` is the single source of truth for AI-search optimization. Do not restate AEO rules in other docs; point to the canonical sections:
 - **Section 16** = the five citability rules + the hard pre-publish citability gate.
 - **Section 17** = citation-ready language rules.
 - **Section 18** = media policy (every post: relevant image + video, perf-safe, never padding).
 - **Section 19** = what actually gets cited at SellonTube (proven archetype + 9 signals; visible-FAQ-in-body is the biggest gap).
 - `agents/references/comparison-content-playbook.md` = page structure for comparison / alternatives / best-tools posts.
-- `content-depth-framework.md` = word-count and depth tiers only.
+- `docs/blog/content-depth-framework.md` = word-count and depth tiers only.
 
 Agent 05 hard-fails any post that misses the Section 16 gate. Third-party ratings only where a real listing exists (never fabricated); SellonTube's own tools use first-party proof plus disclosure.
 
@@ -77,11 +77,11 @@ Agent 05 hard-fails any post that misses the Section 16 gate. Third-party rating
 
 - **Netlify redirect syntax:** `:placeholder` only works between `/` separators. For within-segment patterns (e.g. `/youtube-for-*`), use splat syntax: `from = "/youtube-for-*"` + `to = "/youtube-for/:splat"`.
 
-- **Read SEO docs before any SEO suggestion.** Check `seo-rules.md` and `seo-audit-log.md` first. Project-specific rules override general SEO knowledge.
+- **Read SEO docs before any SEO suggestion.** Check `docs/seo/seo-rules.md` and `docs/seo/seo-audit-log.md` first. Project-specific rules override general SEO knowledge.
 
-- **Style guide applies to ALL copy, not just new writing.** When any copy task is performed, check ALL existing copy on touched pages against `style-guide.md` and `content-playbook.md`. Grep for every banned pattern before finishing.
+- **Style guide applies to ALL copy, not just new writing.** When any copy task is performed, check ALL existing copy on touched pages against `docs/blog/style-guide.md` and `docs/blog/content-playbook.md`. Grep for every banned pattern before finishing.
 
-- **Callout box and table font sizes:** labels `0.7-0.8rem`, callout body text `0.85-0.9rem`, table text `0.95rem`. These are the sizes used in the actual HTML templates in `blog-production-standard.md`. Copy sizes from the templates, do not guess.
+- **Callout box and table font sizes:** labels `0.7-0.8rem`, callout body text `0.85-0.9rem`, table text `0.95rem`. These are the sizes used in the actual HTML templates in `docs/blog/blog-production-standard.md`. Copy sizes from the templates, do not guess.
 
 - **FAQ content must be written manually in MDX body.** Frontmatter `faqs` array ONLY generates schema.org FAQPage JSON-LD (invisible to readers). The visible FAQ section requires an `## FAQ` heading followed by `### Question` + paragraph answer for each item. Every other blog post does this manually. The template does NOT auto-render frontmatter FAQs.
 

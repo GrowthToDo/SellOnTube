@@ -47,7 +47,7 @@ Read these files in order. Do not start building until all are read.
 
 8. **`CLAUDE.md`** — Read and apply all build standards, especially: never return HTTP 502, use `gemini-flash-latest` (never a pinned version), `maxOutputTokens` at least 2048, always include `geminiStatus` and `detail` in error responses.
 
-9. **`style-guide.md`** — Apply all copy rules: no em-dashes, no filler openers, no banned AI phrases, active voice, consultant tone.
+9. **`docs/blog/style-guide.md`** — Apply all copy rules: no em-dashes, no filler openers, no banned AI phrases, active voice, consultant tone.
 
 10. **Check `.env` or Netlify env vars** for: `YOUTUBE_API_KEY` (must exist), `GEMINI_API_KEY` (must exist), `LOOPS_API_KEY` (must exist).
 
@@ -716,7 +716,7 @@ In the results or related tools area, add:
 - **Use `gemini-flash-latest` model.** Never pin to a versioned model like `gemini-2.0-flash` or `gemini-2.5-flash`.
 - **`maxOutputTokens` must be at least 2048.** Gemini 2.5-flash uses thinking tokens that count against the limit.
 - **No em-dashes in any copy.** Use commas, periods, or colons instead. After writing all copy, grep the file for em-dashes and fix any found.
-- **No banned AI phrases.** No "Moreover," "Furthermore," "Let's dive in," "It's worth noting." Read `style-guide.md` for the full list.
+- **No banned AI phrases.** No "Moreover," "Furthermore," "Let's dive in," "It's worth noting." Read `docs/blog/style-guide.md` for the full list.
 - **Present conflicts as questions, not decisions.** If something is unclear or contradicts these instructions, ask.
 - **After building, add the tool to `/tools/` listing and footer.** This is part of building the tool, not a follow-up task.
 - **After building, add cross-tool CTAs** on ranking checker, SEO tool, and channel audit pages. This is part of building the tool.
@@ -798,7 +798,7 @@ After the tool is built and deployed:
    - Do NOT create a new blog post. The companion content already exists.
 
 4. **Community launch:**
-   - Reddit posts per `reddit-marketing-playbook.md` in relevant subreddits (r/NewTubers, r/youtubers, r/SmallYTChannel)
+   - Reddit posts per `docs/strategy/reddit-marketing-playbook.md` in relevant subreddits (r/NewTubers, r/youtubers, r/SmallYTChannel)
    - Position around the VidIQ/TubeBuddy backlash: "I built a free tool because I was tired of VidIQ making up numbers"
 
 ---

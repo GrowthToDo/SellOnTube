@@ -66,7 +66,7 @@ For every post being edited:
 - [ ] H1 matches title tag
 - [ ] H2s use keyword variations naturally (not stuffed)
 - [ ] Intro paragraph contains primary keyword in first 100 words
-- [ ] Word count meets content-depth-framework.md target for the page type
+- [ ] Word count meets `docs/blog/content-depth-framework.md` target for the page type
 - [ ] At least one table, one callout box, and one comparison or data point
 - [ ] Key takeaways box near the top
 - [ ] Table of contents with anchor links (for posts 1,500+ words)
@@ -103,7 +103,7 @@ After killing or retargeting a post:
 After changes are live:
 
 1. Submit each modified URL to GSC URL Inspection for re-crawl
-2. Log the audit in growth-strategy.md (Blog Content Audit section)
+2. Log the audit in `docs/strategy/growth-strategy.md` (Blog Content Audit section)
 3. Set calendar reminder to re-check GSC data at 30 days and 90 days
 4. Compare new impressions against projections in the audit findings doc
 

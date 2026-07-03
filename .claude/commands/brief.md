@@ -31,10 +31,10 @@ Use the template from `docs/templates/content-brief-template.md`. Fill in all fi
 - ICP angle (one sentence: why does this matter for a B2B founder acquiring customers via YouTube?)
 - Competing pages (from SERP data) + what they're missing
 - Internal links to include (check `docs/templates/internal-linking-map.md` + `src/pages/tools/`)
-- Target word count (per `content-depth-framework.md` decision tree)
+- Target word count (per `docs/blog/content-depth-framework.md` decision tree)
 
 ### 5. Determine coverage level
-Read `content-depth-framework.md`. Apply the depth decision tree:
+Read `docs/blog/content-depth-framework.md`. Apply the depth decision tree:
 - Deep (2,000-4,000+): strategy, framework, multi-step process topics
 - Medium (1,200-2,200): how-to guides, single-concept explainers
 - Short (500-1,200): listicles, comparisons, quick answers

@@ -207,7 +207,7 @@ git commit -m "fix: agent 08 — replace Claude API reference with Gemini Flash 
 ### Task 4: Fix growth-strategy.md — Wrong API Reference
 
 **Files:**
-- Modify: `growth-strategy.md`
+- Modify: `docs/strategy/growth-strategy.md`
 
 - [ ] **Step 1: Locate the reference**
 
@@ -355,10 +355,10 @@ All project documentation in one place. Start here.
 
 | Doc | Purpose |
 |---|---|
-| [`style-guide.md`](style-guide.md) | Writing rules: em-dash ban, AI pattern detection, sentence structure, tone. **Mandatory for ALL copy.** |
-| [`content-playbook.md`](content-playbook.md) | Quality standards: priority score formula, blog cadence, excerpt rules, quality checklist. |
-| [`seo-rules.md`](seo-rules.md) | SEO cheat sheet: URL structure, canonicals, redirects, pSEO IST timezone. **Read before any SEO decision.** |
-| [`ai-seo-guide.md`](ai-seo-guide.md) | AI citation optimisation: AEO/GEO content blocks, robot access, schema priority, monthly checklist. |
+| [`docs/blog/style-guide.md`](docs/blog/style-guide.md) | Writing rules: em-dash ban, AI pattern detection, sentence structure, tone. **Mandatory for ALL copy.** |
+| [`docs/blog/content-playbook.md`](docs/blog/content-playbook.md) | Quality standards: priority score formula, blog cadence, excerpt rules, quality checklist. |
+| [`docs/seo/seo-rules.md`](docs/seo/seo-rules.md) | SEO cheat sheet: URL structure, canonicals, redirects, pSEO IST timezone. **Read before any SEO decision.** |
+| [`docs/seo/ai-seo-guide.md`](docs/seo/ai-seo-guide.md) | AI citation optimisation: AEO/GEO content blocks, robot access, schema priority, monthly checklist. |
 
 ---
 
@@ -366,9 +366,9 @@ All project documentation in one place. Start here.
 
 | Doc | Purpose |
 |---|---|
-| [`growth-strategy.md`](growth-strategy.md) | Three pillars (pSEO, microtools, blog), cadence rules, backlink tactics, success metrics. |
+| [`docs/strategy/growth-strategy.md`](docs/strategy/growth-strategy.md) | Three pillars (pSEO, microtools, blog), cadence rules, backlink tactics, success metrics. |
 | [`microtool-strategy.md`](microtool-strategy.md) | Full tool pipeline (7 tools), build order, keyword targets, Gemini Flash integration pattern. |
-| [`seo-audit-log.md`](seo-audit-log.md) | Audit history, P0/P1/P2 fixes resolved, GSC indexation strategy. |
+| [`docs/seo/seo-audit-log.md`](docs/seo/seo-audit-log.md) | Audit history, P0/P1/P2 fixes resolved, GSC indexation strategy. |
 
 ---
 
@@ -692,7 +692,7 @@ mkdir -p docs/sops
   - Write complete MDX with all required frontmatter fields
 
 - [ ] **7. Featured image created**
-  - Create SVG matching Fix #17 spec from `style-guide.md`:
+  - Create SVG matching Fix #17 spec from `docs/blog/style-guide.md`:
     - Canvas: `viewBox="0 0 1200 675" width="1200" height="675"` (true 16:9)
     - Background: `#030620` → `#0a1540` gradient
     - Centered layout: all text at `text-anchor="middle" x="600"`
@@ -1040,7 +1040,7 @@ Agent 01 flags pages in position 5–20 with low CTR. These are the highest-ROI 
   - `[date] — CTR rewrite: [slug] — old title: "[old]" → new: "[new]"`
 
 - [ ] **10. Re-check in GSC after 4 weeks**
-  - Did CTR improve? Note outcome in `seo-audit-log.md`
+  - Did CTR improve? Note outcome in `docs/seo/seo-audit-log.md`
   - If no improvement after 4 weeks: try the second title option
 ```
 
@@ -1064,7 +1064,7 @@ git commit -m "docs: add CTR optimization SOP"
 # Monthly AI SEO Checklist
 
 > **Owner: Agent 07.** Run once per month as part of the weekly SEO review.
-> Extracted from `ai-seo-guide.md` §10 — that section is the canonical source; this is the executable SOP.
+> Extracted from `docs/seo/ai-seo-guide.md` §10 — that section is the canonical source; this is the executable SOP.
 
 ## Run This Monthly
 
@@ -1344,7 +1344,7 @@ After "### Phase 3 — Auto-QA" header (but before the text "After writing, hand
 ```
 ### Phase 3.5 — Featured Image Creation (before Agent 05 handoff)
 
-Create the featured image SVG before running QA. Requirements (from `style-guide.md` Fix #17):
+Create the featured image SVG before running QA. Requirements (from `docs/blog/style-guide.md` Fix #17):
 
 - Canvas: `viewBox="0 0 1200 675" width="1200" height="675"` (true 16:9)
 - Background gradient: `#030620` → `#0a1540`
@@ -1602,7 +1602,7 @@ After Step 5 (Output), add:
 
 ```
 ### Step 6 — Monthly AI SEO Checklist (run once per month)
-If this is the first weekly review of the month, run `docs/sops/monthly-ai-seo-checklist.md` in full. Log completions in `seo-audit-log.md`.
+If this is the first weekly review of the month, run `docs/sops/monthly-ai-seo-checklist.md` in full. Log completions in `docs/seo/seo-audit-log.md`.
 ```
 
 - [ ] **Step 4: Verify**

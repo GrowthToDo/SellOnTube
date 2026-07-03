@@ -49,5 +49,5 @@ git push
   - Cosmetic fixes (typos, formatting) do NOT warrant a publishDate change
   - New sections, new stats, new FAQ = update publishDate
 
-- [ ] **10. Note in seo-audit-log.md**
+- [ ] **10. Note in `docs/seo/seo-audit-log.md`**
   - Add one line: `[date] — Refreshed [slug]: [what changed]`

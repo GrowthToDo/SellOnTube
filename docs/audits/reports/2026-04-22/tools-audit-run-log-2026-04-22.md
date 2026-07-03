@@ -5,7 +5,7 @@
 | Timestamp | Action | Details |
 |---|---|---|
 | 14:00 | Branch created | `tools-optimisation` from `main` |
-| 14:05 | Strategy doc read | `growth-strategy.md` — noted Channel Audit + Competitor Analysis killed in strategy |
+| 14:05 | Strategy doc read | `docs/strategy/growth-strategy.md` — noted Channel Audit + Competitor Analysis killed in strategy |
 | 14:08 | Contextual discovery started | Sitemap scan (403 from Cloudflare, read from repo), homepage/tools hub positioning, competitive baseline |
 | 14:10 | GSC data pulled | Python script via service account, 90-day window, all 6 URLs. 122 total impressions, 1 click. |
 | 14:15 | GSC results per page | Tag: 7 imp, Script: 6, Description: 8, Channel Audit: 9, Competitor Analysis: 18, Transcript: 74 |
@@ -18,7 +18,7 @@
 | 14:39 | Tag Generator agent returned | Verdict: internal link starvation + content expansion needed. 5,400 vol keyword. |
 | 14:45 | Cross-page synthesis | Cannibalization matrix (clean), keyword ownership map, 6 cross-page patterns identified |
 | 14:50 | Self-audit checklist | All 14 checks passed |
-| 14:55 | Findings doc written | `tools-audit-findings-2026-04-22.md` |
+| 14:55 | Findings doc written | `docs/audits/reports/2026-04-22/tools-audit-findings-2026-04-22.md` |
 
 ## Sub-Agent Summary
 

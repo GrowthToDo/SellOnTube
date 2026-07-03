@@ -1,7 +1,7 @@
 # Tools Impressions Audit Playbook
 
 **Purpose:** Repeatable process for auditing and improving organic impressions on SellonTube tool pages.
-**First run:** 2026-04-22. Results in `tools-audit-findings-2026-04-22.md`.
+**First run:** 2026-04-22. Results in `docs/audits/reports/2026-04-22/tools-audit-findings-2026-04-22.md`.
 **Re-run cadence:** Quarterly, or when a tool page has been live 90+ days with under 100 impressions.
 
 ---
@@ -113,7 +113,7 @@ Before presenting findings, verify:
 
 ## Phase 3: Strategy Doc Update
 
-After all per-page edits are applied, add a section to `growth-strategy.md`:
+After all per-page edits are applied, add a section to `docs/strategy/growth-strategy.md`:
 
 1. Audit summary table (page, edits, primary keyword, projected lift)
 2. Cross-page patterns fixed

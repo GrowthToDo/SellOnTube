@@ -151,7 +151,7 @@ The Video Ideas Generator (140 vol keyword) already pulls 142 sessions as the #2
 
 New blog posts resume after tools 1-4 are live. Existing blogs continue to accrue rankings.
 
-**Cadence:** Up to 5 posts/week. pSEO is paused, so all publishing velocity goes to blog. Quality bar unchanged -- every post must meet content-playbook.md standards.
+**Cadence:** Up to 5 posts/week. pSEO is paused, so all publishing velocity goes to blog. Quality bar unchanged -- every post must meet `docs/blog/content-playbook.md` standards.
 
 ### Current Blog Schedule (Apr 20 - Apr 28, 2026)
 
@@ -308,7 +308,7 @@ This is the #1 constraint on organic growth. Without backlinks, Google has littl
 
 Google's Helpful Content system rewards real brand signals -- direct searches, links from real sites, social mentions. Distribution feeds into Google's trust model.
 
-See `content-playbook.md` Section 7 for recommended channels, repurposing strategy, and the underutilized channel mapping framework. Pick 2 channels and commit.
+See `docs/blog/content-playbook.md` Section 7 for recommended channels, repurposing strategy, and the underutilized channel mapping framework. Pick 2 channels and commit.
 
 ---
 
@@ -349,7 +349,7 @@ Check weekly/monthly:
 
 ## Blog Content Audit (2026-04-22)
 
-Comprehensive impressions audit of 6 underperforming blog posts. Data source: live GSC API (90-day window). Full diagnosis in `audit-findings-2026-04-22.md`.
+Comprehensive impressions audit of 6 underperforming blog posts. Data source: live GSC API (90-day window). Full diagnosis in `docs/audits/reports/2026-04-22/audit-findings-2026-04-22.md`.
 
 ### Actions Taken
 
@@ -385,7 +385,7 @@ Comprehensive impressions audit of 6 underperforming blog posts. Data source: li
 
 ## Tools Impressions Audit (2026-04-22)
 
-Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (90-day window ending 2026-04-22), SERP analysis, competitor DR profiling. Full diagnosis in `tools-audit-findings-2026-04-22.md`. Run log in `tools-audit-run-log-2026-04-22.md`.
+Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (90-day window ending 2026-04-22), SERP analysis, competitor DR profiling. Full diagnosis in `docs/audits/reports/2026-04-22/tools-audit-findings-2026-04-22.md`. Run log in `docs/audits/reports/2026-04-22/tools-audit-run-log-2026-04-22.md`.
 
 **Baseline:** 122 total impressions, 1 click across 6 pages in 90 days.
 
@@ -423,7 +423,7 @@ Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (
 
 ## AI Search Visibility (Pillar E)
 
-**Approach:** Two-layer framework. See `ai-seo-guide.md` for full details.
+**Approach:** Two-layer framework. See `docs/seo/ai-seo-guide.md` for full details.
 
 **Layer 1 -- Google AI Overviews:** No special optimization. Every SEO improvement above automatically improves AI Overviews visibility. Google's official position (May 2026): traditional SEO best practices ARE AI optimization.
 
@@ -458,13 +458,13 @@ Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (
 ## Reference Files
 
 - **Keyword data:** `research/keywords/sot_master.csv` (single source of truth for all content decisions)
-- **Writing quality:** `content-playbook.md` (quality benchmark for blog posts)
-- **Style rules:** `style-guide.md` (sentence-level writing rules)
-- **SEO rules:** `seo-rules.md` (technical SEO constraints)
-- **Content depth:** `content-depth-framework.md` (word count targets by page type)
-- **Content audit:** `content-audit-playbook.md` (how to diagnose and fix underperforming blog posts)
-- **Tools audit:** `tools-audit-findings-2026-04-22.md` (per-page diagnosis, keyword ownership map, priority ranking)
-- **AI visibility:** `ai-seo-guide.md` (AEO/GEO rules)
+- **Writing quality:** `docs/blog/content-playbook.md` (quality benchmark for blog posts)
+- **Style rules:** `docs/blog/style-guide.md` (sentence-level writing rules)
+- **SEO rules:** `docs/seo/seo-rules.md` (technical SEO constraints)
+- **Content depth:** `docs/blog/content-depth-framework.md` (word count targets by page type)
+- **Content audit:** `docs/audits/content-audit-playbook.md` (how to diagnose and fix underperforming blog posts)
+- **Tools audit:** `docs/audits/reports/2026-04-22/tools-audit-findings-2026-04-22.md` (per-page diagnosis, keyword ownership map, priority ranking)
+- **AI visibility:** `docs/seo/ai-seo-guide.md` (AEO/GEO rules)
 - **ICP definition:** `docs/icp.md`
 - **Tool build pattern:** `agents/08-microtool-builder.md` (Gemini Flash integration standard)
 - **Reference implementation:** `src/pages/tools/youtube-video-ideas-generator.astro` + `netlify/functions/generate-alternatives.ts`

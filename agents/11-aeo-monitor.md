@@ -5,7 +5,7 @@
 Monitor and improve SellonTube's visibility in AI search engines (ChatGPT, Perplexity, Claude, Google AI Overviews). Ensure content is structured for citation, track whether SellonTube appears in AI-generated answers, and identify gaps.
 
 **Two-Layer Framework:**
-This agent primarily monitors **Layer 2** (ChatGPT, Perplexity, Claude) visibility. For **Layer 1** (Google AI Overviews), traditional SEO quality is sufficient — monitor via GSC "AI Overviews" impression data instead. See `ai-seo-guide.md` Section 1 for Google's official position.
+This agent primarily monitors **Layer 2** (ChatGPT, Perplexity, Claude) visibility. For **Layer 1** (Google AI Overviews), traditional SEO quality is sufficient — monitor via GSC "AI Overviews" impression data instead. See `docs/seo/ai-seo-guide.md` Section 1 for Google's official position.
 
 ## When to Invoke
 
@@ -59,7 +59,7 @@ Run spot checks across SellonTube's top keywords.
 
 ### Mode 3: Citability Audit
 
-Audit a specific page against the AI Citability Rules in `ai-seo-guide.md` Section 16 (the canonical home for the five citability rules + pre-publish gate).
+Audit a specific page against the AI Citability Rules in `docs/seo/ai-seo-guide.md` Section 16 (the canonical home for the five citability rules + pre-publish gate).
 
 **Layer context:** The 5 citability rules below are Layer 2 optimizations (targeting ChatGPT/Perplexity/Claude). For Google AI Overviews, standard content quality is sufficient. When auditing, check Layer 1 compliance first (unique content, non-commodity, clear structure) before checking Layer 2 patterns.
 
@@ -72,12 +72,12 @@ Audit a specific page against the AI Citability Rules in `ai-seo-guide.md` Secti
 | Rule | Check | Pass/Fail |
 |---|---|---|
 | Answer block | Self-contained block of 134-167 words answering the primary query? | |
-| Entity consistency | Key terms match the canonical entity list in `ai-seo-guide.md` Section 16? | |
+| Entity consistency | Key terms match the canonical entity list in `docs/seo/ai-seo-guide.md` Section 16? | |
 | First-party data | At least one claim attributed to SellonTube or founders? (blog posts only) | |
 | Definition blocks | Key concepts have standalone 1-2 sentence definitions? | |
 | FAQ alignment | FAQ questions written in conversational form? | |
 
-3. Score against the 9 proven citation signals in `ai-seo-guide.md` Section 19 (the extractability rubric — what has actually earned citations on this domain; the archetype is `/blog/how-to-find-youtube-autocomplete-keywords`):
+3. Score against the 9 proven citation signals in `docs/seo/ai-seo-guide.md` Section 19 (the extractability rubric — what has actually earned citations on this domain; the archetype is `/blog/how-to-find-youtube-autocomplete-keywords`):
 
 | Signal | Check | Pass/Fail |
 |---|---|---|
@@ -91,9 +91,9 @@ Audit a specific page against the AI Citability Rules in `ai-seo-guide.md` Secti
 | Fresh dates | Recent, genuine update reflected in dates? | |
 | Internal links | Cluster + `/tools` links for topical authority? | |
 
-4. **Visible-FAQ gap flag (highest-leverage):** Explicitly check whether the page carries a frontmatter `faqs` array but has NO visible `## FAQ` section in the body. If so, flag it as the biggest citation gap per `ai-seo-guide.md` Section 19 → the Q&A never reaches the page, so AI engines cannot lift it. Recommend rendering the FAQ in the body.
+4. **Visible-FAQ gap flag (highest-leverage):** Explicitly check whether the page carries a frontmatter `faqs` array but has NO visible `## FAQ` section in the body. If so, flag it as the biggest citation gap per `docs/seo/ai-seo-guide.md` Section 19 → the Q&A never reaches the page, so AI engines cannot lift it. Recommend rendering the FAQ in the body.
 
-5. Score against GEO optimization dimensions (from `ai-seo-guide.md` Section 7):
+5. Score against GEO optimization dimensions (from `docs/seo/ai-seo-guide.md` Section 7):
 
 | Dimension | Weight | Check |
 |---|---|---|
@@ -121,21 +121,21 @@ The recommended publishing flow with AEO added:
 
 ## Key Files
 
-- `ai-seo-guide.md` Section 16 — AI Citability Rules (canonical source for the 5 rules + pre-publish gate that Mode 3 checks against)
-- `ai-seo-guide.md` Section 17 — Citation-Ready Language Rules
-- `ai-seo-guide.md` Section 18 — Media Policy
-- `ai-seo-guide.md` Section 19 — proven evidence: the cited archetype, the 9 citation signals, and the visible-FAQ gap (Mode 3 scores against these)
-- `content-depth-framework.md` — word-count / depth only (citability rules now live in `ai-seo-guide.md` Section 16)
+- `docs/seo/ai-seo-guide.md` Section 16 — AI Citability Rules (canonical source for the 5 rules + pre-publish gate that Mode 3 checks against)
+- `docs/seo/ai-seo-guide.md` Section 17 — Citation-Ready Language Rules
+- `docs/seo/ai-seo-guide.md` Section 18 — Media Policy
+- `docs/seo/ai-seo-guide.md` Section 19 — proven evidence: the cited archetype, the 9 citation signals, and the visible-FAQ gap (Mode 3 scores against these)
+- `docs/blog/content-depth-framework.md` — word-count / depth only (citability rules now live in `docs/seo/ai-seo-guide.md` Section 16)
 - `research/keywords/sot_master.csv` — keyword source for Mode 2
 - `research/aeo/` — output directory for batch audit CSVs
 - `public/llms.txt` — update when new tools or major pages ship
 - `public/llms-full.txt` — full content map for AI systems
-- `ai-seo-guide.md` Section 6 (Platform-Specific Ranking Factors and Citation Patterns) — how each AI system (Google AI Overviews, ChatGPT, Perplexity, Claude) selects and cites content. Includes citation frequency, format preferences, authority signals, and optimal content structures for citation (definition blocks, stat blocks, Q&A pairs, comparison tables, step-by-step, before/after). Use when advising on content structure for citability.
-- `ai-seo-guide.md` Section 7 (GEO Scoring Framework) — GEO optimization prompt patterns including citability scoring (25%), structural readability (20%), multi-modal content (15%), authority signals (20%), and technical accessibility (20%). Key insight: "Brand mentions correlate 3x more strongly with AI visibility than backlinks." Use as scoring framework for Mode 3 citability audits.
+- `docs/seo/ai-seo-guide.md` Section 6 (Platform-Specific Ranking Factors and Citation Patterns) — how each AI system (Google AI Overviews, ChatGPT, Perplexity, Claude) selects and cites content. Includes citation frequency, format preferences, authority signals, and optimal content structures for citation (definition blocks, stat blocks, Q&A pairs, comparison tables, step-by-step, before/after). Use when advising on content structure for citability.
+- `docs/seo/ai-seo-guide.md` Section 7 (GEO Scoring Framework) — GEO optimization prompt patterns including citability scoring (25%), structural readability (20%), multi-modal content (15%), authority signals (20%), and technical accessibility (20%). Key insight: "Brand mentions correlate 3x more strongly with AI visibility than backlinks." Use as scoring framework for Mode 3 citability audits.
 
 ## Rules
 
 - Do not fabricate AI engine results. If web search is unavailable, say so and suggest manual checks.
 - When reporting competitors cited, note their specific advantage (e.g., "Backlinko cited for youtube seo tools -- they have a comprehensive tools roundup post with 15+ tools reviewed").
 - Always compare against previous audits when they exist in `research/aeo/`.
-- Never recommend changes that conflict with `seo-rules.md` or `style-guide.md`.
+- Never recommend changes that conflict with `docs/seo/seo-rules.md` or `docs/blog/style-guide.md`.

@@ -46,7 +46,7 @@ Every keyword in `research/keywords/sot_master.csv` has a `priority_score` (0–
 
 ### The Funnel Mix
 
-**Cadence: up to 5 posts/week.** pSEO is paused, so all publishing velocity goes to blog. Quality bar unchanged -- every post must meet the checklist at the bottom of this document. See `growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
+**Cadence: up to 5 posts/week.** pSEO is paused, so all publishing velocity goes to blog. Quality bar unchanged -- every post must meet the checklist at the bottom of this document. See `docs/strategy/growth-strategy.md` "Current Blog Schedule" for the active publishing plan.
 
 Posts should cover different funnel stages across the month:
 
@@ -326,9 +326,9 @@ Every month, pull GSC page data. Sort by impressions descending. Filter pages wi
 
 Google's AI Overviews are powered by the same ranking systems as traditional search. **There is no separate "AI SEO" for Google.** The SEO craft rules above (5.1-5.6) already optimize for Google AI Overviews.
 
-For non-Google AI platforms (ChatGPT, Perplexity, Claude, Copilot), the citability rules, citation-ready language rules, and media policy are canonical in `ai-seo-guide.md` §16-18. Apply them at draft time; do not restate them here.
+For non-Google AI platforms (ChatGPT, Perplexity, Claude, Copilot), the citability rules, citation-ready language rules, and media policy are canonical in `docs/seo/ai-seo-guide.md` §16-18. Apply them at draft time; do not restate them here.
 
-**Do not sacrifice human readability for AI optimization.** If a pattern from `ai-seo-guide.md` §16-18 makes the content worse for human readers, skip it. Human readability wins.
+**Do not sacrifice human readability for AI optimization.** If a pattern from `docs/seo/ai-seo-guide.md` §16-18 makes the content worse for human readers, skip it. Human readability wins.
 
 ---
 
@@ -420,7 +420,7 @@ Run every post through these checks before handing it to Gautam.
 - [ ] FAQ section with 3-5 "People Also Ask" questions
 - [ ] At least 4 internal links (mix of blog posts, tools, and pSEO pages)
 - [ ] AI optimization: post follows Layer 1 (Google) fundamentals -- unique perspective, non-commodity content, clear structure
-- [ ] AI optimization: Layer 2 patterns applied where natural -- answer block, definition block, entity consistency (see ai-seo-guide.md)
+- [ ] AI optimization: Layer 2 patterns applied where natural -- answer block, definition block, entity consistency (see `docs/seo/ai-seo-guide.md`)
 
 **AI QUALITY GATE:**
 - [ ] No fabricated statistics or case studies (see Style Guide Fix #7)

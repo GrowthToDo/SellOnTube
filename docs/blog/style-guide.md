@@ -265,7 +265,7 @@ Visual content must help the reader understand something the text alone can't ex
 - Write one sentence of context above it: what the reader is looking at and why it matters
 - Max 1 image per H2 section unless it's a step-by-step tutorial or tool comparison
 - **Standard posts:** Max 4 in-body images per post (hero image excluded)
-- **Tool/list comparison posts:** One screenshot per tool, no cap. See `blog-production-standard.md` for details.
+- **Tool/list comparison posts:** One screenshot per tool, no cap. See `docs/blog/blog-production-standard.md` for details.
 - Never stack two images back-to-back without prose between them
 
 **Captions:**

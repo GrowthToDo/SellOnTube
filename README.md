@@ -43,7 +43,7 @@ Content marketing and SEO work is handled by a 9-file agent system.
 ## Key Rules
 
 1. **Never push to live without explicit user approval** — every push requires separate approval
-2. **Blog cadence: up to 5 posts/week (Mon-Fri)** — quality bar unchanged per content-playbook.md
+2. **Blog cadence: up to 5 posts/week (Mon-Fri)** — quality bar unchanged per `docs/blog/content-playbook.md`
 3. **pSEO publishDates are IST (UTC+5:30)** — Netlify builds UTC — check before deploying
 4. **Keyword SSOT:** `research/keywords/sot_master.csv` — use this, not raw CSVs
 5. **Gemini Flash is the API standard** for all Netlify functions — see `agents/08-microtool-builder.md`

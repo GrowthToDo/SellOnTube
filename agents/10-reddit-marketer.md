@@ -8,8 +8,8 @@ Plan and write Reddit posts for product launches, content seeding, and community
 
 ## Source files to read before writing
 
-1. `reddit-marketing-playbook.md` -- mandatory. Contains subreddit intelligence, post archetypes, templates, hard constraints, and quality checklist. Read the entire file before writing anything.
-2. `style-guide.md` -- tone and voice rules apply to Reddit posts too.
+1. `docs/strategy/reddit-marketing-playbook.md` -- mandatory. Contains subreddit intelligence, post archetypes, templates, hard constraints, and quality checklist. Read the entire file before writing anything.
+2. `docs/blog/style-guide.md` -- tone and voice rules apply to Reddit posts too.
 3. `docs/icp.md` -- ICP definition. Every post must speak to or about this audience.
 4. The relevant product/tool/feature pages -- read the actual source files so posts contain real specifics, not generic claims.
 
@@ -21,7 +21,7 @@ Plan and write Reddit posts for product launches, content seeding, and community
 
 Before writing for any subreddit:
 
-1. Check `reddit-marketing-playbook.md` for existing intelligence on that sub.
+1. Check `docs/strategy/reddit-marketing-playbook.md` for existing intelligence on that sub.
 2. If the sub is not in the playbook, or the data is older than 3 months, research current rules:
    - Use WebSearch to check the subreddit's current rules and sidebar
    - Look at the top 10 posts from the past month to understand what gets traction
@@ -141,7 +141,7 @@ After all posts, include:
 ## Updating the playbook
 
 After every campaign:
-1. Fill in the Results section of the Campaign Log in `reddit-marketing-playbook.md`
+1. Fill in the Results section of the Campaign Log in `docs/strategy/reddit-marketing-playbook.md`
 2. Update subreddit intelligence if rules or norms have changed
 3. Note which archetypes performed best and worst
 4. Add any new subreddits discovered during the campaign to the expansion candidates list

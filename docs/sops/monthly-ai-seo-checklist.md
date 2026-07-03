@@ -1,7 +1,7 @@
 # Monthly AI SEO Checklist
 
 > **Owner: Agent 07.** Run once per month as part of the weekly SEO review.
-> Extracted from `ai-seo-guide.md` §15 — that section is the canonical source; this is the executable SOP.
+> Extracted from `docs/seo/ai-seo-guide.md` §15 — that section is the canonical source; this is the executable SOP.
 
 ## Run This Monthly
 
@@ -36,5 +36,5 @@
   - Flag the next schema type to implement to the user
   - Priority order: FAQPage → Article → HowTo → BreadcrumbList
 
-- [ ] **7. Log completions in seo-audit-log.md**
+- [ ] **7. Log completions in `docs/seo/seo-audit-log.md`**
   - `[date] — Monthly AI SEO checklist complete. Posts refreshed: [slugs]. Schema next: [type].`

@@ -34,14 +34,14 @@ Just speak naturally. Examples that trigger each agent:
 | 06-pseo-manager.md | pSEO drip schedule, publishDate checks | Read niches.ts + comparisons.ts |
 | 07-technical-seo.md | Redirects, schema, technical health | Read netlify.toml, JsonLd.astro |
 | 08-microtool-builder.md | Build interactive tools — single source of truth for tool strategy, pipeline, build standards, publishing workflow | Title Generator reference, keyword CSV, style guide, schema templates |
-| 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | reddit-marketing-playbook.md, style guide, ICP |
-| 11-aeo-monitor.md | AI search visibility — spot checks, batch audits, citability scoring | sot_master.csv, ai-seo-guide.md §16-19, research/aeo/ |
+| 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | `docs/strategy/reddit-marketing-playbook.md`, style guide, ICP |
+| 11-aeo-monitor.md | AI search visibility — spot checks, batch audits, citability scoring | sot_master.csv, `docs/seo/ai-seo-guide.md` §16-19, research/aeo/ |
 
 ### Reference Library (`agents/references/`)
 
 Curated reference files cherry-picked from open-source SEO skill repos. Not standalone agents — they enrich existing agents.
 
-**Canonical AEO SSOT:** `ai-seo-guide.md` is the single source of truth for AI-search rules. Section 16 = AI Citability Rules (the 5 rules + pre-publish gate), Section 17 = Citation-Ready Language Rules, Section 18 = Media Policy, Section 19 = proven evidence (the cited archetype, the 9 citation signals, the visible-FAQ gap). `content-depth-framework.md` is depth / word-count only and points at `ai-seo-guide.md` §16 for citability. Agents 04/05/11 enforce §16 (draft → hard gate → audit).
+**Canonical AEO SSOT:** `docs/seo/ai-seo-guide.md` is the single source of truth for AI-search rules. Section 16 = AI Citability Rules (the 5 rules + pre-publish gate), Section 17 = Citation-Ready Language Rules, Section 18 = Media Policy, Section 19 = proven evidence (the cited archetype, the 9 citation signals, the visible-FAQ gap). `docs/blog/content-depth-framework.md` is depth / word-count only and points at `docs/seo/ai-seo-guide.md` §16 for citability. Agents 04/05/11 enforce §16 (draft → hard gate → audit).
 
 | File | Used by | What it adds |
 |---|---|---|
@@ -50,15 +50,15 @@ Curated reference files cherry-picked from open-source SEO skill repos. Not stan
 | `comparison-content-playbook.md` | Agents 04, 11 | Page structure standard for comparison / alternatives / best-tools (listicle) posts |
 | `schema-templates.json` | Agent 07 | VideoObject, BroadcastEvent, Clip schema templates |
 | `knowledge-graph-guide.md` | Agent 07 | Knowledge Graph, Wikidata, entity optimization playbook |
-| ~~`ai-citation-patterns.md`~~ | Deleted — merged into `ai-seo-guide.md` §6 | Platform-specific citation patterns |
-| ~~`geo-skill-patterns.md`~~ | Deleted — merged into `ai-seo-guide.md` §7 | GEO scoring framework |
+| ~~`ai-citation-patterns.md`~~ | Deleted — merged into `docs/seo/ai-seo-guide.md` §6 | Platform-specific citation patterns |
+| ~~`geo-skill-patterns.md`~~ | Deleted — merged into `docs/seo/ai-seo-guide.md` §7 | GEO scoring framework |
 | `backlink-analysis-skill.md` | (standalone) | Free backlink analysis via CommonCrawl, Moz, Bing Webmaster — no dedicated agent yet |
 
 ## Key Rules (apply to all agents)
 - Never push to live without explicit user approval
-- Blog cadence: up to 5 posts/week (Mon-Fri) — quality bar unchanged per content-playbook.md
+- Blog cadence: up to 5 posts/week (Mon-Fri) — quality bar unchanged per `docs/blog/content-playbook.md`
 - pSEO publishDates are IST (UTC+5:30) — Netlify builds UTC — check before releasing
-- Read seo-rules.md before any SEO recommendation
+- Read `docs/seo/seo-rules.md` before any SEO recommendation
 - Style Guide + Content Quality Playbook apply to ALL copy touched, not just new writing
 - Full SOPs, templates, and documentation index: `DOCS.md`
 - ICP definition (canonical): `docs/icp.md`

@@ -54,7 +54,7 @@ research/keywords/
 | `agents/08-microtool-builder.md` | Bug fix: CSV reference + Gemini API standard |
 | `agents/README.md` | Add DOCS.md reference |
 | `agents/master.md` | Add hard pre-flight keyword status gate |
-| `growth-strategy.md` | Fix: Claude API → Gemini Flash reference |
+| `docs/strategy/growth-strategy.md` | Fix: Claude API → Gemini Flash reference |
 | `research/keywords/content-plan.md` | Deprecation notice at top |
 | `README.md` | Populate with project overview |
 
@@ -161,7 +161,7 @@ Steps:
 7. Push with commit `content: refresh [post-slug] — [what changed]`
 8. Submit to GSC Request Indexing
 9. Update `publishDate` only if meaningful content was added (not cosmetic)
-10. Note refresh in `seo-audit-log.md`
+10. Note refresh in `docs/seo/seo-audit-log.md`
 
 ### 7. `docs/sops/ctr-optimization-sop.md`
 
@@ -175,12 +175,12 @@ Steps:
 5. Write 1 alternative meta description
 6. Present to user with rationale for each option
 7. On approval: update frontmatter, push
-8. Note change date in `seo-audit-log.md`
+8. Note change date in `docs/seo/seo-audit-log.md`
 9. Re-check CTR in GSC after 4 weeks — note outcome
 
 ### 8. `docs/sops/monthly-ai-seo-checklist.md`
 
-Extracted from `ai-seo-guide.md` §10. Owner: Agent 07.
+Extracted from `docs/seo/ai-seo-guide.md` §10. Owner: Agent 07.
 
 Monthly steps:
 - [ ] Verify all AI bots allowed in `robots.txt` / `netlify.toml` (GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended, Bingbot)
@@ -189,7 +189,7 @@ Monthly steps:
 - [ ] Submit updated URLs to GSC + IndexNow
 - [ ] Check GSC for "AI Overviews" impressions — which pages are cited?
 - [ ] Review schema implementation status in Agent 07 — flag next schema type to implement
-- [ ] Note completions in `seo-audit-log.md`
+- [ ] Note completions in `docs/seo/seo-audit-log.md`
 
 ---
 

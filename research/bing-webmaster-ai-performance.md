@@ -1,7 +1,7 @@
 # Bing Webmaster Tools — AI Performance: Research Synthesis + SellonTube 10x AI-Visibility Plan
 
 > Created 2026-06-24. Scope: Bing Webmaster Tools + the AI Performance report (Grounding Queries, Intents, Topics, Citation Share, Compare). Goal: use this data to 10x SellonTube's AI-search impressions and traffic. Research + plan only — no site changes yet.
-> Related: `project_aeo_strategy.md`, `project_google_ai_optimization.md`, `seo-rules.md`, `research/aeo/aeo_audit_2026-04-12.csv`.
+> Related: `project_aeo_strategy.md`, `project_google_ai_optimization.md`, `docs/seo/seo-rules.md`, `research/aeo/aeo_audit_2026-04-12.csv`.
 
 ---
 

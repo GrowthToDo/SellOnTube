@@ -68,7 +68,7 @@ Layout (metadata) →
 
 ## Content Depth Rules
 
-Read `content-depth-framework.md` before writing any tool page copy — it owns word-count/depth tiers. Tool pages target **700-2,000 words**. Key rules:
+Read `docs/blog/content-depth-framework.md` before writing any tool page copy — it owns word-count/depth tiers. Tool pages target **700-2,000 words**. Key rules:
 - Tool-first: usage, examples, outputs, mistakes, FAQs. No blog bloat.
 - Every section must pass the editorial gate: answers a real question, adds specificity, useful to buyers/operators.
 - Target 5+ quotable passages for AI/snippet extractability.
@@ -76,8 +76,8 @@ Read `content-depth-framework.md` before writing any tool page copy — it owns 
 - Apply the "Comprehensive but Tight" checklist where relevant (What is it? How to use? Mistakes to avoid? FAQs? Next steps?).
 
 **Citability and media (mandatory):**
-- Tool pages must meet the citability gate in `ai-seo-guide.md` Section 16 (AI Citability Rules + pre-publish gate). Run the gate before showing the finished page.
-- Any media on the page must follow the media policy in `ai-seo-guide.md` Section 18 (perf-safe).
+- Tool pages must meet the citability gate in `docs/seo/ai-seo-guide.md` Section 16 (AI Citability Rules + pre-publish gate). Run the gate before showing the finished page.
+- Any media on the page must follow the media policy in `docs/seo/ai-seo-guide.md` Section 18 (perf-safe).
 - If a tool page compares against competitor tools, follow `agents/references/comparison-content-playbook.md` for the comparison/listicle structure.
 
 ---
@@ -128,7 +128,7 @@ Existing tools should be re-scored against this scorecard when:
 - A better-fit tool idea emerges that might replace it
 - The ICP or product positioning shifts
 
-Current tools to re-evaluate: see `growth-strategy.md` for the full tool opportunity map.
+Current tools to re-evaluate: see `docs/strategy/growth-strategy.md` for the full tool opportunity map.
 
 ---
 
@@ -165,7 +165,7 @@ Pick ONE primary keyword for the `<title>` and `<h1>`. It should match the exact
 These go into the on-page copy, the methodology section headings, and the meta description. Look for related terms in the same cluster.
 
 **Step 2c — Confirm the slug:**
-Check `src/pages/` to make sure the slug isn't taken. Use the slug format from `growth-strategy.md` if the tool was planned there.
+Check `src/pages/` to make sure the slug isn't taken. Use the slug format from `docs/strategy/growth-strategy.md` if the tool was planned there.
 
 ---
 
@@ -296,7 +296,7 @@ This is the framing section. Contrast "creator metrics" (views, subs) with "acqu
 - The last sentence on the page should be a specific next action or a thought that sticks
 
 **AI Search Optimization:**
-- Tool page copy follows the two-layer approach (`ai-seo-guide.md`).
+- Tool page copy follows the two-layer approach (`docs/seo/ai-seo-guide.md`).
 - Layer 1 (Google): Write the best content for the query. No special AI tricks.
 - Layer 2 (non-Google): Include 1 definition block for the tool's core concept and 1 self-contained answer block in the "Why [Key Metric] Matters" section. Maintain entity consistency with canonical SellonTube terms.
 
@@ -371,8 +371,8 @@ Never do any of these:
 
 - Reference tool: `src/pages/tools/youtube-roi-calculator.astro`
 - Keyword data: `research/keywords/sot_master.csv` (SSOT — use this, not master_keywords_cleaned.csv)
-- Tool plan: `growth-strategy.md`
-- Style rules: `style-guide.md`
-- SEO rules: `seo-rules.md`
+- Tool plan: `docs/strategy/growth-strategy.md`
+- Style rules: `docs/blog/style-guide.md`
+- SEO rules: `docs/seo/seo-rules.md`
 - Booking link: `https://cal.com/gautham-8bdvdx/30min`
 - Email capture endpoint: in ROI calculator `<script>` block

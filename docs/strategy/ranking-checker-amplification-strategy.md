@@ -230,7 +230,7 @@ Cross-link both posts to each other. The existing post should add a line like: "
 |---|------|-----------|--------|
 | 6 | **Tool page copy expansion: "YouTube Ranking Checker for Business"** section | Add a dedicated section explicitly using "business" framing. Currently the page uses business language in the CTA area but not in the H2 SEO content sections. This creates an entity for Google to associate with business-intent queries (currently 0 business-framed queries in GSC). | 1-2 hours |
 | 7 | **YouTube video brief: "How to Check Your YouTube Video Ranking (Free Tool)"** | A 3-5 minute screen-share walkthrough of the tool. Targets video carousel results for "youtube rank checker" queries. YouTube videos for tool-demo queries rank in both YouTube and Google. | 2-3 hours (script + recording) |
-| 8 | **Reddit distribution: Post in r/youtubers, r/PartneredYoutube, r/SmallYTChannel** | Share a genuine "here's how to check your YouTube rankings for free" guide post. Link to the blog post (Post 1), not the tool directly. Follow the reddit-marketing-playbook pattern. | 1-2 hours |
+| 8 | **Reddit distribution: Post in r/youtubers, r/PartneredYoutube, r/SmallYTChannel** | Share a genuine "here's how to check your YouTube rankings for free" guide post. Link to the blog post (Post 1), not the tool directly. Follow the `docs/strategy/reddit-marketing-playbook.md` pattern. | 1-2 hours |
 | 9 | **LinkedIn post series (Sathya):** 2 posts tied to blog launches | Post 1 launch: "Your YouTube videos are ranking for keywords you don't know about." Post 2 launch: "I tested 6 YouTube rank checker tools. Here's what they don't tell business owners." | 30 min each |
 
 ### Big Plays (flag only)

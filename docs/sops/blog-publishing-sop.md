@@ -25,7 +25,7 @@
 - [ ] **4. Confirm open calendar slot (Agent 03)**
   - Read all `publishDate` values in `src/data/post/*.{md,mdx}`
   - Confirm no duplicate publishDates (two posts on the exact same day)
-  - Blog cadence: up to 5 posts/week. See `growth-strategy.md` for the active schedule.
+  - Blog cadence: up to 5 posts/week. See `docs/strategy/growth-strategy.md` for the active schedule.
 
 ---
 
@@ -39,7 +39,7 @@
   - Write complete MDX with all required frontmatter fields
 
 - [ ] **7. Featured image created**
-  - Create SVG matching Fix #17 spec from `style-guide.md`:
+  - Create SVG matching Fix #17 spec from `docs/blog/style-guide.md`:
     - Canvas: `viewBox="0 0 1200 675" width="1200" height="675"` (true 16:9)
     - Background: `#030620` → `#0a1540` gradient
     - Centered layout: all text at `text-anchor="middle" x="600"`

@@ -8,12 +8,12 @@ Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full d
 "update this post", "rewrite this blog", "improve this article", "optimise this post"
 
 ## Source files to read before writing
-1. `style-guide.md` — mandatory. All rules apply.
-2. `content-playbook.md` — mandatory. All rules apply.
-3. `blog-production-standard.md` — mandatory. Defines structural, visual, and formatting requirements. Every draft must meet these standards before presenting to user. When this document conflicts with the Style Guide on production/formatting rules, this document takes precedence.
-4. `content-depth-framework.md` — mandatory. Use the depth decision tree to set coverage level (Deep/Medium/Short) and word range based on topic intent. Apply the "Comprehensive but Tight" checklist and AI/LLM readability rules to every draft.
-4. `seo-rules.md` — traditional SEO rules.
-5. `ai-seo-guide.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
+1. `docs/blog/style-guide.md` — mandatory. All rules apply.
+2. `docs/blog/content-playbook.md` — mandatory. All rules apply.
+3. `docs/blog/blog-production-standard.md` — mandatory. Defines structural, visual, and formatting requirements. Every draft must meet these standards before presenting to user. When this document conflicts with the Style Guide on production/formatting rules, this document takes precedence.
+4. `docs/blog/content-depth-framework.md` — mandatory. Use the depth decision tree to set coverage level (Deep/Medium/Short) and word range based on topic intent. Apply the "Comprehensive but Tight" checklist and AI/LLM readability rules to every draft.
+4. `docs/seo/seo-rules.md` — traditional SEO rules.
+5. `docs/seo/ai-seo-guide.md` — AI citation rules. Use the correct AEO/GEO content block patterns for each section type.
 6. An existing blog post from `src/data/post/` — read one for format/tone calibration.
 
 ## ICP reminder
@@ -71,7 +71,7 @@ Produce:
 PRIMARY KEYWORD: [keyword]
 SECONDARY KEYWORDS: [2-3 LSI terms]
 SEARCH INTENT: [informational/commercial/transactional]
-COVERAGE LEVEL: [Deep/Medium/Short — per content-depth-framework.md decision tree]
+COVERAGE LEVEL: [Deep/Medium/Short — per `docs/blog/content-depth-framework.md` decision tree]
 TARGET WORD COUNT: [Deep: 2,000–4,000+ | Medium: 1,200–2,200 | Short: 500–1,200]
 PUBLISH DATE: [from Agent 03]
 
@@ -106,7 +106,7 @@ OUTLINE:
 
 **AI Search Optimization (two-layer approach):**
 - **Layer 1 (Google AI Overviews):** No special optimization needed. Write the best possible content for the query. Google's AI features use the same ranking systems as traditional search.
-- **Layer 2 (ChatGPT, Perplexity, Claude):** Apply the canonical AEO rules from `ai-seo-guide.md` while drafting:
+- **Layer 2 (ChatGPT, Perplexity, Claude):** Apply the canonical AEO rules from `docs/seo/ai-seo-guide.md` while drafting:
   - **Citability rules (§16)** — apply the 5 citability rules and meet the hard pre-publish citability checklist (at least one answer block, entity consistency with canonical terms, first-party data claim, definition blocks for key concepts, visible FAQ in the body).
   - **Citation-ready language (§17)** — mirror the heading in the opening sentence, kill unclear antecedents, kill figurative language, make claims specific and verifiable, pre-calculate numbers, and use declarative verdicts.
   - **Media policy (§18)** — include a relevant image and a relevant video, perf-safe (lazy-load, YouTube facade, reserved dimensions, alt + caption). Relevance always — never padding.
@@ -161,7 +161,7 @@ Then full body in MDX, followed by:
 
 ### Phase 3.5 — Featured Image Creation (before Agent 05 handoff)
 
-Create the featured image SVG before running QA. Requirements (from `style-guide.md` Fix #17):
+Create the featured image SVG before running QA. Requirements (from `docs/blog/style-guide.md` Fix #17):
 
 - Canvas: `viewBox="0 0 1200 675" width="1200" height="675"` (true 16:9)
 - Background gradient: `#030620` → `#0a1540`
@@ -239,7 +239,7 @@ After writing, hand off to Agent 05 (Content QA). Do NOT surface the draft to th
 5. No broken em-dashes: grep for word-hyphen-word with no spaces (e.g., `assets-and`) — these are broken em-dashes
 
 ## Word count guidance
-Every article should be as long as it needs to be to fully cover the topic. Minimum 1,200 words. Use the content-depth-framework.md decision tree for guidance, not fixed ranges.
+Every article should be as long as it needs to be to fully cover the topic. Minimum 1,200 words. Use the `docs/blog/content-depth-framework.md` decision tree for guidance, not fixed ranges.
 
 ---
 
@@ -293,7 +293,7 @@ Read the full post file. Then check every item below. Fix anything that fails be
 ## Content Structure, Formatting & SEO Craft
 
 All structural patterns (items 1-16), formatting rules, and SEO craft rules are defined in the source files listed above. Apply every rule from:
-- `style-guide.md` — Fixes #1-17 and the full Content Structure & Formatting Reference (items 1-21)
-- `content-playbook.md` — Sections 3 (persuasion), 5 (SEO craft), and the quality checklist
+- `docs/blog/style-guide.md` — Fixes #1-17 and the full Content Structure & Formatting Reference (items 1-21)
+- `docs/blog/content-playbook.md` — Sections 3 (persuasion), 5 (SEO craft), and the quality checklist
 
 Do not rely on memory of these rules. Re-read the source files before writing each draft.

@@ -111,8 +111,8 @@ All commands live in `.claude/commands/`. They invoke existing agent logic (02-0
 |---|---|---|
 | `sot_master.csv` | SSOT for keywords | Commands read from it, never replace it |
 | Agent 02-05 | Core writing pipeline | Commands invoke agents, not duplicate them |
-| `style-guide.md` + `content-playbook.md` | Writing standards | Commands enforce them, not restate them |
-| `seo-rules.md` + `ai-seo-guide.md` | SEO standards | Commands reference them |
+| `docs/blog/style-guide.md` + `docs/blog/content-playbook.md` | Writing standards | Commands enforce them, not restate them |
+| `docs/seo/seo-rules.md` + `docs/seo/ai-seo-guide.md` | SEO standards | Commands reference them |
 | Blog publishing SOP | Gate sequence | Commands feed into it |
 | Content refresh SOP | Refresh sequence | `/refresh` follows it |
 

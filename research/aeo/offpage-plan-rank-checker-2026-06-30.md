@@ -32,7 +32,7 @@ Pitch angle: most listed tools require signup or are creator-focused. SellOnTube
 Find sites linking to TubeLab/checker, TubePilot, TubeRanker but not to us. Use Ahrefs (already in the stack) Link Intersect: targets = those 3-4 tool domains, then filter for resource/roundup pages. Pitch the same differentiator. This is the most systematic source.
 
 ## Track 4 — Community + digital PR (slower, compounding)
-- **Reddit**: per `reddit-marketing-playbook.md` + agent 10. Subreddits where people ask "how do I check my YouTube rank" (r/youtubers, r/NewTubers, r/PartneredYoutube). Answer genuinely, link the free tool when it actually helps. No spam.
+- **Reddit**: per `docs/strategy/reddit-marketing-playbook.md` + agent 10. Subreddits where people ask "how do I check my YouTube rank" (r/youtubers, r/NewTubers, r/PartneredYoutube). Answer genuinely, link the free tool when it actually helps. No spam.
 - **HARO / Qwoted / Featured**: respond to "YouTube SEO / creator tools" queries; earn a brand mention + link.
 - **Comparison content**: a "free vs paid YouTube rank trackers" piece that earns links by being genuinely useful (we already have the cluster content to support it).
 

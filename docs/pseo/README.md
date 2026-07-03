@@ -21,4 +21,4 @@ it does not live here in `docs/`. This folder holds only loose pSEO notes. Use t
 | Content depth + word-count tiers | `docs/blog/content-depth-framework.md` |
 
 ## Loose notes in this folder
-- `youtube-for-audit.txt` — ad-hoc audit notes for the `/youtube-for/` cluster.
+- `docs/pseo/youtube-for-audit.txt` — ad-hoc audit notes for the `/youtube-for/` cluster.

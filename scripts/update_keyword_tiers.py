@@ -4,7 +4,7 @@ Update sot_master.csv with:
   - tier         : winnable (KD<=30) | stretch (KD 31-45) | avoid (KD>45) | pseo (pSEO pages)
   - priority_score: recalculated using live volume + real KD
 
-Priority score formula (from content-playbook.md, adapted to use live data):
+Priority score formula (from docs/blog/content-playbook.md, adapted to use live data):
   1. Business potential (0-40pts) — from cluster
   2. Content-market fit (0-30pts) — from intent
   3. Search potential (0-20pts)   — from search_volume_live + kd_real

@@ -8,7 +8,7 @@
 
 1. **Agent system is mature.** 10 agents with clear responsibilities, natural-language routing, and a master orchestrator. No gaps in coverage.
 
-2. **Writing standards are comprehensive.** `style-guide.md` (21 fixes), `content-playbook.md`, `ai-seo-guide.md`, and `content-depth-framework.md` cover tone, structure, SEO, and anti-AI detection thoroughly.
+2. **Writing standards are comprehensive.** `docs/blog/style-guide.md` (21 fixes), `docs/blog/content-playbook.md`, `docs/seo/ai-seo-guide.md`, and `docs/blog/content-depth-framework.md` cover tone, structure, SEO, and anti-AI detection thoroughly.
 
 3. **QA is rigorous.** Agent 05 has a 3-tier system (CRITICAL/IMPORTANT/ADVISORY) with mandatory grep checks. This catches issues that read-through misses.
 
@@ -28,7 +28,7 @@
 
 3. **No SERP analysis step.** The blog writing workflow started from keyword selection (Agent 02) and went straight to outline. There was no step for analyzing what currently ranks, what competitors cover, or where the content gap is.
 
-4. **No brand voice quick-reference.** Three docs contain voice rules (`style-guide.md`, `content-playbook.md`, `ai-seo-guide.md`), but a new operator would need to read all three to understand the tone. A pointer file was needed.
+4. **No brand voice quick-reference.** Three docs contain voice rules (`docs/blog/style-guide.md`, `docs/blog/content-playbook.md`, `docs/seo/ai-seo-guide.md`), but a new operator would need to read all three to understand the tone. A pointer file was needed.
 
 5. **No system design doc.** The architecture (data sources, agent roles, decision rules) existed in CLAUDE.md memory entries but not as a standalone reference.
 
@@ -50,6 +50,6 @@
 
 | Proposed deliverable | Why skipped | Existing coverage |
 |---|---|---|
-| `docs/seo-guidelines.md` | Would duplicate `seo-rules.md` + `ai-seo-guide.md` | Both files are comprehensive |
+| `docs/seo-guidelines.md` | Would duplicate `docs/seo/seo-rules.md` + `docs/seo/ai-seo-guide.md` | Both files are comprehensive |
 | `docs/content-production-sop.md` | Would duplicate `blog-publishing-sop.md` + `content-refresh-sop.md` | Weekly workflow added to system design doc instead |
 | `docs/internal-linking-policy.md` | Would duplicate Agent 04 Phase 3.6 + linking map | Rules enforced at writing time by agents |

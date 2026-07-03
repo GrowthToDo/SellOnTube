@@ -413,7 +413,7 @@ Specifically, the first draft must include:
 - [ ] Internal links verified (exact slugs confirmed against `src/pages/tools/` and `src/data/post/`)
 
 **AI SEARCH OPTIMIZATION:**
-- [ ] AI citability: the first draft must pass the citability gate (`ai-seo-guide.md` Section 16), apply the citation-ready language rules (Section 17), and include perf-safe media (Section 18). Comparison/listicle posts must also pass `agents/references/comparison-content-playbook.md`.
+- [ ] AI citability: the first draft must pass the citability gate (`docs/seo/ai-seo-guide.md` Section 16), apply the citation-ready language rules (Section 17), and include perf-safe media (Section 18). Comparison/listicle posts must also pass `agents/references/comparison-content-playbook.md`.
 
 **The user should review for strategic direction and tone, not for missing formatting, visuals, or structural elements.** Those must be right before the draft is shown.
 

@@ -41,9 +41,9 @@ Agent 01 flags pages in position 5–20 with low CTR. These are the highest-ROI 
 
 - [ ] **8. Follow deploy-checklist.md gates and push**
 
-- [ ] **9. Log in seo-audit-log.md**
+- [ ] **9. Log in `docs/seo/seo-audit-log.md`**
   - `[date] — CTR rewrite: [slug] — old title: "[old]" → new: "[new]"`
 
 - [ ] **10. Re-check in GSC after 4 weeks**
-  - Did CTR improve? Note outcome in `seo-audit-log.md`
+  - Did CTR improve? Note outcome in `docs/seo/seo-audit-log.md`
   - If no improvement after 4 weeks: try the second title option

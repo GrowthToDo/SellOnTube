@@ -62,7 +62,7 @@ Make pages scannable for humans and extractable for Google/AI:
 
 ## AI Citability Rules (AEO)
 
-The five citability rules (answer blocks, entity consistency, first-party data, definition blocks, conversational FAQ) and the pre-publish citability checklist now live canonically in `ai-seo-guide.md` Section 16. The citation-ready language rules are Section 17 and the media policy is Section 18. This file owns depth and word-count guidance only; do not restate the citability rules here.
+The five citability rules (answer blocks, entity consistency, first-party data, definition blocks, conversational FAQ) and the pre-publish citability checklist now live canonically in `docs/seo/ai-seo-guide.md` Section 16. The citation-ready language rules are Section 17 and the media policy is Section 18. This file owns depth and word-count guidance only; do not restate the citability rules here.
 
 This file keeps its job: content depth, word ranges, extractability/readability. Citability rules point to ai-seo-guide.
 

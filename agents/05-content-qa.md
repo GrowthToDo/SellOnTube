@@ -8,11 +8,11 @@ Audit any file against the Style Guide and Content Quality Playbook. Report ever
 Also: automatically called by Agent 04 after every blog post draft.
 
 ## Source files to read first
-1. `style-guide.md` — every rule applies to ALL copy on the touched file, not just new writing
-2. `content-playbook.md` — quality standards
-3. `blog-production-standard.md` — structural, visual, and formatting requirements. Verify callout boxes, comparison tables, screenshots, ToC structure, and section depth. Any missing production element is a FAIL.
-4. `content-depth-framework.md` — depth validation. Verify the page's coverage level matches the depth decision tree for its intent. Check that every section passes the editorial checklist (answers real question, adds specificity, boosts decisions). Flag padding or sections that fail the gate.
-4. `ai-seo-guide.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
+1. `docs/blog/style-guide.md` — every rule applies to ALL copy on the touched file, not just new writing
+2. `docs/blog/content-playbook.md` — quality standards
+3. `docs/blog/blog-production-standard.md` — structural, visual, and formatting requirements. Verify callout boxes, comparison tables, screenshots, ToC structure, and section depth. Any missing production element is a FAIL.
+4. `docs/blog/content-depth-framework.md` — depth validation. Verify the page's coverage level matches the depth decision tree for its intent. Check that every section passes the editorial checklist (answers real question, adds specificity, boosts decisions). Flag padding or sections that fail the gate.
+4. `docs/seo/ai-seo-guide.md` — AI citation patterns. Verify correct AEO/GEO block patterns are used where applicable.
 5. `agents/references/core-eeat-benchmark.md` — 80-item E-E-A-T scoring framework. Use for structured quality scoring on any post where depth or authority is in question. (Source: seo-geo-claude-skills)
 6. `agents/references/ai-writing-detection.md` — comprehensive AI writing pattern ban list (extends the em-dash ban with 50+ flagged words/phrases, structural tells, and academic red flags). Cross-reference during the anti-AI audit pass. (Source: marketingskills)
 
@@ -41,7 +41,7 @@ QA items are tiered by severity:
 ## CRITICAL (blocks publish — zero violations allowed)
 
 **[CRITICAL — AEO CITABILITY GATE]**
-**Pre-publish citability gate (blocking — see `ai-seo-guide.md` §16-§18 and `agents/references/comparison-content-playbook.md`)**
+**Pre-publish citability gate (blocking — see `docs/seo/ai-seo-guide.md` §16-§18 and `agents/references/comparison-content-playbook.md`)**
 > This is a hard gate. If ANY item below is missing, the post FAILS. Do not downgrade to a warning.
 - [ ] **(a) §16 citability checklist** — all of:
   - [ ] At least one answer block present, each 134-167 words
@@ -129,7 +129,7 @@ QA items are tiered by severity:
 ## IMPORTANT (must resolve before publish)
 
 **[IMPORTANT]**
-**Content depth validation (per `content-depth-framework.md`)**
+**Content depth validation (per `docs/blog/content-depth-framework.md`)**
 - [ ] Coverage level (Deep/Medium/Short) matches the topic's search intent — not inflated or undersized
 - [ ] Word count falls within the correct range for the coverage level (Deep: 2,000-4,000+ | Medium: 1,200-2,200 | Short: 500-1,200)
 - [ ] Every section passes the editorial gate: answers a real question, boosts decisions/implementation, adds specificity/proof, covers search intent without dilution
@@ -163,11 +163,11 @@ QA items are tiered by severity:
 - [ ] Process content uses numbered H3 steps, not bullet points
 - [ ] Only ONE `---` horizontal rule in the post body — placed after the TOC box, before the first H2. Never between H2 sections.
 - [ ] No paragraph exceeds 3 sentences in body copy
-- [ ] Post closes with "What to do this week" inside the green action box (see style-guide.md Fix #13) — NOT a bare markdown list, NOT a summary
+- [ ] Post closes with "What to do this week" inside the green action box (see `docs/blog/style-guide.md` Fix #13) — NOT a bare markdown list, NOT a summary
 - [ ] Benchmark test: at least one section can stand alone as a shareable insight (screenshot test)
-- [ ] Posts over 1,000 words have a Key Takeaways amber box immediately after the intro — 5-6 standalone insights, not navigation bullets (see style-guide.md Fix #13 for HTML pattern)
+- [ ] Posts over 1,000 words have a Key Takeaways amber box immediately after the intro — 5-6 standalone insights, not navigation bullets (see `docs/blog/style-guide.md` Fix #13 for HTML pattern)
 - [ ] Key Takeaways section opens with (or includes) the direct answer to the title query
-- [ ] Table of Contents is a slate box with numbered `<a>` links — not a bare markdown list (see style-guide.md Fix #13 for HTML pattern)
+- [ ] Table of Contents is a slate box with numbered `<a>` links — not a bare markdown list (see `docs/blog/style-guide.md` Fix #13 for HTML pattern)
 - [ ] No "About the Author" section written in MDX body — AuthorBio renders automatically from frontmatter
 - [ ] Post file is `.mdx` if it contains any inline HTML boxes or diagrams — `.md` files do not render inline HTML reliably
 - [ ] For "what is X" / "how does X work" queries: Quick Answer callout is present before or at the top of the intro (position zero target)
@@ -179,7 +179,7 @@ QA items are tiered by severity:
 - [ ] YouTube embeds (if present): each embed is directly relevant to the section, is preceded by a context sentence (specific, not generic), uses the responsive wrapper with `youtube-nocookie.com`, `?rel=0`, `loading="lazy"`, and no `autoplay`. Maximum 2 per post. The post reads well without any embed. Context sentence contains no em-dash.
 
 **[IMPORTANT]**
-**AI citation (check against `ai-seo-guide.md`):**
+**AI citation (check against `docs/seo/ai-seo-guide.md`):**
 - [ ] **AI over-optimization check (Google Layer 1):** Content must NOT appear to be written specifically for AI systems. Check: Does the content read naturally? Would it make sense if AI search didn't exist? Is it offering a unique perspective or just rehashing existing top results? If over-optimized for AI extraction at the expense of human readability, flag as IMPORTANT violation.
 - [ ] **AI citation patterns (Layer 2 -- ChatGPT/Perplexity/Claude):** The following checks optimize for non-Google AI platforms. They should also improve content quality for humans. If any pattern makes the content worse for human readers, skip it.
 - [ ] Definition Block used for any "What is X?" section

@@ -31,7 +31,7 @@ Check every item in the protocol:
 Compare the post against:
 - Current SERP top 3 (from step 3): missing sections, missing angles, missing depth
 - Agent 05 QA checklist: run the full CRITICAL + IMPORTANT tier audit
-- `content-depth-framework.md`: is the coverage level right for this topic?
+- `docs/blog/content-depth-framework.md`: is the coverage level right for this topic?
 - `docs/templates/internal-linking-map.md`: are there new posts/tools to link to since last update?
 
 ### 5. Output refresh plan (show to user before editing)
