@@ -39,7 +39,8 @@ export default defineConfig({
         !page.includes('/next-steps') &&
         !page.endsWith('/shopify-app/tools') &&
         !page.endsWith('/shopify-app/tools/') &&
-        !page.includes('listing-grader/report'),
+        !page.includes('listing-grader/report') &&
+        !page.includes('/case-studies/left-foot-software/slides'),
       lastmod: new Date(),
     }),
     mdx(),

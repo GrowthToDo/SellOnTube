@@ -1,0 +1,346 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Left Foot Software: Strategic Working Session',
+  description: 'Working deck for the Left Foot Software strategic conversation.',
+  robots: { index: false, follow: false },
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header"></Fragment>
+  <Fragment slot="footer"></Fragment>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <div class="deck sfy-dark" style="background: var(--bg); color: var(--text);">
+    <div class="deck-progress"><div class="deck-progress-bar" id="progressBar"></div></div>
+
+    <!-- 1 · Title -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">Working session &middot; 10 July 2026</div>
+      <h1 class="title-xl sfy-h">
+        Three directions<br /><span class="sfy-grad">from here.</span>
+      </h1>
+      <p class="lede">Time to decide where the next phase points.</p>
+    </section>
+
+    <!-- 2 · The three directions -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">The decision space</div>
+      <h2 class="title-lg sfy-h">Where the next phase of effort can go</h2>
+      <div class="dir-list">
+        <div class="sfy-card-dark dir">
+          <p class="dir-key sfy-m">A</p>
+          <div>
+            <p class="dir-title sfy-h">Deeper on GS1 Assistant</p>
+            <p class="dir-body">Marketing ops: user guides, SEO blogs, backlinks, directories, cross-marketing with other apps.</p>
+          </div>
+        </div>
+        <div class="sfy-card-dark dir">
+          <p class="dir-key sfy-m">B</p>
+          <div>
+            <p class="dir-title sfy-h">Extend the playbook to other apps</p>
+            <p class="dir-body">ICP research, listing copy, screenshots, product video. The same foundation work, run again.</p>
+          </div>
+        </div>
+        <div class="sfy-card-dark dir">
+          <p class="dir-key sfy-m">C</p>
+          <div>
+            <p class="dir-title sfy-h">Work at the LFS layer</p>
+            <p class="dir-body">Support the EDI / OMS business directly. Shape unknown. Probably closer to sales ops than marketing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Capital allocation, joint call -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">Why we're asking, not telling</div>
+      <h2 class="title-lg sfy-h">This is a bandwidth-allocation question</h2>
+      <p class="body-lg">
+        Limited hours, three places to put them. Each direction has a different effort profile, a different payoff
+        curve, and a different amount of unknown.
+      </p>
+      <p class="body-lg muted">
+        We can't answer it alone. The ground truth about pipeline, clients, and the product roadmap lives with you.
+        So today is a working conversation: we bring what we've learned, you bring what we can't see.
+      </p>
+    </section>
+
+    <!-- 4 · The earned seat (neutral) -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">Where we're speaking from</div>
+      <h2 class="title-lg sfy-h">The work so far went wider than marketing</h2>
+      <div class="grid-4">
+        <div class="sfy-card-dark card">
+          <p class="card-label sfy-h">Marketing ops</p>
+          <p class="card-body">Listing, screenshots, video, user guides, landing pages, review responses.</p>
+        </div>
+        <div class="sfy-card-dark card">
+          <p class="card-label sfy-h">Marketing strategy</p>
+          <p class="card-body">ICP and anti-ICP work, built on a 1,377-store audit of who installs, pays, and leaves.</p>
+        </div>
+        <div class="sfy-card-dark card">
+          <p class="card-label sfy-h">Product &amp; pricing</p>
+          <p class="card-body">Free-plan diagnosis, pricing restructure proposals, retention feature ideas.</p>
+        </div>
+        <div class="sfy-card-dark card">
+          <p class="card-label sfy-h">Company-level</p>
+          <p class="card-body">The original business analysis, the expansion roadmap, this conversation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Direction A -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">Direction A &middot; GS1 Assistant</div>
+      <h2 class="title-lg sfy-h">Foundation done. Ready to press the pedal.</h2>
+      <p class="body-lg">
+        The foundational work on GS1 is complete, and the listing performs better than it did a year ago.
+      </p>
+      <p class="body-lg">
+        We have a plan for what comes next here. The same is true for Label Wizard and Barcode Scanner: whichever
+        direction we press on, the plan exists.
+      </p>
+      <p class="body-lg muted">
+        The LFS layer is the one place we don't have a plan yet. Given your inputs, we can make one.
+      </p>
+    </section>
+
+    <!-- 6 · Direction B -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">Direction B &middot; Label Wizard &amp; Barcode Scanner</div>
+      <h2 class="title-lg sfy-h">What we know about the other apps</h2>
+      <p class="body-lg">
+        We've run this exact playbook once, end to end. The plan for the next step is ready. We know what to do.
+      </p>
+    </section>
+
+    <!-- 7 · Direction C (header only, spoken live) -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">Direction C &middot; The LFS layer</div>
+      <h2 class="title-lg sfy-h">What we know about the bigger business</h2>
+    </section>
+
+    <!-- 8 · The questions that connect them -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">The questions that connect them</div>
+      <h2 class="title-lg sfy-h">The ground we can't see</h2>
+      <ul class="question-list">
+        <li>Has a GS1 Assistant customer ever become an LFS client? Is that overlap tracked?</li>
+        <li>What's live in the EDI / OMS pipeline right now: clients, prospects, stalled deals?</li>
+        <li>Where is that business bottlenecked: leads, closing, onboarding, capacity?</li>
+        <li>If we helped there, what shape would the help actually take?</li>
+        <li>Who does the selling today, and is that part of the constraint?</li>
+      </ul>
+    </section>
+
+    <!-- 9 · Our stance -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">Our stance going in</div>
+      <h2 class="title-lg sfy-h">Nothing is decided yet</h2>
+      <p class="body-lg">
+        We have our reading of each direction. The decision comes out of this conversation, with your inputs.
+      </p>
+      <p class="body-lg muted">
+        The plans are ready whichever way it lands.
+      </p>
+    </section>
+
+    <!-- 10 · The offer + 100-day rhythm -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">What we're offering</div>
+      <h2 class="title-lg sfy-h">A 100-day rhythm</h2>
+      <p class="body-lg">
+        We believe in the product.
+      </p>
+      <p class="body-lg muted">
+        We work, we measure honestly, and at 100 days we sit down exactly like this and review what moved.
+      </p>
+    </section>
+
+    <!-- 11 · The decision itself -->
+    <section class="slide" data-slide>
+      <div class="eyebrow">What we want to decide together</div>
+      <h2 class="title-lg sfy-h">The decision itself</h2>
+      <ul class="question-list">
+        <li>Knowing what you know and we don't, where is the fastest path to more revenue?</li>
+        <li>If our hours could only go one place for the next stretch, where would you point them?</li>
+        <li>At the 100-day review, what would you want to be looking at together?</li>
+      </ul>
+    </section>
+
+    <!-- 12 · Close -->
+    <section class="slide" data-slide>
+      <h2 class="title-lg sfy-h sfy-grad">Let's decide together.</h2>
+    </section>
+
+    <button class="nav-btn nav-prev" id="prevBtn" aria-label="Previous slide">&larr;</button>
+    <button class="nav-btn nav-next" id="nextBtn" aria-label="Next slide">&rarr;</button>
+    <div class="slide-counter sfy-m" id="slideCounter">1 / 12</div>
+  </div>
+
+  <style>
+    .sfy-dark {
+      --bg: #08080a;
+      --bg2: #0e0e11;
+      --card: #131316;
+      --border: #1c1c21;
+      --text: #f5f5f2;
+      --muted: #8e8e93;
+      --dim: #55555a;
+      --accent: #818cf8;
+      --accent-l: #a5b4fc;
+      --accent-glow: rgba(129, 140, 248, 0.15);
+    }
+    .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .sfy-m { font-family: 'Space Grotesk', monospace; }
+    .sfy-grad {
+      background: linear-gradient(135deg, #818cf8 0%, #a5b4fc 50%, #c7d2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sfy-card-dark { background: var(--card); border: 1px solid var(--border); border-radius: 16px; }
+
+    .deck {
+      font-family: 'Inter', system-ui, sans-serif;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .deck-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--border); z-index: 20; }
+    .deck-progress-bar { height: 100%; background: var(--accent); width: 8.33%; transition: width 0.3s ease; }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 6vw 8vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .slide.active { display: flex; }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-l);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    .title-xl { font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .title-lg { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.75rem; }
+    .lede { font-size: 1.2rem; color: var(--muted); }
+    .body-lg { font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.6; margin-bottom: 1.25rem; max-width: 46rem; }
+    .body-md { font-size: 0.95rem; line-height: 1.55; margin-top: 1.25rem; max-width: 44rem; }
+    .body-xl { font-size: clamp(1.4rem, 3vw, 2.1rem); line-height: 1.35; font-weight: 700; margin-bottom: 1.5rem; max-width: 46rem; }
+    .muted { color: var(--muted); }
+
+    .dir-list { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 52rem; }
+    .dir { display: flex; gap: 1.5rem; padding: 1.5rem 1.75rem; align-items: flex-start; }
+    .dir-key { font-size: 1.6rem; font-weight: 700; color: var(--accent-l); line-height: 1.2; flex-shrink: 0; }
+    .dir-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .dir-body { font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
+
+    .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; width: 100%; margin-top: 0.5rem; }
+    .card { padding: 1.6rem; }
+    .card-label { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    .card-body { font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
+
+    .quote { font-size: clamp(1.25rem, 2.4vw, 1.7rem); font-style: italic; line-height: 1.4; max-width: 44rem; margin-bottom: 0.75rem; color: var(--text); }
+    .quote-attr { font-size: 0.9rem; margin-bottom: 1.75rem; }
+
+    .question-list { list-style: none; padding: 0; margin: 0.5rem 0; }
+    .question-list li {
+      font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+      line-height: 1.45;
+      padding: 1.1rem 0 1.1rem 2.2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 46rem;
+      position: relative;
+    }
+    .question-list li::before { content: '\2192'; position: absolute; left: 0; color: var(--accent-l); }
+
+    .nav-btn {
+      position: fixed;
+      bottom: 2.5rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 20;
+      transition: all 0.2s ease;
+    }
+    .nav-btn:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .nav-btn:disabled { opacity: 0.25; cursor: default; }
+    .nav-prev { left: 2.5rem; }
+    .nav-next { right: 2.5rem; }
+    .slide-counter { position: fixed; bottom: 3.2rem; right: 6.5rem; font-size: 0.85rem; color: var(--dim); z-index: 20; }
+
+    @media (max-width: 640px) {
+      .grid-4 { grid-template-columns: 1fr; }
+      .dir { flex-direction: row; gap: 1rem; padding: 1.1rem 1.25rem; }
+      .nav-btn { width: 2.5rem; height: 2.5rem; bottom: 1.5rem; }
+      .nav-prev { left: 1rem; }
+      .nav-next { right: 1rem; }
+      .slide-counter { bottom: 2rem; right: 4.2rem; font-size: 0.75rem; }
+    }
+
+    @media print {
+      .deck { height: auto; overflow: visible; }
+      .slide { position: relative; display: flex !important; page-break-after: always; height: 100vh; }
+      .nav-btn, .slide-counter, .deck-progress { display: none; }
+    }
+  </style>
+
+  <script>
+    const slides = document.querySelectorAll<HTMLElement>('[data-slide]');
+    const total = slides.length;
+    let current = 0;
+
+    const prevBtn = document.getElementById('prevBtn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
+    const counter = document.getElementById('slideCounter') as HTMLElement;
+    const progressBar = document.getElementById('progressBar') as HTMLElement;
+
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      counter.textContent = `${current + 1} / ${total}`;
+      progressBar.style.width = `${((current + 1) / total) * 100}%`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+    }
+
+    function go(delta: number) {
+      current = Math.min(total - 1, Math.max(0, current + delta));
+      render();
+    }
+
+    prevBtn.addEventListener('click', () => go(-1));
+    nextBtn.addEventListener('click', () => go(1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
+    });
+
+    render();
+  </script>
+</Layout>
