@@ -147,13 +147,21 @@
     outline-offset: 3px;
   }
 
-  /* Grain: breaks the flat digital surface. */
+  /* Drafting grid over grain: structure + texture on the charcoal surface. */
   .sfy .sfy-grain {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.35;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image:
+      linear-gradient(rgba(241, 238, 232, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(241, 238, 232, 0.045) 1px, transparent 1px),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.015 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:
+      44px 44px,
+      44px 44px,
+      160px 160px;
+    mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
   }
 
   /* Service rows */
@@ -202,12 +210,37 @@
     color: var(--accent);
   }
 
-  /* Artifact screenshots: real client work, framed plainly. */
+  /* Artifact screenshots: real client work, framed like plates in a document. */
   .sfy .sfy-shot {
+    position: relative;
     border: 1px solid var(--border);
     background: var(--bg2);
     box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.55);
     transform: rotate(var(--rot, 0deg));
+  }
+  .sfy .sfy-shot::before,
+  .sfy .sfy-shot::after {
+    content: '';
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    pointer-events: none;
+  }
+  .sfy .sfy-shot::before {
+    top: -7px;
+    left: -7px;
+    border-top: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
+  }
+  .sfy .sfy-shot::after {
+    bottom: -7px;
+    right: -7px;
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+  }
+  .sfy .sfy-shot.sfy-framed::before,
+  .sfy .sfy-shot.sfy-framed::after {
+    display: none;
   }
   .sfy .sfy-shot img {
     display: block;
