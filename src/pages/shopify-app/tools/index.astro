@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
+import ShopifyAppTheme from '~/components/widgets/ShopifyAppTheme.astro';
 
 const metadata = {
   title: 'Free Tools for Shopify App Growth | SellOnTube',
@@ -9,12 +10,30 @@ const metadata = {
 };
 
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+
+const tools = [
+  {
+    n: '01',
+    href: '/shopify-app/tools/shopify-app-store-listing-grader',
+    t: 'Shopify App Store Listing Grader',
+    d: 'Grade your listing against 30+ official rules. Get a score, section breakdown, and prioritized fix plan.',
+  },
+  {
+    n: '02',
+    href: '/shopify-app/tools/shopify-app-review-scraper-analyzer',
+    t: 'Shopify App Reviews Scraper',
+    d: 'Extract reviews from any app listing. View ratings, AI sentiment, download CSV.',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
 
+  <Fragment slot="announcement"></Fragment>
+
   <Fragment slot="header">
     <Header
+      isDark
       links={[
         { text: 'Case Studies', href: '/shopify-app#proof', links: [
           { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
@@ -26,7 +45,6 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
       ]}
       actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
       isSticky
-      showToggleTheme
     />
   </Fragment>
 
@@ -39,54 +57,59 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     });
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
-    .sfy { font-family: 'Inter', system-ui, sans-serif; }
-    .sfy-grad { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 50%, #C7D2FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; }
-    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
-    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
-  </style>
+  <ShopifyAppTheme />
 
   <div class="sfy">
-    <section class="sfy-dark relative py-40 overflow-hidden" style="background: var(--bg);">
-      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(129,140,248,0.06) 0%, transparent 60%);"></div>
-      <div class="relative max-w-3xl mx-auto px-6 text-center">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-6 sfy-h" style="color: var(--accent);">Tools</p>
-        <h1 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-[1.05] tracking-[-0.02em]" style="color: var(--text);">Free tools for Shopify<br class="hidden sm:block" /> app growth.</h1>
-        <p class="text-lg mb-10 leading-relaxed" style="color: var(--muted);">Free tools that help Shopify app companies diagnose and fix their growth.</p>
 
-        <div class="max-w-md mx-auto text-left">
-          <a href="/shopify-app/tools/shopify-app-store-listing-grader"
-            class="block rounded-xl p-5 mb-4 transition-all"
-            style="background: var(--card); border: 1px solid var(--border);"
-            onmouseover="this.style.borderColor='rgba(129,140,248,0.3)'"
-            onmouseout="this.style.borderColor='var(--border)'">
-            <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--accent);">Free</p>
-            <p class="text-base font-bold sfy-h" style="color: var(--text);">Shopify App Store Listing Grader</p>
-            <p class="text-sm mt-1" style="color: var(--muted);">Grade your listing against 30+ official rules. Get a score, section breakdown, and prioritized fix plan.</p>
-          </a>
-          <a href="/shopify-app/tools/shopify-app-review-scraper-analyzer"
-            class="block rounded-xl p-5 mb-4 transition-all"
-            style="background: var(--card); border: 1px solid var(--border);"
-            onmouseover="this.style.borderColor='rgba(129,140,248,0.3)'"
-            onmouseout="this.style.borderColor='var(--border)'">
-            <p class="text-xs font-semibold uppercase tracking-wider mb-1" style="color: var(--accent);">Free</p>
-            <p class="text-base font-bold sfy-h" style="color: var(--text);">Shopify App Reviews Scraper</p>
-            <p class="text-sm mt-1" style="color: var(--muted);">Extract reviews from any app listing. View ratings, AI sentiment, download CSV.</p>
-          </a>
+    <section class="relative overflow-hidden min-h-[70vh]">
+      <div class="sfy-grain"></div>
+      <div class="sfy-container relative pt-20 sm:pt-28 pb-24">
+        <p class="sfy-label mb-10 flex items-center gap-2.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background: var(--accent);"></span>
+          Free tools
+        </p>
+        <h1 class="sfy-display text-[2.75rem] sm:text-6xl lg:text-7xl mb-10 max-w-4xl">
+          Free tools for Shopify app growth.
+        </h1>
+        <p class="text-lg leading-relaxed mb-20 max-w-md" style="color: var(--muted);">
+          Diagnose and fix your app's growth. No signup, no email gate.
+        </p>
+
+        <div class="max-w-3xl">
+          {tools.map((tool) => (
+            <a href={tool.href} class="sfy-tool-row group grid grid-cols-[3rem_1fr_auto] items-baseline gap-5 py-8" style="border-top: 1px solid var(--border);">
+              <p class="sfy-num text-sm font-bold pt-1" style="color: var(--dim);">{tool.n}</p>
+              <div>
+                <h2 class="text-xl sm:text-2xl font-bold mb-2">{tool.t}</h2>
+                <p class="text-[0.95rem] leading-relaxed max-w-xl" style="color: var(--muted);">{tool.d}</p>
+              </div>
+              <span class="sfy-tool-arrow text-2xl self-center" style="color: var(--dim);">&rarr;</span>
+            </a>
+          ))}
+          <div style="border-top: 1px solid var(--border);"></div>
         </div>
       </div>
     </section>
 
-    <footer class="sfy-dark py-12" style="background: var(--bg2); border-top: 1px solid var(--border);">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <style>
+      .sfy-tool-row {
+        transition: background 0.2s ease;
+      }
+      .sfy-tool-row:hover {
+        background: var(--bg2);
+      }
+      .sfy-tool-arrow {
+        transition: transform 0.2s ease, color 0.2s ease;
+      }
+      .sfy-tool-row:hover .sfy-tool-arrow {
+        transform: translateX(4px);
+        color: var(--accent);
+      }
+    </style>
+
+    <footer class="py-10" style="border-top: 1px solid var(--border);">
+      <div class="sfy-container">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
           <div class="flex items-center gap-6 text-xs" style="color: var(--dim);">
             <a href="/shopify-app" class="hover:underline">Back to Services</a>
@@ -96,6 +119,7 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
         </div>
       </div>
     </footer>
+
   </div>
 
 </Layout>

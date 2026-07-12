@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
+import ShopifyAppTheme from '~/components/widgets/ShopifyAppTheme.astro';
 
 const metadata = {
   title: 'Free Shopify App Reviews Scraper - Extract & Download Reviews | SellOnTube',
@@ -53,8 +54,11 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
+  <Fragment slot="announcement"></Fragment>
+
   <Fragment slot="header">
     <Header
+      isDark
       links={[
         { text: 'Case Studies', href: '/shopify-app#proof', links: [
           { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
@@ -66,7 +70,6 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
       ]}
       actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
       isSticky
-      showToggleTheme
     />
   </Fragment>
 
@@ -79,26 +82,24 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
     });
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <ShopifyAppTheme />
 
   <style>
-    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
-    .sfy { font-family: 'Inter', system-ui, sans-serif; }
-    .sfy-grad { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 50%, #C7D2FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Satoshi', system-ui, sans-serif; letter-spacing: -0.02em; }
+    .sfy .sfy-m { font-family: 'Satoshi', system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+    .sfy { font-family: 'Satoshi', system-ui, sans-serif; }
+    .sfy-grad { color: #e0755f; }
 
-    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; }
-    .sfy-light { --bg: #FAFAF8; --bg2: #F2F2EE; --card: #FFFFFF; --border: #E2E2DD; --text: #111113; --muted: #6B6B73; --dim: #9CA3AF; --accent: #6366F1; --accent-l: #818CF8; }
+    .sfy-dark { --bg: #171512; --bg2: #1e1b17; --card: #1e1b17; --border: #2b2823; --text: #f1eee8; --muted: #a9a399; --dim: #736d63; --accent: #d8492f; --accent-l: #e0755f; }
+    .sfy-light { --bg: #171512; --bg2: #1e1b17; --card: #1e1b17; --border: #2b2823; --text: #f1eee8; --muted: #a9a399; --dim: #736d63; --accent: #d8492f; --accent-l: #e0755f; }
 
-    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
-    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
+    .sfy-btn-primary { background: #d8492f; color: #fff8f5; transition: background 0.2s ease, transform 0.2s ease; }
+    .sfy-btn-primary:hover { background: #c23f27; transform: translateY(-1px); }
 
     .rating-bar { height: 6px; border-radius: 3px; transition: width 0.6s ease; }
 
     .review-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; transition: border-color 0.2s ease; }
-    .review-card:hover { border-color: rgba(99,102,241,0.3); }
+    .review-card:hover { border-color: rgba(216,73,47,0.3); }
 
     .star-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; }
     .star-5, .star-4 { background: rgba(16,185,129,0.12); color: #059669; }
@@ -127,7 +128,7 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
 
     <!-- ===== HERO (dark) ===== -->
     <section class="sfy-dark relative pt-28 pb-12 overflow-hidden" style="background: var(--bg);">
-      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 30%, rgba(129,140,248,0.06) 0%, transparent 60%);"></div>
+      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 30%, rgba(216,73,47,0.06) 0%, transparent 60%);"></div>
       <div class="relative max-w-3xl mx-auto px-6 text-center">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">Free Tool</p>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-5 leading-[1.08] tracking-[-0.02em] sfy-h" style="color: var(--text);">
@@ -150,7 +151,7 @@ const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','a
           <p id="url-error" class="hidden mt-2 text-sm" style="color: #EF4444;"></p>
           <button id="scrape-btn"
             class="sfy-btn-primary mt-5 w-full font-bold px-6 py-3.5 rounded-xl text-base sfy-h"
-            style="box-shadow: 0 0 30px -8px rgba(129,140,248,0.3);">
+            style="box-shadow: 0 0 30px -8px rgba(216,73,47,0.3);">
             Scrape Reviews
           </button>
         </div>
