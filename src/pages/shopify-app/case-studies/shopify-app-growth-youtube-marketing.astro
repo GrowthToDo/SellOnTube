@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
+import ShopifyAppTheme from '~/components/widgets/ShopifyAppTheme.astro';
 
 const metadata = {
   title: 'YouTube vs Blog for Shopify App Growth: 3.25x More Conversions | SellOnTube',
@@ -23,18 +24,26 @@ const monthlyData = [
   { month: 'Apr 2025', yt: 138, blog: 35, adv: '3.9x' },
   { month: 'May 2025', yt: 142, blog: 29, adv: '4.9x' },
 ];
+
+const keywordTypes = [
+  { type: 'Category', example: '"best inventory apps for Shopify"' },
+  { type: 'Comparison', example: '"Shopify vs WooCommerce inventory management"' },
+  { type: 'Jobs-to-be-done', example: '"how to sync inventory across multiple Shopify stores"' },
+];
 ---
 
 <Layout metadata={metadata}>
 
+  <Fragment slot="announcement"></Fragment>
+
   <Fragment slot="header">
     <Header
+      isDark
       links={[
         { text: 'Back to Services', href: '/shopify-app' },
       ]}
       actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
       isSticky
-      showToggleTheme
     />
   </Fragment>
 
@@ -47,419 +56,329 @@ const monthlyData = [
     });
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-
-  <style>
-    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
-    .sfy { font-family: 'Inter', system-ui, sans-serif; }
-
-    .sfy-grad { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 50%, #C7D2FE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; --accent-glow: rgba(129,140,248,0.15); }
-    .sfy-light { --bg: #FAFAF8; --bg2: #F2F2EE; --card: #FFFFFF; --border: #E6E6E1; --text: #111113; --muted: #6B6B73; --dim: #9CA3AF; --accent: #6366F1; --accent-l: #818CF8; --accent-glow: rgba(99,102,241,0.08); }
-
-    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
-    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
-
-    .sfy-btn-ghost { border: 1px solid var(--border); color: var(--muted); transition: all 0.2s ease; }
-    .sfy-btn-ghost:hover { border-color: var(--accent); color: var(--text); }
-
-    .sfy-glow { box-shadow: 0 0 60px -12px rgba(129,140,248,0.25), 0 0 120px -40px rgba(129,140,248,0.1); }
-
-    .sfy-card-dark { background: var(--card); border: 1px solid var(--border); border-radius: 16px; transition: border-color 0.2s ease; }
-    .sfy-card-dark:hover { border-color: rgba(129,140,248,0.3); }
-
-    .sfy-card-light { background: var(--card); border: 1px solid var(--border); border-radius: 16px; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
-    .sfy-card-light:hover { border-color: rgba(99,102,241,0.3); box-shadow: 0 4px 16px rgba(99,102,241,0.06); }
-  </style>
+  <ShopifyAppTheme />
 
   <div class="sfy">
 
-    <!-- ===== HERO (dark) ===== -->
-    <section class="sfy-dark relative pt-24 sm:pt-32 pb-20 sm:pb-28 overflow-hidden" style="background: var(--bg);">
-      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 50% at 50% 20%, rgba(129,140,248,0.06) 0%, transparent 50%);"></div>
-
-      <div class="relative max-w-4xl mx-auto px-6">
-        <nav class="flex items-center gap-2 text-xs mb-10" style="color: var(--dim);">
+    <!-- ===== HERO ===== -->
+    <section class="relative overflow-hidden">
+      <div class="sfy-grain"></div>
+      <div class="sfy-container relative pt-16 sm:pt-20 pb-16 sm:pb-20">
+        <nav class="flex items-center gap-2 text-xs mb-12" style="color: var(--dim);">
           <a href="/shopify-app" class="hover:underline" style="color: var(--muted);">Services</a>
           <span>/</span>
           <span>Case Studies</span>
           <span>/</span>
-          <span style="color: var(--accent-l);">YouTube vs Blog</span>
+          <span style="color: var(--text);">YouTube vs Blog</span>
         </nav>
 
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-8" style="border: 1px solid var(--border); background: rgba(129,140,248,0.04);">
-          <span class="w-1.5 h-1.5 rounded-full" style="background: var(--accent);"></span>
-          <span class="text-xs font-medium tracking-wide sfy-h" style="color: var(--muted);">Case study &middot; 12-month data</span>
-        </div>
+        <p class="sfy-label mb-8 flex items-center gap-2.5">
+          <span class="inline-block w-1.5 h-1.5 rounded-full" style="background: var(--accent);"></span>
+          Case study &middot; 12-month data
+        </p>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-[-0.02em] mb-7" style="color: var(--text);">
-          We ran both channels<br />
-          <span class="sfy-grad">for 12 months. YouTube<br class="hidden sm:block" /> converted 3.25x more.</span>
+        <h1 class="sfy-display text-[2.5rem] sm:text-6xl lg:text-7xl mb-10 max-w-5xl">
+          We ran both channels for 12 months. YouTube converted 3.25&times; more.
         </h1>
 
-        <p class="text-lg leading-relaxed mb-10 max-w-2xl" style="color: var(--muted);">
+        <p class="text-lg leading-relaxed max-w-2xl" style="color: var(--muted);">
           A Shopify app company in the inventory and operations category. Past 500 installs, small team, growing but stuck on blog-driven acquisition that had flatlined. We ran YouTube and blog in parallel for 12 months. Same topics, same offers, same landing pages. The gap widened every month.
         </p>
       </div>
-    </section>
 
-    <!-- ===== STAT BAR (dark) ===== -->
-    <section class="sfy-dark" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-      <div class="max-w-4xl mx-auto px-6 py-6">
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 text-center">
-          <div>
-            <p class="text-3xl font-bold sfy-m sfy-grad">3.25x</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">more conversions from YouTube vs blog</p>
-          </div>
-          <div class="hidden sm:block w-px h-10" style="background: var(--border);"></div>
-          <div>
-            <p class="text-3xl font-bold sfy-m" style="color: var(--text);">12 months</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">parallel execution, same audience</p>
-          </div>
-          <div class="hidden sm:block w-px h-10" style="background: var(--border);"></div>
-          <div>
-            <p class="text-3xl font-bold sfy-m" style="color: var(--text);">1,668</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">total conversions tracked via GA</p>
+      <!-- Stat band -->
+      <div style="border-top: 1px solid var(--border);">
+        <div class="sfy-container">
+          <div class="grid grid-cols-1 sm:grid-cols-3">
+            <div class="py-8 sm:pr-10" style="border-bottom: 1px solid var(--border-soft);">
+              <p class="sfy-num text-4xl font-black" style="color: var(--accent);">3.25&times;</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">more conversions from YouTube vs blog</p>
+            </div>
+            <div class="py-8 sm:px-10 sm:border-l" style="border-color: var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+              <p class="sfy-num text-4xl font-black">12 months</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">parallel execution, same audience</p>
+            </div>
+            <div class="py-8 sm:pl-10 sm:border-l" style="border-color: var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+              <p class="sfy-num text-4xl font-black">1,668</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">total conversions tracked via GA</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== TRANSITION ===== -->
-    <div style="height: 80px; background: linear-gradient(to bottom, #0E0E11, #FAFAF8);"></div>
+    <!-- ===== THE SETUP ===== -->
+    <section id="setup" class="py-24 sm:py-28">
+      <div class="sfy-container">
+        <h2 class="sfy-display text-4xl sm:text-5xl mb-16">Two channels. One app. 12 months.</h2>
 
-    <!-- ===== THE SETUP (light) ===== -->
-    <section id="setup" class="sfy-light py-20" style="background: var(--bg);">
-      <div class="max-w-4xl mx-auto px-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">The setup</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight tracking-[-0.02em] mb-10" style="color: var(--text);">
-          Two channels. One app. 12 months.
-        </h2>
-
-        <div class="grid sm:grid-cols-2 gap-4 mb-10">
-          <div class="sfy-card-light p-7">
-            <h3 class="font-bold text-sm mb-2 sfy-h" style="color: var(--text);">The problem</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Blog traffic was growing but conversions were flat. Impressions up, clicks down. AI tools were answering the queries before anyone reached the site. The same SEO approach that worked three years earlier was producing half the results.</p>
+        <div class="grid md:grid-cols-2 gap-x-14 mb-16">
+          <div class="sfy-reveal py-8" style="border-top: 1px solid var(--border);">
+            <h3 class="text-lg font-bold mb-3">The problem</h3>
+            <p class="text-[0.95rem] leading-relaxed" style="color: var(--muted);">Blog traffic was growing but conversions were flat. Impressions up, clicks down. AI tools were answering the queries before anyone reached the site. The same SEO approach that worked three years earlier was producing half the results.</p>
           </div>
-          <div class="sfy-card-light p-7">
-            <h3 class="font-bold text-sm mb-2 sfy-h" style="color: var(--text);">The hypothesis</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">What if we stopped chasing top-of-funnel blog traffic and targeted only bottom-of-funnel keywords on YouTube? Merchants searching for apps want to see the interface and watch the workflow before they install.</p>
+          <div class="sfy-reveal py-8" style="border-top: 1px solid var(--border);">
+            <h3 class="text-lg font-bold mb-3">The hypothesis</h3>
+            <p class="text-[0.95rem] leading-relaxed" style="color: var(--muted);">What if we stopped chasing top-of-funnel blog traffic and targeted only bottom-of-funnel keywords on YouTube? Merchants searching for apps want to see the interface and watch the workflow before they install.</p>
           </div>
         </div>
 
-        <!-- Visual: experiment timeline -->
-        <div class="sfy-card-light overflow-hidden mb-4">
-          <div class="px-7 py-4 flex items-center justify-between" style="border-bottom: 1px solid var(--border);">
-            <p class="text-xs font-semibold uppercase tracking-wider sfy-h" style="color: var(--accent);">Timeline</p>
-            <p class="text-xs sfy-m" style="color: var(--dim);">12 months</p>
+        <!-- Experiment timeline -->
+        <div class="sfy-reveal mb-16">
+          <div class="flex items-baseline justify-between mb-4">
+            <p class="sfy-label">The experiment</p>
+            <p class="sfy-num text-xs" style="color: var(--dim);">12 months</p>
           </div>
-          <div class="px-7 py-4 flex items-center gap-3">
-            <span class="text-xs font-semibold sfy-m" style="color: var(--dim);">Jun 2024</span>
-            <div class="flex-1 h-2 rounded-full overflow-hidden" style="background: var(--border);">
-              <div class="h-full rounded-full" style="width: 100%; background: linear-gradient(90deg, rgba(99,102,241,0.3), rgba(99,102,241,0.8));"></div>
+          <div class="flex items-center gap-4 mb-10">
+            <span class="sfy-num text-xs font-bold" style="color: var(--dim);">Jun 2024</span>
+            <div class="flex-1 h-1.5 overflow-hidden" style="background: var(--border-soft);">
+              <div class="h-full" style="width: 100%; background: var(--accent);"></div>
             </div>
-            <span class="text-xs font-semibold sfy-m" style="color: var(--accent);">May 2025</span>
+            <span class="sfy-num text-xs font-bold" style="color: var(--accent);">May 2025</span>
           </div>
-        </div>
 
-        <div class="sfy-card-light p-7 mb-10">
-          <h3 class="font-bold text-sm mb-4 sfy-h" style="color: var(--text);">The experiment (June 2024 to May 2025)</h3>
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wider mb-3 sfy-h" style="color: var(--accent);">YouTube channel</p>
-              <div class="space-y-2 text-sm" style="color: var(--muted);">
-                <p>48 videos over 12 months (4/month)</p>
-                <p>Bottom-of-funnel keywords only</p>
-                <p>Voiceover + screen recordings</p>
-                <p>Category, comparison, and jobs-to-be-done queries</p>
-              </div>
+          <div class="grid md:grid-cols-2 gap-x-14">
+            <div class="py-6" style="border-top: 1px solid var(--border);">
+              <p class="sfy-label mb-5" style="color: var(--text);">YouTube channel</p>
+              <ul class="space-y-2.5 text-[0.95rem]" style="color: var(--muted);">
+                <li>48 videos over 12 months (4/month)</li>
+                <li>Bottom-of-funnel keywords only</li>
+                <li>Voiceover + screen recordings</li>
+                <li>Category, comparison, and jobs-to-be-done queries</li>
+              </ul>
             </div>
-            <div>
-              <p class="text-xs font-semibold uppercase tracking-wider mb-3 sfy-h" style="color: var(--accent);">Blog</p>
-              <div class="space-y-2 text-sm" style="color: var(--muted);">
-                <p>Continued publishing SEO-optimized articles</p>
-                <p>Same topics where possible</p>
-                <p>Same offers, same landing pages</p>
-                <p>Only variable: the channel</p>
-              </div>
+            <div class="py-6" style="border-top: 1px solid var(--border);">
+              <p class="sfy-label mb-5">Blog</p>
+              <ul class="space-y-2.5 text-[0.95rem]" style="color: var(--muted);">
+                <li>Continued publishing SEO-optimized articles</li>
+                <li>Same topics where possible</li>
+                <li>Same offers, same landing pages</li>
+                <li>Only variable: the channel</li>
+              </ul>
             </div>
           </div>
         </div>
 
         <!-- Keyword types table -->
-        <div class="sfy-card-light overflow-hidden">
-          <div class="px-7 py-4" style="border-bottom: 1px solid var(--border);">
-            <p class="text-sm font-bold sfy-h" style="color: var(--text);">Bottom-of-funnel keyword types we targeted</p>
-          </div>
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
+        <div class="sfy-reveal max-w-3xl">
+          <p class="text-base font-bold mb-4">Bottom-of-funnel keyword types we targeted</p>
+          <div class="overflow-x-auto" style="border: 1px solid var(--border);">
+            <table class="sfy-table">
               <thead>
-                <tr style="border-bottom: 1px solid var(--border);">
-                  <th class="px-7 py-3 text-left font-semibold sfy-h" style="color: var(--text);">Type</th>
-                  <th class="px-7 py-3 text-left font-semibold sfy-h" style="color: var(--text);">Example</th>
-                </tr>
-              </thead>
-              <tbody style="color: var(--muted);">
-                <tr style="border-bottom: 1px solid var(--border);">
-                  <td class="px-7 py-3 font-medium" style="color: var(--text);">Category</td>
-                  <td class="px-7 py-3">"best inventory apps for Shopify"</td>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--border);">
-                  <td class="px-7 py-3 font-medium" style="color: var(--text);">Comparison</td>
-                  <td class="px-7 py-3">"Shopify vs WooCommerce inventory management"</td>
-                </tr>
                 <tr>
-                  <td class="px-7 py-3 font-medium" style="color: var(--text);">Jobs-to-be-done</td>
-                  <td class="px-7 py-3">"how to sync inventory across multiple Shopify stores"</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== RESULTS (light accent bg) ===== -->
-    <section id="results" class="sfy-light py-20" style="background: var(--bg2);">
-      <div class="max-w-4xl mx-auto px-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">The results</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight tracking-[-0.02em] mb-14" style="color: var(--text);">
-          YouTube won. And the gap kept growing.
-        </h2>
-
-        <!-- Visual bar comparison -->
-        <div class="sfy-card-light p-7 mb-6">
-          <div class="flex items-center gap-4 mb-4">
-            <p class="text-sm font-semibold sfy-h w-20" style="color: var(--text);">YouTube</p>
-            <div class="flex-1 h-10 rounded-lg overflow-hidden" style="background: var(--border);">
-              <div class="h-full rounded-lg flex items-center px-4" style="width: 75.4%; background: linear-gradient(135deg, #6366F1, #818CF8);">
-                <span class="text-xs font-bold text-white sfy-m">1,257</span>
-              </div>
-            </div>
-          </div>
-          <div class="flex items-center gap-4">
-            <p class="text-sm font-semibold sfy-h w-20" style="color: var(--dim);">Blog</p>
-            <div class="flex-1 h-10 rounded-lg overflow-hidden" style="background: var(--border);">
-              <div class="h-full rounded-lg flex items-center px-4" style="width: 24.6%; background: var(--dim);">
-                <span class="text-xs font-bold text-white sfy-m">411</span>
-              </div>
-            </div>
-          </div>
-          <p class="text-xs mt-4 text-center" style="color: var(--dim);">Total conversions over 12 months, tracked via Google Analytics</p>
-        </div>
-
-        <!-- Big number cards -->
-        <div class="grid sm:grid-cols-3 gap-4 mb-10">
-          <div class="relative rounded-2xl p-7 overflow-hidden" style="border: 1px solid rgba(99,102,241,0.25); background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(255,255,255,0.95));">
-            <p class="text-5xl font-black sfy-m" style="color: var(--accent);">1,257</p>
-            <p class="text-sm mt-2 font-semibold sfy-h" style="color: var(--text);">YouTube conversions</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">75% of all conversions</p>
-          </div>
-          <div class="sfy-card-light p-7">
-            <p class="text-5xl font-black sfy-m" style="color: var(--dim);">411</p>
-            <p class="text-sm mt-2 font-semibold sfy-h" style="color: var(--text);">Blog conversions</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">25% of all conversions</p>
-          </div>
-          <div class="sfy-card-light p-7">
-            <p class="text-5xl font-black sfy-m sfy-grad">3.25x</p>
-            <p class="text-sm mt-2 font-semibold sfy-h" style="color: var(--text);">YouTube advantage</p>
-            <p class="text-xs mt-1" style="color: var(--dim);">grew from 2.5x to 4.9x over 12 months</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===== TRANSITION ===== -->
-    <div style="height: 60px; background: linear-gradient(to bottom, #F2F2EE, #08080A);"></div>
-
-    <!-- ===== MONTHLY DATA (dark) ===== -->
-    <section id="data" class="sfy-dark relative py-24 overflow-hidden" style="background: var(--bg);">
-      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 30%, rgba(129,140,248,0.06) 0%, transparent 50%);"></div>
-      <div class="relative max-w-4xl mx-auto px-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">Monthly breakdown</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight tracking-[-0.02em] mb-6" style="color: var(--text);">
-          The gap widened every month.
-        </h2>
-        <p class="text-sm mb-14" style="color: var(--muted);">YouTube grew every month. Blog stayed flat or declined. By May 2025, the gap had widened to nearly 5x.</p>
-
-        <!-- Data table -->
-        <div class="rounded-2xl overflow-hidden" style="border: 1px solid var(--border);">
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <thead>
-                <tr style="background: var(--card);">
-                  <th class="px-5 py-4 text-left font-semibold sfy-h" style="color: var(--text);">Month</th>
-                  <th class="px-5 py-4 text-right font-semibold sfy-h" style="color: var(--accent-l);">YouTube</th>
-                  <th class="px-5 py-4 text-right font-semibold sfy-h" style="color: var(--dim);">Blog</th>
-                  <th class="px-5 py-4 text-right font-semibold sfy-h" style="color: var(--text);">Advantage</th>
+                  <th>Type</th>
+                  <th>Example</th>
                 </tr>
               </thead>
               <tbody>
-                {monthlyData.map((row, i) => (
-                  <tr style={`border-top: 1px solid var(--border); ${i === monthlyData.length - 1 ? 'background: rgba(129,140,248,0.04);' : ''}`}>
-                    <td class="px-5 py-3 font-medium sfy-m" style="color: var(--muted);">{row.month}</td>
-                    <td class="px-5 py-3 text-right font-bold sfy-m" style="color: var(--accent-l);">{row.yt}</td>
-                    <td class="px-5 py-3 text-right sfy-m" style="color: var(--dim);">{row.blog}</td>
-                    <td class="px-5 py-3 text-right font-bold sfy-m" style={`color: ${parseFloat(row.adv) >= 3.5 ? 'var(--accent)' : 'var(--text)'};`}>{row.adv}</td>
+                {keywordTypes.map((k) => (
+                  <tr>
+                    <td class="font-bold whitespace-nowrap" style="color: var(--text);">{k.type}</td>
+                    <td>{k.example}</td>
                   </tr>
                 ))}
               </tbody>
-              <tfoot>
-                <tr style="border-top: 2px solid var(--border); background: var(--card);">
-                  <td class="px-5 py-4 font-bold sfy-h" style="color: var(--text);">Total</td>
-                  <td class="px-5 py-4 text-right font-black sfy-m" style="color: var(--accent-l);">1,257</td>
-                  <td class="px-5 py-4 text-right font-bold sfy-m" style="color: var(--dim);">411</td>
-                  <td class="px-5 py-4 text-right font-black sfy-m sfy-grad">3.25x</td>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- May snapshot callout -->
-        <div class="mt-10 rounded-2xl p-8" style="background: rgba(129,140,248,0.04); border: 1px solid rgba(129,140,248,0.15);">
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent-l);">Final month snapshot: May 2025</p>
-          <!-- Proportion bar -->
-          <div class="flex h-3 rounded-full overflow-hidden mb-6">
-            <div style="width: 65%; background: linear-gradient(90deg, #6366F1, #818CF8);" title="YouTube 65%"></div>
-            <div style="width: 22%; background: #A5B4FC;" title="ChatGPT 22%"></div>
+    <!-- ===== RESULTS ===== -->
+    <section id="results" class="py-24 sm:py-28" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="sfy-container">
+        <p class="sfy-label mb-5">The results</p>
+        <h2 class="sfy-display text-4xl sm:text-5xl mb-16 max-w-3xl">YouTube won. And the gap kept growing.</h2>
+
+        <!-- Visual bar comparison -->
+        <div class="sfy-reveal max-w-3xl mb-16">
+          <div class="mb-6">
+            <div class="flex items-baseline justify-between mb-2">
+              <p class="text-sm font-bold">YouTube</p>
+              <p class="sfy-num text-sm font-bold">1,257</p>
+            </div>
+            <div class="sfy-bar-track h-3 w-full"><div class="sfy-bar-fill" style="width: 100%; background: var(--accent);"></div></div>
+          </div>
+          <div class="mb-4">
+            <div class="flex items-baseline justify-between mb-2">
+              <p class="text-sm font-bold" style="color: var(--muted);">Blog</p>
+              <p class="sfy-num text-sm font-bold" style="color: var(--muted);">411</p>
+            </div>
+            <div class="sfy-bar-track h-3 w-full"><div class="sfy-bar-fill" style="width: 32.7%; background: var(--dim);"></div></div>
+          </div>
+          <p class="text-xs" style="color: var(--dim);">Total conversions over 12 months, tracked via Google Analytics</p>
+        </div>
+
+        <!-- Big numbers -->
+        <div class="grid grid-cols-1 sm:grid-cols-3">
+          <div class="sfy-reveal py-8 sm:pr-10" style="border-top: 1px solid var(--border);">
+            <p class="sfy-num sfy-display text-5xl mb-3" style="color: var(--accent);">1,257</p>
+            <p class="text-sm font-bold">YouTube conversions</p>
+            <p class="text-xs mt-1" style="color: var(--dim);">75% of all conversions</p>
+          </div>
+          <div class="sfy-reveal py-8 sm:px-10 sm:border-l" style="border-top: 1px solid var(--border); border-left-color: var(--border-soft);">
+            <p class="sfy-num sfy-display text-5xl mb-3" style="color: var(--muted);">411</p>
+            <p class="text-sm font-bold">Blog conversions</p>
+            <p class="text-xs mt-1" style="color: var(--dim);">25% of all conversions</p>
+          </div>
+          <div class="sfy-reveal py-8 sm:pl-10 sm:border-l" style="border-top: 1px solid var(--border); border-left-color: var(--border-soft);">
+            <p class="sfy-num sfy-display text-5xl mb-3">3.25&times;</p>
+            <p class="text-sm font-bold">YouTube advantage</p>
+            <p class="text-xs mt-1" style="color: var(--dim);">grew from 2.5x to 4.9x over 12 months</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MONTHLY DATA ===== -->
+    <section id="data" class="py-24 sm:py-28">
+      <div class="sfy-container">
+        <p class="sfy-label mb-5">Monthly breakdown</p>
+        <h2 class="sfy-display text-4xl sm:text-5xl mb-6">The gap widened every month.</h2>
+        <p class="text-base mb-14 max-w-xl" style="color: var(--muted);">YouTube grew every month. Blog stayed flat or declined. By May 2025, the gap had widened to nearly 5x.</p>
+
+        <!-- Data table -->
+        <div class="sfy-reveal overflow-x-auto max-w-3xl" style="border: 1px solid var(--border);">
+          <table class="sfy-table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th style="text-align: right;">YouTube</th>
+                <th style="text-align: right;">Blog</th>
+                <th style="text-align: right;">Advantage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {monthlyData.map((row) => (
+                <tr>
+                  <td class="sfy-num font-medium whitespace-nowrap">{row.month}</td>
+                  <td class="sfy-num text-right font-bold" style="color: var(--text); text-align: right;">{row.yt}</td>
+                  <td class="sfy-num" style="text-align: right;">{row.blog}</td>
+                  <td class="sfy-num font-bold" style={`text-align: right; color: ${parseFloat(row.adv) >= 3.5 ? 'var(--accent)' : 'var(--text)'};`}>{row.adv}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td class="sfy-num" style="text-align: right;">1,257</td>
+                <td class="sfy-num" style="text-align: right; color: var(--muted);">411</td>
+                <td class="sfy-num" style="text-align: right; color: var(--accent);">3.25x</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- May snapshot -->
+        <div class="sfy-reveal mt-16 max-w-3xl">
+          <p class="sfy-label mb-6">Final month snapshot: May 2025</p>
+          <div class="flex h-2.5 overflow-hidden mb-8">
+            <div style="width: 65%; background: var(--accent);" title="YouTube 65%"></div>
+            <div style="width: 22%; background: var(--muted);" title="ChatGPT 22%"></div>
             <div style="width: 13%; background: var(--dim);" title="Blog 13%"></div>
           </div>
-          <div class="grid sm:grid-cols-3 gap-6 text-center">
+          <div class="grid grid-cols-3 gap-6">
             <div>
-              <p class="text-3xl font-black sfy-m" style="color: var(--accent-l);">142</p>
+              <p class="sfy-num text-3xl font-black" style="color: var(--accent);">142</p>
               <p class="text-xs mt-1" style="color: var(--muted);">YouTube (65%)</p>
             </div>
             <div>
-              <p class="text-3xl font-black sfy-m" style="color: var(--dim);">47</p>
+              <p class="sfy-num text-3xl font-black" style="color: var(--muted);">47</p>
               <p class="text-xs mt-1" style="color: var(--muted);">ChatGPT referrals (22%)</p>
             </div>
             <div>
-              <p class="text-3xl font-black sfy-m" style="color: var(--dim);">29</p>
+              <p class="sfy-num text-3xl font-black" style="color: var(--dim);">29</p>
               <p class="text-xs mt-1" style="color: var(--muted);">Blog (13%)</p>
             </div>
           </div>
         </div>
 
-        <div class="mt-10 rounded-2xl p-6 text-center" style="background: rgba(129,140,248,0.04); border: 1px solid rgba(129,140,248,0.15);">
-          <p class="text-xs" style="color: var(--dim);">All conversions tracked via Google Analytics on install-button clicks. Same landing pages, same offers. Only variable: the channel.</p>
-        </div>
+        <p class="text-sm mt-14 pt-8 max-w-xl" style="color: var(--dim); border-top: 1px solid var(--border);">
+          All conversions tracked via Google Analytics on install-button clicks. Same landing pages, same offers. Only variable: the channel.
+        </p>
       </div>
     </section>
 
-    <!-- ===== TRANSITION ===== -->
-    <div style="height: 60px; background: linear-gradient(to bottom, #08080A, #FAFAF8);"></div>
-
-    <!-- ===== APPROACH (light, brief) ===== -->
-    <section class="sfy-light py-20" style="background: var(--bg);">
-      <div class="max-w-4xl mx-auto px-6">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-4 sfy-h" style="color: var(--accent);">Our approach</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight tracking-[-0.02em] mb-6" style="color: var(--text);">
-          The strategy behind the numbers.
-        </h2>
+    <!-- ===== APPROACH ===== -->
+    <section class="py-24 sm:py-28" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="sfy-container">
+        <h2 class="sfy-display text-4xl sm:text-5xl mb-8 max-w-3xl">The strategy behind the numbers.</h2>
         <p class="text-base mb-6 max-w-2xl" style="color: var(--muted);">
-          Every video targeted a bottom-of-funnel query where a merchant was ready to buy, not browse. Category keywords ("best inventory apps for Shopify"), comparison keywords, and jobs-to-be-done queries. Nothing generic.
+          Every video targeted a bottom-of-funnel query where a merchant was ready to buy, not browse. Category keywords (&ldquo;best inventory apps for Shopify&rdquo;), comparison keywords, and jobs-to-be-done queries. Nothing generic.
         </p>
-        <p class="text-base mb-10 max-w-2xl" style="color: var(--muted);">
+        <p class="text-base mb-14 max-w-2xl" style="color: var(--muted);">
           Production was voiceover and screen recordings, structured as problem, solution, product bridge, CTA. Four videos a month, every month, optimized for search rankings, not virality. All conversions measured through Google Analytics on install-button clicks. The same approach we now run for Shopify app clients.
         </p>
 
         <!-- Attributed observation -->
-        <div class="sfy-card-light p-7 mb-10 max-w-2xl" style="border-left: 3px solid var(--accent);">
-          <p class="text-sm leading-relaxed italic" style="color: var(--muted);">"The videos we published in month one were still converting in month twelve. That was the part we did not expect. Blog posts from the same period had already been buried."</p>
-          <p class="text-xs mt-3 font-semibold sfy-h" style="color: var(--dim);">Head of growth, Shopify app company</p>
-        </div>
+        <blockquote class="sfy-reveal max-w-2xl mb-16 pl-8" style="border-left: 2px solid var(--accent);">
+          <p class="text-xl leading-relaxed font-medium mb-4">&ldquo;The videos we published in month one were still converting in month twelve. That was the part we did not expect. Blog posts from the same period had already been buried.&rdquo;</p>
+          <p class="text-sm" style="color: var(--dim);">Head of growth, Shopify app company</p>
+        </blockquote>
 
         <!-- Why it worked -->
-        <p class="text-xs font-semibold uppercase tracking-[0.15em] mb-4 sfy-h" style="color: var(--accent);">Why it worked</p>
-        <div class="grid sm:grid-cols-3 gap-4 mb-10">
-          <div class="sfy-card-light p-7">
-            <h3 class="font-bold text-sm mb-2 sfy-h" style="color: var(--text);">Merchants want to see, not read</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Shopify merchants searching for apps want to watch someone navigate the settings and demonstrate the workflow. A blog post describes it. A video proves it.</p>
-          </div>
-          <div class="sfy-card-light p-7">
-            <h3 class="font-bold text-sm mb-2 sfy-h" style="color: var(--text);">YouTube compounds harder</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Videos from month one still ranking and converting in month twelve. Blog posts from the same period buried by newer content, AI summaries, and algorithm changes.</p>
-          </div>
-          <div class="sfy-card-light p-7">
-            <h3 class="font-bold text-sm mb-2 sfy-h" style="color: var(--text);">Wide open at BoFu</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Everyone else makes tutorials and tips. Almost nobody targets "best [category] app for Shopify" with video. That is where the buying intent sits.</p>
-          </div>
+        <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+          {[
+            { t: 'Merchants want to see, not read', d: 'Shopify merchants searching for apps want to watch someone navigate the settings and demonstrate the workflow. A blog post describes it. A video proves it.' },
+            { t: 'YouTube compounds harder', d: 'Videos from month one still ranking and converting in month twelve. Blog posts from the same period buried by newer content, AI summaries, and algorithm changes.' },
+            { t: 'Wide open at BoFu', d: 'Everyone else makes tutorials and tips. Almost nobody targets "best [category] app for Shopify" with video. That is where the buying intent sits.' },
+          ].map((w) => (
+            <div class="sfy-reveal pt-6" style="border-top: 1px solid var(--border);">
+              <h3 class="text-lg font-bold mb-3">{w.t}</h3>
+              <p class="text-[0.95rem] leading-relaxed" style="color: var(--muted);">{w.d}</p>
+            </div>
+          ))}
         </div>
 
-        <a href="/shopify-app" class="inline-flex items-center gap-2 text-sm font-semibold sfy-h" style="color: var(--accent);">
-          See all services we offer
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
+        <a href="/shopify-app" class="sfy-link text-sm inline-block mt-14">See all services we offer &rarr;</a>
       </div>
     </section>
 
-    <!-- ===== TRANSITION ===== -->
-    <div style="height: 60px; background: linear-gradient(to bottom, #FAFAF8, #08080A);"></div>
-
-    <!-- ===== CTA (dark) ===== -->
-    <section class="sfy-dark relative py-28 overflow-hidden" style="background: var(--bg2);">
-      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(129,140,248,0.06) 0%, transparent 60%);"></div>
-      <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 30% 25% at 50% 50%, rgba(129,140,248,0.08) 0%, transparent 50%);"></div>
-      <div class="relative max-w-3xl mx-auto px-6 text-center">
-        <!-- Condensed takeaway -->
-        <p class="text-sm leading-relaxed mb-12 max-w-xl mx-auto" style="color: var(--muted);">Blog traffic is getting harder to convert. YouTube videos keep ranking and converting for years. Most Shopify app companies have not figured this out yet.</p>
-
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] mb-6 sfy-h" style="color: var(--accent);">Next step</p>
-        <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-[1.05] tracking-[-0.02em]" style="color: var(--text);">Want YouTube working<br class="hidden sm:block" /> for your Shopify app?</h2>
-        <p class="text-lg mb-5 leading-relaxed" style="color: var(--muted);">Book a 30-minute call. We look at your app, your current channels, and whether YouTube could do for your installs what it did here.</p>
-        <p class="text-sm mb-12" style="color: var(--dim);">This is the same approach we run for every Shopify app client.</p>
-        <a href={calLink} target="_blank" rel="noopener noreferrer"
-          class="sfy-btn-primary inline-block font-bold px-12 py-5 rounded-full text-base sfy-h" style="box-shadow: 0 0 40px -5px rgba(129,140,248,0.4), 0 0 80px -10px rgba(129,140,248,0.2);">
-          Book a discovery call
-        </a>
-        <p class="text-sm mt-6" style="color: var(--dim);">No pitch deck. No follow-up sequence. Just a direct conversation.</p>
-
-        <div class="mt-8">
-          <a href="/shopify-app" class="text-sm font-medium sfy-h" style="color: var(--muted);">
-            Or explore all our Shopify app growth services &rarr;
-          </a>
+    <!-- ===== CTA ===== -->
+    <section class="relative overflow-hidden py-28 sm:py-32">
+      <div class="sfy-grain"></div>
+      <div class="sfy-container relative">
+        <p class="text-base leading-relaxed mb-10 max-w-xl" style="color: var(--muted);">Blog traffic is getting harder to convert. YouTube videos keep ranking and converting for years. Most Shopify app companies have not figured this out yet.</p>
+        <h2 class="sfy-display text-[2.6rem] sm:text-6xl lg:text-7xl mb-12 max-w-4xl">Want YouTube working for your Shopify app?</h2>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-8">
+          <a href={calLink} target="_blank" rel="noopener noreferrer" class="sfy-btn flex-shrink-0">Book a discovery call</a>
+          <p class="text-base leading-relaxed max-w-md" style="color: var(--muted);">
+            30 minutes. We look at your app, your current channels, and whether YouTube could do for your installs what it did here. This is the same approach we run for every Shopify app client.
+          </p>
         </div>
+        <p class="text-sm mt-8" style="color: var(--dim);">No pitch deck. No follow-up sequence. Just a direct conversation.</p>
       </div>
     </section>
 
-    <!-- ===== CUSTOM FOOTER ===== -->
-    <footer class="sfy-dark py-12" style="background: var(--bg2); border-top: 1px solid var(--border);">
-      <div class="max-w-5xl mx-auto px-6">
-        <div class="grid sm:grid-cols-3 gap-8 mb-10">
+    <!-- ===== FOOTER ===== -->
+    <footer class="py-16" style="border-top: 1px solid var(--border);">
+      <div class="sfy-container">
+        <div class="grid sm:grid-cols-3 gap-10 mb-12">
           <div>
-            <p class="font-bold text-sm mb-4 sfy-h" style="color: var(--text);">SellOnTube for Shopify Apps</p>
-            <p class="text-sm leading-relaxed" style="color: var(--muted);">Shopify app growth specialists. ASO, content, video, documentation, reviews, pricing strategy.</p>
+            <p class="font-bold text-sm mb-4">SellOnTube for Shopify Apps</p>
+            <p class="text-sm leading-relaxed max-w-xs" style="color: var(--muted);">Shopify app growth specialists. ASO, content, video, documentation, reviews, pricing strategy.</p>
           </div>
           <div>
-            <p class="font-semibold text-xs uppercase tracking-wider mb-4 sfy-h" style="color: var(--dim);">Case studies</p>
+            <p class="sfy-label mb-5">Case studies</p>
             <div class="space-y-2.5 text-sm">
-              <a href="/shopify-app/case-studies/left-foot-software" class="block" style="color: var(--muted);">Left Foot Software</a>
-              <span class="block font-medium" style="color: var(--accent-l);">YouTube Video Marketing: Inventory App Case Study (this page)</span>
+              <a href="/shopify-app/case-studies/left-foot-software" class="block sfy-link" style="color: var(--muted);">Left Foot Software</a>
+              <span class="block" style="color: var(--dim);">YouTube video marketing (this page)</span>
             </div>
           </div>
           <div>
-            <p class="font-semibold text-xs uppercase tracking-wider mb-4 sfy-h" style="color: var(--dim);">Get started</p>
+            <p class="sfy-label mb-5">Explore</p>
             <div class="space-y-2.5 text-sm">
-              <a href={calLink} target="_blank" rel="noopener noreferrer" class="block" style="color: var(--accent);">Book a discovery call</a>
-              <a href="/shopify-app" class="block" style="color: var(--muted);">Back to Services</a>
-              <a href="/blog" class="block" style="color: var(--muted);">Blog</a>
-              <a href="/shopify-app/tools" class="block" style="color: var(--muted);">Free Tools</a>
+              <a href="/shopify-app" class="block sfy-link" style="color: var(--muted);">Back to Services</a>
+              <a href="/blog" class="block sfy-link" style="color: var(--muted);">Blog</a>
+              <a href="/shopify-app/tools" class="block sfy-link" style="color: var(--muted);">Free Tools</a>
             </div>
           </div>
         </div>
-        <div class="pt-8" style="border-top: 1px solid var(--border);">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
-            <div class="flex items-center gap-6 text-xs" style="color: var(--dim);">
-              <a href="/privacy-policy" class="hover:underline">Privacy</a>
-              <a href="/terms-of-service" class="hover:underline">Terms</a>
-            </div>
+        <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style="border-top: 1px solid var(--border-soft);">
+          <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
+          <div class="flex items-center gap-6 text-xs" style="color: var(--dim);">
+            <a href="/privacy-policy" class="hover:underline">Privacy</a>
+            <a href="/terms-of-service" class="hover:underline">Terms</a>
           </div>
         </div>
       </div>
