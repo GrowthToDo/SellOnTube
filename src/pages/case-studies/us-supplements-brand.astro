@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
+import '~/assets/styles/sfo.css';
 
 const metadata = {
   title: 'US Supplements Brand: From $1.5M to $10M in 18 Months | SellOnTube',
@@ -8,9 +9,53 @@ const metadata = {
 };
 
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
+
+// Quarterly revenue trajectory ($M), months 1-18. Same data the old chart carried.
+const revenuePoints = [0.38, 0.55, 0.92, 1.45, 2.1, 3.2, 4.2];
+const revenueMax = 4.2;
+const revenueSvg = revenuePoints
+  .map((v, i) => `${20 + i * 100},${(200 - (v / revenueMax) * 180).toFixed(1)}`)
+  .join(' ');
+
+// Monthly email revenue from warmup to steady state.
+const emailPoints = [0, 0, 0, 3200, 9500, 19000, 31000, 48000, 62000, 73000, 80000, 86000];
+const emailMax = 86000;
+const emailSvg = emailPoints
+  .map((v, i) => `${(20 + i * 54.5).toFixed(1)},${(200 - (v / emailMax) * 180).toFixed(1)}`)
+  .join(' ');
+
+const countries = [
+  { c: 'US', on: true }, { c: 'CA', on: true }, { c: 'GB', on: false }, { c: 'DE', on: false }, { c: 'FR', on: false }, { c: 'AU', on: false },
+  { c: 'NL', on: false }, { c: 'ES', on: false }, { c: 'IT', on: false }, { c: 'CH', on: false }, { c: 'SE', on: false }, { c: 'NO', on: false },
+  { c: 'DK', on: false }, { c: 'FI', on: false }, { c: 'IE', on: false }, { c: 'BE', on: false }, { c: 'AT', on: false }, { c: 'PT', on: false },
+  { c: 'PL', on: false }, { c: 'CZ', on: false }, { c: 'GR', on: false }, { c: 'RO', on: false }, { c: 'HU', on: false }, { c: 'NZ', on: false },
+  { c: 'JP', on: false }, { c: 'KR', on: false }, { c: 'SG', on: false }, { c: 'HK', on: false }, { c: 'AE', on: false }, { c: 'SA', on: false },
+  { c: 'IL', on: false }, { c: 'ZA', on: false }, { c: 'MX', on: false }, { c: 'BR', on: false }, { c: 'CL', on: false }, { c: 'CO', on: false },
+  { c: 'AR', on: false }, { c: 'IN', on: false }, { c: 'MY', on: false }, { c: 'TH', on: false }, { c: 'PH', on: false }, { c: 'ID', on: false },
+  { c: 'TW', on: false }, { c: 'TR', on: false }, { c: 'HR', on: false }, { c: 'SK', on: false }, { c: 'SI', on: false }, { c: 'EE', on: false },
+  { c: 'LV', on: false }, { c: 'LT', on: false }, { c: 'LU', on: false }, { c: 'IS', on: false },
+];
+
+const campaigns = [
+  { t: 'Easter campaign', v: '$34,000', w: 100, hot: true },
+  { t: 'Clearance email', v: '$12,000+', w: 35.3, hot: false },
+  { t: 'New arrivals send', v: '$11,000', w: 32.4, hot: false },
+  { t: 'Regular campaign', v: '$9,500', w: 27.9, hot: false },
+];
+
+const results = [
+  { stat: '$10M', t: 'total revenue', d: 'From $1.5M. Shopify and marketplace combined.', hot: true },
+  { stat: '$7M', t: 'Shopify revenue', d: '51% YoY same-month growth.', hot: false },
+  { stat: '50+', t: 'countries', d: 'From 2. 30 paid, 50+ organic.', hot: true },
+  { stat: '$1M+/yr', t: 'email revenue', d: 'From zero. 25% YoY growth.', hot: false },
+  { stat: '30', t: 'Merchant Centers', d: 'Plus 30 ad accounts. From 1 feed.', hot: true },
+  { stat: '$100K+', t: 'saved in one weekend', d: 'Rupee pricing disaster averted by backups.', hot: false },
+];
 ---
 
 <Layout metadata={metadata}>
+
+  <Fragment slot="footer"></Fragment>
 
   <Fragment slot="header">
     <Header
@@ -23,610 +68,475 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
         ]},
         { text: 'Pricing', href: '/shopify-store#pricing' },
       ]}
-      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank' }]}
-      showToggleTheme
+      actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
+      isSticky
     />
   </Fragment>
 
-  <!-- Hero -->
-  <section class="relative bg-slate-900 text-white pt-24 pb-20 overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-0 right-0 w-[700px] h-[700px] bg-emerald-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-700/40 rounded-full blur-3xl"></div>
-    </div>
-    <div class="relative max-w-4xl mx-auto px-6">
-      <div class="flex items-center gap-2 text-sm text-slate-500 mb-8">
-        <a href="/shopify-store" class="hover:text-slate-300 transition-colors">Shopify Services</a>
-        <span>/</span>
-        <span class="text-slate-400">Case Study</span>
-      </div>
-      <p class="text-emerald-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">Case Study</p>
-      <h1 class="text-4xl sm:text-6xl font-black leading-[1.05] tracking-tight mb-6">
-        From $1.5M to $10M<br class="hidden sm:block" /> in 18 months.
-      </h1>
-      <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
-        How we scaled US Supplements Brand from a US-only supplement store to a $10M global operation across 50+ countries, with a $1M+/yr email channel built from nothing.
-      </p>
-      <div class="flex flex-wrap gap-3 text-sm">
-        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">US Supplements Brand</span>
-        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">US nutraceuticals</span>
-        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">Vitamins and supplements</span>
-        <span class="bg-slate-800 border border-slate-700 text-slate-300 px-4 py-1.5 rounded-full">18-month engagement</span>
-      </div>
-    </div>
-  </section>
+  <script is:inline>
+    // This page is light-only. The site theme script can re-apply .dark, so keep stripping it.
+    (() => {
+      const strip = () => {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+      strip();
+      new MutationObserver(strip).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    })();
+  </script>
 
-  <!-- Stats bar -->
-  <section class="bg-emerald-600 py-8">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-white">
-        <div>
-          <p class="text-2xl sm:text-3xl font-black" data-counter data-target="10" data-prefix="$" data-suffix="M">$0M</p>
-          <p class="text-emerald-100 text-xs mt-1">total revenue</p>
-        </div>
-        <div>
-          <p class="text-2xl sm:text-3xl font-black" data-counter data-target="51" data-suffix="%">0%</p>
-          <p class="text-emerald-100 text-xs mt-1">YoY Shopify growth</p>
-        </div>
-        <div>
-          <p class="text-2xl sm:text-3xl font-black" data-counter data-target="50" data-suffix="+">0</p>
-          <p class="text-emerald-100 text-xs mt-1">countries reached</p>
-        </div>
-        <div>
-          <p class="text-2xl sm:text-3xl font-black">$1M+</p>
-          <p class="text-emerald-100 text-xs mt-1">annual email revenue</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="sfo">
 
-  <!-- The starting point -->
-  <section class="py-20 bg-white dark:bg-slate-900">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="grid sm:grid-cols-2 gap-12 items-start">
-        <div>
-          <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-4">The starting point</p>
-          <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6 leading-tight">A well-run store with nowhere near its potential.</h2>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            US Supplements Brand sells high-quality US vitamins and supplements. The founder had built a solid product range with real customers. But the business was entirely US and Canada-focused, every operational task was done manually, and a Klaviyo account sat untouched while revenue stayed flat.
+    <!-- ===== HERO ===== -->
+    <section class="relative overflow-hidden">
+      <div class="sfo-grid-light"></div>
+      <div class="sfo-container relative pt-16 sm:pt-24 pb-14 sm:pb-20">
+        <nav class="flex items-center gap-2 text-sm mb-12" style="color: var(--dim);">
+          <a href="/shopify-store" class="sfo-link" style="color: var(--muted);">Shopify Services</a>
+          <span>/</span>
+          <span>Case study</span>
+        </nav>
+        <h1 class="sfo-display text-[2.7rem] sm:text-6xl lg:text-[5.2rem] mb-8 max-w-4xl">
+          From $1.5M to <span class="sfo-circ">$10M<svg class="sfo-anno sfo-anno-load" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" style="stroke-width: 3.2;" d="M24,60 C16,30 92,10 168,9 C256,8 307,27 305,55 C303,86 234,102 148,100 C68,98 17,83 16,58 C15,37 54,21 110,15" /></svg></span> in 18 months.
+        </h1>
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+          <p class="text-lg leading-relaxed max-w-xl" style="color: var(--muted);">
+            How we scaled US Supplements Brand from a US-only supplement store to a $10M global operation across 50+ countries, with a $1M+/yr email channel built from nothing.
           </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-            The infrastructure to grow globally existed. Nobody had built it.
-          </p>
-        </div>
-        <div class="space-y-3">
-          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Revenue at start</p>
-            <p class="text-2xl font-black text-gray-900 dark:text-white">~$1.5M/yr</p>
-            <p class="text-xs text-gray-500 dark:text-slate-400">US and Canada only</p>
-          </div>
-          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Email revenue</p>
-            <p class="text-2xl font-black text-gray-900 dark:text-white">$0</p>
-            <p class="text-xs text-gray-500 dark:text-slate-400">Klaviyo account sitting dormant</p>
-          </div>
-          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Countries</p>
-            <p class="text-2xl font-black text-gray-900 dark:text-white">2</p>
-            <p class="text-xs text-gray-500 dark:text-slate-400">English-only website</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Revenue growth chart -->
-  <section class="py-16 bg-slate-50 dark:bg-slate-800/40">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-[0.2em] mb-2">The result</p>
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Revenue over 18 months</h2>
-      <p class="text-sm text-gray-500 dark:text-slate-400 mb-8">Shopify plus marketplace channels combined. Approximate quarterly trajectory.</p>
-      <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
-        <canvas id="revenueGrowthChart" height="220"></canvas>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 1: International -->
-  <section class="py-20 bg-white dark:bg-slate-900">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 01</p>
-      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">Going global without rebuilding the store.</h2>
-      <div class="grid sm:grid-cols-2 gap-10 mb-10">
-        <div>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            The founder managed one English-language US site. Internationalisation usually means rebuilding: new domains, new translations, new Google Shopping feeds for each market, new ad accounts. That's months of engineering work and an ongoing maintenance burden.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            We used Glopal to turn the one English site into 100+ localised country subdomains automatically. Each subdomain is localised to the right language, currency, and shipping rules. Google treats each as a native site for that market.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-            The owner still manages only the English US site. Everything else auto-generates. The incremental management overhead of being in 50+ countries is near zero.
-          </p>
-        </div>
-        <div class="space-y-4">
-          <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-6 border border-emerald-100 dark:border-emerald-800">
-            <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-3">Before</p>
-            <p class="text-4xl font-black text-gray-900 dark:text-white mb-1">2</p>
-            <p class="text-sm text-gray-600 dark:text-slate-400">countries. 1 language. 1 currency.</p>
-          </div>
-          <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-6 border border-emerald-100 dark:border-emerald-800">
-            <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-3">After</p>
-            <p class="text-4xl font-black text-emerald-600 dark:text-emerald-400 mb-1">100+</p>
-            <p class="text-sm text-gray-600 dark:text-slate-400">localised subdomains. 30 paid markets. 50+ organic. Owner manages nothing extra.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Country expansion visual -->
-      <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
-        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Market expansion</p>
-        <canvas id="countryChart" height="160"></canvas>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 2: Merchant Center -->
-  <section class="py-20 bg-slate-50 dark:bg-slate-800/40">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 02</p>
-      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">One product feed. 30 Merchant Centers.</h2>
-      <div class="grid sm:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            Getting Google Shopping running in a new country normally means: a new product feed in that country's currency and language, a new Merchant Center account, a new Google Ads account, and someone to manage all of it ongoing.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            For 30 countries that's 30 separate feeds, 30 Merchant Centers, and 30 ad accounts, all needing to stay in sync whenever the product catalog changes.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-            We built a feed architecture that takes the single US product feed and automatically generates localised versions for each market: GBP and English for the UK, EUR and German for Germany, and so on. Any change to the master feed propagates to all 30 markets automatically.
-          </p>
-        </div>
-        <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-700">
-          <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Infrastructure built</p>
-          <div class="space-y-4">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
-                <span class="text-lg">1</span>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-900 dark:text-white text-sm">Master product feed</p>
-                <p class="text-xs text-gray-500 dark:text-slate-400">Single source of truth, maintained by the team</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-2 ml-5">
-              <div class="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-2"></div>
-              <p class="text-xs text-slate-400">auto-generates</p>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center flex-shrink-0">
-                <span class="text-lg font-black text-emerald-600 dark:text-emerald-400">30</span>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-900 dark:text-white text-sm">Localised feeds</p>
-                <p class="text-xs text-gray-500 dark:text-slate-400">Right currency, language, and product rules per market</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center flex-shrink-0">
-                <span class="text-lg font-black text-emerald-600 dark:text-emerald-400">30</span>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-900 dark:text-white text-sm">Merchant Centers</p>
-                <p class="text-xs text-gray-500 dark:text-slate-400">One per market, all synced automatically</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center flex-shrink-0">
-                <span class="text-lg font-black text-emerald-600 dark:text-emerald-400">30</span>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-900 dark:text-white text-sm">Google Ads accounts</p>
-                <p class="text-xs text-gray-500 dark:text-slate-400">Local currency bidding, local performance data</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 3: Email -->
-  <section class="py-20 bg-white dark:bg-slate-900">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 03</p>
-      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">$0 to $1M+/yr in email revenue.</h2>
-
-      <div class="grid sm:grid-cols-2 gap-10 mb-12">
-        <div>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            A Klaviyo account with a list, no warmup, no flows, no campaigns. Sending from a cold domain to a cold list destroys deliverability: every email lands in spam and the domain gets flagged. Most stores in this situation just leave it.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            We ran a 6-week warmup: graduated sending volumes starting from a small, highly engaged segment, monitoring bounce rates and spam complaints at every stage, building domain reputation before the first real campaign went out.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-            Then we built the full flow stack: abandoned cart, post-purchase sequences, new arrivals (auto-tagged by our Sidekick app), winback, and browse abandonment. Plus a regular campaign cadence that generates double-digit revenue on every single send.
-          </p>
-        </div>
-        <div class="space-y-4">
-          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
-            <p class="text-3xl font-black text-emerald-600 dark:text-emerald-400 mb-1">15–20%</p>
-            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">of total Shopify revenue from email</p>
-            <p class="text-xs text-gray-500 dark:text-slate-400">Up from zero. 25% YoY growth.</p>
-          </div>
-          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
-            <p class="text-3xl font-black text-gray-900 dark:text-white mb-1">$34,000</p>
-            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">from one Easter campaign</p>
-            <p class="text-xs text-gray-500 dark:text-slate-400">Single email send. Targeted segment.</p>
-          </div>
-          <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-5 border border-slate-200 dark:border-slate-700">
-            <p class="text-3xl font-black text-gray-900 dark:text-white mb-1">$12,000+</p>
-            <p class="text-sm font-semibold text-gray-900 dark:text-white mb-1">from one clearance email</p>
-            <p class="text-xs text-gray-500 dark:text-slate-400">Products about to expire, 10% off. Single send.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Email growth chart -->
-      <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 mb-6">
-        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Email revenue growth</p>
-        <p class="text-sm text-gray-500 dark:text-slate-400 mb-6">Monthly Klaviyo revenue from warmup to steady state (approximate)</p>
-        <canvas id="emailGrowthChart" height="200"></canvas>
-      </div>
-
-      <!-- Campaign performance chart -->
-      <div class="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-6 border border-emerald-100 dark:border-emerald-800">
-        <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">Revenue per campaign send</p>
-        <p class="text-sm text-gray-600 dark:text-slate-400 mb-6">Every email that goes out is double-digit revenue</p>
-        <canvas id="campaignChart" height="140"></canvas>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 4: Compliance -->
-  <section class="py-20 bg-slate-50 dark:bg-slate-800/40">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 04</p>
-      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">400,000 compliance touchpoints. One screen.</h2>
-      <div class="grid sm:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            US Supplements Brand carries 100+ brands. Each brand has MAP (Minimum Advertised Price) rules: specific prices below which products cannot be advertised. One wrong price on the wrong product means a brand can pull its exclusivity agreement.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-            With 8,000 SKUs selling across 50 markets, that's 400,000 individual compliance touchpoints: 8,000 products times 50 markets. Managing that manually is not possible. Managing it with spreadsheets means it's always out of date.
-          </p>
-          <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-            We built the Market Exclusion Manager, a custom Sidekick app that lives inside the Shopify admin. Set the rules once, per brand and per market. The app enforces them continuously and flags exceptions in real time.
-          </p>
-        </div>
-        <div class="text-center bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
-          <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Compliance touchpoints managed</p>
-          <p class="text-7xl font-black text-emerald-600 dark:text-emerald-400 leading-none mb-2" data-counter data-target="400000" data-suffix="">0</p>
-          <p class="text-sm text-gray-500 dark:text-slate-400">8,000 SKUs across 50 markets. Automated. One screen.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 5: Disaster Recovery -->
-  <section class="py-20 bg-white dark:bg-slate-900">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-2">Chapter 05</p>
-      <h2 class="text-3xl font-black text-gray-900 dark:text-white mb-6">The weekend a vendor nearly cost them $100K.</h2>
-      <div class="max-w-2xl mb-10">
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          On a weekend, a vendor uploaded their entire catalog with rupee-denominated pricing. Products priced at $100 showed as $10,000. Every customer visiting the store over that weekend saw catastrophically wrong prices.
-        </p>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
-          Because we run daily full-catalog backups with rollback capability, the entire store was restored to the correct state in minutes. No permanent pricing damage. No orders processed at the wrong price. Estimated exposure avoided: $100K+.
-        </p>
-        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          This is not a hypothetical. It happened. And it's the kind of event that ends businesses if the infrastructure isn't in place.
-        </p>
-      </div>
-
-      <!-- Timeline -->
-      <div class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700">
-        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">What happened</p>
-        <div class="space-y-0">
-          <div class="flex gap-5">
-            <div class="flex flex-col items-center">
-              <div class="w-3 h-3 rounded-full bg-red-400 flex-shrink-0 mt-1"></div>
-              <div class="w-px flex-1 bg-slate-200 dark:bg-slate-700 my-1"></div>
-            </div>
-            <div class="pb-8">
-              <p class="text-xs font-bold text-red-500 uppercase tracking-widest mb-1">Incident</p>
-              <p class="font-semibold text-gray-900 dark:text-white mb-1">Vendor uploads rupee pricing across the entire catalog</p>
-              <p class="text-sm text-gray-500 dark:text-slate-400">$100 products showing as $10,000. Visible to all site visitors over the weekend.</p>
-            </div>
-          </div>
-          <div class="flex gap-5">
-            <div class="flex flex-col items-center">
-              <div class="w-3 h-3 rounded-full bg-amber-400 flex-shrink-0 mt-1"></div>
-              <div class="w-px flex-1 bg-slate-200 dark:bg-slate-700 my-1"></div>
-            </div>
-            <div class="pb-8">
-              <p class="text-xs font-bold text-amber-500 uppercase tracking-widest mb-1">Detection</p>
-              <p class="font-semibold text-gray-900 dark:text-white mb-1">Pricing anomaly identified</p>
-              <p class="text-sm text-gray-500 dark:text-slate-400">Our monitoring flagged the mass price change. Escalated immediately.</p>
-            </div>
-          </div>
-          <div class="flex gap-5">
-            <div class="flex flex-col items-center">
-              <div class="w-3 h-3 rounded-full bg-emerald-500 flex-shrink-0 mt-1"></div>
+          <dl class="flex flex-wrap gap-x-12 gap-y-4 flex-shrink-0">
+            <div>
+              <dt class="sfo-label mb-1.5">Client</dt>
+              <dd class="text-sm font-bold">US Supplements Brand</dd>
             </div>
             <div>
-              <p class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">Resolution</p>
-              <p class="font-semibold text-gray-900 dark:text-white mb-1">Full catalog restored from daily backup</p>
-              <p class="text-sm text-gray-500 dark:text-slate-400">Complete rollback in minutes. No orders processed at wrong prices. Estimated $100K+ exposure avoided.</p>
+              <dt class="sfo-label mb-1.5">Industry</dt>
+              <dd class="text-sm font-bold">US nutraceuticals</dd>
+            </div>
+            <div>
+              <dt class="sfo-label mb-1.5">Engagement</dt>
+              <dd class="text-sm font-bold">18 months, ongoing</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Stat band -->
+      <div style="border-top: 1px solid var(--border);">
+        <div class="sfo-container">
+          <div class="grid grid-cols-2 lg:grid-cols-4">
+            <div class="py-8 lg:pr-10" style="border-bottom: 1px solid var(--border-soft);">
+              <p class="sfo-num text-4xl font-black" style="color: var(--accent-deep);">$10M</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">total revenue</p>
+            </div>
+            <div class="py-8 pl-6 lg:px-10 border-l" style="border-color: var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+              <p class="sfo-num text-4xl font-black">51%</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">YoY Shopify growth</p>
+            </div>
+            <div class="py-8 lg:px-10 lg:border-l" style="border-color: var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+              <p class="sfo-num text-4xl font-black">50+</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">countries reached</p>
+            </div>
+            <div class="py-8 pl-6 lg:pl-10 border-l" style="border-color: var(--border-soft); border-bottom: 1px solid var(--border-soft);">
+              <p class="sfo-num text-4xl font-black" style="color: var(--accent-deep);">$1M+</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">annual email revenue</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Final Results -->
-  <section class="py-20 bg-slate-900 text-white">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em] mb-4">The full picture</p>
-      <h2 class="text-3xl font-black mb-12">Everything built in 18 months.</h2>
+    <!-- ===== THE STARTING POINT ===== -->
+    <section class="py-20 sm:py-28">
+      <div class="sfo-container">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div class="lg:col-span-7 sfo-reveal">
+            <p class="sfo-label mb-5">The starting point</p>
+            <h2 class="sfo-display text-4xl sm:text-5xl mb-8">A well-run store with nowhere near its potential.</h2>
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              US Supplements Brand sells high-quality US vitamins and supplements. The founder had built a solid product range with real customers. But the business was entirely US and Canada-focused, every operational task was done manually, and a Klaviyo account sat untouched while revenue stayed flat.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed max-w-xl" style="color: var(--muted);">
+              The infrastructure to grow globally existed. Nobody had built it.
+            </p>
+          </div>
+          <div class="lg:col-span-5 sfo-reveal">
+            <div class="py-5" style="border-top: 1px solid var(--border);">
+              <p class="sfo-label mb-2">Revenue at start</p>
+              <p class="sfo-num text-3xl font-black">~$1.5M/yr</p>
+              <p class="text-xs mt-1" style="color: var(--dim);">US and Canada only</p>
+            </div>
+            <div class="py-5" style="border-top: 1px solid var(--border);">
+              <p class="sfo-label mb-2">Email revenue</p>
+              <p class="sfo-num text-3xl font-black">$0</p>
+              <p class="text-xs mt-1" style="color: var(--dim);">Klaviyo account sitting dormant</p>
+            </div>
+            <div class="py-5" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+              <p class="sfo-label mb-2">Countries</p>
+              <p class="sfo-num text-3xl font-black">2</p>
+              <p class="text-xs mt-1" style="color: var(--dim);">English-only website</p>
+            </div>
+          </div>
+        </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-12">
-        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
-          <p class="text-3xl font-black text-emerald-400 mb-1" data-counter data-target="10" data-prefix="$" data-suffix="M">$0M</p>
-          <p class="text-sm font-semibold text-white mb-1">total revenue</p>
-          <p class="text-xs text-slate-400">From $1.5M. Shopify and marketplace combined.</p>
-        </div>
-        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
-          <p class="text-3xl font-black text-white mb-1" data-counter data-target="7" data-prefix="$" data-suffix="M">$0M</p>
-          <p class="text-sm font-semibold text-white mb-1">Shopify revenue</p>
-          <p class="text-xs text-slate-400">51% YoY same-month growth.</p>
-        </div>
-        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
-          <p class="text-3xl font-black text-emerald-400 mb-1" data-counter data-target="50" data-suffix="+">0</p>
-          <p class="text-sm font-semibold text-white mb-1">countries</p>
-          <p class="text-xs text-slate-400">From 2. 30 paid, 50+ organic.</p>
-        </div>
-        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
-          <p class="text-3xl font-black text-white mb-1">$1M+/yr</p>
-          <p class="text-sm font-semibold text-white mb-1">email revenue</p>
-          <p class="text-xs text-slate-400">From zero. 25% YoY growth.</p>
-        </div>
-        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
-          <p class="text-3xl font-black text-emerald-400 mb-1" data-counter data-target="30">0</p>
-          <p class="text-sm font-semibold text-white mb-1">Merchant Centers</p>
-          <p class="text-xs text-slate-400">Plus 30 ad accounts. From 1 feed.</p>
-        </div>
-        <div class="bg-slate-800/60 rounded-2xl p-5 border border-slate-700/50">
-          <p class="text-3xl font-black text-white mb-1">$100K+</p>
-          <p class="text-sm font-semibold text-white mb-1">saved in one weekend</p>
-          <p class="text-xs text-slate-400">Rupee pricing disaster averted by backups.</p>
+        <!-- Revenue trajectory -->
+        <div class="sfo-reveal mt-20 pt-14" style="border-top: 1px solid var(--border);">
+          <div class="flex flex-wrap items-baseline justify-between gap-4 mb-10">
+            <h3 class="text-2xl font-bold">Revenue over 18 months</h3>
+            <p class="text-sm" style="color: var(--dim);">Shopify plus marketplace channels, approximate quarterly trajectory</p>
+          </div>
+          <svg viewBox="0 0 640 224" class="w-full" role="img" aria-label="Line chart of quarterly revenue rising from 0.38 million dollars in month 1 to 4.2 million dollars in month 18">
+            <polygon points={`${revenueSvg} 620,200 20,200`} fill="rgba(216, 73, 47, 0.07)" />
+            <polyline points={revenueSvg} fill="none" stroke="#b23a22" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+            <line x1="20" y1="200" x2="620" y2="200" stroke="#ddd7cb" stroke-width="1" />
+            <circle cx="20" cy="183.7" r="3.5" fill="#b23a22" />
+            <circle cx="620" cy="20" r="3.5" fill="#b23a22" />
+            <text x="20" y="172" font-size="13" font-weight="700" fill="#1b1915" font-family="inherit">$0.4M</text>
+            <text x="614" y="14" font-size="13" font-weight="700" fill="#1b1915" text-anchor="end" font-family="inherit">$4.2M / quarter</text>
+            <text x="20" y="218" font-size="11" fill="#8d877b" font-family="inherit">Month 1</text>
+            <text x="320" y="218" font-size="11" fill="#8d877b" text-anchor="middle" font-family="inherit">Month 9</text>
+            <text x="620" y="218" font-size="11" fill="#8d877b" text-anchor="end" font-family="inherit">Month 18</text>
+          </svg>
         </div>
       </div>
+    </section>
 
-      <div class="border-t border-slate-700 pt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+    <!-- ===== CHAPTER 1: INTERNATIONAL (green panel) ===== -->
+    <section class="sfo-panel sfo-panel-green relative overflow-hidden py-24 sm:py-32">
+      <div class="sfo-grain"></div>
+      <div class="sfo-container relative">
+        <p class="sfo-label mb-5" style="color: var(--dim);">Chapter 01</p>
+        <h2 class="sfo-display text-4xl sm:text-5xl lg:text-6xl mb-14 max-w-3xl">Going global without rebuilding the store.</h2>
+
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-16">
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              The founder managed one English-language US site. Internationalisation usually means rebuilding: new domains, new translations, new Google Shopping feeds for each market, new ad accounts. That's months of engineering work and an ongoing maintenance burden.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              We used Glopal to turn the one English site into 100+ localised country subdomains automatically. Each subdomain is localised to the right language, currency, and shipping rules. Google treats each as a native site for that market.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed max-w-xl" style="color: var(--muted);">
+              The owner still manages only the English US site. Everything else auto-generates. The incremental management overhead of being in 50+ countries is near zero.
+            </p>
+          </div>
+          <div class="lg:col-span-6 sfo-reveal">
+            <div class="grid grid-cols-2">
+              <div class="pr-8">
+                <p class="sfo-label mb-3" style="color: var(--dim);">Before</p>
+                <p class="sfo-num sfo-display text-7xl sm:text-8xl">2</p>
+                <p class="text-sm mt-3" style="color: var(--muted);">countries. 1 language. 1 currency.</p>
+              </div>
+              <div class="pl-8 border-l" style="border-color: var(--border);">
+                <p class="sfo-label mb-3" style="color: var(--dim);">After</p>
+                <p class="sfo-num sfo-display text-7xl sm:text-8xl" style="color: #ff9d8a;"><span class="sfo-circ">100+<svg class="sfo-anno sfo-anno-reveal" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" style="stroke-width: 2.6;" d="M24,60 C16,30 92,10 168,9 C256,8 307,27 305,55 C303,86 234,102 148,100 C68,98 17,83 16,58 C15,37 54,21 110,15" /></svg></span></p>
+                <p class="text-sm mt-3" style="color: var(--muted);">localised subdomains. 30 paid markets. 50+ organic. Owner manages nothing extra.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sfo-reveal">
+          <p class="sfo-label mb-5" style="color: var(--dim);">Market expansion</p>
+          <div class="sfo-cgrid" role="img" aria-label="Grid of country codes showing expansion from 2 launch markets, US and Canada, to 52 active countries">
+            {countries.map((k) => (
+              <span class={k.on ? 'on' : ''}>{k.c}</span>
+            ))}
+          </div>
+          <p class="text-xs mt-3" style="color: var(--dim);"><span style="color: #ff9d8a;">US, CA</span> launch markets &middot; every other tile is a market we opened</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER 2: MERCHANT CENTERS ===== -->
+    <section class="py-20 sm:py-28">
+      <div class="sfo-container">
+        <p class="sfo-label mb-5">Chapter 02</p>
+        <h2 class="sfo-display text-4xl sm:text-5xl mb-14 max-w-3xl">One product feed. 30 Merchant Centers.</h2>
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              Getting Google Shopping running in a new country normally means: a new product feed in that country's currency and language, a new Merchant Center account, a new Google Ads account, and someone to manage all of it ongoing.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              For 30 countries that's 30 separate feeds, 30 Merchant Centers, and 30 ad accounts, all needing to stay in sync whenever the product catalog changes.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed max-w-xl" style="color: var(--muted);">
+              We built a feed architecture that takes the single US product feed and automatically generates localised versions for each market: GBP and English for the UK, EUR and German for Germany, and so on. Any change to the master feed propagates to all 30 markets automatically.
+            </p>
+          </div>
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="sfo-label mb-6">Infrastructure built</p>
+            <div class="py-5 grid grid-cols-[5rem_1fr] gap-5 items-baseline" style="border-top: 1px solid var(--border);">
+              <p class="sfo-num sfo-display text-5xl">1</p>
+              <div>
+                <p class="font-bold text-sm mb-1">Master product feed</p>
+                <p class="text-xs" style="color: var(--dim);">Single source of truth, maintained by the team</p>
+              </div>
+            </div>
+            <p class="sfo-label py-2 pl-1" style="color: var(--accent-deep);">&darr; auto-generates</p>
+            <div class="py-5 grid grid-cols-[5rem_1fr] gap-5 items-baseline" style="border-top: 1px solid var(--border);">
+              <p class="sfo-num sfo-display text-5xl" style="color: var(--accent-deep);">30</p>
+              <div>
+                <p class="font-bold text-sm mb-1">Localised feeds</p>
+                <p class="text-xs" style="color: var(--dim);">Right currency, language, and product rules per market</p>
+              </div>
+            </div>
+            <div class="py-5 grid grid-cols-[5rem_1fr] gap-5 items-baseline" style="border-top: 1px solid var(--border);">
+              <p class="sfo-num sfo-display text-5xl" style="color: var(--accent-deep);">30</p>
+              <div>
+                <p class="font-bold text-sm mb-1">Merchant Centers</p>
+                <p class="text-xs" style="color: var(--dim);">One per market, all synced automatically</p>
+              </div>
+            </div>
+            <div class="py-5 grid grid-cols-[5rem_1fr] gap-5 items-baseline" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+              <p class="sfo-num sfo-display text-5xl" style="color: var(--accent-deep);">30</p>
+              <div>
+                <p class="font-bold text-sm mb-1">Google Ads accounts</p>
+                <p class="text-xs" style="color: var(--dim);">Local currency bidding, local performance data</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER 3: EMAIL ===== -->
+    <section class="py-20 sm:py-28" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="sfo-container">
+        <p class="sfo-label mb-5">Chapter 03</p>
+        <h2 class="sfo-display sfo-reveal sfo-anno-host text-4xl sm:text-5xl mb-14 max-w-3xl">$0 to <span class="sfo-circ">$1M+/yr<svg class="sfo-anno sfo-anno-reveal" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" style="stroke-width: 2.4;" d="M24,60 C16,30 92,10 168,9 C256,8 307,27 305,55 C303,86 234,102 148,100 C68,98 17,83 16,58 C15,37 54,21 110,15" /></svg></span> in email revenue.</h2>
+
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              A Klaviyo account with a list, no warmup, no flows, no campaigns. Sending from a cold domain to a cold list destroys deliverability: every email lands in spam and the domain gets flagged. Most stores in this situation just leave it.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              We ran a 6-week warmup: graduated sending volumes starting from a small, highly engaged segment, monitoring bounce rates and spam complaints at every stage, building domain reputation before the first real campaign went out.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed max-w-xl" style="color: var(--muted);">
+              Then we built the full flow stack: abandoned cart, post-purchase sequences, new arrivals (auto-tagged by our Sidekick app), winback, and browse abandonment. Plus a regular campaign cadence that generates double-digit revenue on every single send.
+            </p>
+          </div>
+          <div class="lg:col-span-6 sfo-reveal">
+            <div class="py-5" style="border-top: 1px solid var(--border);">
+              <p class="sfo-num text-3xl font-black" style="color: var(--accent-deep);">15&ndash;20%</p>
+              <p class="text-sm font-bold mt-1">of total Shopify revenue from email</p>
+              <p class="text-xs mt-1" style="color: var(--dim);">Up from zero. 25% YoY growth.</p>
+            </div>
+            <div class="py-5" style="border-top: 1px solid var(--border);">
+              <p class="sfo-num text-3xl font-black">$34,000</p>
+              <p class="text-sm font-bold mt-1">from one Easter campaign</p>
+              <p class="text-xs mt-1" style="color: var(--dim);">Single email send. Targeted segment.</p>
+            </div>
+            <div class="py-5" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+              <p class="sfo-num text-3xl font-black">$12,000+</p>
+              <p class="text-sm font-bold mt-1">from one clearance email</p>
+              <p class="text-xs mt-1" style="color: var(--dim);">Products about to expire, 10% off. Single send.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email revenue growth -->
+        <div class="sfo-reveal mb-16">
+          <div class="flex flex-wrap items-baseline justify-between gap-4 mb-10">
+            <h3 class="text-2xl font-bold">Email revenue growth</h3>
+            <p class="text-sm" style="color: var(--dim);">Monthly Klaviyo revenue from warmup to steady state, approximate</p>
+          </div>
+          <svg viewBox="0 0 640 224" class="w-full" role="img" aria-label="Line chart of monthly email revenue rising from zero during a six week warmup to 86 thousand dollars per month by month 18">
+            <polygon points={`${emailSvg} 619.5,200 20,200`} fill="rgba(216, 73, 47, 0.07)" />
+            <polyline points={emailSvg} fill="none" stroke="#b23a22" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+            <line x1="20" y1="200" x2="620" y2="200" stroke="#ddd7cb" stroke-width="1" />
+            <circle cx="129" cy="200" r="3.5" fill="#8d877b" />
+            <circle cx="619.5" cy="20" r="3.5" fill="#b23a22" />
+            <text x="24" y="190" font-size="12" fill="#8d877b" font-family="inherit">6-week warmup: $0 by design</text>
+            <text x="614" y="14" font-size="13" font-weight="700" fill="#1b1915" text-anchor="end" font-family="inherit">$86K / month</text>
+            <text x="20" y="218" font-size="11" fill="#8d877b" font-family="inherit">Week 1</text>
+            <text x="620" y="218" font-size="11" fill="#8d877b" text-anchor="end" font-family="inherit">Month 18</text>
+          </svg>
+        </div>
+
+        <!-- Campaign performance -->
+        <div class="sfo-reveal max-w-2xl">
+          <p class="sfo-label mb-7">Revenue per campaign send</p>
+          {campaigns.map((c) => (
+            <div class="mb-5">
+              <div class="flex items-baseline justify-between mb-2">
+                <p class="text-sm font-bold" style={c.hot ? '' : 'color: var(--muted);'}>{c.t}</p>
+                <p class="sfo-num text-sm font-bold" style={c.hot ? '' : 'color: var(--muted);'}>{c.v}</p>
+              </div>
+              <div class="h-3 w-full sfo-bar-track"><div class="sfo-bar-fill" style={`width: ${c.w}%; background: ${c.hot ? 'var(--accent)' : 'var(--dim)'};`}></div></div>
+            </div>
+          ))}
+          <p class="text-xs" style="color: var(--dim);">Every email that goes out is double-digit revenue. Klaviyo campaign data, single sends.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER 4: COMPLIANCE ===== -->
+    <section class="py-20 sm:py-28">
+      <div class="sfo-container">
+        <p class="sfo-label mb-5">Chapter 04</p>
+        <h2 class="sfo-display text-4xl sm:text-5xl mb-14 max-w-3xl">400,000 compliance touchpoints. One screen.</h2>
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              US Supplements Brand carries 100+ brands. Each brand has MAP (Minimum Advertised Price) rules: specific prices below which products cannot be advertised. One wrong price on the wrong product means a brand can pull its exclusivity agreement.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              With 8,000 SKUs selling across 50 markets, that's 400,000 individual compliance touchpoints: 8,000 products times 50 markets. Managing that manually is not possible. Managing it with spreadsheets means it's always out of date.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed max-w-xl" style="color: var(--muted);">
+              We built the Market Exclusion Manager, a custom Sidekick app that lives inside the Shopify admin. Set the rules once, per brand and per market. The app enforces them continuously and flags exceptions in real time.
+            </p>
+          </div>
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="sfo-num sfo-display text-[4.5rem] sm:text-8xl lg:text-9xl" style="color: var(--accent-deep);">400,000</p>
+            <p class="text-sm mt-4 max-w-sm" style="color: var(--muted);">8,000 SKUs &times; 50 markets. Every combination checked continuously, managed from one screen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CHAPTER 5: DISASTER RECOVERY ===== -->
+    <section class="py-20 sm:py-28" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+      <div class="sfo-container">
+        <p class="sfo-label mb-5">Chapter 05</p>
+        <h2 class="sfo-display text-4xl sm:text-5xl mb-14 max-w-3xl">The weekend a vendor nearly cost them $100K.</h2>
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              On a weekend, a vendor uploaded their entire catalog with rupee-denominated pricing. Products priced at $100 showed as $10,000. Every customer visiting the store over that weekend saw catastrophically wrong prices.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed mb-4 max-w-xl" style="color: var(--muted);">
+              Because we run daily full-catalog backups with rollback capability, the entire store was restored to the correct state in minutes. No permanent pricing damage. No orders processed at the wrong price. Estimated exposure avoided: $100K+.
+            </p>
+            <p class="text-[0.95rem] leading-relaxed max-w-xl" style="color: var(--muted);">
+              This is not a hypothetical. It happened. And it's the kind of event that ends businesses if the infrastructure isn't in place.
+            </p>
+          </div>
+          <div class="lg:col-span-6 sfo-reveal">
+            <p class="sfo-label mb-7">What happened</p>
+            <div class="sfo-timeline">
+              <div class="pb-8">
+                <p class="sfo-label mb-1.5" style="color: var(--accent-deep);">Incident</p>
+                <p class="font-bold text-sm mb-1">Vendor uploads rupee pricing across the entire catalog</p>
+                <p class="text-xs leading-relaxed" style="color: var(--dim);">$100 products showing as $10,000. Visible to all site visitors over the weekend.</p>
+              </div>
+              <div class="pb-8">
+                <p class="sfo-label mb-1.5">Detection</p>
+                <p class="font-bold text-sm mb-1">Pricing anomaly identified</p>
+                <p class="text-xs leading-relaxed" style="color: var(--dim);">Our monitoring flagged the mass price change. Escalated immediately.</p>
+              </div>
+              <div class="tl-accent pb-1">
+                <p class="sfo-label mb-1.5" style="color: var(--accent-deep);">Resolution</p>
+                <p class="font-bold text-sm mb-1">Full catalog restored from daily backup</p>
+                <p class="text-xs leading-relaxed" style="color: var(--dim);">Complete rollback in minutes. No orders processed at wrong prices. Estimated $100K+ exposure avoided.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL RESULTS (ink panel) ===== -->
+    <section class="sfo-panel sfo-panel-ink relative overflow-hidden py-24 sm:py-32">
+      <div class="sfo-grain"></div>
+      <div class="sfo-container relative">
+        <p class="sfo-label mb-5" style="color: var(--dim);">The full picture</p>
+        <h2 class="sfo-display sfo-reveal sfo-anno-host text-4xl sm:text-5xl lg:text-6xl mb-16">Everything built in <span class="sfo-circ">18 months.<svg class="sfo-anno sfo-anno-reveal" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" style="top: auto; height: 0.15em; bottom: -0.13em;"><path pathLength="1" style="stroke-width: 3;" d="M5,10 C60,4 135,4 195,8 M18,17 C75,11.5 145,12 188,15" /></svg></span></h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10">
+          {results.map((r) => (
+            <div class="sfo-reveal py-7" style="border-top: 1px solid var(--border);">
+              <p class="sfo-num text-4xl font-black mb-2" style={r.hot ? 'color: #ff9d8a;' : ''}>{r.stat}</p>
+              <p class="text-sm font-bold mb-1">{r.t}</p>
+              <p class="text-xs leading-relaxed" style="color: var(--dim);">{r.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-16 pt-12 flex flex-col sm:flex-row sm:items-center gap-8" style="border-top: 1px solid var(--border);">
+          <a href={calLink} target="_blank" rel="noopener noreferrer" class="sfo-btn flex-shrink-0">Book a discovery call</a>
+          <p class="text-base leading-relaxed max-w-sm" style="color: var(--muted);">
+            Want results like these? 30 minutes. We&rsquo;ll tell you exactly where to start.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ALSO READ ===== -->
+    <section class="py-14">
+      <div class="sfo-container flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
-          <p class="text-xl font-bold text-white mb-1">Want results like these?</p>
-          <p class="text-slate-400 text-sm">Book a 30-minute call. We'll tell you exactly where to start.</p>
+          <p class="sfo-label mb-2">Also read</p>
+          <p class="font-bold">UK Jewellery Brand: Nine years. Still building.</p>
+          <p class="text-sm mt-1" style="color: var(--muted);">UK watches and jewelry. 8 hours to 15 minutes. Under 1% compliance error rate.</p>
         </div>
-        <a href={calLink} target="_blank" rel="noopener noreferrer"
-          class="flex-shrink-0 inline-block bg-emerald-500 hover:bg-emerald-400 text-white font-semibold px-8 py-4 rounded-full transition-colors">
-          Book a discovery call
-        </a>
+        <a href="/case-studies/luxury-jewellery-client" class="sfo-link text-sm flex-shrink-0">Read the case study &rarr;</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Also see -->
-  <section class="py-12 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
-    <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <div>
-        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Also read</p>
-        <p class="text-gray-900 dark:text-white font-semibold">UK Jewellery Brand: Nine years. Still building.</p>
-        <p class="text-sm text-gray-500 dark:text-slate-400 mt-1">UK watches and jewelry. 8 hours to 15 minutes. Under 1% compliance error rate.</p>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="py-16" style="border-top: 1px solid var(--border);">
+      <div class="sfo-container">
+        <div class="grid sm:grid-cols-3 gap-10 mb-12">
+          <div>
+            <p class="font-bold text-sm mb-4">SellOnTube for Shopify Merchants</p>
+            <p class="text-sm leading-relaxed max-w-xs" style="color: var(--muted);">Operations for scaled Shopify stores. Custom apps, cross-border infrastructure, Klaviyo email, compliance systems.</p>
+          </div>
+          <div>
+            <p class="sfo-label mb-5">Services</p>
+            <div class="space-y-2.5 text-sm" style="color: var(--muted);">
+              <p>Custom Sidekick Apps</p>
+              <p>Feed &amp; Merchant Center Management</p>
+              <p>International Expansion</p>
+              <p>Klaviyo Email</p>
+              <p>Compliance Automation</p>
+              <p>Backups &amp; Disaster Recovery</p>
+            </div>
+          </div>
+          <div>
+            <p class="sfo-label mb-5">Explore</p>
+            <div class="space-y-2.5 text-sm">
+              <a href="/shopify-store" class="block sfo-link" style="color: var(--muted);">Back to Shopify Services</a>
+              <a href="/case-studies/luxury-jewellery-client" class="block sfo-link" style="color: var(--muted);">UK Jewellery Brand case study</a>
+            </div>
+          </div>
+        </div>
+        <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style="border-top: 1px solid var(--border-soft);">
+          <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
+          <div class="flex items-center gap-6 text-xs" style="color: var(--dim);">
+            <a href="/privacy-policy" class="hover:underline">Privacy</a>
+            <a href="/terms-of-service" class="hover:underline">Terms</a>
+          </div>
+        </div>
       </div>
-      <a href="/case-studies/luxury-jewellery-client" class="flex-shrink-0 inline-block border border-slate-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 font-semibold text-sm px-6 py-3 rounded-full transition-colors">
-        Read case study
-      </a>
-    </div>
-  </section>
+    </footer>
+
+  </div>
+
+  <script is:inline>
+    (() => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.sfo-reveal').forEach((el) => el.classList.add('sfo-in'));
+        return;
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('sfo-in');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px' }
+      );
+      document.querySelectorAll('.sfo-reveal').forEach((el) => io.observe(el));
+    })();
+  </script>
 
 </Layout>
-
-<script is:inline>
-(function () {
-  // Counter animations
-  function animateCounter(el) {
-    const target = parseFloat(el.dataset.target);
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const duration = 1600;
-    const start = performance.now();
-    const isDecimal = target % 1 !== 0;
-
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = eased * target;
-      el.textContent = prefix + (isDecimal ? value.toFixed(1) : Math.floor(value).toLocaleString()) + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
-
-  // Charts
-  const chartScript = document.createElement('script');
-  chartScript.src = 'https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js';
-  chartScript.onload = initCharts;
-  document.head.appendChild(chartScript);
-
-  function initCharts() {
-    const dark = document.documentElement.classList.contains('dark');
-    const textColor = dark ? '#94a3b8' : '#6b7280';
-    const gridColor = dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)';
-    const emerald = '#10b981';
-    const emeraldLight = '#34d399';
-    const emeraldLighter = '#6ee7b7';
-
-    Chart.defaults.font.family = 'inherit';
-    Chart.defaults.color = textColor;
-
-    // Revenue growth line chart
-    const revCtx = document.getElementById('revenueGrowthChart');
-    if (revCtx) {
-      new Chart(revCtx, {
-        type: 'line',
-        data: {
-          labels: ['Month 1', 'Month 3', 'Month 6', 'Month 9', 'Month 12', 'Month 15', 'Month 18'],
-          datasets: [{
-            label: 'Revenue ($M)',
-            data: [0.38, 0.55, 0.92, 1.45, 2.10, 3.20, 4.20],
-            borderColor: emerald,
-            backgroundColor: dark ? 'rgba(16,185,129,0.12)' : 'rgba(16,185,129,0.08)',
-            borderWidth: 3,
-            fill: true,
-            tension: 0.4,
-            pointBackgroundColor: emerald,
-            pointRadius: 5,
-            pointHoverRadius: 7,
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: (c) => ' $' + c.parsed.y.toFixed(2) + 'M quarterly' } }
-          },
-          scales: {
-            x: { grid: { color: gridColor }, border: { display: false } },
-            y: {
-              grid: { color: gridColor },
-              border: { display: false },
-              ticks: { callback: (v) => '$' + v + 'M' }
-            }
-          }
-        }
-      });
-    }
-
-    // Country expansion bar chart
-    const countryCtx = document.getElementById('countryChart');
-    if (countryCtx) {
-      new Chart(countryCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Before', 'Paid markets', 'Organic reach'],
-          datasets: [{
-            data: [2, 30, 50],
-            backgroundColor: [
-              dark ? 'rgba(148,163,184,0.3)' : 'rgba(148,163,184,0.4)',
-              emerald,
-              emeraldLight,
-            ],
-            borderRadius: 8,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: (c) => ' ' + c.parsed.y + ' countries' } }
-          },
-          scales: {
-            x: { grid: { display: false }, border: { display: false } },
-            y: { grid: { color: gridColor }, border: { display: false }, ticks: { callback: (v) => v + ' countries' } }
-          }
-        }
-      });
-    }
-
-    // Email growth line chart
-    const emailCtx = document.getElementById('emailGrowthChart');
-    if (emailCtx) {
-      new Chart(emailCtx, {
-        type: 'line',
-        data: {
-          labels: ['Wk 1', 'Wk 3', 'Wk 6', 'M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M15', 'M18'],
-          datasets: [{
-            label: 'Monthly email revenue',
-            data: [0, 0, 0, 3200, 9500, 19000, 31000, 48000, 62000, 73000, 80000, 86000],
-            borderColor: emerald,
-            backgroundColor: dark ? 'rgba(16,185,129,0.15)' : 'rgba(16,185,129,0.1)',
-            borderWidth: 3,
-            fill: true,
-            tension: 0.45,
-            pointBackgroundColor: emerald,
-            pointRadius: 4,
-            pointHoverRadius: 6,
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: (c) => ' $' + c.parsed.y.toLocaleString() + '/mo' } }
-          },
-          scales: {
-            x: { grid: { color: gridColor }, border: { display: false } },
-            y: {
-              grid: { color: gridColor },
-              border: { display: false },
-              ticks: { callback: (v) => '$' + (v >= 1000 ? (v / 1000).toFixed(0) + 'K' : v) }
-            }
-          }
-        }
-      });
-    }
-
-    // Campaign performance horizontal bars
-    const campCtx = document.getElementById('campaignChart');
-    if (campCtx) {
-      new Chart(campCtx, {
-        type: 'bar',
-        data: {
-          labels: ['Easter campaign', 'Clearance email', 'New arrivals send', 'Regular campaign'],
-          datasets: [{
-            data: [34000, 12000, 11000, 9500],
-            backgroundColor: [emerald, emeraldLight, emeraldLighter, dark ? 'rgba(110,231,183,0.5)' : 'rgba(110,231,183,0.7)'],
-            borderRadius: 6,
-            borderSkipped: false,
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: (c) => ' $' + c.parsed.x.toLocaleString() } }
-          },
-          scales: {
-            x: {
-              grid: { color: gridColor },
-              border: { display: false },
-              ticks: { callback: (v) => '$' + (v / 1000) + 'K' }
-            },
-            y: { grid: { display: false }, border: { display: false } }
-          }
-        }
-      });
-    }
-  }
-})();
-</script>
