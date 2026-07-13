@@ -29,13 +29,13 @@ import '@fontsource-variable/inter';
   :root {
     --aw-font-sans: 'Inter Variable';
     --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-heading: 'Satoshi';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: rgb(194 63 39);
+    --aw-color-secondary: rgb(178 58 34);
+    --aw-color-accent: rgb(216 73 47);
 
-    --aw-color-text-heading: rgb(0 0 0);
+    --aw-color-text-heading: rgb(17 17 19);
     --aw-color-text-default: rgb(16 16 16);
     --aw-color-text-muted: rgb(16 16 16 / 66%);
     --aw-color-bg-page: rgb(255 255 255);
@@ -50,11 +50,11 @@ import '@fontsource-variable/inter';
   .dark {
     --aw-font-sans: 'Inter Variable';
     --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-heading: 'Satoshi';
 
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
+    --aw-color-primary: rgb(224 117 95);
+    --aw-color-secondary: rgb(216 73 47);
+    --aw-color-accent: rgb(224 117 95);
 
     --aw-color-text-heading: rgb(247, 248, 248);
     --aw-color-text-default: rgb(229 236 246);
@@ -66,4 +66,110 @@ import '@fontsource-variable/inter';
       color: snow;
     }
   }
+
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/satoshi/Satoshi-Bold.woff2') format('woff2');
+    font-weight: 400 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/satoshi/Satoshi-Black.woff2') format('woff2');
+    font-weight: 800 900;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  h1, h2, h3, .font-heading {
+    letter-spacing: -0.02em;
+  }
+
+  /* SellOnTube drafting grid, theme-aware */
+  .son-grid {
+    position: relative;
+  }
+  .son-grid::before,
+  .son-grid-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(17, 17, 19, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 17, 19, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  }
+  .son-grid-dark {
+    position: relative;
+  }
+  .dark .son-grid::before,
+  .son-grid-dark::before {
+    background-image:
+      linear-gradient(rgba(247, 248, 248, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247, 248, 248, 0.05) 1px, transparent 1px);
+  }
+
+  /* Marker annotations: the red pen */
+  .son-circ { position: relative; display: inline-block; }
+  .son-circ > svg {
+    position: absolute;
+    inset: -0.1em -0.22em -0.16em -0.24em;
+    width: calc(100% + 0.46em);
+    height: calc(100% + 0.26em);
+    overflow: visible;
+    pointer-events: none;
+  }
+  .son-anno path {
+    stroke: rgb(216 73 47);
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+  }
+  .son-anno-load path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: son-draw 1.1s ease-out 0.6s forwards;
+  }
+  .son-anno-reveal path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.9s ease-out 0.35s;
+  }
+  .son-in .son-anno-reveal path,
+  .son-circ.son-in .son-anno-reveal path {
+    stroke-dashoffset: 0;
+  }
+  @keyframes son-draw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .son-anno-load path,
+    .son-anno-reveal path {
+      animation: none;
+      transition: none;
+      stroke-dashoffset: 0;
+    }
+  }
 </style>
+
+<script is:inline>
+  (() => {
+    const arm = () => {
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('son-in'); io.unobserve(e.target); }
+        }),
+        { rootMargin: '0px 0px -10% 0px' }
+      );
+      document.querySelectorAll('.son-anno-host, .son-circ').forEach((el) => io.observe(el));
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', arm);
+    else arm();
+    document.addEventListener('astro:after-swap', arm);
+  })();
+</script>
