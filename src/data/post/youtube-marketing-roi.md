@@ -75,7 +75,7 @@ Say you're a business coach charging $3,000 for a coaching program. Your cost to
 
 Now say you spend $2,000/month on YouTube content: scripting, filming, editing, optimizing. Free tools like the [YouTube script generator](/tools/youtube-script-generator) cut production time significantly. You need *one* client per month from YouTube to break even. Two clients? You've doubled your investment.
 
-Compare that to paid ads, where you might spend $50-100 per lead and close at 2-5%. At those rates, you need 20-50 leads (and $1,000-$5,000 in ad spend) to land a single client. Every month. With no compounding.
+Compare that to paid ads, where you might spend $50-100 per lead and close at 2-5%. At those rates, you need 20-50 leads (and $1,000-$5,000 in ad spend) to land a single client. Every month. With no compounding. If you're weighing YouTube's own paid ad product specifically, see our breakdown of [whether YouTube Ads actually generate qualified B2B leads](/blog/youtube-ads-for-b2b-lead-generation).
 
 So what does this actually mean for your business? It means the viability of YouTube marketing depends almost entirely on two numbers: your YouTube customer acquisition cost and your content production budget. Views are irrelevant until they connect to these.
 
