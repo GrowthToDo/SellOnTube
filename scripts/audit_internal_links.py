@@ -62,7 +62,9 @@ def normalize(href):
             return None
         path = parts.path
     elif href.startswith("/"):
-        path = href
+        # Parse with urlsplit to strip query strings and fragments consistently
+        parts = urlsplit(href)
+        path = parts.path
     else:
         return None  # mailto:, tel:, #anchor, relative asset path, etc.
     path = path.rstrip("/") or "/"
