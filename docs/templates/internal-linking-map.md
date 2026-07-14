@@ -15,6 +15,8 @@
 | youtube-video-ideas-generator-for-b2b | youtube-topic-evaluator | YouTube Topic Evaluator | Validation section |
 | youtube-keyword-research | youtube-autocomplete-keywords | YouTube autocomplete keyword tool | Step 2 + FAQ |
 | youtube-keyword-research | youtube-seo-tool | YouTube SEO Tool | Tools section |
+| youtube-ads-for-b2b-lead-generation | youtube-roi-calculator | YouTube ROI Calculator | ROI comparison step (Step 4) |
+| youtube-ads-for-b2b-lead-generation | youtube-competitor-analysis | SellonTube Competitor Analysis tool | Competitor ads audit section |
 
 ---
 
@@ -23,6 +25,7 @@
 | Blog post slug | pSEO page | Anchor text | Section |
 |---|---|---|---|
 | youtube-marketing-b2b | /youtube-for/b2b-companies | YouTube for B2B companies | (add when confirmed) |
+| youtube-ads-for-b2b-lead-generation | /youtube-vs/paid-ads | YouTube vs Paid Ads: Real ROI Data After 12 Months | vs LinkedIn/Search section |
 
 ---
 
@@ -31,6 +34,11 @@
 | Source slug | Target slug | Anchor text | Topic relationship |
 |---|---|---|---|
 | youtube-marketing-strategy | youtube-marketing-roi | YouTube marketing ROI | ROI measurement |
+| youtube-ads-for-b2b-lead-generation | youtube-vs-paid-ads-b2b | YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison | vs LinkedIn/Search section |
+| youtube-ads-for-b2b-lead-generation | youtube-lead-generation | YouTube lead generation guide | FAQ: ads alone vs organic |
+| youtube-marketing-roi | youtube-ads-for-b2b-lead-generation | whether YouTube Ads actually generate qualified B2B leads | paid-ads cost paragraph |
+| youtube-roi-for-saas | youtube-ads-for-b2b-lead-generation | YouTube Ads for B2B: Cost, ROI & Does It Work | Read more callout |
+| youtube-vs-paid-ads-b2b | youtube-ads-for-b2b-lead-generation | YouTube Ads for B2B: Cost, ROI & Does It Work | LinkedIn Ads paragraph |
 | youtube-marketing-b2b | youtube-marketing-strategy | YouTube marketing strategy | Strategy reference |
 | youtube-video-ideas-generator-for-b2b | youtube-vs-blog-shopify-app-case-study | 3.25x More Conversions | Case studies section |
 | youtube-video-ideas-generator-for-b2b | best-youtube-video-ideas-generators-for-businesses | The 14 Best YouTube Video Ideas Generators | After patterns table |
