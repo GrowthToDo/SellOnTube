@@ -34,8 +34,8 @@ Use Language Server Protocol (LSP) as the primary method for understanding and n
 **Every new tool page must be added to the /tools listing and footer before the task is considered done.** This is not a separate task — it is part of building the tool. After creating any new `src/pages/tools/*.astro` file:
 1. Add the tool to the `tools` array in `src/pages/tools/index.astro` (correct workflow position)
 2. Add the tool to the `Free Tools` linkGroup in `src/navigation.ts` (matching order)
-3. Submit both URLs to Bing via Webmaster API (IndexNow is broken due to Cloudflare — use `curl` to `SubmitUrlbatch` endpoint with API key from `.mcp.json`)
-4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing)
+3. Submit both URLs to Bing automatically via `node scripts/bing-submit.mjs <file-of-urls>` (IndexNow is broken due to Cloudflare; this script uses the Webmaster API `SubmitUrlbatch` endpoint with `BING_WEBMASTER_API_KEY` from `.env`, not `.mcp.json` — no `.mcp.json` file exists in this repo). No need to ask first — run it as a standard step whenever a new tool or blog post publishes.
+4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing) — this step is manual (GSC has no public submission API), so it can't be automated.
 
 See `agents/08-microtool-builder.md` Phase 7 for full details.
 
