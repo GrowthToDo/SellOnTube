@@ -25,6 +25,8 @@ EXCLUDE_PREFIXES = (
     "/shopify-services",
     "/case-studies/luxury-jewellery-client",
     "/case-studies/us-supplements-brand",
+    "/changelog",
+    "/decapcms",
 )
 ASSET_EXT_RE = re.compile(r"\.(png|jpe?g|svg|webp|ico|css|js|xml|txt|pdf|json)$")
 
