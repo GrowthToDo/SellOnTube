@@ -3,6 +3,14 @@
 > Living document. Update every time a post publishes or an existing post is edited.
 > Agent 04 must check this before finalising any draft. Agent 05 verifies at least 2 internal links are present.
 
+## 2026-07-14 overhaul
+
+A full internal-linking pass fixed a template bug (`youtube-vs/[slug].astro` was hardcoding the same 4 "related comparisons" on every page instead of computing per-page siblings) and added ~280 contextual links across 84 files (blog posts, pSEO pages, tool pages). Full link-by-link record, before/after audit numbers, and follow-up notes: `research/aeo/internal-linking-phase2-report.md`. Final audit snapshot: `research/aeo/internal-linking-final-audit-2026-07-14.json`.
+
+**New mechanism (structural change, know this before adding future links):** `src/data/niches.ts`'s `Niche` interface gained an optional `relatedLinks?: { text: string; href: string }[]` field, mirroring the pre-existing `Comparison.relatedLinks` field in `comparisons.ts`. Both are now populated for every entry (30 niches, 21 comparisons) and rendered via a "Related Resources" block in `youtube-for/[slug].astro` / `youtube-vs/[slug].astro`. When adding a new niche or comparison entry, populate this field: 2-4 genuinely relevant links, at least one to a `/tools/*` page, distinct anchor phrasing from what's already used for that target elsewhere on the site (check `research/aeo/internal-linking-phase2-report.md` before reusing a phrase: several money pages already have anchors near or at the diversity cap).
+
+**Rule reinforced by this pass, apply going forward:** no single target URL should accumulate the same exact-match anchor phrase from more than ~3 source pages. This was the single most time-consuming class of defect in the 2026-07-14 pass (caught across 4 rounds of review). Always check existing anchor usage for a target before reusing a phrase, especially for popular money pages (`/tools/youtube-roi-calculator`, `/tools/youtube-seo-tool`, `/blog/youtube-marketing-strategy`, etc., which already carry significant pre-existing anchor concentration this pass did not retroactively clean up).
+
 ---
 
 ## Blog → Tool Links
@@ -50,13 +58,9 @@
 
 ---
 
-## Unlinked Opportunities (tools with no blog links yet)
+## Unlinked Opportunities
 
-| Tool | URL | Blog posts that should link to it | Status |
-|---|---|---|---|
-| YouTube Transcript Generator | /tools/youtube-transcript-generator | best-youtube-transcript-generators | Check if linked |
-| YouTube Video Ideas Evaluator | /tools/youtube-video-ideas-evaluator | best-youtube-video-ideas-generators-for-businesses | Check if linked |
-| YouTube ROI Calculator | /tools/youtube-roi-calculator | youtube-marketing-roi, compounding-effect-four-videos-a-month | Check if linked |
+All 3 tools previously listed here (YouTube Transcript Generator, YouTube Video Ideas Evaluator, YouTube ROI Calculator) were confirmed linked as of the 2026-07-14 pass. Resolved, removed from this table. As of that pass: 0 in-scope orphan pages, 0 dead-ends, 0 pages missing a `/tools/*` link, across blog, pSEO (`youtube-for`, `youtube-vs`), tools, hub pages, and core static pages. Re-run `python scripts/audit_internal_links.py --dist dist` after `npm run build` to check current state. It crawls the real built HTML rather than guessing from source, so it catches what manual review misses (e.g. dynamically-rendered links).
 
 ---
 
@@ -65,3 +69,4 @@
 - Each new post must add at least 2 rows to this table on publish
 - Review this map monthly — look for posts that should cross-link but don't
 - When a new tool goes live, scan all blog posts for natural insertion points and add links
+- Before adding a link to a popular money page, check `research/aeo/internal-linking-phase2-report.md` for existing anchor phrasing to that target. Don't reuse an exact phrase already at or near 3 sources

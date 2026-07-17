@@ -9,6 +9,18 @@ Generated from the ACTUAL final file state after 3 rounds of adversarial review 
 - **Final, independently re-verified count: 0 anchor-diversity violations attributable to this task remain** among published, in-scope pages (verified via a corrected corpus-wide scan comparing every (target, anchor) pair's source count before vs after this task, across all published posts, niches.ts, comparisons.ts, and all in-scope Astro pages -- Shopify-vertical pages and draft posts correctly excluded).
 - Final: 0 in-scope orphans, 0 dead-ends, 0 pages missing a tool link, click-depth->3 pages reduced 129 to 92.
 
+## Before / After Summary (Task 2 baseline vs final)
+
+| Metric | Baseline (2026-07-14, pre-fix) | Final (post Tasks 3-6) |
+|---|---|---|
+| Orphans | 9 | 4 |
+| Near-orphans | 83 | 76 |
+| Dead ends | 4 | 0 |
+| Missing tool link | 9 | 8 |
+| >3 clicks from home | 130 | 92 |
+
+Note: these totals include out-of-scope infrastructure pages (WordPress-style `/tag/*` and `/category/*` pagination, `/decapcms`, `/privacy-policy`, `/terms-of-service`) that were never part of this project's 127-page scope. In-scope orphans/dead-ends/missing-tool-link are all 0 in the final audit.
+
 ## Links added by batch (current, final state)
 
 ### Blog posts
