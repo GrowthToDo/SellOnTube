@@ -144,7 +144,7 @@ So what does this actually mean for your keyword research? Four things separate 
 
 **Export and copy.** Keywords stuck on a webpage are useless for planning. You need CSV export or a copy-all button at minimum. Check whether the export includes metadata like intent tags, geography, or timestamps.
 
-**Additional data.** Raw autocomplete keywords tell you what people search. Volume estimates, intent tags, or popularity scores tell you which keywords to target first. Not every tool offers this. The ones that do save you a second step, and pairing them with the [our tag generator tool](/tools/youtube-tag-generator) turns your shortlist into ready-to-use metadata.
+**Additional data.** Raw autocomplete keywords tell you what people search. Volume estimates, intent tags, or popularity scores tell you which keywords to target first. Not every tool offers this. The ones that do save you a second step, and pairing them with the [tag generator tool](/tools/youtube-tag-generator) turns your shortlist into ready-to-use metadata.
 
 **The bottleneck is not finding keywords. It is knowing which ones will attract buyers.**
 

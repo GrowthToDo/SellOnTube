@@ -594,7 +594,7 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'YouTube SEO for Business', href: '/blog/youtube-seo-for-business' },
-      { text: 'How to Create a YouTube Channel for Business', href: '/blog/create-youtube-channel-for-business' },
+      { text: 'our guide to setting up a business channel', href: '/blog/create-youtube-channel-for-business' },
       { text: 'spark new video topics', href: '/tools/youtube-video-ideas-generator' },
     ],
     ctaHeading: 'Your ideal clients are researching their financial situation on YouTube right now, and they are forming opinions about which advisors understand them.',

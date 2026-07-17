@@ -46,7 +46,7 @@ You posted 40 videos this year. Your analytics show a few hundred views each. Yo
 
 The problem is not effort. Many YouTube video idea generators ask for your niche and return topics calibrated for the algorithm. They do not know what your customers search before they buy. They cannot tell the difference between a video that builds purchase intent and one that just performs well in suggested feeds. A business channel needs a fundamentally different kind of idea. (If you haven't set yours up yet, here's [how to create a YouTube channel for your business](/blog/create-youtube-channel-for-business).)
 
-This list covers the 14 best YouTube video ideas generators available in 2026, ranked for business use. SellonTube's tool is listed first because it was built for this specific problem. Once you have a shortlist of ideas, run them through the [our idea validation tool](/tools/youtube-video-ideas-evaluator) to score which ones are worth filming first.
+This list covers the 14 best YouTube video ideas generators available in 2026, ranked for business use. SellonTube's tool is listed first because it was built for this specific problem. Once you have a shortlist of ideas, run them through the [idea validation tool](/tools/youtube-video-ideas-evaluator) to score which ones are worth filming first.
 
 **A YouTube video ideas generator is a tool that turns a topic, niche, or business description into a list of suggested video concepts you can film.** The best ones for businesses generate ideas tied to what buyers search before purchasing, not topics calibrated only for views and watch time.
 
@@ -540,7 +540,7 @@ Start with what your business actually needs from YouTube. Then pick the tool th
 - [Build a YouTube marketing strategy that drives leads, not just views](/blog/youtube-marketing-strategy)
 - [Step-by-step: create a YouTube channel for your business](/blog/create-youtube-channel-for-business)
 
-**Related tool guides:** Pair this with our [best YouTube SEO tools for business](/blog/best-youtube-seo-tools-for-business), [best YouTube autocomplete keyword tools](/blog/best-youtube-autocomplete-keyword-tools), and [best YouTube transcript generators](/blog/best-youtube-transcript-generators) for the full business-channel toolkit. Once you have picked an idea, the [generate scripts automatically](/tools/youtube-script-generator) turns it into a filmable script.
+**Related tool guides:** Pair this with our [best YouTube SEO tools for business](/blog/best-youtube-seo-tools-for-business), [best YouTube autocomplete keyword tools](/blog/best-youtube-autocomplete-keyword-tools), and [best YouTube transcript generators](/blog/best-youtube-transcript-generators) for the full business-channel toolkit. Once you have picked an idea, the [script generator](/tools/youtube-script-generator) turns it into a filmable script.
 
 ---
 
