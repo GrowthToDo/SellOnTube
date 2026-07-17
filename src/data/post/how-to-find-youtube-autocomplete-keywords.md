@@ -154,7 +154,7 @@ The entire process takes under 60 seconds. No signup. No email. No credit card.
 
 ## How to Decide Which Keywords Are Worth Targeting
 
-A list of 150 autocomplete keywords is not a content plan. The majority will not be worth your time. You need a filter.
+A list of 150 autocomplete keywords is not a content plan. The majority will not be worth your time. You need a filter, which is what [our full keyword research framework](/blog/youtube-keyword-research) is built to apply.
 
 **Topic relevance.** Can you actually make a video about this keyword? "CRM software pricing" is relevant if you sell CRM software or advise businesses on choosing one. "CRM software meme" is not. Drop anything that does not map to a video your audience would watch.
 
@@ -240,7 +240,7 @@ Here is the system. Run it weekly or monthly, depending on your publishing caden
 
 4. **Filter for relevance and specificity.** Drop keywords you cannot make a video about. Drop anything too broad to rank for. You should have 5-15 actionable keywords per seed.
 
-5. **Pick 3-5 keywords for this content cycle.** Each one becomes a video. Run the winning keywords through the [YouTube Title Generator](/tools/youtube-title-generator) to test title variations. Check existing videos with the [YouTube SEO Tool](/tools/youtube-seo-tool) to make sure your metadata matches. If you need topic validation before committing to a keyword, run it through the [Video Ideas Evaluator](/tools/youtube-video-ideas-evaluator).
+5. **Pick 3-5 keywords for this content cycle.** Each one becomes a video. Run the winning keywords through the [YouTube Title Generator](/tools/youtube-title-generator) to test title variations. Check existing videos with the [YouTube SEO Tool](/tools/youtube-seo-tool) to make sure your metadata matches. If you need topic validation before committing to a keyword, run it through the [Video Ideas Evaluator](/tools/youtube-video-ideas-evaluator). It also helps to know [how to find what keywords your videos already rank for](/blog/how-to-find-youtube-video-ranking-keywords) so you are not duplicating existing wins.
 
 6. **Save the rest.** The remaining keywords go into a backlog spreadsheet with their intent tags. Next month, start at step 3 with the same CSVs, or re-run the scrape if your seeds have changed.
 

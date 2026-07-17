@@ -121,7 +121,7 @@ You do not need the mid-range column to start. The budget column is enough for y
 | SEO/keyword tools (free tier of TubeBuddy, vidIQ) | $0 |
 | **Total monthly** | **$0 to $43/month** |
 
-That is the cash cost. But here is the real question.
+That is the cash cost, and it is worth knowing [which YouTube SEO tools are worth paying for](/blog/best-youtube-seo-tools-for-business) versus which free tiers are enough. But here is the real question.
 
 How much is your time worth?
 
@@ -215,7 +215,7 @@ The biggest cost is making videos that nobody searches for.
 
 Here is a scenario that plays out thousands of times every week. A business owner spends $2,000 on a polished video about "our company culture" or "5 reasons to choose us." The video gets 47 views in six months. Zero leads. They conclude that YouTube does not work for their industry.
 
-Now compare that to a business owner who spends $0 on production (smartphone, natural light, free editing software) but invests two hours researching what their target customers actually search for on YouTube. They find a keyword with 500 monthly searches and low competition. They film a straightforward answer to that question. The video ranks on page one within weeks and generates 3 to 5 qualified leads per month, indefinitely.
+Now compare that to a business owner who spends $0 on production (smartphone, natural light, free editing software) but invests two hours researching what their target customers actually search for on YouTube. They find a keyword with 500 monthly searches and low competition. They film a straightforward answer to that question. The video ranks on page one within weeks and generates 3 to 5 qualified leads per month, indefinitely. From there, [the lead generation system that captures those leads](/blog/youtube-lead-generation) determines whether they turn into revenue.
 
 The first business spent $2,000 and got nothing. The second spent $0 and built an asset that compounds over time.
 
@@ -227,7 +227,7 @@ It means the single highest-ROI line item in your youtube marketing cost spreads
 
 If you want to quantify what a single well-targeted video is worth to your business, run the numbers through our [YouTube ROI Calculator](/tools/youtube-roi-calculator). And for a deeper look at how to measure whether your YouTube investment is paying off, read our breakdown of [YouTube marketing ROI](/blog/youtube-marketing-roi).
 
-The opportunity cost works the other direction too. Every month you delay starting is a month of compounding you miss out on. YouTube videos do not expire. A video published today can generate leads three years from now. The cost of waiting is real, even if it does not show up on an invoice.
+The opportunity cost works the other direction too. Every month you delay starting is a month of compounding you miss out on, and [how consistent publishing compounds into pipeline](/blog/compounding-effect-four-videos-a-month) shows exactly what that looks like over time. YouTube videos do not expire. A video published today can generate leads three years from now. The cost of waiting is real, even if it does not show up on an invoice.
 
 ## How to Set Your YouTube Marketing Budget (A Practical Framework)
 

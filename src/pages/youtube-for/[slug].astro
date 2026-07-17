@@ -642,6 +642,25 @@ const serviceSchema = {
       </div>
     </section>
 
+    <!-- Related Resources -->
+    {niche.relatedLinks && niche.relatedLinks.length > 0 && (
+      <section class="py-10 border-t border-slate-200 dark:border-slate-700">
+        <div class="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
+          <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-4">Related Resources</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {niche.relatedLinks.map((link) => (
+              <a href={link.href} class="flex items-center gap-2 text-sm text-primary hover:underline font-medium">
+                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                {link.text}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
     <!-- Internal Linking: Other YouTube Acquisition Strategies -->
     <section class="py-10 border-t border-slate-200 dark:border-slate-700">
       <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3">

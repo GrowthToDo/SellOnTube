@@ -91,7 +91,7 @@ The metrics that actually predict YouTube marketing ROI are:
 
 ### Click-through to your site
 
-How many viewers leave YouTube and visit your landing page, lead magnet, or booking link? This is where YouTube stops being "content" and starts being a marketing channel. Optimizing your video titles and descriptions for the right search terms directly impacts this number. Our [YouTube SEO guide](/blog/youtube-seo-guide) covers the mechanics of getting found by buyers instead of browsers.
+How many viewers leave YouTube and visit your landing page, lead magnet, or booking link? This is where YouTube stops being "content" and starts being a marketing channel. Optimizing your video titles and descriptions for the right search terms directly impacts this number. Our [YouTube SEO guide](/blog/youtube-seo-guide) covers the mechanics of getting found by buyers instead of browsers, and [our tested YouTube SEO tools list](/blog/best-youtube-seo-tools-for-business) shows which tools actually help.
 
 ### Lead-to-customer conversion rate
 
@@ -214,4 +214,4 @@ A YouTube ROI calculator needs three inputs: your average customer LTV, your mon
 
 ### Is YouTube marketing worth it for B2B businesses?
 
-Yes, often more so than for B2C. B2B buyers have higher LTV, conduct more research before purchasing, and respond well to authoritative video content. The search intent that drives YouTube discovery aligns closely with how B2B buyers self-educate before engaging a vendor. The key is targeting [bottom-of-funnel search intent](/blog/search-intent-youtube-seo-power) rather than generic educational content.
+Yes, often more so than for B2C. B2B buyers have higher LTV, conduct more research before purchasing, and respond well to authoritative video content. The search intent that drives YouTube discovery aligns closely with how B2B buyers self-educate before engaging a vendor. The key is targeting [bottom-of-funnel search intent](/blog/search-intent-youtube-seo-power) rather than generic educational content, a strategy covered in more depth in [the broader YouTube marketing for B2B playbook](/blog/youtube-marketing-b2b).

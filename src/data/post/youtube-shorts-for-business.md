@@ -165,7 +165,7 @@ If you already have a library of long-form videos, you are sitting on weeks of S
 
 **Step 4: Add captions.** Over 80% of Shorts are watched without sound. If your Short has no captions, it has no message for the majority of viewers. Use auto-captioning tools and then review for accuracy. Bold the key phrases.
 
-**Step 5: Write a hook for the first two seconds.** The original video probably had a slower intro. Shorts cannot afford that. Open with the single most interesting statement from the clip. "Your competitors are doing X wrong." "This one metric predicts Y." Front-load the value.
+**Step 5: Write a hook for the first two seconds.** Use SellonTube's [Script Generator](/tools/youtube-script-generator) to draft strong hook options before you cut the clip. The original video probably had a slower intro. Shorts cannot afford that. Open with the single most interesting statement from the clip. "Your competitors are doing X wrong." "This one metric predicts Y." Front-load the value.
 
 **Step 6: Set a sustainable posting cadence.** Two to three Shorts per week is sufficient for B2B. You do not need to post daily. A single 20-minute long-form video can yield three to five Shorts, which means one long-form video per week gives you a full week of Shorts content.
 
@@ -177,7 +177,7 @@ The entire process, from identifying a clip to posting the Short, should take 30
 
 Knowing what works is half the equation. Knowing what to avoid is the other half. These are the patterns that drain time and money without generating results.
 
-**Mistake 1: Going Shorts-first without a long-form foundation.** If your channel has zero long-form videos and 50 Shorts, you have a problem. A viewer discovers your Short, likes it, and visits your channel. What do they find? More Shorts. No depth. No detailed content. No reason to trust you with a five-figure purchase decision. Long-form content is your credibility layer. Without it, Shorts are a revolving door: people come in, see nothing substantial, and leave.
+**Mistake 1: Going Shorts-first without a long-form foundation.** If your channel has zero long-form videos and 50 Shorts, you have a problem. A viewer discovers your Short, likes it, and visits your channel. What do they find? More Shorts. No depth. No detailed content. No reason to trust you with a five-figure purchase decision. Avoid this trap by [setting up a YouTube channel built for business, not creators](/blog/create-youtube-channel-for-business) from the start. Long-form content is your credibility layer. Without it, Shorts are a revolving door: people come in, see nothing substantial, and leave.
 
 **Mistake 2: Chasing trending audio and memes.** Trending sounds work for consumer brands selling $30 products. They do not work for B2B companies selling $30,000 contracts. When your CEO lip-syncs to a trending audio clip, the audience that attracts is not the audience that signs enterprise deals. Stay on brand. Speak directly to camera or use clean background music. Let the content carry the weight.
 

@@ -144,7 +144,7 @@ So what does this actually mean for your keyword research? Four things separate 
 
 **Export and copy.** Keywords stuck on a webpage are useless for planning. You need CSV export or a copy-all button at minimum. Check whether the export includes metadata like intent tags, geography, or timestamps.
 
-**Additional data.** Raw autocomplete keywords tell you what people search. Volume estimates, intent tags, or popularity scores tell you which keywords to target first. Not every tool offers this. The ones that do save you a second step.
+**Additional data.** Raw autocomplete keywords tell you what people search. Volume estimates, intent tags, or popularity scores tell you which keywords to target first. Not every tool offers this. The ones that do save you a second step, and pairing them with the [tag generator tool](/tools/youtube-tag-generator) turns your shortlist into ready-to-use metadata.
 
 **The bottleneck is not finding keywords. It is knowing which ones will attract buyers.**
 
@@ -464,7 +464,7 @@ Sort your list into three buckets. High intent: comparisons, pricing, mistakes, 
 
 **Step 5: Validate against YouTube search results.**
 
-Before committing to a keyword, search for it on YouTube. If the top results are from channels with millions of subscribers, that keyword may be too competitive for a new channel. If the top results are low-quality, outdated, or poorly optimized, you have an opening. Look for keywords where you can realistically rank in the top 5 within 90 days. For a deeper keyword validation process, see the [YouTube keyword research guide](/blog/youtube-keyword-research).
+Before committing to a keyword, search for it on YouTube. If the top results are from channels with millions of subscribers, that keyword may be too competitive for a new channel. If the top results are low-quality, outdated, or poorly optimized, you have an opening. Look for keywords where you can realistically rank in the top 5 within 90 days. Run your shortlist through our [keyword finder tool](/tools/youtube-video-keyword-finder) to check ranking difficulty before you commit a full video to it. For a deeper keyword validation process, see the [YouTube keyword research guide](/blog/youtube-keyword-research).
 
 The entire process, from seed keyword to prioritized content plan, takes under an hour with the right tool. Without one, the same work takes a full day and produces a less organized result.
 
@@ -608,7 +608,7 @@ For business channels, the SellonTube YouTube Autocomplete Keyword Tool is the b
 
 ### What tools should I use to find YouTube autocomplete keywords?
 
-The [SellonTube YouTube Autocomplete Keyword Tool](/tools/youtube-autocomplete-keywords) is the best free option for business use. It scrapes YouTube's suggestion API, categorizes results by buyer intent (Comparison, Mistakes, Results, How-To, Research), and exports a tagged CSV. For raw bulk data, Pemavor and Keyword.io are free alternatives. For volume estimates alongside autocomplete suggestions, RyRob is the only free tool that provides YouTube-specific search volume numbers.
+The [SellonTube YouTube Autocomplete Keyword Tool](/tools/youtube-autocomplete-keywords) is the best free option for business use. It scrapes YouTube's suggestion API, categorizes results by buyer intent (Comparison, Mistakes, Results, How-To, Research), and exports a tagged CSV. For raw bulk data, Pemavor and Keyword.io are free alternatives. For volume estimates alongside autocomplete suggestions, RyRob is the only free tool that provides YouTube-specific search volume numbers. Once you have volume data, pair it with [checking what keywords your videos already rank for](/blog/how-to-find-youtube-video-ranking-keywords) to prioritize which topics to target next.
 
 ### Are there free YouTube keyword research tools that actually work?
 
