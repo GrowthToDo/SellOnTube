@@ -213,7 +213,7 @@ Generated from the ACTUAL final file state after 3 rounds of adversarial review 
 | `src/data/post/search-intent-youtube-seo-power.mdx` | `/youtube-for` | industry-specific YouTube guides |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/tools/youtube-autocomplete-keywords` | free autocomplete tool |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-marketing-roi` | How to Calculate YouTube Marketing ROI for Your Business |
-| `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-marketing-cost` | what YouTube marketing actually costs |
+| `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-marketing-cost` | realistic YouTube marketing budgets |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-vs-paid-ads-b2b` | YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/why-most-youtube-strategies-fail` | 7 YouTube Marketing Mistakes That Kill Business Channels |
 | `src/data/post/why-most-youtube-strategies-fail.mdx` | `/blog/search-intent-youtube-seo-power` | YouTube vs Blogging for Business: Why Video Wins for B2B Lead Gen |
