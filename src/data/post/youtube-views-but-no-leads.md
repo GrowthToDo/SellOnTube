@@ -125,7 +125,7 @@ This is the difference between informational intent and buyer intent.
 
 Want to see this in action? Take your last 10 video topics and sort them into these two categories. If 8 out of 10 fall into the informational bucket, you have found the reason for your YouTube views but no leads problem.
 
-The fix is straightforward. Before choosing any topic, run it through a buyer-intent filter. Ask: "Is the person searching this actively evaluating a solution, or just learning about a concept?"
+The fix is straightforward. Before choosing any topic, run it through a buyer-intent filter, following [the high-intent research process](/blog/high-intent-topic-research-framework). Ask: "Is the person searching this actively evaluating a solution, or just learning about a concept?"
 
 You can use the [Video Ideas Evaluator](/tools/youtube-video-ideas-evaluator) to test whether a topic idea has commercial potential before you spend time producing it. And for finding buyer-intent keywords specifically, our guide on [YouTube keyword research](/blog/youtube-keyword-research) walks through the exact process.
 
@@ -214,7 +214,7 @@ Here is what to track instead.
 
 **Branded search lift.** After someone watches your video, they might not click your description link immediately. Instead, they Google your company name later. Track branded search volume in Google Search Console week over week. A rising branded search trend that correlates with your YouTube publishing schedule means your videos are creating demand, even if direct attribution is low.
 
-**Cost per lead from YouTube vs. other channels.** Calculate your total YouTube investment (time, equipment, editing, tools) and divide by the number of attributed leads. Compare this to your cost per lead from paid ads, SEO, or outbound. For a detailed framework on running this calculation, see our [YouTube marketing ROI](/blog/youtube-marketing-roi) guide.
+**Cost per lead from YouTube vs. other channels.** Calculate your total YouTube investment (time, equipment, editing, tools) and divide by the number of attributed leads. Compare this to your cost per lead from paid ads, SEO, or outbound. Use the ROI Calculator to [estimate your return](/tools/youtube-roi-calculator) before committing more budget. For a detailed framework on running this calculation, see our [YouTube marketing ROI](/blog/youtube-marketing-roi) guide.
 
 Stop reporting views in your marketing meetings. Start reporting attributed leads and cost per lead. The moment you change what you measure, you will change what you create.
 

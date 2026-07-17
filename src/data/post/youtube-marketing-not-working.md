@@ -134,7 +134,7 @@ Signs you are optimizing for search:
 
 The fix is straightforward. For every video, identify the primary keyword you want to rank for. Put that keyword in the title, ideally near the beginning. Write a description of at least 200 words that naturally includes variations of the keyword and related terms. Structure the video so that someone searching for that phrase gets a clear, direct answer.
 
-Use a tool like the [YouTube SEO Tool](/tools/youtube-seo-tool) to check whether your titles and descriptions are properly optimized for search. Small adjustments to existing videos can sometimes recover ranking positions you did not know you were missing.
+Use a tool like the [YouTube SEO Tool](/tools/youtube-seo-tool) to check whether your titles and descriptions are properly optimized for search. Small adjustments to existing videos can sometimes recover ranking positions you did not know you were missing. Our roundup of [YouTube rank checker tools](/blog/best-youtube-rank-checker-tools-for-business) covers how to monitor those positions going forward.
 
 Search optimization is not glamorous. It will never produce a viral hit. But for business channels, it produces something better: a steady stream of viewers who already want what you sell.
 
@@ -156,7 +156,7 @@ Here is what business CTAs look like:
 
 Notice the pattern. Every CTA moves the viewer one step closer to becoming a customer. The CTA matches the viewer's current stage of awareness. You are not asking someone who just learned about a problem to book a sales call. You are not asking someone who is comparing solutions to watch another educational video.
 
-The rule is simple: before you script any video, write down the single action you want the viewer to take afterward. If you cannot define that action, the video does not have a business purpose, and you should either reframe it or skip it entirely. Our [YouTube scriptwriting guide](/blog/youtube-script-writing-guide) walks through this process step by step, from defining the CTA to building it into the script structure.
+The rule is simple: before you script any video, write down the single action you want the viewer to take afterward. For [the CTA and funnel playbook for turning views into leads](/blog/youtube-lead-generation), see our full breakdown. If you cannot define that action, the video does not have a business purpose, and you should either reframe it or skip it entirely. Our [YouTube scriptwriting guide](/blog/youtube-script-writing-guide) walks through this process step by step, from defining the CTA to building it into the script structure.
 
 This does not mean every video needs a hard sell. It means every video needs a next step. Even a soft CTA like "check out the link in the description for the full checklist" is infinitely better than "smash that subscribe button."
 
@@ -224,7 +224,7 @@ Here are the metrics that actually matter for a business YouTube channel:
 
 **Website clicks from YouTube.** How many viewers click through to your site? This is the bridge between YouTube views and business outcomes. If this number is zero, your CTAs are not working (go back to Check #3).
 
-**Leads or conversions from YouTube traffic.** This is the only metric that ultimately matters. Set up UTM tracking on every link in your YouTube descriptions so you can trace leads back to specific videos.
+**Leads or conversions from YouTube traffic.** This is the only metric that ultimately matters. Set up UTM tracking on every link in your YouTube descriptions so you can trace leads back to specific videos. Our [YouTube marketing ROI framework](/blog/youtube-marketing-roi) covers how to turn that tracking data into a real ROI figure.
 
 Stop comparing your 500-view business video to a creator's 500,000-view entertainment video. Those are different products serving different purposes. Your 500 views from buyers searching for "best CRM for consulting firms" are worth more than a creator's 500,000 views from teenagers watching a reaction video.
 

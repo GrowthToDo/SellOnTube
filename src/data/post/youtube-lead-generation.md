@@ -237,9 +237,9 @@ Once your tracking is in place, use the [YouTube SEO Tool](/tools/youtube-seo-to
 
 ## Why YouTube Beats LinkedIn for Lead Generation
 
-LinkedIn is the default lead generation channel for B2B. YouTube is better for most businesses that sell high-value products or services. Here is why.
+LinkedIn is the default lead generation channel for B2B. YouTube is better for most businesses that sell high-value products or services. Here is why, covered in more depth in our [YouTube marketing for B2B guide](/blog/youtube-marketing-b2b).
 
-**Content shelf life.** A LinkedIn post peaks within 24 to 48 hours, then disappears from feeds. A YouTube video answering "how to choose a CRM for remote teams" generates leads for 12 to 24 months. One video can outperform 50 LinkedIn posts over a year.
+**Content shelf life.** A LinkedIn post peaks within 24 to 48 hours, then disappears from feeds. A YouTube video answering "how to choose a CRM for remote teams" generates leads for 12 to 24 months. One video can outperform 50 LinkedIn posts over a year, which is [why video libraries compound faster than LinkedIn posts](/blog/compounding-effect-four-videos-a-month).
 
 **Search intent.** LinkedIn content reaches people scrolling a feed. YouTube content reaches people actively searching for a solution. The difference in lead quality is significant. A viewer who searched "best proposal software for agencies" is closer to buying than someone who saw your LinkedIn carousel while checking notifications.
 

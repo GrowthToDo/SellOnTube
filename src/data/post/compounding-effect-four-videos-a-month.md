@@ -108,7 +108,7 @@ Each of these:
 - solves different buying objections  
 - feeds YouTube's recommendation graph in different ways  
 
-Even if just 10 of them rank well, you now have 10 inbound funnels that work 24/7.
+Even if just 10 of them rank well, you now have 10 inbound funnels that work 24/7. Learn how to [find the keywords behind those 48 assets](/blog/how-to-find-youtube-autocomplete-keywords) so each video targets a distinct, real search.
 
 ---
 
@@ -158,6 +158,8 @@ A high-intent YouTube video does a job:
 It works on Sundays.  
 It works while you sleep.  
 It works while your sales team is offline.
+
+The next step is learning how to [turn that library into booked calls](/blog/youtube-lead-generation), not just views.
 
 Your library becomes a **digital salesforce**, but one without human limitations:
 
@@ -224,7 +226,7 @@ If a single customer is worth:
 - $5,000
 - $10,000+
 
-Then even a modest stream of monthly inbound leads generates disproportionate ROI. Use the [YouTube ROI Calculator](/tools/youtube-roi-calculator) to see exactly how the math works for your specific business model and price point.
+Then even a modest stream of monthly inbound leads generates disproportionate ROI. Use the [YouTube ROI Calculator](/tools/youtube-roi-calculator) to see exactly how the math works for your specific business model and price point. Our full [YouTube marketing ROI breakdown](/blog/youtube-marketing-roi) walks through the underlying assumptions in detail.
 
 Four videos a month is all you need to unlock that math.
 

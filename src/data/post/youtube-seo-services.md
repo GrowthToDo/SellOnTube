@@ -113,7 +113,7 @@ The honest truth about YouTube SEO services is that the majority of the work is 
 
 Keyword research is the most valuable skill you can learn, and it is not that hard. YouTube's search suggest feature, Google Trends' YouTube filter, and free tools give you enough data to find good topics. Our [YouTube keyword research guide](/blog/youtube-keyword-research) walks through the exact process.
 
-Title writing follows a pattern: put the target keyword near the front, keep it under 60 characters, make it specific. "YouTube SEO Services: What They Cost" beats "Everything You Need to Know About YouTube SEO Services and Why They Matter for Your Business."
+Title writing follows a pattern: put the target keyword near the front, keep it under 60 characters, make it specific. Try our [Title Generator](/tools/youtube-title-generator) to test variations quickly. "YouTube SEO Services: What They Cost" beats "Everything You Need to Know About YouTube SEO Services and Why They Matter for Your Business."
 
 Description writing is templatable. First line: hook plus CTA link. Next 150 words: keyword-rich summary. Then timestamps, links, and related content.
 

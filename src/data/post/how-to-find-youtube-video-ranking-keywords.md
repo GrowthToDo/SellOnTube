@@ -197,7 +197,7 @@ The [YouTube Ranking Checker](/tools/youtube-ranking-checker) takes a different 
 
 **When this method fails:** When you need automated tracking for 50+ keywords with historical charts. This is a point-in-time tool. You check manually. For a business owner tracking 5-10 keywords weekly, that takes under 5 minutes. For someone managing hundreds of keywords across multiple channels, a paid tracker is the better fit.
 
-It is free. No login required for your first 3 checks. After that, enter a business email to keep checking at no cost.
+It is free. No login required for your first 3 checks. After that, enter a business email to keep checking at no cost. If you are looking for new keyword opportunities rather than checking an existing one, [the free video keyword finder](/tools/youtube-video-keyword-finder) is the companion tool for that.
 
 <div style="overflow-x: auto; margin: 2rem 0;">
 <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
@@ -268,7 +268,7 @@ Bad examples:
 - "YouTube" (not a query anyone types before buying)
 - "marketing tips" (attracts browsers, not buyers)
 
-If you are not sure which keywords matter, start with this question: "What would someone type into YouTube if they had the exact problem I solve, and they were 80% of the way to hiring someone like me?"
+If you are not sure which keywords matter, start with this question: "What would someone type into YouTube if they had the exact problem I solve, and they were 80% of the way to hiring someone like me?" That question is the starting point for [how to find YouTube autocomplete keywords](/blog/how-to-find-youtube-autocomplete-keywords) as well.
 
 ### Step 2. Check each keyword
 
@@ -302,7 +302,7 @@ Not all keywords deserve your attention. A business channel should track three t
 
 These are queries someone types when they are close to a decision. "Best [product category] for [specific use case]" is the classic format. "How to choose a [product]" is another.
 
-Track 3-5 of these. They are your highest-value keywords. A position change on these keywords directly affects your pipeline.
+Track 3-5 of these. They are your highest-value keywords. A position change on these keywords directly affects your pipeline. See [how to research those keywords in the first place](/blog/youtube-keyword-research) if you have not identified them yet.
 
 ### Problem-aware keywords
 

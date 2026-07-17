@@ -80,7 +80,7 @@ YouTube marketing for B2B companies works by capturing buyers during active rese
 
 It creates search visibility for the specific queries your buyers type. It builds credibility before a prospect ever contacts you (buyers who arrive from YouTube already understand your thinking). And it creates a library of content your sales team can use in follow-up sequences.
 
-The compounding effect is what separates this from paid advertising. A paid campaign delivers leads while spend is running and stops the moment the budget runs out. A YouTube video published today can still rank and generate leads 18 months from now. The fixed production cost spreads across an increasing volume of views over time. This is why [YouTube ROI for B2B businesses](/blog/youtube-marketing-roi) almost always looks poor in month one and strong in month twelve.
+The compounding effect is what separates this from paid advertising. A paid campaign delivers leads while spend is running and stops the moment the budget runs out. A YouTube video published today can still rank and generate leads 18 months from now. The fixed production cost spreads across an increasing volume of views over time. This is why [YouTube ROI for B2B businesses](/blog/youtube-marketing-roi) almost always looks poor in month one and strong in month twelve. Run your own numbers through [the ROI calculator tool](/tools/youtube-roi-calculator) to see where your breakeven point falls.
 
 But there's a catch. All of this depends on building the channel around what your buyers search, not around what is easy to produce. If you need a step-by-step framework for doing that, our guide to [building a YouTube marketing strategy for business](/blog/youtube-marketing-strategy) covers the full process.
 
@@ -110,7 +110,7 @@ A search like "youtube marketing for b2b" has lower monthly volume than "youtube
 
 For B2B YouTube SEO, the keyword targeting process should start with your sales conversations, not with a keyword tool. What questions do prospects ask before signing? What problems do they describe in their own words? What comparisons do they make between you and alternatives? Those phrases are your keyword targets.
 
-From there, apply the standard mechanics: target keyword in the video title, spoken clearly in the first 30 seconds, and written naturally in the first 100 words of the description. Use chapter markers on longer videos. Write descriptions that include natural variations of the target phrase. The [YouTube description generator](/tools/youtube-description-generator) handles this formatting automatically.
+From there, apply the standard mechanics: target keyword in the video title, spoken clearly in the first 30 seconds, and written naturally in the first 100 words of the description. Use chapter markers on longer videos. Write descriptions that include natural variations of the target phrase. The [YouTube description generator](/tools/youtube-description-generator) handles this formatting automatically. For the full stack, see [the YouTube SEO tools we recommend for business channels](/blog/best-youtube-seo-tools-for-business).
 
 Our [high-intent topic research framework](/blog/high-intent-topic-research-framework) covers the full process for identifying search terms that attract decision-makers rather than browsers.
 
@@ -122,7 +122,7 @@ The right viewer finds the video through search. This requires targeting specifi
 
 The video earns trust in the first 30 seconds. A concrete claim about what the viewer will learn. Evidence that you understand their specific situation. No generic setup. No "in today's video we're going to be talking about..."
 
-The video sends them somewhere with a clear, specific call to action. "Book a 30-minute diagnostic" outperforms "visit our website" by a wide margin. The action should match the video topic directly.
+The video sends them somewhere with a clear, specific call to action. "Book a 30-minute diagnostic" outperforms "visit our website" by a wide margin. Our [YouTube lead generation system](/blog/youtube-lead-generation) covers how to design that call to action end to end. The action should match the video topic directly.
 
 The landing page converts. The destination has to echo the language and framing of the video. If your video is about YouTube strategy for professional services firms, the landing page should speak to that buyer specifically, not to a generic homepage.
 

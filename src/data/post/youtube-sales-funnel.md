@@ -144,7 +144,7 @@ Here is where it gets uncomfortable. You can publish 100 videos and still get ze
 
 What Discovery requires:
 
-- Keyword research focused on buyer-intent queries, not broad topics
+- Keyword research focused on buyer-intent queries, not broad topics, following [our topic research framework](/blog/high-intent-topic-research-framework)
 - Titles and descriptions built around the exact phrases your audience searches
 - Tags that reinforce your topic cluster
 - Thumbnails that signal relevance, not clickbait
@@ -190,7 +190,7 @@ What works for youtube conversion:
 
 - **A single, clear CTA per video.** Not three. Not a menu of options. One action.
 - **Place the CTA at the value peak**, not at the end. The moment after you deliver your key insight is when trust is highest. That is when you ask.
-- **Use your description's first two lines.** YouTube shows these without clicking "Show more." Put your landing page link there.
+- **Use your description's first two lines.** YouTube shows these without clicking "Show more." Put your landing page link there. SellonTube's [Description Generator](/tools/youtube-description-generator) can help you draft this quickly.
 - **Pinned comments with a direct link.** These get higher click rates than description links on mobile.
 - **Lead magnets tied to the video topic.** A viewer watching "how to reduce SaaS churn" will download a churn reduction checklist. They will not download a generic "free consultation" offer.
 

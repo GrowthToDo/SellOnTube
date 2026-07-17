@@ -199,6 +199,11 @@ export const comparisons: Comparison[] = [
       { question: 'Which platform is better for reaching C-suite executives?', answer: 'LinkedIn has better direct access to C-suite contacts through profile search and InMail. That said, senior executives increasingly use YouTube for professional development and vendor evaluation. Long-form YouTube content from a credible expert reaches senior decision-makers during their own research process, which is often more effective than cold InMail that interrupts their day.' },
       { question: 'How long does it take to see B2B results from YouTube vs LinkedIn?', answer: 'LinkedIn can show engagement within days of a well-timed post. YouTube typically delivers its first meaningful organic search traffic within two to three months, with compounding growth building through months six to twelve. If you need pipeline in the next 30 days, LinkedIn is faster. If you are building toward a lower, more sustainable CAC over the next two years, YouTube is the better investment.' },
     ],
+    relatedLinks: [
+      { text: 'YouTube for B2B Marketing Guide', href: '/blog/youtube-marketing-b2b' },
+      { text: 'YouTube B2B Buyer Journey Data', href: '/blog/youtube-b2b-buyer-journey-data' },
+      { text: 'run the numbers with our ROI calculator', href: '/tools/youtube-roi-calculator' },
+    ],
   },
   {
     slug: 'instagram-for-coaches',
@@ -227,6 +232,11 @@ export const comparisons: Comparison[] = [
       { question: 'Do I need to be on camera for YouTube as a coach?', answer: 'Being on camera helps because coaching is a personal relationship and seeing your face builds trust. That said, plenty of effective coaching content works with voiceover narration and supporting visuals. Coaches who are camera-shy often start with brief on-camera introductions and then switch to voiceover for the main content, and that approach performs well.' },
       { question: 'Should coaches be on both YouTube and Instagram?', answer: 'Yes, with different purposes assigned to each. YouTube drives search-based client acquisition and builds a compounding lead source. Instagram maintains daily visibility and community with the audience YouTube builds. Repurposing YouTube content as Reels and Stories pulls meaningful reach from a single production effort rather than requiring separate content strategies for each platform.' },
     ],
+    relatedLinks: [
+      { text: 'our lead-generation playbook', href: '/blog/youtube-lead-generation' },
+      { text: 'YouTube Marketing Strategy: 6-Step Framework', href: '/blog/youtube-marketing-strategy' },
+      { text: 'brainstorm videos with this tool', href: '/tools/youtube-video-ideas-generator' },
+    ],
   },
   {
     slug: 'tiktok-for-saas',
@@ -254,6 +264,11 @@ export const comparisons: Comparison[] = [
       { question: 'Can SaaS companies go viral on TikTok?', answer: 'Yes, and some have seen impressive results. The honest limitation is that virality on TikTok is unpredictable and cannot be reliably planned around. YouTube provides compounding, predictable growth you can model and forecast. TikTok virality is worth pursuing when you have a genuinely shareable product moment, but it should not replace a systematic acquisition strategy.' },
       { question: 'What type of SaaS content works on TikTok?', answer: 'Short product demonstrations showing impressive, immediately comprehensible outputs perform best. "I built this in 60 seconds" or "this AI did in one click what used to take me three hours" are the kinds of hooks that get shared on TikTok. The product needs to produce something visually remarkable in under a minute for TikTok to work as an acquisition channel.' },
       { question: 'Our SaaS has a free tier. Should we be on TikTok to drive free signups?', answer: 'If your free tier is targeted at a young consumer audience and your product produces visually compelling outputs, TikTok is worth testing. If you are trying to convert high-LTV paid customers or reach business buyers, YouTube is more aligned with that intent. The free-to-paid conversion rates you care about will likely differ significantly between the two channels.' },
+    ],
+    relatedLinks: [
+      { text: 'YouTube for SaaS Product Demos', href: '/blog/youtube-for-saas-demos' },
+      { text: 'YouTube ROI for SaaS Companies', href: '/blog/youtube-roi-for-saas' },
+      { text: 'check if the math works for your business', href: '/tools/youtube-roi-calculator' },
     ],
   },
   {
@@ -401,6 +416,11 @@ export const comparisons: Comparison[] = [
       { question: 'What LTV do I need for YouTube to beat Google Ads ROI?', answer: 'Roughly $1,500 or above. Below that threshold, the content production investment requires high conversion rates and significant search volume to generate positive returns. Above $1,500 LTV, one or two YouTube-sourced customers per month typically covers production costs, and the compounding effect makes the economics improve from there.' },
       { question: 'Should I pause Google Ads when I start YouTube?', answer: 'No. Run both in parallel. Google Ads sustain revenue while YouTube builds its search rankings. Once YouTube delivers consistent inbound leads at a lower cost per acquisition, reduce Google Ads spend gradually. Stopping abruptly creates a revenue gap that YouTube may not yet be ready to fill.' },
     ],
+    relatedLinks: [
+      { text: 'YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison', href: '/blog/youtube-vs-paid-ads-b2b' },
+      { text: 'YouTube Break-Even Math', href: '/blog/youtube-break-even-math' },
+      { text: 'calculate your potential ROI', href: '/tools/youtube-roi-calculator' },
+    ],
   },
   {
     slug: 'facebook-ads',
@@ -428,6 +448,11 @@ export const comparisons: Comparison[] = [
       { question: 'How do iOS privacy changes affect this comparison?', answer: 'iOS privacy changes significantly degraded Facebook Ads attribution and targeting accuracy for many advertisers, particularly for direct response campaigns. YouTube organic content is unaffected by cross-app tracking changes because search-driven traffic does not rely on user tracking across platforms. For advertisers who saw Facebook performance drop after iOS changes, YouTube organic is a structurally more stable alternative.' },
       { question: 'Can I use Facebook Ads to promote my YouTube videos?', answer: 'Yes, and this can be a useful hybrid strategy. Using Facebook Ads to drive early views on a newly published YouTube video generates engagement signals that help YouTube rank the video faster in organic search. The paid spend accelerates the organic ranking process rather than replacing it.' },
       { question: 'Which platform is better for local businesses?', answer: 'Facebook Ads offer more precise geographic and demographic targeting for local markets. YouTube organic content targeting location-specific queries, such as "accountant in Bristol" or "best personal trainer in Austin," can rank in both YouTube and Google search for those terms. For local businesses with recurring service needs, a combination of both often works best.' },
+    ],
+    relatedLinks: [
+      { text: 'YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison', href: '/blog/youtube-vs-paid-ads-b2b' },
+      { text: 'The Compounding Effect of Four Videos a Month', href: '/blog/compounding-effect-four-videos-a-month' },
+      { text: 'our free ROI calculator', href: '/tools/youtube-roi-calculator' },
     ],
   },
   {
@@ -457,6 +482,11 @@ export const comparisons: Comparison[] = [
       { question: 'How does AI-generated content affect this comparison?', answer: 'AI is commoditising written content production, which increases supply and reduces differentiation for blog content. Every competitor can now produce competent blog posts at scale. YouTube content featuring genuine expertise, real product demonstrations, and authentic commentary remains harder to replicate with AI, which preserves its quality signal and conversion effectiveness.' },
       { question: 'Is it too late to start a YouTube channel if we already have a strong blog?', answer: 'No. A strong blog gives you a meaningful head start. You already know which topics drive traffic and conversions, you understand your audience\'s questions, and you can promote new YouTube videos to existing readers for early engagement signals that accelerate ranking. Start with your top ten highest-converting blog topics and build YouTube videos around those.' },
     ],
+    relatedLinks: [
+      { text: 'YouTube vs Blog: Shopify App Case Study (3.25x More Conversions)', href: '/blog/youtube-vs-blog-shopify-app-case-study' },
+      { text: 'the content strategy framework', href: '/blog/youtube-content-strategy-guide' },
+      { text: 'YouTube Script Generator', href: '/tools/youtube-script-generator' },
+    ],
   },
   {
     slug: 'podcasting',
@@ -484,6 +514,11 @@ export const comparisons: Comparison[] = [
       { question: 'Can I run a video podcast on YouTube?', answer: 'Yes, and this has become a common and effective format. Recording conversations on video and publishing on YouTube gives you both podcast-depth content and YouTube\'s search discoverability. Clips from longer conversations can be published as standalone shorter videos, extracting multiple pieces of content from a single recording session.' },
       { question: 'Which has better ROI for a service business?', answer: 'YouTube, for most service businesses starting from zero. The search mechanism drives inbound enquiries from people actively looking for what you offer. Podcasting builds loyalty among people who already follow you but does not create the same kind of cold inbound from search-intent prospects. Once you have an audience, a podcast amplifies it; before you have an audience, YouTube builds it.' },
       { question: 'How do I grow a podcast without an existing audience?', answer: 'Use YouTube as a podcast growth channel. Publishing podcast episodes or clips on YouTube exposes your content to new listeners through search, which is the core discoverability problem podcasting faces without an existing audience. Short clip highlights from each episode, optimised for YouTube search terms, can consistently drive new subscribers to the full podcast.' },
+    ],
+    relatedLinks: [
+      { text: 'YouTube Marketing Strategy: 6-Step Framework', href: '/blog/youtube-marketing-strategy' },
+      { text: 'YouTube Chapters and Timestamps Guide', href: '/blog/youtube-chapters-timestamps' },
+      { text: 'YouTube Transcript Generator', href: '/tools/youtube-transcript-generator' },
     ],
   },
   {
@@ -513,6 +548,11 @@ export const comparisons: Comparison[] = [
       { question: 'How does the YouTube vs blog data compare for different business types?', answer: 'Our 12-month Shopify app experiment showed YouTube delivering 3.25x more conversions than a parallel blog programme. For service businesses, coaching, and SaaS with meaningful LTV, YouTube typically outperforms blog on conversion rate per visitor even when the blog drives more total traffic, because the quality of the visit is higher.' },
       { question: 'Should I stop blogging and invest in YouTube instead?', answer: 'If you must choose one, YouTube is the better investment for businesses with LTV above $1,000 and a 12-month horizon. If you can maintain both, do so at whatever production level is sustainable. Reducing blogging cadence while building YouTube is a reasonable transition for teams with limited content production bandwidth.' },
     ],
+    relatedLinks: [
+      { text: 'YouTube vs Blog: Shopify App Case Study (3.25x More Conversions)', href: '/blog/youtube-vs-blog-shopify-app-case-study' },
+      { text: 'Search Intent and YouTube SEO Power', href: '/blog/search-intent-youtube-seo-power' },
+      { text: 'our free topic brainstorming tool', href: '/tools/youtube-video-ideas-generator' },
+    ],
   },
   {
     slug: 'email-marketing',
@@ -540,6 +580,11 @@ export const comparisons: Comparison[] = [
       { question: 'Which has better ROI: YouTube or email marketing?', answer: 'They serve different parts of the funnel, so the comparison depends on what you are measuring. Email marketing has among the highest ROI for converting and retaining existing audiences. YouTube has higher ROI for acquiring new audiences from search. Combining them produces better results than either alone because each channel strengthens what the other does.' },
       { question: 'Can I promote my YouTube videos through email?', answer: 'Yes, and this is one of the most effective ways to accelerate channel growth. Sending new video announcements to your email list generates early views and engagement signals in the first 24-48 hours after publication, which YouTube\'s algorithm weights heavily when deciding how aggressively to rank and recommend the video.' },
       { question: 'What if my email list is already large and converting well?', answer: 'YouTube amplifies what you have built. A YouTube channel gives your existing subscribers a new format to engage with your thinking, which deepens the relationship and reduces churn. It also drives new subscribers into the top of your email funnel continuously, which is important because even healthy lists attritate over time.' },
+    ],
+    relatedLinks: [
+      { text: 'turning views into qualified leads', href: '/blog/youtube-lead-generation' },
+      { text: 'our 6-step marketing framework', href: '/blog/youtube-marketing-strategy' },
+      { text: 'YouTube Description Generator', href: '/tools/youtube-description-generator' },
     ],
   },
   {
@@ -569,6 +614,11 @@ export const comparisons: Comparison[] = [
       { question: 'Can we repurpose LinkedIn content into YouTube videos?', answer: 'Yes, and this is one of the most efficient ways to build a YouTube library. A 200-word LinkedIn post typically covers a point that deserves eight to twelve minutes of proper explanation on video. Expanding LinkedIn content into structured YouTube videos extracts far more value from thinking you have already done.' },
       { question: 'How long before a YouTube channel generates agency enquiries?', answer: 'Agency YouTube channels typically see their first inbound enquiries within three to four months of consistent publication. Volume builds meaningfully between months six and twelve as the video library grows and individual videos accumulate search rankings. Most agencies that stay consistent through month six report that the inbound quality exceeds what they were generating through LinkedIn outreach.' },
     ],
+    relatedLinks: [
+      { text: 'the complete lead-gen breakdown', href: '/blog/youtube-lead-generation' },
+      { text: 'our strategic content guide', href: '/blog/youtube-content-strategy-guide' },
+      { text: 'the competitive research tool', href: '/tools/youtube-competitor-analysis' },
+    ],
   },
   {
     slug: 'instagram-for-saas',
@@ -596,6 +646,11 @@ export const comparisons: Comparison[] = [
       { question: 'Which platform is better for SaaS product launches?', answer: 'YouTube for sustained post-launch acquisition, Instagram for launch day momentum if you already have an active community there. A launch announcement video on YouTube keeps generating organic trial signups from search long after the initial launch buzz fades, which Instagram content cannot do.' },
       { question: 'Can we use Instagram to promote our YouTube videos?', answer: 'Yes. Short clips and highlights from YouTube videos perform well on Instagram Reels, and cross-linking to the full YouTube video or your signup page converts a percentage of Instagram viewers into YouTube viewers and trial users. This extends the reach of YouTube content without duplicating the production effort.' },
       { question: 'What SaaS products work best on Instagram?', answer: 'Design tools, photo and video editing software, wellness and productivity apps with visually appealing interfaces, and products with a strong user community. The common thread is that the product output is immediately visually compelling in a short clip, which is the content format Instagram rewards.' },
+    ],
+    relatedLinks: [
+      { text: 'YouTube for SaaS Product Demos', href: '/blog/youtube-for-saas-demos' },
+      { text: 'YouTube ROI for SaaS Companies', href: '/blog/youtube-roi-for-saas' },
+      { text: 'generate content ideas', href: '/tools/youtube-video-ideas-generator' },
     ],
   },
   {
@@ -625,6 +680,11 @@ export const comparisons: Comparison[] = [
       { question: 'What converts better: YouTube CTAs or webinar pitches?', answer: 'Webinar pitches typically convert more attendees in a single session than YouTube video CTAs do. But YouTube generates those conversions continuously across thousands of viewers without the promotional overhead required to fill a webinar. The right comparison is not conversion rate per viewer but total qualified leads generated per dollar of investment over a 12-month period.' },
       { question: 'How do I use YouTube to fill my webinars?', answer: 'Create YouTube content that addresses the specific problems your webinar solves in depth. End each video with a CTA to register for the next live session where you go further or answer questions directly. Viewers who found your video through search and then register for your webinar are among the most qualified attendees you will have, because they sought out the topic before you invited them.' },
     ],
+    relatedLinks: [
+      { text: 'how to turn YouTube into a lead channel', href: '/blog/youtube-lead-generation' },
+      { text: 'YouTube Chapters and Timestamps Guide', href: '/blog/youtube-chapters-timestamps' },
+      { text: 'YouTube Transcript Generator', href: '/tools/youtube-transcript-generator' },
+    ],
   },
   {
     slug: 'cold-outreach',
@@ -652,6 +712,11 @@ export const comparisons: Comparison[] = [
       { question: 'How does YouTube content help cold outreach when you use both?', answer: 'Referencing your YouTube content in cold outreach significantly improves response rates. An opening that points to a specific video addressing the exact problem the prospect faces is far more credible than a generic value proposition. It demonstrates awareness of their situation and pre-establishes your credibility before the first conversation.' },
       { question: 'Which is more cost-effective per qualified lead?', answer: 'YouTube becomes more cost-effective per qualified lead beyond month six to nine in most markets. Cold outreach has a relatively fixed cost per lead based on SDR time and tooling. YouTube\'s cost per lead drops every month as the content library grows and rankings compound, while the quality of those leads tends to be higher.' },
       { question: 'Is cold email still working in 2025?', answer: 'It is declining. Inbox saturation, improved spam filters, and the volume of AI-generated outreach have all reduced average response rates. For highly personalised, well-targeted sequences to small account lists it still works. For volume-based outreach to broad lists, the returns have eroded significantly. YouTube inbound, which requires no inbox access at all, is increasingly valuable as outreach effectiveness falls.' },
+    ],
+    relatedLinks: [
+      { text: 'YouTube for B2B Marketing Guide', href: '/blog/youtube-marketing-b2b' },
+      { text: 'YouTube as a lead source', href: '/blog/youtube-lead-generation' },
+      { text: 'see your profit potential', href: '/tools/youtube-roi-calculator' },
     ],
   },
   {
@@ -681,6 +746,11 @@ export const comparisons: Comparison[] = [
       { question: 'Can I embed YouTube videos in my blog posts?', answer: 'Yes, and this typically improves both ranking and conversion. Blog posts with embedded YouTube videos tend to rank better in Google because dwell time increases. They also convert more readers to leads because video builds trust in ways text alone cannot. Embedding creates a reinforcing relationship between both channels.' },
       { question: 'What if my blog already gets significant traffic?', answer: 'That existing traffic is a real asset to leverage, not a reason to avoid YouTube. Creating YouTube content on your top-performing blog topics adds a second discovery channel for those same queries and converts the existing blog audience who prefers video. Blog readers who find your YouTube channel become more engaged, better-informed prospects.' },
     ],
+    relatedLinks: [
+      { text: 'YouTube vs Blog: Shopify App Case Study (3.25x More Conversions)', href: '/blog/youtube-vs-blog-shopify-app-case-study' },
+      { text: 'YouTube SEO Guide', href: '/blog/youtube-seo-guide' },
+      { text: 'YouTube SEO Tool', href: '/tools/youtube-seo-tool' },
+    ],
   },
   {
     slug: 'referral-marketing',
@@ -708,6 +778,11 @@ export const comparisons: Comparison[] = [
       { question: 'Can YouTube help with referrals?', answer: 'Yes, in two distinct ways. First, YouTube content gives your clients something concrete and impressive to share when they recommend you. Pointing a colleague to a YouTube channel full of useful, expert content is a stronger referral mechanism than a verbal recommendation alone. Second, YouTube makes the recipient of a referral more confident before they call, which improves the conversion rate on referrals you are already generating.' },
       { question: 'My business grows primarily through referrals and word of mouth. Why add YouTube?', answer: 'To remove the growth ceiling. Referral-dependent businesses can only grow as fast as their network and client base expand. YouTube creates an acquisition channel that is not limited by who your clients know or when they decide to mention you. It also continues working during slow referral periods, smoothing the revenue volatility that referral-dependent businesses experience.' },
       { question: 'What percentage of my marketing budget should go to YouTube versus referral programmes?', answer: 'Referral infrastructure is relatively low-cost: modest incentives or simply asking consistently. The main investment is in systematising the ask, not funding large rewards. A reasonable approach is to invest in referral infrastructure first because it costs little and returns quickly, then allocate a meaningful portion of active marketing spend to YouTube for network-independent growth.' },
+    ],
+    relatedLinks: [
+      { text: 'YouTube Growth Strategy', href: '/blog/youtube-growth-strategy' },
+      { text: 'the full marketing strategy guide', href: '/blog/youtube-marketing-strategy' },
+      { text: 'model your own numbers', href: '/tools/youtube-roi-calculator' },
     ],
   },
   {
@@ -737,6 +812,11 @@ export const comparisons: Comparison[] = [
       { question: 'Which is better for a SaaS product: YouTube or a user community?', answer: 'Both serve distinct functions and the combination is more valuable than either alone. YouTube drives trial acquisition from people searching for solutions. A user community reduces churn and drives expansion revenue through peer success stories, feature requests, and referrals. SaaS companies with strong communities consistently outperform those without on net revenue retention.' },
       { question: 'How do I convert YouTube viewers into community members?', answer: 'Use in-video CTAs and description links pointing to a community sign-up page. An incentive for joining, whether a free resource, exclusive content, or direct access to you, converts a meaningful percentage of engaged viewers. Viewers who have watched multiple videos are the most likely to convert, so targeting your CTA toward returning viewers produces better results than presenting it on every first impression.' },
     ],
+    relatedLinks: [
+      { text: 'our guide to capturing leads on YouTube', href: '/blog/youtube-lead-generation' },
+      { text: 'planning content that compounds', href: '/blog/youtube-content-strategy-guide' },
+      { text: 'the video topic generator', href: '/tools/youtube-video-ideas-generator' },
+    ],
   },
   {
     slug: 'twitter-for-saas',
@@ -765,6 +845,11 @@ export const comparisons: Comparison[] = [
       { question: 'Should SaaS companies invest in Twitter threads or YouTube videos?', answer: 'If you are choosing one, YouTube builds a more durable acquisition asset. Twitter threads generate engagement for hours; YouTube videos generate signups for years. For teams with capacity for both, Twitter threads can drive initial traffic to YouTube videos, and YouTube can be referenced in Twitter conversations to demonstrate depth.' },
       { question: 'How do I measure whether Twitter is driving SaaS signups?', answer: 'Use UTM parameters on every link shared from Twitter to your trial signup or pricing page. Track not just click volume but trial-to-paid conversion rates by source. Twitter often drives high-intent developer traffic that converts well for technical products but lower-intent entertainment traffic that converts poorly for business software.' },
     ],
+    relatedLinks: [
+      { text: 'YouTube for SaaS Product Demos', href: '/blog/youtube-for-saas-demos' },
+      { text: 'our SaaS-specific ROI breakdown', href: '/blog/youtube-roi-for-saas' },
+      { text: 'YouTube Script Generator', href: '/tools/youtube-script-generator' },
+    ],
   },
   {
     slug: 'reddit-for-saas',
@@ -792,6 +877,11 @@ export const comparisons: Comparison[] = [
       { question: 'Which subreddits are most valuable for SaaS companies?', answer: 'It depends entirely on your product and buyer. A project management SaaS might find value in r/projectmanagement and r/productivity. A developer tool belongs in relevant engineering and programming subreddits. Start by searching Reddit for the terms your buyers use to describe their problems and see where those conversations are already happening.' },
       { question: 'Should I monitor Reddit even if I do not post there?', answer: 'Yes. Reddit is one of the best sources of unfiltered feedback about your product, your competitors, and your category. Setting up alerts for your product name, competitor names, and key category terms gives you a real-time window into buyer sentiment and objections that is difficult to get anywhere else.' },
       { question: 'How do I build a Reddit presence without getting banned?', answer: 'Lead with genuine helpfulness. Answer questions without mentioning your product. Build account history over months of useful participation. When your product becomes directly relevant to a conversation, disclose your affiliation clearly and let the product speak for itself. Communities respond well to founders who are transparent and helpful; they respond badly to thinly veiled advertising.' },
+    ],
+    relatedLinks: [
+      { text: 'our guide to SaaS demo videos', href: '/blog/youtube-for-saas-demos' },
+      { text: 'generating leads through YouTube search', href: '/blog/youtube-lead-generation' },
+      { text: 'audit competitor strategies', href: '/tools/youtube-competitor-analysis' },
     ],
   },
 ];

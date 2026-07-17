@@ -97,7 +97,7 @@ Four things matter.
 
 **Metadata diagnosis.** A video can rank without reaching buyers. If the title and description are optimised for curiosity-stage queries, you will get views from people who are nowhere near a purchase. A useful tool catches those misalignments and tells you exactly what to fix. Before you can diagnose metadata, you need to know where you rank. Our [YouTube Ranking Checker](/tools/youtube-ranking-checker) shows your exact position for any keyword, free.
 
-**Conversion alignment.** A viewer who finds your video through a decision-stage keyword is more likely to visit your site, sign up, or book a call. A tool that helps you match your video metadata to a commercial outcome delivers more value than one that optimises for watch time.
+**Conversion alignment.** A viewer who finds your video through a decision-stage keyword is more likely to visit your site, sign up, or book a call. A tool that helps you match your video metadata to a commercial outcome delivers more value than one that optimises for watch time, which is [how to turn SEO wins into booked calls](/blog/youtube-lead-generation) in practice.
 
 These four criteria are the lens this review uses. Not star ratings. Not marketing copy. How well does the tool actually help you get found by the right people?
 
@@ -295,7 +295,7 @@ That tells you more about real competition than any score.
 
 The [YouTube competition checker](/tools/youtube-competitor-analysis) automates part of this: it pulls the top 5 videos for any keyword with view counts, age, and beatable signals. But you should still watch the top results yourself to assess content quality and intent alignment.
 
-Use it as a five-minute sanity check before committing to a keyword. A tool scores competition. Manual search shows you what a buyer actually sees. Those are different things, and the difference matters.
+Use it as a five-minute sanity check before committing to a keyword. A tool scores competition. Manual search shows you what a buyer actually sees. Those are different things, and the difference matters. It's also worth learning [how to see which keywords your videos are already winning](/blog/how-to-find-youtube-video-ranking-keywords), since existing wins are cheaper to expand than new keywords are to chase.
 
 ---
 
