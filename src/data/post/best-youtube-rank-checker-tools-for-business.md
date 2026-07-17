@@ -53,7 +53,7 @@ metadata:
 
 Every "best YouTube rank checker" article ranks tools by features built for creators. Subscriber tracking. View forecasting. Engagement scores. If you run a business channel, those metrics do not answer the question that matters: are my videos showing up when buyers search for what I sell?
 
-A rank checker for business needs to answer something different. Not "how many keywords do I rank for?" but "do I rank for the 5 keywords that drive qualified leads?" Not "is my channel growing?" but "is the video targeting my most profitable keyword still holding position 3?" Finding those keywords in the first place is a separate step, covered in our roundup of the [best YouTube autocomplete keyword tools](/blog/best-youtube-autocomplete-keyword-tools).
+A rank checker for business needs to answer something different. Not "how many keywords do I rank for?" but "do I rank for the 5 keywords that drive qualified leads?" Not "is my channel growing?" but "is the video targeting my most profitable keyword still holding position 3?" Finding those keywords in the first place is a separate step, covered in our roundup of the [our roundup of autocomplete keyword tools](/blog/best-youtube-autocomplete-keyword-tools).
 
 We tested ten YouTube rank checker tools against business-owner criteria. Some are free. Some cost $100+/month. Here is what actually works, and what you are paying for when you upgrade.
 

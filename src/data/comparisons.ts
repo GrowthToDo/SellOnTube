@@ -234,7 +234,7 @@ export const comparisons: Comparison[] = [
     ],
     relatedLinks: [
       { text: 'our lead-generation playbook', href: '/blog/youtube-lead-generation' },
-      { text: 'YouTube Marketing Strategy: 6-Step Framework', href: '/blog/youtube-marketing-strategy' },
+      { text: 'the full marketing strategy guide', href: '/blog/youtube-marketing-strategy' },
       { text: 'brainstorm videos with this tool', href: '/tools/youtube-video-ideas-generator' },
     ],
   },
@@ -417,7 +417,7 @@ export const comparisons: Comparison[] = [
       { question: 'Should I pause Google Ads when I start YouTube?', answer: 'No. Run both in parallel. Google Ads sustain revenue while YouTube builds its search rankings. Once YouTube delivers consistent inbound leads at a lower cost per acquisition, reduce Google Ads spend gradually. Stopping abruptly creates a revenue gap that YouTube may not yet be ready to fill.' },
     ],
     relatedLinks: [
-      { text: 'YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison', href: '/blog/youtube-vs-paid-ads-b2b' },
+      { text: 'our YouTube vs paid ads breakdown', href: '/blog/youtube-vs-paid-ads-b2b' },
       { text: 'YouTube Break-Even Math', href: '/blog/youtube-break-even-math' },
       { text: 'calculate your potential ROI', href: '/tools/youtube-roi-calculator' },
     ],
@@ -450,7 +450,7 @@ export const comparisons: Comparison[] = [
       { question: 'Which platform is better for local businesses?', answer: 'Facebook Ads offer more precise geographic and demographic targeting for local markets. YouTube organic content targeting location-specific queries, such as "accountant in Bristol" or "best personal trainer in Austin," can rank in both YouTube and Google search for those terms. For local businesses with recurring service needs, a combination of both often works best.' },
     ],
     relatedLinks: [
-      { text: 'YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison', href: '/blog/youtube-vs-paid-ads-b2b' },
+      { text: 'the cost-per-lead comparison', href: '/blog/youtube-vs-paid-ads-b2b' },
       { text: 'The Compounding Effect of Four Videos a Month', href: '/blog/compounding-effect-four-videos-a-month' },
       { text: 'our free ROI calculator', href: '/tools/youtube-roi-calculator' },
     ],
@@ -485,7 +485,7 @@ export const comparisons: Comparison[] = [
     relatedLinks: [
       { text: 'YouTube vs Blog: Shopify App Case Study (3.25x More Conversions)', href: '/blog/youtube-vs-blog-shopify-app-case-study' },
       { text: 'the content strategy framework', href: '/blog/youtube-content-strategy-guide' },
-      { text: 'YouTube Script Generator', href: '/tools/youtube-script-generator' },
+      { text: 'our free script generator', href: '/tools/youtube-script-generator' },
     ],
   },
   {
@@ -516,7 +516,7 @@ export const comparisons: Comparison[] = [
       { question: 'How do I grow a podcast without an existing audience?', answer: 'Use YouTube as a podcast growth channel. Publishing podcast episodes or clips on YouTube exposes your content to new listeners through search, which is the core discoverability problem podcasting faces without an existing audience. Short clip highlights from each episode, optimised for YouTube search terms, can consistently drive new subscribers to the full podcast.' },
     ],
     relatedLinks: [
-      { text: 'YouTube Marketing Strategy: 6-Step Framework', href: '/blog/youtube-marketing-strategy' },
+      { text: 'our strategic framework for YouTube marketing', href: '/blog/youtube-marketing-strategy' },
       { text: 'YouTube Chapters and Timestamps Guide', href: '/blog/youtube-chapters-timestamps' },
       { text: 'YouTube Transcript Generator', href: '/tools/youtube-transcript-generator' },
     ],
@@ -584,7 +584,7 @@ export const comparisons: Comparison[] = [
     relatedLinks: [
       { text: 'turning views into qualified leads', href: '/blog/youtube-lead-generation' },
       { text: 'our 6-step marketing framework', href: '/blog/youtube-marketing-strategy' },
-      { text: 'YouTube Description Generator', href: '/tools/youtube-description-generator' },
+      { text: 'generate descriptions automatically', href: '/tools/youtube-description-generator' },
     ],
   },
   {
@@ -748,8 +748,8 @@ export const comparisons: Comparison[] = [
     ],
     relatedLinks: [
       { text: 'YouTube vs Blog: Shopify App Case Study (3.25x More Conversions)', href: '/blog/youtube-vs-blog-shopify-app-case-study' },
-      { text: 'YouTube SEO Guide', href: '/blog/youtube-seo-guide' },
-      { text: 'YouTube SEO Tool', href: '/tools/youtube-seo-tool' },
+      { text: 'our complete YouTube SEO guide', href: '/blog/youtube-seo-guide' },
+      { text: 'our free SEO tool', href: '/tools/youtube-seo-tool' },
     ],
   },
   {
@@ -848,7 +848,7 @@ export const comparisons: Comparison[] = [
     relatedLinks: [
       { text: 'YouTube for SaaS Product Demos', href: '/blog/youtube-for-saas-demos' },
       { text: 'our SaaS-specific ROI breakdown', href: '/blog/youtube-roi-for-saas' },
-      { text: 'YouTube Script Generator', href: '/tools/youtube-script-generator' },
+      { text: 'the script generator tool', href: '/tools/youtube-script-generator' },
     ],
   },
   {

@@ -268,7 +268,7 @@ Bad examples:
 - "YouTube" (not a query anyone types before buying)
 - "marketing tips" (attracts browsers, not buyers)
 
-If you are not sure which keywords matter, start with this question: "What would someone type into YouTube if they had the exact problem I solve, and they were 80% of the way to hiring someone like me?" That question is the starting point for [how to find YouTube autocomplete keywords](/blog/how-to-find-youtube-autocomplete-keywords) as well.
+If you are not sure which keywords matter, start with this question: "What would someone type into YouTube if they had the exact problem I solve, and they were 80% of the way to hiring someone like me?" That question is the starting point for [our autocomplete keyword guide](/blog/how-to-find-youtube-autocomplete-keywords) as well.
 
 ### Step 2. Check each keyword
 

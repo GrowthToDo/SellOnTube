@@ -229,8 +229,8 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'YouTube Script Writing Guide', href: '/blog/youtube-script-writing-guide' },
-      { text: 'YouTube Video Ideas Generator', href: '/tools/youtube-video-ideas-generator' },
-      { text: 'YouTube Title Generator', href: '/tools/youtube-title-generator' },
+      { text: 'our video ideas generator', href: '/tools/youtube-video-ideas-generator' },
+      { text: 'our title generator tool', href: '/tools/youtube-title-generator' },
     ],
     ctaHeading: 'Referrals run out. Search traffic doesn\'t. Let\'s talk about the difference.',
     ctaSubtitle: 'Book a 30-minute call and we\'ll map out the specific searches your ideal clients are making right now. You\'ll leave knowing exactly which queries to target and whether YouTube is the right channel for where your practice is today.',
@@ -375,7 +375,7 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'YouTube Marketing for B2B Companies', href: '/blog/youtube-marketing-b2b' },
-      { text: 'High-Intent Topic Research Framework', href: '/blog/high-intent-topic-research-framework' },
+      { text: 'our topic research framework', href: '/blog/high-intent-topic-research-framework' },
       { text: 'YouTube Video Ideas Evaluator', href: '/tools/youtube-video-ideas-evaluator' },
     ],
     ctaHeading: 'Your pipeline should not depend on who remembered to refer you this month.',
@@ -447,9 +447,9 @@ export const niches: Niche[] = [
         },
       ],
     relatedLinks: [
-      { text: 'YouTube Marketing for B2B Companies', href: '/blog/youtube-marketing-b2b' },
+      { text: 'our B2B YouTube marketing playbook', href: '/blog/youtube-marketing-b2b' },
       { text: 'B2B Video Marketing Strategy', href: '/blog/b2b-video-marketing-strategy' },
-      { text: 'YouTube ROI Calculator', href: '/tools/youtube-roi-calculator' },
+      { text: 'run the numbers with our ROI calculator', href: '/tools/youtube-roi-calculator' },
     ],
     ctaHeading: 'Your buyers are forming their shortlist right now. The question is whether you are on it.',
     ctaSubtitle: 'Book a 30-minute call. We will show you which search queries your buyers are using during their research phase and give you an honest assessment of where YouTube fits in your acquisition strategy.',
@@ -520,9 +520,9 @@ export const niches: Niche[] = [
         },
       ],
     relatedLinks: [
-      { text: 'YouTube Script Writing Guide', href: '/blog/youtube-script-writing-guide' },
-      { text: 'YouTube Title Generator', href: '/tools/youtube-title-generator' },
-      { text: 'YouTube Video Ideas Generator', href: '/tools/youtube-video-ideas-generator' },
+      { text: 'our script writing guide', href: '/blog/youtube-script-writing-guide' },
+      { text: 'the title generator', href: '/tools/youtube-title-generator' },
+      { text: 'the free ideas generator', href: '/tools/youtube-video-ideas-generator' },
     ],
     ctaHeading: 'People are evaluating course instructors on YouTube right now. The question is whether you are one of them.',
     ctaSubtitle: 'Book a 30-minute call. We will identify the specific search queries your ideal students are using and tell you honestly whether YouTube is the right acquisition channel for your course today.',
@@ -595,7 +595,7 @@ export const niches: Niche[] = [
     relatedLinks: [
       { text: 'YouTube SEO for Business', href: '/blog/youtube-seo-for-business' },
       { text: 'How to Create a YouTube Channel for Business', href: '/blog/create-youtube-channel-for-business' },
-      { text: 'YouTube Video Ideas Generator', href: '/tools/youtube-video-ideas-generator' },
+      { text: 'spark new video topics', href: '/tools/youtube-video-ideas-generator' },
     ],
     ctaHeading: 'Your ideal clients are researching their financial situation on YouTube right now, and they are forming opinions about which advisors understand them.',
     ctaSubtitle: 'Book a 30-minute call. We will map the specific searches your ideal clients are making at the moments they are most likely to hire an advisor, and give you an honest read on whether YouTube is the right channel for your practice.',
@@ -667,8 +667,8 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'YouTube Content Strategy Guide', href: '/blog/youtube-content-strategy-guide' },
-      { text: 'YouTube Lead Generation Guide', href: '/blog/youtube-lead-generation' },
-      { text: 'YouTube Description Generator', href: '/tools/youtube-description-generator' },
+      { text: 'our lead-generation playbook', href: '/blog/youtube-lead-generation' },
+      { text: 'our description generator tool', href: '/tools/youtube-description-generator' },
     ],
     ctaHeading: 'Someone with your ideal case is on YouTube right now trying to understand their situation before they call anyone.',
     ctaSubtitle: 'Book a 30-minute call. We will review your practice areas, identify the specific searches your ideal clients are making, and give you an honest read on whether YouTube is the right channel for your firm.',
@@ -959,7 +959,7 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'how B2B companies use YouTube', href: '/blog/youtube-marketing-b2b' },
-      { text: 'YouTube Lead Generation Guide', href: '/blog/youtube-lead-generation' },
+      { text: 'how YouTube generates leads for B2B', href: '/blog/youtube-lead-generation' },
       { text: 'our video ideas generator', href: '/tools/youtube-video-ideas-generator' },
     ],
     ctaHeading: 'Your future users are researching your category on YouTube before they sign up for anything.',
@@ -1104,7 +1104,7 @@ export const niches: Niche[] = [
         },
       ],
     relatedLinks: [
-      { text: 'YouTube Script Writing Guide', href: '/blog/youtube-script-writing-guide' },
+      { text: 'how to write YouTube scripts that convert', href: '/blog/youtube-script-writing-guide' },
       { text: 'YouTube Content Strategy Guide', href: '/blog/youtube-content-strategy-guide' },
       { text: 'generate video topics instantly', href: '/tools/youtube-video-ideas-generator' },
     ],
@@ -1178,7 +1178,7 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'the B2B YouTube marketing guide', href: '/blog/youtube-marketing-b2b' },
-      { text: 'High-Intent Topic Research Framework', href: '/blog/high-intent-topic-research-framework' },
+      { text: 'the high-intent research process', href: '/blog/high-intent-topic-research-framework' },
       { text: 'the competitor research tool', href: '/tools/youtube-competitor-analysis' },
     ],
     ctaHeading: 'Security buyers are forming their vendor shortlists on YouTube before they contact anyone.',
@@ -1251,7 +1251,7 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'YouTube SEO for Business', href: '/blog/youtube-seo-for-business' },
-      { text: 'How to Create a YouTube Channel for Business', href: '/blog/create-youtube-channel-for-business' },
+      { text: 'our guide to launching a business YouTube channel', href: '/blog/create-youtube-channel-for-business' },
       { text: 'the free ideas generator', href: '/tools/youtube-video-ideas-generator' },
     ],
     ctaHeading: 'Your ideal clients are searching for accounting help on YouTube, and almost no accounting firm shows up.',
@@ -1323,9 +1323,9 @@ export const niches: Niche[] = [
         },
       ],
     relatedLinks: [
-      { text: 'YouTube Lead Generation Guide', href: '/blog/youtube-lead-generation' },
-      { text: 'YouTube Content Strategy Guide', href: '/blog/youtube-content-strategy-guide' },
-      { text: 'YouTube Title Generator', href: '/tools/youtube-title-generator' },
+      { text: 'turning views into qualified leads', href: '/blog/youtube-lead-generation' },
+      { text: 'our content strategy guide', href: '/blog/youtube-content-strategy-guide' },
+      { text: 'generate titles instantly', href: '/tools/youtube-title-generator' },
     ],
     ctaHeading: 'The clients you want are researching insurance on YouTube before they call anyone.',
     ctaSubtitle: 'Book a 30-minute call. We will look at your practice, identify the searches your ideal clients are making, and tell you exactly what a YouTube channel for your niche would look like.',
@@ -1543,7 +1543,7 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'how B2B brands win with YouTube', href: '/blog/youtube-marketing-b2b' },
-      { text: 'High-Intent Topic Research Framework', href: '/blog/high-intent-topic-research-framework' },
+      { text: 'our research-driven topic framework', href: '/blog/high-intent-topic-research-framework' },
       { text: 'YouTube Video Ideas Evaluator', href: '/tools/youtube-video-ideas-evaluator' },
     ],
     ctaHeading: 'Decision-makers are researching the problem you solve on YouTube. Your methodology is not there yet.',
@@ -1836,7 +1836,7 @@ export const niches: Niche[] = [
     relatedLinks: [
       { text: 'YouTube Business Plan Guide', href: '/blog/youtube-business-plan' },
       { text: 'YouTube Break-Even Math', href: '/blog/youtube-break-even-math' },
-      { text: 'YouTube ROI Calculator', href: '/tools/youtube-roi-calculator' },
+      { text: 'our free ROI calculator', href: '/tools/youtube-roi-calculator' },
     ],
     ctaHeading: 'Your buyers are researching the problem you solve on YouTube. Your startup is not in that search yet.',
     ctaSubtitle: 'Book a 30-minute call. We look at your category, identify the buying-intent searches your customers are making, and tell you honestly whether YouTube makes sense for your stage.',
@@ -1981,7 +1981,7 @@ export const niches: Niche[] = [
       ],
     relatedLinks: [
       { text: 'our business YouTube SEO guide', href: '/blog/youtube-seo-for-business' },
-      { text: 'How to Create a YouTube Channel for Business', href: '/blog/create-youtube-channel-for-business' },
+      { text: 'how to set up a business YouTube channel', href: '/blog/create-youtube-channel-for-business' },
       { text: 'get video ideas in seconds', href: '/tools/youtube-video-ideas-generator' },
     ],
     ctaHeading: 'Patients in your area are researching providers on YouTube before they call anyone.',
@@ -2126,9 +2126,9 @@ export const niches: Niche[] = [
         },
       ],
     relatedLinks: [
-      { text: 'YouTube Marketing ROI', href: '/blog/youtube-marketing-roi' },
+      { text: 'our marketing ROI breakdown', href: '/blog/youtube-marketing-roi' },
       { text: 'YouTube vs Paid Ads for B2B', href: '/blog/youtube-vs-paid-ads-b2b' },
-      { text: 'YouTube ROI Calculator', href: '/tools/youtube-roi-calculator' },
+      { text: 'calculate your potential ROI', href: '/tools/youtube-roi-calculator' },
     ],
     ctaHeading: 'Potential subscribers are researching their options on YouTube before they enter their billing details anywhere.',
     ctaSubtitle: 'Book a 30-minute call. We will identify the specific searches buyers in your category are making and show you what capturing them at that moment realistically looks like.',
@@ -2272,7 +2272,7 @@ export const niches: Niche[] = [
     ],
     relatedLinks: [
       { text: 'our guide to launching a business YouTube channel', href: '/blog/create-youtube-channel-for-business' },
-      { text: 'YouTube Marketing Strategy: 6-Step Framework', href: '/blog/youtube-marketing-strategy' },
+      { text: 'our 6-step marketing framework', href: '/blog/youtube-marketing-strategy' },
       { text: 'the ideas generator tool', href: '/tools/youtube-video-ideas-generator' },
     ],
     ctaHeading: 'Your customers are searching for what you do on YouTube right now.',
