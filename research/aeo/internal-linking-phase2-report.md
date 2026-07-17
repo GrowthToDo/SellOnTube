@@ -1,15 +1,15 @@
 # Internal Linking Phase 2 Report
 
-Generated from the ACTUAL final file state (post anchor-diversity fix), not the pre-fix propose/apply snapshots.
+Generated from the ACTUAL final file state after 3 rounds of adversarial review and fix.
 
 ## Summary
 
-- 296 links proposed across 8 batches (blog x4, youtube-for, youtube-vs, hub, tools).
-- 293/296 passed deterministic verification; 3 dropped for unverifiable insertion-point quotes.
-- Anchor-diversity: a cross-batch aggregation pass (checked only against the sparse internal-linking-map.md) fixed 18 violations before apply. A post-commit review found this missed cross-referencing the live site corpus; a follow-up full-corpus scan found 47 occurrences (29 groups) still causing >3-source duplication, all rewritten to distinct anchors. A second review round found 1 further missed occurrence (niches.ts:financial-advisors) plus 13 prose rewrites that read as grammatically broken ("the the...", "our our...") from not checking the word preceding the inserted link -- both classes of defect are now fixed.
+- 296 links proposed across 8 batches (blog x4, youtube-for, youtube-vs, hub, tools). 293/296 passed deterministic verification; 3 dropped for unverifiable insertion-point quotes.
+- Anchor diversity went through 3 rounds of review + fix: round 1 (18 violations vs the sparse internal-linking-map.md), round 2 (47 occurrences vs the real live corpus, plus 1 missed occurrence and 13 grammar-broken rewrites caught in a second review pass), round 3 (2 more occurrences where the round-2 grammar fix had collided with existing anchors, one of which re-breached the cap round 1 had already fixed).
+- **Final, independently re-verified count: 0 anchor-diversity violations attributable to this task remain** among published, in-scope pages (verified via a corrected corpus-wide scan comparing every (target, anchor) pair's source count before vs after this task, across all published posts, niches.ts, comparisons.ts, and all in-scope Astro pages -- Shopify-vertical pages and draft posts correctly excluded).
 - Final: 0 in-scope orphans, 0 dead-ends, 0 pages missing a tool link, click-depth->3 pages reduced 129 to 92.
 
-## Links added by batch (current, post-fix state)
+## Links added by batch (current, final state)
 
 ### Blog posts
 
@@ -67,7 +67,7 @@ Generated from the ACTUAL final file state (post anchor-diversity fix), not the 
 | `src/data/post/best-youtube-autocomplete-keyword-tools.md` | `/blog/best-youtube-rank-checker-tools-for-business` | best YouTube rank checker tools for business |
 | `src/data/post/best-youtube-autocomplete-keyword-tools.md` | `/blog/best-youtube-video-ideas-generators-for-businesses` | best YouTube video ideas generators for businesses |
 | `src/data/post/best-youtube-autocomplete-keyword-tools.md` | `/tools/youtube-autocomplete-keywords` | SellonTube YouTube Autocomplete Keyword Tool |
-| `src/data/post/best-youtube-rank-checker-tools-for-business.md` | `/blog/best-youtube-autocomplete-keyword-tools` | best YouTube autocomplete keyword tools |
+| `src/data/post/best-youtube-rank-checker-tools-for-business.md` | `/blog/best-youtube-autocomplete-keyword-tools` | autocomplete keyword tools we recommend |
 | `src/data/post/best-youtube-rank-checker-tools-for-business.md` | `/blog/youtube-keyword-research` | YouTube keyword research process |
 | `src/data/post/best-youtube-rank-checker-tools-for-business.md` | `/tools/youtube-ranking-checker` | sellontube.com/tools/youtube-ranking-checker |
 | `src/data/post/best-youtube-rank-checker-tools-for-business.md` | `/blog/best-youtube-seo-tools-for-business` | 7 Best YouTube SEO Tools for Business Channels |
@@ -213,7 +213,7 @@ Generated from the ACTUAL final file state (post anchor-diversity fix), not the 
 | `src/data/post/search-intent-youtube-seo-power.mdx` | `/youtube-for` | industry-specific YouTube guides |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/tools/youtube-autocomplete-keywords` | free autocomplete tool |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-marketing-roi` | How to Calculate YouTube Marketing ROI for Your Business |
-| `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-marketing-cost` | YouTube marketing costs |
+| `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-marketing-cost` | what YouTube marketing actually costs |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/youtube-vs-paid-ads-b2b` | YouTube vs Paid Ads for B2B: Cost-Per-Lead Comparison |
 | `src/data/post/when-youtube-doesnt-work.mdx` | `/blog/why-most-youtube-strategies-fail` | 7 YouTube Marketing Mistakes That Kill Business Channels |
 | `src/data/post/why-most-youtube-strategies-fail.mdx` | `/blog/search-intent-youtube-seo-power` | YouTube vs Blogging for Business: Why Video Wins for B2B Lead Gen |
@@ -878,4 +878,4 @@ Generated from the ACTUAL final file state (post anchor-diversity fix), not the 
 ## Notes for follow-up (not fixed in this task, flagged for the user)
 
 - `src/data/post/youtube-marketing-not-working.md` has a pre-existing 301 redirect rule in `netlify.toml` pointing away from its own canonical URL (-> `/blog/youtube-views-but-no-leads`, no `force = true`). Per Netlify's default redirect precedence, a live static file at that path likely still gets served ahead of the redirect -- a pre-existing site config anomaly unrelated to this project. Needs a decision: force the redirect, or remove it if the post is meant to stay live.
-- A large number of (target, anchor) pairs across the FULL site (including files never touched by this project, e.g. `/tools/youtube-seo-tool` anchor "YouTube SEO Tool" used by 30+ pre-existing sources) already exceed the 3-source diversity cap and predate this project entirely. This task only fixed overage it caused or contributed to; retroactively rewriting already-indexed, already-ranking anchor text site-wide is a separate, higher-risk initiative outside this task's scope.
+- A large number of (target, anchor) pairs across the FULL site (including files never touched by this project, e.g. `/tools/youtube-seo-tool` anchor "YouTube SEO Tool" used by 30+ pre-existing sources) already exceed the 3-source diversity cap and predate this project entirely. This task's own contribution to every one of these has been verified to be zero net-new overage. Retroactively rewriting already-indexed, already-ranking anchor text site-wide is a separate, higher-risk initiative outside this task's scope.
