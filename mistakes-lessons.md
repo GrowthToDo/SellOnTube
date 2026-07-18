@@ -100,3 +100,10 @@ Read this file at the start of work so past mistakes don't repeat.
 - **Lesson:** URL prefixes are a starting filter, not a scope definition. Any page in a grey zone must be opened and read before being classified.
 - **Prevention rule:** when excluding a vertical/section, grep for its *content* markers (brand strings, footer text, outbound links to the excluded section) across the whole site, not just its path prefix. Confirm the resulting page list with the user before executing. Known current state: the two `/case-studies/*` pages above ARE Shopify-vertical and stay excluded; `/youtube-for/shopify` IS in scope (user-confirmed twice) despite its name.
 - **Category:** process
+
+### 2026-07-18 — Zernio `firstComment` failed silently (wrong payload nesting); only a live test caught it
+- **What happened:** The LinkedIn link-in-comment mechanism (the whole strategy depends on it) didn't work on the first live post. `buildPayload` put `firstComment` at the payload top level; Zernio silently ignored it. The post published fine (HTTP 200, no error, API response had no `firstComment` field), but no comment appeared. Fix: for LinkedIn, `firstComment` must nest in `platforms[].platformSpecificData`. Re-tested live, comment appeared with the link.
+- **Root cause:** assumed a top-level field from a docs skim; the LinkedIn-specific example nests it in `platformSpecificData`. The API accepted the payload and published without error, so nothing flagged the ignored field.
+- **Lesson:** an outward-facing integration returning "success" is NOT verification. Zernio's free tier can't confirm a comment via API (inbox 403, comments 404) and logged-out LinkedIn hides comments, so the only proof was a human looking at the live post. The test caught a broken mechanism before it hit a whole week of posts.
+- **Prevention rule:** for any new external-publish action, run ONE live test and verify the real-world result by eye (not just the API 200) before scheduling a batch. For Zernio LinkedIn specifically, `firstComment` goes in `platformSpecificData` (encoded in `buildPayload` + guideline §8).
+- **Category:** process
