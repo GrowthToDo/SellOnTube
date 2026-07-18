@@ -1,14 +1,30 @@
 [
   {
-    "scheduledDate": "2026-04-02",
-    "dayOfWeek": "Wednesday",
-    "weekdayTheme": "Lead Generation",
-    "sourceTitle": "YouTube Marketing ROI: Formula, Real Case Study Data + Free Calculator",
-    "sourceUrl": "https://sellontube.com/blog/youtube-marketing-roi",
-    "imageUrl": "https://sellontube.com/_astro/best-youtube-seo-tools-for-business-feature.2epTmv7j_ZLvv8N.jpg",
-    "postAngle": "YouTube ROI is calculable but most B2B teams guess instead of measuring. Real case study data shows 3.25x conversion advantage over blogging.",
-    "publishNow": true,
-    "linkedinPost": "\"What's the ROI of YouTube?\"\n\nEvery B2B founder asks this before committing budget. And almost every answer they get is vague hand-waving about brand awareness.\n\nSo we ran the numbers across a 12-month case study. Compared YouTube against blogging for the same business, same offer, same audience.\n\nThe result: YouTube drove 3.25x more conversions. Not views. Conversions.\n\nThe difference comes down to one thing teams ignore: intent density per viewer. A 2,000-view video targeting someone actively researching your service will outperform a 50,000-view blog post built for general interest.\n\nBut here's what surprised us: the ROI gap widened every quarter. Month 1 looked similar across both channels. By month 12, YouTube was pulling away because old videos kept ranking and converting while old blog posts flatlined.\n\nThere's a simple formula behind this. Four inputs, one number that tells you whether YouTube is worth it for your specific business.\n\nWe published the full formula, the case study data, and a free calculator so you can plug in your own numbers.\n\nhttps://sellontube.com/blog/youtube-marketing-roi\n\n#YouTubeROI #B2BMarketing",
-    "hashtags": ["#YouTubeROI", "#B2BMarketing"]
+    "scheduledDate": "2026-07-20",
+    "dayOfWeek": "Monday",
+    "archetype": "framework",
+    "thesis": "After this post, a marketer can sort their videos into get-found vs get-chosen and fix the missing half.",
+    "linkLocation": null,
+    "sourceTitle": null,
+    "sourceUrl": null,
+    "imageUrl": null,
+    "firstComment": null,
+    "postAngle": "Every video does one of two jobs: get found or get chosen.",
+    "linkedinPost": "REPLACED_AT_GENERATION",
+    "hashtags": ["#YouTubeMarketing"]
+  },
+  {
+    "scheduledDate": "2026-07-21",
+    "dayOfWeek": "Tuesday",
+    "archetype": "tactical-how-to",
+    "thesis": "After this post, a marketer can reverse-engineer a competitor's best videos to find proven buyer-intent topics.",
+    "linkLocation": "comment",
+    "sourceTitle": "YouTube Competitor Analysis",
+    "sourceUrl": "https://sellontube.com/tools/youtube-competitor-analysis",
+    "imageUrl": "https://sellontube.com/og/competitor.jpg",
+    "firstComment": "https://sellontube.com/tools/youtube-competitor-analysis?utm_source=linkedin&utm_medium=social&utm_campaign=brand-presence",
+    "postAngle": "Your competitor already tested your next 20 topics.",
+    "linkedinPost": "REPLACED_AT_GENERATION",
+    "hashtags": ["#B2BMarketing"]
   }
 ]
