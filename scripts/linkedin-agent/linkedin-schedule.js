@@ -51,6 +51,9 @@ export function buildPayload(post, accountId, zernioImageUrl) {
   if (zernioImageUrl) {
     payload.mediaItems = [{ url: zernioImageUrl, type: 'image' }];
   }
+  if (post.firstComment) {
+    payload.firstComment = post.firstComment;
+  }
   return payload;
 }
 

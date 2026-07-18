@@ -52,21 +52,32 @@ test('buildPayload: includes content, scheduledFor, timezone, platforms', () => 
   assert.deepStrictEqual(payload.platforms, [{ platform: 'linkedin', accountId: 'acc_test123' }]);
 });
 
-test('buildPayload: includes mediaUrls when imageUrl is present', () => {
+test('buildPayload: includes mediaItems when zernioImageUrl is passed', () => {
+  const payload = buildPayload(basePost, 'acc_test123', 'https://zernio.com/media/abc.png');
+  assert.deepStrictEqual(payload.mediaItems, [{ url: 'https://zernio.com/media/abc.png', type: 'image' }]);
+});
+
+test('buildPayload: omits mediaItems when no zernioImageUrl', () => {
   const payload = buildPayload(basePost, 'acc_test123');
-  assert.deepStrictEqual(payload.mediaUrls, [basePost.imageUrl]);
+  assert.strictEqual(payload.mediaItems, undefined);
 });
 
-test('buildPayload: omits mediaUrls when imageUrl is null', () => {
-  const post = { ...basePost, imageUrl: null };
+test('buildPayload: includes firstComment when post.firstComment is set', () => {
+  const post = { ...basePost, firstComment: 'Full method: https://sellontube.com/x?utm_source=linkedin' };
   const payload = buildPayload(post, 'acc_test123');
-  assert.strictEqual(payload.mediaUrls, undefined);
+  assert.strictEqual(payload.firstComment, post.firstComment);
 });
 
-test('buildPayload: omits mediaUrls when imageUrl is empty string', () => {
-  const post = { ...basePost, imageUrl: '' };
+test('buildPayload: omits firstComment when post.firstComment is null', () => {
+  const post = { ...basePost, firstComment: null };
   const payload = buildPayload(post, 'acc_test123');
-  assert.strictEqual(payload.mediaUrls, undefined);
+  assert.strictEqual(payload.firstComment, undefined);
+});
+
+test('buildPayload: omits firstComment when post.firstComment is empty string', () => {
+  const post = { ...basePost, firstComment: '' };
+  const payload = buildPayload(post, 'acc_test123');
+  assert.strictEqual(payload.firstComment, undefined);
 });
 
 // --- summary ---
