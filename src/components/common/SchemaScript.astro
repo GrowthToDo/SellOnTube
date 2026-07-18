@@ -1,0 +1,13 @@
+---
+/**
+ * Generic JSON-LD injector for MDX/Astro bodies.
+ * Pass a plain schema object; it is serialized into an inline ld+json script.
+ * MDX-safe: the schema is a JSX prop (object literal), so no raw JSON braces
+ * leak into the MDX text stream. Match visible on-page content only.
+ */
+interface Props {
+  schema: Record<string, unknown>;
+}
+const { schema } = Astro.props;
+---
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
