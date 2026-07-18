@@ -62,22 +62,23 @@ test('buildPayload: omits mediaItems when no zernioImageUrl', () => {
   assert.strictEqual(payload.mediaItems, undefined);
 });
 
-test('buildPayload: includes firstComment when post.firstComment is set', () => {
+test('buildPayload: nests firstComment in platformSpecificData when set', () => {
   const post = { ...basePost, firstComment: 'Full method: https://sellontube.com/x?utm_source=linkedin' };
   const payload = buildPayload(post, 'acc_test123');
-  assert.strictEqual(payload.firstComment, post.firstComment);
+  assert.strictEqual(payload.platforms[0].platformSpecificData.firstComment, post.firstComment);
+  assert.strictEqual(payload.firstComment, undefined, 'must NOT be top-level');
 });
 
-test('buildPayload: omits firstComment when post.firstComment is null', () => {
+test('buildPayload: no platformSpecificData when firstComment is null', () => {
   const post = { ...basePost, firstComment: null };
   const payload = buildPayload(post, 'acc_test123');
-  assert.strictEqual(payload.firstComment, undefined);
+  assert.strictEqual(payload.platforms[0].platformSpecificData, undefined);
 });
 
-test('buildPayload: omits firstComment when post.firstComment is empty string', () => {
+test('buildPayload: no platformSpecificData when firstComment is empty string', () => {
   const post = { ...basePost, firstComment: '' };
   const payload = buildPayload(post, 'acc_test123');
-  assert.strictEqual(payload.firstComment, undefined);
+  assert.strictEqual(payload.platforms[0].platformSpecificData, undefined);
 });
 
 // --- summary ---

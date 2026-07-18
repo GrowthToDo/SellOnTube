@@ -39,10 +39,16 @@ export function buildScheduledFor(dateStr) {
 // Pure: build Zernio API payload from a queue post object
 // zernioImageUrl is the uploaded image URL from Zernio's media endpoint (optional)
 export function buildPayload(post, accountId, zernioImageUrl) {
+  // firstComment is LinkedIn-specific: it goes INSIDE the platform's
+  // platformSpecificData, not at the payload top level (Zernio ignores it there).
+  const linkedin = { platform: 'linkedin', accountId };
+  if (post.firstComment) {
+    linkedin.platformSpecificData = { firstComment: post.firstComment };
+  }
   const payload = {
     content: post.linkedinPost,
     timezone: 'Asia/Kolkata',
-    platforms: [{ platform: 'linkedin', accountId }],
+    platforms: [linkedin],
   };
   if (post.publishNow) {
     payload.publishNow = true;
@@ -51,9 +57,6 @@ export function buildPayload(post, accountId, zernioImageUrl) {
   }
   if (zernioImageUrl) {
     payload.mediaItems = [{ url: zernioImageUrl, type: 'image' }];
-  }
-  if (post.firstComment) {
-    payload.firstComment = post.firstComment;
   }
   return payload;
 }
