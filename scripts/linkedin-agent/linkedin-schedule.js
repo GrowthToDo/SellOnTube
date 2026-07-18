@@ -8,6 +8,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname, join, resolve } from 'path';
+import { validatePost } from './validate-post.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -154,6 +155,9 @@ function saveToHistory(post) {
     sourceTitle: post.sourceTitle,
     sourceUrl: post.sourceUrl,
     postAngle: post.postAngle,
+    archetype: post.archetype ?? null,
+    linkLocation: post.linkLocation ?? null,
+    thesis: post.thesis ?? null,
     hook: post.linkedinPost.split('\n')[0].slice(0, 120),
     hashtags: post.hashtags ?? [],
     imageUrl: post.imageUrl ?? null,
@@ -200,11 +204,29 @@ async function main() {
 
   console.log(`[linkedin-schedule] Scheduling ${queue.length} post(s) to LinkedIn via Zernio...\n`);
 
+  // Recent hooks from history, for dedup in the mechanical assert.
+  let recentHooks = [];
+  try {
+    const hist = JSON.parse(readFileSync(join(__dirname, 'linkedin-history.json'), 'utf8'));
+    recentHooks = (hist.posts || []).map((p) => (p.hook || '').trim()).filter(Boolean);
+  } catch {
+    // no history yet
+  }
+
   let successCount = 0;
   let failCount = 0;
 
   for (const post of queue) {
     const label = `${post.scheduledDate} (${post.dayOfWeek}) -- ${post.sourceTitle}`;
+
+    // Last-line mechanical assert: skip a failing post, keep the rest.
+    const check = validatePost(post, recentHooks);
+    if (!check.ok) {
+      console.error(`  SKIPPED    ${label}`);
+      console.error(`             failed validation: ${check.reasons.join('; ')}\n`);
+      failCount++;
+      continue;
+    }
 
     try {
       // Upload image to Zernio first if present
@@ -233,8 +255,11 @@ async function main() {
   if (failCount > 0) process.exit(1);
 }
 
-// Only run main if invoked directly (not imported)
-const scriptPath = pathToFileURL(resolve(process.argv[1])).href;
-if (import.meta.url === scriptPath) {
+// Only run main if invoked directly (not imported). Guard argv[1] so importing
+// this module (e.g. from a test, or `node -e`) never crashes when it is absent.
+const invokedPath = process.argv[1]
+  ? pathToFileURL(resolve(process.argv[1])).href
+  : null;
+if (invokedPath && import.meta.url === invokedPath) {
   main();
 }
