@@ -1,0 +1,35 @@
+[
+  {
+    "channel": "Ahrefs",
+    "is_person": false,
+    "title": null,
+    "url": null,
+    "lesson": null,
+    "b2b_application": null,
+    "linkedin_profile": null,
+    "verified": false,
+    "needs": "Research a real Ahrefs video teaching YouTube-for-business, capture exact URL + one real lesson via /browse. Authority-lesson posts are Step 1.5."
+  },
+  {
+    "channel": "Starter Story",
+    "is_person": true,
+    "title": null,
+    "url": null,
+    "lesson": null,
+    "b2b_application": null,
+    "linkedin_profile": null,
+    "verified": false,
+    "needs": "Research a real Starter Story (Pat Walls) video, capture exact URL + lesson + person's LinkedIn profile via /browse."
+  },
+  {
+    "channel": "Ayman Arab",
+    "is_person": true,
+    "title": null,
+    "url": null,
+    "lesson": null,
+    "b2b_application": null,
+    "linkedin_profile": null,
+    "verified": false,
+    "needs": "Research a real Ayman Arab video, capture exact URL + lesson + LinkedIn profile via /browse."
+  }
+]

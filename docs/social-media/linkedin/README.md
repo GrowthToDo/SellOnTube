@@ -13,6 +13,8 @@ Everything for writing and shipping SellonTube's LinkedIn company-page posts. **
 ## Related (not in this folder, by design)
 
 - **Runtime code + data:** `scripts/linkedin-agent/` — `linkedin-schedule.js` (posts via Zernio API), `queue.json`, `linkedin-history.json`, and the evidence banks. Code stays with code.
+
+> **Evidence banks — SEED status (as of 2026-07-18).** `authority-evidence-bank.json` holds 8 seed stats, `curated-video-bank.json` holds 3 seed channel stubs. **Every entry is `verified: false`.** The generator may cite ONLY `verified: true` entries, so nothing here is quotable live yet. The first refill browses each source, confirms the exact figure + deep URL (flip to `verified: true`), and tops the authority bank up to its 30-entry floor. Video entries stay stubs until Step 1.5 (authority-lesson posts). This is the no-fabrication discipline made mechanical: unverified = uncitable.
 - **The writer agent:** `agents/09-linkedin-writer.md` — thin runner that follows the guideline here.
 - **System design / rationale:** `docs/superpowers/specs/2026-07-17-linkedin-brand-presence-engine-design.md`.
 
