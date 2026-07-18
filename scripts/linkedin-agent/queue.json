@@ -3,28 +3,160 @@
     "scheduledDate": "2026-07-20",
     "dayOfWeek": "Monday",
     "archetype": "framework",
-    "thesis": "After this post, a marketer can sort their videos into get-found vs get-chosen and fix the missing half.",
+    "thesis": "After this post, a marketer can tag their last 10 videos as get-found or get-chosen and fix the missing half.",
     "linkLocation": null,
     "sourceTitle": null,
     "sourceUrl": null,
     "imageUrl": null,
     "firstComment": null,
     "postAngle": "Every video does one of two jobs: get found or get chosen.",
-    "linkedinPost": "REPLACED_AT_GENERATION",
-    "hashtags": ["#YouTubeMarketing"]
+    "linkedinPost": "YouTube has billions of logged-in users every month. Almost none of them will ever buy from you. That's not a problem, it's the whole point.\n\nEvery video you make does one of two jobs. Only two.\n\nGet found: it answers a question your buyer is searching. Discovery, SEO, top of funnel. The big numbers live here.\n\nGet chosen: it helps a buyer who already knows the options pick you. Comparisons, objections, pricing, proof. Small numbers, real pipeline.\n\nMost teams pour everything into getting found, because view counts feel like progress. Then they wonder why a channel with thousands of viewers books zero calls. They built the top of the funnel and skipped the part that closes.\n\nSo audit it. List your last 10 videos and mark each one: found or chosen. If eight are \"found,\" you just found the leak. Your next three are all \"chosen.\"\n\nGetting found brings the right buyer to the door. Getting chosen makes them walk in. You need both, and the second is usually what's missing.\n\nWhich job is most of your channel actually doing?",
+    "hashtags": [
+      "#YouTubeMarketing"
+    ]
   },
   {
     "scheduledDate": "2026-07-21",
     "dayOfWeek": "Tuesday",
     "archetype": "tactical-how-to",
-    "thesis": "After this post, a marketer can reverse-engineer a competitor's best videos to find proven buyer-intent topics.",
+    "thesis": "After this post, a marketer can lead a title with the buyer’s literal search phrase so the right people find it.",
     "linkLocation": "comment",
-    "sourceTitle": "YouTube Competitor Analysis",
-    "sourceUrl": "https://sellontube.com/tools/youtube-competitor-analysis",
-    "imageUrl": "https://sellontube.com/og/competitor.jpg",
-    "firstComment": "https://sellontube.com/tools/youtube-competitor-analysis?utm_source=linkedin&utm_medium=social&utm_campaign=brand-presence",
-    "postAngle": "Your competitor already tested your next 20 topics.",
-    "linkedinPost": "REPLACED_AT_GENERATION",
-    "hashtags": ["#B2BMarketing"]
+    "sourceTitle": "YouTube Title Generator",
+    "sourceUrl": "https://sellontube.com/tools/youtube-title-generator",
+    "imageUrl": null,
+    "firstComment": "Turn one buyer search into 5 titles that actually rank → https://sellontube.com/tools/youtube-title-generator?utm_source=linkedin&utm_medium=social&utm_campaign=brand-presence",
+    "postAngle": "Titles written for humans miss the buyer’s search.",
+    "linkedinPost": "Your best video is invisible. The title did it.\n\nYou wrote it for a human skimming a feed. But buyers don't skim, they search. They type an exact phrase into YouTube, and a clever title that shares none of those words never shows up.\n\nWatch how this breaks. A great video sits under the title \"Churn, Solved.\" Nobody searches that. Your buyer types \"how to reduce SaaS churn.\" Same video, two titles, and only one ever gets found.\n\nThe fix takes 2 minutes per video:\n\n1. Write the exact phrase a buyer types to find this. The literal words, not the theme: \"how to reduce SaaS churn.\"\n2. Lead your title with that phrase, almost verbatim. YouTube matches titles to searches, so hand it a match.\n3. Earn the click with the tail: \"...without dropping your price.\"\n\nBoring? A little. But a boring title a buyer searches beats a clever one nobody types, every time.\n\nDo it today: take your best video and put your buyer's actual search at the front of it.\n\nTurn a search into titles that rank, link's in the comments.",
+    "hashtags": [
+      "#YouTubeSEO"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-22",
+    "dayOfWeek": "Wednesday",
+    "archetype": "mistake",
+    "thesis": "After this post, a founder can give every video one specific next step so viewers become leads.",
+    "linkLocation": null,
+    "sourceTitle": null,
+    "sourceUrl": null,
+    "imageUrl": null,
+    "firstComment": null,
+    "postAngle": "Videos with no next step waste the trust they earn.",
+    "linkedinPost": "Your best video probably has no idea what to do next. So neither does the viewer.\n\nThey watch, they nod, they get their answer, and they leave. No next step, no way to raise their hand. You just taught them for free and waved goodbye.\n\nHere's why it's more expensive than it looks. Wyzowl found 89% of people say a video's quality shapes whether they trust a brand. So a good video does the hardest job in sales, earning trust, then strands that trust with nowhere to go.\n\nThe fix costs one sentence. Give every video a single, specific next step:\n- Not \"check out our website.\" Too vague.\n- A resource that matches the video: \"I made a one-page checklist for this. Comment 'checklist' and I'll send it.\"\n- Or a low-friction ask: \"Want this mapped to your setup? 15 minutes, link in the description.\"\n\nOne next step. Specific. Low friction. While they're still watching, not buried in the outro.\n\nA video with no next step isn't lead gen. It's a public service.\n\nWhat happens right now, the second someone finishes one of your videos?",
+    "hashtags": [
+      "#YouTubeMarketing"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-23",
+    "dayOfWeek": "Thursday",
+    "archetype": "proof",
+    "thesis": "After this post, a marketer will make an honest comparison video, because those viewers are at the deciding moment.",
+    "linkLocation": "comment",
+    "sourceTitle": "YouTube Vs",
+    "sourceUrl": "https://sellontube.com/youtube-vs/",
+    "imageUrl": null,
+    "firstComment": "The \"vs\" videos worth making, and where they fit your funnel → https://sellontube.com/youtube-vs/?utm_source=linkedin&utm_medium=social&utm_campaign=brand-presence",
+    "postAngle": "Comparison videos catch buyers mid-decision.",
+    "linkedinPost": "One \"us vs them\" video booked more demos than a year of our thought-leadership. It had the fewest views on the channel.\n\nOn a team I ran content for, we'd poured months into big-idea posts. Trends, predictions, the odd hot take. Plenty of likes. The sales team never once traced a deal back to any of it.\n\nThen a rep, half joking, asked us to make an honest \"us versus the competitor we kept losing deals to.\" We hated it. Too salesy, too direct. We made it anyway. It pulled a fraction of the usual views and booked calls every single week.\n\nHere's why. A comparison viewer already has the problem and already knows the options. They're not learning, they're choosing. That was the only video on our channel that showed up while someone was deciding between us and the other guy.\n\nWyzowl found 83% of video marketers say video has directly increased sales. This is the video that does it, the one nobody wants to make.\n\nSo make yours. Name the rival your buyers keep naming, and be honest: where you win, where they win. Let the right buyer choose you on purpose.\n\nThe \"vs\" pages worth building, link's in the comments.",
+    "hashtags": [
+      "#B2BMarketing"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-24",
+    "dayOfWeek": "Friday",
+    "archetype": "authority-lesson",
+    "thesis": "After this post, a marketer will make videos that answer the questions AI tools cite, to get found inside AI answers.",
+    "linkLocation": "body",
+    "sourceTitle": "Ahrefs — YouTube SEO for AI Search",
+    "sourceUrl": "https://www.youtube.com/watch?v=_b_cTpLHMTM",
+    "imageUrl": null,
+    "firstComment": null,
+    "postAngle": "YouTube is the most-cited domain in Google's AI Overviews (Ahrefs).",
+    "linkedinPost": "Your buyers have started asking AI instead of searching Google. And the AI keeps quoting one place most B2B teams ignore: YouTube.\n\nAhrefs dug into this and found something wild. YouTube is the most-cited domain in Google's AI Overviews. So when a buyer asks a question and gets an AI answer, a video is often the source feeding it.\n\nSit with that. It's no longer just \"rank on YouTube so people find you.\" It's \"make videos good enough that the AI answering your buyer's question pulls from yours.\" A brand-new place to show up at the exact moment someone's deciding.\n\nAhrefs lays out a simple 3-step process to get your videos ranking in Google and cited in those AI answers. I won't butcher it secondhand, they explain it properly. Watch it, then go make one video that answers a question your buyer would actually ask an AI.\n\nWhat's the first question your buyer would type into ChatGPT before they'd buy from you?\n\nhttps://www.youtube.com/watch?v=_b_cTpLHMTM",
+    "hashtags": [
+      "#YouTubeMarketing"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-27",
+    "dayOfWeek": "Monday",
+    "archetype": "framework",
+    "thesis": "After this post, a marketer can sort videos by the three buyer-search stages and fill the pipeline gap.",
+    "linkLocation": null,
+    "sourceTitle": null,
+    "sourceUrl": null,
+    "imageUrl": null,
+    "firstComment": null,
+    "postAngle": "Buyers run problem/solution/vendor searches; channels answer only the first.",
+    "linkedinPost": "Before anyone buys, they run three different searches. Most B2B channels answer only the first, then wonder where the pipeline went.\n\nSay you sell project management software. Here's what your buyer types, in order, over weeks:\n\n1. \"why do projects keep slipping deadlines.\" They feel the pain, not the fix yet.\n2. \"best way to keep remote teams on track.\" Now they're weighing approaches.\n3. \"asana vs monday,\" \"monday pricing.\" They're choosing who to pay.\n\nAlmost every channel crams its videos into stage 1, where the big view counts live. But the person typing a stage-3 search has a card out. If none of your videos are waiting there, a competitor takes the sale and you keep the vanity metric.\n\nWyzowl found 85% of video marketers say video has helped them generate leads. The catch buried in that number: only if a video exists the moment the lead is ready to raise a hand.\n\nSort your videos by stage. If they're all stuck at stage 1, you just found why the traffic never converts. Your next three live at stages 2 and 3.\n\nWhere does your channel go quiet, right when the buyer is ready?",
+    "hashtags": [
+      "#YouTubeMarketing"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-28",
+    "dayOfWeek": "Tuesday",
+    "archetype": "tactical-how-to",
+    "thesis": "After this post, a marketer can pull exact buyer phrases from YouTube autocomplete instead of guessing.",
+    "linkLocation": "comment",
+    "sourceTitle": "YouTube Autocomplete Keywords",
+    "sourceUrl": "https://sellontube.com/tools/youtube-autocomplete-keywords",
+    "imageUrl": null,
+    "firstComment": "The full autocomplete method, one phrase into 50 topics → https://sellontube.com/tools/youtube-autocomplete-keywords?utm_source=linkedin&utm_medium=social&utm_campaign=brand-presence",
+    "postAngle": "The search bar names the videos your buyers want.",
+    "linkedinPost": "Your buyers will tell you exactly what to make. For free. You just have to read YouTube's search bar instead of guessing in a meeting.\n\nWatch it work. Type \"cold email\" slowly into YouTube. It fills in \"cold email templates,\" \"cold email tools,\" \"cold email vs LinkedIn.\" Those aren't guesses. They're real searches, ranked by how many people make them. That's your buyer naming the video to shoot.\n\nThe 10-minute version:\n\n1. Type your category plus a buying word: \"pricing,\" \"vs,\" \"best... for.\"\n2. Screenshot what autocomplete gives you. Every phrase is a proven, in-demand topic.\n3. Keep the ones where the searcher is deciding. Cut the vague ones.\n4. Make one video per phrase, titled the way it was searched.\n\nDo this once and next month's content is planned from real demand, not a whiteboard argument. And the people who show up are shopping, not scrolling.\n\nFull method, one seed phrase into 50 topics, link's in the comments.\n\nWhat's the last video you shot on a hunch instead of a search?",
+    "hashtags": [
+      "#YouTubeSEO"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-29",
+    "dayOfWeek": "Wednesday",
+    "archetype": "mistake",
+    "thesis": "After this post, a marketer will make evergreen search videos instead of chasing trends.",
+    "linkLocation": null,
+    "sourceTitle": null,
+    "sourceUrl": null,
+    "imageUrl": null,
+    "firstComment": null,
+    "postAngle": "Trends expire; evergreen searches compound.",
+    "linkedinPost": "Chasing trending topics is the fastest way to build a channel nobody searches for next month.\n\nA trend spikes, everyone rushes to post, you catch a week of views. Then the trend dies and takes the video with it. You're left with a library that has an expiry date and a sales team that never felt a thing.\n\nHere's what trends hide: your buyers aren't searching what's hot. They're searching what's broken. \"How to fix X.\" \"Best tool for Y.\" \"Is Z worth it.\" Those never trend. They just happen, quietly, every day, forever.\n\nAn evergreen video answering one of those keeps getting found for years. A trend video is a fireworks show: bright, loud, gone.\n\nSo before you jump on the next hot take, ask a colder question: will anyone search this in six months? If not, you're renting attention, not building an asset.\n\nThis week, skip the trend. Pick one \"how to\" or \"best\" search your buyers make every week, and make that video instead. It'll still be working long after the trend is forgotten.\n\nWhat's one evergreen search your buyers make that you've never made a video for?",
+    "hashtags": [
+      "#YouTubeMarketing"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-30",
+    "dayOfWeek": "Thursday",
+    "archetype": "proof",
+    "thesis": "After this post, a marketer will treat a video as a compounding asset, not a disposable post.",
+    "linkLocation": "comment",
+    "sourceTitle": "YouTube SEO Tool",
+    "sourceUrl": "https://sellontube.com/tools/youtube-seo-tool",
+    "imageUrl": null,
+    "firstComment": "The buyer searches worth ranking for → https://sellontube.com/tools/youtube-seo-tool?utm_source=linkedin&utm_medium=social&utm_campaign=brand-presence",
+    "postAngle": "A ranked video keeps converting for years.",
+    "linkedinPost": "A LinkedIn post dies in 48 hours. A YouTube video kept booking us demos 18 months later.\n\nOn a team I led, we had videos we'd forgotten about, made a year and a half earlier, still pulling demo requests every month. Nobody was promoting them. They ranked for a search buyers make, so they kept getting found and kept converting while we slept.\n\nThat's the trade almost nobody weighs. Same afternoon, you make a LinkedIn post or a search-optimized video. The post peaks tonight and is gone by Thursday. The video answering \"best tool for remote onboarding\" can sit near the top of that search for years.\n\nWyzowl found 82% of marketers say video gives them a good ROI. This is the mechanism behind that number: pay once, earn for years. Front-loaded cost, long-tail return.\n\nOne video ranking for a buying search can quietly out-earn 50 posts that already scrolled off the feed. Not because it's louder. Because it never stops working.\n\nSo stop grading a video by its first week. Grade it by year two.\n\nThe buyer searches worth ranking for, link's in the comments.",
+    "hashtags": [
+      "#B2BMarketing"
+    ]
+  },
+  {
+    "scheduledDate": "2026-07-31",
+    "dayOfWeek": "Friday",
+    "archetype": "contrarian",
+    "thesis": "After this post, a marketer will optimize for buyer search instead of the watch-time algorithm.",
+    "linkLocation": null,
+    "sourceTitle": null,
+    "sourceUrl": null,
+    "imageUrl": null,
+    "firstComment": null,
+    "postAngle": "The algorithm rewards watch time, not buyer intent.",
+    "linkedinPost": "Stop trying to beat the YouTube algorithm. For B2B, you're grinding at a game you don't even want to win.\n\nThe algorithm optimizes for one thing: watch time. It pushes whatever keeps the most people watching longest. Perfect if you're an entertainer. Poison if you sell software.\n\nBecause the video that glues 100,000 casual viewers to their seats is almost never the one that makes a single buyer book a call. Chase watch time and you drift toward broad, snackable content, away from the narrow, unsexy, high-intent videos that actually close deals.\n\nThe game worth playing is search. When someone types \"best tool for onboarding remote teams,\" that's a buyer with a hand up. You don't need the algorithm's blessing. You need to be the answer to that exact search.\n\nTiny audience. No shot at viral. Every viewer in-market. For B2B, take that trade every time.\n\nThis week, ignore your retention graph. Pick one \"best X for Y\" search your buyers actually make, and make the video that owns it.\n\nIf a video brought you 500 of the right buyers and zero virality, would your strategy today ever let you make it?",
+    "hashtags": [
+      "#YouTubeMarketing"
+    ]
   }
 ]

@@ -20,14 +20,14 @@ function test(name, fn) {
 
 // --- buildScheduledFor ---
 
-test('buildScheduledFor: formats date as 9 AM IST (03:30 UTC)', () => {
+test('buildScheduledFor: formats date as 7 PM IST (13:30 UTC)', () => {
   const result = buildScheduledFor('2026-03-30');
-  assert.strictEqual(result, '2026-03-30T03:30:00Z');
+  assert.strictEqual(result, '2026-03-30T13:30:00Z');
 });
 
 test('buildScheduledFor: works for any weekday date', () => {
   const result = buildScheduledFor('2026-04-07');
-  assert.strictEqual(result, '2026-04-07T03:30:00Z');
+  assert.strictEqual(result, '2026-04-07T13:30:00Z');
 });
 
 // --- buildPayload ---
@@ -47,7 +47,7 @@ const basePost = {
 test('buildPayload: includes content, scheduledFor, timezone, platforms', () => {
   const payload = buildPayload(basePost, 'acc_test123');
   assert.strictEqual(payload.content, basePost.linkedinPost);
-  assert.strictEqual(payload.scheduledFor, '2026-03-30T03:30:00Z');
+  assert.strictEqual(payload.scheduledFor, '2026-03-30T13:30:00Z');
   assert.strictEqual(payload.timezone, 'Asia/Kolkata');
   assert.deepStrictEqual(payload.platforms, [{ platform: 'linkedin', accountId: 'acc_test123' }]);
 });

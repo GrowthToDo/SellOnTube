@@ -31,9 +31,13 @@ function loadEnv() {
   }
 }
 
-// Pure: convert YYYY-MM-DD to 9 AM IST = 03:30 UTC
+// Posting time, tuned for US + Europe audiences: 7 PM IST = 13:30 UTC
+// (= 9 AM US-Eastern, 2:30 PM Central Europe).
+const POST_TIME_UTC = '13:30:00';
+
+// Pure: convert YYYY-MM-DD to the scheduled UTC instant.
 export function buildScheduledFor(dateStr) {
-  return `${dateStr}T03:30:00Z`;
+  return `${dateStr}T${POST_TIME_UTC}Z`;
 }
 
 // Pure: build Zernio API payload from a queue post object

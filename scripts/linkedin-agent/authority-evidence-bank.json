@@ -70,5 +70,37 @@
     "context": "Principle (not a single number) Ahrefs teaches consistently.",
     "verified": false,
     "needs": "Cite a specific Ahrefs article stating this, confirmed via /browse, before attributing."
+  },
+  {
+    "stat": "83% of video marketers say video has directly increased sales.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Video-to-sales link. Strong for proof/mistake posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse."
+  },
+  {
+    "stat": "85% of video marketers say video has helped them generate leads.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Video-to-leads link. On-axis for acquisition posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse."
+  },
+  {
+    "stat": "82% of marketers say video marketing has given them a good ROI.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "ROI framing for proof/framework posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse."
+  },
+  {
+    "stat": "84% of consumers say they want to see more video from brands.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Demand-side; use sparingly (adoption angle).",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — confirm exact wording before heavy use."
   }
 ]

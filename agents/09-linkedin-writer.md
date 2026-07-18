@@ -50,7 +50,7 @@ Array of post objects, this exact shape:
   "sourceTitle": "Exact page title or null",
   "sourceUrl": "https://sellontube.com/... or null",
   "imageUrl": "og-image URL for link posts, else null (takeaway cards = Step 1.5)",
-  "firstComment": "UTM link for comment posts, else null",
+  "firstComment": "For comment posts: '[specific lead-in] -> [UTM link]' (never a bare URL), else null",
   "postAngle": "one-line angle",
   "linkedinPost": "full post text, no URL in body for comment/null posts",
   "hashtags": ["#Optional", "#0to3"]

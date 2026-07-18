@@ -131,6 +131,8 @@ Hook anti-patterns (never): "In today's digital landscape", "Here are 5 tips", "
 ## 8. Links, images, hashtags
 
 - **SellonTube links → first comment** (never body; body links cut LinkedIn reach 40-50%). UTM: `utm_source=linkedin&utm_medium=social&utm_campaign=brand-presence` (feeds GA4).
+  - **Format the first comment as `[specific one-line lead-in] → [link]`, never a bare URL.** The lead-in names the payoff, not "check this out": e.g. "Full breakdown, plus a calculator to run your own numbers → <link>". Calm, specific, not salesy.
+  - **Zernio wiring (do not change):** `firstComment` must be nested in `platforms[0].platformSpecificData.firstComment`, NOT top-level — top-level is silently ignored (verified live 2026-07-18). Handled by `buildPayload`.
 - **Authority-video links → post body** (to render the native preview), from the curated-video bank only. External UTM: `utm_source=sellontube&utm_medium=referral&utm_campaign=linkedin` (a relationship signal in their analytics, not ours).
 - **Body carries no URL** except an authority-video link.
 - **Images:** link posts use the source page's og-image; no-link/contrarian posts get an auto-generated branded takeaway card (Step 1.5); authority-video posts show the native preview, no card.
@@ -184,6 +186,26 @@ Why it fails: no thesis / no executable takeaway · topic announcement · generi
 (For a link-post gold/anti pair — including the link-in-body failure — see the competitor-analysis example in the session notes.)
 
 ---
+
+## Operations & scheduling (how it actually ships)
+
+- **Cadence:** up to 5 posts/week, Mon-Fri. Ceiling, not quota, drop rubric failures, never pad.
+- **Weekly mix:** 2 SellonTube-link (comment) + 2 source-named no-link + 1 flex. **Weekly themes are encouraged** (a week can explore one topic from 5 angles for cadence + deep research); just give each post a *distinct executable thesis* and vary the language so it doesn't *sound* repetitive.
+- **Batch:** ~2 weeks first, then ~4-week refills.
+- **Posting time: 7 PM IST = 13:30 UTC** (9 AM US-Eastern, 2:30 PM Central Europe, tuned for US + EU). Set in `POST_TIME_UTC` in `scripts/linkedin-agent/linkedin-schedule.js`.
+- **Run flow:**
+  1. Agent 09 generates `queue.json` (thesis-first, per this guideline).
+  2. `node scripts/linkedin-agent/linkedin-schedule.js` validates each post (`validate-post.js`), uploads any image, POSTs to Zernio with the nested `firstComment`, schedules at 7 PM IST, appends to history.
+  3. Zernio publishes on the date; `firstComment` posts the link as the first comment (verified live 2026-07-18).
+- **Reschedule / cancel:** `DELETE https://zernio.com/api/v1/posts/{id}` (works on free tier); `GET /v1/posts` to list.
+- **Refill (each batch):** if the authority-evidence bank has fewer than ~30 `verified:true` entries, browse-verify more before generating. **Cite ONLY `verified:true` entries.** The curated-video bank powers authority-lesson posts.
+- **Free-tier facts:** LinkedIn posting is free (billed per account-day, not per post). X/Twitter is NOT free (pay-per-call) and is out of scope. Zernio analytics is paid-tier, so read LinkedIn reach/engagement manually at the traction gate; GA4 gives referral clicks via the UTM.
+
+## Quick do / don't
+
+**DO:** write the thesis first; contrarian-or-clear hook that carries the payoff; one executable takeaway; coffee-chat, one person, "I/me"; verified facts only (bank / real SellonTube page / anonymized first-hand); link in the first comment with a specific `lead-in → link`; concrete running examples; post at 7 PM IST.
+
+**DON'T:** em/en dashes; placeholder brackets in the copy (`[category]`); generic tip-listicles; bare-URL comments; top-level `firstComment` (must nest in `platformSpecificData`); fabricated or unverified stats; body links (except authority-lesson videos); off-axis takeaways (views/subs as the goal); salesy CTAs.
 
 ## Final pre-publish checklist
 

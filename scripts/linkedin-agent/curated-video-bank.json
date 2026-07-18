@@ -2,13 +2,14 @@
   {
     "channel": "Ahrefs",
     "is_person": false,
-    "title": null,
-    "url": null,
-    "lesson": null,
-    "b2b_application": null,
-    "linkedin_profile": null,
-    "verified": false,
-    "needs": "Research a real Ahrefs video teaching YouTube-for-business, capture exact URL + one real lesson via /browse. Authority-lesson posts are Step 1.5."
+    "title": "YouTube SEO for AI Search: How to Rank your YouTube Videos | 3.3. AEO Course by Ahrefs",
+    "url": "https://www.youtube.com/watch?v=_b_cTpLHMTM",
+    "lesson": "YouTube is the most-cited domain in Google's AI Overviews; Ahrefs walks through a 3-step process to rank your videos in Google and earn AI Overview citations.",
+    "b2b_application": "Make videos that answer the exact questions a buyer would ask an AI, so your brand is the source the AI answer pulls from.",
+    "linkedin_profile": "https://www.linkedin.com/company/ahrefs",
+    "is_person_note": "Ahrefs is a company page; @mention (Step 1.5) would tag the company, not a person.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — video URL live (200); lesson taken from the video's own description (shortDescription). LinkedIn company slug not yet browse-confirmed; verify before any Step 1.5 @mention."
   },
   {
     "channel": "Starter Story",
