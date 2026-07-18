@@ -1,27 +1,43 @@
 [
   {
+    "stat": "91% of businesses use video as a marketing tool.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Video is table stakes; the differentiator is targeting buyer intent, not adoption.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — exact figure on the page."
+  },
+  {
+    "stat": "85% of people have been convinced to buy a product or service by watching a video.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Direct video-to-purchase link for proof posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — exact figure on the page."
+  },
+  {
+    "stat": "89% of consumers say video quality impacts their trust in a brand.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Trust/credibility angle for framework or mistake posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — exact figure on the page."
+  },
+  {
+    "stat": "YouTube has billions of monthly logged-in users.",
+    "source": "YouTube (official press)",
+    "url": "https://blog.youtube/press/",
+    "context": "Scale of the audience a B2B channel can reach. Faithful to YouTube's own wording ('billions of monthly logged-in users').",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — YouTube press page states 'billions of monthly logged-in users'."
+  },
+  {
     "stat": "YouTube is the world's second most-visited website.",
     "source": "Similarweb",
     "url": "https://www.similarweb.com/top-websites/",
-    "context": "Establishes YouTube's scale as a discovery/search surface for B2B buyers.",
+    "context": "YouTube's scale as a discovery/search surface.",
     "verified": false,
-    "needs": "Confirm current ranking + deep URL via /browse before live use."
-  },
-  {
-    "stat": "YouTube has more than 2 billion logged-in monthly users.",
-    "source": "Google / YouTube",
-    "url": "https://blog.youtube/press/",
-    "context": "Scale of the audience a B2B channel can reach.",
-    "verified": false,
-    "needs": "Confirm exact current figure + press-page URL via /browse."
-  },
-  {
-    "stat": "More than half of shoppers say online video has helped them decide which specific brand or product to buy.",
-    "source": "Think with Google",
-    "url": "https://www.thinkwithgoogle.com/",
-    "context": "Ties video directly to purchase decisions, not just awareness. Use in proof/framework posts.",
-    "verified": false,
-    "needs": "Confirm exact percentage, year, and deep article URL via /browse."
+    "needs": "Similarweb top-websites page is JS-gated and did not scrape via /browse; confirm current rank on a scrapable source before live use."
   },
   {
     "stat": "B2B buyers spend only about 17% of their total purchase journey meeting with potential suppliers.",
@@ -29,38 +45,30 @@
     "url": "https://www.gartner.com/en/sales/insights/b2b-buying-journey",
     "context": "Most of the buying decision happens during self-directed research, so your video often IS the sales conversation.",
     "verified": false,
-    "needs": "Confirm exact figure + deep URL via /browse."
+    "needs": "Gartner page returned HTTP 403 to /browse; confirm the exact figure + deep URL (or a Gartner-authored PDF) before live use."
   },
   {
-    "stat": "When B2B buyers compare multiple suppliers, the time spent with any one sales rep can be as little as 5-6% of the journey.",
+    "stat": "When B2B buyers compare multiple suppliers, time spent with any one sales rep can be as little as 5-6% of the journey.",
     "source": "Gartner",
     "url": "https://www.gartner.com/en/sales/insights/b2b-buying-journey",
-    "context": "Reinforces that content, not reps, carries most of the persuasion. Pairs with the 17% stat.",
+    "context": "Reinforces that content, not reps, carries most of the persuasion.",
     "verified": false,
-    "needs": "Confirm exact figure + deep URL via /browse."
+    "needs": "Gartner page returned HTTP 403; confirm the exact figure before live use."
   },
   {
-    "stat": "Around 9 in 10 businesses use video as a marketing tool.",
-    "source": "Wyzowl State of Video Marketing",
-    "url": "https://www.wyzowl.com/video-marketing-statistics/",
-    "context": "Video is table stakes; the differentiator is targeting buyer intent, not adoption.",
+    "stat": "More than half of shoppers say online video has helped them decide which specific brand or product to buy.",
+    "source": "Think with Google",
+    "url": "https://www.thinkwithgoogle.com/",
+    "context": "Ties video directly to purchase decisions.",
     "verified": false,
-    "needs": "Confirm exact percentage + report year via /browse."
-  },
-  {
-    "stat": "Most people say they have been convinced to buy a product or service by watching a video.",
-    "source": "Wyzowl State of Video Marketing",
-    "url": "https://www.wyzowl.com/video-marketing-statistics/",
-    "context": "Direct video-to-purchase link for proof posts.",
-    "verified": false,
-    "needs": "Confirm exact percentage + report year via /browse."
+    "needs": "Not yet located on a scrapable Think with Google page; confirm exact percentage + deep URL before live use."
   },
   {
     "stat": "Search intent matters more than search volume: a low-volume, high-intent query out-earns a high-volume, low-intent one.",
     "source": "Ahrefs",
     "url": "https://ahrefs.com/blog/",
-    "context": "Principle (not a single number) Ahrefs teaches consistently. Use for intent/keyword posts.",
+    "context": "Principle (not a single number) Ahrefs teaches consistently.",
     "verified": false,
-    "needs": "Confirm a specific Ahrefs article stating this via /browse, or cite as their consistent editorial stance."
+    "needs": "Cite a specific Ahrefs article stating this, confirmed via /browse, before attributing."
   }
 ]
