@@ -171,7 +171,7 @@ You are publishing 4+ videos per month and optimization is taking time away from
 
 You have 50+ videos and no systematic keyword strategy. A channel audit from an experienced provider can identify quick wins in your existing library that compound over months.
 
-Your YouTube channel already generates leads but you want to scale. This is the clearest signal. If you know the channel works and you need to grow it faster, YouTube SEO services accelerate what is already proven.
+Your YouTube channel already generates leads but you want to scale. This is the clearest signal. If you know the channel works and you need to grow it faster, YouTube SEO services accelerate what is already proven. And if you are still deciding whether the channel model is worth the spend at all, read [how six B2B companies win customers from small YouTube channels](/blog/youtube-marketing-case-studies) before signing any retainer.
 
 ## Free YouTube SEO Tools That Replace Most Agency Work
 
