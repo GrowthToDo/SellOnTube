@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
+import ShopifyAppTheme from '~/components/widgets/ShopifyAppTheme.astro';
 
 const metadata = {
   title: 'Listing Grade Report | Shopify App Store Listing Grader | SellOnTube',
@@ -12,8 +13,11 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+
   <Fragment slot="header">
     <Header
+      isDark
       links={[
         { text: 'Case Studies', href: '/shopify-app#proof', links: [
           { text: 'Left Foot Software', href: '/shopify-app/case-studies/left-foot-software' },
@@ -25,7 +29,6 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
       ]}
       actions={[{ text: 'Book a discovery call', href: calLink, target: '_blank', variant: 'primary' }]}
       isSticky
-      showToggleTheme
     />
   </Fragment>
 
@@ -38,18 +41,16 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     });
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <ShopifyAppTheme />
 
   <style>
-    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    .sfy .sfy-m { font-family: 'Space Grotesk', monospace; }
-    .sfy { font-family: 'Inter', system-ui, sans-serif; }
-    .sfy-dark { --bg: #08080A; --bg2: #0E0E11; --card: #131316; --border: #1C1C21; --text: #F5F5F2; --muted: #8E8E93; --dim: #55555A; --accent: #818CF8; --accent-l: #A5B4FC; }
-    .sfy-light { --bg: #FAFAF8; --bg2: #F2F2EE; --card: #FFFFFF; --border: #E2E2DD; --text: #111113; --muted: #6B6B73; --dim: #9CA3AF; --accent: #6366F1; --accent-l: #818CF8; }
-    .sfy-btn-primary { background: linear-gradient(135deg, #6366F1 0%, #818CF8 100%); color: white; transition: all 0.2s ease; }
-    .sfy-btn-primary:hover { background: linear-gradient(135deg, #818CF8 0%, #A5B4FC 100%); box-shadow: 0 0 30px -5px rgba(129,140,248,0.5); transform: translateY(-1px); }
+    .sfy h1, .sfy h2, .sfy h3, .sfy .sfy-h { font-family: 'Satoshi', system-ui, sans-serif; letter-spacing: -0.02em; }
+    .sfy .sfy-m { font-family: 'Satoshi', system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+    .sfy { font-family: 'Satoshi', system-ui, sans-serif; }
+    .sfy-dark { --bg: #171512; --bg2: #1e1b17; --card: #1e1b17; --border: #2b2823; --text: #f1eee8; --muted: #a9a399; --dim: #736d63; --accent: #d8492f; --accent-l: #e0755f; }
+    .sfy-light { --bg: #171512; --bg2: #1e1b17; --card: #1e1b17; --border: #2b2823; --text: #f1eee8; --muted: #a9a399; --dim: #736d63; --accent: #d8492f; --accent-l: #e0755f; }
+    .sfy-btn-primary { background: #d8492f; color: #fff8f5; transition: background 0.2s ease, transform 0.2s ease; }
+    .sfy-btn-primary:hover { background: #c23f27; transform: translateY(-1px); }
     .score-ring { transition: stroke-dashoffset 1.5s ease-out; }
     @media (prefers-reduced-motion: reduce) { .score-ring { transition: none; } }
     .section-bar-fill { transition: width 0.8s ease-out; }
@@ -57,7 +58,7 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
     .char-bar { height: 8px; border-radius: 4px; }
     .char-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
     .finding-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; transition: border-color 0.2s ease; }
-    .finding-card:hover { border-color: rgba(99,102,241,0.3); }
+    .finding-card:hover { border-color: rgba(216,73,47,0.3); }
     .search-card-mock { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; max-width: 360px; }
     .truncation-line { border-top: 2px dashed #EF4444; position: relative; margin: 0.5rem 0; }
     .truncation-line::after { content: 'Truncated in search results'; position: absolute; top: -10px; right: 0; font-size: 0.65rem; color: #EF4444; background: var(--bg); padding: 0 4px; }
@@ -125,8 +126,8 @@ const calLink = 'https://cal.com/gautham-8bdvdx/30min';
         <div style="border-top: 1px solid var(--border); padding-top: 1rem;" class="flex flex-col sm:flex-row items-center justify-between gap-3">
           <p class="text-xs" style="color: var(--dim);">&copy; 2026 SellOnTube. All rights reserved.</p>
           <div class="flex items-center gap-4 text-xs" style="color: var(--dim);">
-            <a href="/privacy" class="hover:underline">Privacy</a>
-            <a href="/terms" class="hover:underline">Terms</a>
+            <a href="/privacy-policy" class="hover:underline">Privacy</a>
+            <a href="/terms-of-service" class="hover:underline">Terms</a>
           </div>
         </div>
       </div>

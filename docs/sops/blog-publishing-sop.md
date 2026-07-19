@@ -116,8 +116,9 @@ git commit -m "content: add [title] ([primary keyword])"
 git push
 ```
 
-- [ ] **17. Submit to GSC Request Indexing**
-  - Go to GSC → URL Inspection → enter the live URL → Request Indexing
+- [ ] **17. Submit to search engines**
+  - Bing: automatic, no need to ask first. Run `node scripts/bing-submit.mjs <file-of-urls>` (uses `BING_WEBMASTER_API_KEY` from `.env`; IndexNow is broken due to Cloudflare).
+  - GSC: manual, remind the user. Go to GSC → URL Inspection → enter the live URL → Request Indexing (no public submission API).
 
 - [ ] **18. Update sot_master.csv**
   - Change the target keyword row: `status` → `live`

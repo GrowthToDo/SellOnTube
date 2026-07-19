@@ -1,0 +1,68 @@
+---
+// Perf-safe YouTube embed: a click-to-load facade.
+// Loads only a static thumbnail until the user clicks, then swaps in the
+// nocookie iframe. Reserved 16:9 box prevents CLS; thumbnail is lazy-loaded.
+// Use in MDX posts: <YouTubeFacade id="VIDEOID" title="..." caption="..." />
+interface Props {
+  id: string;
+  title: string;
+  caption?: string;
+}
+const { id, title, caption } = Astro.props;
+const thumb = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+---
+<figure class="yt-facade-fig" style="margin: 2rem 0;">
+  <div
+    class="yt-facade"
+    data-ytid={id}
+    role="button"
+    tabindex="0"
+    aria-label={`Play video: ${title}`}
+    style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 8px; overflow: hidden; cursor: pointer;"
+  >
+    <img
+      src={thumb}
+      alt={title}
+      loading="lazy"
+      width="1280"
+      height="720"
+      style="width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9;"
+    />
+    <span
+      class="yt-facade-play"
+      aria-hidden="true"
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 48px; background: #ff0000; border-radius: 14px; display: flex; align-items: center; justify-content: center;"
+    >
+      <span
+        style="width: 0; height: 0; border-left: 22px solid #fff; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 5px;"
+      ></span>
+    </span>
+  </div>
+  {caption && <figcaption style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem; text-align: center;">{caption}</figcaption>}
+</figure>
+
+<script>
+  function loadYtFacade(el: Element) {
+    const id = el.getAttribute('data-ytid');
+    if (!id) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
+    iframe.title = 'YouTube video player';
+    iframe.allow =
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.style.cssText = 'position: absolute; inset: 0; width: 100%; height: 100%; border: 0;';
+    el.innerHTML = '';
+    el.appendChild(iframe);
+  }
+  document.querySelectorAll('.yt-facade').forEach((el) => {
+    el.addEventListener('click', () => loadYtFacade(el));
+    el.addEventListener('keydown', (e) => {
+      const ke = e as KeyboardEvent;
+      if (ke.key === 'Enter' || ke.key === ' ') {
+        ke.preventDefault();
+        loadYtFacade(el);
+      }
+    });
+  });
+</script>

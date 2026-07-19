@@ -20,11 +20,31 @@ const { comparison } = Astro.props;
 const calLink = 'https://cal.com/gautham-8bdvdx/30min';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
-// Sibling comparisons for cross-linking (exclude current, limit to 4)
+// Sibling comparisons for cross-linking (exclude current, limit to 4).
+// Personalized per-page: same-audience comparisons rank first, then fill
+// remaining slots by circular index-distance from the current page. This
+// guarantees every published comparison appears in a different, relevant
+// set of sibling blocks instead of a single hardcoded top-4 (the prior bug).
 const cutoff = import.meta.env.DEV ? new Date('2099-12-31') : new Date();
 cutoff.setHours(23, 59, 59, 999);
-const siblings = comparisons
-  .filter((c) => c.slug !== comparison.slug && new Date(c.publishDate + 'T00:00:00+05:30') <= cutoff)
+const publishedComparisons = comparisons.filter(
+  (c) => new Date(c.publishDate + 'T00:00:00+05:30') <= cutoff
+);
+const selfIndex = publishedComparisons.findIndex((c) => c.slug === comparison.slug);
+const circularDistance = (otherIndex) => {
+  const raw = Math.abs(otherIndex - selfIndex);
+  return Math.min(raw, publishedComparisons.length - raw);
+};
+const siblings = publishedComparisons
+  .map((c, index) => ({ c, index }))
+  .filter(({ c }) => c.slug !== comparison.slug)
+  .sort((a, b) => {
+    const aSameAudience = a.c.audience === comparison.audience ? 0 : 1;
+    const bSameAudience = b.c.audience === comparison.audience ? 0 : 1;
+    if (aSameAudience !== bSameAudience) return aSameAudience - bSameAudience;
+    return circularDistance(a.index) - circularDistance(b.index);
+  })
+  .map(({ c }) => c)
   .slice(0, 4);
 
 const metadata = {

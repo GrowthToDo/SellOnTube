@@ -91,15 +91,29 @@ const breadcrumbSchema = {
 ---
 
 <Layout metadata={metadata}>
+
+  <style is:global>
+    .son-plate { position: relative; }
+    .son-plate::before,
+    .son-plate::after {
+      content: '';
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      pointer-events: none;
+    }
+    .son-plate::before { top: -7px; left: -7px; border-top: 2px solid rgb(216 73 47); border-left: 2px solid rgb(216 73 47); }
+    .son-plate::after { bottom: -7px; right: -7px; border-bottom: 2px solid rgb(216 73 47); border-right: 2px solid rgb(216 73 47); }
+  </style>
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- HERO SECTION -->
-  <section class="py-12 sm:py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+  <section class="son-grid py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
-        Your B2B YouTube Marketing Agency
+        Your B2B YouTube <span class="son-circ">Marketing&nbsp;Agency<svg class="son-anno son-anno-load" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" style="top: auto; height: 0.15em; bottom: -0.13em;"><path pathLength="1" style="stroke-width: 2.8;" d="M5,10 C60,4 135,4 195,8 M18,17 C75,11.5 145,12 188,15" /></svg></span>
       </h1>
       <p class="mt-5 text-lg sm:text-xl text-gray-600 dark:text-slate-300 max-w-2xl mx-auto">
         You don't need to learn YouTube. You need customers from it. We research the topics, build the system, and run it, so your team can focus on closing.
@@ -129,85 +143,6 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- URGENCY BANNERS -->
-  <section class="pb-6">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-
-        <!-- Limited Capacity Alert -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-600 dark:text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span class="text-sm font-medium text-red-800 dark:text-red-300">Limited Capacity: Only 2 of 4 client spots remaining</span>
-        </div>
-
-        <!-- Rate Increase Notice -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-orange-600 dark:text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          <span class="text-sm font-medium text-orange-800 dark:text-orange-300">Scale rate increases to {formatPrice(PRICING.future)}/month on {PRICING.rateIncreaseDate}</span>
-        </div>
-
-      </div>
-
-      <!-- Countdown Timer (Scale tier rate increase) -->
-      <div class="mt-4 max-w-lg mx-auto p-4 rounded-lg bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 border border-orange-200 dark:border-orange-800">
-        <div class="flex items-center justify-between gap-4 flex-wrap">
-          <div>
-            <p class="text-sm font-semibold text-orange-900 dark:text-orange-200">1 Priority Spot at {formatPrice(PRICING.prioritySpot)}/month</p>
-            <p class="text-xs text-orange-700 dark:text-orange-300 mt-0.5">Special rate expires in:</p>
-          </div>
-          <div id="countdown" class="flex gap-2 text-center">
-            <div class="bg-white dark:bg-slate-800 rounded px-3 py-2 min-w-[60px]">
-              <div class="text-2xl font-bold text-orange-600 dark:text-orange-400" id="days">--</div>
-              <div class="text-xs text-gray-600 dark:text-slate-400">Days</div>
-            </div>
-            <div class="bg-white dark:bg-slate-800 rounded px-3 py-2 min-w-[60px]">
-              <div class="text-2xl font-bold text-orange-600 dark:text-orange-400" id="hours">--</div>
-              <div class="text-xs text-gray-600 dark:text-slate-400">Hours</div>
-            </div>
-            <div class="bg-white dark:bg-slate-800 rounded px-3 py-2 min-w-[60px]">
-              <div class="text-2xl font-bold text-orange-600 dark:text-orange-400" id="minutes">--</div>
-              <div class="text-xs text-gray-600 dark:text-slate-400">Mins</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Countdown Timer Script -->
-  <script is:inline define:vars={{ rateIncreaseDate: PRICING.rateIncreaseDate }}>
-    function updateCountdown() {
-      // Set specific target date: April 30, 2026 at 11:59 PM
-      const targetDate = new Date(rateIncreaseDate + ' 23:59:59').getTime();
-
-      // Update countdown every second
-      const interval = setInterval(function() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-
-        if (distance < 0) {
-          clearInterval(interval);
-          document.getElementById('countdown').innerHTML = '<div class="text-red-600 font-semibold">Offer Expired</div>';
-        }
-      }, 1000);
-    }
-
-    // Run on page load
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateCountdown);
-    } else {
-      updateCountdown();
-    }
-  </script>
-
   <!-- PRICING SECTION -->
   <section class="py-12 sm:py-16 bg-slate-50 dark:bg-slate-900/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -218,7 +153,7 @@ const breadcrumbSchema = {
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
         <!-- CARD 1: Foundation -->
-        <div class="rounded-3xl border border-slate-200 bg-white/70 shadow-sm dark:bg-slate-900/70 dark:border-slate-700 flex flex-col">
+        <div class="rounded-sm border border-slate-200 bg-white/70 shadow-sm dark:bg-slate-900/70 dark:border-slate-700 flex flex-col">
           <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-4 border-b border-slate-200 dark:border-slate-700">
             <p class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Foundation</p>
             <div class="mt-3 flex items-baseline gap-2">
@@ -242,29 +177,29 @@ const breadcrumbSchema = {
           </div>
           <div class="px-6 sm:px-8 py-6 flex-1">
             <ul class="space-y-2.5 text-sm text-gray-700 dark:text-slate-200">
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>YouTube channel SEO audit</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Buyer-intent keyword &amp; topic research (10 topics/month)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Custom topic roadmap (90-day)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>YouTube channel optimization (titles, descriptions, tags, channel keywords)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Video title and thumbnail brief (per video)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Script framework and CTA structure</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Publishing and distribution checklist</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Monthly strategy review call</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Monthly performance report</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>YouTube channel SEO audit</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Buyer-intent keyword &amp; topic research (10 topics/month)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Custom topic roadmap (90-day)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>YouTube channel optimization (titles, descriptions, tags, channel keywords)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Video title and thumbnail brief (per video)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Script framework and CTA structure</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Publishing and distribution checklist</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Monthly strategy review call</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Monthly performance report</li>
             </ul>
             <p class="mt-5 text-xs text-gray-500 dark:text-slate-500">No long-term lock-in after month 4</p>
           </div>
         </div>
 
         <!-- CARD 2: Growth (Most Popular) -->
-        <div class="rounded-3xl border border-slate-200 bg-white/70 shadow-sm dark:bg-slate-900/70 dark:border-slate-700 ring-2 ring-black dark:ring-white flex flex-col">
+        <div class="son-plate rounded-sm border border-slate-200 bg-white/70 shadow-sm dark:bg-slate-900/70 dark:border-slate-700 ring-1 ring-[#d8492f] flex flex-col">
           <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-4 border-b border-slate-200 dark:border-slate-700">
             <div class="flex items-center justify-between gap-3 flex-wrap">
               <p class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Growth</p>
-              <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-black text-white dark:bg-white dark:text-slate-900">Most Popular</span>
+              <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-[#d8492f] text-white">Most Popular</span>
             </div>
             <div class="mt-3 flex items-baseline gap-2">
-              <span class="text-4xl sm:text-5xl font-bold tracking-tight">$5,000</span>
+              <span class="text-4xl sm:text-5xl font-bold tracking-tight son-circ">$5,000<svg class="son-anno son-anno-reveal" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" style="stroke-width: 2.6;" d="M24,60 C16,30 92,10 168,9 C256,8 307,27 305,55 C303,86 234,102 148,100 C68,98 17,83 16,58 C15,37 54,21 110,15" /></svg></span>
               <span class="text-sm text-gray-600 dark:text-slate-300">/ month</span>
             </div>
             <p class="mt-1 text-xs text-gray-500 dark:text-slate-500">4-month minimum &middot; Extend anytime after</p>
@@ -284,24 +219,24 @@ const breadcrumbSchema = {
           </div>
           <div class="px-6 sm:px-8 py-6 flex-1">
             <ul class="space-y-2.5 text-sm text-gray-700 dark:text-slate-200">
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Everything in Foundation, plus:</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Expanded topic research (20 topics/month)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Competitor channel analysis (3 competitors)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Full script writing for 4 videos/month</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Title and thumbnail optimization (A/B recommendations)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Video funnel design (awareness &rarr; lead capture)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Lead capture funnel setup</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>End-screen and card optimization</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>YouTube SEO optimization per video (tags, chapters, descriptions)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Bi-weekly strategy calls</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Conversion tracking setup</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Monthly growth report with next-90-day roadmap</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Everything in Foundation, plus:</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Expanded topic research (20 topics/month)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Competitor channel analysis (3 competitors)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Full script writing for 4 videos/month</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Title and thumbnail optimization (A/B recommendations)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Video funnel design (awareness &rarr; lead capture)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Lead capture funnel setup</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>End-screen and card optimization</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>YouTube SEO optimization per video (tags, chapters, descriptions)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Bi-weekly strategy calls</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Conversion tracking setup</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Monthly growth report with next-90-day roadmap</li>
             </ul>
           </div>
         </div>
 
         <!-- CARD 3: Scale -->
-        <div class="rounded-3xl border border-slate-200 bg-white/70 shadow-sm dark:bg-slate-900/70 dark:border-slate-700 flex flex-col">
+        <div class="rounded-sm border border-slate-200 bg-white/70 shadow-sm dark:bg-slate-900/70 dark:border-slate-700 flex flex-col">
           <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-4 border-b border-slate-200 dark:border-slate-700">
             <p class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Scale</p>
             <div class="mt-3 flex items-baseline gap-2">
@@ -325,17 +260,17 @@ const breadcrumbSchema = {
           </div>
           <div class="px-6 sm:px-8 py-6 flex-1">
             <ul class="space-y-2.5 text-sm text-gray-700 dark:text-slate-200">
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Everything in Growth, plus:</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Full buyer-intent topic library access + custom research</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Full script writing for 8 videos/month</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Channel authority building strategy</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Playlist and content architecture optimization</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>YouTube Shorts strategy (buyer-intent short-form)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Cross-platform repurposing strategy (LinkedIn, newsletter)</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>CRM integration recommendations for lead capture</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Weekly check-in calls</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Quarterly acquisition system audit and rebuild</li>
-              <li class="flex items-start gap-2"><span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>Priority support</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Everything in Growth, plus:</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Full buyer-intent topic library access + custom research</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Full script writing for 8 videos/month</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Channel authority building strategy</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Playlist and content architecture optimization</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>YouTube Shorts strategy (buyer-intent short-form)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Cross-platform repurposing strategy (LinkedIn, newsletter)</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>CRM integration recommendations for lead capture</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Weekly check-in calls</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Quarterly acquisition system audit and rebuild</li>
+              <li class="flex items-start gap-2"><svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>Priority support</li>
             </ul>
           </div>
         </div>
@@ -394,23 +329,23 @@ const breadcrumbSchema = {
       <div class="max-w-xl mx-auto">
         <ul class="space-y-3 text-sm sm:text-base text-gray-700 dark:text-slate-200">
           <li class="flex items-start gap-3">
-            <span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>
+            <svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
             You're a B2B company, SaaS, agency, coach, or high-ticket service business
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>
+            <svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
             You want customers from YouTube, not just views or subscribers
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>
+            <svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
             You've tried content before but haven't seen measurable ROI
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>
+            <svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
             You want an expert team running the system, not a course to learn it yourself
           </li>
           <li class="flex items-start gap-3">
-            <span class="text-emerald-600 dark:text-emerald-400 font-bold mt-0.5">✓</span>
+            <svg class="flex-shrink-0 mt-1" width="14" height="12" viewBox="0 0 16 14" aria-hidden="true"><path d="M2,7.5 C3.5,9 5,11.3 6,13 C8.5,8 11.5,4 14.5,1.5" fill="none" stroke="#d8492f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
             Your average client value is $3,000 or more
           </li>
         </ul>
@@ -505,32 +440,32 @@ const breadcrumbSchema = {
             <tr class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
               <td class="px-5 py-3 text-gray-700 dark:text-slate-300">Lead capture funnel</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
-              <td class="px-5 py-3 text-center text-emerald-600 dark:text-emerald-400 font-bold">✓</td>
-              <td class="px-5 py-3 text-center text-emerald-600 dark:text-emerald-400 font-bold">✓</td>
+              <td class="px-5 py-3 text-center text-[#c23f27] dark:text-[#e0755f] font-bold">✓</td>
+              <td class="px-5 py-3 text-center text-[#c23f27] dark:text-[#e0755f] font-bold">✓</td>
             </tr>
             <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
               <td class="px-5 py-3 text-gray-700 dark:text-slate-300">Conversion tracking</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
-              <td class="px-5 py-3 text-center text-emerald-600 dark:text-emerald-400 font-bold">✓</td>
-              <td class="px-5 py-3 text-center text-emerald-600 dark:text-emerald-400 font-bold">✓</td>
+              <td class="px-5 py-3 text-center text-[#c23f27] dark:text-[#e0755f] font-bold">✓</td>
+              <td class="px-5 py-3 text-center text-[#c23f27] dark:text-[#e0755f] font-bold">✓</td>
             </tr>
             <tr class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700">
               <td class="px-5 py-3 text-gray-700 dark:text-slate-300">YouTube Shorts strategy</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
-              <td class="px-5 py-3 text-center text-emerald-600 dark:text-emerald-400 font-bold">✓</td>
+              <td class="px-5 py-3 text-center text-[#c23f27] dark:text-[#e0755f] font-bold">✓</td>
             </tr>
             <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700">
               <td class="px-5 py-3 text-gray-700 dark:text-slate-300">Weekly calls</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
-              <td class="px-5 py-3 text-center text-emerald-600 dark:text-emerald-400 font-bold">✓</td>
+              <td class="px-5 py-3 text-center text-[#c23f27] dark:text-[#e0755f] font-bold">✓</td>
             </tr>
             <tr class="bg-white dark:bg-slate-900">
               <td class="px-5 py-3 text-gray-700 dark:text-slate-300">Quarterly system audit</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
               <td class="px-5 py-3 text-center text-slate-400 dark:text-slate-500">✗</td>
-              <td class="px-5 py-3 text-center text-emerald-600 dark:text-emerald-400 font-bold">✓</td>
+              <td class="px-5 py-3 text-center text-[#c23f27] dark:text-[#e0755f] font-bold">✓</td>
             </tr>
           </tbody>
         </table>
@@ -541,13 +476,13 @@ const breadcrumbSchema = {
   <!-- 24-HOUR BOOKING BONUS -->
   <section class="py-12 sm:py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-2 border-emerald-300 dark:border-emerald-700">
+      <div class="p-6 rounded-sm border border-slate-300 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70">
         <div class="flex items-start gap-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#c23f27] dark:text-[#e0755f] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
           <div>
-            <p class="text-base font-semibold text-emerald-900 dark:text-emerald-200">Limited Time Bonus</p>
-            <p class="text-sm text-emerald-800 dark:text-emerald-300 mt-2">
-              <span class="font-medium">Book your diagnostic call within 24 hours</span> and receive a complimentary <span class="font-semibold">Premium YouTube SEO Competitive Analysis</span> ($1,200 value): a deep-dive audit of your top 3 competitors' YouTube strategies, keyword gaps, and ranking opportunities.
+            <p class="text-base font-semibold text-gray-900 dark:text-white">Included with every diagnostic call</p>
+            <p class="text-sm text-gray-600 dark:text-slate-300 mt-2">
+              A <span class="font-semibold">YouTube SEO competitive analysis</span>: an audit of your top 3 competitors' YouTube strategies, keyword gaps, and ranking opportunities. Yours to keep whether or not we work together.
             </p>
             <div class="mt-5">
               <a
@@ -568,8 +503,8 @@ const breadcrumbSchema = {
   <!-- QUALIFICATION NOTICE -->
   <section class="pb-12 sm:pb-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <div class="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-        <p class="text-sm text-blue-900 dark:text-blue-200">
+      <div class="p-4 rounded-sm border-l-2 border-[#d8492f] bg-slate-50 dark:bg-slate-900/50">
+        <p class="text-sm text-gray-700 dark:text-slate-300">
           <span class="font-semibold">Qualification required:</span> We only partner with businesses where our diagnostic confirms YouTube can profitably drive customer acquisition. Acceptance based on LTV, market fit, and strategic alignment.
         </p>
       </div>
@@ -620,7 +555,7 @@ const breadcrumbSchema = {
             <svg class="h-4 w-4 flex-shrink-0 transition-transform group-open:rotate-180 text-gray-500 dark:text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
           <div class="px-5 pb-5 text-sm text-gray-600 dark:text-slate-300">
-            Most YouTube managers optimize for views and subscriber growth. We optimize for buyer-intent topics, lead capture, and customer acquisition. Different goal, different system.
+            Most YouTube managers optimize for views and subscriber growth. We optimize for buyer-intent topics, lead capture, and customer acquisition. Different goal, different system. Curious who is behind that thinking? <a href="/about" class="underline hover:text-gray-900 dark:hover:text-white">Meet the team</a>.
           </div>
         </details>
 
@@ -670,7 +605,7 @@ const breadcrumbSchema = {
             <svg class="h-4 w-4 flex-shrink-0 transition-transform group-open:rotate-180 text-gray-500 dark:text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
           </summary>
           <div class="px-5 pb-5 text-sm text-gray-600 dark:text-slate-300">
-            Most channels begin seeing rankings and qualified traffic within 45 to 90 days, with compounding results thereafter.
+            Most channels begin seeing rankings and qualified traffic within 45 to 90 days, with compounding results thereafter. Curious what happens after you sign up? See <a href="/next-steps" class="underline hover:text-gray-900 dark:hover:text-white">what the first 30 days look like</a>.
           </div>
         </details>
 

@@ -1,145 +1,76 @@
 # Agent 09 — LinkedIn Weekly Writer
 
+Thin runner. The writing craft is NOT in this file. Follow
+`docs/social-media/linkedin/linkedin-writing-guideline.md` verbatim; this file
+only covers the operational loop (what to read, how many, what to write where,
+how to schedule).
+
 ## Trigger
-User says: "generate this week's LinkedIn posts" (or similar)
+User says: "generate next batch of LinkedIn posts" / "refill" / "write this month's LinkedIn posts".
 
-## Your Job
-Write 5 LinkedIn posts for the coming Mon–Fri. Populate `scripts/linkedin-agent/queue.json` with the result. The user runs `node scripts/linkedin-agent/linkedin-schedule.js` to schedule them in Zernio.
-
----
-
-## Step 1 — Read history
-
-Read `scripts/linkedin-agent/linkedin-history.json`. Note:
-- Which source pages were used recently
-- Which angles, hooks, or themes appeared in the last 30 posts
-- These must NOT be repeated this week
+## Positioning (do not drift)
+SellonTube company-page brand-presence engine for B2B buyers evaluating YouTube for customer acquisition. Blend voice (product-or-service, never pins the model). NOT the AEO engine. Full context: `docs/superpowers/specs/2026-07-17-linkedin-brand-presence-engine-design.md`.
 
 ---
 
-## Step 2 — Identify next Mon–Fri dates
+## Step 0 — Read (every run)
+1. `docs/social-media/linkedin/linkedin-writing-guideline.md` — **canonical craft. Follow it verbatim.**
+2. `docs/social-media/linkedin/examples/` + `anti-examples/` — match the gold, never the anti.
+3. `scripts/linkedin-agent/linkedin-history.json` — the last 30 posts. No repeated angle, hook, or source page.
+4. `scripts/linkedin-agent/authority-evidence-bank.json` + `curated-video-bank.json` — the ONLY allowed external facts/videos. **Cite only `verified: true` entries.**
 
-Calculate the dates for the coming Monday through Friday. Use these as `scheduledDate` values.
+## Step 0.5 — Refill the banks first (if below floor or stale)
+Before generating, if the authority bank has fewer than ~30 `verified: true` entries, browse each seed source (`/browse`), confirm the exact figure + deep URL, flip to `verified: true`, and add fresh entries to reach the floor. Curated-video bank only matters at Step 1.5 (authority-lesson posts). Never cite an unverified entry; if nothing verified fits, name no source rather than fabricate one.
 
----
+## Step 1 — Batch size + dates (MAIN THREAD sets dates, never a subagent)
+- First batch: 2 weeks (up to 10 posts). Steady-state: 4 weeks (up to 20).
+- Compute the coming Mon-Fri dates. `scheduledDate` = those dates; Zernio publishes at 9 AM IST.
+- **Ceiling, not quota:** a post that fails its self-critique is dropped, never padded. A weak week ships 4, not 5 filler posts.
 
-## Step 3 — Select 5 source pages
+## Step 2 — Weekly mix (spread across Mon-Fri, soft variety guard)
+Per week: **2 SellonTube-link + 2 source-named no-link + 1 flex.**
+- Link posts (`linkLocation: "comment"`): derived from a real SellonTube page; UTM link in `firstComment`; body has NO URL.
+- No-link posts (`linkLocation: null`): self-contained; name a `verified: true` authority source; no `firstComment`.
+- Flex: contrarian/myth-bust (no link). Authority-lesson video posts (`linkLocation: "body"`) are **Step 1.5 — do not produce yet.**
+- The thesis picks the structure (guideline §3); weekday is only a variety guard, not a rigid template.
 
-Pick one source page per day. Priority order:
-1. Blog posts: `src/data/post/*.md` or `*.mdx`
-2. Tool pages: `src/pages/tools/*.astro`
-3. pSEO pages: `src/data/niches.ts` or `src/data/comparisons.ts`
+## Step 3 — Write each post (the pipeline, per the guideline)
+For every post: **thesis → validate 4 gates → choose structure → draft (voice) → hook-carries-thesis check → self-critique → humanizer.** Do not restate the rules here; they live in the guideline. Drop any post that can't pass.
 
-**Match each day's theme:**
-
-| Day | Theme | Best source types |
-|-----|-------|-------------------|
-| Monday | Strategy | Long-form blog posts about YouTube strategy |
-| Tuesday | SEO / Discoverability | Blog posts about YouTube SEO, search intent |
-| Wednesday | Lead Generation | Blog posts about YouTube for leads, ROI calculator page |
-| Thursday | Content / Messaging | Blog posts about scripting, content planning |
-| Friday | Mistakes / Contrarian | "Why most..." style posts, anti-patterns |
-
-For each candidate page:
-- Read the file content
-- Extract: title, meta description, og:image URL, core insight
-- Find the `imageUrl`: check frontmatter for `image`, `ogImage`, or `heroImage`. Fall back to `https://sellontube.com/og/<slug>.jpg` pattern.
-- Choose the strongest LinkedIn angle — NOT a summary of the article, but a specific insight that stands alone
-
----
-
-## Step 4 — Write 5 posts
-
-For each post, follow ALL of these rules:
-
-### The primary goal
-Every post must make the reader want to click the link and visit the page or try the tool.
-
-This means: **tease, don't tell.** Give enough to be genuinely useful and credible, but leave the payoff — the framework, the full breakdown, the tool result — on the page. The reader should finish the post thinking "I need to read the rest of this" or "I want to try that."
-
-The click is the conversion. Not likes. Not comments. The click.
-
-### Content rules
-- Length: 900–1,700 characters (count carefully)
-- Open with a strong, specific hook — a surprising fact, a direct claim, or a challenge
-- No "In today's digital landscape", "Here are 5 tips", "Most YouTube...", "Game-changing", "Unlock the power of"
-- No em dashes (use commas, colons, or full stops instead)
-- Include the source URL naturally — as a pull toward more, not a footnote
-- Tone: sharp, business-aware, practical — not motivational, not guru-ish
-- Write for B2B founders, SaaS operators, marketing heads — people evaluating YouTube for leads
-- 0–3 hashtags max, only if they add relevance
-
-### Click-through writing techniques
-Use at least one of these per post:
-
-1. **Incomplete revelation** — Introduce a framework or finding, name its parts, then say "the full breakdown is here: [link]"
-2. **Curiosity gap** — State something counterintuitive, give partial explanation, let the page close the loop
-3. **Tool tease** — If the source is a tool, show what the tool surfaces (a stat, a score, a result) and tell them to run their own: "See what yours looks like: [link]"
-4. **Named concept** — Coin or reference a specific term from the article ("The Acquisition Engine model", "the compounding stack") that sounds useful enough to investigate
-5. **Partial list** — Give 2 of 4 reasons/steps, then "the other two are the ones most businesses miss. Full list: [link]"
-
-### Structure that works well
-- Hook (1–2 lines — makes them stop scrolling)
-- Problem or insight (2–3 short paragraphs — earns credibility)
-- Tease: the payoff is on the page, not here (creates the click)
-- CTA line that sounds like a natural next step, not a sales push
-- Source URL on its own line at the end
-
-### What to avoid
-- Giving away the entire insight — if everything is in the post, there's no reason to click
-- Lazy angles already in history ("YouTube is a long game", "content without strategy fails")
-- Motivational filler
-- Listicles ("5 reasons why...")
-- Summarising the article instead of extracting the sharpest tease
-
----
-
-## Step 5 — Output queue.json
-
-Write the following to `scripts/linkedin-agent/queue.json`:
+## Step 4 — Output `scripts/linkedin-agent/queue.json`
+Array of post objects, this exact shape:
 
 ```json
-[
-  {
-    "scheduledDate": "YYYY-MM-DD",
-    "dayOfWeek": "Monday",
-    "weekdayTheme": "Strategy",
-    "sourceTitle": "Exact page title",
-    "sourceUrl": "https://sellontube.com/exact-path",
-    "imageUrl": "https://sellontube.com/path/to/image.jpg",
-    "postAngle": "One sentence describing the angle taken",
-    "linkedinPost": "Full post text ready to publish. Includes source URL naturally.",
-    "hashtags": ["#Optional", "#Hashtags"]
-  },
-  ... (5 total, one per weekday)
-]
+{
+  "scheduledDate": "YYYY-MM-DD",
+  "dayOfWeek": "Monday",
+  "archetype": "framework | tactical-how-to | mistake | proof | contrarian",
+  "thesis": "After this post, [reader] can [execute X] to get more customers.",
+  "linkLocation": "comment | null",
+  "sourceTitle": "Exact page title or null",
+  "sourceUrl": "https://sellontube.com/... or null",
+  "imageUrl": "og-image URL for link posts, else null (takeaway cards = Step 1.5)",
+  "firstComment": "For comment posts: '[specific lead-in] -> [UTM link]' (never a bare URL), else null",
+  "postAngle": "one-line angle",
+  "linkedinPost": "full post text, no URL in body for comment/null posts",
+  "hashtags": ["#Optional", "#0to3"]
+}
 ```
 
-After writing the file, present all 5 posts to the user for review. Do NOT run the schedule script — wait for explicit user approval.
-
----
-
-## Step 6 — After approval
-
-Once the user approves (with or without edits), remind them to run:
-
+## Step 5 — Schedule
+Tell the user to run:
 ```bash
 node scripts/linkedin-agent/linkedin-schedule.js
 ```
+The script runs `validatePost` on each post (skips + reports failures), uploads any image, POSTs to Zernio with `firstComment`, and appends to history at 9 AM IST per `scheduledDate`.
 
-This schedules all 5 posts in Zernio at 9 AM IST each weekday. Done until next week.
+## Step 6 — First-batch validation (one time)
+On the very first live batch, confirm on the real post that Zernio renders `firstComment` as an actual first comment on the company page before trusting it at scale. This is why batch 1 is 2 weeks.
 
 ---
 
-## Quality checklist (run before presenting posts)
-
-- [ ] All 5 posts are 900–1,700 characters
-- [ ] No em dashes in any post
-- [ ] Each post includes the source URL in the body
-- [ ] Each post has a valid imageUrl (not null, not placeholder)
-- [ ] No angle repeats from linkedin-history.json
-- [ ] No banned openers used
-- [ ] Weekday themes matched
-- [ ] Hashtags 0–3 per post
-- [ ] Each post uses at least one click-through technique (incomplete revelation, curiosity gap, tool tease, named concept, or partial list)
-- [ ] The post does NOT give away the full insight — the payoff is on the page
+## Guardrails (hard)
+- Cite only `verified: true` bank entries. No fabricated stats, sources, or videos.
+- Founder first-hand experience allowed only if anonymized and not reframed as SellonTube's own work (guideline §7).
+- No em dashes. 900-1,700 chars. 0-3 hashtags. Link only where `linkLocation` says.
+- Main thread sets `scheduledDate`; never delegate dates to a subagent.

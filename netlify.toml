@@ -51,21 +51,6 @@
   status = 301
 
 [[redirects]]
-  from = "/blog/youtube-sales-funnel"
-  to = "/blog/youtube-lead-generation"
-  status = 301
-
-[[redirects]]
-  from = "/blog/youtube-seo-services"
-  to = "/404"
-  status = 410
-
-[[redirects]]
-  from = "/blog/ai-tools-for-youtube"
-  to = "/404"
-  status = 410
-
-[[redirects]]
   from = "/terms"
   to = "/terms-of-service"
   status = 301

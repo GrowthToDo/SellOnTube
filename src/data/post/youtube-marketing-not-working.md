@@ -53,7 +53,21 @@ Before you shut down the channel, run these six diagnostic checks. In almost eve
 </ul>
 </div>
 
+## Contents
+
+- [The Creator vs. Business YouTube Problem](#the-creator-vs-business-youtube-problem)
+- [Check #1: Are You Targeting Keywords or Just Topics?](#check-1-are-you-targeting-keywords-or-just-topics)
+- [Check #2: Are You Optimizing for YouTube Search or the Algorithm?](#check-2-are-you-optimizing-for-youtube-search-or-the-algorithm)
+- [Check #3: Does Every Video Have One Clear Business Outcome?](#check-3-does-every-video-have-one-clear-business-outcome)
+- [Check #4: Are You Publishing for Your Buyers or Your Peers?](#check-4-are-you-publishing-for-your-buyers-or-your-peers)
+- [Check #5: Have You Given It Enough Time with the Right Strategy?](#check-5-have-you-given-it-enough-time-with-the-right-strategy)
+- [Check #6: Are You Measuring the Right Metrics?](#check-6-are-you-measuring-the-right-metrics)
+- [What to Do Next](#what-to-do-next)
+- [FAQ](#faq)
+
 ## The Creator vs. Business YouTube Problem
+
+**Business YouTube marketing is a search-first acquisition strategy that uses buyer-intent keywords to put your videos in front of people actively researching a purchase.** It optimizes for relevance and qualified leads, not for views, subscribers, or algorithmic reach.
 
 This is where 90% of "youtube marketing not working" complaints originate. You studied what successful YouTubers do, applied their methods, and wondered why the same approach did not produce business results.
 
@@ -120,7 +134,7 @@ Signs you are optimizing for search:
 
 The fix is straightforward. For every video, identify the primary keyword you want to rank for. Put that keyword in the title, ideally near the beginning. Write a description of at least 200 words that naturally includes variations of the keyword and related terms. Structure the video so that someone searching for that phrase gets a clear, direct answer.
 
-Use a tool like the [YouTube SEO Tool](/tools/youtube-seo-tool) to check whether your titles and descriptions are properly optimized for search. Small adjustments to existing videos can sometimes recover ranking positions you did not know you were missing.
+Use a tool like the [YouTube SEO Tool](/tools/youtube-seo-tool) to check whether your titles and descriptions are properly optimized for search. Small adjustments to existing videos can sometimes recover ranking positions you did not know you were missing. Our roundup of [YouTube rank checker tools](/blog/best-youtube-rank-checker-tools-for-business) covers how to monitor those positions going forward.
 
 Search optimization is not glamorous. It will never produce a viral hit. But for business channels, it produces something better: a steady stream of viewers who already want what you sell.
 
@@ -142,7 +156,7 @@ Here is what business CTAs look like:
 
 Notice the pattern. Every CTA moves the viewer one step closer to becoming a customer. The CTA matches the viewer's current stage of awareness. You are not asking someone who just learned about a problem to book a sales call. You are not asking someone who is comparing solutions to watch another educational video.
 
-The rule is simple: before you script any video, write down the single action you want the viewer to take afterward. If you cannot define that action, the video does not have a business purpose, and you should either reframe it or skip it entirely.
+The rule is simple: before you script any video, write down the single action you want the viewer to take afterward. For [the CTA and funnel playbook for turning views into leads](/blog/youtube-lead-generation), see our full breakdown. If you cannot define that action, the video does not have a business purpose, and you should either reframe it or skip it entirely. Our [YouTube scriptwriting guide](/blog/youtube-script-writing-guide) walks through this process step by step, from defining the CTA to building it into the script structure.
 
 This does not mean every video needs a hard sell. It means every video needs a next step. Even a soft CTA like "check out the link in the description for the full checklist" is infinitely better than "smash that subscribe button."
 
@@ -182,7 +196,7 @@ YouTube marketing not working after six months of a creator strategy does not me
 
 Here is how to reset properly:
 
-**Step 1: Audit your existing content.** Go through every video and categorize it. Is the topic based on a keyword or a vague idea? Does the title match a search query? Is there a business CTA? Be ruthless. Videos that fail all three checks are not contributing to your business goals.
+**Step 1: Audit your existing content.** [Run a free channel audit](/tools/youtube-channel-audit) to get a baseline score, then go through every video and categorize it. Is the topic based on a keyword or a vague idea? Does the title match a search query? Is there a business CTA? Be ruthless. Videos that fail all three checks are not contributing to your business goals.
 
 **Step 2: Build a keyword-first content plan.** Identify 20 to 30 keywords your buyers actually search for. Prioritize by intent (comparison and solution keywords first) and competition (start with lower-competition phrases where you can realistically rank).
 
@@ -210,11 +224,19 @@ Here are the metrics that actually matter for a business YouTube channel:
 
 **Website clicks from YouTube.** How many viewers click through to your site? This is the bridge between YouTube views and business outcomes. If this number is zero, your CTAs are not working (go back to Check #3).
 
-**Leads or conversions from YouTube traffic.** This is the only metric that ultimately matters. Set up UTM tracking on every link in your YouTube descriptions so you can trace leads back to specific videos.
+**Leads or conversions from YouTube traffic.** This is the only metric that ultimately matters. Set up UTM tracking on every link in your YouTube descriptions so you can trace leads back to specific videos. Our [YouTube marketing ROI framework](/blog/youtube-marketing-roi) covers how to turn that tracking data into a real ROI figure.
 
 Stop comparing your 500-view business video to a creator's 500,000-view entertainment video. Those are different products serving different purposes. Your 500 views from buyers searching for "best CRM for consulting firms" are worth more than a creator's 500,000 views from teenagers watching a reaction video.
 
 When you measure what matters, you often discover that your youtube marketing is not working is actually "my youtube marketing is working slowly but I was comparing myself to creators." Slow, consistent search traffic that converts at 2% to 5% is a business asset. A viral video that converts at 0% is a vanity metric.
+
+| Vanity metric (creator) | Pipeline metric (business) | Why the pipeline metric wins |
+| --- | --- | --- |
+| Total views | Search impressions | Shows whether real keywords are surfacing your videos |
+| Subscribers | Click-through rate from search | Confirms the title matches what buyers searched for |
+| Watch time (all traffic) | Watch time from search viewers | Tells you the content delivered on the title's promise |
+| Likes and comments | Website clicks from YouTube | Measures the bridge from view to business outcome |
+| Viral video reach | Leads or conversions from YouTube traffic | The only number that ultimately affects revenue |
 
 ## What to Do Next
 
@@ -225,3 +247,21 @@ The pattern we see repeatedly: someone announces that YouTube marketing is not w
 YouTube works for businesses. But it works through search, not virality. Through buyer intent, not broad reach. Through patient, keyword-driven publishing, not volume and frequency.
 
 Fix the strategy, and the results follow.
+
+## FAQ
+
+### How long should I try YouTube marketing before giving up?
+
+Give a search-first YouTube strategy at least 90 days and 12 published videos before evaluating results. If you have been publishing for 6 months using a creator-style strategy (no keyword research, no buyer-intent topics), reset with a search-first approach and restart the 90-day clock.
+
+### Why do my YouTube videos get views but no business results?
+
+Views from the wrong audience are worthless. If your topics attract curious browsers instead of active buyers, your view count will grow while leads stay at zero. Switch from broad educational topics to buyer-intent keywords like comparisons, how-to-choose guides, and problem-specific searches.
+
+### Is YouTube marketing different for B2B vs B2C?
+
+Yes. B2C YouTube often works through the algorithm and viral content. B2B YouTube works through search. Your buyer is typing specific questions into YouTube before making a purchase decision. If your strategy optimizes for the algorithm instead of search, you are using the wrong playbook.
+
+### How do I know if YouTube is the right channel for my business?
+
+YouTube works for businesses where the buyer researches before purchasing, the customer lifetime value exceeds $2,000, and you can commit to publishing weekly for at least six months. If your product is a low-ticket impulse purchase or your audience does not use search to evaluate options, YouTube may not be the right fit.

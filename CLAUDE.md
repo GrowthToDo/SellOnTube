@@ -34,16 +34,28 @@ Use Language Server Protocol (LSP) as the primary method for understanding and n
 **Every new tool page must be added to the /tools listing and footer before the task is considered done.** This is not a separate task — it is part of building the tool. After creating any new `src/pages/tools/*.astro` file:
 1. Add the tool to the `tools` array in `src/pages/tools/index.astro` (correct workflow position)
 2. Add the tool to the `Free Tools` linkGroup in `src/navigation.ts` (matching order)
-3. Submit both URLs to Bing via Webmaster API (IndexNow is broken due to Cloudflare — use `curl` to `SubmitUrlbatch` endpoint with API key from `.mcp.json`)
-4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing)
+3. Submit both URLs to Bing automatically via `node scripts/bing-submit.mjs <file-of-urls>` (IndexNow is broken due to Cloudflare; this script uses the Webmaster API `SubmitUrlbatch` endpoint with `BING_WEBMASTER_API_KEY` from `.env`, not `.mcp.json` — no `.mcp.json` file exists in this repo). No need to ask first — run it as a standard step whenever a new tool or blog post publishes.
+4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing) — this step is manual (GSC has no public submission API), so it can't be automated.
 
 See `agents/08-microtool-builder.md` Phase 7 for full details.
+
+## AEO / AI Citation (canonical)
+
+`ai-seo-guide.md` is the single source of truth for AI-search optimization. Do not restate AEO rules in other docs; point to the canonical sections:
+- **Section 16** = the five citability rules + the hard pre-publish citability gate.
+- **Section 17** = citation-ready language rules.
+- **Section 18** = media policy (every post: relevant image + video, perf-safe, never padding).
+- **Section 19** = what actually gets cited at SellonTube (proven archetype + 9 signals; visible-FAQ-in-body is the biggest gap).
+- `agents/references/comparison-content-playbook.md` = page structure for comparison / alternatives / best-tools posts.
+- `content-depth-framework.md` = word-count and depth tiers only.
+
+Agent 05 hard-fails any post that misses the Section 16 gate. Third-party ratings only where a real listing exists (never fabricated); SellonTube's own tools use first-party proof plus disclosure.
 
 ## Build Standards
 
 1. **Performance** -- Optimize LCP on tool pages (Gemini loading states). Lazy-load below-fold images. Reserve space for media to prevent CLS. Defer non-critical JS.
 2. **Canonical/crawl hygiene** -- Absolute canonical URLs in head. Sitemap aligned with canonicals. Internal links point to canonical URLs only. Watch for WordPress legacy URLs leaking into the index.
-3. **Internal linking** -- Route equity from blog posts and pSEO pages toward `/tools/*`. Use descriptive anchors. Add contextual cross-links from informational to commercial pages.
+3. **Internal linking** -- Route equity from blog posts and pSEO pages toward `/tools/*`. Use descriptive anchors. Add contextual cross-links from informational to commercial pages. **Anchor diversity cap:** no single target URL may accumulate the same exact-match anchor phrase from more than ~3 source pages; vary the phrasing naturally. Check existing usage corpus-wide before reusing a phrase (money pages like `/tools/youtube-seo-tool` and `/tools/youtube-roi-calculator` already carry 28-32 pre-existing exact-match anchors — do not add more without varying). **Link count is not the goal:** a link from a high-impression page is worth many from zero-demand pages, so weight by real GSC authority rather than chasing "0 orphans". New `niches.ts` / `comparisons.ts` entries populate `relatedLinks` (2-4 links, >=1 tool, distinct anchors). Full record: `research/aeo/internal-linking-phase2-report.md`.
 4. **Structured data** -- Only schema matching visible content. WebApplication on tools, BreadcrumbList on all pages, FAQPage only where FAQ is visible on-page.
 5. **Implementation** -- Semantic HTML. Pages fully crawlable without JS. No render-blocking resources above the fold.
 
@@ -66,6 +78,16 @@ See `agents/08-microtool-builder.md` Phase 7 for full details.
 - **Netlify redirect syntax:** `:placeholder` only works between `/` separators. For within-segment patterns (e.g. `/youtube-for-*`), use splat syntax: `from = "/youtube-for-*"` + `to = "/youtube-for/:splat"`.
 
 - **Read SEO docs before any SEO suggestion.** Check `seo-rules.md` and `seo-audit-log.md` first. Project-specific rules override general SEO knowledge.
+
+- **GSC-FIRST: pull live Search Console data BEFORE scoping any SEO project.** Not just titles/meta — *any* SEO work: internal linking, technical fixes, content, AEO, refactors. Write down where impressions/clicks actually concentrate, then state explicitly which of those pages the proposed work moves and by what mechanism. If the answer is "pages with negligible impressions" or "this mechanism cannot move this page's constraint," re-scope before writing code. This has now been violated twice (2026-06-30 title project, 2026-07-17 internal-linking project — the latter shipped ~280 links into clusters carrying 0.56% of impressions while one page holding 46% of site impressions sat untouched at position 32). Mechanism limits worth knowing: internal links move pages *within* the top ~20 and do nothing for CTR on pages that already rank; a position-30+ page needs authority/content, and a page-1 zero-click page needs title/meta. See `mistakes-lessons.md` 2026-07-17.
+
+- **Analyse `dist/`, not source, for anything about rendered output.** Links, canonicals, schema, headings, what actually ships. On this Astro site a large share of internal links are generated at build time by components and algorithms (e.g. `BlogLatestPosts`, the related-posts scorer, pSEO template loops) and exist as no literal `href` in source. A source grep produces confident, wrong answers — it falsely reported the homepage as a dead end and invented orphans that were already linked. Run `npm run build`, then analyse `dist/`. `scripts/audit_internal_links.py` does this correctly (and excludes `header`/`footer`/`nav` chrome so boilerplate does not mask real orphans).
+
+- **A verification script must fail loudly, and must be mutation-tested before you trust it.** A silent failure in a checker turns "unknown" into "verified clean" and is worse than having no checker. Always check `returncode` on subprocess calls (never treat empty stdout as a valid empty result), and normalise `glob`/`pathlib` paths with `.replace('\\', '/')` before passing to any `git` pathspec — Windows backslashes silently break `git show ref:path`, which corrupted three rounds of "verified" results on 2026-07-17. Before believing an "all clean" verdict, deliberately break the thing being checked and confirm the checker actually fails.
+
+- **Validate against the corpus, not against the doc that describes it.** Living docs (`internal-linking-map.md` and friends) are a lossy cache and always drift. Any site-wide constraint check (anchor diversity, canonical uniqueness, schema presence) must compute current state from the real files + built HTML at check time. Checking new work against a ~20-row doc instead of the 50+ published-post corpus cost four review rounds on 2026-07-17.
+
+- **After any fix pass, re-run the FULL verification suite, not just the check for what you fixed.** On 2026-07-17 each narrow fix introduced a fresh defect: a scripted anchor swap produced "the **the** tag generator tool" in live prose, and the grammar fix for that then collided with existing anchors and re-broke a cap an earlier round had already closed. A fix is done when everything passes, not when your thing passes. Scripted edits into prose must validate the resulting full sentence, not the replaced token.
 
 - **Style guide applies to ALL copy, not just new writing.** When any copy task is performed, check ALL existing copy on touched pages against `style-guide.md` and `content-playbook.md`. Grep for every banned pattern before finishing.
 

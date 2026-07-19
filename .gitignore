@@ -42,3 +42,9 @@ research/**/*.xls
 
 # Local Netlify folder
 .netlify
+.gstack/
+
+# Local agent design skills (installed via npx skills, not part of the site)
+.agents/
+.claude/skills/
+skills-lock.json

@@ -31,7 +31,16 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap({
-      filter: (page) => !page.includes('/tag/') && !page.includes('/category/') && !/\/blog\/\d+$/.test(page),
+      filter: (page) =>
+        !page.includes('/tag/') &&
+        !page.includes('/category/') &&
+        !/\/blog\/\d+$/.test(page) &&
+        !page.includes('/changelog') &&
+        !page.includes('/next-steps') &&
+        !page.endsWith('/shopify-app/tools') &&
+        !page.endsWith('/shopify-app/tools/') &&
+        !page.includes('listing-grader/report') &&
+        !page.includes('/case-studies/left-foot-software/slides'),
       lastmod: new Date(),
     }),
     mdx(),

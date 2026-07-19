@@ -1,0 +1,106 @@
+[
+  {
+    "stat": "91% of businesses use video as a marketing tool.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Video is table stakes; the differentiator is targeting buyer intent, not adoption.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — exact figure on the page."
+  },
+  {
+    "stat": "85% of people have been convinced to buy a product or service by watching a video.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Direct video-to-purchase link for proof posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — exact figure on the page."
+  },
+  {
+    "stat": "89% of consumers say video quality impacts their trust in a brand.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Trust/credibility angle for framework or mistake posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — exact figure on the page."
+  },
+  {
+    "stat": "YouTube has billions of monthly logged-in users.",
+    "source": "YouTube (official press)",
+    "url": "https://blog.youtube/press/",
+    "context": "Scale of the audience a B2B channel can reach. Faithful to YouTube's own wording ('billions of monthly logged-in users').",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — YouTube press page states 'billions of monthly logged-in users'."
+  },
+  {
+    "stat": "YouTube is the world's second most-visited website.",
+    "source": "Similarweb",
+    "url": "https://www.similarweb.com/top-websites/",
+    "context": "YouTube's scale as a discovery/search surface.",
+    "verified": false,
+    "needs": "Similarweb top-websites page is JS-gated and did not scrape via /browse; confirm current rank on a scrapable source before live use."
+  },
+  {
+    "stat": "B2B buyers spend only about 17% of their total purchase journey meeting with potential suppliers.",
+    "source": "Gartner",
+    "url": "https://www.gartner.com/en/sales/insights/b2b-buying-journey",
+    "context": "Most of the buying decision happens during self-directed research, so your video often IS the sales conversation.",
+    "verified": false,
+    "needs": "Gartner page returned HTTP 403 to /browse; confirm the exact figure + deep URL (or a Gartner-authored PDF) before live use."
+  },
+  {
+    "stat": "When B2B buyers compare multiple suppliers, time spent with any one sales rep can be as little as 5-6% of the journey.",
+    "source": "Gartner",
+    "url": "https://www.gartner.com/en/sales/insights/b2b-buying-journey",
+    "context": "Reinforces that content, not reps, carries most of the persuasion.",
+    "verified": false,
+    "needs": "Gartner page returned HTTP 403; confirm the exact figure before live use."
+  },
+  {
+    "stat": "More than half of shoppers say online video has helped them decide which specific brand or product to buy.",
+    "source": "Think with Google",
+    "url": "https://www.thinkwithgoogle.com/",
+    "context": "Ties video directly to purchase decisions.",
+    "verified": false,
+    "needs": "Not yet located on a scrapable Think with Google page; confirm exact percentage + deep URL before live use."
+  },
+  {
+    "stat": "Search intent matters more than search volume: a low-volume, high-intent query out-earns a high-volume, low-intent one.",
+    "source": "Ahrefs",
+    "url": "https://ahrefs.com/blog/",
+    "context": "Principle (not a single number) Ahrefs teaches consistently.",
+    "verified": false,
+    "needs": "Cite a specific Ahrefs article stating this, confirmed via /browse, before attributing."
+  },
+  {
+    "stat": "83% of video marketers say video has directly increased sales.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Video-to-sales link. Strong for proof/mistake posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse."
+  },
+  {
+    "stat": "85% of video marketers say video has helped them generate leads.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Video-to-leads link. On-axis for acquisition posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse."
+  },
+  {
+    "stat": "82% of marketers say video marketing has given them a good ROI.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "ROI framing for proof/framework posts.",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse."
+  },
+  {
+    "stat": "84% of consumers say they want to see more video from brands.",
+    "source": "Wyzowl State of Video Marketing 2026",
+    "url": "https://www.wyzowl.com/video-marketing-statistics/",
+    "context": "Demand-side; use sparingly (adoption angle).",
+    "verified": true,
+    "confirmed": "2026-07-18 via /browse — confirm exact wording before heavy use."
+  }
+]

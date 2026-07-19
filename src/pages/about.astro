@@ -1,17 +1,20 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import { SITE } from 'astrowind:config';
 
-import sathyanandPhoto from '~/assets/images/team/Sathya Profile Photo.jpg';
+import sathyanandPhoto from '~/assets/images/team/sathya-portrait.jpg';
 import gauthamPhoto from '~/assets/images/team/Gautham Profile Photo.jpg';
+import pradeepPhoto from '~/assets/images/team/pradeep-portrait.jpg';
+import foundersGroupPhoto from '~/assets/images/team/founders-group.jpg';
 import searchIntentImage from '~/assets/images/person-searching-laptop.jpg';
 import productionImage from '~/assets/images/content-creation-setup.jpg';
 import economicsImage from '~/assets/images/data-analysis-charts.jpg';
 
 const metadata = {
   title: 'About Us',
-  description: 'Meet the founders of SellOnTube. Sathyanand and Gautham built a YouTube acquisition service for B2B businesses that want predictable leads, not just views.',
+  description: 'Meet the founders of SellOnTube. Sathyanand, Gautham, and Pradeep built a YouTube acquisition service for B2B businesses that want predictable leads, not just views.',
   robots: { index: true, follow: true },
 };
 
@@ -67,10 +70,34 @@ const personSchemas = [
       "https://x.com/MindCharting"
     ],
     "knowsAbout": ["Market research", "Search demand analysis", "Business economics", "YouTube strategy"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pradeep Pandey",
+    "jobTitle": "Co-Founder",
+    "worksFor": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl },
+    "description": "Co-Founder of SellOnTube. Brings large-scale operations experience from healthcare, where he leads corporate strategy across 19 hospitals, to running SellOnTube's research and production operations.",
+    "url": "https://www.linkedin.com/in/pradeep-pandeyji/",
+    "sameAs": [
+      "https://www.linkedin.com/in/pradeep-pandeyji/"
+    ],
+    "knowsAbout": ["Operations management", "Process reengineering", "Digital transformation", "Content operations"]
   }
 ];
 
-const founders = [
+interface Founder {
+  name: string;
+  photo: ImageMetadata;
+  photoAlt: string;
+  role: string;
+  bio: string;
+  linkedin: string;
+  twitter?: string;
+  twitterHandle?: string;
+}
+
+const founders: Founder[] = [
   {
     name: 'Sathyanand S',
     photo: sathyanandPhoto,
@@ -90,6 +117,14 @@ const founders = [
     linkedin: 'https://www.linkedin.com/in/mindcharting/',
     twitter: 'https://x.com/MindCharting',
     twitterHandle: '@MindCharting',
+  },
+  {
+    name: 'Pradeep Pandey',
+    photo: pradeepPhoto,
+    photoAlt: 'Pradeep Pandey, Co-Founder of SellOnTube',
+    role: 'Co-Founder',
+    bio: 'Pradeep runs operations at scale in his day job, leading corporate strategy across 19 hospitals and 2,000+ beds as Deputy General Manager at Apollo Hospitals. At SellOnTube he applies that same operational discipline to the research and production engine, so every client video ships on schedule.',
+    linkedin: 'https://www.linkedin.com/in/pradeep-pandeyji/',
   },
 ];
 
@@ -123,8 +158,8 @@ const pillars = [
   ))}
 
   <!-- Hero -->
-  <section class="py-16 sm:py-20 text-center">
-    <div class="max-w-3xl mx-auto px-4">
+  <section class="son-grid py-16 sm:py-20 text-center">
+    <div class="max-w-3xl mx-auto px-4 relative">
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
         About Us
       </h1>
@@ -172,7 +207,17 @@ const pillars = [
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">The people behind the work</h2>
       </div>
 
-      <div class="grid sm:grid-cols-2 gap-8">
+      <div class="mb-10">
+        <Image
+          src={foundersGroupPhoto}
+          alt="SellOnTube founders Gautham, Sathyanand, and Pradeep Pandey standing together outdoors"
+          width={1024}
+          height={768}
+          class="w-full max-w-2xl mx-auto rounded-2xl object-cover"
+        />
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {founders.map((founder) => (
           <div class="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 flex flex-col items-center text-center">
             <Image
@@ -199,18 +244,20 @@ const pillars = [
                 </svg>
                 LinkedIn
               </a>
-              <a
-                href={founder.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${founder.name} on X`}
-                class="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-              >
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-                {founder.twitterHandle}
-              </a>
+              {founder.twitter && (
+                <a
+                  href={founder.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${founder.name} on X`}
+                  class="flex items-center gap-1.5 text-sm text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  {founder.twitterHandle}
+                </a>
+              )}
             </div>
           </div>
         ))}
@@ -225,7 +272,7 @@ const pillars = [
         Ready to find out if YouTube makes sense for your business?
       </h2>
       <p class="text-base text-gray-600 dark:text-slate-300">
-        Start with a diagnostic call. We will run the numbers, map the search demand, and tell you plainly whether YouTube should be part of your acquisition mix.
+        Start with a diagnostic call. We will run the numbers, map the search demand, and tell you plainly whether YouTube should be part of your acquisition mix. See exactly <a href="/how-it-works" class="underline hover:text-gray-900 dark:hover:text-white">how we work together</a>, step by step.
       </p>
       <div class="mt-6 flex justify-center">
         <a

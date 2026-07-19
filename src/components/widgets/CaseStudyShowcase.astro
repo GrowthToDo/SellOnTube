@@ -39,7 +39,7 @@ const bgPattern = "background-image: url(\"data:image/svg+xml,%3Csvg width='60' 
         <!-- Big stat -->
         <div class="mb-8">
           <div class="inline-flex items-baseline gap-2">
-            <span class="text-7xl md:text-8xl font-black text-white">3.25</span>
+            <span class="text-7xl md:text-8xl font-black text-white tabular-nums son-circ">3.25<svg class="son-anno son-anno-reveal" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" style="stroke-width: 2.6;" d="M24,60 C16,30 92,10 168,9 C256,8 307,27 305,55 C303,86 234,102 148,100 C68,98 17,83 16,58 C15,37 54,21 110,15" /></svg></span>
             <span class="text-4xl md:text-5xl font-bold text-red-500">x</span>
           </div>
           <p class="text-xl text-slate-300 mt-2">more conversions from YouTube</p>
@@ -47,19 +47,19 @@ const bgPattern = "background-image: url(\"data:image/svg+xml,%3Csvg width='60' 
 
         <!-- Mini stats -->
         <div class="grid grid-cols-2 gap-4 mb-8 max-w-sm mx-auto lg:mx-0">
-          <div class="bg-white/5 rounded-xl p-4 text-center">
-            <div class="text-2xl font-bold text-white">1,257</div>
+          <div class="bg-white/5 rounded-xl p-4 text-center ring-1 ring-white/10">
+            <div class="text-2xl font-bold text-white tabular-nums">1,257</div>
             <div class="text-sm text-slate-400">YouTube conversions</div>
           </div>
-          <div class="bg-white/5 rounded-xl p-4 text-center">
-            <div class="text-2xl font-bold text-white">411</div>
+          <div class="bg-white/5 rounded-xl p-4 text-center ring-1 ring-white/10">
+            <div class="text-2xl font-bold text-white tabular-nums">411</div>
             <div class="text-sm text-slate-400">Blog conversions</div>
           </div>
         </div>
 
         <a
           href="/blog/youtube-vs-blog-shopify-app-case-study"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full transition-all duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98]"
         >
           Read the full case study
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,7 +70,7 @@ const bgPattern = "background-image: url(\"data:image/svg+xml,%3Csvg width='60' 
 
       <!-- Right: Visual chart representation -->
       <div class="relative">
-        <div class="bg-white/5 backdrop-blur rounded-2xl p-6 md:p-8">
+        <div class="son-pin son-tilt-on-dark bg-white/5 backdrop-blur rounded-2xl p-6 md:p-8 ring-1 ring-white/10 shadow-[0_1px_0_rgb(255_255_255/0.05)_inset]">
           <h3 class="text-lg font-semibold text-white mb-6">Monthly Conversions: The Gap Widened</h3>
 
           <!-- Simplified visual bar chart -->
@@ -118,9 +118,6 @@ const bgPattern = "background-image: url(\"data:image/svg+xml,%3Csvg width='60' 
           </div>
         </div>
 
-        <!-- Decorative elements -->
-        <div class="absolute -top-4 -right-4 w-24 h-24 bg-red-500/20 rounded-full blur-2xl"></div>
-        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
       </div>
     </div>
 

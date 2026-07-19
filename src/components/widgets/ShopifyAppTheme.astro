@@ -1,0 +1,357 @@
+---
+// Shared design language for the /shopify-app section: tokens, fonts, header skin,
+// artifact frames, and the scroll-reveal behavior. Import once per page, inside Layout.
+---
+
+<style is:global>
+  /* Page-scoped chrome: match the site header to this section's surface. */
+  html,
+  body {
+    background: #171512 !important;
+  }
+  #header {
+    border-bottom: 1px solid #2b2823;
+  }
+  #header > div.absolute {
+    background: rgba(23, 21, 18, 0.88) !important;
+    backdrop-filter: blur(10px);
+  }
+  #header .btn-primary {
+    background: #d8492f !important;
+    border-color: #d8492f !important;
+    color: #fff8f5 !important;
+  }
+  #header .btn-primary:hover {
+    background: #c23f27 !important;
+    border-color: #c23f27 !important;
+  }
+
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/satoshi/Satoshi-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/satoshi/Satoshi-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/satoshi/Satoshi-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Satoshi';
+    src: url('/fonts/satoshi/Satoshi-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  .sfy {
+    --bg: #171512;
+    --bg2: #1e1b17;
+    --border: #2b2823;
+    --border-soft: #232019;
+    --text: #f1eee8;
+    --muted: #a9a399;
+    --dim: #736d63;
+    --accent: #d8492f;
+    --accent-soft: rgba(216, 73, 47, 0.14);
+
+    font-family: 'Satoshi', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .sfy ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .sfy h1,
+  .sfy h2,
+  .sfy h3 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .sfy .sfy-display {
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+
+  .sfy .sfy-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--dim);
+  }
+
+  .sfy .sfy-num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sfy .sfy-container {
+    max-width: 74rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* Buttons: pill for interactive, everything else square. */
+  .sfy .sfy-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff8f5;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    padding: 1.05rem 2.4rem;
+    border-radius: 999px;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  .sfy .sfy-btn:hover {
+    background: #c23f27;
+    transform: translateY(-1px);
+  }
+  .sfy .sfy-btn:active {
+    transform: scale(0.98);
+  }
+
+  .sfy .sfy-link {
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--dim);
+    transition: text-decoration-color 0.2s ease;
+  }
+  .sfy .sfy-link:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  .sfy a:focus-visible,
+  .sfy summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* Drafting grid over grain: structure + texture on the charcoal surface. */
+  .sfy .sfy-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(241, 238, 232, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(241, 238, 232, 0.045) 1px, transparent 1px),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.015 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:
+      44px 44px,
+      44px 44px,
+      160px 160px;
+    mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);
+  }
+
+  /* Service rows */
+  .sfy details.sfy-row {
+    border-top: 1px solid var(--border);
+  }
+  .sfy details.sfy-row:last-of-type {
+    border-bottom: 1px solid var(--border);
+  }
+  .sfy details.sfy-row summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 2rem 0.25rem;
+    transition: background 0.2s ease;
+  }
+  .sfy details.sfy-row summary::-webkit-details-marker {
+    display: none;
+  }
+  .sfy details.sfy-row summary:hover {
+    background: var(--bg2);
+  }
+  .sfy details.sfy-row .sfy-plus {
+    flex-shrink: 0;
+    align-self: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 1.25rem;
+    transition:
+      transform 0.25s ease,
+      border-color 0.2s ease;
+  }
+  .sfy details.sfy-row[open] .sfy-plus {
+    transform: rotate(45deg);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Artifact screenshots: real client work, framed like plates in a document. */
+  .sfy .sfy-shot {
+    position: relative;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.55);
+    transform: rotate(var(--rot, 0deg));
+  }
+  .sfy .sfy-shot::before,
+  .sfy .sfy-shot::after {
+    content: '';
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    pointer-events: none;
+  }
+  .sfy .sfy-shot::before {
+    top: -7px;
+    left: -7px;
+    border-top: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
+  }
+  .sfy .sfy-shot::after {
+    bottom: -7px;
+    right: -7px;
+    border-bottom: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+  }
+  .sfy .sfy-shot.sfy-framed::before,
+  .sfy .sfy-shot.sfy-framed::after {
+    display: none;
+  }
+  .sfy .sfy-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .sfy .sfy-shot figcaption {
+    font-size: 0.75rem;
+    color: var(--dim);
+    padding: 0.7rem 0.9rem;
+    border-top: 1px solid var(--border-soft);
+  }
+  .sfy .sfy-strip {
+    display: grid;
+    grid-template-columns: 5fr 3fr 4fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  @media (max-width: 767px) {
+    .sfy .sfy-strip {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 0.75rem;
+    }
+    .sfy .sfy-strip > * {
+      flex: 0 0 82%;
+      scroll-snap-align: start;
+    }
+  }
+
+  /* Minimal comparison bars (real data, direct labels) */
+  .sfy .sfy-bar-track {
+    background: var(--border-soft);
+  }
+  .sfy .sfy-bar-fill {
+    height: 100%;
+  }
+
+  /* Data tables */
+  .sfy table.sfy-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .sfy table.sfy-table th {
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--dim);
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .sfy table.sfy-table td {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--muted);
+  }
+  .sfy table.sfy-table tfoot td {
+    border-top: 1px solid var(--border);
+    border-bottom: none;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Scroll reveal */
+  .sfy .sfy-reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease;
+  }
+  .sfy .sfy-reveal.sfy-in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sfy .sfy-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const reveal = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.sfy-reveal').forEach((el) => el.classList.add('sfy-in'));
+        return;
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('sfy-in');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px' }
+      );
+      document.querySelectorAll('.sfy-reveal').forEach((el) => io.observe(el));
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', reveal);
+    } else {
+      reveal();
+    }
+  })();
+</script>

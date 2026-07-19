@@ -1,0 +1,58 @@
+---
+/**
+ * KeyTakeaways — answer-first, citation-optimised summary block for /tools/* pages.
+ *
+ * Renders as a native dashboard "summary card" (header strip + emerald accent),
+ * deliberately NOT styled like a blog callout. Uses the same design tokens as the
+ * tool scorecard diagrams (rounded-2xl, slate borders, emerald accents).
+ *
+ * AEO purpose:
+ *  - `answer` is the answer-first / standalone-definition sentence AI engines extract.
+ *    Lead with the subject ("A YouTube SEO tool is…") so it reads as a self-contained fact.
+ *  - `points` are short, parallel, scannable takeaways (3–5 ideal).
+ *
+ * Placement: below the interactive hero/tool (LCP/CLS-safe), at the top of the
+ * readable content — the first thing a crawler/LLM reads after the app.
+ *
+ * Props:
+ *  - eyebrow?: string   — small label (default "Key takeaways")
+ *  - answer:   string   — the answer-first lead sentence (required)
+ *  - points:   string[] — bullet takeaways (required, 3–5 recommended)
+ */
+interface Props {
+  eyebrow?: string;
+  answer: string;
+  points: string[];
+}
+
+const { eyebrow = 'Key takeaways', answer, points } = Astro.props;
+---
+
+<section class="py-12 sm:py-16 border-t border-slate-100 dark:border-slate-800" aria-label={eyebrow}>
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
+      <!-- Header strip -->
+      <div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 px-5 py-3 border-b border-slate-200 dark:border-slate-700">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400">{eyebrow}</span>
+      </div>
+
+      <!-- Answer-first lead -->
+      <div class="px-5 sm:px-6 pt-5">
+        <p class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white leading-snug">{answer}</p>
+      </div>
+
+      <!-- Takeaway points -->
+      <ul class="px-5 sm:px-6 pb-5 pt-4 space-y-3">
+        {points.map((point) => (
+          <li class="flex items-start gap-3">
+            <svg class="flex-shrink-0 w-4 h-4 mt-0.5 text-emerald-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4l2.8 2.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-sm text-gray-600 dark:text-slate-300 leading-relaxed" set:html={point}></span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

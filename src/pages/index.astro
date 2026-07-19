@@ -86,8 +86,51 @@ const faqSchema = {
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <style is:global>
+    /* ROI worksheet: registration ticks on the calculator card */
+    #roi-calculator .rounded-2xl.border {
+      position: relative;
+    }
+    #roi-calculator .rounded-2xl.border::before,
+    #roi-calculator .rounded-2xl.border::after {
+      content: '';
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      pointer-events: none;
+    }
+    #roi-calculator .rounded-2xl.border::before {
+      top: -7px;
+      left: -7px;
+      border-top: 2px solid rgb(216 73 47);
+      border-left: 2px solid rgb(216 73 47);
+    }
+    #roi-calculator .rounded-2xl.border::after {
+      bottom: -7px;
+      right: -7px;
+      border-bottom: 2px solid rgb(216 73 47);
+      border-right: 2px solid rgb(216 73 47);
+    }
+
+    /* The approach image reads as a pinned artifact, not a stock photo */
+    section:has(img[alt^="Data visualization"]) img {
+      border: 1px solid rgba(17, 17, 19, 0.6);
+      border-radius: 2px !important;
+      box-shadow: 6px 6px 0 rgba(17, 17, 19, 0.12);
+      transform: rotate(-0.5deg);
+    }
+    .dark section:has(img[alt^="Data visualization"]) img {
+      border-color: rgba(247, 248, 248, 0.35);
+      box-shadow: 6px 6px 0 rgba(247, 248, 248, 0.08);
+    }
+  </style>
+
+
+
   <!-- Hero Widget ******************* -->
 
+  <div class="son-grid">
   <Hero
     actions={[
       {
@@ -104,32 +147,35 @@ const faqSchema = {
     ]}
   >
     <Fragment slot="title">
-      We acquire customers for your business through YouTube - without you recording a single video.
+      We acquire customers for your business through <span class="son-circ">YouTube<svg class="son-anno son-anno-load" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" style="stroke-width: 3;" d="M24,60 C16,30 92,10 168,9 C256,8 307,27 305,55 C303,86 234,102 148,100 C68,98 17,83 16,58 C15,37 54,21 110,15" /></svg></span> - without you recording a single video.
     </Fragment>
     <Fragment slot="subtitle">
       Done-for-you strategy, scripting, voiceover, production, and publishing. You get qualified leads without appearing on camera.
     </Fragment>
     <Fragment slot="image">
-      <HeroProofPanel />
+      <div class="son-pin">
+        <HeroProofPanel />
+      </div>
     </Fragment>
   </Hero>
+  </div>
 
   <!-- Social Proof Bar *************** -->
-  <section class="py-6 bg-slate-50 dark:bg-slate-800/50">
+  <section class="py-8 bg-slate-50 dark:bg-slate-800/50 border-y border-white/5">
     <div class="max-w-4xl mx-auto px-4">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 text-center">
         <div>
-          <p class="text-3xl font-bold text-emerald-600 dark:text-emerald-400">3.25x</p>
+          <p class="text-3xl font-bold tabular-nums inline-flex items-end gap-2.5 text-[#c23f27] dark:text-[#e0755f]">3.25x<svg class="son-anno mb-0.5" width="32" height="28" viewBox="0 0 40 34" aria-hidden="true"><path d="M4,30 C12,27.5 23,19 31,6.5 M31,6.5 l-9.5,2 M31,6.5 l-0.5,10" /></svg></p>
           <p class="text-sm text-gray-600 dark:text-slate-400">more conversions than blog content</p>
         </div>
         <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
         <div>
-          <p class="text-3xl font-bold text-gray-900 dark:text-white">90-120 days</p>
+          <p class="text-3xl font-bold text-gray-900 dark:text-white tabular-nums">90-120 days</p>
           <p class="text-sm text-gray-600 dark:text-slate-400">to meaningful traction</p>
         </div>
         <div class="hidden sm:block w-px h-12 bg-slate-300 dark:bg-slate-600"></div>
         <div>
-          <p class="text-3xl font-bold text-gray-900 dark:text-white">No contracts</p>
+          <p class="text-3xl font-bold text-gray-900 dark:text-white son-circ">No contracts<svg class="son-anno son-anno-reveal" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" style="top: auto; height: 0.15em; bottom: -0.16em;"><path pathLength="1" style="stroke-width: 2.6;" d="M5,10 C60,4 135,4 195,8 M18,17 C75,11.5 145,12 188,15" /></svg></p>
           <p class="text-sm text-gray-600 dark:text-slate-400">month-to-month, cancel anytime</p>
         </div>
       </div>
@@ -169,20 +215,42 @@ const faqSchema = {
 
   <!-- ROI Calculator **************** -->
 
-  <div id="roi-calculator" class="bg-gradient-to-br from-emerald-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+  <div id="roi-calculator" class="son-grid bg-gradient-to-br from-[#faf6f2] to-slate-50 dark:from-slate-900 dark:to-slate-800">
     <ROICalculator title="Check if the math works for your business" />
   </div>
 
   <!-- Case Study Showcase *********** -->
 
+  <div class="son-grid-dark">
   <CaseStudyShowcase />
+  </div>
 
   <!-- What We Do ******************** -->
+
+  <div class="pt-20 pb-6">
+    <div class="max-w-4xl mx-auto px-4">
+      <svg viewBox="0 0 972 113" class="w-full" role="img" aria-label="Hand-drawn pipeline: search demand leads to video, video leads to viewer, viewer leads to customer">
+        <g transform="scale(1.35)">
+          <g fill="none" stroke="rgb(216 73 47)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M138,42 C152,38 166,44 180,41 M180,41 l-8,-3 M180,41 l-6,6" />
+            <path d="M304,42 C322,38 342,44 360,41 M360,41 l-8,-3 M360,41 l-6,6" />
+            <path d="M516,42 C530,38 544,44 558,41 M558,41 l-8,-3 M558,41 l-6,6" />
+          </g>
+          <g font-family="Satoshi, sans-serif" font-weight="700" font-size="17" fill="currentColor" class="text-gray-900 dark:text-slate-200">
+            <text x="10" y="48">search demand</text>
+            <text x="188" y="48">ranked video</text>
+            <text x="376" y="48">qualified viewer</text>
+            <text x="568" y="48">customer</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
 
   <Features
     id="features"
     tagline="What we handle"
-    title="A complete YouTube acquisition engine"
+    title='A complete YouTube acquisition <span class="son-circ">engine<svg class="son-anno son-anno-reveal" viewBox="0 0 320 110" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" style="stroke-width: 2.8;" d="M24,60 C16,30 92,10 168,9 C256,8 307,27 305,55 C303,86 234,102 148,100 C68,98 17,83 16,58 C15,37 54,21 110,15" /></svg></span>'
     subtitle="You focus on your business. We handle everything needed to turn YouTube into a customer acquisition channel."
     items={[
       {
@@ -224,12 +292,58 @@ const faqSchema = {
     ]}
   />
 
+  <!-- Why Switch ******************** -->
+
+  <div class="son-grid bg-[#faf6f2] dark:bg-slate-900/40 py-14 md:py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="text-center text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-10">
+        Why founders switch from <span class="son-circ">ad agencies<svg class="son-anno son-anno-reveal" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" style="top: auto; height: 0.15em; bottom: -0.13em;"><path pathLength="1" style="stroke-width: 2.8;" d="M5,10 C60,4 135,4 195,8 M18,17 C75,11.5 145,12 188,15" /></svg></span>
+      </h3>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-slate-800/60 rounded-xl p-6 ring-1 ring-black/5 dark:ring-white/10">
+          <p class="text-sm font-semibold text-gray-500 dark:text-slate-400 uppercase tracking-wide mb-4">Typical ad agency</p>
+          <ul class="space-y-3 text-sm text-gray-700 dark:text-slate-300">
+            <li class="flex items-start gap-2.5">
+              <svg class="son-mark son-mark-muted w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true"><path d="M3,3 L13,13 M13,3 L3,13" stroke-width="2" /></svg>
+              Pay per click, stops the moment you stop paying
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="son-mark son-mark-muted w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true"><path d="M3,3 L13,13 M13,3 L3,13" stroke-width="2" /></svg>
+              Locked into 6-12 month contracts
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="son-mark son-mark-muted w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true"><path d="M3,3 L13,13 M13,3 L3,13" stroke-width="2" /></svg>
+              You're one of dozens of accounts on their roster
+            </li>
+          </ul>
+        </div>
+        <div class="son-pin bg-white dark:bg-slate-800/60 rounded-xl p-6 ring-1 ring-[rgb(216,73,47)]/25">
+          <p class="text-sm font-semibold text-[rgb(194,63,39)] dark:text-[rgb(224,117,95)] uppercase tracking-wide mb-4">SellOnTube</p>
+          <ul class="space-y-3 text-sm text-gray-900 dark:text-white font-medium">
+            <li class="flex items-start gap-2.5">
+              <svg class="son-mark w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true"><path d="M2,8 L6,12 L14,3" stroke-width="2" /></svg>
+              Videos rank and keep converting long after you stop paying us
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="son-mark w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true"><path d="M2,8 L6,12 L14,3" stroke-width="2" /></svg>
+              Month-to-month, cancel anytime
+            </li>
+            <li class="flex items-start gap-2.5">
+              <svg class="son-mark w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 16 16" aria-hidden="true"><path d="M2,8 L6,12 L14,3" stroke-width="2" /></svg>
+              Small roster by design, your channel gets real attention
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- How We Think ****************** -->
 
   <Content
     isReversed
     tagline="Our approach"
-    title="YouTube as acquisition, not content marketing"
+    title='YouTube as <span class="son-circ">acquisition,<svg class="son-anno son-anno-reveal" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" style="top: auto; height: 0.15em; bottom: -0.13em;"><path pathLength="1" style="stroke-width: 2.8;" d="M5,10 C60,4 135,4 195,8 M18,17 C75,11.5 145,12 188,15" /></svg></span> not content marketing'
     items={[
       {
         title: 'Acquisition-first',
@@ -256,16 +370,17 @@ const faqSchema = {
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
         Built for businesses who want customers, not a YouTube 'presence'
       </h3>
-      We treat your channel like an acquisition asset that should pay for itself.
+      We treat your channel like an acquisition asset that should pay for itself. See exactly <a href="/how-it-works" class="underline hover:text-gray-900 dark:hover:text-white">how this plays out day to day</a>.
     </Fragment>
 
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-[#f7f3ec] dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
   <!-- FAQs Widget ******************* -->
 
+  <div class="son-grid">
   <FAQs
     title="Common Questions"
     tagline="FAQs"
@@ -303,6 +418,7 @@ const faqSchema = {
       },
     ]}
   />
+  </div>
 
   <!-- Latest Blog Posts ************* -->
 
@@ -315,6 +431,7 @@ const faqSchema = {
 
   <!-- CallToAction Widget *********** -->
 
+  <div class="son-grid son-anno-host">
   <CallToAction
     actions={[
       {
@@ -327,13 +444,14 @@ const faqSchema = {
     ]}
   >
     <Fragment slot="title">
-      See if YouTube can be your next acquisition channel
+      See if YouTube can be your next <span class="son-circ">acquisition&nbsp;channel<svg class="son-anno son-anno-reveal" viewBox="0 0 200 24" preserveAspectRatio="none" aria-hidden="true" style="top: auto; height: 0.15em; bottom: -0.13em;"><path pathLength="1" style="stroke-width: 3;" d="M5,10 C60,4 135,4 195,8 M18,17 C75,11.5 145,12 188,15" /></svg></span>
     </Fragment>
 
     <Fragment slot="subtitle">
       In 30 minutes, we'll evaluate whether YouTube makes sense for your business and show you what a search-driven approach would look like.
     </Fragment>
   </CallToAction>
+  </div>
 
   <!-- Sticky Email Capture Bar -->
   <!-- <StickyEmailCapture /> -->
