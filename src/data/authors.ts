@@ -7,8 +7,9 @@
 
 import type { ImageMetadata } from 'astro';
 
-import sathyanandPhoto from '../assets/images/team/Sathya Profile Photo.jpg';
+import sathyanandPhoto from '../assets/images/team/sathya-portrait.jpg';
 import gauthamPhoto from '../assets/images/team/Gautham Profile Photo.jpg';
+import pradeepPhoto from '../assets/images/team/pradeep-portrait.jpg';
 
 export interface AuthorEntry {
   name: string;
@@ -32,5 +33,12 @@ export const authors: Record<string, AuthorEntry> = {
     linkedin: 'https://www.linkedin.com/in/mindcharting/',
     photo: gauthamPhoto,
     photoAlt: 'Gautham, Co-Founder of SellOnTube',
+  },
+  Pradeep: {
+    name: 'Pradeep Pandey',
+    role: 'Co-Founder, SellOnTube',
+    linkedin: 'https://www.linkedin.com/in/pradeep-pandeyji/',
+    photo: pradeepPhoto,
+    photoAlt: 'Pradeep Pandey, Co-Founder of SellOnTube',
   },
 };
