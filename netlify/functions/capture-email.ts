@@ -26,6 +26,36 @@ const handler: Handler = async (event) => {
 
   const source = (payload.source as string) || 'unknown';
 
+  // Human-readable tool names for email copy ({toolLabel} merge tag in Loops).
+  // Keys match the `source` value each tool page / widget sends.
+  const TOOL_LABELS: Record<string, string> = {
+    'youtube-autocomplete-keywords': 'YouTube Autocomplete Keywords tool',
+    'youtube-channel-audit': 'YouTube Channel Audit tool',
+    'youtube-competitor-analysis': 'YouTube Competitor Analysis tool',
+    'youtube-description-generator': 'YouTube Description Generator',
+    'youtube-ranking-checker': 'YouTube Ranking Checker',
+    'youtube-script-generator': 'YouTube Script Generator',
+    'youtube-seo-tool': 'YouTube SEO tool',
+    'youtube-tag-generator': 'YouTube Tag Generator',
+    'youtube-title-generator': 'YouTube Title Generator',
+    'youtube-transcript-generator': 'YouTube Transcript Generator',
+    'youtube-video-ideas-evaluator': 'YouTube Video Idea Evaluator',
+    'youtube-video-ideas-generator': 'YouTube Video Ideas Generator',
+    'youtube-video-keyword-finder': 'YouTube Video Keyword Finder',
+    'youtube-video-keyword-finder-csv': 'YouTube Video Keyword Finder',
+    'roi-calculator': 'YouTube ROI Calculator',
+    fab: 'YouTube keyword analysis offer',
+    popup: 'YouTube ROI Calculator',
+    'sticky-bar': 'YouTube keyword analysis offer',
+  };
+  const toolLabel = TOOL_LABELS[source] || 'YouTube tool';
+
+  // Widget signups (homepage analysis offer etc.) never used a tool, so email 1's
+  // "you just used our free X" would be false for them. They join the Loops audience
+  // but are NOT enrolled in the nurture sequence; their promised follow-up is manual.
+  const WIDGET_SOURCES = new Set(['fab', 'popup', 'sticky-bar']);
+  const enrollInNurture = !WIDGET_SOURCES.has(source);
+
   const sheetsCall = fetch(APPS_SCRIPT_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -33,25 +63,38 @@ const handler: Handler = async (event) => {
   }).catch((err) => console.error(`[sheets] Write failed: ${err.message}`));
 
   const loopsApiKey = process.env.LOOPS_API_KEY;
+  // Tool signups: events/send upserts the contact, sets contact properties (top-level
+  // keys) and fires the nurture_start event that triggers the Loops nurture workflow.
+  // Widget signups: contacts/update upserts into the audience without any event.
+  const loopsEndpoint = enrollInNurture
+    ? 'https://app.loops.so/api/v1/events/send'
+    : 'https://app.loops.so/api/v1/contacts/update';
+  const loopsBody: Record<string, unknown> = {
+    email,
+    source: 'sellontube-tool',
+    toolName: source,
+    toolLabel,
+  };
+  if (enrollInNurture) {
+    loopsBody.eventName = 'nurture_start';
+    loopsBody.cohort = 'live';
+    loopsBody.eventProperties = { toolName: source, toolLabel };
+  }
   const loopsCall = loopsApiKey
-    ? fetch('https://app.loops.so/api/v1/contacts/create', {
-        method: 'POST',
+    ? fetch(loopsEndpoint, {
+        method: enrollInNurture ? 'POST' : 'PUT',
         headers: {
           Authorization: `Bearer ${loopsApiKey}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          email,
-          source: 'sellontube-tool',
-          toolName: source,
-        }),
+        body: JSON.stringify(loopsBody),
       })
         .then(async (res) => {
           if (!res.ok) {
             const text = await res.text();
-            console.error(`[loops] Contact create failed for ${email}: ${res.status} - ${text}`);
+            console.error(`[loops] ${enrollInNurture ? 'nurture_start event' : 'contact upsert'} failed for ${email}: ${res.status} - ${text}`);
           } else {
-            console.log(`[loops] Contact created/updated: ${email} (tool: ${source})`);
+            console.log(`[loops] ${enrollInNurture ? 'Contact upserted + nurture_start fired' : 'Contact upserted (no nurture)'}: ${email} (source: ${source})`);
           }
         })
         .catch((err) => console.error(`[loops] Network error: ${err.message}`))
