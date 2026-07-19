@@ -19,6 +19,12 @@
   to = "/404"
   status = 410
 
+# 410 Gone — retired /slides experiment (removed Jul 2026)
+[[redirects]]
+  from = "/slides"
+  to = "/404"
+  status = 410
+
 [[redirects]]
   from = "/blog/youtube-marketing-not-working"
   to = "/blog/youtube-views-but-no-leads"
@@ -132,7 +138,7 @@
 
 [[redirects]]
   from = "/youtube-for/artists"
-  to = "/youtube-for/"
+  to = "/youtube-for"
   status = 301
 
 [[redirects]]
@@ -143,16 +149,6 @@
 [[redirects]]
   from = "/youtube-video-ideas/animators-youtube-video-ideas"
   to = "/youtube-video-ideas"
-  status = 301
-
-[[redirects]]
-  from = "/youtube-for"
-  to = "/youtube-for/"
-  status = 301
-
-[[redirects]]
-  from = "/youtube-vs"
-  to = "/youtube-vs/"
   status = 301
 
 [[redirects]]

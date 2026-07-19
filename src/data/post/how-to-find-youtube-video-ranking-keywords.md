@@ -1,5 +1,6 @@
 ---
 publishDate: 2026-04-23T00:00:00Z
+updateDate: 2026-07-19T00:00:00Z
 author: Sathyanand
 title: "How to Find What Keywords Your YouTube Videos Rank For"
 excerpt: "Your YouTube videos are ranking for keywords you do not know about. Three methods to find them, and a business-owner playbook for what to do next."
@@ -41,7 +42,7 @@ You published 20 videos last year. Your channel has decent views. But right now,
 
 That is not a small gap. If you do not know what keywords your videos rank for, you cannot tell which videos drive business and which ones collect views from people who will never buy.
 
-YouTube Studio shows you some search terms. It does not show your actual ranking position. It does not show keywords where you rank but nobody clicked. And it caps everything at 28 days. For a business channel, that is not enough to make decisions.
+YouTube Studio shows you some search terms. It does not show your actual ranking position. It does not show keywords where you rank but nobody clicked. And its default report window is 28 days. For a business channel, that is not enough to make decisions.
 
 Here is how to find the full picture, and what to do with it once you have it.
 
@@ -49,7 +50,7 @@ Here is how to find the full picture, and what to do with it once you have it.
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
 <ul style="margin: 0; padding-left: 1.25rem;">
 <li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">YouTube Studio shows search terms that drove traffic, but hides your actual ranking position and any keyword where you rank without getting clicks.</li>
-<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">Third-party rank trackers like TubeRanker and vidIQ offer channel-wide tracking but cost $19-49/month and are designed for creators, not business owners.</li>
+<li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">Third-party rank trackers like TubeRanker and vidIQ offer channel-wide tracking but run $17-49/month and are designed for creators, not business owners.</li>
 <li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">A video with 300 views that ranks #3 for "best CRM for agencies" is worth more to your pipeline than a video with 50,000 views from casual browsers.</li>
 <li style="margin-bottom: 0.5rem; color: #334155; font-size: 0.9rem;">The real value is not finding your rankings. It is deciding which rankings to protect, which to improve, and which to stop caring about.</li>
 <li style="margin-bottom: 0; color: #334155; font-size: 0.9rem;">Check your top 5 buyer-intent keywords weekly. Ignore vanity keywords entirely.</li>
@@ -88,7 +89,9 @@ Consider two videos on the same channel. Video A has 50,000 views and ranks for 
 
 Before reaching for a third-party tool, understand what YouTube gives you for free, and where it falls short.
 
-Open YouTube Studio. Go to Analytics, then Reach, then YouTube Search Terms. You will see a list of queries that led to views on your videos.
+Open YouTube Studio and go to Analytics. At the channel level, open the Content tab and click into YouTube search under the traffic sources card. For one video, open that video's own Analytics, then the Reach tab, where the YouTube search terms card still lives.
+
+Either way, you get a list of queries that led to impressions and views. One note for 2026: YouTube began rolling out a redesigned Studio experience in July 2026, so your Analytics layout may not match older screenshots. The search terms report has not gone away. It just sits behind the traffic sources card.
 
 Here is what that report includes and what it leaves out:
 
@@ -159,7 +162,7 @@ There are three approaches, each with a different trade-off between cost, depth,
 <div>
 <p style="font-size: 2rem; margin: 0;">&#128176;</p>
 <p style="font-weight: 700; color: #334155; margin: 0.5rem 0 0.25rem;">Paid Trackers</p>
-<p style="font-size: 0.8rem; color: #64748b; margin: 0;">$19-49/mo. Channel-wide. Creator-framed.</p>
+<p style="font-size: 0.8rem; color: #64748b; margin: 0;">$17-49/mo. Channel-wide. Creator-framed.</p>
 </div>
 <div>
 <p style="font-size: 2rem; margin: 0;">&#127919;</p>
@@ -171,17 +174,17 @@ There are three approaches, each with a different trade-off between cost, depth,
 
 ### Method 1: YouTube Studio Analytics (Free, Limited)
 
-Open YouTube Studio. Navigate to Analytics, then Reach, then YouTube Search Terms.
+Open YouTube Studio. Go to Analytics, open the Content tab, and click into YouTube search under the traffic sources card. For a per-video breakdown, open any individual video, then go to its Analytics, then the Reach tab.
 
-You will see keywords that drove views to your videos in the last 28 days. For a per-video breakdown, click into any individual video, then go to its Analytics, then Reach tab.
+You will see keywords that drove views to your videos in the last 28 days. Advanced Mode (top right of Analytics) adds filters and period comparisons, but the two core gaps stay: you only see terms that already sent you traffic, and you never see your position.
 
 **When to use this method:** As a starting point. Pull the list of search terms every month and save it to a spreadsheet. Over time, you build a picture of which keywords consistently bring traffic. It is slow, but it is free and it is a signal.
 
 **When this method fails:** When you need to check a specific keyword right now. YouTube Studio cannot answer "do I rank for 'best project management tool'?" because it only shows keywords that already drove traffic. If you rank #12 and got zero clicks last month, it will not appear.
 
-### Method 2: Third-Party Rank Trackers (Paid, Comprehensive)
+### Method 2: Third-Party Rank Trackers (Paid, Automated)
 
-Tools like TubeRanker ($19-49/month), vidIQ ($7.50-49/month), and YouTubeRankTracker (paid plans, pricing varies) offer channel-wide keyword tracking. You set up a list of keywords, connect your channel, and they monitor your position over time with charts and alerts.
+Tools like TubeRanker ($19-49/month), vidIQ (Boost plan, $16.58/month billed annually or $39 month-to-month), and YouTubeRankTracker (paid plans, pricing varies) offer channel-wide keyword tracking. Note that vidIQ retired its old $7.50 Pro tier in its move to a Free, Boost, Max lineup, so Boost is now the entry point. You set up a list of keywords, connect your channel, and they monitor your position over time with charts and alerts.
 
 **When to use this method:** When you have 50+ videos and need to monitor dozens of keywords automatically. The historical charts are useful for spotting trends: a gradual decline in position for a key term tells you the video needs a metadata refresh before it drops off page 1 entirely.
 
@@ -191,7 +194,7 @@ Tools like TubeRanker ($19-49/month), vidIQ ($7.50-49/month), and YouTubeRankTra
 
 ### Method 3: SellonTube YouTube Ranking Checker (Free, Business-Focused)
 
-The [YouTube Ranking Checker](/tools/youtube-ranking-checker) takes a different approach. Enter a keyword and your channel URL. Within seconds, you see your exact position in the top 20 YouTube search results, plus the competing videos with view counts and video age.
+The [YouTube Ranking Checker](/tools/youtube-ranking-checker) takes a different approach. Enter a keyword and your channel URL. Within seconds, you see your exact position in the top 20 YouTube search results, plus the top 10 competing videos with view counts and video age.
 
 **When to use this method:** When you need a fast, specific answer. "Do I rank for 'youtube seo for agencies'?" Type it in, get the answer in 15 seconds. No account setup. No OAuth connection. No subscription.
 
@@ -224,7 +227,7 @@ It is free. No login required for your first 3 checks. After that, enter a busin
 </tr>
 <tr style="border-bottom: 1px solid #f1f5f9;">
 <td style="padding: 0.75rem;">Historical tracking</td>
-<td style="text-align: center; padding: 0.75rem;">28 days only</td>
+<td style="text-align: center; padding: 0.75rem;">28-day default</td>
 <td style="text-align: center; padding: 0.75rem;">&#10003;</td>
 <td style="text-align: center; padding: 0.75rem;">&#10007;</td>
 </tr>
@@ -237,7 +240,7 @@ It is free. No login required for your first 3 checks. After that, enter a busin
 <tr style="border-bottom: 1px solid #f1f5f9;">
 <td style="padding: 0.75rem;">Cost</td>
 <td style="text-align: center; padding: 0.75rem;">Free</td>
-<td style="text-align: center; padding: 0.75rem;">$7.50-49/mo</td>
+<td style="text-align: center; padding: 0.75rem;">$17-49/mo</td>
 <td style="text-align: center; padding: 0.75rem;">Free</td>
 </tr>
 <tr>
@@ -272,7 +275,7 @@ If you are not sure which keywords matter, start with this question: "What would
 
 ### Step 2. Check each keyword
 
-Open the [YouTube Ranking Checker](/tools/youtube-ranking-checker). Enter your first keyword and your channel URL or @handle. Hit check.
+Open the [YouTube Ranking Checker](/tools/youtube-ranking-checker). Enter your first keyword and your channel URL or @handle. Hit check. You get back your position and the top 10 results with view counts and video age. That is the raw material for the next two steps.
 
 ### Step 3. Record your baseline
 
@@ -392,9 +395,9 @@ The keyword moved from invisible to the first 5 words. YouTube understood the re
 
 ### Rewrite metadata for underperformers
 
-If you rank #11-20 for a keyword, you are on the edge of visibility. YouTube shows your video to some searchers but not enough for consistent traffic.
+If you rank #11-20 for a keyword, metadata is still the first thing to fix. Not because it will carry you to #3 on its own, but because it costs 20 minutes instead of a reshoot.
 
-Open your video. Compare your title to the top 3 results. If the top results use the keyword in the first 5 words and your title buries it, rewrite it. Match the structure that YouTube is rewarding.
+Run the same title check from the ranking-data section: keyword in the first 5 words, format matched to whatever holds #1. Then go deeper into the parts a quick check skips.
 
 Update your description too. Add the keyword in the first sentence. Add a clear call-to-action within the first 3 lines. Below the fold, add timestamps, related keywords, and links to your website.
 

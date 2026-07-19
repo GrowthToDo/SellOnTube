@@ -245,7 +245,7 @@ The 90-day window matters because YouTube is a slow channel. Videos need time to
 
 **Step 4: Measure cost per lead, not cost per video.**
 
-After 90 days, calculate your actual cost per lead from YouTube. Divide your total spend (including time, if you tracked it) by the number of leads generated. Compare this to your cost per lead from other channels: Google Ads, LinkedIn, cold outreach, content marketing.
+After 90 days, calculate your actual cost per lead from YouTube. Divide your total spend (including time, if you tracked it) by the number of leads generated. Compare this to your cost per lead from other channels: Google Ads, LinkedIn, cold outreach, content marketing. If written content is your main alternative, see [how YouTube stacks up against content marketing](/youtube-vs/content-marketing).
 
 If YouTube's cost per lead is competitive or lower, scale up. If it is significantly higher, diagnose before quitting. Common fixable problems include: targeting low-intent keywords, missing calls to action in videos, and not having a clear landing page for YouTube traffic.
 
