@@ -107,7 +107,7 @@ For a business channel, more data creates more noise. A SaaS founder with 15 You
 
 Here is the thing: the rank checker market is built for that creator. Every major tool assumes you want more data, more dashboards, more keyword suggestions.
 
-If you want less data and better decisions, you need to evaluate tools differently.
+If you want less data and better decisions, you need to evaluate tools differently. The payoff for getting this right is real: [six B2B companies have documented winning customers from small, well-ranked channels](/blog/youtube-marketing-case-studies), with revenue figures sourced from the founders themselves.
 
 <div style="background: #fefce8; border: 1px solid #fde68a; border-left: 4px solid #eab308; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.85rem; font-weight: 600; color: #854d0e; margin: 0 0 0.5rem 0;">The business-owner filter</p>

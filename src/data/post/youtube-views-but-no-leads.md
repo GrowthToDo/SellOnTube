@@ -89,6 +89,8 @@ A video titled "How to Choose a Content Marketing Platform for E-commerce" might
 
 This is the intent gap, and it explains why so many B2B channels get YouTube views but no leads.
 
+The reverse is also true, and it is documented. In [six B2B YouTube case studies with founder-sourced numbers](/blog/youtube-marketing-case-studies), Bulk Mockup's founder describes a video with 370 views over four months that produced three paying customers. Low views, high intent, real revenue.
+
 The contrast is easiest to see side by side.
 
 | | Informational video | Buyer-intent video |
