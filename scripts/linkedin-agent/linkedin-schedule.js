@@ -40,6 +40,16 @@ export function buildScheduledFor(dateStr) {
   return `${dateStr}T${POST_TIME_UTC}Z`;
 }
 
+// Pure: compose the LinkedIn body actually posted -- the copy plus up to 3
+// hashtags (LinkedIn convention: a blank line, then the tags). Tags live in the
+// queue separately so they can be tuned without touching the prose.
+export function composeLinkedInContent(post) {
+  let content = post.linkedinPost || '';
+  const tags = Array.isArray(post.hashtags) ? post.hashtags.slice(0, 3) : [];
+  if (tags.length) content += `\n\n${tags.join(' ')}`;
+  return content;
+}
+
 // Pure: build Zernio API payload from a queue post object
 // zernioImageUrl is the uploaded image URL from Zernio's media endpoint (optional)
 export function buildPayload(post, accountId, zernioImageUrl) {
@@ -50,7 +60,7 @@ export function buildPayload(post, accountId, zernioImageUrl) {
     linkedin.platformSpecificData = { firstComment: post.firstComment };
   }
   const payload = {
-    content: post.linkedinPost,
+    content: composeLinkedInContent(post),
     timezone: 'Asia/Kolkata',
     platforms: [linkedin],
   };
@@ -115,6 +125,16 @@ function hardTrim(str, limit) {
 // of at most 280 chars. Leads with the hook; keeps the closing question when it
 // fits. Never emits a URL (upload-post strips URLs from X on the free tier).
 export function buildXText(post) {
+  // Prefer a bespoke, hand-authored tweet (line-break casual voice) when the
+  // queue provides one. The auto-derivation below is the fallback.
+  if (post.xPost && post.xPost.trim()) {
+    const t = post.xPost.trim();
+    if (t.length > X_LIMIT) {
+      throw new Error(`xPost ${t.length} > ${X_LIMIT} for ${post.scheduledDate}`);
+    }
+    return t;
+  }
+
   const raw = (post.linkedinPost || '').trim();
   const full = stripUrls(raw);
   const paras = raw.split(/\n{2,}/).map((p) => stripUrls(p)).filter(Boolean);

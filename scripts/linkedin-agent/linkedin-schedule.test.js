@@ -6,6 +6,7 @@ import {
   buildPayload,
   buildXText,
   buildUploadPostForm,
+  composeLinkedInContent,
   xLen,
 } from './linkedin-schedule.js';
 
@@ -52,10 +53,39 @@ const basePost = {
 
 test('buildPayload: includes content, scheduledFor, timezone, platforms', () => {
   const payload = buildPayload(basePost, 'acc_test123');
-  assert.strictEqual(payload.content, basePost.linkedinPost);
+  assert.strictEqual(payload.content, composeLinkedInContent(basePost));
   assert.strictEqual(payload.scheduledFor, '2026-03-30T13:30:00Z');
   assert.strictEqual(payload.timezone, 'Asia/Kolkata');
   assert.deepStrictEqual(payload.platforms, [{ platform: 'linkedin', accountId: 'acc_test123' }]);
+});
+
+// --- composeLinkedInContent (hashtags) ---
+
+test('composeLinkedInContent: appends hashtags after a blank line', () => {
+  const out = composeLinkedInContent({ linkedinPost: 'Body.', hashtags: ['#A', '#B'] });
+  assert.strictEqual(out, 'Body.\n\n#A #B');
+});
+
+test('composeLinkedInContent: caps at 3 hashtags', () => {
+  const out = composeLinkedInContent({ linkedinPost: 'Body.', hashtags: ['#A', '#B', '#C', '#D'] });
+  assert.strictEqual(out, 'Body.\n\n#A #B #C');
+});
+
+test('composeLinkedInContent: no trailing block when there are no hashtags', () => {
+  assert.strictEqual(composeLinkedInContent({ linkedinPost: 'Body.', hashtags: [] }), 'Body.');
+  assert.strictEqual(composeLinkedInContent({ linkedinPost: 'Body.' }), 'Body.');
+});
+
+// --- buildXText prefers a bespoke xPost ---
+
+test('buildXText: uses a bespoke xPost verbatim when present', () => {
+  const post = { scheduledDate: '2026-07-20', xPost: 'Punchy\n\nline-break tweet.', linkedinPost: 'long body...' };
+  assert.strictEqual(buildXText(post), 'Punchy\n\nline-break tweet.');
+});
+
+test('buildXText: rejects a bespoke xPost over 280 chars', () => {
+  const post = { scheduledDate: '2026-07-20', xPost: 'x'.repeat(281), linkedinPost: 'body' };
+  assert.throws(() => buildXText(post), /281 > 280/);
 });
 
 test('buildPayload: includes mediaItems when zernioImageUrl is passed', () => {
