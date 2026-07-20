@@ -1,5 +1,14 @@
 # Loops Email Nurture: Setup Guide (user-side steps)
 
+> **STATUS 2026-07-20: SETUP COMPLETE — the workflow is LIVE (Active).** Steps 0-5 and 7
+> done: properties created, DNS added + domain verified, double opt-in copy published,
+> Loops webhook live (tested), 17-node workflow built + E2E test contact queued.
+> Deviations from the plan as written: no cohort branch was built — email 01 was made
+> cohort-neutral instead and 01b retired; the sunset filter uses "All following nodes"
+> (equivalent here); a 15-minute timer precedes email 01.
+> STILL PENDING: cal.com webhook (Gautham, step 6), backfill run (step 8), first
+> newsletter (step 9), weekly monitoring (step 10).
+
 Everything the code cannot do for you. Work top to bottom; each step says why it exists.
 Code side (already in repo): `capture-email.ts` fires `nurture_start` per tool signup,
 `cal-booking.ts` marks call bookers, `loops-webhook.ts` marks contacts who open/click
@@ -123,6 +132,10 @@ Structure:
       Also confirm the unsubscribe footer + postal address render.
 
 ## 8. Backfill (after domain verified + workflow ON)
+
+Note: no cohort branch exists — backfill contacts get the same email 01 as live signups
+(it was made cohort-neutral). The script's `cohort=backfill` property is kept for
+analytics only. Effective sendable audience at last check: 14 subscribed contacts.
 
 - [ ] Loops → Audience → Download CSV.
 - [ ] Optional at <100 contacts: email verification (NeverBounce) — with a list this small

@@ -1,11 +1,12 @@
 # Email 1: Welcome
 Day: 0 (Loops timer: 15 minutes after nurture_start; sends any day incl. weekends)
 Subject: quick hello
-Status: APPROVED by user 2026-07-19
+Status: LIVE in Loops workflow since 2026-07-20 ("earlier today" removed so the same
+email serves live + backfill cohorts; the separate 01b variant is no longer used)
 ---
 Hey there,
 
-Gautham here. I build the free YouTube tools on sellontube.com with two friends. You used our {toolLabel} earlier today, so I wanted to say hi.
+Gautham here. I build the free YouTube tools on sellontube.com with two friends. You used our {toolLabel}, so I wanted to say hi.
 
 We study how B2B companies get customers from YouTube. Not views, customers. Everything we learn, we publish. The tools stay free.
 
