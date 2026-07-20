@@ -33,20 +33,26 @@ export function validatePost(post, recentHooks = []) {
   }
 
   const hasBodyUrl = URL_RE.test(body);
-  const hasComment = Boolean(post.firstComment);
+  const comment = post.firstComment || '';
+  const hasComment = Boolean(comment);
+  const commentHasUrl = URL_RE.test(comment);
+  // The pinned first comment may carry the CTA link and/or a ChatGPT prompt.
   switch (post.linkLocation) {
     case 'comment':
       if (!hasComment) reasons.push('linkLocation=comment but firstComment missing');
+      if (!commentHasUrl) reasons.push('linkLocation=comment but firstComment has no URL');
       if (hasBodyUrl) reasons.push('linkLocation=comment but body contains a URL');
       break;
     case 'body':
+      // Link is in the body; a first comment here is a prompt (must carry no URL).
       if (!hasBodyUrl) reasons.push('linkLocation=body but body has no URL');
-      if (hasComment) reasons.push('linkLocation=body but firstComment is set');
+      if (commentHasUrl) reasons.push('linkLocation=body but firstComment also contains a URL');
       break;
     case null:
     case undefined:
+      // No-link post; a first comment is allowed only as a prompt (no URL).
       if (hasBodyUrl) reasons.push('no-link post but body contains a URL');
-      if (hasComment) reasons.push('no-link post but firstComment is set');
+      if (commentHasUrl) reasons.push('no-link post but firstComment contains a URL');
       break;
     default:
       reasons.push(`unknown linkLocation: ${post.linkLocation}`);
