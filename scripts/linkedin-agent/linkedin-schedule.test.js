@@ -1,7 +1,13 @@
 // scripts/linkedin-agent/linkedin-schedule.test.js
 // Run: node scripts/linkedin-agent/linkedin-schedule.test.js
 import assert from 'assert';
-import { buildScheduledFor, buildPayload } from './linkedin-schedule.js';
+import {
+  buildScheduledFor,
+  buildPayload,
+  buildXText,
+  buildUploadPostForm,
+  xLen,
+} from './linkedin-schedule.js';
 
 let passed = 0;
 let failed = 0;
@@ -79,6 +85,96 @@ test('buildPayload: no platformSpecificData when firstComment is empty string', 
   const post = { ...basePost, firstComment: '' };
   const payload = buildPayload(post, 'acc_test123');
   assert.strictEqual(payload.platforms[0].platformSpecificData, undefined);
+});
+
+// --- buildXText (link-free, upload-post) ---
+
+const shortHookPost = {
+  scheduledDate: '2026-07-20',
+  linkLocation: null,
+  firstComment: null,
+  linkedinPost:
+    "YouTube has billions of logged-in users every month. Almost none of them will ever buy from you. That's not a problem, it's the whole point.\n\nEvery video you make does one of two jobs.\n\nWhich job is most of your channel actually doing?",
+};
+
+test('buildXText: no-link post stays under 280 and carries no URL', () => {
+  const x = buildXText(shortHookPost);
+  assert.ok(xLen(x) <= 280, `len ${xLen(x)}`);
+  assert.ok(!/https?:\/\//.test(x), 'no-link post must not add a URL');
+});
+
+test('buildXText: leads with the hook', () => {
+  const x = buildXText(shortHookPost);
+  assert.ok(x.startsWith('YouTube has billions'), x.slice(0, 40));
+});
+
+test('buildXText: appends the closing question when it fits', () => {
+  const x = buildXText(shortHookPost);
+  assert.ok(x.includes('Which job is most of your channel actually doing?'));
+});
+
+test('buildXText: strips the link from a linkLocation=body post (upload-post removes URLs on X)', () => {
+  const post = {
+    scheduledDate: '2026-07-21',
+    linkLocation: 'body',
+    firstComment: null,
+    linkedinPost: 'Short punchy hook about YouTube pipeline. Read the full breakdown here: https://sellontube.com/blog/x',
+  };
+  const x = buildXText(post);
+  assert.ok(!/https?:\/\//.test(x), 'X text must never contain a URL');
+  assert.ok(xLen(x) <= 280, `len ${xLen(x)}`);
+});
+
+test('buildXText: strips the URL even when it lives in firstComment', () => {
+  const post = {
+    scheduledDate: '2026-07-22',
+    linkLocation: 'comment',
+    firstComment: 'Full method here: https://sellontube.com/tools/roi',
+    linkedinPost: 'A tight hook with no link in the body. The rest is a normal LinkedIn post.',
+  };
+  const x = buildXText(post);
+  assert.ok(!/https?:\/\//.test(x), 'X text must never contain a URL');
+});
+
+test('buildXText: a very long hook is trimmed to <=280 with an ellipsis', () => {
+  const longHook = 'word '.repeat(120).trim() + '.'; // ~600 chars
+  const x = buildXText({ scheduledDate: '2026-07-23', linkLocation: null, linkedinPost: longHook });
+  assert.ok(xLen(x) <= 280, `len ${xLen(x)}`);
+  assert.ok(x.endsWith('…'), 'trimmed text should end with an ellipsis');
+});
+
+// --- buildUploadPostForm ---
+
+// Read a FormData instance into a plain { field: [values] } map for assertions.
+function formToMap(form) {
+  const map = {};
+  for (const [k, v] of form.entries()) {
+    (map[k] ||= []).push(v);
+  }
+  return map;
+}
+
+test('buildUploadPostForm: sets user, platform[]=x and the repurposed title', () => {
+  const map = formToMap(buildUploadPostForm(shortHookPost, 'SellonTube'));
+  assert.deepStrictEqual(map.user, ['SellonTube']);
+  assert.deepStrictEqual(map['platform[]'], ['x']);
+  assert.deepStrictEqual(map.title, [buildXText(shortHookPost)]);
+});
+
+test('buildUploadPostForm: title is the X text, not the LinkedIn body', () => {
+  const map = formToMap(buildUploadPostForm(shortHookPost, 'SellonTube'));
+  assert.notStrictEqual(map.title[0], shortHookPost.linkedinPost);
+});
+
+test('buildUploadPostForm: scheduled post carries scheduled_date (13:30 UTC) and timezone', () => {
+  const map = formToMap(buildUploadPostForm(shortHookPost, 'SellonTube'));
+  assert.deepStrictEqual(map.scheduled_date, ['2026-07-20T13:30:00Z']);
+  assert.deepStrictEqual(map.timezone, ['UTC']);
+});
+
+test('buildUploadPostForm: publishNow post omits scheduled_date', () => {
+  const map = formToMap(buildUploadPostForm({ ...shortHookPost, publishNow: true }, 'SellonTube'));
+  assert.strictEqual(map.scheduled_date, undefined);
 });
 
 // --- summary ---
