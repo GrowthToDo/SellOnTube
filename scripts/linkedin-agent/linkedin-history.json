@@ -9,6 +9,91 @@
       "archetype": "contrarian",
       "linkLocation": null,
       "thesis": "After this post, a marketer will optimize for buyer search instead of the watch-time algorithm.",
+      "hook": "Stop trying to beat the YouTube algorithm. For B2B, you are grinding at a game you do not even want to win.",
+      "hashtags": [
+        "#YouTubeMarketing",
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "scheduled"
+    },
+    {
+      "date": "2026-07-28",
+      "dayOfWeek": "Tuesday",
+      "sourceTitle": "YouTube Autocomplete Keywords",
+      "sourceUrl": "https://sellontube.com/tools/youtube-autocomplete-keywords",
+      "postAngle": "The search bar names the videos your buyers want.",
+      "archetype": "tactical-how-to",
+      "linkLocation": "comment",
+      "thesis": "After this post, a marketer can pull exact buyer phrases from YouTube autocomplete instead of guessing.",
+      "hook": "Your buyers will tell you exactly what to make. For free. You just have to read YouTube's search bar instead of guessing",
+      "hashtags": [
+        "#YouTubeSEO",
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "scheduled"
+    },
+    {
+      "date": "2026-07-27",
+      "dayOfWeek": "Monday",
+      "sourceTitle": null,
+      "sourceUrl": null,
+      "postAngle": "Buyers run problem/solution/vendor searches; channels answer only the first.",
+      "archetype": "framework",
+      "linkLocation": null,
+      "thesis": "After this post, a marketer can sort videos by the three buyer-search stages and fill the pipeline gap.",
+      "hook": "Your buyer runs 3 searches before they buy. Your channel probably answers 1.",
+      "hashtags": [
+        "#YouTubeMarketing",
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "scheduled"
+    },
+    {
+      "date": "2026-07-24",
+      "dayOfWeek": "Friday",
+      "sourceTitle": "Ahrefs — YouTube SEO for AI Search",
+      "sourceUrl": "https://www.youtube.com/watch?v=_b_cTpLHMTM",
+      "postAngle": "YouTube is the most-cited domain in Google's AI Overviews (Ahrefs).",
+      "archetype": "authority-lesson",
+      "linkLocation": "body",
+      "thesis": "After this post, a marketer will make videos that answer the questions AI tools cite, to get found inside AI answers.",
+      "hook": "Your buyers have started asking AI instead of searching Google. And the AI keeps quoting one place most B2B teams ignore",
+      "hashtags": [
+        "#YouTubeMarketing",
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "scheduled"
+    },
+    {
+      "date": "2026-07-20",
+      "dayOfWeek": "Monday",
+      "sourceTitle": null,
+      "sourceUrl": null,
+      "postAngle": "Every video does one of two jobs: get found or get chosen.",
+      "archetype": "framework",
+      "linkLocation": null,
+      "thesis": "After this post, a marketer can tag their last 10 videos as get-found or get-chosen and fix the missing half.",
+      "hook": "Your YouTube channel does 1 of 2 jobs. Most B2B channels only do the first.",
+      "hashtags": [
+        "#YouTubeMarketing",
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "scheduled"
+    },
+    {
+      "date": "2026-07-31",
+      "dayOfWeek": "Friday",
+      "sourceTitle": null,
+      "sourceUrl": null,
+      "postAngle": "The algorithm rewards watch time, not buyer intent.",
+      "archetype": "contrarian",
+      "linkLocation": null,
+      "thesis": "After this post, a marketer will optimize for buyer search instead of the watch-time algorithm.",
       "hook": "Stop trying to beat the YouTube algorithm. For B2B, you're grinding at a game you don't even want to win.",
       "hashtags": [
         "#YouTubeMarketing"

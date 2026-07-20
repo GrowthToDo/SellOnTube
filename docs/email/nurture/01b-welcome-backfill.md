@@ -2,7 +2,9 @@
 Day: 0 (enrollment via scripts/backfill_nurture.py, cohort=backfill)
 Audience: backfill cohort only (contacts captured before the sequence existed)
 Subject: about that YouTube tool you used
-Status: APPROVED by user 2026-07-19
+Status: RETIRED 2026-07-20 before ever sending. Email 01 was made cohort-neutral
+("earlier today" removed), so backfill contacts enter the same workflow and get 01.
+Kept for reference only.
 ---
 Hey there,
 

@@ -40,6 +40,16 @@ export function buildScheduledFor(dateStr) {
   return `${dateStr}T${POST_TIME_UTC}Z`;
 }
 
+// Pure: compose the LinkedIn body actually posted -- the copy plus up to 3
+// hashtags (LinkedIn convention: a blank line, then the tags). Tags live in the
+// queue separately so they can be tuned without touching the prose.
+export function composeLinkedInContent(post) {
+  let content = post.linkedinPost || '';
+  const tags = Array.isArray(post.hashtags) ? post.hashtags.slice(0, 3) : [];
+  if (tags.length) content += `\n\n${tags.join(' ')}`;
+  return content;
+}
+
 // Pure: build Zernio API payload from a queue post object
 // zernioImageUrl is the uploaded image URL from Zernio's media endpoint (optional)
 export function buildPayload(post, accountId, zernioImageUrl) {
@@ -50,7 +60,7 @@ export function buildPayload(post, accountId, zernioImageUrl) {
     linkedin.platformSpecificData = { firstComment: post.firstComment };
   }
   const payload = {
-    content: post.linkedinPost,
+    content: composeLinkedInContent(post),
     timezone: 'Asia/Kolkata',
     platforms: [linkedin],
   };
@@ -63,6 +73,123 @@ export function buildPayload(post, accountId, zernioImageUrl) {
     payload.mediaItems = [{ url: zernioImageUrl, type: 'image' }];
   }
   return payload;
+}
+
+// --- X (Twitter) via upload-post.com --------------------------------------
+// LinkedIn goes through Zernio (above). X is posted through upload-post.com,
+// which is free and purpose-built for X. Two upload-post facts drive the design:
+//   1. It STRIPS every URL from X posts on the free tier (to keep X on the
+//      cheap billing tier), so X posts are intentionally link-free -- the value
+//      lives in-feed, and link-free is X-native anyway.
+//   2. It auto-threads any `title` longer than 280 chars. We don't want a thread
+//      of a LinkedIn post, so we repurpose down to a single native <=280 tweet.
+const X_LIMIT = 280;
+const URL_G = /https?:\/\/[^\s]+/g;
+
+function stripUrls(s) {
+  return s.replace(URL_G, '').replace(/[ \t]{2,}/g, ' ').trim();
+}
+
+// Plain char length (X posts here carry no URLs, so no t.co weighting needed).
+export function xLen(str) {
+  return str.length;
+}
+
+// Greedily pack whole sentences from the start until the next would overflow.
+function fitSentences(text, budget) {
+  const clean = stripUrls(text);
+  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) || [clean];
+  let out = '';
+  for (const s of sentences) {
+    const next = (out ? out + ' ' : '') + s.trim();
+    if (next.length > budget) break;
+    out = next;
+  }
+  return out || hardTrim(clean, budget);
+}
+
+// Word-boundary trim to <= limit chars, with an ellipsis.
+function hardTrim(str, limit) {
+  if (str.length <= limit) return str;
+  let out = '';
+  for (const w of str.split(/\s+/)) {
+    const cand = out ? out + ' ' + w : w;
+    if (cand.length + 1 > limit) break; // +1 reserves the ellipsis
+    out = cand;
+  }
+  if (!out) out = str.slice(0, Math.max(0, limit - 1));
+  return out.trim() + '…';
+}
+
+// Pure: repurpose a queue post's LinkedIn body into a native, link-free X post
+// of at most 280 chars. Leads with the hook; keeps the closing question when it
+// fits. Never emits a URL (upload-post strips URLs from X on the free tier).
+export function buildXText(post) {
+  // Prefer a bespoke, hand-authored tweet (line-break casual voice) when the
+  // queue provides one. The auto-derivation below is the fallback.
+  if (post.xPost && post.xPost.trim()) {
+    const t = post.xPost.trim();
+    if (t.length > X_LIMIT) {
+      throw new Error(`xPost ${t.length} > ${X_LIMIT} for ${post.scheduledDate}`);
+    }
+    return t;
+  }
+
+  const raw = (post.linkedinPost || '').trim();
+  const full = stripUrls(raw);
+  const paras = raw.split(/\n{2,}/).map((p) => stripUrls(p)).filter(Boolean);
+  const hook = paras[0] || '';
+  const last = paras[paras.length - 1] || '';
+  const closingQ = /\?\s*$/.test(last) && last !== hook ? last : '';
+
+  let text;
+  if (hook.length > X_LIMIT) {
+    text = fitSentences(full, X_LIMIT);
+  } else if (closingQ && `${hook}\n\n${closingQ}`.length <= X_LIMIT) {
+    text = `${hook}\n\n${closingQ}`;
+  } else {
+    text = hook;
+  }
+
+  if (text.length > X_LIMIT) {
+    // Unreachable given the budgeting above; fail loud, never ship a long tweet.
+    throw new Error(`X text ${text.length} > ${X_LIMIT} for ${post.scheduledDate}`);
+  }
+  return text;
+}
+
+// Pure: build the multipart form for upload-post's POST /api/upload_text (X only).
+export function buildUploadPostForm(post, user) {
+  const form = new FormData();
+  form.append('user', user);
+  form.append('platform[]', 'x');
+  form.append('title', buildXText(post));
+  if (!post.publishNow) {
+    // buildScheduledFor gives an ISO-8601 UTC instant (7 PM IST = 13:30 UTC).
+    form.append('scheduled_date', buildScheduledFor(post.scheduledDate));
+    form.append('timezone', 'UTC');
+  }
+  return form;
+}
+
+// POST the X post to upload-post with one retry on network failure. FormData is
+// single-use once a fetch consumes it, so the retry rebuilds the form.
+async function postToUploadPost(post, apiKey, user) {
+  const url = 'https://api.upload-post.com/api/upload_text';
+  const headers = { Authorization: `Apikey ${apiKey}` };
+  let res;
+  try {
+    res = await fetch(url, { method: 'POST', headers, body: buildUploadPostForm(post, user) });
+  } catch (networkErr) {
+    console.warn(`  [warn] upload-post network error, retrying in 3s... (${networkErr.message})`);
+    await sleep(3000);
+    res = await fetch(url, { method: 'POST', headers, body: buildUploadPostForm(post, user) });
+  }
+  const body = await res.text();
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}: ${body.slice(0, 200)}`);
+  }
+  return JSON.parse(body);
 }
 
 // Sleep helper for retry
@@ -182,6 +309,8 @@ async function main() {
 
   const apiKey = process.env.ZERNIO_API_KEY;
   const accountId = process.env.ZERNIO_ACCOUNT_ID;
+  const uploadPostKey = process.env.UPLOAD_POST_API_KEY;
+  const uploadPostUser = process.env.UPLOAD_POST_USER || 'SellonTube';
 
   if (!apiKey) {
     console.error('[linkedin-schedule] ERROR: ZERNIO_API_KEY is not set.');
@@ -209,7 +338,12 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`[linkedin-schedule] Scheduling ${queue.length} post(s) to LinkedIn via Zernio...\n`);
+  console.log(`[linkedin-schedule] Scheduling ${queue.length} post(s) to LinkedIn via Zernio...`);
+  console.log(
+    uploadPostKey
+      ? `[linkedin-schedule] X cross-posting: ON via upload-post (user=${uploadPostUser}, repurposed link-free <=280)\n`
+      : '[linkedin-schedule] X cross-posting: OFF (set UPLOAD_POST_API_KEY to enable)\n',
+  );
 
   // Recent hooks from history, for dedup in the mechanical assert.
   let recentHooks = [];
@@ -249,8 +383,22 @@ async function main() {
       saveToHistory(post);
       console.log(`  SCHEDULED  ${label}`);
       const when = post.publishNow ? 'now' : payload.scheduledFor;
-      console.log(`             Publish: ${when} | Image: ${zernioImageUrl ? 'yes' : 'none'}\n`);
+      console.log(`             Publish: ${when} | Image: ${zernioImageUrl ? 'yes' : 'none'}`);
       successCount++;
+
+      // Cross-post a repurposed, link-free version to X via upload-post. A
+      // failure here never fails the item -- the LinkedIn post already shipped.
+      if (uploadPostKey) {
+        try {
+          const xText = buildXText(post);
+          await postToUploadPost(post, uploadPostKey, uploadPostUser);
+          console.log(`             X: scheduled via upload-post (${xText.length}/280 chars)\n`);
+        } catch (xErr) {
+          console.error(`             X: FAILED via upload-post, LinkedIn OK -- ${xErr.message}\n`);
+        }
+      } else {
+        console.log('');
+      }
     } catch (err) {
       console.error(`  FAILED     ${label}`);
       console.error(`             ${err.message}\n`);
