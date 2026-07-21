@@ -8,19 +8,25 @@
 import { readFileSync } from 'fs';
 import { fileURLToPath, pathToFileURL } from 'url';
 import { dirname, join, resolve } from 'path';
-import { loadEnv, listPosts } from '../lib/zernio.js';
+import { loadEnv, listPosts, getAccounts } from '../lib/zernio.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const EXPECTED_SLOT = 'T20:00';
 const BAD_STATUSES = new Set(['failed', 'cancelled', 'error']);
 
 // Pure: compare our intent against server truth. Returns every discrepancy.
-export function reconcile(queue, serverPosts, accounts) {
+// `boundAccountId` is optional and last: when provided, the top-level
+// inactive-account check only fires for the account this pipeline actually
+// binds (ZERNIO_X_ACCOUNT_ID); when omitted, every inactive twitter account
+// is flagged (legacy behaviour, kept so older call sites/tests still work).
+export function reconcile(queue, serverPosts, accounts, boundAccountId) {
   const problems = [];
 
   for (const a of accounts) {
     if (a.platform === 'twitter' && !a.isActive) {
-      problems.push(`account "${a.displayName}" (twitter) is inactive on Zernio; posts will not publish`);
+      const isBound = boundAccountId === undefined || a._id === boundAccountId;
+      if (isBound) {
+        problems.push(`account "${a.displayName}" (twitter) is inactive on Zernio; posts will not publish`);
+      }
     }
   }
 
@@ -36,9 +42,14 @@ export function reconcile(queue, serverPosts, accounts) {
       continue;
     }
     matched++;
-    if (!(hit.scheduledFor || '').includes(EXPECTED_SLOT)) {
+
+    const scheduledDate = new Date(hit.scheduledFor);
+    if (Number.isNaN(scheduledDate.getTime())) {
+      problems.push(`${q.scheduledDate}: unparseable scheduledFor value "${hit.scheduledFor}"`);
+    } else if (scheduledDate.getUTCHours() !== 20 || scheduledDate.getUTCMinutes() !== 0) {
       problems.push(`${q.scheduledDate}: wrong slot, server says ${hit.scheduledFor}`);
     }
+
     if (BAD_STATUSES.has(hit.status)) {
       problems.push(`${q.scheduledDate}: post status is ${hit.status}`);
     }
@@ -50,6 +61,17 @@ export function reconcile(queue, serverPosts, accounts) {
       if (pl.accountId && pl.accountId.isActive === false) {
         problems.push(`${q.scheduledDate}: bound to an inactive account`);
       }
+    }
+  }
+
+  // A leftover or duplicate schedule sitting on Zernio with no matching queue
+  // entry is exactly the double-post scare this script exists to catch; the
+  // queue walk above can never surface it because it only looks the other way.
+  for (const p of twitterPosts) {
+    const hasQueueEntry = queue.some((q) => (p.scheduledFor || '').startsWith(q.scheduledDate));
+    if (!hasQueueEntry) {
+      const date = (p.scheduledFor || '').slice(0, 10) || 'unknown-date';
+      problems.push(`orphan on Zernio: ${date} (id ${p._id}) has no queue entry`);
     }
   }
 
@@ -65,17 +87,26 @@ async function main() {
   }
 
   const queue = JSON.parse(readFileSync(join(__dirname, 'x-queue.json'), 'utf8'));
-  const serverPosts = await listPosts(apiKey);
-  const res = await fetch('https://zernio.com/api/v1/accounts', {
-    headers: { Authorization: `Bearer ${apiKey}` },
-  });
-  if (!res.ok) {
-    console.error(`[verify-x] ERROR: accounts lookup failed with HTTP ${res.status}`);
-    process.exit(1);
-  }
-  const { accounts } = await res.json();
 
-  const { problems, matched } = reconcile(queue, serverPosts, accounts);
+  let serverPosts;
+  try {
+    serverPosts = await listPosts(apiKey);
+  } catch (e) {
+    console.error(`[verify-x] ERROR: could not fetch posts from Zernio - ${e.message}`);
+    process.exit(1);
+    return;
+  }
+
+  let accounts;
+  try {
+    accounts = await getAccounts(apiKey);
+  } catch (e) {
+    console.error(`[verify-x] ERROR: could not fetch accounts from Zernio - ${e.message}`);
+    process.exit(1);
+    return;
+  }
+
+  const { problems, matched } = reconcile(queue, serverPosts, accounts, process.env.ZERNIO_X_ACCOUNT_ID);
   console.log(`[verify-x] ${matched}/${queue.length} queued posts confirmed on Zernio.`);
   if (problems.length) {
     console.error(`[verify-x] ${problems.length} PROBLEM(S):`);
@@ -87,5 +118,8 @@ async function main() {
 
 const invokedPath = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : null;
 if (invokedPath && import.meta.url === invokedPath) {
-  main();
+  main().catch((err) => {
+    console.error(`[verify-x] ERROR: unhandled failure - ${err.message}`);
+    process.exit(1);
+  });
 }

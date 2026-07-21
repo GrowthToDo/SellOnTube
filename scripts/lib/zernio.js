@@ -58,6 +58,11 @@ export async function postToZernio(payload, apiKey) {
   return request('/posts', apiKey, { method: 'POST', body: JSON.stringify(payload) });
 }
 
+export async function getAccounts(apiKey) {
+  const { accounts } = await request('/accounts', apiKey);
+  return accounts || [];
+}
+
 export async function listPosts(apiKey) {
   const all = [];
   for (let page = 1; page <= 20; page++) {
