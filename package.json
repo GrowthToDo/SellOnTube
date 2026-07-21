@@ -25,6 +25,9 @@
     "image-sitemap": "node scripts/generate-image-sitemap.mjs",
     "indexnow": "node scripts/indexnow-ping.js",
     "linkedin": "node scripts/linkedin-agent/linkedin-schedule.js",
+    "x:schedule": "node scripts/x-agent/x-schedule.js",
+    "x:verify": "node scripts/x-agent/verify-x-scheduled.js",
+    "x:test": "node --test scripts/x-agent/*.test.js scripts/lib/*.test.js",
     "gsc-submit": "node scripts/gsc-sitemap-submit.js"
   },
   "dependencies": {
