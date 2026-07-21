@@ -91,7 +91,12 @@ analytics:
   vendors:
     googleAnalytics:
       id: "G-KS2Z7KR917"
-      partytown: true
+      # partytown: false is deliberate. With Partytown, @astrolib/analytics emits the
+      # gtag bootstrap as type="text/partytown", so gtag() exists only inside the web
+      # worker and custom events fired from page code never reach GA4. Verified
+      # 2026-07-21: page_view arrived, every custom event was dropped. Loading gtag.js
+      # on the main thread makes window.gtag real and custom events work.
+      partytown: false
 
 ui:
   theme: "system"

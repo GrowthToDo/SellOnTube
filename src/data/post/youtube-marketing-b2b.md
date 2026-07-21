@@ -98,7 +98,7 @@ B2B YouTube content that generates qualified leads maps to three stages of the b
 
 **Solution-aware content** targets buyers who know what type of solution they need and are evaluating approaches. These videos show your methodology and framework. "How we audit a B2B YouTube channel before building a content strategy" is a solution-aware video. It attracts buyers who are already looking for someone to do this work.
 
-**Proof content** targets buyers close to a decision. Case studies, client results, process walkthroughs. A Shopify app we worked with generated 1,257 conversions from YouTube in 12 months, compared to 411 from blog content over the same period. That kind of documented, specific result in a video is what moves a prospect from consideration to contact.
+**Proof content** targets buyers close to a decision. Case studies, client results, process walkthroughs. A Shopify app we worked with generated 1,257 conversions from YouTube in 12 months, compared to 411 from blog content over the same period. That kind of documented, specific result in a video is what moves a prospect from consideration to contact. For six more documented examples with founder-sourced revenue numbers, see our [YouTube marketing case studies](/blog/youtube-marketing-case-studies).
 
 For most B2B businesses starting a YouTube channel, one solid mid-funnel video per week generates more pipeline than five top-of-funnel videos. Match your content type to where your buyers actually are, not where you wish they were. If you need help finding those mid-funnel topics, our [YouTube Video Ideas Generator](/tools/youtube-video-ideas-generator) produces ideas filtered for buyer intent, not views.
 

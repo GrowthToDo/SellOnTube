@@ -61,9 +61,15 @@ export default defineConfig({
       },
     }),
 
+    // `forward` is intentionally empty. It used to contain 'dataLayer.push' so that
+    // Partytown would relay analytics calls into the web worker running gtag.js.
+    // Google Analytics no longer runs in the worker (see src/config.yaml), so that
+    // forward installs a main-thread dataLayer.push proxy that ships events into a
+    // worker with no gtag in it. Any event fired before gtag.js finishes loading
+    // would be queued there and silently lost. Verified 2026-07-21.
     ...whenExternalScripts(() =>
       partytown({
-        config: { forward: ['dataLayer.push'] },
+        config: { forward: [] },
       })
     ),
 

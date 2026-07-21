@@ -217,7 +217,7 @@ const geoOptions = [
               </button>
             </div>
             <p id="gate-email-error" class="hidden mt-1.5 ml-11 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
-            <p class="mt-2 ml-11 text-xs text-gray-400 dark:text-slate-600">No spam. We only send YouTube acquisition resources.</p>
+            <p class="mt-2 ml-11 text-xs text-gray-400 dark:text-slate-600">No spam. We only send YouTube acquisition resources. Unsubscribe anytime.</p>
           </div>
         </div>
 
@@ -501,7 +501,7 @@ const geoOptions = [
     <div class="max-w-2xl mx-auto px-4 space-y-5">
       <h2 class="text-2xl font-bold text-gray-900 dark:text-white">How to turn autocomplete keywords into a content plan</h2>
       <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-        Keywords without a system are a spreadsheet you never open again. Here is the workflow that turns this tool's output into videos that rank.
+        Keywords without a system are a spreadsheet you never open again. Here is the workflow that turns this tool's output into videos that rank. It pairs with our <a href="/blog/youtube-keyword-research" class="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">keyword research framework for business channels</a>, which covers demand validation beyond autocomplete.
       </p>
 
       <!-- Step cards -->
@@ -1294,24 +1294,24 @@ const geoOptions = [
 
               // GA4
               if (typeof window !== 'undefined' && (window as any).dataLayer) {
-                (window as any).dataLayer.push({ event: 'tool_cluster_success', tool: 'autocomplete-keywords', cluster_count: clusterData.clusters.length });
+                window.gtag('event', 'tool_cluster_success', { tool: 'autocomplete-keywords', cluster_count: clusterData.clusters.length });
               }
             }
           } else if (clusterRes.status === 429) {
             console.warn('Cluster API quota exceeded');
             if (typeof window !== 'undefined' && (window as any).dataLayer) {
-              (window as any).dataLayer.push({ event: 'tool_cluster_fallback', tool: 'autocomplete-keywords', reason: 'quota_exceeded' });
+              window.gtag('event', 'tool_cluster_fallback', { tool: 'autocomplete-keywords', reason: 'quota_exceeded' });
             }
           } else {
             console.warn('Cluster API error:', clusterRes.status);
             if (typeof window !== 'undefined' && (window as any).dataLayer) {
-              (window as any).dataLayer.push({ event: 'tool_cluster_fallback', tool: 'autocomplete-keywords', reason: 'api_error' });
+              window.gtag('event', 'tool_cluster_fallback', { tool: 'autocomplete-keywords', reason: 'api_error' });
             }
           }
         } catch (clusterErr) {
           console.warn('Cluster request failed:', clusterErr);
           if (typeof window !== 'undefined' && (window as any).dataLayer) {
-            (window as any).dataLayer.push({ event: 'tool_cluster_fallback', tool: 'autocomplete-keywords', reason: 'api_error' });
+            window.gtag('event', 'tool_cluster_fallback', { tool: 'autocomplete-keywords', reason: 'api_error' });
           }
         }
 

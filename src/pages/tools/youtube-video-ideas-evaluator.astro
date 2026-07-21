@@ -200,7 +200,7 @@ const faqSchema = {
           >
             Continue evaluating
           </button>
-          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube. Unsubscribe anytime.</p>
         </div>
         <div id="gate-success" class="hidden text-center mt-4">
           <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Evaluating now...</p>
@@ -673,8 +673,7 @@ const faqSchema = {
 </Layout>
 
 <script>
-  // ===== TYPE DECLARATIONS =====
-  declare global { interface Window { dataLayer: Record<string, unknown>[]; } }
+  // Window.dataLayer / Window.gtag are declared globally in src/env.d.ts
 
   // ===== SCORING ENGINE =====
 
@@ -1111,13 +1110,13 @@ const faqSchema = {
 
     if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'video-ideas-evaluator' });
+      window.gtag('event', 'tool_email_gate_shown', { tool: 'video-ideas-evaluator' });
       showStep('step-email-gate');
       return;
     }
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_evaluate_click', tool: 'video-ideas-evaluator' });
+    window.gtag('event', 'tool_evaluate_click', { tool: 'video-ideas-evaluator' });
 
     const data = evaluateTopic(topic, targetCustomer, product);
     incrementCount();
@@ -1125,8 +1124,7 @@ const faqSchema = {
     renderResults(data);
     showStep('step-results');
 
-    window.dataLayer.push({
-      event: 'tool_evaluate_success',
+    window.gtag('event', 'tool_evaluate_success', {
       tool: 'video-ideas-evaluator',
       acquisition_potential: data.verdict.acquisitionPotential,
     });
@@ -1168,7 +1166,7 @@ const faqSchema = {
     updateCounterLabel();
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'video-ideas-evaluator' });
+    window.gtag('event', 'tool_email_submitted', { tool: 'video-ideas-evaluator' });
 
     const form = document.getElementById('gate-form') as HTMLElement;
     const success = document.getElementById('gate-success') as HTMLElement;
@@ -1202,7 +1200,7 @@ const faqSchema = {
     document.getElementById(id)?.addEventListener('click', (e) => {
       const dest = (e.currentTarget as HTMLElement).dataset.dest || 'generator';
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_cta_click', tool: 'video-ideas-evaluator', destination: dest });
+      window.gtag('event', 'tool_cta_click', { tool: 'video-ideas-evaluator', destination: dest });
     });
   });
 

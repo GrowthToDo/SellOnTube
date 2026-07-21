@@ -48,3 +48,6 @@ research/**/*.xls
 .agents/
 .claude/skills/
 skills-lock.json
+
+# backfill enrollment state (contains contact emails)
+scripts/backfill_nurture_state.csv

@@ -176,7 +176,7 @@ const faqSchema = {
           >
             Continue Generating
           </button>
-          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube.</p>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube. Unsubscribe anytime.</p>
         </div>
         <div id="gate-success" class="hidden text-center mt-4">
           <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Generating your description now...</p>
@@ -765,7 +765,7 @@ const faqSchema = {
         btn.textContent = 'Generate Description \u2192';
         showFieldError('cta-link-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-description-generator', reason: 'quota_exceeded' });
+        window.gtag('event', 'tool_generate_error', { tool: 'youtube-description-generator', reason: 'quota_exceeded' });
         return;
       }
 
@@ -788,7 +788,7 @@ const faqSchema = {
       document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-description-generator' });
+      window.gtag('event', 'tool_generate_success', { tool: 'youtube-description-generator' });
 
     } catch (err) {
       showStep('step-input');
@@ -799,7 +799,7 @@ const faqSchema = {
         : 'Something went wrong on our end. Please try again in a moment.';
       showFieldError('video-url-input', message);
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-description-generator', reason: 'api_error' });
+      window.gtag('event', 'tool_generate_error', { tool: 'youtube-description-generator', reason: 'api_error' });
     }
   }
 
@@ -815,13 +815,13 @@ const faqSchema = {
     // Email gate check
     if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-description-generator' });
+      window.gtag('event', 'tool_email_gate_shown', { tool: 'youtube-description-generator' });
       showStep('step-email-gate');
       return;
     }
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-description-generator' });
+    window.gtag('event', 'tool_generate_click', { tool: 'youtube-description-generator' });
 
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
     btn.disabled = true;
@@ -870,7 +870,7 @@ const faqSchema = {
     updateCounterLabel();
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-description-generator' });
+    window.gtag('event', 'tool_email_submitted', { tool: 'youtube-description-generator' });
 
     const form = document.getElementById('gate-form') as HTMLElement;
     const success = document.getElementById('gate-success') as HTMLElement;
@@ -905,7 +905,7 @@ const faqSchema = {
         }, 1500);
       });
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'description_copied', tool: 'youtube-description-generator', section: eventLabel });
+      window.gtag('event', 'description_copied', { tool: 'youtube-description-generator', section: eventLabel });
     });
   }
 
@@ -952,7 +952,7 @@ const faqSchema = {
       window.location.href = target.href;
     }
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-description-generator' });
+    window.gtag('event', 'tool_cta_click', { tool: 'youtube-description-generator' });
   });
 
   // ===== PRE-FILL FROM QUERY PARAM =====
