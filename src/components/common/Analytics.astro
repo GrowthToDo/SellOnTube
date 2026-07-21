@@ -13,30 +13,37 @@ import { ANALYTICS } from 'astrowind:config';
 }
 
 {/*
-  Main-thread gtag() shim.
+  Main-thread gtag() shim + opt-in debug mode.
 
-  @astrolib/analytics emits its gtag bootstrap with type="text/partytown", so that
-  bootstrap runs inside the Partytown web worker and window.gtag never exists on the
-  main thread. Page scripts therefore cannot call gtag() directly.
+  Analytics events MUST be sent with window.gtag('event', name, params).
+  Do NOT use dataLayer.push({ event: 'name' }) -- that is Google Tag Manager
+  syntax, there is no GTM container on this site, and gtag.js silently ignores
+  it. Every such event was dropped between launch and 2026-07-21.
 
-  This defines gtag() on the main thread. It pushes the same `arguments` object the
-  real bootstrap does, and Partytown's `forward: ['dataLayer.push']` (astro.config.ts)
-  relays the call into the worker where gtag.js consumes it.
+  The shim exists because @astrolib/analytics defines gtag() inside its own
+  bootstrap script. Declaring it here guarantees window.gtag is available to
+  page code regardless of script order, and it is a no-op when the bootstrap
+  has already defined it.
 
-  window.dataLayer is resolved at call time, not captured, so this keeps working
-  whichever order the shim and the Partytown forward proxy initialise in.
-
-  Do NOT use dataLayer.push({ event: 'name' }) in page code. That is Google Tag
-  Manager syntax; there is no GTM container on this site and gtag.js ignores it.
-  Every such event was silently dropped until 2026-07-21.
+  Appending ?debug_mode=1 to any URL routes that session into GA4 DebugView
+  (Admin > Data display > DebugView) without needing the Google Analytics
+  Debugger browser extension. Off by default, so real visitors are unaffected.
 */}
-<script is:inline>
+<script is:inline define:vars={{ gaId: String(ANALYTICS?.vendors?.googleAnalytics?.id ?? '') }}>
   window.dataLayer = window.dataLayer || [];
   window.gtag =
     window.gtag ||
     function () {
       window.dataLayer.push(arguments);
     };
+
+  try {
+    if (gaId && new URLSearchParams(window.location.search).get('debug_mode') === '1') {
+      window.gtag('config', gaId, { debug_mode: true });
+    }
+  } catch (e) {
+    /* debug mode is best-effort; never break the page for it */
+  }
 </script>
 
 <script is:inline>
