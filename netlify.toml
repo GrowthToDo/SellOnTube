@@ -26,6 +26,11 @@
   status = 410
 
 [[redirects]]
+  from = "/blog/how-to-check-youtube-ranking"
+  to = "/blog/how-to-check-youtube-rankings"
+  status = 301
+
+[[redirects]]
   from = "/blog/youtube-marketing-not-working"
   to = "/blog/youtube-views-but-no-leads"
   status = 301
