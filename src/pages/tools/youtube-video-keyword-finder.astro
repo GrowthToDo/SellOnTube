@@ -588,8 +588,7 @@ const faqSchema = {
 </Layout>
 
 <script>
-  // ===== TYPE DECLARATIONS =====
-  declare global { interface Window { dataLayer: Record<string, unknown>[]; } }
+  // Window.dataLayer / Window.gtag are declared globally in src/env.d.ts
 
   interface KeywordResult {
     keyword: string;
@@ -873,7 +872,7 @@ const faqSchema = {
             }, 1500);
           });
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'suggested_title_copied', tool: 'video-keyword-finder' });
+          window.gtag('event', 'suggested_title_copied', { tool: 'video-keyword-finder' });
         });
       }
     } else if (titleBlock) {
@@ -942,7 +941,7 @@ const faqSchema = {
     URL.revokeObjectURL(url);
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'csv_downloaded', tool: 'video-keyword-finder' });
+    window.gtag('event', 'csv_downloaded', { tool: 'video-keyword-finder' });
   }
 
   function handleCSVDownload(): void {
@@ -992,7 +991,7 @@ const faqSchema = {
     updateCounterLabel();
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'video-keyword-finder', trigger: 'csv_download' });
+    window.gtag('event', 'tool_email_submitted', { tool: 'video-keyword-finder', trigger: 'csv_download' });
 
     const gate = document.getElementById('csv-email-gate');
     if (gate) gate.classList.add('hidden');
@@ -1061,7 +1060,7 @@ const faqSchema = {
           }, 1500);
         });
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'keyword_copied', tool: 'video-keyword-finder', keyword_index: idx });
+        window.gtag('event', 'keyword_copied', { tool: 'video-keyword-finder', keyword_index: idx });
       });
     });
   }
@@ -1108,7 +1107,7 @@ const faqSchema = {
       setTimeout(() => { btn.textContent = 'Copy report'; }, 1500);
     }
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'report_copied', tool: 'video-keyword-finder' });
+    window.gtag('event', 'report_copied', { tool: 'video-keyword-finder' });
   }
 
   // ===== API CALL =====
@@ -1136,7 +1135,7 @@ const faqSchema = {
           showError('AI analysis is at capacity right now. Free daily limit reached. Check back tomorrow.');
         }
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'tool_generate_error', tool: 'video-keyword-finder', reason: 'quota_exceeded' });
+        window.gtag('event', 'tool_generate_error', { tool: 'video-keyword-finder', reason: 'quota_exceeded' });
         return;
       }
 
@@ -1164,8 +1163,7 @@ const faqSchema = {
       document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: 'tool_generate_success',
+      window.gtag('event', 'tool_generate_success', {
         tool: 'video-keyword-finder',
         grade: report.summary.grade,
         ranking_count: report.summary.ranking,
@@ -1178,7 +1176,7 @@ const faqSchema = {
       btn.textContent = 'Find my ranking keywords →';
       showError('Something went wrong on our end. Try again in a moment.');
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_generate_error', tool: 'video-keyword-finder', reason: 'api_error' });
+      window.gtag('event', 'tool_generate_error', { tool: 'video-keyword-finder', reason: 'api_error' });
     }
   }
 
@@ -1220,13 +1218,13 @@ const faqSchema = {
     // Email gate check
     if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'video-keyword-finder' });
+      window.gtag('event', 'tool_email_gate_shown', { tool: 'video-keyword-finder' });
       showStep('step-email-gate');
       return;
     }
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_generate_click', tool: 'video-keyword-finder' });
+    window.gtag('event', 'tool_generate_click', { tool: 'video-keyword-finder' });
 
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
     btn.disabled = true;
@@ -1274,7 +1272,7 @@ const faqSchema = {
     updateCounterLabel();
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'video-keyword-finder' });
+    window.gtag('event', 'tool_email_submitted', { tool: 'video-keyword-finder' });
 
     const form = document.getElementById('gate-form') as HTMLElement;
     const success = document.getElementById('gate-success') as HTMLElement;
@@ -1322,7 +1320,7 @@ const faqSchema = {
     const input = document.getElementById('video-url-input') as HTMLInputElement;
     input.value = EXAMPLE_VIDEO;
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_example_click', tool: 'video-keyword-finder' });
+    window.gtag('event', 'tool_example_click', { tool: 'video-keyword-finder' });
     generate();
   });
 
@@ -1339,7 +1337,7 @@ const faqSchema = {
     link.addEventListener('click', () => {
       const dest = (link as HTMLElement).dataset.destination || 'unknown';
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_cta_click', tool: 'video-keyword-finder', destination: dest });
+      window.gtag('event', 'tool_cta_click', { tool: 'video-keyword-finder', destination: dest });
     });
   });
 

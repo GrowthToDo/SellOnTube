@@ -3,6 +3,61 @@ import { GoogleAnalytics } from '@astrolib/analytics';
 import { ANALYTICS } from 'astrowind:config';
 ---
 
+{/*
+  Main-thread gtag() shim + opt-in debug mode.
+
+  ORDER MATTERS: this block must stay ABOVE <GoogleAnalytics />. gtag.js
+  replays window.dataLayer in order, so gtag('set', ...) only affects events
+  queued after it. The bootstrap emitted by <GoogleAnalytics /> immediately
+  calls gtag('config', id), which sends page_view -- so a 'set' placed after
+  that component would miss page_view and anything else already queued.
+  Verified 2026-07-21: with this block below the component, DebugView stayed
+  empty because no event ever carried the debug flag.
+
+  Analytics events MUST be sent with window.gtag('event', name, params).
+  Do NOT use dataLayer.push({ event: 'name' }) -- that is Google Tag Manager
+  syntax, there is no GTM container on this site, and gtag.js silently ignores
+  it. Every such event was dropped between launch and 2026-07-21.
+
+  Appending ?debug_mode=1 to any URL routes that session into GA4 DebugView
+  (Admin > Data display > DebugView) without needing the Google Analytics
+  Debugger browser extension. It persists for the tab via sessionStorage so
+  in-site navigation keeps reporting. Off by default; real visitors unaffected.
+*/}
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+
+  var __gaDebug = false;
+  try {
+    var qsDebug = new URLSearchParams(window.location.search).get('debug_mode') === '1';
+    if (qsDebug) {
+      window.sessionStorage.setItem('ga_debug_mode', '1');
+    }
+    __gaDebug = qsDebug || window.sessionStorage.getItem('ga_debug_mode') === '1';
+  } catch (e) {
+    /* debug mode is best-effort; never break the page for it */
+  }
+
+  window.gtag =
+    window.gtag ||
+    function () {
+      // In debug mode, stamp debug_mode onto each event so GA4 routes it to
+      // DebugView. gtag('set', { debug_mode: true }) does NOT do this: verified
+      // 2026-07-21 that events still reached /g/collect without the _dbg flag,
+      // so DebugView stayed empty while tracking itself worked correctly.
+      if (__gaDebug && arguments[0] === 'event') {
+        var name = arguments[1];
+        var params = arguments[2] && typeof arguments[2] === 'object' ? arguments[2] : {};
+        params.debug_mode = true;
+        (function () {
+          window.dataLayer.push(arguments);
+        })('event', name, params);
+        return;
+      }
+      window.dataLayer.push(arguments);
+    };
+</script>
+
 {
   ANALYTICS?.vendors?.googleAnalytics?.id ? (
     <GoogleAnalytics

@@ -1018,7 +1018,7 @@ const faqSchema = {
     if (overlay) overlay.classList.remove('hidden');
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-seo-tool' });
+    window.gtag('event', 'tool_email_gate_shown', { tool: 'youtube-seo-tool' });
   }
 
   function hideEmailGate(): void {
@@ -1044,7 +1044,7 @@ const faqSchema = {
         btn.textContent = 'Analyse My Video \u2192';
         showFieldError('video-url-input', 'AI analysis is at capacity right now. Free daily limit reached. Please try again in a moment.');
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'tool_analyse_error', tool: 'youtube-seo-tool', reason: 'quota_exceeded' });
+        window.gtag('event', 'tool_analyse_error', { tool: 'youtube-seo-tool', reason: 'quota_exceeded' });
         return;
       }
 
@@ -1059,7 +1059,7 @@ const faqSchema = {
         btn.textContent = 'Analyse My Video \u2192';
         showFieldError('video-url-input', errorMsg);
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'tool_analyse_error', tool: 'youtube-seo-tool', reason: 'api_error_' + res.status });
+        window.gtag('event', 'tool_analyse_error', { tool: 'youtube-seo-tool', reason: 'api_error_' + res.status });
         return;
       }
 
@@ -1086,7 +1086,7 @@ const faqSchema = {
       }
 
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_analyse_success', tool: 'youtube-seo-tool' });
+      window.gtag('event', 'tool_analyse_success', { tool: 'youtube-seo-tool' });
 
     } catch {
       showStep('step-input');
@@ -1094,7 +1094,7 @@ const faqSchema = {
       btn.textContent = 'Analyse My Video \u2192';
       showFieldError('video-url-input', 'Something went wrong. Please try again.');
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_analyse_error', tool: 'youtube-seo-tool', reason: 'api_error' });
+      window.gtag('event', 'tool_analyse_error', { tool: 'youtube-seo-tool', reason: 'api_error' });
     }
   }
 
@@ -1107,7 +1107,7 @@ const faqSchema = {
     const websiteUrl = (document.getElementById('website-url-input') as HTMLInputElement).value.trim();
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_analyse_click', tool: 'youtube-seo-tool' });
+    window.gtag('event', 'tool_analyse_click', { tool: 'youtube-seo-tool' });
 
     const btn = document.getElementById('analyse-btn') as HTMLButtonElement;
     btn.disabled = true;
@@ -1157,7 +1157,7 @@ const faqSchema = {
     updateCounterLabel();
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-seo-tool' });
+    window.gtag('event', 'tool_email_submitted', { tool: 'youtube-seo-tool' });
 
     const form = document.getElementById('gate-form') as HTMLElement;
     const success = document.getElementById('gate-success') as HTMLElement;
@@ -1193,7 +1193,7 @@ const faqSchema = {
 
   document.getElementById('results-cta')?.addEventListener('click', () => {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-seo-tool' });
+    window.gtag('event', 'tool_cta_click', { tool: 'youtube-seo-tool' });
   });
 
   // ===== EVENT LISTENERS =====

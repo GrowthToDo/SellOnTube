@@ -719,7 +719,7 @@ const faqSchema = {
         btn.textContent = 'Audit Channel \u2192';
         showFieldError('channel-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-channel-audit', reason: 'quota_exceeded' });
+        window.gtag('event', 'tool_generate_error', { tool: 'youtube-channel-audit', reason: 'quota_exceeded' });
         return;
       }
 
@@ -744,7 +744,7 @@ const faqSchema = {
       document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_generate_success', tool: 'youtube-channel-audit' });
+      window.gtag('event', 'tool_generate_success', { tool: 'youtube-channel-audit' });
 
     } catch {
       showStep('step-input');
@@ -752,7 +752,7 @@ const faqSchema = {
       btn.textContent = 'Audit Channel \u2192';
       showFieldError('channel-input', 'Something went wrong on our end. Please try again in a moment.');
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_generate_error', tool: 'youtube-channel-audit', reason: 'api_error' });
+      window.gtag('event', 'tool_generate_error', { tool: 'youtube-channel-audit', reason: 'api_error' });
     }
   }
 
@@ -766,13 +766,13 @@ const faqSchema = {
     // Email gate check
     if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'tool_email_gate_shown', tool: 'youtube-channel-audit' });
+      window.gtag('event', 'tool_email_gate_shown', { tool: 'youtube-channel-audit' });
       showStep('step-email-gate');
       return;
     }
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_generate_click', tool: 'youtube-channel-audit' });
+    window.gtag('event', 'tool_generate_click', { tool: 'youtube-channel-audit' });
 
     const btn = document.getElementById('audit-btn') as HTMLButtonElement;
     btn.disabled = true;
@@ -819,7 +819,7 @@ const faqSchema = {
     updateCounterLabel();
 
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_email_submitted', tool: 'youtube-channel-audit' });
+    window.gtag('event', 'tool_email_submitted', { tool: 'youtube-channel-audit' });
 
     const form = document.getElementById('gate-form') as HTMLElement;
     const success = document.getElementById('gate-success') as HTMLElement;
@@ -852,7 +852,7 @@ const faqSchema = {
 
   document.getElementById('results-cta')?.addEventListener('click', () => {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'tool_cta_click', tool: 'youtube-channel-audit' });
+    window.gtag('event', 'tool_cta_click', { tool: 'youtube-channel-audit' });
   });
 
   // ===== EVENT LISTENERS =====

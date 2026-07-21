@@ -64,7 +64,7 @@ const { language, textDirection } = I18N;
         const link = (e.target as Element).closest('a[href*="cal.com"]');
         if (link) {
           window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'close_convert_lead' });
+          window.gtag('event', 'close_convert_lead');
         }
       });
     </script>
