@@ -12,6 +12,33 @@ import { ANALYTICS } from 'astrowind:config';
   ) : null
 }
 
+{/*
+  Main-thread gtag() shim.
+
+  @astrolib/analytics emits its gtag bootstrap with type="text/partytown", so that
+  bootstrap runs inside the Partytown web worker and window.gtag never exists on the
+  main thread. Page scripts therefore cannot call gtag() directly.
+
+  This defines gtag() on the main thread. It pushes the same `arguments` object the
+  real bootstrap does, and Partytown's `forward: ['dataLayer.push']` (astro.config.ts)
+  relays the call into the worker where gtag.js consumes it.
+
+  window.dataLayer is resolved at call time, not captured, so this keeps working
+  whichever order the shim and the Partytown forward proxy initialise in.
+
+  Do NOT use dataLayer.push({ event: 'name' }) in page code. That is Google Tag
+  Manager syntax; there is no GTM container on this site and gtag.js ignores it.
+  Every such event was silently dropped until 2026-07-21.
+*/}
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag =
+    window.gtag ||
+    function () {
+      window.dataLayer.push(arguments);
+    };
+</script>
+
 <script is:inline>
   (function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
