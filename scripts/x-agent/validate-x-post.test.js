@@ -59,3 +59,13 @@ test('dedups against recent hooks', () => {
   const r = validateXPost(good, [hook]);
   assert.ok(r.reasons.includes('dedup: hook already used in recent history'));
 });
+
+test('dedups a >120-char hook against a 120-char-truncated history entry', () => {
+  // Mirrors saveToHistory: history stores hook.slice(0, 120). A first line
+  // longer than 120 chars must still be caught as a repeat.
+  const longHook = 'This is a deliberately long opening line that goes on and on well past the one hundred and twenty character truncation boundary used in history.';
+  assert.ok(longHook.length > 120);
+  const storedHook = longHook.slice(0, 120);
+  const r = validateXPost({ ...good, xPost: `${longHook}\n\nSecond line.` }, [storedHook]);
+  assert.ok(r.reasons.includes('dedup: hook already used in recent history'));
+});

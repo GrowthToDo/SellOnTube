@@ -11,6 +11,10 @@ const BANNED = [
 const URL_RE = /https?:\/\//i;
 const DASH_RE = /[—–]/;
 const X_LIMIT = 280;
+// history stores hooks truncated to 120 chars (see x-schedule.js saveToHistory).
+// Truncate the candidate hook the same way before comparing, so a >120-char
+// first line still dedups correctly against what history actually recorded.
+const HOOK_MAX = 120;
 
 export function validateXPost(post, recentHooks = []) {
   const reasons = [];
@@ -41,8 +45,8 @@ export function validateXPost(post, recentHooks = []) {
     if (day === 0 || day === 6) reasons.push(`scheduledDate falls on a weekend: ${post.scheduledDate}`);
   }
 
-  const hook = body.split('\n')[0].trim();
-  if (hook && recentHooks.some((h) => h.trim() === hook)) {
+  const hook = body.split('\n')[0].trim().slice(0, HOOK_MAX);
+  if (hook && recentHooks.some((h) => h.trim().slice(0, HOOK_MAX) === hook)) {
     reasons.push('dedup: hook already used in recent history');
   }
 
