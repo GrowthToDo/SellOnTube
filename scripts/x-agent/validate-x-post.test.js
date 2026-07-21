@@ -1,0 +1,56 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { validateXPost } from './validate-x-post.js';
+
+const good = {
+  scheduledDate: '2026-07-23',
+  xPost: 'Four videos a month sounds modest.\n\nYear one it looks like nothing.\nYear two it is the only channel still compounding.',
+  sourceSlug: 'compounding-effect-four-videos-a-month',
+  sourceTitle: 'The compounding effect of four videos a month',
+};
+
+test('passes a clean post', () => {
+  assert.deepEqual(validateXPost(good), { ok: true, reasons: [] });
+});
+
+test('fails when over 280 characters', () => {
+  const r = validateXPost({ ...good, xPost: 'a'.repeat(281) });
+  assert.equal(r.ok, false);
+  assert.ok(r.reasons.some((x) => x.includes('281')));
+});
+
+test('fails on any URL', () => {
+  const r = validateXPost({ ...good, xPost: 'See https://sellontube.com for more.' });
+  assert.ok(r.reasons.includes('contains a URL'));
+});
+
+test('fails on em dash', () => {
+  const r = validateXPost({ ...good, xPost: 'Views are vanity — pipeline is not.' });
+  assert.ok(r.reasons.includes('contains em/en dash'));
+});
+
+test('fails on banned phrase', () => {
+  const r = validateXPost({ ...good, xPost: 'Time to leverage your channel.' });
+  assert.ok(r.reasons.some((x) => x.includes('leverage')));
+});
+
+test('fails on weekend date', () => {
+  const r = validateXPost({ ...good, scheduledDate: '2026-07-25' });
+  assert.ok(r.reasons.some((x) => x.includes('weekend')));
+});
+
+test('fails on empty body', () => {
+  const r = validateXPost({ ...good, xPost: '   ' });
+  assert.ok(r.reasons.includes('empty xPost'));
+});
+
+test('fails on missing source attribution', () => {
+  const r = validateXPost({ ...good, sourceSlug: '' });
+  assert.ok(r.reasons.includes('missing sourceSlug'));
+});
+
+test('dedups against recent hooks', () => {
+  const hook = good.xPost.split('\n')[0];
+  const r = validateXPost(good, [hook]);
+  assert.ok(r.reasons.includes('dedup: hook already used in recent history'));
+});
