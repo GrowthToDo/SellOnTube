@@ -4,7 +4,7 @@
 // and the whole point of the blog-repurpose stream is reach, not referral.
 
 const BANNED = [
-  "in today's", "in today's", 'game-chang', 'unlock the power',
+  'in today’s', "in today's", 'game-chang', 'unlock the power',
   'here are 5', 'here are five', 'dive into', 'leverage', 'delve',
   'take your channel to the next level', 'the future is',
 ];

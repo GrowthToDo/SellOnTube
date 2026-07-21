@@ -34,6 +34,11 @@ test('fails on banned phrase', () => {
   assert.ok(r.reasons.some((x) => x.includes('leverage')));
 });
 
+test('fails on curly apostrophe banned phrase', () => {
+  const r = validateXPost({ ...good, xPost: 'In today’s market, nobody searches.' });
+  assert.ok(r.reasons.some((x) => x.includes('banned phrase:')));
+});
+
 test('fails on weekend date', () => {
   const r = validateXPost({ ...good, scheduledDate: '2026-07-25' });
   assert.ok(r.reasons.some((x) => x.includes('weekend')));
