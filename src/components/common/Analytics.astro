@@ -26,23 +26,36 @@ import { ANALYTICS } from 'astrowind:config';
 */}
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
-  window.gtag =
-    window.gtag ||
-    function () {
-      window.dataLayer.push(arguments);
-    };
 
+  var __gaDebug = false;
   try {
     var qsDebug = new URLSearchParams(window.location.search).get('debug_mode') === '1';
     if (qsDebug) {
       window.sessionStorage.setItem('ga_debug_mode', '1');
     }
-    if (qsDebug || window.sessionStorage.getItem('ga_debug_mode') === '1') {
-      window.gtag('set', { debug_mode: true });
-    }
+    __gaDebug = qsDebug || window.sessionStorage.getItem('ga_debug_mode') === '1';
   } catch (e) {
     /* debug mode is best-effort; never break the page for it */
   }
+
+  window.gtag =
+    window.gtag ||
+    function () {
+      // In debug mode, stamp debug_mode onto each event so GA4 routes it to
+      // DebugView. gtag('set', { debug_mode: true }) does NOT do this: verified
+      // 2026-07-21 that events still reached /g/collect without the _dbg flag,
+      // so DebugView stayed empty while tracking itself worked correctly.
+      if (__gaDebug && arguments[0] === 'event') {
+        var name = arguments[1];
+        var params = arguments[2] && typeof arguments[2] === 'object' ? arguments[2] : {};
+        params.debug_mode = true;
+        (function () {
+          window.dataLayer.push(arguments);
+        })('event', name, params);
+        return;
+      }
+      window.dataLayer.push(arguments);
+    };
 </script>
 
 {
