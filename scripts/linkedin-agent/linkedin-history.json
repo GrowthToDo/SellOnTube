@@ -15,7 +15,39 @@
         "#B2BMarketing"
       ],
       "imageUrl": null,
-      "status": "scheduled"
+      "status": "cancelled"
+    },
+    {
+      "date": "2026-07-30",
+      "dayOfWeek": "Thursday",
+      "sourceTitle": "YouTube SEO Tool",
+      "sourceUrl": "https://sellontube.com/tools/youtube-seo-tool",
+      "postAngle": "A ranked video keeps converting for years.",
+      "archetype": "proof",
+      "linkLocation": "comment",
+      "thesis": "After this post, a marketer will treat a video as a compounding asset, not a disposable post.",
+      "hook": "A LinkedIn post dies in 48 hours. A YouTube video kept booking us demos 18 months later.",
+      "hashtags": [
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "cancelled"
+    },
+    {
+      "date": "2026-07-29",
+      "dayOfWeek": "Wednesday",
+      "sourceTitle": null,
+      "sourceUrl": null,
+      "postAngle": "Trends expire; evergreen searches compound.",
+      "archetype": "mistake",
+      "linkLocation": null,
+      "thesis": "After this post, a marketer will make evergreen search videos instead of chasing trends.",
+      "hook": "Chasing trending topics is the fastest way to build a channel nobody searches for next month.",
+      "hashtags": [
+        "#YouTubeMarketing"
+      ],
+      "imageUrl": null,
+      "status": "cancelled"
     },
     {
       "date": "2026-07-28",
@@ -32,7 +64,7 @@
         "#B2BMarketing"
       ],
       "imageUrl": null,
-      "status": "scheduled"
+      "status": "cancelled"
     },
     {
       "date": "2026-07-27",
@@ -49,7 +81,7 @@
         "#B2BMarketing"
       ],
       "imageUrl": null,
-      "status": "scheduled"
+      "status": "cancelled"
     },
     {
       "date": "2026-07-24",
@@ -66,7 +98,55 @@
         "#B2BMarketing"
       ],
       "imageUrl": null,
-      "status": "scheduled"
+      "status": "cancelled"
+    },
+    {
+      "date": "2026-07-23",
+      "dayOfWeek": "Thursday",
+      "sourceTitle": "YouTube Vs",
+      "sourceUrl": "https://sellontube.com/youtube-vs/",
+      "postAngle": "Comparison videos catch buyers mid-decision.",
+      "archetype": "proof",
+      "linkLocation": "comment",
+      "thesis": "After this post, a marketer will make an honest comparison video, because those viewers are at the deciding moment.",
+      "hook": "One \"us vs them\" video booked more demos than a year of our thought-leadership. It had the fewest views on the channel.",
+      "hashtags": [
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "cancelled"
+    },
+    {
+      "date": "2026-07-22",
+      "dayOfWeek": "Wednesday",
+      "sourceTitle": null,
+      "sourceUrl": null,
+      "postAngle": "Videos with no next step waste the trust they earn.",
+      "archetype": "mistake",
+      "linkLocation": null,
+      "thesis": "After this post, a founder can give every video one specific next step so viewers become leads.",
+      "hook": "Your best video probably has no idea what to do next. So neither does the viewer.",
+      "hashtags": [
+        "#YouTubeMarketing"
+      ],
+      "imageUrl": null,
+      "status": "cancelled"
+    },
+    {
+      "date": "2026-07-21",
+      "dayOfWeek": "Tuesday",
+      "sourceTitle": "YouTube Title Generator",
+      "sourceUrl": "https://sellontube.com/tools/youtube-title-generator",
+      "postAngle": "Titles written for humans miss the buyer’s search.",
+      "archetype": "tactical-how-to",
+      "linkLocation": "comment",
+      "thesis": "After this post, a marketer can lead a title with the buyer’s literal search phrase so the right people find it.",
+      "hook": "Your best video is invisible. The title did it.",
+      "hashtags": [
+        "#YouTubeSEO"
+      ],
+      "imageUrl": null,
+      "status": "cancelled"
     },
     {
       "date": "2026-07-20",
@@ -83,182 +163,7 @@
         "#B2BMarketing"
       ],
       "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-31",
-      "dayOfWeek": "Friday",
-      "sourceTitle": null,
-      "sourceUrl": null,
-      "postAngle": "The algorithm rewards watch time, not buyer intent.",
-      "archetype": "contrarian",
-      "linkLocation": null,
-      "thesis": "After this post, a marketer will optimize for buyer search instead of the watch-time algorithm.",
-      "hook": "Stop trying to beat the YouTube algorithm. For B2B, you're grinding at a game you don't even want to win.",
-      "hashtags": [
-        "#YouTubeMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-30",
-      "dayOfWeek": "Thursday",
-      "sourceTitle": "YouTube SEO Tool",
-      "sourceUrl": "https://sellontube.com/tools/youtube-seo-tool",
-      "postAngle": "A ranked video keeps converting for years.",
-      "archetype": "proof",
-      "linkLocation": "comment",
-      "thesis": "After this post, a marketer will treat a video as a compounding asset, not a disposable post.",
-      "hook": "A LinkedIn post dies in 48 hours. A YouTube video kept booking us demos 18 months later.",
-      "hashtags": [
-        "#B2BMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-29",
-      "dayOfWeek": "Wednesday",
-      "sourceTitle": null,
-      "sourceUrl": null,
-      "postAngle": "Trends expire; evergreen searches compound.",
-      "archetype": "mistake",
-      "linkLocation": null,
-      "thesis": "After this post, a marketer will make evergreen search videos instead of chasing trends.",
-      "hook": "Chasing trending topics is the fastest way to build a channel nobody searches for next month.",
-      "hashtags": [
-        "#YouTubeMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-28",
-      "dayOfWeek": "Tuesday",
-      "sourceTitle": "YouTube Autocomplete Keywords",
-      "sourceUrl": "https://sellontube.com/tools/youtube-autocomplete-keywords",
-      "postAngle": "The search bar names the videos your buyers want.",
-      "archetype": "tactical-how-to",
-      "linkLocation": "comment",
-      "thesis": "After this post, a marketer can pull exact buyer phrases from YouTube autocomplete instead of guessing.",
-      "hook": "Your buyers will tell you exactly what to make. For free. You just have to read YouTube's search bar instead of guessing",
-      "hashtags": [
-        "#YouTubeSEO"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-27",
-      "dayOfWeek": "Monday",
-      "sourceTitle": null,
-      "sourceUrl": null,
-      "postAngle": "Buyers run problem/solution/vendor searches; channels answer only the first.",
-      "archetype": "framework",
-      "linkLocation": null,
-      "thesis": "After this post, a marketer can sort videos by the three buyer-search stages and fill the pipeline gap.",
-      "hook": "Before anyone buys, they run three different searches. Most B2B channels answer only the first, then wonder where the pi",
-      "hashtags": [
-        "#YouTubeMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-24",
-      "dayOfWeek": "Friday",
-      "sourceTitle": "Ahrefs — YouTube SEO for AI Search",
-      "sourceUrl": "https://www.youtube.com/watch?v=_b_cTpLHMTM",
-      "postAngle": "YouTube is the most-cited domain in Google's AI Overviews (Ahrefs).",
-      "archetype": "authority-lesson",
-      "linkLocation": "body",
-      "thesis": "After this post, a marketer will make videos that answer the questions AI tools cite, to get found inside AI answers.",
-      "hook": "Your buyers have started asking AI instead of searching Google. And the AI keeps quoting one place most B2B teams ignore",
-      "hashtags": [
-        "#YouTubeMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-23",
-      "dayOfWeek": "Thursday",
-      "sourceTitle": "YouTube Vs",
-      "sourceUrl": "https://sellontube.com/youtube-vs/",
-      "postAngle": "Comparison videos catch buyers mid-decision.",
-      "archetype": "proof",
-      "linkLocation": "comment",
-      "thesis": "After this post, a marketer will make an honest comparison video, because those viewers are at the deciding moment.",
-      "hook": "One \"us vs them\" video booked more demos than a year of our thought-leadership. It had the fewest views on the channel.",
-      "hashtags": [
-        "#B2BMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-22",
-      "dayOfWeek": "Wednesday",
-      "sourceTitle": null,
-      "sourceUrl": null,
-      "postAngle": "Videos with no next step waste the trust they earn.",
-      "archetype": "mistake",
-      "linkLocation": null,
-      "thesis": "After this post, a founder can give every video one specific next step so viewers become leads.",
-      "hook": "Your best video probably has no idea what to do next. So neither does the viewer.",
-      "hashtags": [
-        "#YouTubeMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-21",
-      "dayOfWeek": "Tuesday",
-      "sourceTitle": "YouTube Title Generator",
-      "sourceUrl": "https://sellontube.com/tools/youtube-title-generator",
-      "postAngle": "Titles written for humans miss the buyer’s search.",
-      "archetype": "tactical-how-to",
-      "linkLocation": "comment",
-      "thesis": "After this post, a marketer can lead a title with the buyer’s literal search phrase so the right people find it.",
-      "hook": "Your best video is invisible. The title did it.",
-      "hashtags": [
-        "#YouTubeSEO"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "date": "2026-07-20",
-      "dayOfWeek": "Monday",
-      "sourceTitle": null,
-      "sourceUrl": null,
-      "postAngle": "Every video does one of two jobs: get found or get chosen.",
-      "archetype": "framework",
-      "linkLocation": null,
-      "thesis": "After this post, a marketer can tag their last 10 videos as get-found or get-chosen and fix the missing half.",
-      "hook": "YouTube has billions of logged-in users every month. Almost none of them will ever buy from you. That's not a problem, i",
-      "hashtags": [
-        "#YouTubeMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
-    },
-    {
-      "dayOfWeek": "Thursday",
-      "sourceTitle": "YouTube Marketing ROI",
-      "sourceUrl": "https://sellontube.com/blog/youtube-marketing-roi",
-      "postAngle": "YouTube out-converted blogging 3.25x for the same business.",
-      "archetype": "proof",
-      "linkLocation": "comment",
-      "thesis": "After this post, the reader will judge channels by in-market viewers, not traffic.",
-      "hook": "\"YouTube's great for brand awareness. Blogging is what actually drives leads.\"",
-      "hashtags": [
-        "#B2BMarketing"
-      ],
-      "imageUrl": null,
-      "status": "scheduled"
+      "status": "failed"
     },
     {
       "dayOfWeek": "Tuesday",
@@ -273,7 +178,24 @@
         "#B2BMarketing"
       ],
       "imageUrl": null,
-      "status": "scheduled"
+      "status": "published",
+      "date": "2026-07-18"
+    },
+    {
+      "dayOfWeek": "Thursday",
+      "sourceTitle": "YouTube Marketing ROI",
+      "sourceUrl": "https://sellontube.com/blog/youtube-marketing-roi",
+      "postAngle": "YouTube out-converted blogging 3.25x for the same business.",
+      "archetype": "proof",
+      "linkLocation": "comment",
+      "thesis": "After this post, the reader will judge channels by in-market viewers, not traffic.",
+      "hook": "\"YouTube's great for brand awareness. Blogging is what actually drives leads.\"",
+      "hashtags": [
+        "#B2BMarketing"
+      ],
+      "imageUrl": null,
+      "status": "published",
+      "date": "2026-07-18"
     },
     {
       "date": "2026-04-02",
@@ -288,7 +210,7 @@
         "#B2BMarketing"
       ],
       "imageUrl": "https://sellontube.com/_astro/best-youtube-seo-tools-for-business-feature.2epTmv7j_ZLvv8N.jpg",
-      "status": "scheduled"
+      "status": "published"
     },
     {
       "date": "2026-03-27",
@@ -303,7 +225,7 @@
         "#B2BMarketing"
       ],
       "imageUrl": "https://sellontube.com/_astro/why-most-youtube-strategies-fail-feature.B4eIXsfk.webp",
-      "status": "scheduled"
+      "status": "published"
     },
     {
       "date": "2026-03-26",
@@ -318,7 +240,7 @@
         "#B2BMarketing"
       ],
       "imageUrl": null,
-      "status": "scheduled"
+      "status": "published"
     }
   ]
 }
