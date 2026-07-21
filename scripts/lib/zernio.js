@@ -58,9 +58,24 @@ export async function postToZernio(payload, apiKey) {
   return request('/posts', apiKey, { method: 'POST', body: JSON.stringify(payload) });
 }
 
+// Pure: shape Zernio's /accounts response into an array.
+//
+// This sits directly on the account-deactivation signal path, so it must never
+// degrade to `[]` on an unrecognised payload: an empty list makes the verifier
+// iterate nothing and print "All clear" during exactly the vendor-side
+// disconnect it exists to catch. Two shapes are accepted (an `{ accounts: [] }`
+// envelope and a bare array); anything else throws.
+export function normalizeAccounts(raw) {
+  if (Array.isArray(raw)) return raw;
+  if (raw && Array.isArray(raw.accounts)) return raw.accounts;
+  const preview = (JSON.stringify(raw) || String(raw)).slice(0, 200);
+  throw new Error(
+    `Zernio /accounts returned an unexpected shape; refusing to treat it as "no accounts". Got: ${preview}`,
+  );
+}
+
 export async function getAccounts(apiKey) {
-  const { accounts } = await request('/accounts', apiKey);
-  return accounts || [];
+  return normalizeAccounts(await request('/accounts', apiKey));
 }
 
 export async function listPosts(apiKey) {

@@ -26,6 +26,10 @@ export function buildScheduledForX(dateStr) {
 export function buildXPayload(post, accountId) {
   return {
     content: (post.xPost || '').trim(),
+    // `scheduledFor` is an absolute UTC instant, so this is not what fixes the
+    // slot. Zernio still expects a timezone alongside it and uses it for the
+    // display/labelling of the post in its own UI; sending both is the shape
+    // the LinkedIn agent has run in production without drift.
     timezone: 'Asia/Kolkata',
     platforms: [{ platform: 'twitter', accountId }],
     scheduledFor: buildScheduledForX(post.scheduledDate),
@@ -51,6 +55,11 @@ export function findDuplicateDates(queue) {
 // that x-history.json already shows as scheduled for that date. Re-running
 // after a partial failure, or next cycle when quota refills, must not
 // re-schedule work that already went out.
+//
+// The date slot is what cannot be double-booked, so a taken date is always
+// skipped - but `sourceSlug` is compared too and any mismatch is flagged.
+// Swapping new content onto an already-scheduled date otherwise reports a
+// bland ALREADY and the new post silently never ships.
 export function filterAlreadyScheduled(queue, historyPosts = []) {
   const scheduledDates = new Map();
   for (const p of historyPosts) {
@@ -61,7 +70,7 @@ export function filterAlreadyScheduled(queue, historyPosts = []) {
   for (const post of queue) {
     const hit = scheduledDates.get(post.scheduledDate);
     if (hit) {
-      alreadyScheduled.push({ post, historyEntry: hit });
+      alreadyScheduled.push({ post, historyEntry: hit, slugMismatch: hit.sourceSlug !== post.sourceSlug });
     } else {
       toSchedule.push(post);
     }
@@ -109,7 +118,9 @@ function saveToHistory(post, zernioId) {
     date: post.scheduledDate,
     sourceSlug: post.sourceSlug,
     sourceTitle: post.sourceTitle ?? null,
-    hook: (post.xPost || '').split('\n')[0].slice(0, 120),
+    // .trim() before .slice() to match validate-x-post.js and planAttempts:
+    // an untrimmed hook is stored shifted and silently misses dedup next run.
+    hook: (post.xPost || '').split('\n')[0].trim().slice(0, 120),
     chars: (post.xPost || '').trim().length,
     zernioId,
     status: 'scheduled',
@@ -129,7 +140,7 @@ async function main() {
   }
   if (!accountId) {
     console.error('[x-schedule] ERROR: ZERNIO_X_ACCOUNT_ID is not set.');
-    console.error('  Add it to .env: ZERNIO_X_ACCOUNT_ID=6a59c1f93d50078defbf90b3');
+    console.error('  Add it to .env: ZERNIO_X_ACCOUNT_ID=<your-account-id>');
     process.exit(1);
   }
 
@@ -168,8 +179,14 @@ async function main() {
   const { toSchedule, alreadyScheduled } = filterAlreadyScheduled(queue, historyPosts);
   if (alreadyScheduled.length) {
     console.log(`[x-schedule] ${alreadyScheduled.length} post(s) already scheduled, skipping:`);
-    for (const { post, historyEntry } of alreadyScheduled) {
-      console.log(`  ALREADY    ${post.scheduledDate}  ${post.sourceSlug} (already scheduled on ${historyEntry.date})`);
+    for (const { post, historyEntry, slugMismatch } of alreadyScheduled) {
+      if (slugMismatch) {
+        console.error(`  MISMATCH   ${post.scheduledDate}  ${post.sourceSlug} WILL NOT SHIP`);
+        console.error(`             that slot already holds "${historyEntry.sourceSlug}"; the queued post is different content.`);
+        console.error('             Move it to a free date, or delete the Zernio post and clear the history row.');
+      } else {
+        console.log(`  ALREADY    ${post.scheduledDate}  ${post.sourceSlug} (already scheduled on ${historyEntry.date})`);
+      }
     }
     console.log('');
   }

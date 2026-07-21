@@ -92,6 +92,25 @@ test('filterAlreadyScheduled does NOT skip a date only present with a non-schedu
   assert.deepEqual(alreadyScheduled, []);
 });
 
+test('filterAlreadyScheduled flags a slug mismatch on an already-taken date', () => {
+  // Swapping different content onto an already-scheduled date must not be
+  // reported as a bland ALREADY: the new post silently never ships.
+  const queue = [{ scheduledDate: '2026-07-23', sourceSlug: 'new-content' }];
+  const history = [{ date: '2026-07-23', sourceSlug: 'old-content', status: 'scheduled' }];
+  const { toSchedule, alreadyScheduled } = filterAlreadyScheduled(queue, history);
+  assert.deepEqual(toSchedule, []);
+  assert.equal(alreadyScheduled.length, 1);
+  assert.equal(alreadyScheduled[0].slugMismatch, true);
+  assert.equal(alreadyScheduled[0].historyEntry.sourceSlug, 'old-content');
+});
+
+test('filterAlreadyScheduled reports no mismatch when the slug matches', () => {
+  const queue = [{ scheduledDate: '2026-07-23', sourceSlug: 'a' }];
+  const history = [{ date: '2026-07-23', sourceSlug: 'a', status: 'scheduled' }];
+  const { alreadyScheduled } = filterAlreadyScheduled(queue, history);
+  assert.equal(alreadyScheduled[0].slugMismatch, false);
+});
+
 // --- planAttempts (Finding 3) ---
 
 function fakeValidate(invalidSlugs) {
