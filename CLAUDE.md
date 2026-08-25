@@ -1,100 +1,125 @@
 # Claude Code — Operational Instructions
 
-## Project Overview
+SellonTube is a static marketing site: **Astro 5 + Tailwind + MDX, deployed on Netlify.** Audience:
+B2B founders and SaaS operators evaluating YouTube for customer acquisition.
 
-SellonTube is a static marketing site built with Astro 5, Tailwind CSS, and MDX, deployed on Netlify. Target audience: B2B founders and SaaS operators evaluating YouTube for customer acquisition.
+**Ethos: Simple, Robust, Pragmatic, Non-hacky.** Every new feature, dependency or abstraction must
+pass all four. If it breaks one, push back with an alternative instead of building it. Prefer standard
+patterns; ask before adding complexity.
 
-## Project Ethos: Simple, Robust, Pragmatic, Non-hacky
+Definitions, LSP-first navigation, indexing rationale and expanded build standards:
+`docs/engineering-conventions.md`. Full doc index: `DOCS.md`.
 
-Every decision — new feature, dependency, abstraction, refactor — must pass through these four filters:
+## New tool integration — definition of done
 
-- **Simple:** Fewer moving parts. Flat over nested. Obvious over clever.
-- **Robust:** Handles edge cases without duct tape. Fails predictably.
-- **Pragmatic:** Solves real problems today, not theoretical ones tomorrow.
-- **Non-hacky:** No workarounds disguised as solutions. If a shortcut is unavoidable, flag it as tech debt with a TODO and explain why.
+Adding a `src/pages/tools/*.astro` file is not finished until all four are done. This is part of
+building the tool, not a follow-up task.
 
-**Rules:**
-- Before adding any new feature, dependency, or abstraction, check it against these four principles.
-- If it breaks any of them, push back — explain what breaks and suggest an alternative that preserves the ethos.
-- Prefer standard patterns over custom abstractions.
-- When in doubt, ask before adding complexity.
+1. Add the tool to the `tools` array in `src/pages/tools/index.astro`, in correct workflow position.
+2. Add it to the `Free Tools` linkGroup in `src/navigation.ts`, matching order.
+3. Submit both URLs to Bing: `node scripts/bing-submit.mjs <file-of-urls>`. Run it as a standard step
+   whenever a new tool or blog post publishes — no need to ask first.
+4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing).
+   Manual by necessity; GSC has no public submission API.
 
-## LSP-First Navigation
+Full detail: `agents/08-microtool-builder.md` Phase 7.
 
-Use Language Server Protocol (LSP) as the primary method for understanding and navigating the codebase. LSP provides accurate, real-time symbol lookup, definitions, references, and type information.
+## AEO / AI citation
 
-**Workflow:** Locate symbols via LSP → Inspect definitions and references → Check types and dependencies → Implement with full context.
+`ai-seo-guide.md` is the single source of truth for AI-search optimization. **Do not restate AEO rules
+in other docs** — point at it. Section map (§16 citability gate, §17 language, §18 media, §19 what
+actually gets cited): `seo-rules.md`.
 
-**Fallback to Grep/Glob only** when LSP is unavailable, the target is a string literal or comment, or the query is pattern-based.
+**Agent 05 hard-fails any post that misses the §16 citability gate.** Third-party ratings only where a
+real listing exists, never fabricated; SellonTube's own tools use first-party proof plus disclosure.
 
-> LSP queries are cheaper, faster, and more precise than reading entire files or running broad searches. Use them first, read files second, search broadly last.
+Page structure for comparison / alternatives / best-tools posts:
+`agents/references/comparison-content-playbook.md`. Word-count and depth tiers only:
+`content-depth-framework.md`.
 
-## New Tool Integration Rule
+## Build standards
 
-**Every new tool page must be added to the /tools listing and footer before the task is considered done.** This is not a separate task — it is part of building the tool. After creating any new `src/pages/tools/*.astro` file:
-1. Add the tool to the `tools` array in `src/pages/tools/index.astro` (correct workflow position)
-2. Add the tool to the `Free Tools` linkGroup in `src/navigation.ts` (matching order)
-3. Submit both URLs to Bing automatically via `node scripts/bing-submit.mjs <file-of-urls>` (IndexNow is broken due to Cloudflare; this script uses the Webmaster API `SubmitUrlbatch` endpoint with `BING_WEBMASTER_API_KEY` from `.env`, not `.mcp.json` — no `.mcp.json` file exists in this repo). No need to ask first — run it as a standard step whenever a new tool or blog post publishes.
-4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing) — this step is manual (GSC has no public submission API), so it can't be automated.
+Every page or feature deliverable includes: SEO risks, canonical/indexation risks, recommended
+structured data, performance notes.
 
-See `agents/08-microtool-builder.md` Phase 7 for full details.
+Constraints that bite: optimize LCP on tool pages, reserve space for media (CLS), absolute canonical
+URLs with the sitemap aligned, schema only where the content is visible, pages crawlable without JS.
+**Anchor diversity cap:** no target URL may take the same exact-match anchor from more than ~3 source
+pages. Weight linking by real GSC authority, not orphan counts. Detail and reasoning:
+`docs/engineering-conventions.md`.
 
-## AEO / AI Citation (canonical)
+## Mistakes to avoid
 
-`ai-seo-guide.md` is the single source of truth for AI-search optimization. Do not restate AEO rules in other docs; point to the canonical sections:
-- **Section 16** = the five citability rules + the hard pre-publish citability gate.
-- **Section 17** = citation-ready language rules.
-- **Section 18** = media policy (every post: relevant image + video, perf-safe, never padding).
-- **Section 19** = what actually gets cited at SellonTube (proven archetype + 9 signals; visible-FAQ-in-body is the biggest gap).
-- `agents/references/comparison-content-playbook.md` = page structure for comparison / alternatives / best-tools posts.
-- `content-depth-framework.md` = word-count and depth tiers only.
+Each rule below is a compressed prevention rule. Full incident record: `mistakes-lessons.md` — a
+SessionStart hook injects only its newest ~4,000 chars, so read the file directly for the 2026-07-17
+verification lessons.
 
-Agent 05 hard-fails any post that misses the Section 16 gate. Third-party ratings only where a real listing exists (never fabricated); SellonTube's own tools use first-party proof plus disclosure.
+- **`publishDate` determines go-live. Get it right the first time.** Netlify builds filter out any
+  post where `publishDate > today`, so a future date means a 404. If it ships now, use today's date
+  from the `currentDate` context variable, never tomorrow. If scheduled, use that exact date. Format
+  `YYYY-MM-DDT00:00:00Z`. This has caused deploy 404s multiple times.
 
-## Build Standards
+- **Any code comparing `publishDate` must use IST conversion.** `src/utils/blog.ts` converts to IST
+  via `toIST()` (line ~71) before filtering. Any other script that decides draft/future/published —
+  e.g. `scripts/validate-build.js` — must use the identical `toIST()` conversion and end-of-day
+  cutoff (`setHours(23, 59, 59, 999)`). Raw UTC comparison disagrees with Astro and causes false build
+  failures. Copy the logic; do not reimplement it.
 
-1. **Performance** -- Optimize LCP on tool pages (Gemini loading states). Lazy-load below-fold images. Reserve space for media to prevent CLS. Defer non-critical JS.
-2. **Canonical/crawl hygiene** -- Absolute canonical URLs in head. Sitemap aligned with canonicals. Internal links point to canonical URLs only. Watch for WordPress legacy URLs leaking into the index.
-3. **Internal linking** -- Route equity from blog posts and pSEO pages toward `/tools/*`. Use descriptive anchors. Add contextual cross-links from informational to commercial pages. **Anchor diversity cap:** no single target URL may accumulate the same exact-match anchor phrase from more than ~3 source pages; vary the phrasing naturally. Check existing usage corpus-wide before reusing a phrase (money pages like `/tools/youtube-seo-tool` and `/tools/youtube-roi-calculator` already carry 28-32 pre-existing exact-match anchors — do not add more without varying). **Link count is not the goal:** a link from a high-impression page is worth many from zero-demand pages, so weight by real GSC authority rather than chasing "0 orphans". New `niches.ts` / `comparisons.ts` entries populate `relatedLinks` (2-4 links, >=1 tool, distinct anchors). Full record: `research/aeo/internal-linking-phase2-report.md`.
-4. **Structured data** -- Only schema matching visible content. WebApplication on tools, BreadcrumbList on all pages, FAQPage only where FAQ is visible on-page.
-5. **Implementation** -- Semantic HTML. Pages fully crawlable without JS. No render-blocking resources above the fold.
+- **Never push to live without asking. This is the one repo here with a remote.** Show the commit
+  message, wait for an explicit "yes", then commit and push. Do not combine showing, committing and
+  pushing into one action.
 
-**Every page/feature deliverable includes:** SEO risks, canonical/indexation risks, recommended structured data, performance notes.
+- **Never return HTTP 502 from Netlify functions.** Cloudflare intercepts 502 and replaces the body
+  with `error code: 502`, hiding the real error. Use 503 for upstream API failures.
 
-## Mistakes to Avoid
+- **Gemini model rule:** always `gemini-flash-latest` (auto-updating alias). Never pin a versioned
+  model like `gemini-2.0-flash` — they get deprecated and 404. Set `maxOutputTokens` to at least
+  `2048`; thinking tokens count toward the output limit.
 
-- **publishDate determines when a post goes live. Get it right the first time.** This is a static site — Netlify builds filter out any post where `publishDate > today`. A future date means a 404. Three rules: (1) If the post should go live NOW, use today's date from the `currentDate` context variable, never tomorrow. (2) If the post is scheduled for a future date, use that exact date. (3) Always double-check: "Is this date today or in the past?" before committing. Format: `YYYY-MM-DDT00:00:00Z`. This mistake has caused 404s on deploy multiple times.
+- **Netlify redirect syntax:** `:placeholder` only works between `/` separators. For within-segment
+  patterns use splat: `from = "/youtube-for-*"` + `to = "/youtube-for/:splat"`.
 
-- **Any code that compares publishDate must use IST conversion.** Astro's `blog.ts` converts all publishDates to IST via `toIST()` before filtering. Any other script that checks whether a post is draft/future/published (e.g. `scripts/validate-build.js`) MUST use the identical `toIST()` conversion and end-of-day cutoff (`setHours(23, 59, 59, 999)`). Raw UTC comparison will disagree with Astro and cause false build failures. If you add a new script or check that touches publishDate, copy the `toIST()` logic from `blog.ts`.
+- **Read SEO docs before any SEO suggestion.** `seo-rules.md` and `seo-audit-log.md` first.
+  Project-specific rules override general SEO knowledge.
 
-- **Never push to live without asking the user first.** Show the commit message, wait for explicit "yes", THEN commit and push. Do not combine showing, committing, and pushing into one action.
+- **GSC-FIRST: pull live Search Console data BEFORE scoping any SEO project** — not just titles and
+  meta, but *any* SEO work: internal linking, technical fixes, content, AEO, refactors. Write down
+  where impressions and clicks actually concentrate, then state explicitly which of those pages the
+  proposed work moves and by what mechanism. If the answer is "pages with negligible impressions" or
+  "this mechanism cannot move this page's constraint", re-scope before writing code. **Violated
+  twice** (2026-06-30, 2026-07-17). Mechanism limits are in `docs/engineering-conventions.md`.
 
-- **Plan before coding, get approval before implementing, commit only when asked.** Diagnose → present plan → get explicit "yes" → implement → user says "commit" → commit.
+- **Analyse `dist/`, not source, for anything about rendered output** — links, canonicals, schema,
+  headings, what actually ships. A large share of internal links are generated at build time by
+  components and algorithms (`BlogLatestPosts`, the related-posts scorer, pSEO template loops) and
+  exist as no literal `href` in source. A source grep gives confident wrong answers: it falsely
+  reported the homepage as a dead end and invented orphans that were already linked. Run
+  `npm run build`, then analyse `dist/`. `scripts/audit_internal_links.py` does this correctly and
+  excludes `header`/`footer`/`nav` chrome so boilerplate cannot mask real orphans.
 
-- **Never return HTTP 502 from Netlify functions.** Cloudflare intercepts 502 responses and replaces the body with `error code: 502`, hiding actual error details. Use HTTP 503 for upstream API failures instead.
+- **A verification script must fail loudly, and must be mutation-tested before you trust it.** A
+  silent failure turns "unknown" into "verified clean" and is worse than no checker. Always check
+  `returncode` on subprocess calls — never treat empty stdout as a valid empty result — and normalise
+  `glob`/`pathlib` paths with `.replace('\\', '/')` before any `git` pathspec, since Windows
+  backslashes silently break `git show ref:path`. Before believing an "all clean" verdict,
+  deliberately break the thing being checked and confirm the checker fails.
 
-- **Gemini model rule:** Always use `gemini-flash-latest` (auto-updating alias). Never pin to versioned models like `gemini-2.0-flash` — they get deprecated and return 404. Set `maxOutputTokens` to at least `2048` (gemini-2.5-flash thinking tokens count toward the output limit).
+- **Validate against the corpus, not against the doc that describes it.** Living docs are a lossy
+  cache and always drift. Any site-wide constraint check (anchor diversity, canonical uniqueness,
+  schema presence) must compute current state from the real files plus built HTML at check time.
 
-- **Netlify redirect syntax:** `:placeholder` only works between `/` separators. For within-segment patterns (e.g. `/youtube-for-*`), use splat syntax: `from = "/youtube-for-*"` + `to = "/youtube-for/:splat"`.
+- **After any fix pass, re-run the FULL verification suite, not just the check for what you fixed.**
+  Narrow fixes introduce fresh defects: a scripted anchor swap produced "the **the** tag generator
+  tool" in live prose, and the grammar fix for that collided with existing anchors and re-broke a cap
+  an earlier round had closed. A fix is done when everything passes, not when your thing passes.
+  Scripted edits into prose must validate the resulting full sentence, not the replaced token.
 
-- **Read SEO docs before any SEO suggestion.** Check `seo-rules.md` and `seo-audit-log.md` first. Project-specific rules override general SEO knowledge.
+- **Style guide applies to ALL copy, not just new writing.** On any copy task, check all existing copy
+  on touched pages against `style-guide.md` and `content-playbook.md`. Grep for every banned pattern
+  before finishing.
 
-- **GSC-FIRST: pull live Search Console data BEFORE scoping any SEO project.** Not just titles/meta — *any* SEO work: internal linking, technical fixes, content, AEO, refactors. Write down where impressions/clicks actually concentrate, then state explicitly which of those pages the proposed work moves and by what mechanism. If the answer is "pages with negligible impressions" or "this mechanism cannot move this page's constraint," re-scope before writing code. This has now been violated twice (2026-06-30 title project, 2026-07-17 internal-linking project — the latter shipped ~280 links into clusters carrying 0.56% of impressions while one page holding 46% of site impressions sat untouched at position 32). Mechanism limits worth knowing: internal links move pages *within* the top ~20 and do nothing for CTR on pages that already rank; a position-30+ page needs authority/content, and a page-1 zero-click page needs title/meta. See `mistakes-lessons.md` 2026-07-17.
-
-- **Analyse `dist/`, not source, for anything about rendered output.** Links, canonicals, schema, headings, what actually ships. On this Astro site a large share of internal links are generated at build time by components and algorithms (e.g. `BlogLatestPosts`, the related-posts scorer, pSEO template loops) and exist as no literal `href` in source. A source grep produces confident, wrong answers — it falsely reported the homepage as a dead end and invented orphans that were already linked. Run `npm run build`, then analyse `dist/`. `scripts/audit_internal_links.py` does this correctly (and excludes `header`/`footer`/`nav` chrome so boilerplate does not mask real orphans).
-
-- **A verification script must fail loudly, and must be mutation-tested before you trust it.** A silent failure in a checker turns "unknown" into "verified clean" and is worse than having no checker. Always check `returncode` on subprocess calls (never treat empty stdout as a valid empty result), and normalise `glob`/`pathlib` paths with `.replace('\\', '/')` before passing to any `git` pathspec — Windows backslashes silently break `git show ref:path`, which corrupted three rounds of "verified" results on 2026-07-17. Before believing an "all clean" verdict, deliberately break the thing being checked and confirm the checker actually fails.
-
-- **Validate against the corpus, not against the doc that describes it.** Living docs (`internal-linking-map.md` and friends) are a lossy cache and always drift. Any site-wide constraint check (anchor diversity, canonical uniqueness, schema presence) must compute current state from the real files + built HTML at check time. Checking new work against a ~20-row doc instead of the 50+ published-post corpus cost four review rounds on 2026-07-17.
-
-- **After any fix pass, re-run the FULL verification suite, not just the check for what you fixed.** On 2026-07-17 each narrow fix introduced a fresh defect: a scripted anchor swap produced "the **the** tag generator tool" in live prose, and the grammar fix for that then collided with existing anchors and re-broke a cap an earlier round had already closed. A fix is done when everything passes, not when your thing passes. Scripted edits into prose must validate the resulting full sentence, not the replaced token.
-
-- **Style guide applies to ALL copy, not just new writing.** When any copy task is performed, check ALL existing copy on touched pages against `style-guide.md` and `content-playbook.md`. Grep for every banned pattern before finishing.
-
-- **Callout box and table font sizes:** labels `0.7-0.8rem`, callout body text `0.85-0.9rem`, table text `0.95rem`. These are the sizes used in the actual HTML templates in `blog-production-standard.md`. Copy sizes from the templates, do not guess.
-
-- **FAQ content must be written manually in MDX body.** Frontmatter `faqs` array ONLY generates schema.org FAQPage JSON-LD (invisible to readers). The visible FAQ section requires an `## FAQ` heading followed by `### Question` + paragraph answer for each item. Every other blog post does this manually. The template does NOT auto-render frontmatter FAQs.
-
-- **Inline SVG diagrams in blog posts must use the light palette:** background `#f8fafc`, borders `#e2e8f0`, dark text. Match the blog page's light theme. Featured images (the hero SVG at the top) keep the dark palette: background `#030620` to `#0a1540`. Do not use the dark palette for inline diagrams.
-
-- **Run the pre-publish QA checklist before showing any blog draft.** After writing, run verification greps (em-dashes, banned patterns, font sizes) and visually check in browser (SVG rendering, callout readability, table responsiveness, FAQ visibility). The draft shown to the user must be production-ready. The user reviews strategy and tone, not missing formatting.
+- **Blog render rules are canonical in `blog-production-standard.md`** — callout and table font sizes
+  (§ lines 432, 435), inline-SVG light palette (line 242), manual `## FAQ` heading with `### Question`
+  H3s in the MDX body (frontmatter `faqs` only emits JSON-LD, it renders nothing visible), and the
+  pre-publish QA checklist (§9). Copy from the templates; never guess a size. Run the QA checklist
+  before showing any draft — the user reviews strategy and tone, not missing formatting.
