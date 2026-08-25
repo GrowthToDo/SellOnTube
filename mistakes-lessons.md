@@ -227,3 +227,15 @@ Read this file at the start of work so past mistakes don't repeat.
 - **Lesson:** when one system's audience is produced by another system finishing, the first run's date is set by that upstream completion, not by the desired cadence. "First week of the month" is a steady-state rule, not a rule for issue #1.
 - **Prevention rule:** before scheduling any campaign send, compute the audience arithmetic first — enrollment date + sequence length vs send date — and state the resulting recipient count. If exclusions leave the audience at or near zero, move the date instead of relaxing the exclusion. Applies to every future issue while new backfill batches are enrolled.
 - **Category:** process
+
+### 2026-08-25 — `git push` succeeded, so I assumed `gh` was authorized. It was not.
+- **What happened:** During a repo sync, `git push -u origin chore/memory-dedupe` worked first try. The very next command, `gh pr create`, failed with `GraphQL: must be a collaborator (createPullRequest)`. The obvious reading was that the repo had lost the collaborator grant. It had not. `gh auth status` showed two logged-in accounts: `SellOnTubeDev` (active) and `sathyahq` (inactive). `gh api repos/GrowthToDo/SellOnTube --jq .permissions` returned `push:false, maintain:false` for the active one. Git had pushed happily because Git Credential Manager holds its own credential for `sathyahq`, entirely separate from the `gh` token. One `gh auth switch --user sathyahq` fixed it and the PR opened immediately.
+- **Root cause:** two independent auth systems address the same remote. Git Credential Manager authenticates `git push`; the `gh` OAuth token authenticates every `gh` API call. They can hold different identities with different permission levels at the same time, and neither reports the other's state. The success of the first was treated as evidence about the second.
+- **Lesson:** success in one tool is not evidence of authorization in a different tool, even when both target the same remote. This is the mirror of the workspace rule that a negative result from one tool is not evidence of absence. The positive direction fails the same way, and it fails more quietly, because a green result invites no further checking.
+- **Prevention rule:** before any `gh` write operation on this repo (`pr create`, `pr merge`, `release`, `api -X POST/DELETE`), confirm the active account actually has write access:
+  ```
+  gh api repos/GrowthToDo/SellOnTube --jq .permissions
+  ```
+  Require `"push": true`. If it is false, run `gh auth switch --user sathyahq`. Never infer `gh` permissions from a working `git push`, and never conclude from a `must be a collaborator` error that repo access was revoked before checking which account is active.
+- **Also worth knowing:** `gh auth switch` changes the active account globally and it persists across sessions. After finishing work that needed the switch, decide deliberately whether to switch back rather than leaving it changed by accident.
+- **Category:** process
