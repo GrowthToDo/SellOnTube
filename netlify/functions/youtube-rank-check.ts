@@ -1,4 +1,5 @@
 // youtube-rank-check.ts
+import { failureResponse } from './lib/upstream-error.js';
 // Handles YouTube Ranking Checker and YouTube Competitor Analysis tools.
 // Accepts a keyword, optional channel input, and returns top YouTube search results with rank info.
 
@@ -143,10 +144,7 @@ export default async (request: Request) => {
     );
   } catch (error) {
     console.error('youtube-rank-check error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Rank check failed', detail: String(error) }),
-      { status: 500, headers }
-    );
+    return failureResponse(error, 'Rank check failed', headers);
   }
 };
 

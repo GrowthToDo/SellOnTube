@@ -1,4 +1,5 @@
 // generate-description.ts
+import { failureResponse } from './lib/upstream-error.js';
 
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
@@ -278,10 +279,7 @@ export default async (request: Request) => {
     }), { status: 200, headers });
   } catch (error) {
     console.error('generate-description error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Generation failed', detail: String(error) }),
-      { status: 500, headers }
-    );
+    return failureResponse(error, 'Generation failed', headers);
   }
 };
 

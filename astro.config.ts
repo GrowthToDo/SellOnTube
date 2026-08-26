@@ -143,8 +143,9 @@ export default defineConfig({
               res.writeHead(apiRes.ok ? 200 : 503, { 'Content-Type': 'application/json' });
               res.end(JSON.stringify({ videoId, ...data }));
             } catch {
-              res.writeHead(500, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ error: 'Failed to fetch transcript' }));
+              // Upstream unreachable (DNS/TLS/refused). 503, matching netlify/functions/get-transcript.ts.
+              res.writeHead(503, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ error: 'Transcript service is temporarily unavailable. Please try again later.' }));
             }
           });
         },

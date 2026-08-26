@@ -1,0 +1,30 @@
+name: Tool Health Check
+
+# Verifies the live /api/* tool endpoints actually work, by sending a real payload to each.
+#
+# Why: the transcript tool returned HTTP 500 to every visitor from 2026-07-08 and nobody
+# noticed for seven weeks. Google demoted the page from average position 13 to 41, which cost
+# more clicks than every other page on the site combined. Nothing in the repo checked whether
+# the tools ran — only that the site built.
+#
+# Runs after the daily deploy (00:05 UTC) so a broken deploy is caught the same morning.
+
+on:
+  schedule:
+    # 00:35 UTC daily (6:05 AM IST), 30 minutes after the daily deploy triggers
+    - cron: '35 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  check-endpoints:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # No npm install: the script uses only built-in fetch.
+      - name: Check tool endpoints
+        run: node scripts/health-check-tools.mjs

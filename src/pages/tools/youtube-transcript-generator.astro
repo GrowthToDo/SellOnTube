@@ -100,6 +100,11 @@ const faqSchema = {
               aria-describedby="url-error"
             />
             <p id="url-error" class="hidden mt-1.5 text-xs text-rose-500 dark:text-rose-400" role="alert"></p>
+            <p
+              id="tool-notice"
+              class="hidden mt-3 rounded-lg border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-3 py-2.5 text-xs leading-relaxed text-amber-900 dark:text-amber-200"
+              role="status"
+            ></p>
           </div>
 
         </div>
@@ -615,6 +620,16 @@ const faqSchema = {
     if (error) { error.textContent = message; error.classList.remove('hidden'); }
   }
 
+  function showToolNotice(message: string): void {
+    const el = document.getElementById('tool-notice');
+    if (el) { el.textContent = message; el.classList.remove('hidden'); }
+  }
+
+  function clearToolNotice(): void {
+    const el = document.getElementById('tool-notice');
+    if (el) { el.textContent = ''; el.classList.add('hidden'); }
+  }
+
   function clearFieldError(fieldId: string): void {
     const input = document.getElementById(fieldId) as HTMLInputElement | null;
     const error = document.getElementById(fieldId.replace('-input', '-error'));
@@ -739,8 +754,22 @@ const faqSchema = {
         return;
       }
 
+      // 503 = an upstream service is down, not a problem with the user's URL.
+      // Shown as a page notice rather than a field error so we do not blame their input.
+      if (res.status === 503) {
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate transcript →';
+        showToolNotice(
+          'The transcript service is temporarily unavailable. Nothing is wrong with your link. Please try again later.'
+        );
+        window.dataLayer = window.dataLayer || [];
+        window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: 'upstream_unavailable' });
+        return;
+      }
+
       if (!res.ok) {
-        throw new Error('Something went wrong. Please try again in a moment.');
+        throw new Error('Something went wrong on our end. Please try again in a moment.');
       }
 
       const data = await res.json();
@@ -798,6 +827,7 @@ const faqSchema = {
     }
 
     clearFieldError('url-input');
+    clearToolNotice();
 
     // Email gate check
     if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
@@ -877,6 +907,7 @@ const faqSchema = {
   function reset(): void {
     (document.getElementById('url-input') as HTMLInputElement).value = '';
     clearFieldError('url-input');
+    clearToolNotice();
     showStep('step-input');
     (document.getElementById('url-input') as HTMLInputElement).focus();
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;

@@ -1,4 +1,5 @@
 // get-transcript.ts
+import { failureResponse } from './lib/upstream-error.js';
 
 function extractVideoId(input: string): string | null {
   const trimmed = input.trim();
@@ -96,10 +97,7 @@ export default async (request: Request) => {
     return new Response(JSON.stringify({ videoId, ...data }), { status: 200, headers });
   } catch (error) {
     console.error('get-transcript error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Something went wrong. Please try again later.' }),
-      { status: 500, headers }
-    );
+    return failureResponse(error, 'Something went wrong. Please try again later.', headers);
   }
 };
 

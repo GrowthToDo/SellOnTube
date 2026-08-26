@@ -1,3 +1,4 @@
+import { failureResponse } from './lib/upstream-error.js';
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
@@ -144,10 +145,7 @@ Organize these into 8-12 video topic clusters. Merge duplicates, remove generics
     return new Response(JSON.stringify(result), { status: 200, headers });
   } catch (error) {
     console.error('cluster-keywords error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Clustering failed', detail: String(error) }),
-      { status: 500, headers }
-    );
+    return failureResponse(error, 'Clustering failed', headers);
   }
 };
 
