@@ -1,9 +1,9 @@
-# Comparison-Post Retrofit + Crawled-Not-Indexed Fix — Measurement (2026-08-25)
+# Comparison-Post Retrofit + Crawled-Not-Indexed Fix — Measurement (2026-08-26)
 
 **Source:** `sc-domain:sellontube.com`, live GSC Search Analytics API + URL Inspection API. Latest available data 2026-08-23.
 **Method:** three independent passes — (1) URL Inspection on all 14 project URLs for crawl/index truth, (2) two lift comparisons per project (literal-baseline and matched-window-with-control), (3) whole-corpus 90d pull split by country, ranked by clicks.
 **Closes:** the "Next capture" instruction in `retrofit-baseline-2026-06-29.md` and the "Measurement (check ~mid-August 2026)" section of `../search console/crawled-not-indexed-analysis-2026-07-19.md`.
-**Raw data:** `../search console/url-inspection-2026-08-25.csv`. Scripts: `scripts/gsc_inspect.py`, `scripts/gsc_measure.py`, `scripts/gsc_corpus.py`.
+**Raw data:** `../search console/url-inspection-2026-08-26.csv`. Scripts: `scripts/gsc_inspect.py`, `scripts/gsc_measure.py`, `scripts/gsc_corpus.py`.
 **Branch:** `research/gsc-measurement-aug25`.
 
 ---
@@ -223,3 +223,33 @@ URLs afterwards; that part is automatable.
 
 After submission, verify with `py scripts/gsc_inspect.py <out.csv> <urls...>` and require
 `lastCrawlTime` later than the fix date before running any further measurement.
+
+---
+
+## Post-submission recrawl check (2026-08-26, same day)
+
+All six URLs were submitted through GSC URL Inspection → Request Indexing, and to Bing via
+`node scripts/bing-submit.mjs` (6 accepted; daily quota moved 100 → 94, confirming the payload
+landed rather than just the request succeeding).
+
+Re-inspected within hours. **Three of six were recrawled the same day.**
+
+| URL | Last crawl | Coverage state | Change |
+|---|---|---|---|
+| /blog/ai-tools-for-youtube | 2026-05-19 → **2026-08-26** | Not found (404) → **Crawled, not indexed** | **404 cleared** |
+| /youtube-vs/webinars | 2026-07-10 → **2026-08-26** | Crawled, not indexed → **Submitted and indexed** | **now indexed** |
+| /blog/youtube-titles-for-business | 2026-05-23 → **2026-08-26** | Crawled, not indexed | recrawled |
+| /blog/youtube-seo-guide | 2026-05-14 | Crawled, not indexed | not yet |
+| /blog/how-to-find-youtube-video-ranking-keywords | 2026-06-20 | Crawled, not indexed | not yet |
+| /youtube-for/shopify | 2026-07-10 | Crawled, not indexed | not yet |
+
+**The headline defect is resolved.** Google no longer holds `/blog/ai-tools-for-youtube` as a 404.
+The page is now a normal not-yet-indexed page rather than one Google believes does not exist.
+Indexing is still pending, but the blocking condition is gone.
+
+`/youtube-vs/webinars` went straight to indexed, which is worth noting because it was ranked last
+in the queue as a low-value pSEO child. Submission cost is low and outcomes are not predictable from
+prior demand.
+
+**Do not re-measure the July indexing fix until the remaining three show a `lastCrawlTime` later
+than 2026-07-19.** Two of them have now been stale since May.
