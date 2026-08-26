@@ -1,3 +1,4 @@
+import { isUpstreamError } from './lib/upstream-error.js';
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
@@ -469,8 +470,8 @@ export default async (request: Request) => {
 
       if (!retryRes.ok) {
         return new Response(
-          JSON.stringify({ error: 'Script generation failed', detail: 'json_parse_failure' }),
-          { status: 500, headers }
+          JSON.stringify({ error: 'AI service is unavailable. Please try again.', detail: 'retry_upstream_not_ok' }),
+          { status: 503, headers }
         );
       }
 
@@ -518,11 +519,11 @@ export default async (request: Request) => {
     return new Response(JSON.stringify(result), { status: 200, headers });
   } catch (error) {
     console.error('generate-script error:', error);
-    if (error instanceof DOMException && error.name === 'AbortError') {
-      return new Response(JSON.stringify({ error: 'AI service timed out. Please try again.' }), {
-        status: 503,
-        headers,
-      });
+    if (isUpstreamError(error)) {
+      return new Response(
+        JSON.stringify({ error: 'AI service is unavailable or timed out. Please try again.' }),
+        { status: 503, headers }
+      );
     }
     return new Response(
       JSON.stringify({ error: 'Generation failed', detail: String(error).slice(0, 500) }),

@@ -1,4 +1,5 @@
 import { getSuggestions } from './lib/youtube-suggest.js';
+import { failureResponse } from './lib/upstream-error.js';
 
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
@@ -294,10 +295,7 @@ Select the 8 highest buyer-intent keywords for this video. Prioritize autocomple
     );
   } catch (error) {
     console.error('find-video-keywords error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Keyword analysis failed', detail: String(error) }),
-      { status: 500, headers }
-    );
+    return failureResponse(error, 'Keyword analysis failed', headers);
   }
 };
 

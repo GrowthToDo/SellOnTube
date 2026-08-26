@@ -1,4 +1,5 @@
 // channel-audit.ts
+import { failureResponse } from './lib/upstream-error.js';
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
@@ -270,10 +271,7 @@ Score this channel across all 4 dimensions and rate each video's title and descr
     return new Response(JSON.stringify(result), { status: 200, headers });
   } catch (error) {
     console.error('channel-audit error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Audit failed', detail: String(error) }),
-      { status: 500, headers }
-    );
+    return failureResponse(error, 'Audit failed', headers);
   }
 };
 

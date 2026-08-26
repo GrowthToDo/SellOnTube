@@ -1,3 +1,4 @@
+import { failureResponse } from './lib/upstream-error.js';
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
@@ -228,10 +229,7 @@ export default async (request: Request) => {
 
   } catch (error) {
     console.error('generate-tags error:', error);
-    return new Response(
-      JSON.stringify({ error: 'Tag generation failed. Please try again.', detail: String(error) }),
-      { status: 500, headers }
-    );
+    return failureResponse(error, 'Tag generation failed. Please try again.', headers);
   }
 };
 

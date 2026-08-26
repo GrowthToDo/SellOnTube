@@ -1,5 +1,6 @@
 // youtube-seo-tool.ts
 import { getVideoDetails } from './lib/youtube-data.js';
+import { failureResponse } from './lib/upstream-error.js';
 
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
@@ -553,15 +554,13 @@ export default async (request: Request) => {
     const detail = error instanceof Error ? error.message : String(error);
     console.error('youtube-seo-tool error:', detail);
     const isTimeout = error instanceof Error && (error.name === 'TimeoutError' || error.name === 'AbortError');
-    return new Response(
-      JSON.stringify({
-        error: isTimeout
-          ? 'This took longer than expected. Please try again.'
-          : 'Something went wrong on our end. Please try again in a moment.',
-        detail,
-      }),
-      { status: isTimeout ? 503 : 500, headers }
-    );
+    if (isTimeout) {
+      return new Response(
+        JSON.stringify({ error: 'This took longer than expected. Please try again.', detail }),
+        { status: 503, headers }
+      );
+    }
+    return failureResponse(error, 'Something went wrong on our end. Please try again in a moment.', headers);
   }
 };
 
