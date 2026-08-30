@@ -84,7 +84,7 @@ export const niches: Niche[] = [
     faqs: [
       {
         question: 'Is YouTube worth it for SaaS with a low ACV?',
-        answer: "The honest answer depends on which queries you target. A $99/month tool with 12-month average retention is worth around $1,200 per customer. If a video costs $600 to produce and brings in two retained customers during its first year, you're already positive before month six. And the video keeps running after that. The trap with low ACV isn't the YouTube ROI calculation. It's spending the production budget on educational content that attracts people learning about your category instead of people deciding which tool to buy. We focus only on bottom-of-funnel queries where the viewer is close to signing up.",
+        answer: "The honest answer depends on which queries you target, not on ACV math alone. Scalelist, a SaaS company with a modest subscriber count, now gets roughly 50% of its paid users from YouTube, according to founder Youssef El Kaddioui in a Pulse Hero interview. The trap with low ACV isn't the YouTube ROI calculation. It's spending the production budget on educational content that attracts people learning about your category instead of people deciding which tool to buy. We focus only on bottom-of-funnel queries where the viewer is close to signing up.",
       },
       {
         question: 'How long until we see signups from YouTube?',

@@ -46,6 +46,8 @@ YouTube Studio shows you some search terms. It does not show your actual ranking
 
 Here is how to find the full picture, and what to do with it once you have it.
 
+**Finding your YouTube ranking keywords is different from checking a YouTube ranking.** Checking a ranking means you already know the keyword and want to see where you land, covered in [how to check your YouTube keyword ranking](/blog/how-to-check-youtube-ranking) and [how to check YouTube rankings for any video](/blog/how-to-check-youtube-rankings). Finding your ranking keywords means the opposite direction: you don't know which searches your videos already rank for, and you need to surface them before you can decide what to protect, improve, or ignore. That's the gap YouTube Studio and most rank checkers don't close on their own, because both require you to type in a keyword first. This guide covers three ways to pull the full list of keywords a video ranks for, including ones that never sent you a click, plus a business-owner playbook for acting on what you find. If you already know the one keyword you want to check, use the [SellonTube YouTube Ranking Checker](/tools/youtube-ranking-checker) directly instead.
+
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
 <ul style="margin: 0; padding-left: 1.25rem;">
