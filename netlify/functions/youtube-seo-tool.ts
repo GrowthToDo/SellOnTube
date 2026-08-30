@@ -391,22 +391,28 @@ export default async (request: Request) => {
     let title = '';
     let description = '';
 
-    const dataFetchRes = await fetch(`https://api.datafetchapi.com/v1/youtube/video/${videoId}`, {
-      method: 'GET',
-      headers: { 'X-API-KEY': youtubeApiKey },
-      signal: AbortSignal.timeout(12000),
-    });
+    try {
+      const dataFetchRes = await fetch(`https://api.datafetchapi.com/v1/youtube/video/${videoId}`, {
+        method: 'GET',
+        headers: { 'X-API-KEY': youtubeApiKey },
+        signal: AbortSignal.timeout(12000),
+      });
 
-    if (dataFetchRes.ok) {
-      const videoData = await dataFetchRes.json() as DataFetchVideoResponse;
-      // Handle both flat { title, description } and nested { data: { title, description } }
-      const d = (videoData as any)?.data ?? videoData;
-      title = d?.title ?? videoData?.title ?? '';
-      description = d?.description ?? videoData?.description ?? '';
-      console.log('DataFetch OK — title:', title?.slice(0, 60), 'desc length:', description?.length);
-    } else {
-      const errText = await dataFetchRes.text();
-      console.error('DataFetch API error:', dataFetchRes.status, errText.slice(0, 300));
+      if (dataFetchRes.ok) {
+        const videoData = await dataFetchRes.json() as DataFetchVideoResponse;
+        // Handle both flat { title, description } and nested { data: { title, description } }
+        const d = (videoData as any)?.data ?? videoData;
+        title = d?.title ?? videoData?.title ?? '';
+        description = d?.description ?? videoData?.description ?? '';
+        console.log('DataFetch OK — title:', title?.slice(0, 60), 'desc length:', description?.length);
+      } else {
+        const errText = await dataFetchRes.text();
+        console.error('DataFetch API error:', dataFetchRes.status, errText.slice(0, 300));
+      }
+    } catch (e) {
+      // A thrown fetch (DNS/TLS/network failure) means DataFetch is unreachable, not just erroring.
+      // Fall through to the YouTube Data API / oEmbed fallbacks below instead of failing the tool.
+      console.error('DataFetch API unreachable (non-fatal, falling back):', e);
     }
 
     // Step 2b: Fetch tags via YouTube Data API v3 (bonus data, non-blocking)
