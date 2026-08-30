@@ -36,6 +36,18 @@ visual videos**, not talking-head content.
 
 In this article I'll walk through the blueprint we use at SellOnTube.
 
+## Contents
+
+- [1. Start from the business math, not from the content](#1-start-from-the-business-math-not-from-the-content)
+- [2. Mapping search-intent: where the right buyers already are](#2-mapping-search-intent-where-the-right-buyers-already-are)
+- [3. Why we use voiceover-led videos (not talking heads)](#3-why-we-use-voiceover-led-videos-not-talking-heads)
+- [4. Structuring each video for acquisition, not vanity metrics](#4-structuring-each-video-for-acquisition-not-vanity-metrics)
+- [5. Landing pages and CTAs: where viewers become leads](#5-landing-pages-and-ctas-where-viewers-become-leads)
+- [6. Publishing cadence: 4 shots a month, not a content treadmill](#6-publishing-cadence-4-shots-a-month-not-a-content-treadmill)
+- [7. Measurement: what we actually track](#7-measurement-what-we-actually-track)
+- [8. When YouTube is not a good idea](#8-when-youtube-is-not-a-good-idea)
+- [9. How this becomes a real engine, not a campaign](#9-how-this-becomes-a-real-engine-not-a-campaign)
+
 ---
 
 ## 1. Start from the business math, not from the content
