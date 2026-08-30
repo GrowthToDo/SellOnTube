@@ -80,7 +80,6 @@ A YouTube SEO tool for businesses should do one thing above all else: surface th
   - [7. Manual YouTube Search](#7-manual-youtube-search-the-baseline-method)
 - [Which Tool for Your Situation: A Cheat Sheet](#which-youtube-seo-tool-for-your-situation-a-cheat-sheet)
 - [What the Free Tools Save You vs the Paid Ones](#what-the-free-tools-save-you-vs-the-paid-ones)
-- [What to Do This Week](#what-to-do-this-week)
 - [Common Questions](#common-questions)
 
 ---
