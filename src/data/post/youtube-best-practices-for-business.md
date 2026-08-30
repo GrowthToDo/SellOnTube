@@ -52,15 +52,12 @@ Here are 12 youtube best practices for business channels that separate lead-gene
   </ul>
 </div>
 
-<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #94a3b8; border-radius: 8px; padding: 1.5rem 1.75rem; margin: 2rem 0;">
-  <p style="font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #475569; margin: 0 0 1rem 0;">In This Article</p>
-  <ul style="margin: 0; padding-left: 1.5rem; line-height: 2; font-size: 0.9rem; list-style: disc;">
-    <li><a href="#why-creator-best-practices-fail-business-channels" style="color: #3b82f6; text-decoration: none;">Why creator best practices fail business channels</a></li>
-    <li><a href="#12-youtube-best-practices-for-business-channels" style="color: #3b82f6; text-decoration: none;">12 YouTube best practices for business channels</a></li>
-    <li><a href="#faq" style="color: #3b82f6; text-decoration: none;">FAQ</a></li>
-    <li><a href="#what-to-do-this-week" style="color: #3b82f6; text-decoration: none;">What to do this week</a></li>
-  </ul>
-</div>
+## Contents
+
+- [Why creator best practices fail business channels](#why-creator-best-practices-fail-business-channels)
+- [12 YouTube best practices for business channels](#12-youtube-best-practices-for-business-channels)
+- [FAQ](#faq)
+- [What to do this week](#what-to-do-this-week)
 
 ---
 
