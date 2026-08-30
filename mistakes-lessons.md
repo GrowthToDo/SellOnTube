@@ -17,6 +17,13 @@ Read this file at the start of work so past mistakes don't repeat.
 
 ---
 
+### 2026-08-30 — Tool Health Check CI failure was a correct alert, not a bug (DataFetch vendor still down)
+- **What happened:** `.github/workflows/tool-health.yaml` (added 2026-08-26, #131) failed run #4, `check-endpoints` exit 1. Live re-test of all 7 endpoints with the script's real payloads showed `get-transcript` and `youtube-seo-tool` still returning 503 (`fetch failed`) — `api.datafetchapi.com` never recovered from the 2026-07-08/2026-08-26 outage. `generate-tags`/`generate-description`/`channel-audit`/`youtube-rank-check`/`cluster-keywords` all passed. An earlier manual probe of `cluster-keywords` with a throwaway `{"seed":"test","keywords":["a","b"]}` payload returned a legitimate 500 ("missing clusters array") and briefly looked like a second real bug — it was self-inflicted: nonsense keywords give Gemini nothing to cluster. Retesting with the script's actual payload (`{seed:'youtube seo', keywords:[...]}`) passed clean.
+- **Root cause:** the vendor is genuinely still dead; a80dfc6 made the failure honest (503) but didn't and couldn't fix the vendor itself. No code or CI-config bug exists.
+- **Lesson:** a health-check failure email is not automatically a bug ticket. Before touching code, reproduce live with the checker's exact payload and check whether the failure matches an already-documented known issue. Debugging with your own improvised payload against an endpoint under investigation can manufacture a false second failure that has nothing to do with the real one.
+- **Prevention rule:** when a monitored endpoint fails, re-run it with the literal payload the monitor sent (copy it, don't approximate it) before concluding there's a new bug. If the failure matches a previously logged vendor/dependency issue, log the recurrence and stop — don't patch code to silence a correct alert.
+- **Category:** process
+
 ### 2026-06-29 — AEO knowledge was fragmented across 5 docs; consolidated into one SSOT
 - **What happened:** AI-citation/AEO rules (answer blocks, definition blocks, entity consistency, freshness, robots list, schema priority) were duplicated across `ai-seo-guide.md`, `content-depth-framework.md`, `seo-rules.md`, `content-playbook.md`, and `blog-production-standard.md`. Schema priority had drifted (FAQPage demotion not reflected everywhere). No single doc told the model "how to make content citable," and no agent enforced citability before publish.
 - **Root cause:** rules were added where each doc needed them rather than referenced from one home, so every doc grew its own copy and they fell out of sync.
