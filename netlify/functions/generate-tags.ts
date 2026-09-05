@@ -1,4 +1,5 @@
 import { failureResponse } from './lib/upstream-error.js';
+import { getTranscript, toPlainText } from './lib/transcript.js';
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
@@ -160,30 +161,12 @@ export default async (request: Request) => {
 
     // 2. Fetch transcript (optional, continue without it)
     let transcript: string | null = null;
-    const lfKey = process.env.LF_YOUTUBE_KEY;
-    if (lfKey) {
-      try {
-        const txUrl = `https://api.datafetchapi.com/v1/youtube/video/${videoId}/transcript/fast`;
-        const txRes = await fetch(txUrl, {
-          method: 'GET',
-          headers: { 'X-API-KEY': lfKey },
-          signal: AbortSignal.timeout(12000),
-        });
-
-        if (txRes.ok) {
-          const txData = await txRes.json();
-          // Extract text from transcript segments
-          if (Array.isArray(txData?.transcript)) {
-            transcript = txData.transcript.map((s: { text?: string }) => s.text || '').join(' ');
-          } else if (typeof txData?.transcript === 'string') {
-            transcript = txData.transcript;
-          } else if (typeof txData?.text === 'string') {
-            transcript = txData.text;
-          }
-        }
-      } catch (txErr) {
-        console.warn('Transcript fetch failed (continuing without):', txErr);
-      }
+    try {
+      const tx = await getTranscript(videoId);
+      if (tx.status === 'ok') transcript = toPlainText(tx.transcript.segments);
+      else console.warn('No transcript for tags (continuing without):', tx.status);
+    } catch (txErr) {
+      console.warn('Transcript fetch failed (continuing without):', txErr);
     }
 
     // 3. Send to Gemini for analysis
@@ -193,7 +176,9 @@ export default async (request: Request) => {
       signal: AbortSignal.timeout(25000),
       body: JSON.stringify({
         contents: [{ parts: [{ text: buildPrompt(videoTitle, videoDescription, existingTags, transcript) }] }],
-        generationConfig: { responseMimeType: 'application/json', temperature: 0.5, maxOutputTokens: 2048 },
+        // 4096 not 2048: thinking tokens count toward this cap, and with a transcript in the prompt
+        // 2048 was exhausted before any JSON was emitted (seen 2026-09-05, JSON.parse('') -> 500).
+        generationConfig: { responseMimeType: 'application/json', temperature: 0.5, maxOutputTokens: 4096 },
       }),
     });
 
@@ -212,6 +197,14 @@ export default async (request: Request) => {
 
     const geminiData = await geminiRes.json();
     const raw = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+    if (!raw.trim()) {
+      const finish = geminiData?.candidates?.[0]?.finishReason ?? 'unknown';
+      console.error('Gemini returned no text. finishReason:', finish, JSON.stringify(geminiData).slice(0, 400));
+      return new Response(
+        JSON.stringify({ error: 'AI service returned no output. Please try again.', detail: 'finishReason=' + finish }),
+        { status: 503, headers }
+      );
+    }
     const result = JSON.parse(raw);
 
     if (!Array.isArray(result?.suggestedTags) || result.suggestedTags.length === 0) {

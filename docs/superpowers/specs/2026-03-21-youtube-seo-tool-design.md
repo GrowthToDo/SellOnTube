@@ -1,3 +1,5 @@
+> **2026-09-05:** DataFetch (`LF_YOUTUBE_KEY`) is gone. Video metadata now comes from YouTube Data API v3 with oEmbed fallback; transcripts from `netlify/functions/lib/transcript.ts` (`TRANSCRIPT_API_KEY`). The DataFetch sections below are historical.
+
 # Design: YouTube SEO Tool
 
 **Date:** 2026-03-21

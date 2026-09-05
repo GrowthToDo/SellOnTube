@@ -1,5 +1,6 @@
 // get-transcript.ts
 import { failureResponse } from './lib/upstream-error.js';
+import { getTranscript } from './lib/transcript.js';
 
 function extractVideoId(input: string): string | null {
   const trimmed = input.trim();
@@ -26,6 +27,12 @@ function extractVideoId(input: string): string | null {
   return null;
 }
 
+// Status contract (the page and the health check both depend on it):
+//   200  { videoId, title, channel, thumbnail, lang, segments: [{ text, start, duration }], cached }
+//   400  bad input
+//   422  vendor reached, this video has no captions   (a property of the video, not an outage)
+//   429  vendor quota exhausted
+//   503  vendor down, unreachable, or not configured  (an outage; the page shows a notice)
 export default async (request: Request) => {
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
@@ -42,24 +49,12 @@ export default async (request: Request) => {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers });
   }
 
-  const apiKey = process.env.LF_YOUTUBE_KEY;
-  if (!apiKey) {
-    console.error('LF_YOUTUBE_KEY environment variable is not set');
-    return new Response(
-      JSON.stringify({ error: 'Service temporarily unavailable. Please try again later.' }),
-      { status: 500, headers }
-    );
-  }
-
   try {
     const body = await request.json();
     const { url } = body;
 
     if (!url?.trim()) {
-      return new Response(
-        JSON.stringify({ error: 'url is required' }),
-        { status: 400, headers }
-      );
+      return new Response(JSON.stringify({ error: 'url is required' }), { status: 400, headers });
     }
 
     const videoId = extractVideoId(url.trim());
@@ -70,31 +65,39 @@ export default async (request: Request) => {
       );
     }
 
-    const apiUrl = `https://api.datafetchapi.com/v1/youtube/video/${videoId}/transcript/fast`;
+    const result = await getTranscript(videoId);
 
-    const apiRes = await fetch(apiUrl, {
-      method: 'GET',
-      headers: { 'X-API-KEY': apiKey },
-      signal: AbortSignal.timeout(12000),
-    });
-
-    if (!apiRes.ok) {
-      const errText = await apiRes.text();
-      console.error('DataFetch API error:', apiRes.status, errText);
-
-      if (apiRes.status === 429) {
+    switch (result.status) {
+      case 'ok':
+        return new Response(
+          JSON.stringify({
+            videoId,
+            title: result.transcript.title,
+            channel: result.transcript.channel,
+            thumbnail: result.transcript.thumbnail,
+            lang: result.transcript.lang,
+            segments: result.transcript.segments,
+            cached: result.cached,
+          }),
+          { status: 200, headers }
+        );
+      case 'unavailable':
+        return new Response(
+          JSON.stringify({
+            error: 'No transcript found. The video may not exist, may be private, or may have no captions. Try a public video that shows a CC button on YouTube.',
+            code: 'no_captions',
+          }),
+          { status: 422, headers }
+        );
+      case 'quota':
         return new Response(JSON.stringify({ error: 'quota_exceeded' }), { status: 429, headers });
-      }
-
-      return new Response(
-        JSON.stringify({ error: 'Failed to fetch transcript. The video may not have captions available.' }),
-        { status: 503, headers }
-      );
+      case 'not-configured':
+      case 'upstream-error':
+        return new Response(
+          JSON.stringify({ error: 'The transcript service is temporarily unavailable. Please try again later.' }),
+          { status: 503, headers }
+        );
     }
-
-    const data = await apiRes.json();
-
-    return new Response(JSON.stringify({ videoId, ...data }), { status: 200, headers });
   } catch (error) {
     console.error('get-transcript error:', error);
     return failureResponse(error, 'Something went wrong. Please try again later.', headers);
