@@ -19,12 +19,14 @@ jobs:
   check-endpoints:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
 
       # No npm install: the script uses only built-in fetch.
+      # The script writes a PASS/FAIL table to the job summary and an ::error:: annotation
+      # per broken tool, so the failure email names the tool without opening the log.
       - name: Check tool endpoints
         run: node scripts/health-check-tools.mjs

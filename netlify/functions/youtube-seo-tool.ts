@@ -304,12 +304,6 @@ function buildFallbackAnalysis(title: string, description: string, tags: string[
   };
 }
 
-interface DataFetchVideoResponse {
-  title?: string;
-  description?: string;
-  [key: string]: unknown;
-}
-
 interface SeoToolResponse {
   business_summary: string;
   recommended_keywords: string[];
@@ -338,15 +332,6 @@ export default async (request: Request) => {
 
   if (request.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers });
-  }
-
-  const youtubeApiKey = process.env.LF_YOUTUBE_KEY;
-  if (!youtubeApiKey) {
-    console.error('LF_YOUTUBE_KEY environment variable is not set');
-    return new Response(
-      JSON.stringify({ error: 'Something went wrong on our end. Please try again in a moment.' }),
-      { status: 500, headers }
-    );
   }
 
   const geminiApiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
@@ -387,35 +372,11 @@ export default async (request: Request) => {
       );
     }
 
-    // Step 2: Fetch video metadata — primary: DataFetch API, fallback: YouTube oEmbed
+    // Step 2: Fetch video metadata. Primary: YouTube Data API v3 (title, description, tags).
+    // Fallback: YouTube oEmbed (title only). The former primary, DataFetch, died on 2026-07-08
+    // and was removed 2026-09-05; it was costing a failed TLS handshake on every request.
     let title = '';
     let description = '';
-
-    try {
-      const dataFetchRes = await fetch(`https://api.datafetchapi.com/v1/youtube/video/${videoId}`, {
-        method: 'GET',
-        headers: { 'X-API-KEY': youtubeApiKey },
-        signal: AbortSignal.timeout(12000),
-      });
-
-      if (dataFetchRes.ok) {
-        const videoData = await dataFetchRes.json() as DataFetchVideoResponse;
-        // Handle both flat { title, description } and nested { data: { title, description } }
-        const d = (videoData as any)?.data ?? videoData;
-        title = d?.title ?? videoData?.title ?? '';
-        description = d?.description ?? videoData?.description ?? '';
-        console.log('DataFetch OK — title:', title?.slice(0, 60), 'desc length:', description?.length);
-      } else {
-        const errText = await dataFetchRes.text();
-        console.error('DataFetch API error:', dataFetchRes.status, errText.slice(0, 300));
-      }
-    } catch (e) {
-      // A thrown fetch (DNS/TLS/network failure) means DataFetch is unreachable, not just erroring.
-      // Fall through to the YouTube Data API / oEmbed fallbacks below instead of failing the tool.
-      console.error('DataFetch API unreachable (non-fatal, falling back):', e);
-    }
-
-    // Step 2b: Fetch tags via YouTube Data API v3 (bonus data, non-blocking)
     let videoTags: string[] = [];
     const ytApiKey = process.env.YOUTUBE_API_KEY;
     if (ytApiKey) {
@@ -423,19 +384,20 @@ export default async (request: Request) => {
         const ytDetails = await getVideoDetails(videoId, ytApiKey);
         if (ytDetails) {
           videoTags = ytDetails.tags;
-          // Use YouTube Data API as fallback for title/description if DataFetch missed them
-          if (!title) title = ytDetails.title;
-          if (!description) description = ytDetails.description;
-          console.log('YouTube Data API OK — tags:', videoTags.length, 'title fallback:', !title);
+          title = ytDetails.title;
+          description = ytDetails.description;
+          console.log('YouTube Data API OK — tags:', videoTags.length, 'title:', title?.slice(0, 60));
         }
       } catch (e) {
         console.error('YouTube Data API fetch failed (non-fatal):', e);
       }
+    } else {
+      console.error('YOUTUBE_API_KEY is not set; falling back to oEmbed (title only)');
     }
 
     // Fallback: YouTube oEmbed gives us title for any public video
     if (!title) {
-      console.log('DataFetch returned no title — trying oEmbed fallback');
+      console.log('YouTube Data API returned no title — trying oEmbed fallback');
       try {
         const oEmbedRes = await fetch(
           `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`,

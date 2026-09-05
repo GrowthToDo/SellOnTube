@@ -58,19 +58,13 @@ const faqSchema = {
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
     <div class="max-w-3xl mx-auto px-4 text-center">
       <div class="flex flex-wrap justify-center gap-2 mb-6">
-        <span class="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Free, fast, and no signup required</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">3 free, no signup. Email for unlimited.</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
         YouTube Transcript Generator
       </h1>
-      <p class="text-gray-700 dark:text-slate-300 text-lg sm:text-xl font-semibold max-w-2xl mx-auto mb-4">
-        Study competitor videos. Create SEO-friendly content that converts.
-      </p>
-      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-3">
-        Get clean transcripts and AI-powered summaries from any YouTube video in seconds. Analyze competitors, discover content gaps, and plan YouTube videos that drive leads and sales.
-      </p>
-      <p class="text-gray-500 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-        Ideal for marketers, growth teams, and agencies creating YouTube content that converts viewers into customers.
+      <p class="text-gray-600 dark:text-slate-300 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+        Paste a competitor's video. Get the clean transcript and a short brief on how it sells: hook, key claims, product mentions with timestamps, and the call to action.
       </p>
     </div>
   </section>
@@ -83,7 +77,7 @@ const faqSchema = {
       <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
         <div class="mb-5">
           <p class="text-base font-semibold text-gray-900 dark:text-white mb-1">Get Started</p>
-          <p class="text-sm text-gray-500 dark:text-slate-400">Paste any YouTube video URL below to generate an instant transcript and summary</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">Paste a YouTube URL. Transcript in a few seconds, brief about ten seconds after.</p>
         </div>
         <div class="space-y-5">
 
@@ -120,6 +114,15 @@ const faqSchema = {
         <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
           3 free transcripts remaining
         </p>
+
+        <!-- Recent videos: stored in this browser only, so a research session can hop between videos -->
+        <div id="recent-videos" class="hidden mt-6 pt-5 border-t border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Recent</p>
+            <button id="recent-clear-btn" class="text-xs text-gray-400 dark:text-slate-500 hover:text-gray-700 dark:hover:text-white">Clear</button>
+          </div>
+          <ul id="recent-list" class="space-y-1.5"></ul>
+        </div>
       </div>
 
       <!-- Step: Loading -->
@@ -129,7 +132,7 @@ const faqSchema = {
       >
         <div class="flex flex-col items-center gap-4 py-10">
           <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Extracting transcript...</p>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Extracting transcript... the brief follows in about ten seconds.</p>
           <p class="text-xs text-gray-400 dark:text-slate-600">This usually takes a few seconds</p>
         </div>
       </div>
@@ -180,63 +183,122 @@ const faqSchema = {
     >
       <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
 
-        <!-- Header -->
+        <!-- Header: what was transcribed -->
         <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
-          <div class="flex items-center justify-between gap-4">
-            <div>
+          <div class="flex items-start gap-4">
+            <a id="result-thumb-link" href="#" target="_blank" rel="noopener noreferrer" class="flex-shrink-0 hidden sm:block">
+              <img id="result-thumb" src="" alt="" width="120" height="68" loading="lazy" class="w-[120px] h-[68px] object-cover rounded-lg bg-slate-200 dark:bg-slate-800" />
+            </a>
+            <div class="min-w-0 flex-1">
               <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-1">Transcript for</p>
-              <p id="result-video-id" tabindex="-1" class="text-sm font-semibold text-gray-900 dark:text-white"></p>
-            </div>
-            <div class="flex items-center gap-2">
-              <button
-                id="copy-full-btn"
-                class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1.5 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
-              >
-                Copy Full Transcript
-              </button>
+              <h2 id="result-title" tabindex="-1" class="text-base font-bold text-gray-900 dark:text-white leading-snug outline-none"></h2>
+              <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">
+                <span id="result-channel"></span>
+                <span class="mx-1.5 text-slate-300 dark:text-slate-600">&middot;</span>
+                <a id="result-video-link" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-600 dark:hover:text-emerald-400 hover:underline">Open on YouTube &nearr;</a>
+              </p>
+              <p id="result-stats" class="text-xs text-gray-400 dark:text-slate-500 mt-2 font-mono"></p>
+              <p id="result-lang-note" class="hidden text-xs text-amber-700 dark:text-amber-400 mt-1"></p>
             </div>
           </div>
         </div>
 
-        <!-- View toggle -->
-        <div class="px-6 sm:px-8 pt-5 flex gap-2">
-          <button
-            id="view-clean-btn"
-            class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 transition-colors"
-          >
-            Clean Text
-          </button>
-          <button
-            id="view-timestamps-btn"
-            class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-gray-500 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-500 hover:text-gray-700 dark:hover:text-white transition-colors"
-          >
-            With Timestamps
-          </button>
+        <!-- Tabs -->
+        <div class="px-6 sm:px-8 border-b border-slate-200 dark:border-slate-700/60" role="tablist" aria-label="Transcript views">
+          <div class="flex gap-6 -mb-px">
+            <button id="tab-intel" role="tab" aria-selected="true" aria-controls="panel-intel" class="py-3 text-sm font-semibold border-b-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+              Intel<span id="tab-intel-state" class="ml-1.5 text-[11px] font-normal text-gray-400 dark:text-slate-500">building...</span>
+            </button>
+            <button id="tab-clean" role="tab" aria-selected="false" aria-controls="panel-transcript" class="py-3 text-sm font-semibold border-b-2 border-transparent text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white whitespace-nowrap">Transcript</button>
+            <button id="tab-timestamps" role="tab" aria-selected="false" aria-controls="panel-transcript" class="py-3 text-sm font-semibold border-b-2 border-transparent text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white whitespace-nowrap">Timestamps</button>
+          </div>
         </div>
 
-        <!-- Clean transcript view -->
-        <div id="transcript-clean" class="p-6 sm:p-8">
-          <div id="transcript-text" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap max-h-[32rem] overflow-y-auto scrollbar-thin"></div>
+        <!-- Panel: Intel (research brief; loads async, the transcript never waits for it) -->
+        <div id="panel-intel" role="tabpanel" class="p-6 sm:p-8">
+          <div class="flex items-center justify-between gap-3 mb-4">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">What this video is doing</p>
+            <button id="copy-brief-btn" class="hidden text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-1 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Copy brief</button>
+          </div>
+
+          <div id="brief-loading" class="space-y-2" aria-live="polite">
+            <p class="text-sm text-gray-500 dark:text-slate-400">Reading the transcript for the hook, claims, structure, product mentions and CTA. About ten seconds. The Transcript tab is ready now.</p>
+            <div class="h-3 w-3/4 rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+            <div class="h-3 w-full rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+            <div class="h-3 w-5/6 rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+          </div>
+
+          <p id="brief-error" class="hidden text-sm text-gray-500 dark:text-slate-400"></p>
+
+          <div id="brief-body" class="hidden space-y-5 text-sm text-gray-700 dark:text-slate-300 leading-relaxed">
+            <p id="brief-oneliner" class="text-base font-semibold text-gray-900 dark:text-white"></p>
+            <div>
+              <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1">Hook (first 30 seconds)</p>
+              <p id="brief-hook"></p>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1">Key claims</p>
+              <ul id="brief-claims" class="list-disc pl-5 space-y-1"></ul>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1">Structure <span class="font-normal text-gray-400 dark:text-slate-500">(click a time to read that part)</span></p>
+              <ul id="brief-structure" class="space-y-1"></ul>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1">Product and offer mentions</p>
+              <ul id="brief-mentions" class="space-y-1.5"></ul>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1">Call to action</p>
+                <p id="brief-cta"></p>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-gray-500 dark:text-slate-400 mb-1">Who it is selling to</p>
+                <p id="brief-buyer"></p>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 dark:text-slate-500">AI-generated from the transcript. Check quotes against the video before you cite them.</p>
+          </div>
         </div>
 
-        <!-- Timestamped transcript view -->
-        <div id="transcript-timestamps" class="hidden p-6 sm:p-8">
-          <div id="transcript-segments" class="space-y-2 max-h-[32rem] overflow-y-auto scrollbar-thin"></div>
-        </div>
+        <!-- Panel: Transcript / Timestamps (shared toolbar, two views) -->
+        <div id="panel-transcript" role="tabpanel" class="hidden">
+          <div class="px-6 sm:px-8 pt-5 flex flex-col gap-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="relative flex-1 min-w-[12rem]">
+                <input
+                  type="search"
+                  id="transcript-search"
+                  placeholder="Search transcript (product name, keyword...)"
+                  aria-label="Search transcript"
+                  class="w-full text-sm px-3 py-2 pr-20 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                />
+                <span id="search-count" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-gray-400 dark:text-slate-500" aria-live="polite"></span>
+              </div>
+              <button id="search-next-btn" class="hidden text-xs font-semibold px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 text-gray-600 dark:text-slate-300 hover:border-emerald-500/50">Next &darr;</button>
+              <button id="copy-full-btn" class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Copy text</button>
+              <button id="download-txt-btn" class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Download .txt</button>
+            </div>
+            <!-- Top terms: the words this video leans on. Click one to search for it. -->
+            <div id="top-terms" class="hidden flex-wrap items-center gap-1.5">
+              <span class="text-[11px] font-semibold text-gray-400 dark:text-slate-500 mr-1">Top terms</span>
+            </div>
+          </div>
 
-        <!-- Inline CTA -->
-        <div class="p-6 sm:p-8 border-t border-slate-200 dark:border-slate-700/60 bg-emerald-500/5">
-          <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Want help turning competitor insights into a YouTube strategy?</p>
-          <p class="text-xs text-gray-400 dark:text-slate-500 mb-4">Book a free diagnostic call with SellonTube.</p>
-          <a
-            id="results-cta"
-            href="https://cal.com/gautham-8bdvdx/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
-          >
-            Book a free diagnostic call &rarr;
-          </a>
+          <!-- Transcript body (collapsed until expanded; no nested scrollbar) -->
+          <div class="relative">
+            <div id="transcript-body" class="p-6 sm:p-8 max-h-[28rem] overflow-hidden">
+              <div id="transcript-clean" class="space-y-4 text-sm text-gray-700 dark:text-slate-300 leading-relaxed"></div>
+              <div id="transcript-timestamps" class="hidden space-y-3"></div>
+            </div>
+            <div id="transcript-fade" class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50 dark:from-slate-900 to-transparent pointer-events-none"></div>
+          </div>
+          <div id="expand-row" class="px-6 sm:px-8 pb-6">
+            <button id="expand-btn" class="w-full py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-xs font-semibold text-gray-600 dark:text-slate-300 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors" aria-expanded="false">
+              Show full transcript
+            </button>
+          </div>
         </div>
 
         <!-- Reset -->
@@ -532,7 +594,7 @@ const faqSchema = {
       <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-2">Next step</p>
       <p class="text-sm text-gray-500 dark:text-slate-400 text-center mb-8">You have the transcript. Now turn those insights into your own optimized content.</p>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <a href="/tools/youtube-seo-tool" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+        <a id="related-seo-card" href="/tools/youtube-seo-tool" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
           <div class="flex items-start justify-between gap-3 mb-2">
             <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">YouTube SEO Tool</h3>
             <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">SEO</span>
@@ -580,9 +642,24 @@ const faqSchema = {
 
   // ===== STATE =====
 
-  let transcriptSegments: Array<{ text: string; start: number; duration: number }> = [];
-  let fullTranscriptText = '';
+  type Segment = { text: string; start: number; duration: number };
+  type Block = { start: number; text: string };
+
+  let transcriptSegments: Segment[] = [];
+  let paragraphs: Block[] = [];   // clean view: readable paragraphs
+  let blocks: Block[] = [];       // timestamp view: ~30s chunks
+  let currentVideoId = '';
+  let currentTitle = '';
   let currentView: 'clean' | 'timestamps' = 'clean';
+  type Tab = 'intel' | 'clean' | 'timestamps';
+  let currentTab: Tab = 'intel';
+  const RECENT_KEY = 'sot_transcript_recent';
+  let searchQuery = '';
+  let searchHits: HTMLElement[] = [];
+  let searchIndex = -1;
+  let briefText = '';
+  let briefRequestId = 0;
+  let wordCount = 0;
 
   // ===== STEP MANAGEMENT =====
 
@@ -593,7 +670,9 @@ const faqSchema = {
       if (el) el.classList.toggle('hidden', s !== id);
     });
     if (id === 'step-results') {
-      const heading = document.getElementById('result-video-id');
+      // Now visible, so the fold can be measured for real.
+      setCollapsed(true);
+      const heading = document.getElementById('result-title');
       heading?.focus();
     }
   }
@@ -653,72 +732,353 @@ const faqSchema = {
     return m + ':' + String(s).padStart(2, '0');
   }
 
-  // ===== VIEW TOGGLE =====
+  // ===== TABS =====
 
-  function setView(view: 'clean' | 'timestamps'): void {
-    currentView = view;
-    const cleanEl = document.getElementById('transcript-clean');
-    const tsEl = document.getElementById('transcript-timestamps');
-    const cleanBtn = document.getElementById('view-clean-btn');
-    const tsBtn = document.getElementById('view-timestamps-btn');
+  const TAB_ACTIVE = ['border-emerald-500', 'text-emerald-600', 'dark:text-emerald-400'];
+  const TAB_INACTIVE = ['border-transparent', 'text-gray-500', 'dark:text-slate-400', 'hover:text-gray-900', 'dark:hover:text-white'];
 
-    const activeClasses = ['bg-emerald-500/10', 'border-emerald-500/20', 'text-emerald-600', 'dark:text-emerald-400'];
-    const inactiveClasses = ['border-slate-300', 'dark:border-slate-700', 'text-gray-500', 'dark:text-slate-400'];
+  function setTab(tab: Tab): void {
+    currentTab = tab;
+    const buttons: Record<Tab, HTMLElement | null> = {
+      intel: document.getElementById('tab-intel'),
+      clean: document.getElementById('tab-clean'),
+      timestamps: document.getElementById('tab-timestamps'),
+    };
+    (Object.keys(buttons) as Tab[]).forEach((key) => {
+      const btn = buttons[key];
+      if (!btn) return;
+      const on = key === tab;
+      btn.setAttribute('aria-selected', String(on));
+      TAB_ACTIVE.forEach((c) => btn.classList.toggle(c, on));
+      TAB_INACTIVE.forEach((c) => btn.classList.toggle(c, !on));
+    });
 
-    if (view === 'clean') {
-      cleanEl?.classList.remove('hidden');
-      tsEl?.classList.add('hidden');
-      activeClasses.forEach(c => cleanBtn?.classList.add(c));
-      inactiveClasses.forEach(c => cleanBtn?.classList.remove(c));
-      inactiveClasses.forEach(c => tsBtn?.classList.add(c));
-      activeClasses.forEach(c => tsBtn?.classList.remove(c));
-    } else {
-      cleanEl?.classList.add('hidden');
-      tsEl?.classList.remove('hidden');
-      activeClasses.forEach(c => tsBtn?.classList.add(c));
-      inactiveClasses.forEach(c => tsBtn?.classList.remove(c));
-      inactiveClasses.forEach(c => cleanBtn?.classList.add(c));
-      activeClasses.forEach(c => cleanBtn?.classList.remove(c));
+    document.getElementById('panel-intel')?.classList.toggle('hidden', tab !== 'intel');
+    document.getElementById('panel-transcript')?.classList.toggle('hidden', tab === 'intel');
+
+    if (tab !== 'intel') {
+      currentView = tab;
+      document.getElementById('transcript-clean')?.classList.toggle('hidden', tab !== 'clean');
+      document.getElementById('transcript-timestamps')?.classList.toggle('hidden', tab !== 'timestamps');
+      const copyBtn = document.getElementById('copy-full-btn');
+      if (copyBtn) copyBtn.textContent = tab === 'clean' ? 'Copy text' : 'Copy with timestamps';
+      applySearch();
+      // Panel was display:none while on Intel, so the fold could not be measured until now.
+      setCollapsed(document.getElementById('transcript-body')?.classList.contains('max-h-[28rem]') ?? true);
     }
+  }
+
+  function setIntelTabState(state: 'loading' | 'ready' | 'error'): void {
+    const el = document.getElementById('tab-intel-state');
+    if (!el) return;
+    el.textContent = state === 'loading' ? 'building...' : state === 'error' ? 'unavailable' : '';
+    el.classList.toggle('hidden', state === 'ready');
+  }
+
+  // Scroll the Timestamps view to the block that contains `seconds` and flash it.
+  function jumpToTranscriptTime(seconds: number): void {
+    setTab('timestamps');
+    setCollapsed(false);
+    const rows = Array.from(document.querySelectorAll<HTMLElement>('#transcript-timestamps [data-start]'));
+    if (!rows.length) return;
+    let target = rows[0];
+    for (const row of rows) {
+      if (Number(row.dataset.start) <= seconds + 0.5) target = row; else break;
+    }
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    rows.forEach((r) => r.classList.remove('ring-2', 'ring-emerald-400', 'bg-emerald-500/5'));
+    target.classList.add('ring-2', 'ring-emerald-400', 'bg-emerald-500/5');
+    window.setTimeout(() => target.classList.remove('ring-2', 'ring-emerald-400', 'bg-emerald-500/5'), 2500);
+  }
+
+  // ===== TEXT SHAPING =====
+
+  // YouTube captions use ">>" for a speaker change and hard line breaks inside a cue.
+  function cleanCue(text: string): { text: string; speakerChange: boolean } {
+    let t = text.replace(/\s+/g, ' ').trim();
+    const speakerChange = /^(>>|&gt;&gt;)/.test(t);
+    t = t.replace(/^(>>|&gt;&gt;)\s*/, '').replace(/\s*(>>|&gt;&gt;)\s*/g, '. ');
+    return { text: t, speakerChange };
+  }
+
+  function endsSentence(t: string): boolean { return /[.!?]["')\]]?$/.test(t); }
+
+  // Paragraphs: break on speaker change, a silence gap, or after ~75s once a sentence ends.
+  // Blocks: same breaks, plus a new block after ~30s at a sentence end (60s hard cap), so every
+  // half-minute or so gets a clickable timestamp without splitting mid-sentence.
+  function shapeTranscript(segs: Segment[]): { paragraphs: Block[]; blocks: Block[] } {
+    const paras: Block[] = [];
+    const blks: Block[] = [];
+    let p: Block | null = null;
+    let b: Block | null = null;
+    let prevEnd = 0;
+
+    for (const seg of segs) {
+      const { text, speakerChange } = cleanCue(seg.text);
+      if (!text) continue;
+      const gap = seg.start - prevEnd;
+      const pElapsed = p ? seg.start - p.start : 0;
+      const bElapsed = b ? seg.start - b.start : 0;
+      const breakHere = !p || speakerChange || gap > 2.5 || (pElapsed > 75 && endsSentence(p.text)) || pElapsed > 150;
+
+      if (breakHere || !p) { p = { start: seg.start, text }; paras.push(p); }
+      else p.text += ' ' + text;
+
+      const blockFull = bElapsed >= 60 || (bElapsed >= 30 && b !== null && endsSentence(b.text));
+      if (!b || breakHere || blockFull) { b = { start: seg.start, text }; blks.push(b); }
+      else b.text += ' ' + text;
+
+      prevEnd = seg.start + seg.duration;
+    }
+    return { paragraphs: paras, blocks: blks };
+  }
+
+  function plainText(): string { return paragraphs.map((p) => p.text).join('\n\n'); }
+  function timestampedText(): string { return blocks.map((b) => '[' + formatTimestamp(b.start) + '] ' + b.text).join('\n'); }
+  function youtubeAt(seconds: number): string {
+    return 'https://www.youtube.com/watch?v=' + currentVideoId + '&t=' + Math.floor(seconds) + 's';
+  }
+
+  function languageName(code: string | undefined): string {
+    if (!code) return '';
+    try {
+      const dn = new (Intl as any).DisplayNames(['en'], { type: 'language' });
+      return dn.of(code) || code;
+    } catch { return code; }
   }
 
   // ===== RENDER RESULTS =====
 
-  function renderTranscript(videoId: string, segments: Array<{ text: string; start: number; duration: number }>): void {
-    transcriptSegments = segments;
-    fullTranscriptText = segments.map((s) => s.text).join(' ');
+  function renderTranscript(data: {
+    videoId: string; title?: string; channel?: string; thumbnail?: string; lang?: string; segments: Segment[];
+  }): void {
+    transcriptSegments = data.segments;
+    currentVideoId = data.videoId;
+    currentTitle = data.title || data.videoId;
+    ({ paragraphs, blocks } = shapeTranscript(transcriptSegments));
 
-    // Video ID label
-    const label = document.getElementById('result-video-id');
-    if (label) label.textContent = videoId;
-
-    // Clean text view
-    const textEl = document.getElementById('transcript-text');
-    if (textEl) textEl.textContent = fullTranscriptText;
-
-    // Timestamped view
-    const segmentsEl = document.getElementById('transcript-segments');
-    if (segmentsEl) {
-      segmentsEl.innerHTML = segments.map((seg) => {
-        const ts = formatTimestamp(seg.start);
-        return (
-          '<div class="flex items-start gap-3 py-1.5">' +
-            '<span class="flex-shrink-0 text-xs font-mono text-emerald-600/70 dark:text-emerald-400/70 mt-0.5 w-14 text-right">' + ts + '</span>' +
-            '<p class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed" data-seg-text></p>' +
-          '</div>'
-        );
-      }).join('');
-
-      // Set text safely (XSS)
-      segmentsEl.querySelectorAll('[data-seg-text]').forEach((el, i) => {
-        (el as HTMLElement).textContent = segments[i].text;
-      });
+    // Header
+    const titleEl = document.getElementById('result-title');
+    if (titleEl) titleEl.textContent = currentTitle;
+    const channelEl = document.getElementById('result-channel');
+    if (channelEl) channelEl.textContent = data.channel || data.videoId;
+    const videoUrl = 'https://www.youtube.com/watch?v=' + data.videoId;
+    document.getElementById('result-video-link')?.setAttribute('href', videoUrl);
+    document.getElementById('result-thumb-link')?.setAttribute('href', videoUrl);
+    const thumb = document.getElementById('result-thumb') as HTMLImageElement | null;
+    if (thumb) {
+      thumb.src = data.thumbnail || 'https://i.ytimg.com/vi/' + data.videoId + '/hqdefault.jpg';
+      thumb.alt = 'Thumbnail: ' + currentTitle;
     }
 
-    setView('clean');
+    // Stats
+    const words = plainText().split(/\s+/).filter(Boolean).length;
+    wordCount = words;
+    const last = transcriptSegments[transcriptSegments.length - 1];
+    const duration = last ? last.start + last.duration : 0;
+    const wpm = duration > 0 ? Math.round(words / (duration / 60)) : 0;
+    const statsEl = document.getElementById('result-stats');
+    if (statsEl) {
+      statsEl.textContent = [
+        words.toLocaleString() + ' words',
+        formatTimestamp(duration),
+        wpm ? wpm + ' wpm' : '',
+        languageName(data.lang),
+      ].filter(Boolean).join('  \u00b7  ');
+    }
+
+    // Say so when the captions are not English, instead of silently showing another language.
+    const langNote = document.getElementById('result-lang-note');
+    if (langNote) {
+      const isEnglish = !data.lang || data.lang.toLowerCase().startsWith('en');
+      langNote.textContent = isEnglish ? '' : 'This video has no English captions. Showing the ' + languageName(data.lang) + ' transcript.';
+      langNote.classList.toggle('hidden', isEnglish);
+    }
+
+    // The bottom "Next step" SEO card analyses this same video.
+    document.getElementById('related-seo-card')?.setAttribute('href', '/tools/youtube-seo-tool?v=' + encodeURIComponent(videoUrl));
+
+    loadBrief(data.videoId);
+
+    const search = document.getElementById('transcript-search') as HTMLInputElement | null;
+    if (search) search.value = '';
+    searchQuery = '';
+    renderViews();
+    renderTopTerms();
+    rememberRecent({ videoId: data.videoId, title: currentTitle, channel: data.channel || '' });
+    setTab('intel');
+    setCollapsed(true);
   }
 
-  // ===== COPY =====
+  function escapeHtml(t: string): string {
+    return t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function highlight(text: string): string {
+    const safe = escapeHtml(text);
+    if (!searchQuery) return safe;
+    const re = new RegExp('(' + searchQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    return safe.replace(re, '<mark class="bg-amber-200 dark:bg-amber-400/40 text-inherit rounded px-0.5">$1</mark>');
+  }
+
+  function renderViews(): void {
+    const cleanEl = document.getElementById('transcript-clean');
+    if (cleanEl) cleanEl.innerHTML = paragraphs.map((p) => '<p>' + highlight(p.text) + '</p>').join('');
+
+    const tsEl = document.getElementById('transcript-timestamps');
+    if (tsEl) {
+      tsEl.innerHTML = blocks.map((b) =>
+        '<div class="flex items-start gap-3 rounded-lg px-1 -mx-1 transition-colors" data-start="' + b.start + '">' +
+          '<a href="' + youtubeAt(b.start) + '" target="_blank" rel="noopener noreferrer" title="Open video at ' + formatTimestamp(b.start) + '" ' +
+            'class="flex-shrink-0 text-xs font-mono text-emerald-600 dark:text-emerald-400 mt-0.5 w-14 text-right hover:underline">' + formatTimestamp(b.start) + '</a>' +
+          '<p class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed">' + highlight(b.text) + '</p>' +
+        '</div>'
+      ).join('');
+    }
+  }
+
+  // ===== TOP TERMS =====
+
+  const STOPWORDS = new Set(('a an the and or but if so as of at by for from in into on onto to with without about over under ' +
+    'is are was were be been being am do does did doing have has had having will would shall should can could may might must ' +
+    'i me my mine we us our you your yours he him his she her hers it its they them their this that these those there here ' +
+    'what which who whom whose when where why how all any both each few more most other some such no nor not only own same ' +
+    'than too very just really actually basically literally like kind sort thing things stuff way ways lot lots get got gets ' +
+    'getting go goes going gone went come comes coming came make makes making made say says said saying see sees seen saw ' +
+    'know knows knew known think thinks thought want wants wanted need needs needed take takes took taken give gives gave ' +
+    'put let lets look looks looking looked use uses used using one two three first second next last new old good bad big ' +
+    'little much many even still also again then now today ever never always often sometimes back up down out off over ' +
+    'because while before after around through during between right okay ok yeah yes yep nope oh um uh hey hi guys people ' +
+    'gonna wanna gotta because cause mean means meant well maybe pretty sure kinda thats its im ive youre theyre were dont ' +
+    'doesnt didnt cant couldnt wont wouldnt isnt arent wasnt werent hasnt havent hadnt shouldnt video videos youtube channel ' +
+    'something anything everything nothing someone anyone everyone nobody every super probably obviously definitely exactly ' +
+    'able done did being those them time times day days year years month months week weeks ' +
+    "don't doesn't didn't isn't aren't wasn't weren't can't couldn't won't wouldn't shouldn't hasn't haven't i'm i've you're they're we're that's it's there's here's what's let's watch watching watched").split(/\s+/));
+
+  function renderTopTerms(): void {
+    const row = document.getElementById('top-terms');
+    if (!row) return;
+    const counts = new Map<string, number>();
+    for (const raw of plainText().toLowerCase().split(/[^a-z0-9$']+/)) {
+      const w = raw.replace(/^'+|'+$/g, '').replace(/'s$/, '');
+      if (w.length < 3 || STOPWORDS.has(w) || /^\d+$/.test(w)) continue;
+      counts.set(w, (counts.get(w) || 0) + 1);
+    }
+    const top = Array.from(counts.entries()).filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]).slice(0, 10);
+    Array.from(row.querySelectorAll('button')).forEach((b) => b.remove());
+    if (!top.length) { row.classList.add('hidden'); row.classList.remove('flex'); return; }
+    for (const [word, n] of top) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.dataset.term = word;
+      b.className = 'text-[11px] font-medium px-2 py-0.5 rounded-full border border-slate-300 dark:border-slate-700 text-gray-600 dark:text-slate-300 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors';
+      b.textContent = word + ' \u00d7' + n;
+      row.appendChild(b);
+    }
+    row.classList.remove('hidden');
+    row.classList.add('flex');
+  }
+
+  // ===== RECENT VIDEOS (this browser only) =====
+
+  type RecentItem = { videoId: string; title: string; channel: string; at: number };
+
+  function readRecent(): RecentItem[] {
+    try {
+      const list = JSON.parse(localStorage.getItem(RECENT_KEY) || '[]');
+      return Array.isArray(list) ? list.filter((x) => x && typeof x.videoId === 'string') : [];
+    } catch { return []; }
+  }
+
+  function rememberRecent(item: { videoId: string; title: string; channel: string }): void {
+    try {
+      const list = readRecent().filter((x) => x.videoId !== item.videoId);
+      list.unshift({ ...item, at: Date.now() });
+      localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, 5)));
+    } catch { /* storage unavailable */ }
+    renderRecent();
+  }
+
+  function renderRecent(): void {
+    const wrap = document.getElementById('recent-videos');
+    const ul = document.getElementById('recent-list');
+    if (!wrap || !ul) return;
+    const list = readRecent();
+    ul.innerHTML = '';
+    wrap.classList.toggle('hidden', list.length === 0);
+    for (const item of list) {
+      const li = document.createElement('li');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.dataset.videoId = item.videoId;
+      b.className = 'w-full flex items-center gap-3 text-left rounded-lg px-2 py-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors';
+      const img = document.createElement('img');
+      img.src = 'https://i.ytimg.com/vi/' + item.videoId + '/default.jpg';
+      img.alt = ''; img.width = 48; img.height = 27; img.loading = 'lazy';
+      img.className = 'w-12 h-[27px] object-cover rounded flex-shrink-0 bg-slate-200 dark:bg-slate-800';
+      const text = document.createElement('span');
+      text.className = 'min-w-0 flex-1';
+      const t = document.createElement('span');
+      t.className = 'block text-sm text-gray-800 dark:text-slate-200 truncate';
+      t.textContent = item.title || item.videoId;
+      const c = document.createElement('span');
+      c.className = 'block text-xs text-gray-400 dark:text-slate-500 truncate';
+      c.textContent = item.channel || '';
+      text.appendChild(t); text.appendChild(c);
+      b.appendChild(img); b.appendChild(text);
+      li.appendChild(b); ul.appendChild(li);
+    }
+  }
+
+  // ===== COLLAPSE =====
+
+  function setCollapsed(collapsed: boolean): void {
+    const body = document.getElementById('transcript-body');
+    const fade = document.getElementById('transcript-fade');
+    const btn = document.getElementById('expand-btn');
+    const row = document.getElementById('expand-row');
+    body?.classList.toggle('max-h-[28rem]', collapsed);
+    body?.classList.toggle('overflow-hidden', collapsed);
+    // Short transcripts do not need a fold at all. While the card is still display:none the
+    // measurements read 0, so assume it overflows and re-measure once shown (see showStep).
+    const overflows = body ? body.clientHeight === 0 || body.scrollHeight > body.clientHeight + 8 : false;
+    const needsFold = !collapsed || overflows;
+    fade?.classList.toggle('hidden', !(collapsed && overflows));
+    row?.classList.toggle('hidden', !needsFold);
+    if (btn) {
+      btn.textContent = collapsed
+        ? 'Show full transcript' + (wordCount ? ' (' + wordCount.toLocaleString() + ' words)' : '')
+        : 'Collapse transcript';
+      btn.setAttribute('aria-expanded', String(!collapsed));
+    }
+  }
+
+  // ===== SEARCH =====
+
+  function applySearch(): void {
+    renderViews();
+    const container = document.getElementById(currentView === 'clean' ? 'transcript-clean' : 'transcript-timestamps');
+    searchHits = container ? Array.from(container.querySelectorAll('mark')) as HTMLElement[] : [];
+    searchIndex = -1;
+    const count = document.getElementById('search-count');
+    const next = document.getElementById('search-next-btn');
+    if (count) count.textContent = searchQuery ? (searchHits.length + (searchHits.length === 1 ? ' match' : ' matches')) : '';
+    next?.classList.toggle('hidden', searchHits.length < 2);
+    if (searchQuery && searchHits.length) { setCollapsed(false); jumpToHit(0); }
+  }
+
+  function jumpToHit(i: number): void {
+    if (!searchHits.length) return;
+    searchHits.forEach((m) => m.classList.remove('ring-2', 'ring-amber-500'));
+    searchIndex = (i + searchHits.length) % searchHits.length;
+    const hit = searchHits[searchIndex];
+    hit.classList.add('ring-2', 'ring-amber-500');
+    hit.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const count = document.getElementById('search-count');
+    if (count) count.textContent = (searchIndex + 1) + ' / ' + searchHits.length;
+  }
+
+  // ===== COPY / DOWNLOAD =====
 
   function copyText(text: string, btnEl: HTMLElement): void {
     navigator.clipboard.writeText(text).then(() => {
@@ -730,6 +1090,142 @@ const faqSchema = {
         btnEl.classList.remove('text-emerald-400', 'border-emerald-500/50');
       }, 1500);
     });
+  }
+
+  function safeFilename(): string {
+    return (currentTitle || currentVideoId).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || currentVideoId;
+  }
+
+  function downloadFile(name: string, content: string, mime: string): void {
+    const blob = new Blob([content], { type: mime + ';charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  // ===== RESEARCH BRIEF =====
+
+  type Brief = {
+    oneLiner: string; hook: string; keyClaims: string[];
+    structure: Array<{ timestamp: string; label: string }>;
+    productMentions: Array<{ timestamp: string; text: string }>; cta: string; targetBuyer: string;
+  };
+
+  function timestampRow(timestamp: string, text: string): HTMLLIElement {
+    const seconds = timestampToSeconds(timestamp);
+    const li = document.createElement('li');
+    li.className = 'flex items-start gap-2';
+    const jump = document.createElement('button');
+    jump.type = 'button';
+    jump.title = 'Read this part of the transcript';
+    jump.className = 'flex-shrink-0 text-xs font-mono text-emerald-600 dark:text-emerald-400 mt-0.5 w-12 text-right hover:underline';
+    jump.textContent = timestamp;
+    jump.addEventListener('click', () => jumpToTranscriptTime(seconds));
+    const yt = document.createElement('a');
+    yt.href = youtubeAt(seconds);
+    yt.target = '_blank'; yt.rel = 'noopener noreferrer';
+    yt.title = 'Open the video at ' + timestamp;
+    yt.setAttribute('aria-label', 'Open the video at ' + timestamp);
+    yt.className = 'flex-shrink-0 text-[10px] text-gray-400 dark:text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 mt-1';
+    yt.textContent = '\u25b6';
+    const p = document.createElement('p'); p.textContent = text;
+    li.appendChild(jump); li.appendChild(yt); li.appendChild(p);
+    return li;
+  }
+
+  function setText(id: string, text: string): void {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  function timestampToSeconds(ts: string): number {
+    const parts = ts.split(':').map((n) => parseInt(n, 10));
+    if (parts.some((n) => isNaN(n))) return 0;
+    return parts.reduce((acc, n) => acc * 60 + n, 0);
+  }
+
+  function renderBrief(b: Brief): void {
+    setText('brief-oneliner', b.oneLiner);
+    setText('brief-hook', b.hook || 'Not identified.');
+    setText('brief-cta', b.cta || 'None found.');
+    setText('brief-buyer', b.targetBuyer || 'Not identified.');
+
+    const claims = document.getElementById('brief-claims');
+    if (claims) {
+      claims.innerHTML = '';
+      for (const c of b.keyClaims) { const li = document.createElement('li'); li.textContent = c; claims.appendChild(li); }
+      if (!b.keyClaims.length) { const li = document.createElement('li'); li.textContent = 'No specific claims found.'; claims.appendChild(li); }
+    }
+
+    const structure = document.getElementById('brief-structure');
+    if (structure) {
+      structure.innerHTML = '';
+      const sections = Array.isArray(b.structure) ? b.structure : [];
+      for (const sec of sections) structure.appendChild(timestampRow(sec.timestamp, sec.label));
+      if (!sections.length) { const li = document.createElement('li'); li.textContent = 'Not identified.'; structure.appendChild(li); }
+    }
+
+    const mentions = document.getElementById('brief-mentions');
+    if (mentions) {
+      mentions.innerHTML = '';
+      for (const m of b.productMentions) mentions.appendChild(timestampRow(m.timestamp, m.text));
+      if (!b.productMentions.length) { const li = document.createElement('li'); li.textContent = 'No product or offer is mentioned.'; mentions.appendChild(li); }
+    }
+
+    briefText = [
+      b.oneLiner, '',
+      'Hook: ' + b.hook, '',
+      'Key claims:', ...b.keyClaims.map((c) => '- ' + c), '',
+      'Structure:', ...((b.structure || []).length ? b.structure.map((x) => '- [' + x.timestamp + '] ' + x.label) : ['- Not identified']), '',
+      'Product and offer mentions:', ...(b.productMentions.length ? b.productMentions.map((m) => '- [' + m.timestamp + '] ' + m.text) : ['- None']), '',
+      'Call to action: ' + (b.cta || 'None found.'),
+      'Selling to: ' + (b.targetBuyer || 'Not identified.'),
+    ].join('\n');
+
+    document.getElementById('brief-loading')?.classList.add('hidden');
+    document.getElementById('brief-error')?.classList.add('hidden');
+    document.getElementById('brief-body')?.classList.remove('hidden');
+    document.getElementById('copy-brief-btn')?.classList.remove('hidden');
+    setIntelTabState('ready');
+  }
+
+  function showBriefError(message: string): void {
+    document.getElementById('brief-loading')?.classList.add('hidden');
+    document.getElementById('brief-body')?.classList.add('hidden');
+    document.getElementById('copy-brief-btn')?.classList.add('hidden');
+    const el = document.getElementById('brief-error');
+    if (el) { el.textContent = message; el.classList.remove('hidden'); }
+    setIntelTabState('error');
+  }
+
+  async function loadBrief(videoId: string): Promise<void> {
+    const requestId = ++briefRequestId;
+    briefText = '';
+    document.getElementById('brief-body')?.classList.add('hidden');
+    document.getElementById('brief-error')?.classList.add('hidden');
+    document.getElementById('copy-brief-btn')?.classList.add('hidden');
+    document.getElementById('brief-loading')?.classList.remove('hidden');
+    setIntelTabState('loading');
+
+    try {
+      const res = await fetch('/api/summarize-transcript', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoId }),
+      });
+      if (requestId !== briefRequestId) return; // user moved on to another video
+      if (res.status === 429) { showBriefError('The summary service is at capacity right now. The transcript above is complete.'); return; }
+      if (!res.ok) { showBriefError('Could not build the brief for this video. The transcript above is complete.'); return; }
+      const data = await res.json();
+      if (!data?.brief) { showBriefError('Could not build the brief for this video.'); return; }
+      renderBrief(data.brief as Brief);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag('event', 'transcript_brief_shown', { tool: 'transcript-generator', cached: !!data.cached });
+    } catch {
+      if (requestId !== briefRequestId) return;
+      showBriefError('Could not build the brief for this video. The transcript above is complete.');
+    }
   }
 
   // ===== API CALL =====
@@ -768,29 +1264,35 @@ const faqSchema = {
         return;
       }
 
+      // 422 = the service worked, but this particular video has no captions. That is about
+      // the video, so it belongs under the URL field, unlike the 503 outage notice above.
+      if (res.status === 422) {
+        const body = await res.json().catch(() => ({}));
+        showStep('step-input');
+        btn.disabled = false;
+        btn.textContent = 'Generate transcript →';
+        showFieldError('url-input', body.error || 'This video has no captions available.');
+        window.dataLayer = window.dataLayer || [];
+        window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: 'no_captions' });
+        return;
+      }
+
       if (!res.ok) {
         throw new Error('Something went wrong on our end. Please try again in a moment.');
       }
 
+      // /api/get-transcript returns { videoId, segments: [{ text, start, duration }] }
+      // with start and duration already in seconds. See netlify/functions/lib/transcript.ts.
       const data = await res.json();
+      const segments: Segment[] = Array.isArray(data.segments) ? data.segments : [];
 
-      // API returns { status, data: { video_id, transcript: [...] } }
-      const segments = data.data?.transcript || data.transcript || [];
-
-      if (!Array.isArray(segments) || segments.length === 0) {
+      if (segments.length === 0) {
         throw new Error('No transcript found. The video may not have captions available.');
       }
 
-      // Normalize segments: API uses start_ms/end_ms, convert to start (seconds) and duration
-      const normalized = segments.map((seg: any) => ({
-        text: seg.text || '',
-        start: seg.start != null ? Number(seg.start) : Number(seg.start_ms || 0) / 1000,
-        duration: seg.duration != null ? Number(seg.duration) : (Number(seg.end_ms || 0) - Number(seg.start_ms || 0)) / 1000,
-      }));
-
-      const videoId = data.data?.video_id || data.videoId || data.video_id || '';
-
-      renderTranscript(videoId, normalized);
+      renderTranscript({ ...data, segments });
+      // Shareable / bookmarkable URL for this result.
+      try { history.replaceState(null, '', '?v=' + encodeURIComponent(data.videoId || url)); } catch { /* ignore */ }
       incrementCount();
       updateCounterLabel();
       showStep('step-results');
@@ -915,26 +1417,86 @@ const faqSchema = {
     btn.textContent = 'Generate transcript \u2192';
   }
 
-  // ===== CTA TRACKING =====
-
-  document.getElementById('results-cta')?.addEventListener('click', () => {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag('event', 'tool_cta_click', { tool: 'transcript-generator' });
-  });
-
   // ===== EVENT LISTENERS =====
 
   document.getElementById('generate-btn')?.addEventListener('click', generate);
   document.getElementById('reset-btn')?.addEventListener('click', reset);
   document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
-  document.getElementById('view-clean-btn')?.addEventListener('click', () => setView('clean'));
-  document.getElementById('view-timestamps-btn')?.addEventListener('click', () => setView('timestamps'));
+  document.getElementById('tab-intel')?.addEventListener('click', () => setTab('intel'));
+  document.getElementById('tab-clean')?.addEventListener('click', () => setTab('clean'));
+  document.getElementById('tab-timestamps')?.addEventListener('click', () => setTab('timestamps'));
+
+  document.getElementById('top-terms')?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('button[data-term]') as HTMLElement | null;
+    if (!btn) return;
+    const input = document.getElementById('transcript-search') as HTMLInputElement | null;
+    if (input) input.value = btn.dataset.term || '';
+    searchQuery = btn.dataset.term || '';
+    applySearch();
+    window.dataLayer = window.dataLayer || [];
+    window.gtag('event', 'transcript_term_click', { tool: 'transcript-generator' });
+  });
+
+  document.getElementById('recent-list')?.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('button[data-video-id]') as HTMLElement | null;
+    if (!btn) return;
+    const input = document.getElementById('url-input') as HTMLInputElement | null;
+    if (input) input.value = 'https://www.youtube.com/watch?v=' + btn.dataset.videoId;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag('event', 'transcript_recent_click', { tool: 'transcript-generator' });
+    generate();
+  });
+  document.getElementById('recent-clear-btn')?.addEventListener('click', () => {
+    try { localStorage.removeItem(RECENT_KEY); } catch { /* ignore */ }
+    renderRecent();
+  });
 
   document.getElementById('copy-full-btn')?.addEventListener('click', function () {
-    copyText(fullTranscriptText, this as HTMLElement);
+    copyText(currentView === 'clean' ? plainText() : timestampedText(), this as HTMLElement);
     window.dataLayer = window.dataLayer || [];
-    window.gtag('event', 'transcript_copied', { tool: 'transcript-generator' });
+    window.gtag('event', 'transcript_copied', { tool: 'transcript-generator', view: currentView });
   });
+
+  document.getElementById('download-txt-btn')?.addEventListener('click', () => {
+    const header = currentTitle + '\nhttps://www.youtube.com/watch?v=' + currentVideoId + '\n\n';
+    downloadFile(safeFilename() + '.txt', header + (currentView === 'clean' ? plainText() : timestampedText()), 'text/plain');
+    window.dataLayer = window.dataLayer || [];
+    window.gtag('event', 'transcript_downloaded', { tool: 'transcript-generator', format: 'txt' });
+  });
+
+  document.getElementById('copy-brief-btn')?.addEventListener('click', function () {
+    if (briefText) copyText(briefText, this as HTMLElement);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag('event', 'transcript_brief_copied', { tool: 'transcript-generator' });
+  });
+
+  document.getElementById('expand-btn')?.addEventListener('click', () => {
+    const body = document.getElementById('transcript-body');
+    setCollapsed(!body?.classList.contains('max-h-[28rem]'));
+  });
+
+  let searchTimer: number | undefined;
+  document.getElementById('transcript-search')?.addEventListener('input', (e) => {
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => {
+      searchQuery = (e.target as HTMLInputElement).value.trim();
+      applySearch();
+    }, 150);
+  });
+  document.getElementById('transcript-search')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') { e.preventDefault(); jumpToHit(searchIndex + 1); }
+  });
+  document.getElementById('search-next-btn')?.addEventListener('click', () => jumpToHit(searchIndex + 1));
+
+  // Prefill from ?v= (used by other tools' "for this video" links and shared result URLs).
+  const prefill = new URLSearchParams(window.location.search).get('v');
+  if (prefill) {
+    const input = document.getElementById('url-input') as HTMLInputElement | null;
+    if (input) {
+      input.value = /^[\w-]{11}$/.test(prefill) ? 'https://www.youtube.com/watch?v=' + prefill : prefill;
+      generate();
+    }
+  }
 
   // Enter key submits
   document.getElementById('url-input')?.addEventListener('keydown', (e) => {
@@ -949,4 +1511,5 @@ const faqSchema = {
   });
 
   updateCounterLabel();
+  renderRecent();
 </script>

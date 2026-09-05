@@ -1,5 +1,6 @@
 // generate-description.ts
 import { failureResponse } from './lib/upstream-error.js';
+import { getTranscript, toTimestampedText } from './lib/transcript.js';
 
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
@@ -166,7 +167,8 @@ export default async (request: Request) => {
 
     // Step 2: Fetch video metadata via YouTube Data API
     const ytRes = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`,
+      { signal: AbortSignal.timeout(10000) }
     );
 
     if (!ytRes.ok) {
@@ -192,36 +194,15 @@ export default async (request: Request) => {
     const existingDescription = videoSnippet.description || '';
     const existingTags: string[] = videoSnippet.tags || [];
 
-    // Step 3: Fetch transcript via DataFetchAPI (non-blocking, continue if it fails)
+    // Step 3: Fetch transcript (non-blocking, continue if it fails). Timestamped so Gemini
+    // can place chapter markers.
     let transcript: string | null = null;
-    const lfKey = process.env.LF_YOUTUBE_KEY;
-
-    if (lfKey) {
-      try {
-        const txRes = await fetch(
-          `https://api.datafetchapi.com/v1/youtube/video/${videoId}/transcript/fast`,
-          { headers: { 'X-API-KEY': lfKey } }
-        );
-
-        if (txRes.ok) {
-          const txData = await txRes.json();
-          // Build transcript text from segments
-          if (Array.isArray(txData?.data)) {
-            transcript = txData.data
-              .map((seg: { text?: string; start?: number }) => {
-                const mins = Math.floor((seg.start || 0) / 60);
-                const secs = Math.floor((seg.start || 0) % 60);
-                const ts = `${mins}:${secs.toString().padStart(2, '0')}`;
-                return `[${ts}] ${seg.text || ''}`;
-              })
-              .join('\n');
-          }
-        } else {
-          console.warn('Transcript fetch failed (continuing without it):', txRes.status);
-        }
-      } catch (txErr) {
-        console.warn('Transcript fetch error (continuing without it):', txErr);
-      }
+    try {
+      const tx = await getTranscript(videoId);
+      if (tx.status === 'ok') transcript = toTimestampedText(tx.transcript.segments);
+      else console.warn('No transcript for description (continuing without it):', tx.status);
+    } catch (txErr) {
+      console.warn('Transcript fetch error (continuing without it):', txErr);
     }
 
     // Step 4: Build CTA link with UTMs
@@ -262,6 +243,14 @@ export default async (request: Request) => {
 
     const geminiData = await geminiRes.json();
     const raw = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text ?? '';
+    if (!raw.trim()) {
+      const finish = geminiData?.candidates?.[0]?.finishReason ?? 'unknown';
+      console.error('Gemini returned no text. finishReason:', finish, JSON.stringify(geminiData).slice(0, 400));
+      return new Response(
+        JSON.stringify({ error: 'AI service returned no output. Please try again.', detail: 'finishReason=' + finish }),
+        { status: 503, headers }
+      );
+    }
     const result = JSON.parse(raw);
 
     if (!result?.aboveFold || !result?.fullDescription || !Array.isArray(result?.timestamps) || !Array.isArray(result?.tags)) {

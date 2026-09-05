@@ -131,21 +131,36 @@ export default defineConfig({
             const videoId = m[1];
             if (!videoId) { res.writeHead(400, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ error: 'Invalid YouTube URL' })); return; }
 
+            // Same adapter the production function uses, so dev and prod cannot drift.
+            // `.env` is not in process.env under `astro dev`; load it and expose the key.
             const env = loadEnv('development', process.cwd(), '');
-            const apiKey = env.LF_YOUTUBE_KEY;
-            if (!apiKey) { res.writeHead(500, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ error: 'LF_YOUTUBE_KEY not set in .env' })); return; }
+            if (env.TRANSCRIPT_API_KEY) process.env.TRANSCRIPT_API_KEY = env.TRANSCRIPT_API_KEY;
+            // ssrLoadModule lets Vite transform the .ts file; a plain import() from the bundled
+            // config would be resolved by Node, which cannot load TypeScript.
+            const { getTranscript } = (await server.ssrLoadModule(
+              path.resolve(__dirname, 'netlify/functions/lib/transcript.ts')
+            )) as typeof import('./netlify/functions/lib/transcript');
+
+            const json = (status: number, payload: unknown) => {
+              res.writeHead(status, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify(payload));
+            };
 
             try {
-              const apiRes = await fetch(`https://api.datafetchapi.com/v1/youtube/video/${videoId}/transcript/fast`, {
-                headers: { 'X-API-KEY': apiKey },
-              });
-              const data = await apiRes.json();
-              res.writeHead(apiRes.ok ? 200 : 503, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ videoId, ...data }));
+              const result = await getTranscript(videoId);
+              if (result.status === 'ok') {
+                const t = result.transcript;
+                json(200, { videoId, title: t.title, channel: t.channel, thumbnail: t.thumbnail, lang: t.lang, segments: t.segments, cached: result.cached });
+              } else if (result.status === 'unavailable') {
+                json(422, { error: 'No transcript found. The video may not exist, may be private, or may have no captions.', code: 'no_captions' });
+              } else if (result.status === 'quota') {
+                json(429, { error: 'quota_exceeded' });
+              } else {
+                json(503, { error: 'The transcript service is temporarily unavailable. Please try again later.' });
+              }
             } catch {
               // Upstream unreachable (DNS/TLS/refused). 503, matching netlify/functions/get-transcript.ts.
-              res.writeHead(503, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ error: 'Transcript service is temporarily unavailable. Please try again later.' }));
+              json(503, { error: 'The transcript service is temporarily unavailable. Please try again later.' });
             }
           });
         },

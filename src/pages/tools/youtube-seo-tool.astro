@@ -1198,6 +1198,14 @@ const faqSchema = {
 
   // ===== EVENT LISTENERS =====
 
+  // ===== PRE-FILL FROM QUERY PARAM =====
+  // Other tools link here with ?v=<video url> ("check this video's SEO").
+  const prefillVideo = new URLSearchParams(window.location.search).get('v');
+  if (prefillVideo) {
+    const el = document.getElementById('video-url-input') as HTMLInputElement | null;
+    if (el) el.value = /^[\w-]{11}$/.test(prefillVideo) ? 'https://www.youtube.com/watch?v=' + prefillVideo : prefillVideo;
+  }
+
   document.getElementById('analyse-btn')?.addEventListener('click', analyse);
   document.getElementById('reset-btn')?.addEventListener('click', reset);
   document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
