@@ -74,7 +74,10 @@ verification lessons.
 
 - **Gemini model rule:** always `gemini-flash-latest` (auto-updating alias). Never pin a versioned
   model like `gemini-2.0-flash` — they get deprecated and 404. Set `maxOutputTokens` to at least
-  `2048`; thinking tokens count toward the output limit.
+  `2048`, and `4096` whenever the prompt carries a transcript or other long input; thinking tokens
+  count toward the output limit and 2048 was exhausted before any JSON was emitted (2026-09-05,
+  `generate-tags`). Always guard for empty `text` and return 503 with `finishReason`, never let
+  `JSON.parse('')` throw a 500.
 
 - **Netlify redirect syntax:** `:placeholder` only works between `/` separators. For within-segment
   patterns use splat: `from = "/youtube-for-*"` + `to = "/youtube-for/:splat"`.
