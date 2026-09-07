@@ -769,7 +769,6 @@ All have full content but are deliberately held back. Reasons documented in Kill
 | 6 | youtube-marketing-not-working.md | YouTube Marketing Not Working? 6 Diagnostic Checks | 18K chars | MERGED into views-but-no-leads |
 | 7 | youtube-marketing-plan.md | YouTube Marketing Plan: 90-Day Strategy | 17K chars | DROPPED (cannibalizes strategy) |
 | 8 | youtube-sales-funnel.md | YouTube Sales Funnel: First View to Paying Customer | 20K chars | DROPPED (overlaps lead-gen) |
-| 9 | youtube-seo-services.md | YouTube SEO Services: What They Include, Cost, DIY | 14K chars | KILLED (product-only rule) |
 
 ---
 
@@ -778,7 +777,7 @@ All have full content but are deliberately held back. Reasons documented in Kill
 | Draft File | Decision | Reason |
 |------------|----------|--------|
 | the-youtube-acquisition-engine | KILLED | Severe cannibalization, no viable keyword. 301 to youtube-marketing-strategy |
-| youtube-seo-services | KILLED | Conflicts with product-only rule |
+| youtube-seo-services | SHIPPED 2026-06-25 (supersedes prior KILLED call) | Decision reversed after this entry was written. Live at /blog/youtube-seo-services, earning ~12K impressions/90d as of 2026-09-06. CTR fix applied 2026-09-07 (baseline: research/aeo/youtube-seo-services-baseline-2026-09-06.md). Original product-only-rule conflict was never formally re-decided; flagged for awareness, not re-litigated here. |
 | youtube-marketing-plan | DROPPED | Cannibalizes youtube-marketing-strategy |
 | ai-tools-for-youtube | DEFERRED | KD 43, stretch tier. Revisit when site authority grows |
 | youtube-best-practices-for-business | DEFERRED | No winnable keyword mapped |
