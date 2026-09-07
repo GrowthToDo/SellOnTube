@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'YouTube Rank Checker: Free Video Keyword Ranking Tool',
+  title: 'Free YouTube Rank Checker & Tracker, No Signup',
   description:
-    'Free YouTube rank checker. Enter a keyword and channel to see your exact position in the top 20, plus competing videos, then track your rankings over time.',
+    'Free YouTube rank checker and tracker. See your exact position in the top 20 for any keyword, plus competing videos. No signup, no paid plan.',
 };
 
 const breadcrumbSchema = {
@@ -17,18 +17,20 @@ const breadcrumbSchema = {
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
     { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
-    { "@type": "ListItem", "position": 3, "name": "YouTube Ranking Checker", "item": `${siteUrl}/tools/youtube-ranking-checker` }
+    { "@type": "ListItem", "position": 3, "name": "YouTube Rank Checker & Tracker", "item": `${siteUrl}/tools/youtube-ranking-checker` }
   ]
 };
 
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "SellonTube YouTube Ranking Checker",
+  "name": "SellOnTube YouTube Ranking Checker",
+  "alternateName": "YouTube Manual Rank Tracker",
   "url": `${siteUrl}/tools/youtube-ranking-checker`,
-  "description": "Free YouTube rank checker. Enter a keyword and your channel to see your exact ranking position in the top 20 results, plus competing videos with view counts.",
+  "description": "Free YouTube rank checker. Enter a keyword and your channel to see your exact ranking position in the top 20 results, plus competing videos with view counts. Re-run the same search weekly to manually track your ranking over time.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
+  "featureList": ["Real-time keyword rank check", "Top 20 competitor results", "Manual rank tracking", "No login required"],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
@@ -46,6 +48,7 @@ const faqSchema = {
     { "@type": "Question", "name": "Do YouTube tags affect ranking?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tags are a secondary relevance signal that helps YouTube understand your video's topic. They do not override title or description, but they reinforce those signals. If you rank lower than expected for a keyword, check whether that keyword appears in your tags." } },
     { "@type": "Question", "name": "How do I check what keywords my YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Enter a keyword you want to check and your channel URL above. The tool searches YouTube in real time and tells you your exact position in the top 20 results. For a full walkthrough of three different methods, see our guide on finding your YouTube ranking keywords." } },
     { "@type": "Question", "name": "How does the YouTube ranking system work?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube ranks videos based on relevance and engagement signals. Relevance comes from title match, description keywords, and tags. Engagement comes from click-through rate, watch time, and viewer satisfaction. This tool lets you check where your video stands for any keyword so you can identify what to improve." } },
+    { "@type": "Question", "name": "Is this a YouTube rank tracker or a rank checker?", "acceptedAnswer": { "@type": "Answer", "text": "Both. Run it once for an instant check, or re-run the same keyword and channel every week to track your ranking manually, for free. For automated daily tracking across many keywords, see our comparison of paid YouTube rank tracker tools." } },
   ]
 };
 
@@ -62,12 +65,13 @@ const faqSchema = {
       <div class="flex flex-wrap justify-center gap-2 mb-6">
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Top 20 results</span>
         <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">No login required</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Manual rank tracking</span>
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
         YouTube Rank Checker
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        Where does your video rank for that keyword? Enter a keyword and your channel to see your exact position in YouTube search results, plus the top 10 competing videos with view counts and age.
+        Where does your video rank for that keyword? Enter a keyword and your channel to see your exact position in YouTube search results, plus the top 10 competing videos with view counts and age, so you can check it once or track it every week.
       </p>
     </div>
   </section>
@@ -394,6 +398,13 @@ const faqSchema = {
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
           A simple rank tracking routine works well. Check each target keyword once a week, log the position in a spreadsheet with the date, and note any change you made (new title, updated description, fresh tags). Within a month the pattern is clear: which keywords are climbing, which stalled, and which need a different approach. Paid YouTube rank trackers automate that logging. If you only follow a handful of keywords, the weekly manual check costs nothing and is just as accurate.
         </p>
+
+        <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">Free rank tracker vs. paid options</h3>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+            This tool works as a free YouTube rank tracker when you re-run the same keyword and channel every week and log the result yourself. There is no automated monitoring. If you track dozens of keywords across multiple channels, a paid tracker that logs positions daily without manual re-checks may be worth the cost. See our <a href="/blog/best-youtube-rank-checker-tools-for-business" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">comparison of YouTube rank tracker tools</a> for options.
+          </p>
+        </div>
       </div>
 
       <!-- Section 4: Tags and ranking -->
@@ -491,6 +502,13 @@ const faqSchema = {
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">How does the YouTube ranking system work?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               YouTube ranks videos based on relevance and engagement signals. Relevance comes from title match, description keywords, and tags. Engagement comes from click-through rate, watch time, and viewer satisfaction. This tool lets you check where your video stands for any keyword so you can identify what to improve.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this a YouTube rank tracker or a rank checker?</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+              Both. Run it once for an instant check, or re-run the same keyword and channel every week to track your ranking manually, for free. For automated daily tracking across many keywords, see our <a href="/blog/best-youtube-rank-checker-tools-for-business" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">comparison of paid YouTube rank tracker tools</a>.
             </p>
           </div>
 
