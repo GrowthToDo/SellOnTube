@@ -20,6 +20,7 @@ All project documentation in one place. Start here.
 | Doc | Purpose |
 |---|---|
 | [`growth-strategy.md`](growth-strategy.md) | **SINGLE SOURCE OF TRUTH** for growth strategy. Tools-first plan, tool specs, blog clusters, keyword tiers, backlink tactics, success metrics. |
+| [`traffic-reality-check.md`](traffic-reality-check.md) | **Active correction — read before scoping any traffic, keyword, or tool decision.** Live GSC/GA4 data showing most western impressions are bot traffic, not human demand; measure clicks and GA4 sessions, never impressions alone. |
 | [`seo-audit-log.md`](seo-audit-log.md) | Audit history, P0/P1/P2 fixes resolved, GSC indexation strategy. |
 
 ---
@@ -62,6 +63,14 @@ All project documentation in one place. Start here.
 
 ---
 
+## Tooling
+
+| Doc | Purpose |
+|---|---|
+| [`analytics-toolkit.md`](analytics-toolkit.md) | GA4/GSC/Bing/Clarity/DataForSEO MCP tool inventory, env vars, and setup steps. |
+
+---
+
 ## Agent System
 
 | Doc | Purpose |
@@ -76,3 +85,6 @@ All project documentation in one place. Start here.
 | [`agents/06-pseo-manager.md`](agents/06-pseo-manager.md) | pSEO drip schedule and publishDate checks |
 | [`agents/07-technical-seo.md`](agents/07-technical-seo.md) | Redirects, schema, technical health, monthly AI SEO checklist |
 | [`agents/08-microtool-builder.md`](agents/08-microtool-builder.md) | Microtool creation (Gemini Flash standard) |
+| [`agents/09-linkedin-writer.md`](agents/09-linkedin-writer.md) | LinkedIn weekly writer (operational loop) |
+| [`agents/10-reddit-marketer.md`](agents/10-reddit-marketer.md) | Reddit marketing — launches, seeding |
+| [`agents/11-aeo-monitor.md`](agents/11-aeo-monitor.md) | AI search visibility — citability scoring, batch audits |

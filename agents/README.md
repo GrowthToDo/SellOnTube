@@ -17,6 +17,7 @@ Just speak naturally. Examples that trigger each agent:
 | "what pSEO pages go live this week" / "check drip schedule" | 06-pseo-manager |
 | "technical SEO audit" / "check redirects" / "schema check" | 07-technical-seo |
 | "build a tool" / "create a microtool" / "here's the spec for a tool" | 08-microtool-builder |
+| "generate next batch of LinkedIn posts" / "refill" / "write this month's LinkedIn posts" | 09-linkedin-writer |
 | "write reddit posts" / "reddit launch" / "seed this on reddit" | 10-reddit-marketer |
 | "check AI visibility" / "AEO audit" / "are we in ChatGPT" / "citability check" | 11-aeo-monitor |
 | "full audit" / "weekly review" | master → routes to 01 + 07, then 03 |
@@ -34,6 +35,7 @@ Just speak naturally. Examples that trigger each agent:
 | 06-pseo-manager.md | pSEO drip schedule, publishDate checks | Read niches.ts + comparisons.ts |
 | 07-technical-seo.md | Redirects, schema, technical health | Read netlify.toml, JsonLd.astro |
 | 08-microtool-builder.md | Build interactive tools — single source of truth for tool strategy, pipeline, build standards, publishing workflow | Title Generator reference, keyword CSV, style guide, schema templates |
+| 09-linkedin-writer.md | LinkedIn weekly writer — operational loop only, craft lives in `docs/social-media/linkedin/linkedin-writing-guideline.md` | linkedin-writing-guideline.md, brand-presence-engine spec |
 | 10-reddit-marketer.md | Reddit marketing — launches, seeding, community | reddit-marketing-playbook.md, style guide, ICP |
 | 11-aeo-monitor.md | AI search visibility — spot checks, batch audits, citability scoring | sot_master.csv, ai-seo-guide.md §16-19, research/aeo/ |
 

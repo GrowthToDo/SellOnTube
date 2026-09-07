@@ -1,7 +1,7 @@
-import requests, base64, json, time, csv
+import requests, base64, json, time, csv, os
 
-login = 'sathya@sellontube.com'
-password = 'ed896411330f0dec'
+login = os.environ['DATAFORSEO_LOGIN']
+password = os.environ['DATAFORSEO_PASSWORD']
 creds = base64.b64encode(f'{login}:{password}'.encode()).decode()
 headers = {'Authorization': f'Basic {creds}', 'Content-Type': 'application/json'}
 BASE = 'https://api.dataforseo.com/v3'

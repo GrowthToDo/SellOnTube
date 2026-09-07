@@ -5,7 +5,7 @@ dates 2026-02-24 to 2026-08-22). Re-inspected live via GSC URL Inspection API on
 
 ## Methodology
 1. `npm run build` → analyzed `dist/` (sitemap, rendered HTML), never source alone.
-2. `scripts/gsc_inspect.py` — live URL Inspection API call per candidate URL (coverage
+2. `scripts/archive/gsc_inspect.py` — live URL Inspection API call per candidate URL (coverage
    state, canonical, sitemap membership) as of **today**, not the stale list date.
 3. 90-day Search Analytics pull (`page` dimension) for impressions/clicks/position per
    candidate — the ROI signal.

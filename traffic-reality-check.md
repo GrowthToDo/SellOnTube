@@ -362,7 +362,7 @@ The three queries that produced this document:
 3. GSC `dimensions=['date']` filtered to a single query, to check whether an average position
    is stable or bimodal before trusting it.
 
-Existing helpers: `scripts/gsc_analysis.py`, `scripts/gsc_deep.py`, `scripts/gsc_session_jul20.py`.
+Existing helpers (archived 2026-09-07 as one-offs, still usable as reference): `scripts/archive/gsc_analysis.py`, `scripts/archive/gsc_deep.py`, `scripts/archive/gsc_session_jul20.py`.
 
 ---
 

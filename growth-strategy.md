@@ -4,6 +4,12 @@
 **Status:** ACTIVE
 **Data basis:** DataForSEO (validated Apr 2026), GSC 90d, GA4 90d, sot_master.csv
 
+> **Read `traffic-reality-check.md` (2026-07-21) before scoping any traffic, keyword, or tool work
+> off this document's impression figures.** It corrects the impressions-based methodology this plan
+> was originally built on: most western impressions on this site are bot traffic, not human demand.
+> The tool roadmap and blog schedule below predate that correction and have not been re-evaluated
+> against it — treat volume/impression numbers here as unverified until they are.
+
 ---
 
 ## Mission
@@ -349,7 +355,7 @@ Check weekly/monthly:
 
 ## Blog Content Audit (2026-04-22)
 
-Comprehensive impressions audit of 6 underperforming blog posts. Data source: live GSC API (90-day window). Full diagnosis in `audit-findings-2026-04-22.md`.
+Comprehensive impressions audit of 6 underperforming blog posts. Data source: live GSC API (90-day window). Full diagnosis in `archive/2026-04-22-audit-cycle/audit-findings-2026-04-22.md` (archived — impressions-based methodology superseded by `traffic-reality-check.md`).
 
 ### Actions Taken
 
@@ -385,7 +391,7 @@ Comprehensive impressions audit of 6 underperforming blog posts. Data source: li
 
 ## Tools Impressions Audit (2026-04-22)
 
-Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (90-day window ending 2026-04-22), SERP analysis, competitor DR profiling. Full diagnosis in `tools-audit-findings-2026-04-22.md`. Run log in `tools-audit-run-log-2026-04-22.md`.
+Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (90-day window ending 2026-04-22), SERP analysis, competitor DR profiling. Full diagnosis in `archive/2026-04-22-audit-cycle/tools-audit-findings-2026-04-22.md` (archived — methodology superseded by `traffic-reality-check.md`). Run log in `archive/2026-04-22-audit-cycle/tools-audit-run-log-2026-04-22.md`.
 
 **Baseline:** 122 total impressions, 1 click across 6 pages in 90 days.
 
@@ -462,8 +468,8 @@ Comprehensive on-page SEO audit of all 6 tool pages. Data source: live GSC API (
 - **Style rules:** `style-guide.md` (sentence-level writing rules)
 - **SEO rules:** `seo-rules.md` (technical SEO constraints)
 - **Content depth:** `content-depth-framework.md` (word count targets by page type)
-- **Content audit:** `content-audit-playbook.md` (how to diagnose and fix underperforming blog posts)
-- **Tools audit:** `tools-audit-findings-2026-04-22.md` (per-page diagnosis, keyword ownership map, priority ranking)
+- **Content audit (archived, methodology superseded by `traffic-reality-check.md`):** `archive/2026-04-22-audit-cycle/content-audit-playbook.md`
+- **Tools audit (archived, methodology superseded by `traffic-reality-check.md`):** `archive/2026-04-22-audit-cycle/tools-audit-findings-2026-04-22.md`
 - **AI visibility:** `ai-seo-guide.md` (AEO/GEO rules)
 - **ICP definition:** `docs/icp.md`
 - **Tool build pattern:** `agents/08-microtool-builder.md` (Gemini Flash integration standard)

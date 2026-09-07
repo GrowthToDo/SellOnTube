@@ -2,7 +2,7 @@
 
 **Source:** `sc-domain:sellontube.com`, live GSC Search Analytics API (data through 2026-08-23) plus live HTTP probes of production endpoints.
 **Method:** weekly click series Apr-Aug to find the shape; page/query/country decomposition peak vs now; live POST to every tool API; TLS-level probe of the vendor host; git history of the affected pages.
-**Scripts:** `scripts/gsc_corpus.py`, `scripts/health-check-tools.mjs`.
+**Scripts:** `scripts/archive/gsc_corpus.py`, `scripts/health-check-tools.mjs`.
 **Branch:** `fix/tool-outage-and-health-checks`.
 
 ---

@@ -3,7 +3,7 @@
 **Source:** `sc-domain:sellontube.com`, live GSC Search Analytics API + URL Inspection API. Latest available data 2026-08-23.
 **Method:** three independent passes — (1) URL Inspection on all 14 project URLs for crawl/index truth, (2) two lift comparisons per project (literal-baseline and matched-window-with-control), (3) whole-corpus 90d pull split by country, ranked by clicks.
 **Closes:** the "Next capture" instruction in `retrofit-baseline-2026-06-29.md` and the "Measurement (check ~mid-August 2026)" section of `../search console/crawled-not-indexed-analysis-2026-07-19.md`.
-**Raw data:** `../search console/url-inspection-2026-08-26.csv`. Scripts: `scripts/gsc_inspect.py`, `scripts/gsc_measure.py`, `scripts/gsc_corpus.py`.
+**Raw data:** `../search console/url-inspection-2026-08-26.csv`. Scripts: `scripts/archive/gsc_inspect.py`, `scripts/archive/gsc_measure.py`, `scripts/archive/gsc_corpus.py`.
 **Branch:** `research/gsc-measurement-aug25`.
 
 ---
@@ -221,7 +221,7 @@ URLs afterwards; that part is automatable.
 | 5 | /youtube-for/shopify | Expanded 760 → 2,105 words on 2026-07-19; never recrawled, so the expansion is unevaluated. | 2026-07-10 |
 | 6 | /youtube-vs/webinars | pSEO child. Lowest priority — `traffic-reality-check.md` records pSEO at 162 impressions and 1 click across 53 pages, and says do not expand it. Submit only if quota is spare. | 2026-07-10 |
 
-After submission, verify with `py scripts/gsc_inspect.py <out.csv> <urls...>` and require
+After submission, verify with `py scripts/archive/gsc_inspect.py <out.csv> <urls...>` and require
 `lastCrawlTime` later than the fix date before running any further measurement.
 
 ---
