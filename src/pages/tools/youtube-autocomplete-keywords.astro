@@ -1251,9 +1251,6 @@ const geoOptions = [
       emailGate.classList.add('hidden');
       exhaustiveLoading.classList.remove('hidden');
 
-      // Fire-and-forget lead tracking
-      trackLead(email, currentSeed, currentGeoLabel, 0);
-
       try {
         const params = new URLSearchParams({ q: currentSeed, expand: 'true', exhaustive: 'true', hl: currentHl });
         if (currentGl) params.set('gl', currentGl);

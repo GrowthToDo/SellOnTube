@@ -39,7 +39,7 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free ranking checks without any signup. After that, enter your business email to keep checking at no cost. There is no paid tier." } },
+    { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 1 free ranking check without any signup. After that, enter your business email to keep checking at no cost. There is no paid tier." } },
     { "@type": "Question", "name": "Do I need to log in?", "acceptedAnswer": { "@type": "Answer", "text": "No. The YouTube ranking checker works without any login or YouTube account access. It searches YouTube's public results for your keyword and matches them against your channel." } },
     { "@type": "Question", "name": "How accurate is the ranking?", "acceptedAnswer": { "@type": "Answer", "text": "The tool checks YouTube search results in real time. Rankings can vary slightly by location and personalization, but the results reflect what a typical searcher would see for that keyword." } },
     { "@type": "Question", "name": "How often should I check my rankings?", "acceptedAnswer": { "@type": "Answer", "text": "Check weekly for your most important keywords. YouTube rankings shift faster than Google, so a video that ranks #5 today could move to #2 or #12 within a week depending on engagement and new uploads." } },
@@ -141,7 +141,7 @@ const faqSchema = {
         </button>
 
         <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
-          3 free checks remaining
+          1 free check remaining
         </p>
       </div>
 
@@ -163,7 +163,7 @@ const faqSchema = {
         class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
       >
         <div class="text-center mb-6">
-          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free checks</p>
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your free check</p>
           <p class="text-sm text-gray-500 dark:text-slate-400">
             Enter your business email to keep checking rankings. It's free.
           </p>
@@ -445,7 +445,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this tool free?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. You get 3 free ranking checks without any signup. After that, enter your business email to keep checking at no cost. There is no paid tier.
+              Yes. You get 1 free ranking check without any signup. After that, enter your business email to keep checking at no cost. There is no paid tier.
             </p>
           </div>
 
@@ -564,7 +564,7 @@ const faqSchema = {
 <script>
   // ===== CONSTANTS =====
 
-  const RATE_LIMIT = 3;
+  const RATE_LIMIT = 1;
   const COUNT_KEY = 'sot_rank_checker_count';
   const EMAIL_KEY = 'sot_rank_checker_email';
   const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];

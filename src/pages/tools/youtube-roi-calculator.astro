@@ -142,21 +142,14 @@ const faqSchema = {
             </p>
           </div>
 
-          <!-- Gross Margin (De-emphasized) -->
-          <div class="pb-6 border-b border-slate-200 dark:border-slate-700">
-            <p class="text-xs text-gray-400 dark:text-slate-500 text-center">
-              Your gross margin: <span id="margin-display" class="font-medium text-gray-600 dark:text-slate-300">$3,500</span> <span id="margin-math" class="text-gray-400 dark:text-slate-500">($5,000 LTV − $1,500 COGS)</span>
-            </p>
-          </div>
-
           <!-- Result-congruent next step -->
-          <div class="pt-6">
+          <div class="pt-2">
             <div class="text-center mb-4">
               <p class="text-sm font-semibold text-gray-900 dark:text-white mb-2">
-                The economics work. The next question is whether buyers are searching for you.
+                Unlock your full profit breakdown.
               </p>
               <p class="text-sm text-gray-600 dark:text-slate-400">
-                Get your full projection by email. Add your product URL and we'll also map real YouTube search demand in your space, free, so you know whether you can hit that breakeven number.
+                Enter your email to see your gross margin math and profit at 3, 5, and 10 customers a month.
               </p>
             </div>
 
@@ -183,30 +176,40 @@ const faqSchema = {
                        bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100
                        transition-colors"
               >
-                Email me my projection &rarr;
+                Unlock my profit breakdown &rarr;
               </button>
               <p class="text-xs text-center text-gray-400 dark:text-slate-500">
                 Prefer to talk it through? <a href="https://cal.com/gautham-8bdvdx/30min?utm_source=roi-calc&utm_medium=tool&utm_campaign=diagnostic" target="_blank" rel="noopener noreferrer" class="underline hover:text-gray-600 dark:hover:text-slate-300">Book a 15-min diagnostic &rarr;</a>
               </p>
             </div>
+          </div>
 
-            <div id="success-message" class="hidden mt-4 text-center">
-              <p class="text-lg font-semibold text-emerald-600 dark:text-emerald-400">Thanks!</p>
-              <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">Your projection is on its way. If you shared your product URL, we'll include a free demand check for your space.</p>
+          <!-- Gated breakdown: gross margin + quick math, revealed after email submit -->
+          <div id="gated-breakdown" class="hidden">
+            <!-- Gross Margin (De-emphasized) -->
+            <div class="py-6 border-t border-slate-200 dark:border-slate-700 mt-6">
+              <p class="text-xs text-gray-400 dark:text-slate-500 text-center">
+                Your gross margin: <span id="margin-display" class="font-medium text-gray-600 dark:text-slate-300">$3,500</span> <span id="margin-math" class="text-gray-400 dark:text-slate-500">($5,000 LTV − $1,500 COGS)</span>
+              </p>
+            </div>
+
+            <!-- Quick Math -->
+            <div class="pb-6 border-b border-slate-200 dark:border-slate-700">
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-left">
+                <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Quick math:</p>
+                <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">Your monthly profit at different customer volumes</p>
+                <div class="space-y-2 text-sm text-gray-600 dark:text-slate-400">
+                  <p id="example-1">• <span id="ex1-customers">3</span> customers/month → <span id="ex1-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$3,500/month profit</span></p>
+                  <p id="example-2">• <span id="ex2-customers">5</span> customers/month → <span id="ex2-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$10,500/month profit</span></p>
+                  <p id="example-3">• <span id="ex3-customers">10</span> customers/month → <span id="ex3-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$28,000/month profit</span></p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Quick Math -->
-          <div class="py-6 border-t border-slate-200 dark:border-slate-700 mt-6">
-            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-left">
-              <p class="text-sm font-medium text-gray-700 dark:text-slate-300 mb-1">Quick math:</p>
-              <p class="text-xs text-gray-500 dark:text-slate-400 mb-3">Your monthly profit at different customer volumes</p>
-              <div class="space-y-2 text-sm text-gray-600 dark:text-slate-400">
-                <p id="example-1">• <span id="ex1-customers">3</span> customers/month → <span id="ex1-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$3,500/month profit</span></p>
-                <p id="example-2">• <span id="ex2-customers">5</span> customers/month → <span id="ex2-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$10,500/month profit</span></p>
-                <p id="example-3">• <span id="ex3-customers">10</span> customers/month → <span id="ex3-profit" class="font-medium text-emerald-600 dark:text-emerald-400">+$28,000/month profit</span></p>
-              </div>
-            </div>
+          <div id="success-message" class="hidden mt-4 mb-6 text-center">
+            <p class="text-lg font-semibold text-emerald-600 dark:text-emerald-400">Unlocked!</p>
+            <p class="text-sm text-gray-600 dark:text-slate-400 mt-2">Your full breakdown is below.</p>
           </div>
 
           <button
@@ -593,6 +596,7 @@ const faqSchema = {
   const getProjectionBtn = document.getElementById('get-projection-btn');
   const emailForm = document.getElementById('email-form');
   const successMessage = document.getElementById('success-message');
+  const gatedBreakdown = document.getElementById('gated-breakdown');
 
   // Check for URL params on load
   function checkUrlParams() {
@@ -679,6 +683,7 @@ const faqSchema = {
     stepInput?.classList.remove('hidden');
     emailForm?.classList.remove('hidden');
     successMessage?.classList.add('hidden');
+    gatedBreakdown?.classList.add('hidden');
     revenueInput.focus();
   }
 
@@ -716,12 +721,13 @@ const faqSchema = {
 
       emailForm?.classList.add('hidden');
       successMessage?.classList.remove('hidden');
+      gatedBreakdown?.classList.remove('hidden');
       window.splitbee?.track('roi_email_submit');
     } catch (error) {
       console.error('Error submitting:', error);
       alert('Something went wrong. Please try again.');
       if (getProjectionBtn) {
-        getProjectionBtn.textContent = 'Email me my projection →';
+        getProjectionBtn.textContent = 'Unlock my profit breakdown →';
         getProjectionBtn.removeAttribute('disabled');
       }
     }
