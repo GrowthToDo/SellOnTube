@@ -68,6 +68,16 @@ export default async (request: Request) => {
     if (!searchRes.ok) {
       const errText = await searchRes.text();
       console.error('YouTube Search API error:', searchRes.status, errText);
+      // A rank check costs ~102 quota units against a 10,000/day project ceiling shared with
+      // channel-audit and find-video-keywords, so exhaustion is routine. YouTube reports it as
+      // 403 quotaExceeded; without this branch it fell through as a generic 503 tagged
+      // api_error, and the client's quota_exceeded handler could never fire.
+      if (searchRes.status === 403 && errText.includes('quotaExceeded')) {
+        return new Response(
+          JSON.stringify({ error: 'quota_exceeded', detail: 'YouTube API daily limit reached. Try again tomorrow.' }),
+          { status: 429, headers }
+        );
+      }
       // Use 503, never 502 (Cloudflare eats 502 bodies)
       return new Response(
         JSON.stringify({ error: 'YouTube search failed', youtubeStatus: searchRes.status, detail: errText.slice(0, 500) }),

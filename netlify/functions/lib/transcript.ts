@@ -81,6 +81,13 @@ async function fetchFromVendor(videoId: string, apiKey: string): Promise<Transcr
   const video = await lookupVideo(videoId);
   if (video.exists === false) return { status: 'unavailable', reason: 'not-found' };
 
+  // Count the spend here, once per getTranscript() call that actually reaches the vendor,
+  // regardless of what it responds with. We do not know Supadata's own billing rule for a
+  // 206/404/429 response, so this is the conservative assumption: any request sent to the
+  // vendor counts against the monthly budget, even the (rare) two-request English-fallback
+  // case below, which this deliberately undercounts by treating as one.
+  await budgetIncrement();
+
   let result = await callSupadata(videoId, apiKey, 'en');
   // Retry without a language only when English specifically was missing (206). A 404 from the
   // vendor means the video itself is gone; retrying would just spend another 10 seconds.
@@ -204,6 +211,48 @@ async function cacheWrite(transcript: Transcript): Promise<void> {
   }
 }
 
+// ---------------------------------------------------------------------------------------------
+// Monthly credit budget. Supadata's free tier is 100 requests/month shared across all four
+// callers above, and until now nothing enforced that server-side: the only limiter was a
+// client-side localStorage counter (RATE_LIMIT), which a script or a second browser profile
+// bypasses in seconds. The 2026-07-08 outage that cost this page 7 weeks of ranking happened
+// because a dead vendor went undetected for weeks; exhausting a real vendor's quota produces
+// the exact same symptom (every visitor gets an error) and must not be possible to trigger
+// from outside. This budget makes exhaustion a deliberate, visible, monthly event instead.
+// ---------------------------------------------------------------------------------------------
+const BUDGET_STORE = 'transcript-budget';
+const MONTHLY_BUDGET = Number(process.env.TRANSCRIPT_MONTHLY_BUDGET) || 90; // 10 held back for the daily health check + manual testing
+
+function currentMonthKey(): string {
+  return new Date().toISOString().slice(0, 7); // "YYYY-MM"
+}
+
+/** Best-effort like the cache above: unavailable in dev, and a failure here must never block a real request. */
+async function budgetRemaining(): Promise<number | null> {
+  try {
+    const { getStore } = await import('@netlify/blobs');
+    const raw = await getStore(BUDGET_STORE).get(currentMonthKey());
+    const used = raw ? Number(raw) || 0 : 0;
+    return MONTHLY_BUDGET - used;
+  } catch (e) {
+    console.warn('transcript budget read skipped:', String(e).slice(0, 200));
+    return null; // unknown, not exhausted, so dev and any Blobs outage fail open
+  }
+}
+
+async function budgetIncrement(): Promise<void> {
+  try {
+    const { getStore } = await import('@netlify/blobs');
+    const store = getStore(BUDGET_STORE);
+    const key = currentMonthKey();
+    const raw = await store.get(key);
+    const used = raw ? Number(raw) || 0 : 0;
+    await store.set(key, String(used + 1));
+  } catch (e) {
+    console.warn('transcript budget increment skipped:', String(e).slice(0, 200));
+  }
+}
+
 /**
  * Get a transcript for a public YouTube video, cache first, vendor second.
  * See the contract at the top of this file for what throws and what returns.
@@ -216,6 +265,12 @@ export async function getTranscript(videoId: string): Promise<TranscriptResult> 
   if (!apiKey) {
     console.error('Transcript API key is not set (TRANSCRIPT_API_KEY)');
     return { status: 'not-configured' };
+  }
+
+  const remaining = await budgetRemaining();
+  if (remaining !== null && remaining <= 0) {
+    console.warn(`Transcript monthly budget exhausted (${MONTHLY_BUDGET}/mo). Refusing before spending a vendor credit.`);
+    return { status: 'quota' };
   }
 
   const result = await fetchFromVendor(videoId, apiKey);

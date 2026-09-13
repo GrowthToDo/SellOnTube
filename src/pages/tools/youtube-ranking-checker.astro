@@ -567,7 +567,6 @@ const faqSchema = {
   const RATE_LIMIT = 1;
   const COUNT_KEY = 'sot_rank_checker_count';
   const EMAIL_KEY = 'sot_rank_checker_email';
-  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
   const CAPTURE_URL = '/.netlify/functions/capture-email';
 
   // ===== STORAGE =====
@@ -915,12 +914,10 @@ const faqSchema = {
       return;
     }
 
-    const domain = email.split('@')[1];
-    if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
-      return;
-    }
-
+    // Free-email-domain rejection removed: this page's own meta description promises
+    // "No signup, no paid plan", and the audience (GA4: India/Bangladesh/Pakistan) transacts
+    // on gmail. Rejecting the visitor's real email loses the lead without a meaningful lift
+    // in quality.
     if (errorEl) errorEl.classList.add('hidden');
 
     const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;

@@ -939,7 +939,6 @@ const faqSchema = {
   const COUNT_KEY = 'sot_topic_evals';
   // Shared unlock flag: one email submission unlocks all SellonTube tools
   const EMAIL_KEY = 'sot_tools_email_unlocked';
-  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
   const CAPTURE_URL = '/.netlify/functions/capture-email';
 
   function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
@@ -1099,7 +1098,14 @@ const faqSchema = {
   }
 
   function evaluate(): void {
-    if (!validateInputs()) return;
+    // This tool runs entirely client-side (no network call), so validation rejection is its
+    // only failure mode. It previously fired no error event at all, making that path invisible
+    // in GA4 alongside every other tool's tool_generate_error.
+    if (!validateInputs()) {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag('event', 'tool_evaluate_error', { tool: 'video-ideas-evaluator', reason: 'validation_failed' });
+      return;
+    }
 
     const topic = correctInput((document.getElementById('topic-input') as HTMLInputElement).value.trim());
     const targetCustomer = correctInput((document.getElementById('customer-input') as HTMLInputElement).value.trim());
@@ -1143,13 +1149,9 @@ const faqSchema = {
       return;
     }
 
-    const domain = email.split('@')[1];
-    if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)';
-      errorEl.classList.remove('hidden');
-      return;
-    }
-
+    // Free-email-domain rejection removed: this page's own meta description promises
+    // "no signup", and the audience transacts on gmail. Rejecting the visitor's real email
+    // loses the lead without a meaningful lift in quality.
     errorEl.classList.add('hidden');
     btn.textContent = 'Submitting...';
     btn.setAttribute('disabled', 'true');

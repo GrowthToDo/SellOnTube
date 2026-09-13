@@ -624,7 +624,6 @@ const faqSchema = {
   const RATE_LIMIT = 3;
   const COUNT_KEY = 'sot_keyword_finder_count';
   const EMAIL_KEY = 'sot_tools_email_unlocked';
-  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
   const CAPTURE_URL = '/.netlify/functions/capture-email';
   const EXAMPLE_VIDEO = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
@@ -967,12 +966,9 @@ const faqSchema = {
       return;
     }
 
-    const domain = email.split('@')[1];
-    if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
-      return;
-    }
-
+    // Free-email-domain rejection removed: this page's own meta description promises
+    // "Free, no signup", and the audience transacts on gmail. Rejecting the visitor's real
+    // email loses the lead without a meaningful lift in quality.
     if (errorEl) errorEl.classList.add('hidden');
 
     const btn = document.getElementById('csv-gate-submit') as HTMLButtonElement;
@@ -1248,12 +1244,9 @@ const faqSchema = {
       return;
     }
 
-    const domain = email.split('@')[1];
-    if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
-      return;
-    }
-
+    // Free-email-domain rejection removed: this page's own meta description promises
+    // "Free, no signup", and the audience transacts on gmail. Rejecting the visitor's real
+    // email loses the lead without a meaningful lift in quality.
     if (errorEl) errorEl.classList.add('hidden');
 
     const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;

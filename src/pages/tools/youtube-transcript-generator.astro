@@ -630,7 +630,6 @@ const faqSchema = {
   const RATE_LIMIT = 3;
   const COUNT_KEY = 'sot_transcript_count';
   const EMAIL_KEY = 'sot_transcript_email_submitted';
-  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
   const CAPTURE_URL = '/.netlify/functions/capture-email';
 
   // ===== STORAGE =====
@@ -1273,7 +1272,7 @@ const faqSchema = {
         btn.textContent = 'Generate transcript →';
         showFieldError('url-input', body.error || 'This video has no captions available.');
         window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: 'no_captions' });
+        window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: body.code || 'no_captions' });
         return;
       }
 
@@ -1363,12 +1362,9 @@ const faqSchema = {
       return;
     }
 
-    const domain = email.split('@')[1];
-    if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
-      return;
-    }
-
+    // Free-email-domain rejection removed: this page's own meta description promises
+    // "No signup", and the audience (GA4: India/Pakistan/Bangladesh) transacts on gmail.
+    // Rejecting the visitor's real email loses the lead without a meaningful lift in quality.
     if (errorEl) errorEl.classList.add('hidden');
 
     const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement;

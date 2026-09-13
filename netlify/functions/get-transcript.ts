@@ -81,14 +81,25 @@ export default async (request: Request) => {
           }),
           { status: 200, headers }
         );
-      case 'unavailable':
+      case 'unavailable': {
+        // The discriminant already exists on result.reason; previously every cause (deleted
+        // video, private video, unparseable ID, genuinely caption-less video) was collapsed
+        // into one message and one 'no_captions' GA4 reason, so a user with a typo'd URL was
+        // told their video had no captions. Pass the real reason through.
+        const messages: Record<string, string> = {
+          'not-found': 'This video could not be found. It may be private, deleted, or the link may be incorrect.',
+          'no-captions': 'This video has no captions available. Try a public video that shows a CC button on YouTube.',
+          'no-english': 'This video has captions, but not in English. English-only for now.',
+        };
+        const reason = result.reason ?? 'no-captions';
         return new Response(
           JSON.stringify({
-            error: 'No transcript found. The video may not exist, may be private, or may have no captions. Try a public video that shows a CC button on YouTube.',
-            code: 'no_captions',
+            error: messages[reason] ?? messages['no-captions'],
+            code: reason === 'not-found' ? 'video_not_found' : reason === 'no-english' ? 'no_english_captions' : 'no_captions',
           }),
           { status: 422, headers }
         );
+      }
       case 'quota':
         return new Response(JSON.stringify({ error: 'quota_exceeded' }), { status: 429, headers });
       case 'not-configured':
