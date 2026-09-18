@@ -13,7 +13,7 @@
 // It is a friction step, not authentication, and curl bypasses it. The real protections are the
 // shared YouTube daily budget in ./lib/youtube-quota.ts and the 7-day analysis cache below.
 
-import { ABOVE_FOLD_CHARS, stripUnsafeChars } from './lib/parsers.js';
+import { ABOVE_FOLD_CHARS, stripUnsafeChars, verifiedQuote } from './lib/parsers.js';
 import { getVideoDetailsGuarded } from './lib/youtube-quota.js';
 import { failureResponse } from './lib/upstream-error.js';
 
@@ -109,17 +109,6 @@ function cleanOrNull(v: unknown, max = 400): string | null {
 
 function asStringArray(v: unknown, max: number): string[] {
   return Array.isArray(v) ? v.map((x) => clean(x)).filter(Boolean).slice(0, max) : [];
-}
-
-/**
- * Enforce "quote it verbatim" in code rather than trusting the instruction.
- * Whitespace is normalised on both sides because the model re-wraps lines. A quote that is not
- * actually in the description is dropped, which also blunts an injected fake quote.
- */
-function verifiedQuote(quote: string | null, description: string): string | null {
-  if (!quote) return null;
-  const norm = (s: string) => s.replace(/\s+/g, ' ').trim().toLowerCase();
-  return norm(description).includes(norm(quote)) ? quote : null;
 }
 
 interface CacheEntry { fetchedAt: number; inputHash: string; analysis: Analysis }

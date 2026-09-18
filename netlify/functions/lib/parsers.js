@@ -225,3 +225,24 @@ export function parseIsoDuration(iso) {
   const total = Number(d ?? 0) * 86400 + Number(h ?? 0) * 3600 + Number(min ?? 0) * 60 + Number(sec ?? 0);
   return Number.isSafeInteger(total) ? total : null;
 }
+
+/**
+ * Enforce "quote it verbatim" in code rather than trusting a model instruction.
+ *
+ * A model that complies with an injected instruction will happily return a quote that is not in the
+ * description at all. Whitespace is normalised on both sides because models re-wrap lines. A quote
+ * that is not actually present is dropped.
+ *
+ * Note the limit: this stops a FABRICATED quote. It cannot stop an attacker who writes the text
+ * they want quoted into their own description, because then it genuinely is a substring.
+ * @param {string | null} quote
+ * @param {string} description
+ * @returns {string | null}
+ */
+export function verifiedQuote(quote, description) {
+  if (!quote) return null;
+  const norm = (v) => String(v ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
+  const q = norm(quote);
+  if (!q) return null;
+  return norm(description).includes(q) ? quote : null;
+}

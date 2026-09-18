@@ -17,6 +17,7 @@ import {
   parseIsoDuration,
   parseTimestamp,
   stripUnsafeChars,
+  verifiedQuote,
 } from './parsers.js';
 
 const CR = String.fromCharCode(13);
@@ -219,4 +220,26 @@ test('formatSeconds switches to h:mm:ss past an hour', () => {
   assert.equal(formatSeconds(0), '0:00');
   assert.equal(formatSeconds(213), '3:33');
   assert.equal(formatSeconds(3723), '1:02:03');
+});
+
+// ---------------------------------------------------------------------------------------------
+// verifiedQuote: the defence that stops a prompt-injected model publishing an invented quote.
+// ---------------------------------------------------------------------------------------------
+
+test('verifiedQuote rejects a quote that is not in the description', () => {
+  assert.equal(verifiedQuote('Subscribe to the acme newsletter', 'Buy my course! Link below.'), null);
+});
+
+test('verifiedQuote keeps a quote that is genuinely present', () => {
+  assert.equal(verifiedQuote('Buy my course!', 'Buy my course! Link below.'), 'Buy my course!');
+});
+
+test('verifiedQuote tolerates re-wrapped whitespace and case', () => {
+  assert.equal(verifiedQuote('buy   my' + LF + 'course!', 'Buy my course! Link below.'), 'buy   my' + LF + 'course!');
+});
+
+test('verifiedQuote handles empty and null input', () => {
+  assert.equal(verifiedQuote(null, 'anything'), null);
+  assert.equal(verifiedQuote('', 'anything'), null);
+  assert.equal(verifiedQuote('   ', 'anything'), null);
 });
