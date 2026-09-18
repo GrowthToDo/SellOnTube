@@ -57,6 +57,15 @@ const CHECKS = [
   { name: 'get-transcript', path: '/api/get-transcript', body: { url: TEST_VIDEO }, note: 'transcript vendor' },
   { name: 'summarize-transcript', path: '/api/summarize-transcript', body: { videoId: 'jNQXAC9IVRw' }, note: 'transcript cache + Gemini' },
   { name: 'youtube-seo-tool', path: '/api/youtube-seo-tool', body: { videoUrl: TEST_VIDEO }, note: 'YouTube Data API + Gemini' },
+  // Description extractor. YouTube Data API only: no Gemini, no transcript vendor, so this check
+  // costs 1 quota unit a day and nothing else. The gated /api/analyze-description is deliberately
+  // NOT checked, to keep daily Gemini spend near zero per the coverage note above.
+  {
+    name: 'extract-video-metadata',
+    path: '/api/extract-video-metadata',
+    body: { url: TEST_VIDEO },
+    note: 'YouTube Data API',
+  },
   { name: 'generate-tags', path: '/api/generate-tags', body: { videoUrl: TEST_VIDEO }, note: 'transcript vendor (optional)' },
   {
     name: 'generate-description',

@@ -1,0 +1,1002 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+// No ignoreTitleTemplate: the title inherits "%s | SellOnTube" like every other tool page.
+// "Free YouTube Description Extractor | SellOnTube" is 46 characters, inside the 60-char rule.
+const metadata = {
+  title: 'Free YouTube Description Extractor',
+  description:
+    "Pull any YouTube video's full description, hidden tags, links and chapters in one click. See where a competitor's first link really sits. Free, no signup.",
+  canonical: `${siteUrl}/tools/youtube-description-extractor`,
+};
+
+// First-party figures. Method and re-runnable script: research/fold-study-2026-09-18.mjs
+const STUDY = { sampled: 50, withLinks: 47, belowFoldPct: 55, medianPos: 202, foldChars: 150 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Tools', item: `${siteUrl}/tools` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'YouTube Description Extractor',
+      item: `${siteUrl}/tools/youtube-description-extractor`,
+    },
+  ],
+};
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SellonTube YouTube Description Extractor',
+  url: `${siteUrl}/tools/youtube-description-extractor`,
+  description:
+    'Free YouTube description extractor for B2B teams. Paste any video URL to pull its full description, hidden tags, links with their fold position, hashtags and chapter timestamps, with a character budget count and a chapter validity check.',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  provider: { '@type': 'Organization', name: 'SellonTube', url: siteUrl },
+};
+
+const faqs = [
+  {
+    question: 'How do I extract the description from a YouTube video?',
+    answer:
+      'Paste the video URL into the field above and press Extract. The tool reads the video through the official YouTube Data API and returns the full description exactly as the owner wrote it, including line breaks, links and timestamps. You can copy the whole description or any single link out of it. Nothing is truncated: YouTube allows 5,000 characters and the tool shows all of them.',
+  },
+  {
+    question: 'Can I see the tags on someone else’s video?',
+    answer:
+      'Yes. YouTube removed tags from the visible video page years ago, but they are still present in the video metadata. This tool reads them and shows the full list, the tag count, and roughly how much of the 500-character tag budget the video has spent. That tells you whether a competitor is tagging deliberately or padding.',
+  },
+  {
+    question: 'Why is my competitor’s description so long?',
+    answer:
+      'Long descriptions usually do three jobs at once: ranking for search terms, routing viewers to a product page, and holding chapter timestamps. The extractor separates those so you can see which is which. Look at where the first link sits. In our sample of 50 B2B videos, 55% of the descriptions that contained a link put their first link below the fold, where most viewers never see it without clicking "more".',
+  },
+  {
+    question: 'What does the chapter check tell me?',
+    answer:
+      'YouTube only turns timestamps into clickable chapters when three rules are met: the first chapter starts at 0:00, there are at least three chapters, and every chapter runs at least 10 seconds. The tool checks all three against the description it just read and lists every rule that fails, not just the first. Plenty of videos have timestamps that never became chapters because one rule was missed.',
+  },
+  {
+    question: 'Does this work on unlisted or private videos?',
+    answer:
+      'Unlisted videos work, because the YouTube Data API returns them to anyone who has the video ID. Private and deleted videos return nothing, and the tool will tell you so rather than showing an empty result. If a link works for you while signed in but fails here, the video is private rather than unlisted.',
+  },
+  {
+    question: 'Is the AI analysis different from the raw extraction?',
+    answer:
+      'Yes, and they are deliberately separate. The extraction is factual: it reports what is in the description without interpreting it, and it is always free and unlimited. The analysis is a judgment layer that reads the same description and tells you whether the call to action survives the fold, whether the link structure leaks attention, and whether the description carries the keyword the video competes for.',
+  },
+  {
+    question: 'How is this different from your YouTube SEO tool?',
+    answer:
+      'The SEO tool scores a video out of 100 across five dimensions and tells you how to improve your own upload. This extractor does not score anything. It surfaces the raw facts, which is what you want when you are studying someone else’s video for competitor research rather than fixing your own.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Full description</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Hidden tags</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Free and unlimited</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        YouTube Description Extractor<br class="hidden sm:block" /> for B2B Competitor Research
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Paste any video URL. Get the full description, the hidden tag list, every link with its position against the fold, and a check on whether the chapters are actually valid.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <div>
+          <label for="video-url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+            YouTube video URL
+          </label>
+          <input
+            type="text"
+            id="video-url-input"
+            placeholder="e.g. https://youtube.com/watch?v=dQw4w9WgXcQ"
+            class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+            aria-describedby="video-url-error"
+          />
+          <p id="video-url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+        </div>
+
+        <button
+          id="extract-btn"
+          class="mt-7 w-full rounded-xl px-6 py-3.5 text-base font-bold text-center
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Extract Description &rarr;
+        </button>
+
+        <p id="tool-notice" class="hidden mt-3 rounded-lg border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-3 py-2.5 text-xs leading-relaxed text-amber-900 dark:text-amber-200" role="status"></p>
+
+        <p class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
+          Free and unlimited. No account needed.
+        </p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Reading the video metadata...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This usually takes 2 to 4 seconds.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Short, polite status line. The full results panel is NOT a live region: announcing 5,000
+         characters of third-party description plus an email form on every render is unusable. -->
+    <p id="result-status" class="sr-only" role="status" aria-live="polite"></p>
+
+    <!-- Step: Results (wider) -->
+    <div id="step-results" class="hidden max-w-3xl mx-auto px-4 mt-2">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-2">Metadata for</p>
+          <div class="flex items-start gap-4">
+            <img
+              id="result-thumb"
+              class="hidden flex-shrink-0 rounded-lg border border-slate-200 dark:border-slate-700 w-32 h-auto"
+              width="128"
+              height="72"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="min-w-0">
+              <h2 id="result-video-title" tabindex="-1" class="text-lg font-bold text-gray-900 dark:text-white outline-none"></h2>
+              <p id="result-video-meta" class="mt-1 text-sm text-gray-500 dark:text-slate-400"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between mb-3 gap-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Description</p>
+            <button id="copy-description-btn" class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Copy all</button>
+          </div>
+          <p id="result-desc-budget" class="text-xs text-gray-500 dark:text-slate-400 mb-3 font-mono"></p>
+          <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 max-h-80 overflow-y-auto">
+            <p id="result-description" class="text-sm text-gray-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap break-words"></p>
+          </div>
+          <p id="result-fold-note" class="mt-3 text-xs text-gray-400 dark:text-slate-600"></p>
+        </div>
+
+        <!-- Tags -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between mb-3 gap-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Hidden tags</p>
+            <button id="copy-tags-btn" class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Copy all</button>
+          </div>
+          <p id="result-tag-budget" class="text-xs text-gray-500 dark:text-slate-400 mb-3 font-mono"></p>
+          <div id="result-tags" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Links -->
+        <div id="links-section" class="hidden p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Links in the description</p>
+          <div id="result-links" class="space-y-2"></div>
+        </div>
+
+        <!-- Chapters -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Chapters</p>
+          <div id="result-chapter-verdict" class="mb-3"></div>
+          <div id="result-chapters" class="space-y-1.5"></div>
+        </div>
+
+        <!-- AI analysis gate. NOTE: this is a panel INSIDE the results, not the usual full-screen
+             #step-email-gate. The raw extraction above is the advertised job and stays free, so the
+             gate cannot be allowed to replace it. Deliberate deviation from the other tool pages. -->
+        <div id="analysis-section" class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">What this description is doing wrong</p>
+
+          <div id="analysis-gate">
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+              The facts above are yours to keep. Enter your business email for the read on where the call to action sits, whether the link structure leaks attention, and which keyword this description is actually carrying.
+            </p>
+            <div class="space-y-3">
+              <input
+                type="email"
+                id="gate-email"
+                placeholder="your@company.com"
+                class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                       focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+                aria-describedby="gate-email-error"
+              />
+              <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+              <button
+                id="gate-submit-btn"
+                class="w-full rounded-xl px-6 py-3.5 text-base font-bold text-center
+                       bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+              >
+                Analyse this description
+              </button>
+              <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube. Unsubscribe anytime.</p>
+            </div>
+          </div>
+
+          <button
+            id="analyse-btn"
+            class="hidden w-full rounded-xl px-6 py-3 text-sm font-bold text-center
+                   border border-emerald-500 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 transition-colors"
+          >
+            Analyse this description
+          </button>
+
+          <div id="analysis-loading" class="hidden py-8">
+            <div class="flex flex-col items-center gap-3">
+              <div class="w-8 h-8 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+              <p class="text-sm text-gray-500 dark:text-slate-400">Reading the description...</p>
+            </div>
+          </div>
+
+          <p id="analysis-error" class="hidden rounded-lg border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-3 py-2.5 text-xs leading-relaxed text-amber-900 dark:text-amber-200" role="alert"></p>
+
+          <div id="analysis-results" class="hidden space-y-5"></div>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button id="reset-btn" class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors">
+            &larr; Extract another video
+          </button>
+        </div>
+      </div>
+
+      <div id="copy-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold px-5 py-2.5 rounded-xl shadow-lg">
+        Copied to clipboard
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="You can read their description. Can you beat it?"
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: the keywords your buyers search, the metadata that ranks, and the path from search to paying customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- SEO content -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Definition + self-contained answer block, early and standalone for AI citation -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What is a YouTube description extractor?</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <strong class="text-gray-900 dark:text-white">A YouTube description extractor</strong> is a tool that reads the metadata a public video carries and returns it as text you can work with. That means the full description including the part hidden behind "more", the tag list YouTube stopped showing on video pages, every URL with its character position, and the timestamps the owner wrote.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The video page itself will not give you this. It truncates the description, hides tags entirely, and offers no way to tell whether a link sits above or below the fold. For a B2B YouTube channel the structure matters more than the words, because YouTube collapses a description after roughly {STUDY.foldChars} characters and anything past that line is written for the algorithm rather than for a buyer. We sampled {STUDY.sampled} B2B videos and found that {STUDY.belowFoldPct}% of the descriptions containing a link put their first link below that fold, at a median character position of {STUDY.medianPos}.
+        </p>
+        <p class="text-xs text-gray-400 dark:text-slate-600">
+          Sample: {STUDY.sampled} videos from the top results for five buyer-intent B2B queries, September 2026. {STUDY.withLinks} contained at least one link. Method and script: <code class="font-mono">research/fold-study-2026-09-18.mjs</code>.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why the fold decides whether a description earns customer acquisition</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube shows roughly the first {STUDY.foldChars} characters of a description before collapsing the rest. Most viewers never expand it.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          That single fact explains most of what looks like bad description writing on a B2B YouTube channel. A company puts its demo link in paragraph four because the description reads better that way, then wonders why a video with strong watch time drives no signups. The extractor marks which links fall above the fold so you can see the problem rather than guess at it.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The same applies to keywords. A description that reaches its target term for the first time in the sixth line is telling YouTube the term is incidental.
+        </p>
+      </div>
+
+      <!-- Media: one diagram, inline SVG, no network request, no layout shift -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Where the fold falls</h2>
+        <figure>
+          <svg
+            viewBox="0 0 640 260"
+            role="img"
+            aria-label="Diagram of a YouTube description. The first 150 characters sit above the fold and are visible. Everything after is collapsed behind the more link, where 55 percent of sampled B2B videos put their first link."
+            class="w-full h-auto rounded-xl border border-slate-200 dark:border-slate-700"
+            style="background:#f8fafc"
+          >
+            <rect x="24" y="20" width="592" height="86" rx="8" fill="#ffffff" stroke="#e2e8f0" />
+            <text x="40" y="46" font-family="system-ui, sans-serif" font-size="14" fill="#0f172a" font-weight="700">Above the fold</text>
+            <text x="40" y="68" font-family="system-ui, sans-serif" font-size="14" fill="#334155">First {STUDY.foldChars} characters. Every viewer sees this.</text>
+            <text x="40" y="90" font-family="system-ui, sans-serif" font-size="14" fill="#059669" font-weight="600">Put the link that matters here.</text>
+
+            <line x1="24" y1="120" x2="616" y2="120" stroke="#059669" stroke-width="2" stroke-dasharray="6 5" />
+            <text x="24" y="114" font-family="system-ui, sans-serif" font-size="12" fill="#059669" font-weight="700">...more</text>
+
+            <rect x="24" y="136" width="592" height="100" rx="8" fill="#f1f5f9" stroke="#e2e8f0" />
+            <text x="40" y="162" font-family="system-ui, sans-serif" font-size="14" fill="#0f172a" font-weight="700">Collapsed</text>
+            <text x="40" y="184" font-family="system-ui, sans-serif" font-size="14" fill="#334155">Hidden until someone clicks. Most never do.</text>
+            <text x="40" y="206" font-family="system-ui, sans-serif" font-size="14" fill="#b45309" font-weight="600">{STUDY.belowFoldPct}% of sampled B2B videos put their first link here.</text>
+            <text x="40" y="226" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">Median first-link position: character {STUDY.medianPos}.</text>
+          </svg>
+          <figcaption class="mt-2 text-xs text-gray-400 dark:text-slate-600">
+            Based on {STUDY.sampled} B2B videos sampled in September 2026.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Which description metrics matter for B2B YouTube</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Creator tools optimise a description for views. That is the wrong target for a company using YouTube as a customer acquisition channel, where a video exists to move a buyer toward a demo.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Three numbers decide whether a description does that job. First, the character position of the first link, because a link below {STUDY.foldChars} characters is a link most buyers never see. Second, the share of the tag budget spent on the company's own brand name, because brand tags reach people who already know you and do nothing for the ones who do not. Third, whether the timestamps became real chapters, because chapters are what let a buyer skip to the pricing section of a 40-minute webinar.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          None of those three appear in a creator dashboard. All three come out of this extractor in one click.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Timestamps are not chapters until they pass three rules</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          YouTube converts a list of timestamps into clickable chapters only when all three hold: the first entry starts at 0:00, there are at least three entries, and every chapter runs at least 10 seconds. Miss one and the timestamps stay as plain text.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          This is a common and invisible failure. A webinar recording with nine carefully written timestamps starting at 0:42 gets none of the chapter benefit, and nothing in YouTube Studio says so. The extractor runs all three checks and names every rule that fails.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What to do with a competitor's metadata</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Do not copy it. Their tags are tuned to their video, and lifting them tells YouTube your video is a weaker version of theirs.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          What is worth taking is the structure: where they put the first link, how many links they run, whether they lead with the keyword or the brand. Run the extractor across the three or four videos ranking above yours for the same term. The pattern that shows up in all of them is the convention for that query, and that is the thing worth matching.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          Then write your own to beat it with the <a href="/tools/youtube-description-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">description generator</a>, and check the result against <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">how YouTube search actually ranks a business video</a>.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+          {faqs.map((faq) => (
+            <div>
+              <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">{faq.question}</h3>
+              <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-2">Next step</p>
+      <p class="text-sm text-gray-500 dark:text-slate-400 text-center mb-8">You have read theirs. Now fix yours.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-description-generator" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Description Generator</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Descriptions</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Write your own with the CTA above the fold and the keyword in the first line.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+        <a href="/tools/youtube-tag-generator" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Tag Generator</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Tags</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">You have seen their tag list. Build your own from your title, description and transcript.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+        <a href="/tools/youtube-competitor-analysis" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Competitor Analysis</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Competition</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Go past one video. See what a competitor's whole channel targets and where the gaps are.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // ===== CONSTANTS =====
+
+  const EMAIL_KEY = 'sot_desc_extract_email_submitted';
+  const CAPTURE_URL = '/.netlify/functions/capture-email';
+  const TOOL = 'youtube-description-extractor';
+
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // gtag is installed unconditionally and inline by Analytics.astro, before this module runs, and
+  // that file documents that dataLayer must not be touched directly. So just call gtag.
+  function track(event: string, params: Record<string, string> = {}): void {
+    window.gtag('event', event, { tool: TOOL, ...params });
+  }
+
+  // ===== STEPS =====
+  // No 'step-email-gate' here on purpose. The raw extraction is the advertised free job, so the
+  // gate is a panel inside the results (#analysis-gate) rather than a step that replaces the tool.
+
+  const STEPS = ['step-input', 'step-loading', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+  }
+
+  function announce(message: string): void {
+    const el = document.getElementById('result-status');
+    if (el) el.textContent = message;
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const error = document.getElementById(fieldId.replace('-input', '-error'));
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const error = document.getElementById(fieldId.replace('-input', '-error'));
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  // A 503 means an upstream service is down, not a problem with the user's URL. Shown as a page
+  // notice rather than a field error so we do not blame their input for our outage.
+  function showToolNotice(message: string): void {
+    const el = document.getElementById('tool-notice');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.remove('hidden');
+  }
+  function clearToolNotice(): void {
+    const el = document.getElementById('tool-notice');
+    if (!el) return;
+    el.textContent = '';
+    el.classList.add('hidden');
+  }
+
+  // ===== CLIPBOARD =====
+
+  let toastTimer: number | undefined;
+  function showToast(): void {
+    const toast = document.getElementById('copy-toast');
+    if (!toast) return;
+    toast.classList.remove('hidden');
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => toast.classList.add('hidden'), 2000);
+  }
+  function copyText(text: string): void {
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => showToast()).catch(() => {
+      showFieldError('video-url-input', 'Your browser blocked the clipboard. Select the text and copy it manually.');
+    });
+  }
+
+  // ===== DOM HELPERS =====
+  // Everything below builds nodes with textContent. A description is third-party text containing
+  // arbitrary URLs, so it never goes near innerHTML and links are never rendered as anchors.
+
+  function el(tag: string, className: string, text?: string): HTMLElement {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function clear(node: HTMLElement | null): void {
+    if (node) node.textContent = '';
+  }
+
+  // ===== STATE =====
+
+  interface DescLink { url: string; domain: string; charIndex: number; aboveFold: boolean; hasUtm: boolean }
+  interface Chapter { raw: string; seconds: number; label: string }
+  interface Extracted {
+    videoId: string; title: string; channel: string; publishedAt: string; thumbnail: string;
+    duration: { formatted: string; live: boolean; seconds: number | null };
+    stats: { views: number; likes: number; comments: number };
+    description: { raw: string; chars: number; limit: number; remaining: number; foldAt: number };
+    tags: { list: string[]; count: number; chars: number; limit: number };
+    links: DescLink[]; timestamps: Chapter[];
+    chapterCheck: { valid: boolean; reasons: string[] };
+  }
+
+  let current: Extracted | null = null;
+  let analysisRequestId = 0;
+
+  // ===== RENDER =====
+
+  function renderResults(data: Extracted): void {
+    current = data;
+
+    const titleEl = document.getElementById('result-video-title');
+    if (titleEl) titleEl.textContent = data.title || 'Untitled video';
+
+    const thumb = document.getElementById('result-thumb') as HTMLImageElement | null;
+    if (thumb) {
+      if (data.thumbnail) {
+        thumb.src = data.thumbnail;
+        thumb.alt = data.title ? `Thumbnail for ${data.title}` : 'Video thumbnail';
+        thumb.classList.remove('hidden');
+      } else {
+        thumb.removeAttribute('src');
+        thumb.classList.add('hidden');
+      }
+    }
+
+    const metaBits: string[] = [];
+    if (data.channel) metaBits.push(data.channel);
+    if (data.duration?.formatted && !data.duration.live) metaBits.push(data.duration.formatted);
+    if (data.publishedAt) metaBits.push(new Date(data.publishedAt).toLocaleDateString());
+    if (typeof data.stats?.views === 'number') metaBits.push(data.stats.views.toLocaleString() + ' views');
+    const metaEl = document.getElementById('result-video-meta');
+    if (metaEl) metaEl.textContent = metaBits.join('  ·  ');
+
+    // Description
+    const desc = data.description ?? { raw: '', chars: 0, limit: 5000, remaining: 5000, foldAt: 150 };
+    const descEl = document.getElementById('result-description');
+    if (descEl) descEl.textContent = desc.raw || 'This video has no description.';
+    const budgetEl = document.getElementById('result-desc-budget');
+    if (budgetEl) {
+      budgetEl.textContent =
+        desc.chars.toLocaleString() + ' / ' + desc.limit.toLocaleString() +
+        ' characters used  ·  ' + desc.remaining.toLocaleString() + ' left';
+    }
+    const foldNote = document.getElementById('result-fold-note');
+    if (foldNote) {
+      foldNote.textContent = 'The first ' + desc.foldAt + ' characters are roughly all a viewer sees before clicking "more".';
+    }
+
+    // Tags. Each chip is a button so it can be copied and reached by keyboard.
+    const tags = data.tags ?? { list: [], count: 0, chars: 0, limit: 500 };
+    const tagWrap = document.getElementById('result-tags');
+    clear(tagWrap);
+    if (tagWrap) {
+      if (tags.count === 0) {
+        tagWrap.appendChild(el('p', 'text-sm text-gray-500 dark:text-slate-400', 'This video has no tags.'));
+      } else {
+        tags.list.forEach((t) => {
+          const chip = el('button', 'inline-flex items-center text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1.5 hover:bg-emerald-500/20 transition-colors', t);
+          chip.setAttribute('aria-label', 'Copy tag ' + t);
+          chip.addEventListener('click', () => copyText(t));
+          tagWrap.appendChild(chip);
+        });
+      }
+    }
+    const tagBudgetEl = document.getElementById('result-tag-budget');
+    if (tagBudgetEl) {
+      tagBudgetEl.textContent =
+        tags.count + ' tags  ·  about ' + tags.chars + ' / ' + tags.limit + ' characters used';
+      tagBudgetEl.classList.toggle('hidden', tags.count === 0);
+    }
+
+    // Links, as text plus a copy button. Never anchors: this is third-party content on our page.
+    const links = data.links ?? [];
+    const linksSection = document.getElementById('links-section');
+    const linksWrap = document.getElementById('result-links');
+    clear(linksWrap);
+    if (linksSection && linksWrap) {
+      linksSection.classList.toggle('hidden', links.length === 0);
+      links.forEach((link) => {
+        const row = el('div', 'flex items-start gap-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-2.5');
+        const left = el('div', 'min-w-0 flex-1');
+        const badges = el('div', 'flex flex-wrap items-center gap-2 mb-1');
+        badges.appendChild(el('span', 'inline-flex items-center text-[10px] font-semibold text-gray-600 dark:text-slate-400 bg-gray-100 dark:bg-slate-700 rounded-full px-2 py-0.5', link.domain));
+        badges.appendChild(el('span', link.aboveFold
+          ? 'inline-flex items-center text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-500/10 rounded-full px-2 py-0.5'
+          : 'inline-flex items-center text-[10px] font-semibold text-amber-800 dark:text-amber-300 bg-amber-500/10 rounded-full px-2 py-0.5',
+          link.aboveFold ? 'above the fold' : 'below the fold'));
+        if (link.hasUtm) badges.appendChild(el('span', 'inline-flex items-center text-[10px] font-semibold text-gray-600 dark:text-slate-400 bg-gray-100 dark:bg-slate-700 rounded-full px-2 py-0.5', 'utm tagged'));
+        left.appendChild(badges);
+        left.appendChild(el('p', 'text-xs text-gray-700 dark:text-slate-300 break-all font-mono', link.url));
+        row.appendChild(left);
+        const btn = el('button', 'flex-shrink-0 text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-2.5 py-1.5 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors', 'Copy');
+        btn.setAttribute('aria-label', 'Copy link ' + link.url);
+        btn.addEventListener('click', () => copyText(link.url));
+        row.appendChild(btn);
+        linksWrap.appendChild(row);
+      });
+    }
+
+    // Chapters
+    const check = data.chapterCheck ?? { valid: false, reasons: [] };
+    const verdictWrap = document.getElementById('result-chapter-verdict');
+    clear(verdictWrap);
+    if (verdictWrap) {
+      if (check.valid) {
+        verdictWrap.appendChild(el('p', 'text-sm font-semibold text-emerald-600 dark:text-emerald-400', 'These timestamps are valid YouTube chapters.'));
+      } else {
+        verdictWrap.appendChild(el('p', 'text-sm font-semibold text-amber-700 dark:text-amber-300', 'These timestamps are not working as chapters.'));
+        (check.reasons ?? []).forEach((r) => {
+          verdictWrap.appendChild(el('p', 'mt-1 text-xs text-gray-600 dark:text-slate-400 leading-relaxed', r));
+        });
+      }
+    }
+    const chapWrap = document.getElementById('result-chapters');
+    clear(chapWrap);
+    if (chapWrap) {
+      (data.timestamps ?? []).forEach((c) => {
+        const row = el('div', 'flex items-baseline gap-3');
+        row.appendChild(el('span', 'font-mono text-xs text-emerald-600 dark:text-emerald-400 flex-shrink-0', c.raw));
+        row.appendChild(el('span', 'text-sm text-gray-700 dark:text-slate-300', c.label || '(no label)'));
+        chapWrap.appendChild(row);
+      });
+    }
+
+    resetAnalysisPanel();
+  }
+
+  function resetAnalysisPanel(): void {
+    analysisRequestId++;
+    const results = document.getElementById('analysis-results');
+    clear(results);
+    results?.classList.add('hidden');
+    document.getElementById('analysis-error')?.classList.add('hidden');
+    document.getElementById('analysis-loading')?.classList.add('hidden');
+
+    const unlocked = isEmailSubmitted();
+    document.getElementById('analysis-gate')?.classList.toggle('hidden', unlocked);
+    const btn = document.getElementById('analyse-btn') as HTMLButtonElement | null;
+    if (btn) {
+      btn.classList.toggle('hidden', !unlocked);
+      btn.disabled = false;
+      btn.textContent = 'Analyse this description';
+    }
+    if (!unlocked) track('tool_email_gate_shown');
+  }
+
+  // ===== EXTRACT =====
+
+  function validateInput(): string | null {
+    const raw = (document.getElementById('video-url-input') as HTMLInputElement | null)?.value.trim() ?? '';
+    if (!raw) {
+      showFieldError('video-url-input', 'Please enter a YouTube video URL.');
+      return null;
+    }
+    if (!raw.includes('youtube.com') && !raw.includes('youtu.be') && !/^[\w-]{11}$/.test(raw)) {
+      showFieldError('video-url-input', 'Please enter a valid YouTube video URL, for example https://youtube.com/watch?v=...');
+      return null;
+    }
+    clearFieldError('video-url-input');
+    return raw;
+  }
+
+  function resetButton(): void {
+    const btn = document.getElementById('extract-btn') as HTMLButtonElement | null;
+    if (!btn) return;
+    btn.disabled = false;
+    btn.textContent = 'Extract Description →';
+  }
+
+  function failExtract(message: string, reason: string, asNotice = false): void {
+    showStep('step-input');
+    resetButton();
+    if (asNotice) showToolNotice(message);
+    else showFieldError('video-url-input', message);
+    track('tool_generate_error', { reason });
+  }
+
+  async function extract(): Promise<void> {
+    const url = validateInput();
+    if (!url) return;
+
+    clearToolNotice();
+    track('tool_generate_click');
+
+    const btn = document.getElementById('extract-btn') as HTMLButtonElement | null;
+    if (btn) { btn.disabled = true; btn.textContent = 'Extracting...'; }
+    showStep('step-loading');
+
+    try {
+      const res = await fetch('/api/extract-video-metadata', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+
+      if (res.status === 429) {
+        const b = await res.json().catch(() => ({}));
+        return failExtract(
+          b.error || 'This tool has hit its daily limit. Nothing is wrong with your link. Please try again tomorrow.',
+          b.code || 'quota_exceeded',
+          true
+        );
+      }
+      if (res.status === 503) {
+        return failExtract(
+          'YouTube is not responding right now. Nothing is wrong with your link. Please try again in a moment.',
+          'upstream_unavailable',
+          true
+        );
+      }
+      if (res.status === 400 || res.status === 422) {
+        const b = await res.json().catch(() => ({}));
+        return failExtract(b.error || 'That video could not be read. Check the URL and try again.', b.code || 'bad_input');
+      }
+      if (!res.ok) throw new Error('Something went wrong on our end. Please try again in a moment.');
+
+      const data = (await res.json()) as Extracted;
+      renderResults(data);
+      resetButton();
+      showStep('step-results');
+      announce('Metadata loaded for ' + (data.title || 'this video') + '.');
+      document.getElementById('result-video-title')?.focus();
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Preserve every other query parameter. Overwriting search with '?v=' dropped utm_*, gclid
+      // and Analytics.astro's documented ?debug_mode=1 switch.
+      const params = new URLSearchParams(window.location.search);
+      params.set('v', data.videoId);
+      history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+
+      track('tool_generate_success');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      failExtract(message, 'api_error');
+    }
+  }
+
+  // ===== ANALYSIS (email-gated) =====
+
+  function renderAnalysis(a: Record<string, unknown>): void {
+    const wrap = document.getElementById('analysis-results');
+    if (!wrap) return;
+    clear(wrap);
+
+    const isObj = (v: unknown): v is Record<string, unknown> =>
+      typeof v === 'object' && v !== null && !Array.isArray(v);
+
+    const headline = typeof a.headline_diagnosis === 'string' ? a.headline_diagnosis : '';
+    if (headline) wrap.appendChild(el('p', 'text-base font-semibold text-gray-900 dark:text-white leading-relaxed', headline));
+
+    const block = (label: string, verdict: string, extras: string[], fix: unknown) => {
+      const box = el('div', 'rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4');
+      box.appendChild(el('p', 'text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-2', label));
+      box.appendChild(el('p', 'text-sm text-gray-700 dark:text-slate-300 leading-relaxed', verdict));
+      extras.filter(Boolean).forEach((x) => {
+        box.appendChild(el('p', 'mt-1.5 text-xs text-gray-500 dark:text-slate-400 leading-relaxed', x));
+      });
+      if (typeof fix === 'string' && fix) {
+        box.appendChild(el('p', 'mt-2.5 text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed', 'Fix: ' + fix));
+      }
+      return box;
+    };
+
+    const cta = isObj(a.cta) ? a.cta : {};
+    const links = isObj(a.links) ? a.links : {};
+    const kw = isObj(a.keywords) ? a.keywords : {};
+    const foldAt = current?.description?.foldAt ?? 150;
+
+    const ctaExtras: string[] = [];
+    if (typeof cta.first_cta_quote === 'string' && cta.first_cta_quote) ctaExtras.push('First CTA: "' + cta.first_cta_quote + '"');
+    ctaExtras.push(cta.above_fold === true
+      ? 'It appears above the fold.'
+      : 'It appears below the fold, where most viewers never see it.');
+    wrap.appendChild(block('Call to action', String(cta.verdict ?? ''), ctaExtras, cta.fix));
+
+    const linkIssues = Array.isArray(links.issues) ? (links.issues as string[]) : [];
+    wrap.appendChild(block('Link structure', String(links.verdict ?? ''), linkIssues, links.fix));
+
+    const kwExtras: string[] = [];
+    if (kw.primary_keyword) kwExtras.push('Primary keyword: ' + String(kw.primary_keyword));
+    kwExtras.push(kw.in_first_150 === true
+      ? 'It appears in the first ' + foldAt + ' characters.'
+      : 'It does not appear in the first ' + foldAt + ' characters.');
+    if (typeof kw.mentions === 'number') kwExtras.push('Mentioned about ' + kw.mentions + ' times.');
+    wrap.appendChild(block('Keyword', String(kw.verdict ?? ''), kwExtras, kw.fix));
+
+    wrap.classList.remove('hidden');
+  }
+
+  async function runAnalysis(): Promise<void> {
+    if (!current) return;
+    const requestId = ++analysisRequestId;
+    const errEl = document.getElementById('analysis-error');
+    const loadEl = document.getElementById('analysis-loading');
+    const btn = document.getElementById('analyse-btn') as HTMLButtonElement | null;
+
+    errEl?.classList.add('hidden');
+    document.getElementById('analysis-results')?.classList.add('hidden');
+    loadEl?.classList.remove('hidden');
+    if (btn) btn.disabled = true;
+
+    const stale = () => requestId !== analysisRequestId;
+
+    const fail = (message: string, reason: string) => {
+      if (stale()) return;
+      loadEl?.classList.add('hidden');
+      if (btn) btn.disabled = false;
+      if (errEl) { errEl.textContent = message; errEl.classList.remove('hidden'); }
+      track('tool_generate_error', { reason });
+    };
+
+    try {
+      const res = await fetch('/api/analyze-description', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoId: current.videoId }),
+      });
+
+      if (res.status === 429) {
+        const b = await res.json().catch(() => ({}));
+        return fail(
+          b.code === 'budget_exhausted'
+            ? 'This tool has reached its daily limit. The facts above are unaffected. Please try again tomorrow.'
+            : 'The AI is at capacity right now. The facts above are unaffected. Please try again in a moment.',
+          b.code || 'quota_exceeded'
+        );
+      }
+      if (res.status === 503) return fail('The analysis service is not responding right now. Everything above still works. Please try again in a moment.', 'upstream_unavailable');
+      if (res.status === 422) {
+        const b = await res.json().catch(() => ({}));
+        return fail(b.error || 'This description could not be analysed.', b.code || 'unanalysable');
+      }
+      if (!res.ok) return fail('Something went wrong on our end. Please try again in a moment.', 'api_error');
+
+      const data = await res.json();
+      if (stale()) return;
+      loadEl?.classList.add('hidden');
+      if (btn) { btn.disabled = false; btn.textContent = 'Re-run the analysis'; }
+      renderAnalysis(data.analysis ?? {});
+      announce('Analysis ready.');
+      track('tool_generate_success', { stage: 'analysis' });
+    } catch {
+      fail('Something went wrong on our end. Please try again in a moment.', 'api_error');
+    }
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGate(): Promise<void> {
+    const input = document.getElementById('gate-email') as HTMLInputElement | null;
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement | null;
+    if (!input || btn?.disabled) return;
+
+    const email = input.value.trim();
+    const error = document.getElementById('gate-email-error');
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      input.setAttribute('aria-invalid', 'true');
+      if (error) { error.textContent = 'Please enter a valid email address.'; error.classList.remove('hidden'); }
+      return;
+    }
+    input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+
+    // Disable immediately. Two clicks used to fire two Gemini calls, last writer wins.
+    if (btn) { btn.disabled = true; btn.textContent = 'Analysing...'; }
+
+    try {
+      await fetch(CAPTURE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: TOOL }),
+      });
+    } catch {
+      // The gate unlocks regardless. A capture failure is ours, not theirs.
+    }
+
+    setEmailSubmitted();
+    track('tool_email_submitted');
+
+    document.getElementById('analysis-gate')?.classList.add('hidden');
+    const analyseBtn = document.getElementById('analyse-btn') as HTMLButtonElement | null;
+    if (analyseBtn) { analyseBtn.classList.remove('hidden'); analyseBtn.disabled = false; }
+    if (btn) { btn.disabled = false; btn.textContent = 'Analyse this description'; }
+    runAnalysis();
+  }
+
+  // ===== WIRING =====
+
+  document.getElementById('extract-btn')?.addEventListener('click', extract);
+  document.getElementById('video-url-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') extract();
+  });
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGate);
+  document.getElementById('analyse-btn')?.addEventListener('click', runAnalysis);
+  document.getElementById('copy-description-btn')?.addEventListener('click', () => copyText(current?.description?.raw || ''));
+  document.getElementById('copy-tags-btn')?.addEventListener('click', () => copyText((current?.tags?.list || []).join(', ')));
+
+  document.querySelectorAll('a[href^="https://cal.com/"]').forEach((a) => {
+    a.addEventListener('click', () => track('tool_cta_click'));
+  });
+
+  document.getElementById('reset-btn')?.addEventListener('click', () => {
+    current = null;
+    resetAnalysisPanel();
+    const input = document.getElementById('video-url-input') as HTMLInputElement | null;
+    if (input) input.value = '';
+    clearFieldError('video-url-input');
+    clearToolNotice();
+    announce('');
+    showStep('step-input');
+    input?.focus();
+    const params = new URLSearchParams(window.location.search);
+    params.delete('v');
+    const q = params.toString();
+    history.replaceState(null, '', window.location.pathname + (q ? '?' + q : ''));
+  });
+
+  // Deep link: /tools/youtube-description-extractor?v=<id or url>
+  // Prefill ONLY, never auto-run. Auto-running spent a YouTube API unit on every reload, back
+  // navigation and shared link, and fired tool_generate_click without a human clicking anything.
+  const prefill = new URLSearchParams(window.location.search).get('v');
+  if (prefill) {
+    const input = document.getElementById('video-url-input') as HTMLInputElement | null;
+    if (input) input.value = /^[\w-]{11}$/.test(prefill) ? 'https://www.youtube.com/watch?v=' + prefill : prefill;
+  }
+
+  // The gate state is per browser, so reflect it before the first extraction too.
+  if (isEmailSubmitted()) {
+    document.getElementById('analysis-gate')?.classList.add('hidden');
+    document.getElementById('analyse-btn')?.classList.remove('hidden');
+  }
+</script>

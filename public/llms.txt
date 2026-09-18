@@ -21,6 +21,7 @@ Our approach: identify high-intent search queries on YouTube, create videos that
 - YouTube Video Ideas Generator: https://sellontube.com/tools/youtube-video-ideas-generator - Get buyer-intent video ideas based on your product, target customer, and problem
 - YouTube Video Idea Evaluator: https://sellontube.com/tools/youtube-video-ideas-evaluator - Score whether a video idea attracts buyers or just viewers
 - YouTube Transcript Generator: https://sellontube.com/tools/youtube-transcript-generator - Extract clean transcripts from any YouTube video
+- YouTube Description Extractor: https://sellontube.com/tools/youtube-description-extractor - Pull any video's full description, hidden tags, links with their fold position, and a chapter validity check
 - YouTube ROI Calculator: https://sellontube.com/tools/youtube-roi-calculator - Calculate if YouTube makes financial sense for your business
 
 ## Key Pages
