@@ -345,3 +345,7 @@ rank,keyword,search_volume,cpc_inr,keyword_difficulty,intent,cluster,content_typ
 344,youtube for referral marketing,0,0,0,informational,pseo_vs,pseo_vs,referral-marketing,planned,manual,24,,,2026-04-17,,pseo
 345,youtube for community building,0,0,0,informational,pseo_vs,pseo_vs,community-building,planned,manual,24,,,2026-04-17,,pseo
 346,youtube for twitter for saas,0,0,0,informational,pseo_vs,pseo_vs,twitter-for-saas,planned,manual,24,,,2026-04-17,,pseo
+347,youtube description extractor,480,0,0,transactional,youtube_seo,tool,youtube-description-extractor,live,dataforseo_2026-09-18,74.0,480,6.67,2026-09-18,0,winnable
+348,youtube video tags extractor,140,0,0,transactional,youtube_seo,tool,youtube-description-extractor,live,dataforseo_2026-09-18,71.0,140,,2026-09-18,3,winnable
+349,youtube video metadata,90,0,0,informational,youtube_seo,tool,youtube-description-extractor,live,dataforseo_2026-09-18,64.0,90,,2026-09-18,9,winnable
+350,youtube metadata extractor,40,0,0,transactional,youtube_seo,tool,youtube-description-extractor,live,dataforseo_2026-09-18,66.0,40,,2026-09-18,10,winnable

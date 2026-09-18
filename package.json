@@ -27,6 +27,7 @@
     "linkedin": "node scripts/linkedin-agent/linkedin-schedule.js",
     "x:schedule": "node scripts/x-agent/x-schedule.js",
     "x:verify": "node scripts/x-agent/verify-x-scheduled.js",
+    "test:functions": "node --test netlify/functions/lib/*.test.js",
     "x:test": "node --test scripts/x-agent/*.test.js scripts/lib/*.test.js",
     "gsc-submit": "node scripts/gsc-sitemap-submit.js"
   },

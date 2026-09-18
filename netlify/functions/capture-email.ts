@@ -32,6 +32,7 @@ const handler: Handler = async (event) => {
     'youtube-autocomplete-keywords': 'YouTube Autocomplete Keywords tool',
     'youtube-channel-audit': 'YouTube Channel Audit tool',
     'youtube-competitor-analysis': 'YouTube Competitor Analysis tool',
+    'youtube-description-extractor': 'YouTube Description Extractor',
     'youtube-description-generator': 'YouTube Description Generator',
     'youtube-ranking-checker': 'YouTube Ranking Checker',
     'youtube-script-generator': 'YouTube Script Generator',

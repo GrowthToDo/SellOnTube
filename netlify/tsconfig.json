@@ -6,6 +6,9 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    // lib/*.js are plain ESM modules (package.json sets "type": "module") so `node --test`
+    // can run them on every Node in the CI matrix. allowJs lets the .ts functions import them.
+    "allowJs": true,
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
@@ -13,5 +16,5 @@
     }
   },
   "include": ["functions/**/*"],
-  "exclude": ["dist/"]
+  "exclude": ["dist/", "functions/**/*.test.js"]
 }
