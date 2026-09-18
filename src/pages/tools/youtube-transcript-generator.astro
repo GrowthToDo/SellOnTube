@@ -6,9 +6,10 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'Free AI YouTube Transcript Generator, No Signup | SellOnTube',
+  title: 'YouTube Transcript Generator: 3 Free, No Signup',
+  ignoreTitleTemplate: true,
   description:
-    'Free AI YouTube transcript generator. Get clean text from any video in seconds. Study competitor scripts, extract keywords, and repurpose content. No signup.',
+    'Get clean, full text from any YouTube video in seconds. Study competitor scripts, pull keywords and repurpose the content into posts. 3 free, no signup.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +27,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Transcript Generator",
   "url": `${siteUrl}/tools/youtube-transcript-generator`,
-  "description": "Free AI YouTube transcript generator. Extract clean transcripts from any video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights. No signup.",
+  "description": "Free AI YouTube transcript generator. Extract clean transcripts from any video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights. 3 free, no signup.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -37,7 +38,7 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Is this YouTube transcript generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free transcripts without signup. Enter a business email to unlock unlimited transcripts at no cost. There is no paid tier and no feature restrictions." } },
+    { "@type": "Question", "name": "Is this YouTube transcript generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free transcripts without signup. Enter your email to unlock unlimited transcripts at no cost. There is no paid tier and no feature restrictions." } },
     { "@type": "Question", "name": "How accurate are the transcripts?", "acceptedAnswer": { "@type": "Answer", "text": "The tool extracts captions directly from YouTube. For videos with manual captions, accuracy is near-perfect. For auto-generated captions, accuracy depends on audio quality and speaker clarity." } },
     { "@type": "Question", "name": "Is it legal to transcribe competitor videos?", "acceptedAnswer": { "@type": "Answer", "text": "This tool extracts publicly available caption data from YouTube. Using transcripts for competitive research, content analysis, and strategy development falls under standard fair use." } },
     { "@type": "Question", "name": "What is the difference between clean text and timestamped view?", "acceptedAnswer": { "@type": "Answer", "text": "Clean text gives you the full transcript as readable prose, ideal for keyword analysis and content repurposing. Timestamped view shows each segment with its timecode, useful for identifying when specific topics appear in the video." } },
@@ -536,7 +537,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube transcript generator free?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. You get 3 free transcripts without signup. Enter a business email to unlock unlimited transcripts at no cost. There is no paid tier and no feature restrictions.
+              Yes. You get 3 free transcripts without signup. Enter your email to unlock unlimited transcripts at no cost. There is no paid tier and no feature restrictions.
             </p>
           </div>
 

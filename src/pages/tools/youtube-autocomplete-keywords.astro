@@ -7,8 +7,9 @@ const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
   title: 'Free YouTube Autocomplete Keyword Tool',
+  ignoreTitleTemplate: true,
   description:
-    'Scrape YouTube autocomplete suggestions for any keyword. Get long-tail keywords categorized by search intent. Free, no signup for quick results.',
+    'Get long-tail YouTube keywords grouped by buyer intent: comparison, mistakes, results, how-to, research. Free preview, email unlocks the full list and CSV.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +27,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Autocomplete Keyword Tool",
   "url": `${siteUrl}/tools/youtube-autocomplete-keywords`,
-  "description": "Scrape YouTube autocomplete suggestions for any seed keyword. Get long-tail keywords categorized by search intent: Comparison, Mistakes, Results, How-To, Research. Export as CSV. Free, no signup for quick results.",
+  "description": "Scrape YouTube autocomplete suggestions for any seed keyword. Get long-tail keywords categorized by search intent: Comparison, Mistakes, Results, How-To, Research. Export as CSV. Free preview, no signup required.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -37,7 +38,7 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Is this YouTube autocomplete keyword tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with intent categorization and CSV export) requires an email address. No credit card, no subscription." } },
+    { "@type": "Question", "name": "Is this YouTube autocomplete keyword tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The quick A-Z scrape runs free with no signup: you see the total keyword count and a preview of each intent category. Enter an email to unlock the full list, the exhaustive scrape (100+ keywords) and CSV export. No credit card, no subscription." } },
     { "@type": "Question", "name": "How is YouTube autocomplete different from using VidIQ or TubeBuddy for keyword research?", "acceptedAnswer": { "@type": "Answer", "text": "VidIQ and TubeBuddy estimate search volume using panel data and clickstream samples. Those numbers are approximations. This tool scrapes what YouTube actually suggests when users type, which is a direct signal of real-time search demand. Keywords are also categorized by buyer intent so you can prioritize comparison and evaluation queries over generic informational ones." } },
     { "@type": "Question", "name": "Should I use autocomplete keywords in my YouTube titles and descriptions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Autocomplete keywords are the exact phrases YouTube's algorithm expects in your metadata. Use the high-priority Comparison keywords as video titles. Place related variations in the first 150 characters of your description. Add remaining phrases to tags and chapter labels." } },
     { "@type": "Question", "name": "What do the five intent categories mean and why do they matter?", "acceptedAnswer": { "@type": "Answer", "text": "Each category maps to a stage in the buyer journey. Comparison & Evaluation (High) covers viewers actively comparing solutions. Mistakes & Red Flags (High) catches viewers avoiding bad decisions. Results & Proof (High) targets viewers seeking evidence before committing. How-To & Problem-Solving (Medium) captures viewers with an active problem to solve. Research & Discovery (Low) covers early-stage learning queries. The priority tells you which keywords to target first for business results." } },
@@ -614,7 +615,7 @@ const geoOptions = [
 
         <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
           <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube autocomplete keyword tool free to use?</h3>
-          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with intent categorization and CSV export) requires an email address. No credit card, no subscription.</p>
+          <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">Yes. The quick A-Z scrape runs free with no signup: you see the total keyword count and a preview of each intent category. Enter an email to unlock the full list, the exhaustive scrape (100+ keywords) and CSV export. No credit card, no subscription.</p>
         </div>
 
         <div class="border-b border-slate-200 dark:border-slate-700/60 pb-6">
