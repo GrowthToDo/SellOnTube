@@ -55,6 +55,12 @@ const TEST_VIDEO = 'https://www.youtube.com/watch?v=jNQXAC9IVRw';
  */
 const CHECKS = [
   { name: 'get-transcript', path: '/api/get-transcript', body: { url: TEST_VIDEO }, note: 'transcript vendor' },
+  // Placed right after get-transcript so the shared transcript cache is already warm from the
+  // check above: this call costs 0 transcript credits and 0 YouTube quota, only a Gemini call
+  // (or a 30-day chapter cache hit after the first run). The test video is 19 seconds and cannot
+  // produce 3 valid chapters, which is fine: the function returns 200 with `valid: false` for
+  // that, not a 5xx, so this check does not turn red on a working tool.
+  { name: 'generate-chapters', path: '/api/generate-chapters', body: { url: TEST_VIDEO }, note: 'transcript cache + Gemini' },
   { name: 'summarize-transcript', path: '/api/summarize-transcript', body: { videoId: 'jNQXAC9IVRw' }, note: 'transcript cache + Gemini' },
   { name: 'youtube-seo-tool', path: '/api/youtube-seo-tool', body: { videoUrl: TEST_VIDEO }, note: 'YouTube Data API + Gemini' },
   // Description extractor. YouTube Data API only: no Gemini, no transcript vendor, so this check

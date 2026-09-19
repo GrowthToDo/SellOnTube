@@ -78,3 +78,53 @@ export function getNonVideoYouTubeError(url) {
 export function isValidVideoId(id) {
   return /^[\w-]{11}$/.test(String(id ?? ''));
 }
+
+/**
+ * Read an existing start time out of a pasted YouTube URL, in seconds.
+ *
+ * YouTube writes this parameter four ways and accepts all of them: `t=90`, `t=90s`, `t=1m30s`
+ * (its own "copy link at current time" output on long videos) and `start=90` on an embed. The
+ * hash form `#t=90` is the old share format and still appears in documents written years ago.
+ *
+ * Bare digits mean seconds. A unit string may carry any of h/m/s in that order, so "1h2m3s" is
+ * 3723. Anything else returns null rather than a wrong number: a silent 0 would send the viewer
+ * to the start of the video and look like the tool working.
+ * @param {string} url
+ * @returns {number | null} whole seconds, or null when the URL carries no readable start time.
+ */
+export function parseStartParam(url) {
+  const raw = String(url ?? '').trim();
+  const m = raw.match(/[?&#](?:t|start)=([^&#\s]+)/i);
+  if (!m) return null;
+
+  const value = decodeURIComponent(m[1]).toLowerCase();
+  if (/^\d+$/.test(value)) return Number(value);
+
+  // Units, h then m then s, each optional but at least one present and in that order.
+  const units = value.match(/^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/);
+  if (!units || (units[1] === undefined && units[2] === undefined && units[3] === undefined)) return null;
+  const total = Number(units[1] ?? 0) * 3600 + Number(units[2] ?? 0) * 60 + Number(units[3] ?? 0);
+  return Number.isSafeInteger(total) ? total : null;
+}
+
+/**
+ * The three shareable deep links for one moment in a video.
+ *
+ * `watch` is what YouTube's own "copy link at current time" produces, so it is the one a person
+ * recognises. `short` is the youtu.be share form. `embed` is the one a B2B team actually needs:
+ * it starts an embedded webinar at the section being discussed on the page hosting it.
+ *
+ * The ID is validated before interpolation, never after.
+ * @param {string} videoId
+ * @param {number} seconds
+ * @returns {{ watch: string, short: string, embed: string } | null} null for an invalid ID.
+ */
+export function buildChapterLinks(videoId, seconds) {
+  if (!isValidVideoId(videoId)) return null;
+  const t = Math.max(0, Math.floor(Number(seconds) || 0));
+  return {
+    watch: `https://www.youtube.com/watch?v=${videoId}&t=${t}s`,
+    short: `https://youtu.be/${videoId}?t=${t}`,
+    embed: `https://www.youtube.com/embed/${videoId}?start=${t}`,
+  };
+}

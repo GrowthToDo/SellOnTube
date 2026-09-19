@@ -246,3 +246,71 @@ export function verifiedQuote(quote, description) {
   if (!q) return null;
   return norm(description).includes(q) ? quote : null;
 }
+
+/** A chapter list longer than this is not a chapter list, it is a transcript with line breaks. */
+export const MAX_CHAPTERS = 20;
+const MAX_LABEL_CHARS = 120;
+
+/**
+ * Force an arbitrary list of {seconds,label} into something that can become real YouTube chapters.
+ *
+ * Written for model output, which is why every step is defensive. A model asked for integer
+ * seconds will occasionally answer with a string, a negative number, a duplicate, an unsorted
+ * list, or a timestamp past the end of the video it was given. Each of those renders as a
+ * plausible-looking chapter that YouTube then silently refuses to turn into chapters, which is the
+ * exact failure this whole tool exists to make visible.
+ *
+ * Order matters. Sort before the gap check, because a gap measured against an unsorted neighbour
+ * is meaningless. Clamp against the end BEFORE forcing the first to 0, or a list where every
+ * entry is past the end collapses into a single bogus 0:00.
+ *
+ * This shapes output. It does not decide validity: `checkChapters` does that, and on the tool page
+ * the browser runs it. The server's `valid` flag is advisory.
+ * @param {Array<{seconds: unknown, label?: unknown}>} input
+ * @param {{ endSeconds?: number | null }} [options] endSeconds drops anything at or past the end.
+ * @returns {Chapter[]}
+ */
+export function normaliseChapters(input, options = {}) {
+  const end = typeof options.endSeconds === 'number' && options.endSeconds > 0 ? options.endSeconds : null;
+  if (!Array.isArray(input)) return [];
+
+  const cleaned = input
+    .map((c) => ({
+      seconds: Math.floor(Number(c?.seconds)),
+      label: stripUnsafeChars(typeof c?.label === 'string' ? c.label : '').trim().slice(0, MAX_LABEL_CHARS),
+    }))
+    .filter((c) => Number.isFinite(c.seconds) && c.seconds >= 0)
+    .filter((c) => end === null || c.seconds < end)
+    .sort((a, b) => a.seconds - b.seconds);
+
+  /** @type {Chapter[]} */
+  const out = [];
+  for (const c of cleaned) {
+    const seconds = out.length === 0 ? CHAPTER_RULES.FIRST_START : c.seconds;
+    // A duplicate and a too-close neighbour are the same rejection: YouTube needs MIN_SECONDS
+    // between starts, and 0 apart is simply the worst case of too close.
+    if (out.length > 0 && seconds - out[out.length - 1].seconds < CHAPTER_RULES.MIN_SECONDS) continue;
+    out.push({ raw: formatSeconds(seconds), seconds, label: c.label });
+    if (out.length >= MAX_CHAPTERS) break;
+  }
+  return out;
+}
+
+/**
+ * The block a creator pastes into a YouTube description, one chapter per line.
+ *
+ * The separator is a plain space by default because that is what YouTube's own documentation
+ * shows and it is the form least likely to be mangled by whatever the creator pastes into. A dash
+ * is offered because plenty of channels use one and consistency inside a channel matters more
+ * than either choice.
+ * @param {Chapter[]} chapters
+ * @param {{ separator?: string }} [options]
+ * @returns {string}
+ */
+export function formatChapterBlock(chapters, options = {}) {
+  const sep = options.separator === '-' ? ' - ' : ' ';
+  if (!Array.isArray(chapters)) return '';
+  return chapters
+    .map((c) => `${formatSeconds(c.seconds)}${sep}${String(c.label ?? '').trim()}`.trimEnd())
+    .join('\n');
+}
