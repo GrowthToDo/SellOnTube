@@ -163,6 +163,52 @@ export default defineConfig({
               json(503, { error: 'The transcript service is temporarily unavailable. Please try again later.' });
             }
           });
+
+          // generate-chapters.ts is a Netlify Functions v2 handler: `export default async
+          // (request: Request) => Response`, the same shape as extract-video-metadata.ts and
+          // analyze-description.ts. Rather than re-implement its many status branches here the way
+          // the get-transcript route above does, bridge the real Fetch API Request/Response the
+          // function already speaks, so dev and prod run the exact same code path.
+          server.middlewares.use('/api/generate-chapters', async (req, res) => {
+            if (req.method === 'OPTIONS') {
+              res.writeHead(204, { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Content-Type' });
+              res.end();
+              return;
+            }
+
+            let body = '';
+            for await (const chunk of req) body += chunk;
+
+            // `.env` is not in process.env under `astro dev`; load it and expose the keys this
+            // function reads directly from process.env.
+            const env = loadEnv('development', process.cwd(), '');
+            if (env.TRANSCRIPT_API_KEY) process.env.TRANSCRIPT_API_KEY = env.TRANSCRIPT_API_KEY;
+            if (env.GEMINI_API_KEY) process.env.GEMINI_API_KEY = env.GEMINI_API_KEY;
+
+            const mod = (await server.ssrLoadModule(
+              path.resolve(__dirname, 'netlify/functions/generate-chapters.ts')
+            )) as { default: (request: Request) => Promise<Response> };
+
+            const headers = new Headers();
+            for (const [key, value] of Object.entries(req.headers)) {
+              if (typeof value === 'string') headers.set(key, value);
+              else if (Array.isArray(value)) headers.set(key, value.join(', '));
+            }
+
+            try {
+              const request = new Request('http://localhost' + req.url, {
+                method: req.method,
+                headers,
+                body: req.method === 'POST' ? body : undefined,
+              });
+              const response = await mod.default(request);
+              res.writeHead(response.status, Object.fromEntries(response.headers.entries()));
+              res.end(await response.text());
+            } catch (e) {
+              res.writeHead(503, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ error: 'The AI chapter writer failed to load in dev.', detail: String(e).slice(0, 300) }));
+            }
+          });
         },
       },
     ],

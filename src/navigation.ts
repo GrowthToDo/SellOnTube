@@ -45,6 +45,7 @@ export const footerData = {
         { text: 'Ranking Checker', href: getPermalink('/tools/youtube-ranking-checker') },
         { text: 'Video Keyword Finder', href: getPermalink('/tools/youtube-video-keyword-finder') },
         { text: 'Description Extractor', href: getPermalink('/tools/youtube-description-extractor') },
+        { text: 'Timestamp Generator', href: getPermalink('/tools/youtube-timestamp-generator') },
       ],
     },
     {

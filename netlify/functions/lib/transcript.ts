@@ -12,6 +12,9 @@
 //   - It DOES let a thrown fetch (DNS/TLS/timeout) propagate, so the caller can classify it
 //     with `failureResponse()` from ./upstream-error.js and return 503. Optional consumers
 //     (tags/description) wrap the call in try/catch and continue without a transcript.
+//   - A caller may pass `{ caller }` to draw on its own sub-budget as well as the shared one.
+//     Omitting it means 'default', which is what every pre-existing caller does and keeps the
+//     full shared ceiling available to them. See CALLER_BUDGETS near the bottom of this file.
 
 export interface TranscriptSegment {
   text: string;
@@ -73,7 +76,7 @@ export function toTimestampedText(segments: TranscriptSegment[]): string {
 // ---------------------------------------------------------------------------------------------
 const VENDOR_URL = 'https://api.supadata.ai/v1/youtube/transcript';
 
-async function fetchFromVendor(videoId: string, apiKey: string): Promise<TranscriptResult> {
+async function fetchFromVendor(videoId: string, apiKey: string, caller: TranscriptCaller): Promise<TranscriptResult> {
   // Supadata takes 9-18s to report a video that does not exist or is private (it goes and
   // asks YouTube), which is longer than Netlify's synchronous function limit. YouTube's own
   // oEmbed endpoint answers the same question in under a second, so ask it first. It also
@@ -86,7 +89,8 @@ async function fetchFromVendor(videoId: string, apiKey: string): Promise<Transcr
   // 206/404/429 response, so this is the conservative assumption: any request sent to the
   // vendor counts against the monthly budget, even the (rare) two-request English-fallback
   // case below, which this deliberately undercounts by treating as one.
-  await budgetIncrement();
+  // Counts against every budget this caller answers to: the shared monthly one, plus its own.
+  await budgetIncrement(budgetsFor(caller).map((b) => b.key));
 
   let result = await callSupadata(videoId, apiKey, 'en');
   // Retry without a language only when English specifically was missing (206). A 404 from the
@@ -223,31 +227,80 @@ async function cacheWrite(transcript: Transcript): Promise<void> {
 const BUDGET_STORE = 'transcript-budget';
 const MONTHLY_BUDGET = Number(process.env.TRANSCRIPT_MONTHLY_BUDGET) || 90; // 10 held back for the daily health check + manual testing
 
+/**
+ * Per-caller ceilings, carved out of the SAME monthly budget above.
+ *
+ * A caller listed here is limited twice: by its own ceiling and by the shared one. A caller that is
+ * not listed ('default') is limited only by the shared one, which is why the five existing callers
+ * are untouched by this. Capping 'default' below 90 would make get-transcript start returning 429
+ * while vendor credits sat unused, which is the exact outage the shared budget exists to prevent.
+ *
+ * The point of a sub-budget: a new, secondary consumer cannot drain the month and take the
+ * transcript tool down with it. Twenty AI chapter runs a month is a real ceiling for a secondary
+ * feature and leaves seventy credits for everything else.
+ */
+const CALLER_BUDGETS: Record<string, number> = {
+  'ai-chapters': Number(process.env.TRANSCRIPT_BUDGET_AI_CHAPTERS) || 20,
+};
+
+export type TranscriptCaller = 'default' | 'ai-chapters';
+
 function currentMonthKey(): string {
   return new Date().toISOString().slice(0, 7); // "YYYY-MM"
 }
 
-/** Best-effort like the cache above: unavailable in dev, and a failure here must never block a real request. */
-async function budgetRemaining(): Promise<number | null> {
+/**
+ * Sub-budget key for a caller, in the same store as the shared counter.
+ *
+ * A dot, not a colon: under `netlify dev` the Blobs emulator writes one file per key, and a colon
+ * is not a legal character in a Windows filename.
+ */
+function callerKey(caller: string): string {
+  return `${currentMonthKey()}.${caller}`;
+}
+
+/**
+ * Every budget one spend by this caller must satisfy, shared ceiling first.
+ * Exported for the unit test; nothing else needs it.
+ */
+export function budgetsFor(caller: TranscriptCaller): Array<{ key: string; ceiling: number; label: string }> {
+  const budgets = [{ key: currentMonthKey(), ceiling: MONTHLY_BUDGET, label: 'monthly' }];
+  const own = CALLER_BUDGETS[caller];
+  if (typeof own === 'number') budgets.push({ key: callerKey(caller), ceiling: own, label: caller });
+  return budgets;
+}
+
+/**
+ * Best-effort like the cache above: unavailable in dev, and a failure here must never block a real
+ * request.
+ *
+ * Netlify Blobs reads are EVENTUALLY consistent. A read a few seconds after a write can legitimately
+ * return the older value, so this counter may undercount briefly under a burst, and a cache read
+ * straight after a write may legitimately miss. That is the storage contract, not a defect: never
+ * "fix" it with a read-after-write assertion.
+ */
+async function budgetRemaining(key: string, ceiling: number): Promise<number | null> {
   try {
     const { getStore } = await import('@netlify/blobs');
-    const raw = await getStore(BUDGET_STORE).get(currentMonthKey());
+    const raw = await getStore(BUDGET_STORE).get(key);
     const used = raw ? Number(raw) || 0 : 0;
-    return MONTHLY_BUDGET - used;
+    return ceiling - used;
   } catch (e) {
     console.warn('transcript budget read skipped:', String(e).slice(0, 200));
     return null; // unknown, not exhausted, so dev and any Blobs outage fail open
   }
 }
 
-async function budgetIncrement(): Promise<void> {
+/** Increment every key this spend counts against: always the shared one, plus the caller's own. */
+async function budgetIncrement(keys: string[]): Promise<void> {
   try {
     const { getStore } = await import('@netlify/blobs');
     const store = getStore(BUDGET_STORE);
-    const key = currentMonthKey();
-    const raw = await store.get(key);
-    const used = raw ? Number(raw) || 0 : 0;
-    await store.set(key, String(used + 1));
+    for (const key of keys) {
+      const raw = await store.get(key);
+      const used = raw ? Number(raw) || 0 : 0;
+      await store.set(key, String(used + 1));
+    }
   } catch (e) {
     console.warn('transcript budget increment skipped:', String(e).slice(0, 200));
   }
@@ -257,7 +310,14 @@ async function budgetIncrement(): Promise<void> {
  * Get a transcript for a public YouTube video, cache first, vendor second.
  * See the contract at the top of this file for what throws and what returns.
  */
-export async function getTranscript(videoId: string): Promise<TranscriptResult> {
+export async function getTranscript(
+  videoId: string,
+  options: { caller?: TranscriptCaller } = {}
+): Promise<TranscriptResult> {
+  const caller = options.caller ?? 'default';
+
+  // Cache first, before any budget check. A video someone already fetched costs no vendor credit,
+  // so refusing it would be pure loss. Only a real vendor call is counted.
   const cached = await cacheRead(videoId);
   if (cached) return { status: 'ok', transcript: cached, cached: true };
 
@@ -267,13 +327,17 @@ export async function getTranscript(videoId: string): Promise<TranscriptResult> 
     return { status: 'not-configured' };
   }
 
-  const remaining = await budgetRemaining();
-  if (remaining !== null && remaining <= 0) {
-    console.warn(`Transcript monthly budget exhausted (${MONTHLY_BUDGET}/mo). Refusing before spending a vendor credit.`);
-    return { status: 'quota' };
+  for (const budget of budgetsFor(caller)) {
+    const remaining = await budgetRemaining(budget.key, budget.ceiling);
+    if (remaining !== null && remaining <= 0) {
+      console.warn(
+        `Transcript budget "${budget.label}" exhausted (${budget.ceiling}/mo). Refusing before spending a vendor credit.`
+      );
+      return { status: 'quota' };
+    }
   }
 
-  const result = await fetchFromVendor(videoId, apiKey);
+  const result = await fetchFromVendor(videoId, apiKey, caller);
   if (result.status === 'ok') await cacheWrite(result.transcript);
   return result;
 }

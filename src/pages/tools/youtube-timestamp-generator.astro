@@ -1,0 +1,920 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE } from 'astrowind:config';
+
+const siteUrl = SITE.site || 'https://sellontube.com';
+
+// No ignoreTitleTemplate: the title inherits "%s | SellOnTube" like every other tool page.
+// "Free AI YouTube Timestamp Generator | SellOnTube" is 49 characters, inside the 60-char rule.
+const metadata = {
+  title: 'Free AI YouTube Timestamp Generator',
+  description:
+    "Paste a YouTube video URL. Get chapter timestamps from the real transcript, checked against YouTube's three chapter rules. Free first video, no signup.",
+  canonical: `${siteUrl}/tools/youtube-timestamp-generator`,
+};
+
+// First-party figures. Method and re-runnable script: research/chapter-study-2026-09-19.mjs
+const STUDY = { sampled: 120, withTimestamps: 41, broken: 6, brokenPct: 15 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Tools', item: `${siteUrl}/tools` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'YouTube Timestamp Generator',
+      item: `${siteUrl}/tools/youtube-timestamp-generator`,
+    },
+  ],
+};
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SellonTube YouTube Timestamp Generator',
+  url: `${siteUrl}/tools/youtube-timestamp-generator`,
+  description:
+    "Free AI YouTube timestamp generator for B2B teams. Paste a video URL and the tool reads the transcript, writes chapter timestamps, checks them against YouTube's three chapter rules, and returns shareable deep links for each one.",
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  provider: { '@type': 'Organization', name: 'SellonTube', url: siteUrl },
+};
+
+const faqs = [
+  {
+    question: 'How do I generate YouTube chapters automatically?',
+    answer:
+      "Paste a video URL and press Generate. The tool reads the video's transcript, writes chapter starts and labels aimed at what a buyer would skip to, and checks the result against YouTube's three chapter rules before showing it to you. Copy the block and paste it into the video's description on YouTube.",
+  },
+  {
+    question: "Why aren't my timestamps turning into chapters?",
+    answer:
+      'One of three rules is being missed: the first chapter is not at 0:00, there are fewer than three chapters, or two chapters sit closer together than 10 seconds. YouTube gives no warning when this happens; the timestamps just stay as plain text. In our sample of 120 B2B videos, 41 had written timestamps into the description and 6 of those, 15%, broke one of the three rules.',
+  },
+  {
+    question: 'How many chapters do I get?',
+    answer:
+      'As many as the video actually supports, usually between 3 and 12. Three is the YouTube minimum, and the tool will not pad a short video with chapters it does not need just to look thorough.',
+  },
+  {
+    question: 'Can I edit the chapters before I publish them?',
+    answer:
+      "Yes. The result lands in a plain text box, not a locked output. Fix a label, delete a line, or adjust a timestamp, and the checker re-runs against your edit immediately, so you can see whether a change you made still passes YouTube's rules before you copy it.",
+  },
+  {
+    question: 'Can I get a link that jumps straight to one moment in the video?',
+    answer:
+      "Yes. Under the chapters, each one gets three shareable link formats: a standard watch link, a short youtu.be link, and an embed link for dropping the video onto your own page starting at that second. Sending a prospect \"here's the pricing section\" instead of a 40-minute video is the actual use case.",
+  },
+  {
+    question: 'Can this tool check whether my last chapter runs long enough?',
+    answer:
+      "No, and it says so rather than guessing. YouTube also requires the last chapter to end at least 10 seconds before the video does, but checking that needs the video's exact duration, which this tool never fetches. Everything else, including the first three rules, is checked in full.",
+  },
+  {
+    question: 'How is this different from your transcript generator?',
+    answer:
+      'The transcript generator gets you the full text of what a video says. This tool reads that same transcript and turns it into chapter timestamps and shareable links. Use the transcript generator when you need the words; use this one when you need the video broken into moments.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+---
+
+<Layout metadata={metadata}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">AI-generated</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Passes YouTube's 3 rules</span>
+        <span class="inline-flex items-center text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">Free first video</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
+        AI YouTube Timestamp Generator<br class="hidden sm:block" /> for B2B Webinars and Demos
+      </h1>
+      <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+        Paste your video's URL. The tool reads the transcript, writes chapter timestamps checked against YouTube's three rules, and hands you a block ready to paste into your description.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tool -->
+  <section class="bg-white dark:bg-slate-950 pb-20">
+    <div id="tool-container" class="max-w-xl mx-auto px-4">
+
+      <!-- Step: Input -->
+      <div id="step-input" class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8">
+        <label for="video-url-input" class="block text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-slate-400 mb-2">
+          YouTube video URL
+        </label>
+        <input
+          type="text"
+          id="video-url-input"
+          placeholder="e.g. https://youtube.com/watch?v=dQw4w9WgXcQ"
+          class="w-full text-base font-medium px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors"
+          aria-describedby="video-url-error"
+        />
+        <p id="video-url-error" class="hidden mt-1.5 text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+
+        <button
+          id="generate-btn"
+          class="mt-7 w-full rounded-xl px-6 py-3.5 text-base font-bold text-center
+                 bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          Generate Chapters &rarr;
+        </button>
+
+        <p id="tool-notice" class="hidden mt-3 rounded-lg border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 px-3 py-2.5 text-xs leading-relaxed text-amber-900 dark:text-amber-200" role="status"></p>
+
+        <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">1 free generation remaining</p>
+      </div>
+
+      <!-- Step: Loading -->
+      <div
+        id="step-loading"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 text-center"
+      >
+        <div class="flex flex-col items-center gap-4 py-10">
+          <div class="w-10 h-10 border-[3px] border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm font-medium text-gray-500 dark:text-slate-400">Reading the transcript and writing chapters...</p>
+          <p class="text-xs text-gray-400 dark:text-slate-600">This usually takes 10 to 20 seconds.</p>
+        </div>
+      </div>
+
+      <!-- Step: Email Gate -->
+      <div
+        id="step-email-gate"
+        class="hidden rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 p-6 sm:p-8"
+      >
+        <div class="text-center mb-6">
+          <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your free chapter generation</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400">Enter your business email to keep generating chapters. It's free.</p>
+        </div>
+        <div id="gate-form" class="space-y-3">
+          <input
+            type="email"
+            id="gate-email"
+            placeholder="your@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
+            aria-describedby="gate-email-error"
+          />
+          <p id="gate-email-error" class="hidden text-xs text-rose-600 dark:text-rose-400" role="alert"></p>
+          <button
+            id="gate-submit-btn"
+            class="w-full rounded-xl px-6 py-3.5 text-base font-bold text-center bg-emerald-500 text-white dark:text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            Continue Generating
+          </button>
+          <p class="text-center text-xs text-gray-400 dark:text-slate-600">No spam. We'll only send you content marketing resources from SellonTube. Unsubscribe anytime.</p>
+        </div>
+        <div id="gate-success" class="hidden text-center mt-4">
+          <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Done. Generating your chapters now...</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Short, polite status line. The full results panel is NOT a live region: announcing an
+         editable text box plus a growing list of link buttons on every render is unusable. -->
+    <p id="tool-status" class="sr-only" role="status" aria-live="polite"></p>
+
+    <!-- Step: Results (wider) -->
+    <div id="step-results" class="hidden max-w-3xl mx-auto px-4 mt-2">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 overflow-hidden">
+
+        <!-- Header -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-2">Chapters for</p>
+          <div class="flex items-start gap-4">
+            <img
+              id="result-thumb"
+              class="hidden flex-shrink-0 rounded-lg border border-slate-200 dark:border-slate-700 w-32 h-auto"
+              width="128"
+              height="72"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="min-w-0">
+              <h2 id="result-title" tabindex="-1" class="text-lg font-bold text-gray-900 dark:text-white outline-none"></h2>
+              <p id="result-note" class="hidden mt-1 text-sm text-gray-500 dark:text-slate-400 leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter block -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <div class="flex items-center justify-between mb-3 gap-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500">Chapters</p>
+            <div class="flex gap-2">
+              <button id="copy-block-btn" class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Copy</button>
+              <a id="download-block-link" href="#" class="text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-3 py-2 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Download .txt</a>
+            </div>
+          </div>
+          <label for="chapter-textarea" class="sr-only">Generated chapters, editable before you publish</label>
+          <textarea
+            id="chapter-textarea"
+            rows="8"
+            class="w-full text-sm px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
+                   focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-colors font-mono"
+          ></textarea>
+          <div id="chapter-verdict" class="mt-3"></div>
+        </div>
+
+        <!-- Deep links -->
+        <div class="p-6 sm:p-8 border-b border-slate-200 dark:border-slate-700/60">
+          <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 mb-3">Shareable links</p>
+          <div id="deeplink-rows" class="space-y-2"></div>
+        </div>
+
+        <!-- Reset -->
+        <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-6">
+          <button id="reset-btn" class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-sm font-medium text-gray-500 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors">
+            &larr; Generate another video
+          </button>
+        </div>
+      </div>
+
+      <div id="copy-toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-semibold px-5 py-2.5 rounded-xl shadow-lg">
+        Copied to clipboard
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    title="Chapters get a buyer to the pricing section. What gets them to a call?"
+    subtitle="In a diagnostic call, we map your full YouTube acquisition system: the keywords your buyers search, the video structure that holds attention, and the path from search to paying customer."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a diagnostic call',
+        href: 'https://cal.com/gautham-8bdvdx/30min',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+    ]}
+  />
+
+  <!-- SEO content -->
+  <section class="py-16 sm:py-20">
+    <div class="max-w-2xl mx-auto px-4 space-y-16">
+
+      <!-- Definition + self-contained answer block, early and standalone for AI citation -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What is an AI YouTube timestamp generator?</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          <strong class="text-gray-900 dark:text-white">A YouTube timestamp generator</strong> is a tool that reads a video and writes the chapter markers for it, checked against YouTube's own rules before you publish, so you paste in a URL instead of typing timestamps by hand. This one reads the real transcript rather than guessing at even intervals, so a chapter lands where the topic actually changes.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The check matters because YouTube is strict about it. A chapter list only becomes clickable when the first entry starts at 0:00, there are at least three entries, and every entry runs at least 10 seconds; miss any one rule and the whole list stays as plain text with no warning from YouTube Studio. SellonTube read {STUDY.sampled} real B2B videos and found {STUDY.withTimestamps} had written timestamps into the description. {STUDY.broken} of those, {STUDY.brokenPct}%, broke at least one rule and never became chapters at all.
+        </p>
+        <p class="text-xs text-gray-400 dark:text-slate-600">
+          Sample: {STUDY.sampled} videos from the top results for eight buyer-intent B2B queries, September 2026. {STUDY.withTimestamps} had written timestamps into the description. Method and script: <code class="font-mono">research/chapter-study-2026-09-19.mjs</code>.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Why chapters decide whether a B2B YouTube video earns customer acquisition</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A creator's chapters exist so a viewer can find the funny part again. A B2B channel's chapters exist so a buyer never has to watch 40 minutes to find the five that matter to them.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          That difference shows up in what gets skipped to. Nobody jumps straight to the pricing section of a comedy sketch. Plenty of people jump straight to the pricing section of a product demo, if the chapter exists and actually works. A webinar recording without working chapters asks every prospect to sit through the intro, the agenda, and the customer story before they reach the number they came for.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          This is a YouTube acquisition channel problem, not a formatting one. A buyer-intent video already did the work of holding attention. A broken chapter list throws away the part of that attention a buyer was ready to act on.
+        </p>
+      </div>
+
+      <!-- Media: one diagram, inline SVG, no network request, no layout shift -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">YouTube's three chapter rules</h2>
+        <figure>
+          <svg
+            viewBox="0 0 640 320"
+            role="img"
+            aria-label={`Diagram of YouTube's three chapter rules: the first chapter must start at 0:00, there must be at least 3 chapters, and every chapter must run at least 10 seconds. A callout states that in a sample of ${STUDY.sampled} B2B videos, ${STUDY.brokenPct} percent of those with timestamps broke at least one of these rules.`}
+            class="w-full h-auto rounded-xl border border-slate-200 dark:border-slate-700"
+            style="background:#f8fafc"
+          >
+            <rect x="24" y="16" width="592" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" />
+            <text x="40" y="40" font-family="system-ui, sans-serif" font-size="14" fill="#0f172a" font-weight="700">Rule 1</text>
+            <text x="40" y="62" font-family="system-ui, sans-serif" font-size="14" fill="#334155">The first chapter must start at 0:00.</text>
+
+            <rect x="24" y="92" width="592" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" />
+            <text x="40" y="116" font-family="system-ui, sans-serif" font-size="14" fill="#0f172a" font-weight="700">Rule 2</text>
+            <text x="40" y="138" font-family="system-ui, sans-serif" font-size="14" fill="#334155">There must be at least 3 chapters.</text>
+
+            <rect x="24" y="168" width="592" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" />
+            <text x="40" y="192" font-family="system-ui, sans-serif" font-size="14" fill="#0f172a" font-weight="700">Rule 3</text>
+            <text x="40" y="214" font-family="system-ui, sans-serif" font-size="14" fill="#334155">Every chapter must run at least 10 seconds.</text>
+
+            <rect x="24" y="248" width="592" height="56" rx="8" fill="#f1f5f9" stroke="#e2e8f0" />
+            <text x="40" y="272" font-family="system-ui, sans-serif" font-size="14" fill="#b45309" font-weight="600">{STUDY.brokenPct}% of sampled B2B videos with timestamps broke at least one rule.</text>
+            <text x="40" y="292" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">{STUDY.sampled} videos sampled, {STUDY.withTimestamps} had written timestamps.</text>
+          </svg>
+          <figcaption class="mt-2 text-xs text-gray-400 dark:text-slate-600">
+            Based on {STUDY.sampled} B2B videos sampled in September 2026.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What to check before you publish AI-written chapters</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          The three rules above catch the mechanical failures, and the checker below the generated chapters catches those automatically. There is a fourth mistake it cannot catch: a chapter that passes every rule and still tells a buyer nothing. Skim the labels before you copy the block.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A good label says what the section is about, not what happens in it. "Pricing and what drives the cost" gets clicked. "We talk about pricing" reads like narration and gets skipped along with everything else. The generator is built to write the first kind, but it is reading a transcript, not your intent, so a quick check before publishing is worth the ten seconds.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The chapter box is editable for exactly this. Fix a label, delete a chapter that does not earn its place, and the checker re-validates the moment you stop typing.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Deep links do a job chapters can't</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Chapters help someone who is already watching. A deep link gets someone to press play in the first place, at the exact second that matters to them.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          A sales rep following up after a demo does not send the whole recording. They send the link to the two minutes where the prospect's actual objection got answered. A support team does not tell a customer to "watch the tutorial"; they send the link to the exact step. Both are the same tool: a URL that starts a video at a second, not at zero.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          The embed form does the same job on your own site: a demo video that opens straight to the feature the landing page is about, instead of asking the visitor to scrub for it.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">What to do with your chapters</h2>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Paste the finished block into the description you write with the <a href="/tools/youtube-description-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">description generator</a>, above the links and tags, exactly where YouTube expects it.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed mb-4">
+          Before you copy a competitor's structure, check whether their own timestamps actually became chapters with the <a href="/tools/youtube-description-extractor" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">description extractor</a>. Plenty of videos with a long timestamp list never passed the three rules, and copying a broken pattern just repeats the mistake.
+        </p>
+        <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
+          Then keep the deep links. The chapter block is for the description; the individual links are for every follow-up email and message that references one part of the video.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Frequently asked questions</h2>
+        <div class="space-y-6">
+          {faqs.map((faq) => (
+            <div>
+              <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">{faq.question}</h3>
+              <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-500 text-center mb-2">Next step</p>
+      <p class="text-sm text-gray-500 dark:text-slate-400 text-center mb-8">You have the chapters. Here is the rest of the metadata.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <a href="/tools/youtube-transcript-generator" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Transcript Generator</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Transcripts</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Read the full text a video says, for competitor research or your own content.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+        <a href="/tools/youtube-description-extractor" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Description Extractor</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Metadata</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Check whether a competitor's timestamps actually became chapters.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+        <a href="/tools/youtube-description-generator" class="group block rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 p-6 hover:shadow-md hover:border-emerald-500/30 transition-all">
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-sm font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Description Generator</h3>
+            <span class="flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Descriptions</span>
+          </div>
+          <p class="text-xs text-gray-500 dark:text-slate-400 leading-relaxed mb-3">Paste your finished chapter block into a description built to rank.</p>
+          <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 group-hover:underline">Try this tool &rarr;</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  import { checkChapters, extractTimestamps } from '../../../netlify/functions/lib/parsers.js';
+  import { buildChapterLinks } from '../../../netlify/functions/lib/video-id.js';
+
+  // ===== CONSTANTS =====
+
+  const RATE_LIMIT = 1;
+  const COUNT_KEY = 'sot_timestamp_count';
+  const EMAIL_KEY = 'sot_timestamp_email_submitted';
+  const CAPTURE_URL = '/.netlify/functions/capture-email';
+  const TOOL = 'youtube-timestamp-generator';
+
+  function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
+  function incrementCount(): void { localStorage.setItem(COUNT_KEY, (getCount() + 1).toString()); }
+  function isEmailSubmitted(): boolean { return localStorage.getItem(EMAIL_KEY) === 'true'; }
+  function setEmailSubmitted(): void { localStorage.setItem(EMAIL_KEY, 'true'); }
+
+  // gtag is installed unconditionally and inline by Analytics.astro, before this module runs, and
+  // that file documents that dataLayer must not be touched directly. So just call gtag.
+  function track(event: string, params: Record<string, string> = {}): void {
+    window.gtag('event', event, { tool: TOOL, ...params });
+  }
+
+  // ===== STEPS =====
+
+  const STEPS = ['step-input', 'step-loading', 'step-email-gate', 'step-results'];
+  function showStep(id: string): void {
+    STEPS.forEach((s) => {
+      const el = document.getElementById(s);
+      if (el) el.classList.toggle('hidden', s !== id);
+    });
+  }
+
+  function announce(message: string): void {
+    const el = document.getElementById('tool-status');
+    if (el) el.textContent = message;
+  }
+
+  function updateCounterLabel(): void {
+    const label = document.getElementById('counter-label');
+    if (!label) return;
+    if (isEmailSubmitted()) {
+      label.textContent = 'Unlimited chapter generations unlocked';
+      return;
+    }
+    const remaining = Math.max(0, RATE_LIMIT - getCount());
+    label.textContent = remaining === 1 ? '1 free generation remaining' : remaining + ' free generations remaining';
+  }
+
+  // ===== INLINE VALIDATION =====
+
+  function showFieldError(fieldId: string, message: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const error = document.getElementById(fieldId.replace('-input', '-error'));
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (error) { error.textContent = message; error.classList.remove('hidden'); }
+  }
+
+  function clearFieldError(fieldId: string): void {
+    const input = document.getElementById(fieldId) as HTMLInputElement | null;
+    const error = document.getElementById(fieldId.replace('-input', '-error'));
+    if (input) input.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+  }
+
+  // A 503/429 means an upstream service or budget is the problem, not the user's URL. Shown as a
+  // page notice rather than a field error so we do not blame their input for our outage.
+  function showToolNotice(message: string): void {
+    const el = document.getElementById('tool-notice');
+    if (!el) return;
+    el.textContent = message;
+    el.classList.remove('hidden');
+  }
+  function clearToolNotice(): void {
+    const el = document.getElementById('tool-notice');
+    if (!el) return;
+    el.textContent = '';
+    el.classList.add('hidden');
+  }
+
+  // ===== CLIPBOARD =====
+
+  let toastTimer: number | undefined;
+  function showToast(): void {
+    const toast = document.getElementById('copy-toast');
+    if (!toast) return;
+    toast.classList.remove('hidden');
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => toast.classList.add('hidden'), 2000);
+  }
+  function copyText(text: string): void {
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => showToast()).catch(() => {
+      showFieldError('video-url-input', 'Your browser blocked the clipboard. Select the text and copy it manually.');
+    });
+  }
+
+  // ===== DOM HELPERS =====
+  // Deep-link rows are built with textContent, never innerHTML: a chapter label can come from an
+  // AI model reading third-party transcript text.
+
+  function el(tag: string, className: string, text?: string): HTMLElement {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function clear(node: HTMLElement | null): void {
+    if (node) node.textContent = '';
+  }
+
+  // ===== STATE =====
+  // The textarea's current text is the single source of truth once results are showing. videoId
+  // is the only other piece of state, needed to build deep links; it comes straight from the API
+  // response, so there is no second URL field to keep in sync with it.
+
+  let videoId = '';
+
+  // ===== DERIVED: VALIDATION + DEEP LINKS =====
+  // checkChapters is called with ONE argument on purpose. Passing a video duration would let it
+  // judge the last chapter's length, and this page never fetches a video's duration, so that rule
+  // is shown as a standing advisory note below instead of ever contributing to "invalid".
+
+  function renderVerdict(chapters: { raw: string; seconds: number; label: string }[]): void {
+    const wrap = document.getElementById('chapter-verdict');
+    clear(wrap);
+    if (!wrap) return;
+
+    if (chapters.length === 0) {
+      wrap.appendChild(el('p', 'text-sm text-gray-500 dark:text-slate-400', 'No timestamps found in this text yet.'));
+      return;
+    }
+
+    const verdict = checkChapters(chapters);
+    if (verdict.valid) {
+      wrap.appendChild(el('p', 'text-sm font-semibold text-emerald-600 dark:text-emerald-400', 'These will work as YouTube chapters.'));
+    } else {
+      wrap.appendChild(el('p', 'text-sm font-semibold text-amber-700 dark:text-amber-300', 'These are not valid YouTube chapters yet.'));
+      verdict.reasons.forEach((r: string) => {
+        wrap.appendChild(el('p', 'mt-1 text-xs text-gray-600 dark:text-slate-400 leading-relaxed', r));
+      });
+    }
+    wrap.appendChild(
+      el(
+        'p',
+        'mt-3 text-xs text-gray-400 dark:text-slate-600',
+        "Can't check whether the last chapter runs long enough before the video ends. This tool does not fetch your video's duration."
+      )
+    );
+  }
+
+  function renderDeepLinks(chapters: { raw: string; seconds: number; label: string }[]): void {
+    const wrap = document.getElementById('deeplink-rows');
+    clear(wrap);
+    if (!wrap) return;
+
+    if (!videoId) {
+      wrap.appendChild(el('p', 'text-sm text-gray-500 dark:text-slate-400', 'Generate chapters for a video to get shareable links.'));
+      return;
+    }
+    if (chapters.length === 0) {
+      wrap.appendChild(el('p', 'text-sm text-gray-500 dark:text-slate-400', 'No timestamps found in this text yet.'));
+      return;
+    }
+
+    chapters.forEach((c) => {
+      const links = buildChapterLinks(videoId, c.seconds);
+      if (!links) return;
+      const row = el('div', 'rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-3');
+      row.appendChild(el('p', 'text-xs font-semibold text-gray-700 dark:text-slate-300 mb-2', c.raw + '  ' + (c.label || '(no label)')));
+      const btnRow = el('div', 'flex flex-wrap gap-2');
+      (
+        [
+          ['watch', links.watch, 'Copy watch link'],
+          ['short', links.short, 'Copy short link'],
+          ['embed', links.embed, 'Copy embed link'],
+        ] as const
+      ).forEach(([form, href, label]) => {
+        const btn = el(
+          'button',
+          'text-xs border border-slate-300 dark:border-slate-600 rounded-lg px-2.5 py-1.5 text-gray-500 dark:text-slate-400 hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors',
+          label
+        );
+        btn.setAttribute('aria-label', label + ': ' + href);
+        btn.addEventListener('click', () => {
+          copyText(href);
+          track('timestamp_link_copied', { form });
+        });
+        btnRow.appendChild(btn);
+      });
+      row.appendChild(btnRow);
+      wrap.appendChild(row);
+    });
+  }
+
+  function updateDerived(): void {
+    const textarea = document.getElementById('chapter-textarea') as HTMLTextAreaElement | null;
+    const chapters = extractTimestamps(textarea?.value ?? '');
+    renderVerdict(chapters);
+    renderDeepLinks(chapters);
+  }
+
+  // The verdict panel is deliberately outside any aria-live region (see the comment on
+  // #tool-status): announcing the whole panel on every keystroke, including the growing deep-link
+  // list, is unusable. But that only justifies not making the WHOLE panel live, not making the one
+  // decision-relevant line silent. A screen reader user editing a chapter gets zero feedback
+  // otherwise on whether their edit still passes YouTube's rules. Debounced so rapid typing does
+  // not fire an announcement per keystroke.
+  let verdictAnnounceTimer: number | undefined;
+  function announceVerdictSoon(): void {
+    if (verdictAnnounceTimer) window.clearTimeout(verdictAnnounceTimer);
+    verdictAnnounceTimer = window.setTimeout(() => {
+      const textarea = document.getElementById('chapter-textarea') as HTMLTextAreaElement | null;
+      const chapters = extractTimestamps(textarea?.value ?? '');
+      if (chapters.length === 0) {
+        announce('No timestamps found in this text yet.');
+        return;
+      }
+      const verdict = checkChapters(chapters);
+      announce(
+        verdict.valid
+          ? 'These will work as YouTube chapters.'
+          : 'Not valid yet: ' + verdict.reasons.length + (verdict.reasons.length === 1 ? ' problem.' : ' problems.')
+      );
+    }, 600);
+  }
+
+  function updateDownloadLink(): void {
+    const link = document.getElementById('download-block-link') as HTMLAnchorElement | null;
+    if (!link) return;
+    link.onclick = (e) => {
+      e.preventDefault();
+      const textarea = document.getElementById('chapter-textarea') as HTMLTextAreaElement | null;
+      const text = textarea?.value ?? '';
+      if (!text) return;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'chapters.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      track('timestamp_block_downloaded');
+    };
+  }
+
+  // ===== RENDER RESULT =====
+
+  interface GenerateResponse {
+    videoId: string;
+    title: string;
+    thumbnail: string;
+    note: string;
+    block: string;
+  }
+
+  function renderResult(data: GenerateResponse): void {
+    videoId = data.videoId || '';
+
+    const thumb = document.getElementById('result-thumb') as HTMLImageElement | null;
+    if (thumb) {
+      if (data.thumbnail) {
+        thumb.src = data.thumbnail;
+        thumb.alt = data.title ? 'Thumbnail for ' + data.title : 'Video thumbnail';
+        thumb.classList.remove('hidden');
+      } else {
+        thumb.removeAttribute('src');
+        thumb.classList.add('hidden');
+      }
+    }
+
+    const titleEl = document.getElementById('result-title');
+    if (titleEl) titleEl.textContent = data.title || 'Untitled video';
+
+    const noteEl = document.getElementById('result-note');
+    if (noteEl) {
+      if (data.note) { noteEl.textContent = data.note; noteEl.classList.remove('hidden'); }
+      else { noteEl.textContent = ''; noteEl.classList.add('hidden'); }
+    }
+
+    const textarea = document.getElementById('chapter-textarea') as HTMLTextAreaElement | null;
+    if (textarea) textarea.value = data.block || '';
+
+    updateDownloadLink();
+    updateDerived();
+  }
+
+  // ===== GENERATE =====
+
+  function validateInput(): string | null {
+    const raw = (document.getElementById('video-url-input') as HTMLInputElement | null)?.value.trim() ?? '';
+    if (!raw) {
+      showFieldError('video-url-input', 'Please enter a YouTube video URL.');
+      return null;
+    }
+    if (!raw.includes('youtube.com') && !raw.includes('youtu.be') && !/^[\w-]{11}$/.test(raw)) {
+      showFieldError('video-url-input', 'Please enter a valid YouTube video URL, for example https://youtube.com/watch?v=...');
+      return null;
+    }
+    clearFieldError('video-url-input');
+    return raw;
+  }
+
+  function resetGenerateButton(): void {
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement | null;
+    if (!btn) return;
+    btn.disabled = false;
+    btn.textContent = 'Generate Chapters →';
+  }
+
+  function failGenerate(message: string, reason: string, asNotice = false): void {
+    showStep('step-input');
+    resetGenerateButton();
+    if (asNotice) showToolNotice(message);
+    else showFieldError('video-url-input', message);
+    track('tool_generate_error', { reason });
+  }
+
+  async function generate(): Promise<void> {
+    const url = validateInput();
+    if (!url) return;
+
+    // Gate check before any network call. A failed attempt (bad URL, upstream error) must never
+    // count against the free use, so this only fires once we are actually about to spend one.
+    if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
+      track('tool_email_gate_shown');
+      showStep('step-email-gate');
+      return;
+    }
+
+    clearToolNotice();
+    track('tool_generate_click');
+
+    const btn = document.getElementById('generate-btn') as HTMLButtonElement | null;
+    if (btn) { btn.disabled = true; btn.textContent = 'Generating...'; }
+    showStep('step-loading');
+
+    try {
+      const res = await fetch('/api/generate-chapters', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+
+      if (res.status === 429) {
+        const b = await res.json().catch(() => ({}));
+        return failGenerate(b.error || 'Chapter generation has hit its limit right now. Please try again tomorrow.', b.code || 'quota_exceeded', true);
+      }
+      if (res.status === 503) {
+        const b = await res.json().catch(() => ({}));
+        return failGenerate(b.error || 'The chapter writer is unavailable right now. Please try again in a moment.', 'upstream_unavailable', true);
+      }
+      if (res.status === 400 || res.status === 422) {
+        const b = await res.json().catch(() => ({}));
+        return failGenerate(b.error || 'That video could not be read. Check the URL and try again.', b.code || 'bad_input');
+      }
+      if (!res.ok) throw new Error('Something went wrong on our end. Please try again in a moment.');
+
+      const data = (await res.json()) as GenerateResponse;
+      renderResult(data);
+      incrementCount();
+      updateCounterLabel();
+      showStep('step-results');
+      announce('Chapters ready.');
+      document.getElementById('result-title')?.focus();
+      document.getElementById('step-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Shareable / bookmarkable URL for this result. Prefill only on load (see below); this write
+      // never triggers a re-generation on its own.
+      const params = new URLSearchParams(window.location.search);
+      params.set('v', data.videoId);
+      history.replaceState(null, '', window.location.pathname + '?' + params.toString());
+
+      track('tool_generate_success');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+      failGenerate(message, 'api_error');
+    }
+  }
+
+  // ===== EMAIL GATE =====
+
+  async function submitGateEmail(): Promise<void> {
+    const emailInput = document.getElementById('gate-email') as HTMLInputElement | null;
+    const btn = document.getElementById('gate-submit-btn') as HTMLButtonElement | null;
+    if (!emailInput || btn?.disabled) return;
+
+    const email = emailInput.value.trim();
+    const error = document.getElementById('gate-email-error');
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailInput.setAttribute('aria-invalid', 'true');
+      if (error) { error.textContent = 'Please enter a valid email address.'; error.classList.remove('hidden'); }
+      return;
+    }
+    emailInput.removeAttribute('aria-invalid');
+    if (error) { error.textContent = ''; error.classList.add('hidden'); }
+
+    // Disable immediately. Two clicks used to fire two Gemini calls, last writer wins.
+    if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
+
+    try {
+      await fetch(CAPTURE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: TOOL }),
+      });
+    } catch {
+      // The gate unlocks regardless. A capture failure is ours, not theirs.
+    }
+
+    setEmailSubmitted();
+    updateCounterLabel();
+    track('tool_email_submitted');
+
+    const form = document.getElementById('gate-form');
+    const success = document.getElementById('gate-success');
+    form?.classList.add('hidden');
+    success?.classList.remove('hidden');
+
+    window.setTimeout(() => {
+      form?.classList.remove('hidden');
+      success?.classList.add('hidden');
+      if (btn) { btn.disabled = false; btn.textContent = 'Continue Generating'; }
+      emailInput.value = '';
+      generate();
+    }, 1200);
+  }
+
+  // ===== WIRING =====
+
+  document.getElementById('generate-btn')?.addEventListener('click', generate);
+  document.getElementById('video-url-input')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') generate();
+  });
+  document.getElementById('gate-submit-btn')?.addEventListener('click', submitGateEmail);
+  document.getElementById('gate-email')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') submitGateEmail();
+  });
+
+  document.getElementById('copy-block-btn')?.addEventListener('click', () => {
+    const textarea = document.getElementById('chapter-textarea') as HTMLTextAreaElement | null;
+    copyText(textarea?.value ?? '');
+    track('timestamp_block_copied');
+  });
+  document.getElementById('chapter-textarea')?.addEventListener('input', () => {
+    updateDerived();
+    announceVerdictSoon();
+  });
+
+  document.querySelectorAll('a[href^="https://cal.com/"]').forEach((a) => {
+    a.addEventListener('click', () => track('tool_cta_click'));
+  });
+
+  document.getElementById('reset-btn')?.addEventListener('click', () => {
+    videoId = '';
+    const input = document.getElementById('video-url-input') as HTMLInputElement | null;
+    if (input) input.value = '';
+    clearFieldError('video-url-input');
+    clearToolNotice();
+    // generate() disables the button and relabels it "Generating..." synchronously before the
+    // first await, and nothing re-enables it on success (only failGenerate does). Without this,
+    // the button stays disabled forever after one successful generation and no click can reach it.
+    resetGenerateButton();
+    announce('');
+    showStep('step-input');
+    input?.focus();
+    const params = new URLSearchParams(window.location.search);
+    params.delete('v');
+    const q = params.toString();
+    history.replaceState(null, '', window.location.pathname + (q ? '?' + q : ''));
+  });
+
+  // Deep link: /tools/youtube-timestamp-generator?v=<id or url>
+  // Prefill ONLY, never auto-run. Auto-running on load would spend a free generation (or a
+  // transcript-budget credit) and fire tool_generate_click on every reload, back navigation and
+  // shared link, without a human clicking anything.
+  const prefill = new URLSearchParams(window.location.search).get('v');
+  if (prefill) {
+    const input = document.getElementById('video-url-input') as HTMLInputElement | null;
+    if (input) input.value = /^[\w-]{11}$/.test(prefill) ? 'https://www.youtube.com/watch?v=' + prefill : prefill;
+  }
+
+  updateCounterLabel();
+</script>

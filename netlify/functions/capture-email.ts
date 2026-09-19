@@ -38,6 +38,7 @@ const handler: Handler = async (event) => {
     'youtube-script-generator': 'YouTube Script Generator',
     'youtube-seo-tool': 'YouTube SEO tool',
     'youtube-tag-generator': 'YouTube Tag Generator',
+    'youtube-timestamp-generator': 'YouTube Timestamp Generator',
     'youtube-title-generator': 'YouTube Title Generator',
     'youtube-transcript-generator': 'YouTube Transcript Generator',
     'youtube-video-ideas-evaluator': 'YouTube Video Idea Evaluator',

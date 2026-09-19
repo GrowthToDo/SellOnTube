@@ -11,8 +11,11 @@ import {
   checkChapters,
   extractLinks,
   extractTimestamps,
+  formatChapterBlock,
   formatSeconds,
   matchAll,
+  MAX_CHAPTERS,
+  normaliseChapters,
   normaliseNewlines,
   parseIsoDuration,
   parseTimestamp,
@@ -242,4 +245,142 @@ test('verifiedQuote handles empty and null input', () => {
   assert.equal(verifiedQuote(null, 'anything'), null);
   assert.equal(verifiedQuote('', 'anything'), null);
   assert.equal(verifiedQuote('   ', 'anything'), null);
+});
+
+// ---------------------------------------------------------------------------------------------
+// normaliseChapters: shaping model output into something YouTube can accept.
+// Every case here is a shape a language model actually returns.
+// ---------------------------------------------------------------------------------------------
+
+test('normaliseChapters sorts, forces the first start to 0 and keeps labels', () => {
+  const out = normaliseChapters([
+    { seconds: 120, label: 'Pricing' },
+    { seconds: 30, label: 'Intro' },
+    { seconds: 240, label: 'Close' },
+  ]);
+  assert.deepEqual(
+    out.map((c) => [c.seconds, c.label]),
+    [
+      [0, 'Intro'],
+      [120, 'Pricing'],
+      [240, 'Close'],
+    ]
+  );
+  assert.equal(out[0].raw, '0:00', 'raw is the display string the UI shows');
+});
+
+test('normaliseChapters drops a timestamp past the end of the video', () => {
+  // A hallucinated 9:59:59 on a 3-minute video renders as a plausible chapter YouTube then refuses.
+  const out = normaliseChapters(
+    [
+      { seconds: 0, label: 'Intro' },
+      { seconds: 60, label: 'Middle' },
+      { seconds: 35999, label: 'Invented' },
+    ],
+    { endSeconds: 180 }
+  );
+  assert.deepEqual(out.map((c) => c.seconds), [0, 60]);
+});
+
+test('normaliseChapters clamps against the end before forcing the first to 0', () => {
+  // Order matters: force-then-clamp would collapse an all-past-the-end list into one bogus 0:00.
+  const out = normaliseChapters([{ seconds: 900, label: 'Past the end' }], { endSeconds: 120 });
+  assert.deepEqual(out, []);
+});
+
+test('normaliseChapters drops duplicates and anything inside the minimum gap', () => {
+  const out = normaliseChapters([
+    { seconds: 0, label: 'Intro' },
+    { seconds: 0, label: 'Intro again' },
+    { seconds: 5, label: 'Too close' },
+    { seconds: 10, label: 'Exactly the minimum' },
+  ]);
+  assert.deepEqual(
+    out.map((c) => [c.seconds, c.label]),
+    [
+      [0, 'Intro'],
+      [10, 'Exactly the minimum'],
+    ]
+  );
+});
+
+test('normaliseChapters caps the list', () => {
+  const many = Array.from({ length: 50 }, (_, i) => ({ seconds: i * 60, label: `Part ${i}` }));
+  assert.equal(normaliseChapters(many).length, MAX_CHAPTERS);
+});
+
+test('normaliseChapters survives every wrong type a model returns', () => {
+  const out = normaliseChapters([
+    { seconds: '0', label: 'String seconds' },
+    { seconds: -30, label: 'Negative' },
+    { seconds: 'soon', label: 'Words' },
+    { seconds: 90.7, label: 'Fractional' },
+    { seconds: 200 },
+    null,
+  ]);
+  assert.deepEqual(
+    out.map((c) => [c.seconds, c.label]),
+    [
+      [0, 'String seconds'],
+      [90, 'Fractional'],
+      [200, ''],
+    ]
+  );
+  assert.deepEqual(normaliseChapters(null), [], 'a non-array is an empty list, never a throw');
+  assert.deepEqual(normaliseChapters(undefined), []);
+});
+
+test('normaliseChapters strips control characters out of a label', () => {
+  const bidi = String.fromCharCode(0x202e);
+  const out = normaliseChapters([{ seconds: 0, label: `Pricing${bidi} section` }]);
+  assert.equal(out[0].label, 'Pricing section');
+});
+
+test('normaliseChapters output passes the checker that the browser runs', () => {
+  // The server shapes, the client judges. If these two ever disagree, the page says "invalid"
+  // about a list the server just produced.
+  const out = normaliseChapters([
+    { seconds: 3, label: 'Intro' },
+    { seconds: 90, label: 'Problem' },
+    { seconds: 200, label: 'Pricing' },
+  ]);
+  assert.equal(checkChapters(out).valid, true);
+});
+
+// ---------------------------------------------------------------------------------------------
+// formatChapterBlock: the text a creator pastes into their description.
+// ---------------------------------------------------------------------------------------------
+
+test('formatChapterBlock writes one chapter per line, space separated', () => {
+  const block = formatChapterBlock([
+    { raw: '0:00', seconds: 0, label: 'Intro' },
+    { raw: '1:30', seconds: 90, label: 'Pricing' },
+    { raw: '1:00:00', seconds: 3600, label: 'Q and A' },
+  ]);
+  assert.equal(block, '0:00 Intro' + LF + '1:30 Pricing' + LF + '1:00:00 Q and A');
+});
+
+test('formatChapterBlock offers the dash style channels already use', () => {
+  const block = formatChapterBlock([{ raw: '0:00', seconds: 0, label: 'Intro' }], { separator: '-' });
+  assert.equal(block, '0:00 - Intro');
+});
+
+test('formatChapterBlock leaves no trailing separator on an unlabelled chapter', () => {
+  assert.equal(formatChapterBlock([{ raw: '0:00', seconds: 0, label: '' }]), '0:00');
+  assert.equal(formatChapterBlock([]), '');
+});
+
+test('formatChapterBlock round-trips through extractTimestamps', () => {
+  // The block this writes is pasted into a description, which the extractor then reads back.
+  const chapters = normaliseChapters([
+    { seconds: 0, label: 'Intro' },
+    { seconds: 95, label: 'The problem' },
+    { seconds: 240, label: 'Pricing' },
+  ]);
+  const read = extractTimestamps(formatChapterBlock(chapters));
+  assert.deepEqual(
+    read.map((c) => [c.seconds, c.label]),
+    chapters.map((c) => [c.seconds, c.label])
+  );
+  assert.equal(checkChapters(read).valid, true);
 });

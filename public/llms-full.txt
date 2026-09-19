@@ -26,6 +26,7 @@ Founded by Sathyanand S and Gautham. Based on the principle that YouTube works a
 - YouTube Video Idea Evaluator (/tools/youtube-video-ideas-evaluator): Score whether a video idea attracts buyers or just viewers, across 4 buyer intent dimensions
 - YouTube Transcript Generator (/tools/youtube-transcript-generator): Extract clean transcripts from any YouTube video for competitor analysis
 - YouTube Description Extractor (/tools/youtube-description-extractor): Paste any video URL and pull its full description, the hidden tag list with its 500-character budget, every link with its character position against the 150-character fold, hashtags, mentions, and a check against YouTube's three chapter rules
+- YouTube Timestamp Generator (/tools/youtube-timestamp-generator): Paste a YouTube video URL and get chapter timestamps written from the real transcript, checked against YouTube's three chapter rules (first chapter at 0:00, at least 3 chapters, each at least 10 seconds), editable before you publish, with shareable deep links in three formats for every chapter
 - YouTube ROI Calculator (/tools/youtube-roi-calculator): Enter customer LTV and COGS, see break-even point and profit projections
 
 ### Blog (/blog)
