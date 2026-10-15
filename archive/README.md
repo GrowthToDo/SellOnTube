@@ -10,3 +10,6 @@ truth — if a doc that should be canonical was archived by mistake, check `docs
 - `blog-strategy-lessons.md`, `ms-clarity-strategy.md`, `youtube-for-audit.txt` — orphaned one-off
   session docs. Still-valid content was extracted into `mistakes-lessons.md` and
   `analytics-toolkit.md` before archiving; these files are kept only for raw historical detail.
+- `commands/` (archived 2026-10-15) - the retired `/brief`, `/draft`, `/refresh` and `/content-plan`
+  slash commands. Blog work now runs through the global `seo-content-system` skill; the step map and
+  the SellonTube-only excerpts live in `seo/site-kit/pipeline-notes.md`.

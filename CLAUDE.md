@@ -18,24 +18,35 @@ building the tool, not a follow-up task.
 1. Add the tool to the `tools` array in `src/pages/tools/index.astro`, in correct workflow position.
 2. Add it to the `Free Tools` linkGroup in `src/navigation.ts`, matching order.
 3. Submit both URLs to Bing: `node scripts/bing-submit.mjs <file-of-urls>`. Run it as a standard step
-   whenever a new tool or blog post publishes — no need to ask first.
+   whenever a new tool or blog post publishes. No need to ask first. IndexNow too, automatic for
+   every post and page once merged AND live: submit, then verify HTTP 200 or 202 (else retry once
+   and report). Key and command: `SEO_CONTEXT.md` "IndexNow" (decided 2026-10-15 by Sathya).
 4. Remind the user to submit both URLs in Google Search Console (URL Inspection → Request Indexing).
    Manual by necessity; GSC has no public submission API.
 
 Full detail: `agents/08-microtool-builder.md` Phase 7.
 
+## Blog and SEO work
+
+All blog/SEO work runs through the global seo-content-system skill. Config: SEO_CONTEXT.md
+(seo-config block). Site detail: seo/site-kit/. A post gate hook checks every saved post.
+The old `/brief`, `/draft`, `/refresh` and `/content-plan` commands are archived in
+`archive/commands/`; `seo/site-kit/pipeline-notes.md` maps each step to its skill mode.
+
 ## AEO / AI citation
 
 `ai-seo-guide.md` is the single source of truth for AI-search optimization. **Do not restate AEO rules
 in other docs** — point at it. Section map (§16 citability gate, §17 language, §18 media, §19 what
-actually gets cited): `seo-rules.md`.
+actually gets cited): `seo-rules.md`. The §19 proven-citation evidence and the canonical entity
+terms are excerpted in `seo/site-kit/evidence-entities.md`.
 
 **Agent 05 hard-fails any post that misses the §16 citability gate.** Third-party ratings only where a
 real listing exists, never fabricated; SellonTube's own tools use first-party proof plus disclosure.
 
-Page structure for comparison / alternatives / best-tools posts:
-`agents/references/comparison-content-playbook.md`. Word-count and depth tiers only:
-`content-depth-framework.md`.
+Page structure for comparison / alternatives / best-tools posts: the skill's post-rules skeletons;
+SellonTube examples and own-tool disclosure in `seo/site-kit/comparison-examples.md` (source
+`agents/references/comparison-content-playbook.md`). Word-count and depth tiers in
+`content-depth-framework.md` are guidance only (post-rules STR-07).
 
 ## Build standards
 
@@ -121,8 +132,10 @@ verification lessons.
   on touched pages against `style-guide.md` and `content-playbook.md`. Grep for every banned pattern
   before finishing.
 
-- **Blog render rules are canonical in `blog-production-standard.md`** — callout and table font sizes
-  (§ lines 432, 435), inline-SVG light palette (line 242), manual `## FAQ` heading with `### Question`
-  H3s in the MDX body (frontmatter `faqs` only emits JSON-LD, it renders nothing visible), and the
-  pre-publish QA checklist (§9). Copy from the templates; never guess a size. Run the QA checklist
-  before showing any draft — the user reviews strategy and tone, not missing formatting.
+- **Blog render specifics live in `seo/site-kit/brand-visuals.md`** (excerpted from
+  `blog-production-standard.md`): callout and table patterns, font sizes, SVG palette. Copy from
+  them; never guess a size. Write a manual `## FAQ` heading with `### Question` H3s in the MDX body:
+  frontmatter `faqs` only emits JSON-LD and renders nothing visible. FAQPage JSON-LD itself is
+  superseded: off for all projects (decided 2026-10-15 by Sathya, `SEO_CONTEXT.md` Overrides); the
+  blog layout still emits it until a site code change removes it. The draft check (mode 04 and
+  the post gate hook) runs before any draft is shown; final QA runs in mode 05.

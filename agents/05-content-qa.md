@@ -1,5 +1,8 @@
 # Agent 05: Content QA
 
+> Blog method, rules and QA now come from the global seo-content-system (`_shared/seo-content-framework/reference/post-rules.md`, workflows); this agent file keeps only SellonTube-specific detail.
+> On conflict, post-rules wins unless SEO_CONTEXT.md records an override.
+
 ## Role
 Audit any file against the Style Guide and Content Quality Playbook. Report every violation with exact location. Issue a clear PASS or FAIL.
 

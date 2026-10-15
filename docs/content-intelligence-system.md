@@ -2,6 +2,11 @@
 
 > Architecture and workflow for SellOnTube's research-to-publish content pipeline.
 
+> **Superseded in part (2026-10-15).** The command layer (`/content-plan`, `/brief`, `/draft`,
+> `/refresh`) is archived in `archive/commands/`. Blog and SEO work runs through the global
+> seo-content-system skill; config in `SEO_CONTEXT.md`, site detail in `seo/site-kit/`
+> (`pipeline-notes.md` maps every old command step). The data layer and agent notes stay valid.
+
 ---
 
 ## Architecture
@@ -18,12 +23,12 @@ DATA LAYER (Sources of Truth)
             |                          |                          |
             v                          v                          v
 +--------------------------------------------------------------------------+
-| INTELLIGENCE LAYER (Claude + Commands)                                    |
+| INTELLIGENCE LAYER (Claude + seo-content-system skill)                   |
 |                                                                          |
-| /content-plan  — Merges all signals into prioritized topic list          |
-| /brief         — SERP research + brief generation for a keyword          |
-| /draft         — Outline-first draft with anti-AI pass + QA              |
-| /refresh       — Gap analysis + structural update for existing posts     |
+| mode 02  (was /content-plan) - topic research, ranked list               |
+| mode 03  (was /brief)        - SERP read + brief, outline included       |
+| mode 04  (was /draft)        - draft, humanizer, draft check             |
+| mode 07  (was /refresh)      - gap analysis + refresh of live posts      |
 |                                                                          |
 | Decision rules:                                                          |
 |   1. Use MCP data first (live, authoritative)                            |
@@ -70,7 +75,12 @@ DATA LAYER (Sources of Truth)
 
 ---
 
-## Commands Reference
+## Commands Reference (superseded 2026-10-15)
+
+The four commands below are archived in `archive/commands/`. Use the global seo-content-system
+skill modes instead: `/content-plan` → mode 02, `/brief` → mode 03, `/draft` → mode 04 (then
+mode 05 for QA and ship), `/refresh` → mode 07. Step map and SellonTube-only detail:
+`seo/site-kit/pipeline-notes.md`. The table is kept as history.
 
 | Command | Input | Output | When to use |
 |---|---|---|---|
@@ -79,29 +89,29 @@ DATA LAYER (Sources of Truth)
 | `/draft` | Approved brief | Full MDX draft with SVG + QA | After brief approval |
 | `/refresh` | Post slug or URL | Gap analysis + updated content | Monthly on top posts |
 
-All commands live in `.claude/commands/`. They invoke existing agent logic (02-05) rather than replacing it.
+The commands lived in `.claude/commands/` (now `archive/commands/`). They invoked agent logic (02-05); the skill modes now cite the agent files for SellonTube detail only.
 
 ---
 
-## Weekly Workflow
+## Weekly Workflow (commands superseded 2026-10-15; mode names below)
 
 **Monday: Plan**
-1. Run `/content-plan next 4 weeks`
+1. Run seo-content-system mode 02 (topic research; was `/content-plan next 4 weeks`)
 2. Review priorities — pick the week's keyword or refresh target
 3. Approve or adjust
 
 **Tuesday-Wednesday: Create**
-4. Run `/brief [keyword]` — review and approve brief
-5. Run `/draft` — review outline, approve, receive draft
+4. Run mode 03 for the keyword (was `/brief`): review and approve the brief, outline included
+5. Run mode 04 (was `/draft`): review and approve the draft, then mode 05 runs final QA
 6. Add proof, screenshots, client stories (founder work)
 
 **Thursday: Publish**
-7. Final review + commit + push (follow `docs/sops/blog-publishing-sop.md`)
+7. Final review + commit + push (mode 05 route 3; `docs/sops/blog-publishing-sop.md`)
 8. Submit to GSC Request Indexing
 9. Update `sot_master.csv` status to `live`
 
 **Month-end: Refresh**
-10. Run `/refresh` on top 3 posts by impressions (follow `docs/sops/content-refresh-sop.md`)
+10. Run mode 07 on posts that hit a decay trigger (was `/refresh` on the top 3 by impressions, which the bot rule forbids; follow `docs/sops/content-refresh-sop.md`)
 
 ---
 
@@ -114,7 +124,7 @@ All commands live in `.claude/commands/`. They invoke existing agent logic (02-0
 | `style-guide.md` + `content-playbook.md` | Writing standards | Commands enforce them, not restate them |
 | `seo-rules.md` + `ai-seo-guide.md` | SEO standards | Commands reference them |
 | Blog publishing SOP | Gate sequence | Commands feed into it |
-| Content refresh SOP | Refresh sequence | `/refresh` follows it |
+| Content refresh SOP | Refresh sequence | mode 07 uses it (was `/refresh`) |
 
 ---
 
@@ -124,9 +134,9 @@ Ideas adopted from SEO Machine (cherry-picked, not installed):
 
 | SEO Machine concept | How we integrated it | Where it lives |
 |---|---|---|
-| SERP analysis before writing | `/brief` runs `dfs_serp_results` + competitor gap analysis | `.claude/commands/brief.md` |
+| SERP analysis before writing | mode 03 SERP table (BRF-03); DataForSEO optional and labelled (R-11). Was `/brief` | `_shared/seo-content-framework/workflows/03-brief.md` |
 | Content scoring/QA | Agent 05 already does this with CRITICAL/IMPORTANT/ADVISORY tiers | `agents/05-content-qa.md` |
 | Brand voice context file | Pointer doc referencing existing style-guide + content-playbook | `docs/brand-voice.md` |
 | Internal linking strategy | Already exists in Agent 04 Phase 3.6 + linking map | `docs/templates/internal-linking-map.md` |
-| Performance review workflow | `/refresh` + `/content-plan` cover this | `.claude/commands/refresh.md` |
+| Performance review workflow | mode 07 (refresh) + mode 02 (topic research) + mode 10 (measure). Was `/refresh` + `/content-plan` | `_shared/seo-content-framework/workflows/07-refresh.md` |
 | Meta element generation | Agent 04 already generates full frontmatter + meta | `agents/04-blog-writer.md` |

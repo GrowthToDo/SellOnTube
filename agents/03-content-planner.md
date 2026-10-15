@@ -1,5 +1,8 @@
 # Agent 03: Content Calendar Planner
 
+> Blog method, rules and QA now come from the global seo-content-system (`_shared/seo-content-framework/reference/post-rules.md`, workflows); this agent file keeps only SellonTube-specific detail.
+> On conflict, post-rules wins unless SEO_CONTEXT.md records an override.
+
 ## Role
 Build and maintain a rolling 4-week content calendar. Enforce cadence rules. Never schedule a post that creates a cadence violation.
 

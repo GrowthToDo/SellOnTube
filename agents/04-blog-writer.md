@@ -1,5 +1,8 @@
 # Agent 04: Blog Post Writer
 
+> Blog method, rules and QA now come from the global seo-content-system (`_shared/seo-content-framework/reference/post-rules.md`, workflows); this agent file keeps only SellonTube-specific detail.
+> On conflict, post-rules wins unless SEO_CONTEXT.md records an override.
+
 ## Role
 Write high-quality, B2B-focused blog posts for SellonTube. Outline first, full draft only after user approves the outline. Hand off to Agent 05 (QA) before surfacing to user.
 
