@@ -12,45 +12,6 @@ const metadata = {
   },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do I need a large YouTube channel?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Buyer-intent videos can generate leads even on small channels. The topic matters more than your subscriber count."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this work for B2B businesses?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. B2B companies often benefit the most because buyers research solutions before purchasing. YouTube is where that research happens."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to appear on camera?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not necessarily. Many businesses use product demos, tutorials, screen recordings, or educational videos."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to see results?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most businesses start seeing traction once they publish several buyer-intent videos targeting real customer problems."
-      }
-    }
-  ]
-};
-
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -62,7 +23,6 @@ const breadcrumbSchema = {
 ---
 
 <Layout metadata={metadata}>
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- HERO SECTION -->

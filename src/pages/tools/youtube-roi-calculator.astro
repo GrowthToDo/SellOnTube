@@ -36,27 +36,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What is the YouTube ROI formula for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube ROI = (revenue from YouTube − cost of YouTube) ÷ cost of YouTube. For B2B, the revenue figure is the lifetime value (LTV) of customers acquired through YouTube, minus COGS. So if you spent $5,000 and acquired 3 customers worth $15,000 each in margin, your ROI is roughly 8x ($45,000 returned on $5,000 invested)." } },
-    { "@type": "Question", "name": "How many customers do I need to break even on YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Breakeven customers per month = monthly YouTube cost ÷ gross margin per customer (LTV − COGS). At a $7,000/month investment and a $3,500 margin per customer, you break even at 2 customers per month. For most high-LTV B2B businesses, breakeven is 1-2 customers per month." } },
-    { "@type": "Question", "name": "How do you calculate CAC for a YouTube channel?", "acceptedAnswer": { "@type": "Answer", "text": "Divide total YouTube cost (production, editing, management) over a period by the number of customers acquired through YouTube in that period. Organic YouTube CAC for B2B typically lands between $50 and $250 per customer once the content library matures, lower than most paid channels." } },
-    { "@type": "Question", "name": "How do you attribute revenue to YouTube for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "Use two layers. First, self-reported attribution: add an open-text 'How did you first hear about us?' field on demo, trial, and pricing forms (open text, not a drop-down, because drop-downs hide channels you did not anticipate). Second, CRM tracking: tag YouTube links with UTM parameters and configure your CRM to keep the first-touch value. Combine both, because most B2B buyers watch over weeks and convert through a different channel, so neither layer alone is complete." } },
-    { "@type": "Question", "name": "Why does YouTube show low ROI in my CRM?", "acceptedAnswer": { "@type": "Answer", "text": "Last-click attribution is usually the cause. It credits the entire deal to the final touch (often a demo form) and erases the YouTube video that started the journey. YouTube's view-through window is 14-30 days, so measuring on a 7-day last-click view makes the channel look broken. Measure on a 30-60 day view-through plus assisted pipeline instead. The calculator tells you if YouTube pays back; attribution tells you whether you are crediting it correctly." } },
-    { "@type": "Question", "name": "How do you measure ROI of organic (non-ad) YouTube content?", "acceptedAnswer": { "@type": "Answer", "text": "Measure the lifetime value of customers sourced from organic YouTube videos against the cost of producing and managing the channel, not against ad spend. This is customer-acquisition ROI, not YouTube ad ROAS. ROAS measures return on paid ad spend per view; organic ROI measures return on content investment per acquired customer." } },
-    { "@type": "Question", "name": "What is a good YouTube ROI for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "For B2B, a 3-5x return on YouTube investment within the first 12 months is strong. The best channels reach 10x+ by month 18-24 because the content library compounds and cost per lead falls over time as older videos keep generating traffic." } },
-    { "@type": "Question", "name": "How long does YouTube take to show ROI for B2B?", "acceptedAnswer": { "@type": "Answer", "text": "Expect 3-6 months before YouTube generates consistent leads. The first month is setup and publishing, months 2-3 build YouTube search authority, and month 4+ is when organic discovery compounds. B2B companies with high LTV (over $5,000) often break even by month 4-5." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <HeroText
     title="Free YouTube ROI Calculator for B2B"
     subtitle="Ad-ROI calculators tell you if a campaign profited. This tells you whether building an organic YouTube channel is worth it, in two numbers you already know: your customer LTV and COGS."

@@ -42,16 +42,6 @@ const breadcrumbSchema = {
   ]
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [...niche.faqs, ...niche.industryFaqs].map((faq) => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
-  }))
-};
-
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
@@ -99,7 +89,6 @@ const serviceSchema = {
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 

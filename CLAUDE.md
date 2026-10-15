@@ -135,7 +135,7 @@ verification lessons.
 - **Blog render specifics live in `seo/site-kit/brand-visuals.md`** (excerpted from
   `blog-production-standard.md`): callout and table patterns, font sizes, SVG palette. Copy from
   them; never guess a size. Write a manual `## FAQ` heading with `### Question` H3s in the MDX body:
-  frontmatter `faqs` only emits JSON-LD and renders nothing visible. FAQPage JSON-LD itself is
-  superseded: off for all projects (decided 2026-10-15 by Sathya, `SEO_CONTEXT.md` Overrides); the
-  blog layout still emits it until a site code change removes it. The draft check (mode 04 and
-  the post gate hook) runs before any draft is shown; final QA runs in mode 05.
+  frontmatter `faqs` renders nothing visible and no longer emits JSON-LD. FAQPage JSON-LD is off
+  for all projects (decided 2026-10-15 by Sathya, `SEO_CONTEXT.md` Overrides); the blog layout
+  stopped emitting it 2026-10-15, and 13 tool pages still do until the tool-fix branch lands.
+  The draft check (mode 04 and the post gate hook) runs before any draft is shown; final QA runs in mode 05.

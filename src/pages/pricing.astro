@@ -28,58 +28,6 @@ const serviceSchema = {
   ]
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What's the minimum commitment?",
-      "acceptedAnswer": { "@type": "Answer", "text": "All tiers run on a 4-month minimum engagement. YouTube is a compounding channel. Four months is the minimum to see meaningful data and make smart adjustments." }
-    },
-    {
-      "@type": "Question",
-      "name": "Do we need to already have a YouTube channel?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. We can help you start from zero or build on what you have. The Foundation tier includes a full channel setup and optimization sprint." }
-    },
-    {
-      "@type": "Question",
-      "name": "What does our team need to do?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Minimal involvement on your end. You approve topics, review scripts, and publish videos. On Growth and Scale, we handle most of the execution." }
-    },
-    {
-      "@type": "Question",
-      "name": "How is this different from hiring a YouTube manager?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Most YouTube managers optimize for views and subscriber growth. We optimize for buyer-intent topics, lead capture, and customer acquisition. Different goal, different system." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can we start with Foundation and upgrade?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most clients start at Foundation or Growth to validate the channel, then upgrade to Scale once they're seeing pipeline." }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does YouTube marketing cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Our YouTube marketing packages start at $2,500/month for the Foundation retainer. The cost of YouTube marketing with SellonTube depends on the level of execution support your team needs." }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you work only with SaaS?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. We work with consulting businesses, agencies, courses, software companies, and other B2B services. As long as the economics make sense." }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you do everything end-to-end?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Strategy, scripts, editing, thumbnails, SEO, publishing, and analytics. Your team simply need to give us feedback and clear our doubts." }
-    },
-    {
-      "@type": "Question",
-      "name": "How fast can I expect results?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Most channels begin seeing rankings and qualified traffic within 45 to 90 days, with compounding results thereafter." }
-    }
-  ]
-};
-
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -106,7 +54,6 @@ const breadcrumbSchema = {
     .son-plate::after { bottom: -7px; right: -7px; border-bottom: 2px solid rgb(216 73 47); border-right: 2px solid rgb(216 73 47); }
   </style>
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- HERO SECTION -->

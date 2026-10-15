@@ -41,25 +41,12 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What does this tool check?", "acceptedAnswer": { "@type": "Answer", "text": "The grader checks 30+ rules across 6 categories: Search Visibility, Screenshots & Video, Listing Copy, Shopify Rules, Install Triggers, and Standout Score. Each check maps to Shopify's official listing requirements and evidence-based ASO best practices." } },
-    { "@type": "Question", "name": "How is the score calculated?", "acceptedAnswer": { "@type": "Answer", "text": "The score is a transparent 0-100 rubric. Each check earns points based on whether your listing passes. The six sections are weighted by their impact on installs: Search Visibility (25%), Screenshots & Video (25%), Listing Copy (20%), Shopify Rules (10%), Install Triggers (10%), and Standout Score (10%). No black box — every point is explainable." } },
-    { "@type": "Question", "name": "Is my listing data stored?", "acceptedAnswer": { "@type": "Answer", "text": "We cache results for up to 6 hours to speed up re-grades. Anonymized score data may be used to improve the tool. We never share your listing URL or email with third parties." } },
-    { "@type": "Question", "name": "Can I re-grade after making changes?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. If you update your listing, come back and grade it again. The tool detects content changes and runs a fresh analysis automatically — even within the cache window." } },
-    { "@type": "Question", "name": "What's in the full fix plan?", "acceptedAnswer": { "@type": "Answer", "text": "The fix plan is a prioritized list of up to 7 fixes, ordered by impact on installs. Each fix includes the specific issue, a concrete action to take, and a structural pattern to follow. Risk issues (compliance) come first, then growth issues (install impact)." } },
-  ]
-};
-
 const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','aol.com','icloud.com','mail.com','protonmail.com','zoho.com','ymail.com','live.com'];
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <Fragment slot="announcement"></Fragment>
 

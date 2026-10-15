@@ -123,7 +123,7 @@ Write complete MDX with frontmatter:
 publishDate: YYYY-MM-DD
 title: '[approved title]'
 excerpt: '[excerpt — must NOT start with "A practical guide" or "This post covers". Must contain a specific claim or number.]'
-image: ~/assets/images/blog/[slug]-featured.svg
+image: ~/assets/images/blog/[slug]-featured.png
 image_alt: '[descriptive alt text — max 125 chars, no keyword stuffing]'
 category: [category]
 tags:
@@ -164,23 +164,23 @@ Then full body in MDX, followed by:
 
 ### Phase 3.5 — Featured Image Creation (before Agent 05 handoff)
 
-Create the featured image SVG before running QA. Requirements (from `style-guide.md` Fix #17):
+Create the featured image before running QA. The shipped file is raster (JPEG, WebP or PNG) at 1200x630 (1.91:1), never SVG: the og:image must be raster (post-rules VIS-18) and the post gate fails an SVG `image:`. Size source of truth: `scripts/get-feature-image.mjs` L233-234 and the `featuredImageWidth`/`featuredImageHeight` defaults in `src/content/config.ts` L63-64. Photo route: `node scripts/get-feature-image.mjs <slug> "<title>" "<keyword>"` writes `[slug]-feature.jpg` and `.webp` at 1200x630. House-design route: build the SVG below as the design source, export it to PNG at 1200x630 and ship the PNG. House-design requirements (from `style-guide.md` Fix #17):
 
-- Canvas: `viewBox="0 0 1200 675" width="1200" height="675"` (true 16:9)
+- Canvas: `viewBox="0 0 1200 630" width="1200" height="630"` (1.91:1, the og:image ratio)
 - Background gradient: `#030620` → `#0a1540`
 - All text centred: `text-anchor="middle" x="600"`
-- Title: exactly 2 lines at 90px, font-weight 800. Line 1 white (`y=283`), line 2 uses gradient text
+- Title: exactly 2 lines at 90px, font-weight 800. Line 1 white (`y=264`), line 2 uses gradient text
 - Title lines contain NO numbers (arabic or spelled-out)
 - Gradient text: `fill="url(#gradText)"` with `gradientUnits="userSpaceOnUse"` x1=300 x2=900
 - Category pill: centred x=600, label UPPERCASE, `#60a5fa` fill
-- Divider bar at y=408, subtitle at y=450, footer wordmark at y=645
+- Divider bar at y=381, subtitle at y=420, footer wordmark at y=602 (the old 1200x675 positions scaled by 630/675)
 - Footer: "SellOnTube" bold + " — YouTube Acquisition for B2B" muted — no URL
 - Font: `'Inter', ui-sans-serif, system-ui, sans-serif`
 - No duplicate SVG attributes. No external CDN links. No remote fonts.
 - `width="100%"` for responsive scaling
 
-Save to: `src/assets/images/blog/[post-slug]-featured.svg`
-Update frontmatter `image` field: `~/assets/images/blog/[post-slug]-featured.svg`
+Save to: `src/assets/images/blog/[post-slug]-feature.jpg` (photo route) or `src/assets/images/blog/[post-slug]-featured.png` (house-design route). Never ship an `.svg` feature image.
+Update frontmatter `image` field to that raster file, e.g. `~/assets/images/blog/[post-slug]-featured.png`. Existing posts with an `.svg` image convert to raster when next edited.
 
 Do NOT hand off to Agent 05 until this file exists.
 

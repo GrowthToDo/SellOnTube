@@ -33,26 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this YouTube transcript generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free transcripts without signup. Enter a business email to unlock unlimited transcripts at no cost. There is no paid tier and no feature restrictions." } },
-    { "@type": "Question", "name": "How accurate are the transcripts?", "acceptedAnswer": { "@type": "Answer", "text": "The tool extracts captions directly from YouTube. For videos with manual captions, accuracy is near-perfect. For auto-generated captions, accuracy depends on audio quality and speaker clarity." } },
-    { "@type": "Question", "name": "Is it legal to transcribe competitor videos?", "acceptedAnswer": { "@type": "Answer", "text": "This tool extracts publicly available caption data from YouTube. Using transcripts for competitive research, content analysis, and strategy development falls under standard fair use." } },
-    { "@type": "Question", "name": "What is the difference between clean text and timestamped view?", "acceptedAnswer": { "@type": "Answer", "text": "Clean text gives you the full transcript as readable prose, ideal for keyword analysis and content repurposing. Timestamped view shows each segment with its timecode, useful for identifying when specific topics appear in the video." } },
-    { "@type": "Question", "name": "Can I transcribe my own videos?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Paste the URL of any of your published YouTube videos. This is useful for auditing your own content: checking keyword usage, reviewing CTA placement, or extracting text for blog repurposing." } },
-    { "@type": "Question", "name": "How long does transcription take?", "acceptedAnswer": { "@type": "Answer", "text": "Transcripts are extracted in seconds regardless of video length. The tool pulls existing caption data rather than processing audio." } },
-    { "@type": "Question", "name": "Why does it say no transcript available for some videos?", "acceptedAnswer": { "@type": "Answer", "text": "Some video creators disable captions entirely, or the video may be too new for YouTube to have generated auto-captions. Live streams in progress also lack transcripts." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

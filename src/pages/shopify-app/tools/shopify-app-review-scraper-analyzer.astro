@@ -38,24 +38,12 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellOnTube", "url": siteUrl },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "How do I extract reviews from a Shopify app?", "acceptedAnswer": { "@type": "Answer", "text": "Paste the Shopify App Store URL (e.g. https://apps.shopify.com/loox) into the tool above and click Scrape Reviews. The tool extracts the most recent reviews directly from the public listing page." } },
-    { "@type": "Question", "name": "Can I download Shopify app reviews as a CSV?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. After the reviews are extracted, click Download CSV, enter your business email address, and the file downloads immediately. The CSV includes author, rating, date, country, review text, and developer replies." } },
-    { "@type": "Question", "name": "Is this tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Completely free. The tool extracts up to 50 of the most recent reviews per app. No account or credit card required." } },
-    { "@type": "Question", "name": "What data is included in the export?", "acceptedAnswer": { "@type": "Answer", "text": "Each row includes: Author, Rating (1-5), Date, Country, Time Using App, Review Text, Helpful Count, Developer Reply, and Developer Reply Date." } },
-  ]
-};
-
 const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','aol.com','icloud.com','mail.com','protonmail.com','zoho.com','ymail.com','live.com'];
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <Fragment slot="announcement"></Fragment>
 

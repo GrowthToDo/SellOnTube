@@ -1,5 +1,5 @@
 Site kit for SellonTube: site-specific only. Method and rules live in seo-content-system.
-Sources: `blog-production-standard.md` L41-43, L45-106, L113-119, L240-246, L270-284, L324-342, L424-453; `agents/04-blog-writer.md` L165-179.
+Sources: `blog-production-standard.md` L41-43, L45-106, L113-119, L240-246, L270-284, L324-342, L424-453; `agents/04-blog-writer.md` L165-183.
 
 Excerpts are verbatim except that every em dash and en dash is replaced with " - ".
 
@@ -10,8 +10,8 @@ Notes added for this kit (not in the sources):
 - `blog-production-standard.md` contradicts itself on inline SVG diagrams: L242 says light theme (`#f8fafc` / `#e2e8f0`, "Do NOT use dark palette"), while L279-280 and the L440-449 spec table say dark palette (`#0f172a`) and "Never use washed-out light backgrounds". Not resolved here.
 - `blog-production-standard.md` names no font family. The only font rule found is the featured-image spec in `agents/04-blog-writer.md` L178 (Inter).
 - `agents/04-blog-writer.md` L167 cites `style-guide.md` "Fix #17" as the featured-image source. No "Fix #17" exists in `style-guide.md` (grep, 2026-10-15).
-- Featured image size disagrees: SVG spec 1200x675 (`agents/04-blog-writer.md` L169); `scripts/get-feature-image.mjs` L234 resizes to 1200x630; schema defaults `featuredImageWidth/Height` to 1200/630 (`src/content/config.ts` L63-64). Still to confirm against `get-feature-image.mjs` before the next export; until then export at 1200x630.
-- **Feature image format (decided 2026-10-15 by Sathya): PNG or JPG, never SVG.** Design the image with the SVG spec below, then export it to a PNG at 1200x630 (or the size confirmed above) and set `image:` to that raster file. New and edited posts use the raster file; old SVG posts convert one by one when edited (the post gate enforces raster formats). The Phase 3.5 spec below now describes the design source, not the shipped file.
+- **Featured image size: 1200x630 (1.91:1). Settled 2026-10-15.** `scripts/get-feature-image.mjs` L233-234 resizes to 1200x630 and L395-396 returns width 1200 and height 630; `src/content/config.ts` L63-64 default `featuredImageWidth`/`featuredImageHeight` to 1200/630. The old 1200x675 SVG canvas in `agents/04-blog-writer.md` L169 was wrong and now reads 1200x630, with the y-positions scaled by 630/675.
+- **Feature image format (decided 2026-10-15 by Sathya): raster, never SVG.** New posts use a JPEG/WebP from `scripts/get-feature-image.mjs`, or a PNG export at 1200x630 of the house SVG design below; set `image:` to that raster file. The og:image must be raster (post-rules VIS-18). Existing SVG posts convert when next edited (the post gate fails an SVG `image:`). The Phase 3.5 spec below describes the design source, not the shipped file.
 
 ### `blog-production-standard.md` L41-43: section separation
 
@@ -177,20 +177,24 @@ These are exact values, not guidelines. Copy them. Do not approximate.
 
 **ViewBox:** Size tightly to content. No blank space below the last line of text in any container. If cards have 4 lines of body text ending at y=206, card bottom should be at ~225, not 320.
 
-### `agents/04-blog-writer.md` L165-179: featured image SVG spec
+### `agents/04-blog-writer.md` L165-183: featured image spec (raster, 1200x630)
 
 ### Phase 3.5 - Featured Image Creation (before Agent 05 handoff)
 
-Create the featured image SVG before running QA. Requirements (from `style-guide.md` Fix #17):
+Create the featured image before running QA. The shipped file is raster (JPEG, WebP or PNG) at 1200x630 (1.91:1), never SVG: the og:image must be raster (post-rules VIS-18) and the post gate fails an SVG `image:`. Size source of truth: `scripts/get-feature-image.mjs` L233-234 and the `featuredImageWidth`/`featuredImageHeight` defaults in `src/content/config.ts` L63-64. Photo route: `node scripts/get-feature-image.mjs <slug> "<title>" "<keyword>"` writes `[slug]-feature.jpg` and `.webp` at 1200x630. House-design route: build the SVG below as the design source, export it to PNG at 1200x630 and ship the PNG. House-design requirements (from `style-guide.md` Fix #17):
 
-- Canvas: `viewBox="0 0 1200 675" width="1200" height="675"` (true 16:9)
+- Canvas: `viewBox="0 0 1200 630" width="1200" height="630"` (1.91:1, the og:image ratio)
 - Background gradient: `#030620` → `#0a1540`
 - All text centred: `text-anchor="middle" x="600"`
-- Title: exactly 2 lines at 90px, font-weight 800. Line 1 white (`y=283`), line 2 uses gradient text
+- Title: exactly 2 lines at 90px, font-weight 800. Line 1 white (`y=264`), line 2 uses gradient text
 - Title lines contain NO numbers (arabic or spelled-out)
 - Gradient text: `fill="url(#gradText)"` with `gradientUnits="userSpaceOnUse"` x1=300 x2=900
 - Category pill: centred x=600, label UPPERCASE, `#60a5fa` fill
-- Divider bar at y=408, subtitle at y=450, footer wordmark at y=645
+- Divider bar at y=381, subtitle at y=420, footer wordmark at y=602 (the old 1200x675 positions scaled by 630/675)
 - Footer: "SellOnTube" bold + " - YouTube Acquisition for B2B" muted - no URL
 - Font: `'Inter', ui-sans-serif, system-ui, sans-serif`
 - No duplicate SVG attributes. No external CDN links. No remote fonts.
+- `width="100%"` for responsive scaling
+
+Save to: `src/assets/images/blog/[post-slug]-feature.jpg` (photo route) or `src/assets/images/blog/[post-slug]-featured.png` (house-design route). Never ship an `.svg` feature image.
+Update frontmatter `image` field to that raster file, e.g. `~/assets/images/blog/[post-slug]-featured.png`. Existing posts with an `.svg` image convert to raster when next edited.

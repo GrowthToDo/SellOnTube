@@ -55,7 +55,7 @@ pull against a single-dimension total; never use `page` x `country` for clicks (
 |---|---|---|---|
 | Goal = installs/signups | Goal = western visitors who explore past the tool; agency is not an SEO target | Founder decision 2026-07-21 | `traffic-reality-check.md` Decisions 1-3 |
 | Free tools only (non-negotiable 12) | Uses paid data on hand: DataForSEO volumes/KD in `sot_master.csv`, Ahrefs uploads. Label as such; never treat as required | Already licensed/exported | `docs/content-intelligence-system.md` data layer; `agents/03` L16 |
-| Schema: no FAQPage (L-TE-01) | NO LONGER AN OVERRIDE. Decided 2026-10-15 by Sathya: FAQPage off for all projects; keep the visible `## FAQ` in the MDX body. History: ST had opted in "for AI extraction". Superseded, not yet changed: `src/pages/[...blog]/index.astro` L81-84 still emits FAQPage from frontmatter `faqs`, and `ai-seo-guide.md` §9 L479, §13 L613 and `blog-production-standard.md` L457 still describe it (a site code change, not done here) | Owner decision | post-rules ONP-09, OD-1 |
+| Schema: no FAQPage (L-TE-01) | NO LONGER AN OVERRIDE. Decided 2026-10-15 by Sathya: FAQPage off for all projects; keep the visible `## FAQ` in the MDX body. History: ST had opted in "for AI extraction". Code changed 2026-10-15: FAQPage JSON-LD removed from the blog template and 11 pages (12 files, see Gaps found); the 13 busy tool pages still emit it until the tool-fix branch lands. `ai-seo-guide.md` §9 L479, §13 L613 and `blog-production-standard.md` L457 still describe it | Owner decision | post-rules ONP-09, OD-1 |
 | AEO rules in the framework (§16) | `ai-seo-guide.md` is the single source; §16 citability gate is a hard fail | House rule | `CLAUDE.md` "AEO / AI citation" |
 | Stop at the PR (non-negotiable 13) | No PR flow: show the commit message, wait for an explicit "yes", then commit and push to `main` (which deploys). The skill never pushes on its own | Single-owner repo | `CLAUDE.md` "Never push to live without asking" |
 | Title / meta | Title ≤60 for every project, counted on the full rendered `<title>` incl. " \| SellOnTube" (13 chars), so 47 chars for the topic (decided 2026-10-15 by Sathya; same as default). Meta <155 (`blog-production-standard.md` §7, `content-playbook.md` §5.2); `seo-rules.md` L68 says 150-160 (owner decision 5, meta only) | Owner decision (title); house rule (meta) | as cited; post-rules ONP-02 |
@@ -125,7 +125,10 @@ for all projects: FAQPage off (Overrides) and the common review-count rule (post
    say 65/68 and are superseded.
 7. **RESOLVED: SVG feature images.** Decided 2026-10-15 by Sathya: switch to PNG/JPG. New and edited
    posts use a raster feature image; old posts convert one by one when edited (the gate's raster-only
-   `feature_image.formats` check enforces it). History: 59 of 60 posts set an `.svg` `image:` that
+   `feature_image.formats` check enforces it). Size settled 2026-10-15 at 1200x630:
+   `scripts/get-feature-image.mjs` L233-234 and L395-396 and the `src/content/config.ts` L63-64
+   defaults agree; the 1200x675 SVG canvas in the docs was wrong and is fixed in
+   `agents/04-blog-writer.md` Phase 3.5 and `seo/site-kit/brand-visuals.md`. History: 59 of 60 posts set an `.svg` `image:` that
    the build passes through as og:image.
 8. **Author lock.** 58 posts use `author: Sathyanand`; `ai-tools-for-youtube.mdx` uses `Gautham` and
    `youtube-b2b-buyer-journey-data.mdx` uses `Pradeep`; `src/data/authors.ts` L23/L30/L37 registers
@@ -160,11 +163,20 @@ for all projects: FAQPage off (Overrides) and the common review-count rule (post
 - [ ] GA4 conversion events still zero, so "visitors who explore" has session-level proxies only.
 - [ ] No written verdict thresholds (too early / working / refresh / prune) for posts or tools.
 - [ ] `sot_master.csv` tiers and `priority_score` were built before the bot correction.
-- [ ] Site change (needs the push-with-yes flow): drop the blog FAQPage JSON-LD in
-      `src/pages/[...blog]/index.astro` L81-84 and keep the visible FAQ (decided 2026-10-15). Not
-      covered by the decision text: 24 other `src/` files (home, pricing, tools, pSEO
-      `youtube-for/` and `youtube-vs/` templates) also emit FAQPage (`grep -rl FAQPage src`,
-      2026-10-15); confirm with the owner whether "off" includes them.
+- [x] FAQPage JSON-LD removed (2026-10-15, one commit, visible FAQs kept; built text, titles, metas,
+      canonicals and og tags unchanged on all 337 built pages) from 12 files: the blog template
+      `src/pages/[...blog]/index.astro` and 11 pages: `src/pages/index.astro`, `pricing.astro`,
+      `product-pricing.astro`, `shopify-app/tools/shopify-app-review-scraper-analyzer.astro`,
+      `shopify-app/tools/shopify-app-store-listing-grader/index.astro`,
+      `tools/youtube-ranking-checker.astro`, `tools/youtube-roi-calculator.astro`,
+      `tools/youtube-transcript-generator.astro`, `youtube-for/[slug].astro`, `youtube-for/shopify.astro`,
+      `youtube-vs/[slug].astro`. Built pages carrying FAQPage: 124 before, 13 after.
+- [ ] FAQPage still emitted by 13 tool pages in `src/pages/tools/`, pending until the tool-fix branch
+      lands (do not edit them before it does): youtube-autocomplete-keywords, youtube-channel-audit,
+      youtube-competitor-analysis, youtube-description-extractor, youtube-description-generator,
+      youtube-script-generator, youtube-seo-tool, youtube-tag-generator, youtube-timestamp-generator,
+      youtube-title-generator, youtube-video-ideas-evaluator, youtube-video-ideas-generator,
+      youtube-video-keyword-finder. `src/types.d.ts` L56 keeps the `faqs` type comment.
 
 ## Corrections sent back to the global framework
 
