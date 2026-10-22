@@ -3,7 +3,7 @@ draft: true
 author: Sathyanand
 title: "12 YouTube Best Practices for Business Channels That Generate Leads"
 excerpt: "Creator best practices don't work for business channels. These 12 practices separate channels that generate leads from channels that waste budget."
-image: ~/assets/images/blog/youtube-best-practices-for-business-featured.svg
+image: ~/assets/images/blog/youtube-best-practices-for-business-featured.png
 image_alt: "Checklist of YouTube best practices for business channels with before and after comparison showing lead generation improvements | SellonTube"
 featuredImageWidth: 1200
 featuredImageHeight: 630
@@ -172,7 +172,7 @@ Those chapter titles work like secondary keywords. "Setting up LinkedIn outreach
 
 **What actually works:** Pull topic ideas from actual search data. What are your buyers typing into YouTube? What questions do they ask your sales team? What problems do they Google before they find you?
 
-The [YouTube video ideas generator](/tools/youtube-video-ideas-generator) surfaces topic ideas based on real search demand in your niche, not guesswork.
+The [YouTube video ideas generator](/tools/youtube-video-ideas-generator) surfaces topic ideas based on buyer-intent patterns for your product, not guesswork. It shows no search volume, so check demand with the [autocomplete keyword tool](/tools/youtube-autocomplete-keywords).
 
 ### 8. Repurpose transcripts into written content
 
@@ -228,7 +228,7 @@ The [YouTube ROI calculator](/tools/youtube-roi-calculator) models your expected
 | 4 | Description | "Welcome back!" or empty | CTA link in first 150 characters | - |
 | 5 | Chapters | No timestamps | 4-6 keyword-rich chapter labels | - |
 | 6 | Tags | 30 random tags | 5-8 focused, cluster-aligned tags | [Tag Generator](/tools/youtube-tag-generator) |
-| 7 | Idea sourcing | Team brainstorm, gut feeling | Search data and sales team questions | [Ideas Generator](/tools/youtube-video-ideas-generator) |
+| 7 | Idea sourcing | Team brainstorm, gut feeling | Search data and sales team questions | [Autocomplete Tool](/tools/youtube-autocomplete-keywords) + [Ideas Generator](/tools/youtube-video-ideas-generator) |
 | 8 | Repurposing | Video only, one platform | Transcript to blog, clips, newsletter | [Transcript Generator](/tools/youtube-transcript-generator) |
 | 9 | CTAs | 5 links in description | 1 CTA per video, 1 link, 1 pinned comment | - |
 | 10 | ROI tracking | Views and subscriber count | UTM-tagged links, cost per lead | [ROI Calculator](/tools/youtube-roi-calculator) |

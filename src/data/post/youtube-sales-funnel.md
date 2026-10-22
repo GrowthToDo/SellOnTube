@@ -3,7 +3,7 @@ publishDate: 2026-06-26T00:00:00Z
 author: Sathyanand
 title: "YouTube Sales Funnel: From First View to Paying Customer"
 excerpt: "YouTube views mean nothing without a system to convert them. Here is the 4-stage funnel that turns search traffic into booked calls and closed deals."
-image: ~/assets/images/blog/youtube-sales-funnel-featured.svg
+image: ~/assets/images/blog/youtube-sales-funnel-featured.png
 image_alt: "Four-stage YouTube sales funnel diagram showing discovery, engagement, conversion, and close with conversion benchmarks at each stage | SellonTube"
 featuredImageWidth: 1200
 featuredImageHeight: 630
@@ -16,7 +16,7 @@ tags:
 toolCta: video-ideas-generator
 faqs:
   - question: "How long does it take to build a working YouTube sales funnel?"
-    answer: "Plan for 3 to 6 months before the funnel produces consistent leads. The first 90 days are about publishing enough search-optimized videos to build a base of indexed content. Months 4 through 6 are when compounding traffic starts delivering measurable click-throughs and qualified leads. Paid ads can fill the gap while organic builds."
+    answer: "Plan for 3 to 6 months before the funnel produces consistent leads. The first 90 days are about publishing enough search-optimized videos to build a base of indexed content. Months 4 through 6 are when compounding traffic starts delivering measurable click-throughs and qualified leads. Paid ads can fill the gap while organic builds. Budget those months with a business plan for your YouTube channel."
   - question: "Do I need expensive tools to set up a YouTube sales funnel?"
     answer: "No. You need YouTube Studio analytics, Google Analytics on your landing page, and an email platform. Free tools like SellonTube's SEO tool and ROI calculator handle keyword research and revenue projections. The bottleneck is usually strategy, not software."
   - question: "What type of videos work best at the top of the funnel?"
@@ -333,7 +333,7 @@ A YouTube sales funnel is not a content strategy. It is a revenue system. Build 
 
 ### How long does it take to build a working YouTube sales funnel?
 
-Plan for 3 to 6 months before the funnel produces consistent leads. The first 90 days are about publishing enough search-optimized videos to build a base of indexed content. Months 4 through 6 are when compounding traffic starts delivering measurable click-throughs and qualified leads. Paid ads can fill the gap while organic builds.
+Plan for 3 to 6 months before the funnel produces consistent leads. The first 90 days are about publishing enough search-optimized videos to build a base of indexed content. Months 4 through 6 are when compounding traffic starts delivering measurable click-throughs and qualified leads. Paid ads can fill the gap while organic builds. Budget those months with a [business plan for your YouTube channel](/blog/youtube-business-plan).
 
 ### Do I need expensive tools to set up a YouTube sales funnel?
 

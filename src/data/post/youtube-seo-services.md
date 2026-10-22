@@ -3,7 +3,7 @@ publishDate: 2026-06-25T00:00:00Z
 author: Sathyanand
 title: "YouTube SEO Services Cost $500 to $5,000/mo (Agency vs DIY)"
 excerpt: "80% of what YouTube SEO agencies charge for can be done with free tools. Here is exactly what services include, what each tier costs, and how to decide if you need one."
-image: ~/assets/images/blog/youtube-seo-services-featured.svg
+image: ~/assets/images/blog/youtube-seo-services-featured.png
 image_alt: "Comparison of YouTube SEO service tiers showing DIY, freelancer, and agency options with pricing and deliverables | SellonTube"
 featuredImageWidth: 1200
 featuredImageHeight: 630
@@ -118,7 +118,7 @@ The honest truth about YouTube SEO services is that the majority of the work is 
 
 **Easy to DIY:**
 
-Keyword research is the skill worth learning first, and it is not that hard. YouTube's search suggest feature, Google Trends' YouTube filter, and free tools give you enough data to find good topics. Our [YouTube keyword research guide](/blog/youtube-keyword-research) walks through the exact process.
+Keyword research is the skill worth learning first, and it is not that hard. YouTube's search suggest feature, Google Trends' YouTube filter, and the [free YouTube autocomplete tools compared here](/blog/best-youtube-autocomplete-keyword-tools) give you enough data to find good topics. Our [YouTube keyword research guide](/blog/youtube-keyword-research) walks through the exact process.
 
 Title writing follows a pattern: put the target keyword near the front, keep it under 60 characters, make it specific. Try our [title-generator tool](/tools/youtube-title-generator) to test variations quickly. "YouTube SEO Services: What They Cost" beats "Everything You Need to Know About YouTube SEO Services and Why They Matter for Your Business."
 
@@ -188,7 +188,7 @@ Before committing to a monthly retainer, try handling YouTube SEO yourself with 
 
 **For keyword research:** YouTube's search suggest bar is underrated. Type your topic and note the autocomplete suggestions. These are real queries people search for. Combine this with Google Trends (set the dropdown to "YouTube Search") to compare relative volume across keyword candidates.
 
-**For title and metadata optimization:** Our [YouTube SEO Tool](/tools/youtube-seo-tool) analyzes your video's title, description, and tags against search demand and competition. It flags gaps and suggests improvements. Free, no sign-up required.
+**For title and metadata optimization:** Our [YouTube SEO Tool](/tools/youtube-seo-tool) analyzes your video's title, description, and tags against search demand and competition. It flags gaps and suggests improvements. Free: 3 analyses without signup, then a free business email.
 
 **For competitor analysis:** Search your target keyword on YouTube. Open the top five results. Read their titles, descriptions, and tags (view source or use a browser extension). Note what they cover and what they miss. Your video should fill those gaps.
 

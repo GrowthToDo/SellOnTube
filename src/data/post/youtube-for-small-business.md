@@ -3,7 +3,7 @@ draft: true
 author: Sathyanand
 title: "YouTube for Small Business: 500 Subscribers Can Outperform 50,000"
 excerpt: "Small business owners think they need thousands of subscribers to get results from YouTube. They don't. 20 optimized videos targeting buyer questions generate more leads than 200 random uploads."
-image: ~/assets/images/blog/youtube-for-small-business-featured.svg
+image: ~/assets/images/blog/youtube-for-small-business-featured.png
 image_alt: "Small business YouTube channel dashboard showing lead generation metrics from search-optimized videos with low subscriber count | SellonTube"
 featuredImageWidth: 1200
 featuredImageHeight: 630
@@ -338,7 +338,7 @@ Run your top-performing video through the [YouTube SEO Tool](/tools/youtube-seo-
 
 1. **List your top 10 customer questions.** Pull them from emails, sales calls, and support tickets. These are your first video topics.
 2. **Run the numbers.** Use the [YouTube ROI Calculator](/tools/youtube-roi-calculator) with your real customer lifetime value and production cost estimate. If the math works on paper, it will work on YouTube.
-3. **Pick your first 4 topics.** Use the [Video Ideas Generator](/tools/youtube-video-ideas-generator) to validate which topics have search demand and buyer intent.
+3. **Pick your first 4 topics.** Use the [autocomplete keyword tool](/tools/youtube-autocomplete-keywords) to validate which topics buyers actually search for, and the [Video Ideas Generator](/tools/youtube-video-ideas-generator) to shape them around buyer intent.
 4. **Record your first video this week.** Phone camera, natural lighting, direct answer to a buyer question. Ten minutes max. Done beats perfect.
 5. **Optimize before publishing.** Run your title, description, and tags through the [YouTube SEO Tool](/tools/youtube-seo-tool). This takes two minutes and determines whether buyers find your video or nobody does. If you want to compare multiple tools, our [best YouTube SEO tools for business](/blog/best-youtube-seo-tools-for-business) guide covers seven options ranked by lead generation impact.
 6. **Set your calendar.** Block four 1-hour slots next month. One video per week. Consistency matters more than production quality for the first 90 days.
