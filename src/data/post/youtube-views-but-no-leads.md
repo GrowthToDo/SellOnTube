@@ -3,7 +3,7 @@ publishDate: 2026-04-24T00:00:00Z
 author: Sathyanand
 title: "Getting YouTube Views But No Leads? 6 Reasons and How to Fix Each One"
 excerpt: "Your videos get 2,000 views each but zero inquiries. The problem is not your content quality. It is your topic selection, your CTAs, and what you are measuring."
-image: ~/assets/images/blog/youtube-views-but-no-leads-featured.svg
+image: ~/assets/images/blog/youtube-views-but-no-leads-featured.png
 image_alt: "Diagnostic checklist showing why YouTube videos get views but no business leads, with fix for each problem | SellonTube"
 featuredImageWidth: 1200
 featuredImageHeight: 630
@@ -258,6 +258,8 @@ If you are getting YouTube views but no leads, run through this checklist:
 6. **Audience audit.** Read your comments. Are buyers commenting, or peers?
 
 You do not need to fix all six at once. Start with #1 and #2 (topic selection). These have the largest impact. A video on the right topic with a mediocre CTA will outperform a video on the wrong topic with a perfect CTA, every time.
+
+To run these six checks alongside your YouTube Studio data and lead tracking, use our [YouTube channel audit checklist](/blog/youtube-channel-audit-checklist). It turns them into a 16-row scorecard with a fix-first order.
 
 ## The 90-Day Reset: How to Restart with the Right Strategy
 
