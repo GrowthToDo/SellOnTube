@@ -4,7 +4,9 @@ export const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(I18N?.lang
   year: 'numeric',
   month: 'short',
   day: 'numeric',
-  timeZone: 'UTC',
+  // Post dates are normalised to IST midnight in src/utils/blog.ts (toIST), so format them in IST.
+  // Formatting in UTC showed every post one day early.
+  timeZone: 'Asia/Kolkata',
 });
 
 export const getFormattedDate = (date: Date): string => (date ? formatter.format(date) : '');

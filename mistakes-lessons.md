@@ -293,3 +293,31 @@ Read this file at the start of work so past mistakes don't repeat.
 - **Lesson:** an escape sequence surviving into a file is an assumption, not a given, and it fails in the direction that still compiles. Non-ASCII in source is not a style question here: the control and bidi characters this project deliberately strips at runtime are exactly the ones most damaging to have sitting inside the code that strips them.
 - **Prevention rule:** after writing or editing any file that contains an escape sequence inside a string or regex literal, scan it for unexpected non-ASCII and control characters before trusting it. Read the file as UTF-8 in python and print every codepoint above 126 or below 32 other than newline and tab; expect none. Bytes are not enough on their own: also assert the behaviour, running the function against one known-positive input per range it claims to cover. When `grep` reports "Binary file ... matches" on a source file, treat it as a defect, never as noise. Inside a bash heredoc, do not rely on a doubled backslash surviving; build the character with `String.fromCharCode` or an explicit code point instead.
 - **Category:** verification
+
+### 2026-10-22 — Every blog post showed its date one day early
+- **What happened:** While shipping `/blog/youtube-channel-audit-checklist` (publishDate 2026-10-22), the rendered byline read "Oct 21". Every post had the same off-by-one: case studies, published Jul 18, displayed "Jul 17".
+- **Root cause:** `src/utils/blog.ts` `toIST()` normalises each publishDate to IST midnight, which is 18:30 UTC the previous day. `src/utils/utils.ts` then formatted that instant with `timeZone: 'UTC'`. Each half was correct alone; together they printed the day before.
+- **Lesson:** when one layer moves a date into a time zone, every layer that displays it must use the same zone. Go-live filtering was never affected, which is why nobody noticed.
+- **Prevention rule:** post-date formatting uses `Asia/Kolkata`, matching `toIST()`. After any change to date logic, compare one rendered byline in `dist/` against its frontmatter `publishDate`.
+- **Category:** render
+
+### 2026-10-22 — Linking into old posts pulls their old gate failures into scope
+- **What happened:** Adding one inbound-link sentence to each of three live posts made the post-gate hook fail them on problems that predated the edit: two SVG feature images (raster-only since 2026-10-15) and five "this post" narration lines in the case-studies post. All had to be fixed before the commit.
+- **Lesson:** any edit to an existing post, however small, re-runs the full post gate on it. A "one-sentence" inbound link can turn into an image conversion plus copy fixes.
+- **Prevention rule:** before planning inbound links into older posts, run `check_post.py` on each host first and budget for its FAILs. Rasterise legacy SVG feature images with sharp at 1200x630 (`fit: 'cover'`); the house SVGs are 1200x675, so the even crop keeps the footer.
+- **Category:** process
+
+### 2026-10-22 — generate-tags truncated JSON: fixed without a reproduction, proven with a mocked handler
+- **What happened:** The daily health check failed 3 times in 5 days on `generate-tags` with "Unterminated string in JSON". Eight direct Gemini calls with the real prompt (no transcript, to save Supadata credits) all returned valid JSON, so the fault never reproduced.
+- **Fix:** `responseSchema` plus `thinkingConfig: { thinkingBudget: 0 }` (the pattern already in generate-script and youtube-seo-tool), and an unparseable reply now returns 503 with `finishReason` instead of throwing a 500.
+- **Lesson:** a Netlify function can be tested locally without Netlify. Bundle it with the repo's esbuild (`npx esbuild <fn>.ts --bundle --platform=node --format=esm`), replace `globalThis.fetch` with a mock, and call the default export with a `Request`. That proved the truncated reply gives 503 and a valid one gives 200. Importing the `.ts` directly fails, because the functions import `./lib/*.js`.
+- **Prevention rule:** every Gemini JSON call guards `JSON.parse` and returns 503 with `finishReason`, not just an empty-text check. Re-check the health-check history 7 days after deploy; a recurrence with `finishReason` in the log now says which cause it was.
+- **Category:** verification
+
+### 2026-10-22 — Tooling traps from the channel-audit post session
+- **Plan mode stops background subagents silently.** Agents launched just before plan mode turned on stopped before their paid DataForSEO calls and reported "no analysis yet". After leaving plan mode, resume them with SendMessage; a new Agent call starts fresh.
+- **gstack browse `screenshot --clip` only captures the viewport.** For a full page, set a tall viewport (`viewport 1280x22800`) and use `screenshot --viewport`; the height caps at 16384 px.
+- **A preview server locks its worktree.** `astro preview` leaves `node` and `esbuild.exe` running from the worktree's `node_modules`, so `git worktree remove` fails with "Access denied". Stop processes whose command line contains the worktree path, then remove it.
+- **A worktree has no `.env`.** `scripts/bing-submit.mjs` fails there with "BING_WEBMASTER_API_KEY not found"; run it from the main checkout.
+- **IndexNow still returns 403 `UserForbiddedToAccessSite` (2026-10-22),** while the Bing Webmaster URL Submission API accepts the same URLs (HTTP 200, quota 100 to 96). Bing trusts the site; the IndexNow key verification is what fails.
+- **Category:** tooling

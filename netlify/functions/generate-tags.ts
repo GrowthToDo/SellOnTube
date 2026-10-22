@@ -3,6 +3,17 @@ import { getTranscript, toPlainText } from './lib/transcript.js';
 const GEMINI_API_URL =
   'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
+const TAGS_SCHEMA = {
+  type: 'OBJECT',
+  properties: {
+    primaryKeyword: { type: 'STRING' },
+    suggestedTags: { type: 'ARRAY', items: { type: 'STRING' } },
+    tagStrategy: { type: 'STRING' },
+    warnings: { type: 'ARRAY', items: { type: 'STRING' } },
+  },
+  required: ['primaryKeyword', 'suggestedTags', 'tagStrategy', 'warnings'],
+};
+
 function extractVideoId(input: string): string | null {
   const trimmed = input.trim();
 
@@ -178,7 +189,15 @@ export default async (request: Request) => {
         contents: [{ parts: [{ text: buildPrompt(videoTitle, videoDescription, existingTags, transcript) }] }],
         // 4096 not 2048: thinking tokens count toward this cap, and with a transcript in the prompt
         // 2048 was exhausted before any JSON was emitted (seen 2026-09-05, JSON.parse('') -> 500).
-        generationConfig: { responseMimeType: 'application/json', temperature: 0.5, maxOutputTokens: 4096 },
+        // responseSchema + no thinking: the daily health check saw truncated JSON ("Unterminated
+        // string", 2026-09-30 and 2026-10-02); generate-script and youtube-seo-tool use the same pattern.
+        generationConfig: {
+          responseMimeType: 'application/json',
+          responseSchema: TAGS_SCHEMA,
+          temperature: 0.5,
+          maxOutputTokens: 4096,
+          thinkingConfig: { thinkingBudget: 0 },
+        },
       }),
     });
 
@@ -205,7 +224,18 @@ export default async (request: Request) => {
         { status: 503, headers }
       );
     }
-    const result = JSON.parse(raw);
+    let result;
+    try {
+      result = JSON.parse(raw);
+    } catch (parseErr) {
+      // Truncated or malformed model output is an upstream failure: 503 with the reason, never a 500.
+      const finish = geminiData?.candidates?.[0]?.finishReason ?? 'unknown';
+      console.error('Gemini returned unparseable JSON. finishReason:', finish, String(parseErr), raw.slice(0, 300));
+      return new Response(
+        JSON.stringify({ error: 'AI service returned an incomplete answer. Please try again.', detail: 'finishReason=' + finish }),
+        { status: 503, headers }
+      );
+    }
 
     if (!Array.isArray(result?.suggestedTags) || result.suggestedTags.length === 0) {
       throw new Error('Invalid response structure from Gemini');
