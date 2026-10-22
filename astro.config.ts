@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { loadEnv } from 'vite';
@@ -18,6 +19,17 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 import rehypeExternalLinks from 'rehype-external-links';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Sitemap lastmod for blog posts comes from frontmatter (updateDate, else publishDate),
+// so a refreshed post signals its real change date instead of the build time.
+const POST_DIR = path.resolve(__dirname, './src/data/post');
+const postLastmod = new Map<string, string>();
+for (const file of fs.readdirSync(POST_DIR)) {
+  if (!/\.mdx?$/.test(file)) continue;
+  const frontmatter = fs.readFileSync(path.join(POST_DIR, file), 'utf8').split(/^---\s*$/m)[1] || '';
+  const date = (frontmatter.match(/^updateDate:\s*(\S+)/m) || frontmatter.match(/^publishDate:\s*(\S+)/m))?.[1];
+  if (date && !isNaN(Date.parse(date))) postLastmod.set(file.replace(/\.mdx?$/, ''), new Date(date).toISOString());
+}
 
 const hasExternalScripts = true;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
@@ -42,6 +54,12 @@ export default defineConfig({
         !page.includes('listing-grader/report') &&
         !page.includes('/case-studies/left-foot-software/slides'),
       lastmod: new Date(),
+      serialize(item) {
+        const slug = item.url.match(/\/blog\/([^/]+)\/?$/)?.[1];
+        const lastmod = slug && postLastmod.get(slug);
+        if (lastmod) item.lastmod = lastmod;
+        return item;
+      },
     }),
     mdx(),
     icon({

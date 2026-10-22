@@ -31,7 +31,16 @@ const authorData = post.author ? authors[post.author] : null;
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-          <time datetime={String(post.publishDate)} class="inline-block">{getFormattedDate(post.publishDate)}</time>
+          <time datetime={post.publishDate.toISOString()} class="inline-block">{getFormattedDate(post.publishDate)}</time>
+          {
+            post.updateDate && post.updateDate > post.publishDate && (
+              <>
+                {' '}
+                · Updated{' '}
+                <time datetime={post.updateDate.toISOString()} class="inline-block">{getFormattedDate(post.updateDate)}</time>
+              </>
+            )
+          }
           {
             post.author && (
               <>
@@ -137,7 +146,7 @@ const authorData = post.author ? authors[post.author] : null;
           <div class="flex-1">
             <p class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Generate video ideas for your business</p>
             <p class="text-muted dark:text-slate-400 text-sm leading-relaxed">
-              Stop guessing which topics to cover. The Video Ideas Generator creates buyer-intent video ideas tailored to your product, audience, and competitive landscape — free.
+              Stop guessing which topics to cover. The Video Ideas Generator turns your product, customer, and problem into buyer-intent video ideas. Free to try.
             </p>
           </div>
           <a
@@ -160,7 +169,7 @@ const authorData = post.author ? authors[post.author] : null;
           <div class="flex-1">
             <p class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Check where your videos rank</p>
             <p class="text-muted dark:text-slate-400 text-sm leading-relaxed">
-              Enter a keyword and your channel. See your exact position in YouTube search results, plus the top 10 competing videos with view counts and age. Free, no login required.
+              Enter a keyword and your channel. See your exact position in YouTube search results, plus the top 10 competing videos with view counts and age. Your first check is free.
             </p>
           </div>
           <a
@@ -181,9 +190,9 @@ const authorData = post.author ? authors[post.author] : null;
       <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-12 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/20 border border-primary/20 dark:border-primary/30 p-8">
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <div class="flex-1">
-            <p class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Get transcripts from any YouTube video</p>
+            <p class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Get the transcript of a competitor's video</p>
             <p class="text-muted dark:text-slate-400 text-sm leading-relaxed">
-              Paste any YouTube URL and get a clean transcript with an AI summary in seconds. Built for competitive research, SEO, and content repurposing. Free, no signup required.
+              Paste a YouTube URL and get the clean transcript of its captions, plus a short brief on how the video sells: hook, key claims, product mentions, and call to action. 3 free runs with no signup, then a free email unlock.
             </p>
           </div>
           <a
@@ -206,7 +215,7 @@ const authorData = post.author ? authors[post.author] : null;
           <div class="flex-1">
             <p class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Find buyer-intent keywords from YouTube autocomplete</p>
             <p class="text-muted dark:text-slate-400 text-sm leading-relaxed">
-              Enter one seed keyword and get 100-200+ autocomplete suggestions, each tagged by buyer intent and exported to a categorized CSV. Free, no signup for quick results.
+              Enter one seed keyword and get YouTube autocomplete suggestions grouped by buyer intent. The quick preview is free; the full list, video topic clusters, and CSV export unlock with your email.
             </p>
           </div>
           <a

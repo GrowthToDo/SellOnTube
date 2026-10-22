@@ -11,6 +11,7 @@ const siteUrl = SITE.site || 'https://sellontube.com';
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
   "name": "SellOnTube",
   "url": siteUrl,
   "logo": {
@@ -69,6 +70,7 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
   "name": "SellOnTube",
   "url": siteUrl,
   "description": "SellOnTube turns YouTube search intent into predictable leads for B2B businesses. Done-for-you strategy, scripting, voiceover, production, and SEO.",

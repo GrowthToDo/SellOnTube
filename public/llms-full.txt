@@ -24,7 +24,7 @@ Founded by Sathyanand S and Gautham. Based on the principle that YouTube works a
 - YouTube SEO Tool (/tools/youtube-seo-tool): Paste a video URL, get a buyer-intent SEO audit across 5 dimensions (title relevance, description quality, keyword coverage, CTA strength, chapter labels) with exact rewrite suggestions
 - YouTube Video Ideas Generator (/tools/youtube-video-ideas-generator): Enter product, target customer, and problem. Get 5 buyer-intent video ideas that drive leads, not just views
 - YouTube Video Idea Evaluator (/tools/youtube-video-ideas-evaluator): Score whether a video idea attracts buyers or just viewers, across 4 buyer intent dimensions
-- YouTube Transcript Generator (/tools/youtube-transcript-generator): Extract clean transcripts from any YouTube video for competitor analysis
+- YouTube Transcript Generator (/tools/youtube-transcript-generator): Pull the existing captions of a YouTube video as a clean transcript for competitor analysis (videos without captions are not supported)
 - YouTube Description Extractor (/tools/youtube-description-extractor): Paste any video URL and pull its full description, the hidden tag list with its 500-character budget, every link with its character position against the 150-character fold, hashtags, mentions, and a check against YouTube's three chapter rules
 - YouTube Timestamp Generator (/tools/youtube-timestamp-generator): Paste a YouTube video URL and get chapter timestamps written from the real transcript, checked against YouTube's three chapter rules (first chapter at 0:00, at least 3 chapters, each at least 10 seconds), editable before you publish, with shareable deep links in three formats for every chapter
 - YouTube ROI Calculator (/tools/youtube-roi-calculator): Enter customer LTV and COGS, see break-even point and profit projections
@@ -42,6 +42,13 @@ Founded by Sathyanand S and Gautham. Based on the principle that YouTube works a
 - YouTube SEO tools comparison
 - High-intent topic research frameworks
 - The compounding effect of consistent video publishing
+
+**Key guides:**
+- /blog/youtube-marketing-case-studies: 6 B2B SaaS companies that win customers from YouTube, with founder-sourced numbers and SellonTube audit scores
+- /blog/youtube-business-plan: a YouTube business plan for B2B channels, costs by production tier, and a free template at /templates/youtube-business-plan-template.md
+- /blog/youtube-script-examples-business: five full B2B YouTube scripts with the hook, product bridge and CTA marked
+- /blog/best-youtube-autocomplete-keyword-tools: YouTube autocomplete keyword tools compared on price, limits and exports
+- /blog/best-youtube-transcript-generators: caption-based and speech-to-text YouTube transcript tools compared
 
 ### YouTube For [Industry] Pages (/youtube-for/)
 **Purpose:** Industry-specific guides on how YouTube acquisition works for different business types

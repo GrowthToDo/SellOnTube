@@ -20,7 +20,7 @@ Our approach: identify high-intent search queries on YouTube, create videos that
 - YouTube SEO Tool: https://sellontube.com/tools/youtube-seo-tool - Audit your video's buyer-intent SEO across 5 dimensions with exact rewrite suggestions
 - YouTube Video Ideas Generator: https://sellontube.com/tools/youtube-video-ideas-generator - Get buyer-intent video ideas based on your product, target customer, and problem
 - YouTube Video Idea Evaluator: https://sellontube.com/tools/youtube-video-ideas-evaluator - Score whether a video idea attracts buyers or just viewers
-- YouTube Transcript Generator: https://sellontube.com/tools/youtube-transcript-generator - Extract clean transcripts from any YouTube video
+- YouTube Transcript Generator: https://sellontube.com/tools/youtube-transcript-generator - Pull the existing captions of a YouTube video as a clean transcript (videos without captions are not supported)
 - YouTube Description Extractor: https://sellontube.com/tools/youtube-description-extractor - Pull any video's full description, hidden tags, links with their fold position, and a chapter validity check
 - YouTube Timestamp Generator: https://sellontube.com/tools/youtube-timestamp-generator - Paste a video URL and get AI-written chapter timestamps checked against YouTube's three chapter rules, plus shareable links to each moment
 - YouTube ROI Calculator: https://sellontube.com/tools/youtube-roi-calculator - Calculate if YouTube makes financial sense for your business
@@ -30,6 +30,14 @@ Our approach: identify high-intent search queries on YouTube, create videos that
 - Free Tools: https://sellontube.com/tools
 - Blog: https://sellontube.com/blog
 - YouTube Marketing Case Studies (6 B2B companies, founder-sourced revenue, audit-scored): https://sellontube.com/blog/youtube-marketing-case-studies
+
+## Key Guides
+
+- YouTube Business Plan for B2B channels, with costs by production tier and a free template: https://sellontube.com/blog/youtube-business-plan
+- YouTube Business Plan Template (plain-text download): https://sellontube.com/templates/youtube-business-plan-template.md
+- YouTube Script Examples for B2B, five full scripts with the hook, bridge and CTA marked: https://sellontube.com/blog/youtube-script-examples-business
+- Best YouTube Autocomplete Keyword Tools, compared on price, limits and exports: https://sellontube.com/blog/best-youtube-autocomplete-keyword-tools
+- Best YouTube Transcript Generators, caption-based vs speech-to-text tools compared: https://sellontube.com/blog/best-youtube-transcript-generators
 - YouTube For [Industry] Guides: https://sellontube.com/youtube-for/
 - YouTube Vs [Channel] Comparisons: https://sellontube.com/youtube-vs/
 - Homepage: https://sellontube.com/
@@ -41,6 +49,7 @@ Our approach: identify high-intent search queries on YouTube, create videos that
 
 - Sathyanand S (Co-Founder) - B2B customer acquisition specialist. LinkedIn: linkedin.com/in/sathyanands/
 - Gautham (Co-Founder) - Research and diagnostic framework architect. LinkedIn: linkedin.com/in/mindcharting/
+- Pradeep Pandey (Co-Founder). LinkedIn: linkedin.com/in/pradeep-pandeyji/
 
 ## Contact
 

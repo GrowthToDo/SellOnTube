@@ -13,6 +13,7 @@ import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 import { SITE } from 'astrowind:config';
+import { authors } from '~/data/authors';
 
 export const prerender = true;
 
@@ -47,9 +48,12 @@ const metadata = merge(
 
 const siteUrl = SITE.site || 'https://sellontube.com';
 
+const authorData = post.author ? authors[post.author] : undefined;
+
 const blogPostingSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
+  "@id": `${url}#article`,
   "headline": post.title,
   "description": post.excerpt || '',
   "url": url,
@@ -62,9 +66,13 @@ const blogPostingSchema = {
     "height": post.featuredImageHeight || 630,
     "caption": post.featuredImageCaption || post.image_alt || post.title
   } } : {}),
-  ...(post.author ? { "author": { "@type": "Person", "name": post.author, "url": "https://www.linkedin.com/in/sathyanands/", "sameAs": ["https://www.linkedin.com/in/sathyanands/"] } } : { "author": { "@type": "Organization", "name": "SellOnTube" } }),
+  ...(authorData
+    ? { "author": { "@type": "Person", "name": authorData.name, "jobTitle": authorData.role, "url": authorData.linkedin, "sameAs": [authorData.linkedin] } }
+    : { "author": { "@type": "Organization", "name": "SellOnTube" } }),
+  "isPartOf": { "@id": `${siteUrl}/#website` },
   "publisher": {
     "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
     "name": "SellOnTube",
     "logo": {
       "@type": "ImageObject",
