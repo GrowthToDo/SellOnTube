@@ -321,3 +321,30 @@ Read this file at the start of work so past mistakes don't repeat.
 - **A worktree has no `.env`.** `scripts/bing-submit.mjs` fails there with "BING_WEBMASTER_API_KEY not found"; run it from the main checkout.
 - **IndexNow still returns 403 `UserForbiddedToAccessSite` (2026-10-22),** while the Bing Webmaster URL Submission API accepts the same URLs (HTTP 200, quota 100 to 96). Bing trusts the site; the IndexNow key verification is what fails.
 - **Category:** tooling
+### 2026-10-22 - Every post's author schema credited Sathyanand's LinkedIn
+- **What happened:** The BlogPosting JSON-LD hardcoded `https://www.linkedin.com/in/sathyanands/` as author url and sameAs for every post, so Gautham's and Pradeep's posts were attributed to Sathyanand's profile. A parallel session found and fixed the same one-day-early date bug (entry above) on the same day; both fixes were identical.
+- **Root cause:** the author block was written when only one author existed and never read `src/data/authors.ts`.
+- **Lesson:** schema that names a person must come from the same registry the visible byline uses. Two sessions on one repo can independently fix the same bug; check `origin/main` before and during a long task.
+- **Prevention rule:** author schema reads `authors[post.author]`; verify on one non-Sathyanand post in `dist/` after any layout change.
+- **Category:** render
+
+### 2026-10-22 - One query that was 19% of the site's lost impressions was a rank tracker, not people
+- **What happened:** `/blog/youtube-script-writing-guide` showed 8,705 impressions at position 3.6 with 0 clicks and looked like the site's best CTR opportunity. It was one exact-title query, 100% US desktop, in on/off bursts with a flat 270-292/day plateau, rotating across 6 of our URLs. Its fade-out was 19% of the 28-day impression drop.
+- **Root cause:** page-level GSC totals hide that one query carries the page. Rank trackers (possibly our own SERP tooling) sample a fixed query daily from US desktop.
+- **Lesson:** high impressions at a top-5 position with zero clicks is a tracker signature, not a CTR problem. Check daily shape, device and country before ranking any page by impressions.
+- **Prevention rule:** before picking pages for any SEO work, open the query rows; flag any single query that is more than 50% of a page's impressions with 0 clicks, 100% one device, or a flat daily count, and exclude it.
+- **Category:** data
+
+### 2026-10-22 - Parallel writers must hand cross-post edits back, not make them
+- **What happened:** Five writer subagents refreshed one post each in one worktree. Each also wanted to add links into the other four posts. Proposals quoted "current sentences" that the owning writer was rewriting at the same moment.
+- **Root cause:** a cross-post edit has two owners: the host post's writer and the link's proposer.
+- **Lesson:** keep one writer per file. Writers return inbound-link proposals as data; one integrator applies them after every writer finishes, re-locates each sentence, and checks the anchor cap across the combined set.
+- **Prevention rule:** for any multi-agent content pass, each agent's brief names the only files it may edit and a scratchpad path for proposals that touch other files. Separately: Git Bash `grep -i -F` crashed (exit 134) with no output, which looked like zero matches. Use `LC_ALL=C grep -F` and test it on a known match first.
+- **Category:** process
+
+### 2026-10-22 - Shared CTA boxes kept the claims the refreshed posts had just removed
+- **What happened:** All five refreshed posts were corrected to say SellonTube's tools are "3 free, then email" rather than "free, no signup". The consistency audit then found the same false claims, plus an em dash, in the `toolCta` boxes in `SinglePost.astro`. Those boxes render below the refreshed posts, along with about 14 older posts and the `/youtube-for/` template.
+- **Root cause:** product claims are copied into many places, and a post refresh only audits the post body.
+- **Lesson:** when a product fact changes, the post is one of many places that state it; components, templates, llms.txt and other posts carry the same sentence.
+- **Prevention rule:** after any change to a tool's gate, limits or output, grep `src/` and `public/` for the old claim ("no signup", "free", the tool name) and fix every hit. Built-HTML checks on a refreshed post must include the component output below the article.
+- **Category:** content
