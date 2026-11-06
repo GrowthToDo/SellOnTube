@@ -33,20 +33,6 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this YouTube autocomplete keyword tool free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Quick results (A-Z scrape, 30-80 keywords) are instant with no signup. The exhaustive scrape (100+ keywords with intent categorization and CSV export) requires an email address. No credit card, no subscription." } },
-    { "@type": "Question", "name": "How is YouTube autocomplete different from using VidIQ or TubeBuddy for keyword research?", "acceptedAnswer": { "@type": "Answer", "text": "VidIQ and TubeBuddy estimate search volume using panel data and clickstream samples. Those numbers are approximations. This tool scrapes what YouTube actually suggests when users type, which is a direct signal of real-time search demand. Keywords are also categorized by buyer intent so you can prioritize comparison and evaluation queries over generic informational ones." } },
-    { "@type": "Question", "name": "Should I use autocomplete keywords in my YouTube titles and descriptions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Autocomplete keywords are the exact phrases YouTube's algorithm expects in your metadata. Use the high-priority Comparison keywords as video titles. Place related variations in the first 150 characters of your description. Add remaining phrases to tags and chapter labels." } },
-    { "@type": "Question", "name": "What do the five intent categories mean and why do they matter?", "acceptedAnswer": { "@type": "Answer", "text": "Each category maps to a stage in the buyer journey. Comparison & Evaluation (High) covers viewers actively comparing solutions. Mistakes & Red Flags (High) catches viewers avoiding bad decisions. Results & Proof (High) targets viewers seeking evidence before committing. How-To & Problem-Solving (Medium) captures viewers with an active problem to solve. Research & Discovery (Low) covers early-stage learning queries. The priority tells you which keywords to target first for business results." } },
-    { "@type": "Question", "name": "How many keywords will I get from the exhaustive scrape?", "acceptedAnswer": { "@type": "Answer", "text": "Typically 100-200+, depending on how popular your topic is on YouTube. The exhaustive mode adds 34 modifiers (best, vs, alternatives to, how to, mistakes, results, review, pricing, cost, worth it, tutorial, and more) to your seed keyword, querying YouTube 64 times." } },
-    { "@type": "Question", "name": "Can I target different countries with this tool?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Select your target geography from the dropdown before running the scrape. YouTube returns different autocomplete suggestions for different countries. If you sell to US customers, run it with United States selected. The default Global returns suggestions aggregated across all markets." } },
-    { "@type": "Question", "name": "How often should I run this tool for the same keyword?", "acceptedAnswer": { "@type": "Answer", "text": "At least quarterly. YouTube autocomplete changes as search behavior shifts. New keywords appear when competitors launch products, features ship, or trends start. Running the tool quarterly for your core topics catches new long-tail phrases before competitors build content around them." } },
-  ]
-};
-
 const geoOptions = [
   { label: 'Global', gl: '', hl: 'en' },
   { label: 'United States', gl: 'us', hl: 'en' },
@@ -74,7 +60,6 @@ const geoOptions = [
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

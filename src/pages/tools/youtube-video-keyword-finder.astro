@@ -33,32 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free keyword reports without any signup. After that, enter your business email to keep discovering your video keywords. There is no paid tier." } },
-    { "@type": "Question", "name": "How do I find what keywords my YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Paste your video URL into the tool above. It extracts your video's metadata, scans YouTube autocomplete for real search terms related to your topic, checks your position for each keyword, and gives you a complete report in under 15 seconds. No login required." } },
-    { "@type": "Question", "name": "Can I check a competitor's video?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Paste any public YouTube video URL. Many business owners use this to reverse-engineer which keywords a competitor's top video ranks for, then target the same keywords with better content." } },
-    { "@type": "Question", "name": "How accurate are the keyword suggestions?", "acceptedAnswer": { "@type": "Answer", "text": "The keywords come from YouTube's own autocomplete system, which reflects real search behavior. The ranking positions are checked against live YouTube search results in real time. The keyword list is a focused selection of your 8 highest buyer-intent ranking terms, not every possible keyword." } },
-    { "@type": "Question", "name": "How is this different from VidIQ or TubeBuddy?", "acceptedAnswer": { "@type": "Answer", "text": "Three differences. First, VidIQ and TubeBuddy show rankings only for the tags already on your video. This tool generates keywords independently. Second, this tool uses real YouTube autocomplete data instead of fabricated search volume numbers. Third, VidIQ and TubeBuddy cost $20-49/month for rank tracking. This tool is free." } },
-    { "@type": "Question", "name": "Does YouTube show you what keywords your video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube Studio shows search terms that drove clicks to your video, but only for the last 28 days, only for keywords that reached a minimum traffic threshold, and without position data. Small channels and B2B channels often see almost no search term data because their traffic is too low to meet YouTube's thresholds." } },
-    { "@type": "Question", "name": "How often should I run this?", "acceptedAnswer": { "@type": "Answer", "text": "Check after publishing a new video to see if it's picking up search visibility. Check again 2 weeks later to see how positions have shifted. Run it on your top 5 videos quarterly to catch ranking changes." } },
-    { "@type": "Question", "name": "Why only 8 keywords?", "acceptedAnswer": { "@type": "Answer", "text": "Each keyword check queries YouTube's search results in real time. Eight buyer-intent keywords gives a focused picture of your video's commercial search visibility while keeping the tool fast and free. For a deeper analysis, book a diagnostic call." } },
-
-    { "@type": "Question", "name": "Can I see what keywords a competitor's YouTube video ranks for?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. This works on any public video. Paste a competitor's video URL, see which keywords they rank for, and use the results to find gaps in your own content strategy." } },
-    { "@type": "Question", "name": "How to find what keywords a YouTube video ranks for without paying", "acceptedAnswer": { "@type": "Answer", "text": "This tool does it for free. Paste any video URL and get an 8-keyword buyer-intent report with real-time positions. The alternative is manually searching keywords one by one in an incognito browser, which works but takes 20-30 minutes per video. Paid tools like VidIQ and TubeBuddy charge $20-49/month and only check keywords already in your tags." } },
-    { "@type": "Question", "name": "Can I use this for YouTube keyword research?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Run it on 3-5 top-ranking videos in your niche. The keywords they rank for are proven search terms. Compile the results into a keyword list for your next video. This is faster and more accurate than guessing keywords or using search volume estimates." } },
-    { "@type": "Question", "name": "Why is my YouTube video not showing up in search?", "acceptedAnswer": { "@type": "Answer", "text": "Three common causes. First, your metadata (title, description, tags) does not include the keywords people are searching. This tool shows you exactly which keywords are missing. Second, stronger competitors own the top positions. Third, your video is too new. YouTube typically takes 1-2 weeks to fully index and rank a video." } },
-    { "@type": "Question", "name": "How many keywords should a YouTube video target?", "acceptedAnswer": { "@type": "Answer", "text": "One primary keyword in the title, 2-3 secondary keywords in the description, and 8-15 tags covering variations and related terms. This tool helps you identify which of those keywords are actually working and which are missing from your metadata." } },
-  ]
-};
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

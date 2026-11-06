@@ -44,21 +44,11 @@ const faqs = [
   { question: "What are YouTube tags?", answer: "YouTube tags are hidden keywords you add to a video in YouTube Studio. They help the algorithm understand your video's topic when the title and description are ambiguous. Tags also influence which videos appear in the related videos sidebar. You can add up to 500 characters of tags per video. Unlike hashtags, tags are invisible to viewers." },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(f => ({
-    "@type": "Question",
-    "name": f.question,
-    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
-  }))
-};
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

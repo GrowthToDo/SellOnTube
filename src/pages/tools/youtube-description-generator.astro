@@ -33,26 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this YouTube description generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating descriptions at no cost. There is no paid tier and no feature gating." } },
-    { "@type": "Question", "name": "How long should a YouTube description be?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube allows up to 5,000 characters. For business channels, aim for 200-500 words in the full description. The critical part is the first 150 characters (above the fold), which is all viewers see before clicking Show more. This tool optimizes that above-the-fold section separately." } },
-    { "@type": "Question", "name": "Do YouTube descriptions affect SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. YouTube uses descriptions to understand what your video is about and match it to search queries. Keywords in your description help YouTube surface your video in search results and suggested videos. The first 2-3 sentences carry the most weight for ranking." } },
-    { "@type": "Question", "name": "Should I put links in my YouTube description?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, and placement matters. Your most important link belongs in the first 150 characters, before the Show more fold. Viewers who are interested enough to check your description are showing buying intent. Make it easy for them to reach your website without scrolling." } },
-    { "@type": "Question", "name": "Do timestamps and chapters help with YouTube SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. YouTube can display timestamps as chapters in the video player and in search results. Chapters increase click-through rate from search because viewers can see the video covers their specific question. They also improve watch time because viewers can jump to the section they care about instead of bouncing." } },
-    { "@type": "Question", "name": "What tags should I use on YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "Tags have less ranking impact than titles and descriptions, but they still help YouTube understand your content. Use 5-8 tags that are specific to your video topic. Include your target keyword, variations of it, and your brand name. Avoid stuffing 30+ generic tags. This tool generates relevant tags automatically based on your video topic." } },
-    { "@type": "Question", "name": "Does this tool use AI to write descriptions?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tool uses AI to analyze your video's title, existing description, and transcript. It then generates an original description optimized for YouTube search and click-through. The AI writes the above-the-fold hook, full description body, and suggested tags. Timestamps are extracted from the transcript, not generated." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

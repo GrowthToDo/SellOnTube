@@ -33,25 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this tool free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free competitor analyses without any signup. After that, enter your business email to continue analyzing keywords at no cost. There is no paid tier." } },
-    { "@type": "Question", "name": "What do the beatable signals mean?", "acceptedAnswer": { "@type": "Answer", "text": "Easy means the video has under 5,000 views or is old with low views. New means a recent video with under 10,000 views. Stale means decent views (10K-50K) but the video is over 18 months old. Solid means decent views and the video is relatively recent. Strong means the video has over 50,000 views and was published within the last year." } },
-    { "@type": "Question", "name": "How is the opportunity score calculated?", "acceptedAnswer": { "@type": "Answer", "text": "The score counts how many of the top 5 videos are marked Easy or New (beatable). A score of 4/5 or 5/5 means high opportunity. 2/5 or 3/5 means moderate. 0/5 or 1/5 means the keyword is dominated by strong competitors." } },
-    { "@type": "Question", "name": "Should I only target Easy keywords?", "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. A mix of Easy and Stale signals means the topic has demand but the existing content is outdated. That is often the best scenario: proven demand with weak competition. Solid and Strong keywords are worth targeting too, but expect a longer timeline to rank." } },
-    { "@type": "Question", "name": "How accurate is this analysis?", "acceptedAnswer": { "@type": "Answer", "text": "The tool pulls live data from YouTube search results, including real view counts and publish dates. The beatable signals are heuristics based on view velocity and content age. They are directional indicators, not guarantees. Use them alongside your own judgment about content quality and channel authority." } },
-    { "@type": "Question", "name": "Can I analyze multiple keywords at once?", "acceptedAnswer": { "@type": "Answer", "text": "This tool checks one keyword at a time so you can review each competitive landscape carefully. For bulk keyword analysis across your entire content strategy, the SellonTube dashboard handles multi-keyword research in a single workflow." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

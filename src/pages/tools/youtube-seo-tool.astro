@@ -33,26 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Does this tool access my YouTube account?", "acceptedAnswer": { "@type": "Answer", "text": "No. It reads publicly available metadata from any public YouTube video URL. No login, no permissions, no account connection required." } },
-    { "@type": "Question", "name": "What does a score of 40 vs 80 actually mean in practice?", "acceptedAnswer": { "@type": "Answer", "text": "A score of 40 typically means the video has correct content but its metadata is effectively invisible to search. A score of 80 means the metadata matches how buyers search and the gaps are minor refinements." } },
-    { "@type": "Question", "name": "Will fixing my metadata change my existing video rankings?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, often within days. YouTube re-indexes video metadata when you update it. Improving a title from a generic phrase to a buyer-intent phrase has moved videos from page 3 to page 1 for specific search terms." } },
-    { "@type": "Question", "name": "Should I use this tool before or after publishing a video?", "acceptedAnswer": { "@type": "Answer", "text": "Both. Before publishing: check your planned title and description. After publishing: run it on existing videos to find which ones have the highest gap between content quality and metadata quality." } },
-    { "@type": "Question", "name": "My video has no chapters. Does that automatically score me lower?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. No chapters scores 0 out of 20 on the Chapter Labels dimension. Adding 4 to 5 well-labelled chapters to an existing video takes under 10 minutes and costs nothing." } },
-    { "@type": "Question", "name": "How is this different from checking YouTube SEO with VidIQ or TubeBuddy?", "acceptedAnswer": { "@type": "Answer", "text": "VidIQ and TubeBuddy optimise for discoverability to general viewers. This tool optimises for discoverability to buyers: search-intent phrases, above-the-fold CTAs, evaluation-stage titles. Same interface, different scoring logic." } },
-    { "@type": "Question", "name": "Can I use this for a video that is not on my own channel?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can run any public YouTube video URL through the tool. Some businesses use it to analyse competitor videos and identify gaps in their own metadata strategy." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

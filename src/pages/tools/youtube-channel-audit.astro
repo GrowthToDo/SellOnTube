@@ -33,26 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this free YouTube channel audit really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free audits per browser without any signup. After that, enter a business email to continue auditing channels at no cost. Gmail, Yahoo, Outlook, iCloud, and similar consumer addresses are not accepted, and the address joins SellonTube's content marketing emails. There is no paid tier." } },
-    { "@type": "Question", "name": "Can this audit tell me if a YouTube channel is dead or inactive?", "acceptedAnswer": { "@type": "Answer", "text": "The audit gives no dead-or-alive verdict. It scores the gaps between the last uploads, and a channel that stopped posting long ago can still score well if its earlier uploads were steady. To check whether a channel is still active, look at the date of its most recent video on YouTube." } },
-    { "@type": "Question", "name": "Does it access my YouTube account?", "acceptedAnswer": { "@type": "Answer", "text": "No. The tool only reads publicly available data: your channel name, video titles, descriptions, and publish dates. It does not require login, access your YouTube Studio, or read any private analytics." } },
-    { "@type": "Question", "name": "What score should I aim for?", "acceptedAnswer": { "@type": "Answer", "text": "A score of 71-100 is labeled Well optimized, 41-70 is labeled Room for improvement, and 40 or below is labeled Needs significant work. These bands are display thresholds on a score an AI model assigns, not a YouTube ranking factor. Focus on the lowest-scoring dimension first." } },
-    { "@type": "Question", "name": "How often should I audit my channel?", "acceptedAnswer": { "@type": "Answer", "text": "Run an audit after every 5-10 new videos. Your titles and descriptions should improve over time as you learn what language your buyers actually search for. Quarterly audits are a good baseline." } },
-    { "@type": "Question", "name": "Can I audit a competitor's channel?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Any public YouTube channel can be audited. Paste their channel URL or handle to see how their metadata compares to yours. This is useful for identifying gaps in your own SEO strategy." } },
-    { "@type": "Question", "name": "What if I only have a few videos?", "acceptedAnswer": { "@type": "Answer", "text": "The audit reads up to the last 10 public videos. If a channel has fewer than 10, it scores whichever videos exist, and publishing consistency has less to go on. If a channel has no public videos, the audit returns an error saying so instead of a score." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

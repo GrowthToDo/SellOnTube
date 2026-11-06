@@ -33,25 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this YouTube script generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating scripts at no cost. There is no paid tier." } },
-    { "@type": "Question", "name": "Will it generate a full word-for-word script?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The generator produces a complete script with hook, setup, body sections, product bridge, and CTA. It is structured around your specific video idea, target customer, and product." } },
-    { "@type": "Question", "name": "How long are the generated scripts?", "acceptedAnswer": { "@type": "Answer", "text": "Script length is calibrated to the video type. Comparison videos produce longer scripts (900-1,500 words, approximately 6-10 minutes). Mistake-avoidance and how-to scripts are shorter (600-1,050 words, approximately 4-7 minutes)." } },
-    { "@type": "Question", "name": "Will it work with the Video Ideas Generator?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The intended workflow is: generate ideas with the Video Ideas Generator, evaluate them with the Ideas Evaluator, create a title with the Title Generator, then produce the script. Each tool feeds into the next." } },
-    { "@type": "Question", "name": "Is the product pitch forced or natural?", "acceptedAnswer": { "@type": "Answer", "text": "Natural. If you provide your product page URL, the script uses real features and pricing from your website instead of generic claims. The script builds credibility through the body content first, then introduces your product as a recommendation that solves a problem the video just discussed." } },
-    { "@type": "Question", "name": "Should I use a teleprompter or memorize the script?", "acceptedAnswer": { "@type": "Answer", "text": "For most B2B videos, a teleprompter delivers better results than memorization. It keeps the content precise and eliminates filler words. If you find teleprompter delivery too stiff, use the generated script as a detailed outline." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

@@ -48,28 +48,12 @@ const howToSchema = {
   ]
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "How do I validate a YouTube video idea before making it?", "acceptedAnswer": { "@type": "Answer", "text": "Validate it by scoring the idea on buyer intent, not predicted views. Before filming, check four signals: does the title contain decision keywords (\"best\", \"vs\", \"pricing\"), does it attract your specific buyer, does it address an urgent problem, and is there a natural moment to introduce your product? This evaluator scores all four in one verdict." } },
-    { "@type": "Question", "name": "How do I know if my video idea is worth making?", "acceptedAnswer": { "@type": "Answer", "text": "A video idea is worth making when the people who would search it are evaluating a purchase, not just learning a concept. Score it High on Buyer Intent and at least Medium on Audience Fit. A 200-view idea with strong buyer intent beats a 50,000-view idea that attracts non-buyers." } },
-    { "@type": "Question", "name": "What is buyer intent in a YouTube video idea?", "acceptedAnswer": { "@type": "Answer", "text": "Buyer intent is the degree to which a video idea's viewers are researching a purchase rather than satisfying curiosity. \"Best CRM for small teams\" has high buyer intent; \"What is a CRM\" has almost none. Decision keywords like best, vs, review, and pricing signal it." } },
-    { "@type": "Question", "name": "What's the difference between a video made for views and one made for leads?", "acceptedAnswer": { "@type": "Answer", "text": "A video made for views maximizes watch time and reach; a video made for leads maximizes qualified buyers. The same topic framed differently attracts different people: \"How email marketing works\" pulls learners, \"Why your email sequences aren't converting\" pulls buyers. This tool scores for the second." } },
-    { "@type": "Question", "name": "How do I know if a video idea fits my target customer?", "acceptedAnswer": { "@type": "Answer", "text": "A video idea fits your target customer when its topic attracts the people you sell to, not an adjacent audience. \"How to build a Shopify app\" attracts developers; \"Best upsell apps for Shopify\" attracts store owners. If you sell to store owners, only the second fits, regardless of search volume." } },
-    { "@type": "Question", "name": "Is search volume enough to decide what video to make?", "acceptedAnswer": { "@type": "Answer", "text": "No. Search volume tells you how many people type a query, not whether they intend to buy. A high-volume topic that attracts learners produces views and no pipeline. Pick topics by buyer intent first, then use volume only to choose between two ideas that both have intent." } },
-    { "@type": "Question", "name": "What makes this different from Creator Signal or vidIQ?", "acceptedAnswer": { "@type": "Answer", "text": "Creator tools like Creator Signal and vidIQ score a video idea for views, virality, and trends. This evaluator scores it for buyer intent: whether it attracts people likely to become leads. Same question, opposite definition of a good idea, built for B2B pipeline rather than audience growth." } },
-    { "@type": "Question", "name": "Is the evaluator free, and how does it score ideas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is free: 3 evaluations without signup, unlimited with a business email, no paid tier. It scores transparently with keyword pattern matching across proven buyer-intent signals, not a black-box AI model, so it is a directional quality gate, not a performance prediction." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">

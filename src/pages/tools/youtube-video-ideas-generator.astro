@@ -33,25 +33,11 @@ const webAppSchema = {
   "provider": { "@type": "Organization", "name": "SellonTube", "url": siteUrl }
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is this video ideas generator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free generations without signup. After that, enter a business email to unlock unlimited use at no cost. There is no paid tier." } },
-    { "@type": "Question", "name": "How many video ideas does each generation produce?", "acceptedAnswer": { "@type": "Answer", "text": "Each generation produces 5 buyer-intent video ideas. They are tailored to your product, target customer, and the problem you solve." } },
-    { "@type": "Question", "name": "What makes this different from other YouTube idea generators?", "acceptedAnswer": { "@type": "Answer", "text": "Two things. First, it asks about your product, customer, and problem, not just a keyword. That context allows it to generate ideas with built-in buyer intent. Second, every idea uses bottom-of-funnel topic patterns: comparisons, evaluations, mistakes, and results." } },
-    { "@type": "Question", "name": "What should I do with the ideas after generating them?", "acceptedAnswer": { "@type": "Answer", "text": "Run your favorites through the Video Ideas Evaluator to check buyer intent. Then use the Title Generator to create a buyer-optimized title for the winning idea." } },
-    { "@type": "Question", "name": "Can I use this for YouTube Shorts ideas?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The buyer-intent principles apply equally to short-form and long-form video." } },
-    { "@type": "Question", "name": "Why does it ask for my product URL?", "acceptedAnswer": { "@type": "Answer", "text": "The URL helps the AI understand your product's positioning, features, and target market more precisely. This produces more specific ideas than a generic product description alone. The URL is not stored or shared." } },
-  ]
-};
-
 ---
 
 <Layout metadata={metadata}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero -->
   <section class="bg-white dark:bg-slate-950 pt-16 pb-12 sm:pt-20 sm:pb-16">
