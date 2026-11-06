@@ -50,7 +50,7 @@ const MODIFIERS: { text: string; direction: 'prepend' | 'append' | 'both' }[] = 
   { text: 'example',         direction: 'append' },
   { text: 'case study',      direction: 'append' },
   { text: 'free',            direction: 'append' },
-  { text: '2024',            direction: 'append' },
+  { text: '2026',            direction: 'append' },
   { text: '2025',            direction: 'append' },
 ];
 
