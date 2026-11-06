@@ -37,13 +37,13 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Is this free YouTube channel audit really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free audits without any signup. After that, enter your business email to continue auditing channels at no cost. There is no paid tier." } },
-    { "@type": "Question", "name": "Can this audit tell me if a YouTube channel is dead or inactive?", "acceptedAnswer": { "@type": "Answer", "text": "It does not give a dead-or-alive verdict. It reads the publish dates of the last 10 videos, and long gaps between uploads lower the Publishing consistency score (0-25). If the last uploads were months apart, expect that score to be low. Check the channel's Videos tab for the exact date of the most recent upload." } },
+    { "@type": "Question", "name": "Is this free YouTube channel audit really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You get 3 free audits per browser without any signup. After that, enter a business email to continue auditing channels at no cost. Gmail, Yahoo, Outlook, iCloud, and similar consumer addresses are not accepted, and the address joins SellonTube's content marketing emails. There is no paid tier." } },
+    { "@type": "Question", "name": "Can this audit tell me if a YouTube channel is dead or inactive?", "acceptedAnswer": { "@type": "Answer", "text": "The audit gives no dead-or-alive verdict. It scores the gaps between the last uploads, and a channel that stopped posting long ago can still score well if its earlier uploads were steady. To check whether a channel is still active, look at the date of its most recent video on YouTube." } },
     { "@type": "Question", "name": "Does it access my YouTube account?", "acceptedAnswer": { "@type": "Answer", "text": "No. The tool only reads publicly available data: your channel name, video titles, descriptions, and publish dates. It does not require login, access your YouTube Studio, or read any private analytics." } },
-    { "@type": "Question", "name": "What score should I aim for?", "acceptedAnswer": { "@type": "Answer", "text": "A score of 71-100 means your channel metadata is well optimized for search and buyer intent. 41-70 means there is meaningful room for improvement. Below 40 means your videos are likely invisible to the buyers searching for what you sell. Focus on the lowest-scoring dimension first." } },
+    { "@type": "Question", "name": "What score should I aim for?", "acceptedAnswer": { "@type": "Answer", "text": "A score of 71-100 is labeled Well optimized, 41-70 is labeled Room for improvement, and 40 or below is labeled Needs significant work. These bands are display thresholds on a score an AI model assigns, not a YouTube ranking factor. Focus on the lowest-scoring dimension first." } },
     { "@type": "Question", "name": "How often should I audit my channel?", "acceptedAnswer": { "@type": "Answer", "text": "Run an audit after every 5-10 new videos. Your titles and descriptions should improve over time as you learn what language your buyers actually search for. Quarterly audits are a good baseline." } },
     { "@type": "Question", "name": "Can I audit a competitor's channel?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Any public YouTube channel can be audited. Paste their channel URL or handle to see how their metadata compares to yours. This is useful for identifying gaps in your own SEO strategy." } },
-    { "@type": "Question", "name": "What if I only have a few videos?", "acceptedAnswer": { "@type": "Answer", "text": "The tool audits up to your last 10 videos. If you have fewer than 10, it will analyze whatever is available. The scores are still valid, though publishing consistency will naturally score lower with fewer data points." } },
+    { "@type": "Question", "name": "What if I only have a few videos?", "acceptedAnswer": { "@type": "Answer", "text": "The audit reads up to the last 10 public videos. If a channel has fewer than 10, it scores whichever videos exist, and publishing consistency has less to go on. If a channel has no public videos, the audit returns an error saying so instead of a score." } },
   ]
 };
 
@@ -66,7 +66,7 @@ const faqSchema = {
         YouTube Channel Audit Tool&#32;<br class="hidden sm:block" />for Business Channels
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        This free YouTube channel audit scores a channel's titles, descriptions, posting consistency, and SEO across its last 10 videos. Paste any public channel URL or handle, yours or a competitor's. 3 free audits with no signup, then a business email keeps it free.
+        A YouTube channel audit checks a channel's titles, descriptions, upload schedule, and search signals against a scoring rubric. This free audit reads a channel's last 10 public videos and scores four dimensions, each out of 25: Title Quality, Description Quality, Publishing Consistency, and SEO Optimization. You get an overall score out of 100, a good, fair, or poor rating for each video's title and description, and three recommendations. Paste a public channel URL, an @handle, or a channel ID. A bare name without @ returns an error. You can audit a competitor's public channel too. The first 3 audits need no signup. After that, a business email unlocks more audits. Gmail, Yahoo, and similar consumer addresses are not accepted.
       </p>
     </div>
   </section>
@@ -286,7 +286,7 @@ const faqSchema = {
           The result: companies invest in video production, filming, and editing but publish with metadata that buries the video in search results. A $5,000 video with a vague title and empty description will be outranked by a $200 video with optimized metadata. YouTube does not care about production value when deciding search rankings. It cares about relevance signals.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          This audit reads those signals the same way YouTube does. It checks your last 10 videos across the 4 dimensions that determine discoverability, then scores each one so you know exactly where to focus. For a deeper look at how YouTube search works for business channels, see our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
+          The audit sends each video's title, publish date, duration, and the first 200 characters of its description to an AI model. The model scores the last 10 videos across the 4 dimensions that determine discoverability and rates each video. Scores come from an AI model and can vary slightly between runs. For a deeper look at how YouTube search works for business channels, see our <a href="/blog/youtube-seo-guide" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube SEO guide</a>.
         </p>
       </div>
 
@@ -324,14 +324,14 @@ const faqSchema = {
               YouTube favors channels that upload on a predictable schedule. Long gaps between videos signal inactivity. Bursts of uploads followed by silence signal inconsistency.
             </p>
             <p class="text-sm text-gray-500 dark:text-slate-500">
-              For business channels, 1-2 videos per week is the sweet spot. Even 2 per month is fine if the schedule is steady. What hurts is unpredictability: 4 videos in one week, then nothing for 2 months.
+              The scoring rubric asks whether uploads follow a regular schedule and whether the frequency is reasonable, with at least 1-2 videos per month as the baseline. Long gaps and bursts followed by silence lower the score: 4 videos in one week, then nothing for 2 months.
             </p>
           </div>
 
           <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-5">
             <h3 class="text-base font-bold text-gray-900 dark:text-white mb-2">4. SEO optimization (0-25)</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed mb-2">
-              Do your descriptions include timestamps or chapter markers? Are your titles written as queries that someone would type into YouTube search? Is there evidence of intentional keyword targeting across your videos?
+              Do your descriptions include timestamps or chapter markers? Are your titles written as queries that someone would type into YouTube search? Is there evidence of intentional keyword targeting across your videos? The audit reads only the first 200 characters of each description, so chapter markers further down a description are not seen.
             </p>
             <p class="text-sm text-gray-500 dark:text-slate-500">
               Chapters improve watch time by letting viewers jump to the section they need. Searchable titles improve click-through rate because they match the viewer's query. Both signals tell YouTube your content deserves higher rankings.
@@ -386,14 +386,14 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this free YouTube channel audit really free?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. You get 3 free audits without any signup. After that, enter your business email to continue auditing channels at no cost. There is no paid tier.
+              Yes. You get 3 free audits per browser without any signup. After that, enter a business email to continue auditing channels at no cost. Gmail, Yahoo, Outlook, iCloud, and similar consumer addresses are not accepted, and the address joins SellonTube's content marketing emails. There is no paid tier.
             </p>
           </div>
 
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Can this audit tell me if a YouTube channel is dead or inactive?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              It does not give a dead-or-alive verdict. It reads the publish dates of the last 10 videos, and long gaps between uploads lower the Publishing consistency score (0-25). If the last uploads were months apart, expect that score to be low. Check the channel's Videos tab for the exact date of the most recent upload.
+              The audit gives no dead-or-alive verdict. It scores the gaps between the last uploads, and a channel that stopped posting long ago can still score well if its earlier uploads were steady. To check whether a channel is still active, look at the date of its most recent video on YouTube.
             </p>
           </div>
 
@@ -407,7 +407,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What score should I aim for?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              A score of 71-100 means your channel metadata is well optimized for search and buyer intent. 41-70 means there is meaningful room for improvement. Below 40 means your videos are likely invisible to the buyers searching for what you sell. Focus on the lowest-scoring dimension first.
+              A score of 71-100 is labeled Well optimized, 41-70 is labeled Room for improvement, and 40 or below is labeled Needs significant work. These bands are display thresholds on a score an AI model assigns, not a YouTube ranking factor. Focus on the lowest-scoring dimension first.
             </p>
           </div>
 
@@ -428,7 +428,7 @@ const faqSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">What if I only have a few videos?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              The tool audits up to your last 10 videos. If you have fewer than 10, it will analyze whatever is available. The scores are still valid, though publishing consistency will naturally score lower with fewer data points.
+              The audit reads up to the last 10 public videos. If a channel has fewer than 10, it scores whichever videos exist, and publishing consistency has less to go on. If a channel has no public videos, the audit returns an error saying so instead of a score.
             </p>
           </div>
 

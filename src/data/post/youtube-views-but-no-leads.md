@@ -15,7 +15,9 @@ tags:
   - conversion-optimization
 toolCta: video-ideas-generator
 faqs:
-  - question: "How many YouTube views do you need to generate leads?"
+  - question: "Our content gets views but no leads, what's wrong?"
+    answer: "Views without leads usually come from topics that attract learners instead of buyers, plus a missing or hidden next step. Fix the topics first, then give each video one call to action and put its link on the first line of the description. Track description link clicks and form submissions instead of views, and read your comments to check that buyers, not peers, are watching."
+  - question: "How many YouTube views do I need to generate leads?"
     answer: "View count does not determine lead generation. A video with 200 views targeting a buyer-intent keyword like 'best CRM for real estate agents' can generate more leads than a video with 50,000 views on a broad topic like 'what is CRM.' The difference is search intent, not volume."
   - question: "Why is my YouTube channel getting views but no sales?"
     answer: "The most common reason is topic selection. Broad educational topics attract curious viewers who will never buy. Buyer-intent topics (comparisons, how-to-choose guides, problem-specific searches) attract people actively evaluating solutions. Switch your topic strategy from education to evaluation."
@@ -25,7 +27,7 @@ faqs:
     answer: "Track click-through rate on description links (via UTM parameters), website visits from YouTube (in Google Analytics), form submissions or demo requests attributed to YouTube, and branded search lift. Stop tracking subscriber count and total views as primary metrics."
   - question: "How long should I try YouTube marketing before giving up?"
     answer: "Give a search-first YouTube strategy at least 90 days and 12 published videos before evaluating results. If you have been publishing for 6 months using a creator-style strategy (no keyword research, no buyer-intent topics), reset with a search-first approach and restart the 90-day clock."
-  - question: "Is YouTube marketing different for B2B vs B2C?"
+  - question: "Should I run YouTube marketing differently for B2B than for B2C?"
     answer: "Yes. B2C YouTube often works through the algorithm and viral content. B2B YouTube works through search. Your buyer is typing specific questions into YouTube before making a purchase decision. If your strategy optimizes for the algorithm instead of search, you are using the wrong playbook."
 metadata:
   title: "Getting YouTube Views But No Leads? 6 Fixes"
@@ -48,13 +50,13 @@ And your inbox? Empty. Zero demo requests. Zero form submissions. Zero inbound l
 
 You are getting YouTube views but no leads. And you are not alone.
 
-This is one of the most common problems B2B companies face on YouTube. The channel looks healthy on the surface. The analytics dashboard shows growth. But when you connect it to actual business outcomes, there is nothing there.
+Views climb month after month while inquiries stay at zero. The channel looks healthy on the surface. The analytics dashboard shows growth. But when you connect it to actual business outcomes, there is nothing there.
 
-The good news: this is not a content quality problem. It is a structural problem. And structural problems have specific, fixable causes.
+A YouTube channel that gets views but no leads has a structural problem, not a content quality problem. Six causes explain it. Topics attract learners instead of buyers, so move to comparison and how-to-choose topics. Videos end without one clear next step, so give each video a single call to action tied to a lead capture. The description link sits below the fold, so put it on the first line and pin a comment with it. Teams measure views and subscribers, so track description link clicks, form submissions and branded search instead. The audience is peers rather than buyers, so make videos that solve a buyer's specific problem. Underneath all five sits the intent gap: views measure reach, while leads measure intent. Fix topic selection first, because it has the largest impact on the pipeline of any single change.
 
-**The views-to-leads gap is the difference between how many people watch your videos and how many take a business action afterward.** It happens when a channel attracts viewers with the wrong search intent (people learning about a concept rather than people evaluating a purchase), so the view count climbs while the pipeline stays empty.
+**The views-to-leads gap is the difference between how many people watch your videos and how many take a business action afterward.** It happens when a channel attracts viewers with the wrong search intent (people learning about a concept rather than people evaluating a purchase), so the view count climbs while the pipeline stays empty. A **buyer-intent video** is a video that answers a search a person types while comparing or choosing a product or service.
 
-Here are the six reasons your YouTube channel generates views but not leads, and the exact fix for each one.
+Each of the six causes has its own fix, starting with the intent gap.
 
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #3b82f6; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Key Takeaways</p>
@@ -129,9 +131,9 @@ Want to see this in action? Take your last 10 video topics and sort them into th
 
 The fix is straightforward. Before choosing any topic, run it through a buyer-intent filter, following [the high-intent research process](/blog/high-intent-topic-research-framework). Ask: "Is the person searching this actively evaluating a solution, or just learning about a concept?"
 
-You can use the [Video Ideas Evaluator](/tools/youtube-video-ideas-evaluator) to test whether a topic idea has commercial potential before you spend time producing it. And for finding buyer-intent keywords specifically, our guide on [YouTube keyword research](/blog/youtube-keyword-research) walks through the exact process.
+You can use the [Video Ideas Evaluator](/tools/youtube-video-ideas-evaluator) to test whether a topic idea has commercial potential before you spend time producing it. And for finding keywords for buyer-intent videos specifically, our guide on [YouTube keyword research](/blog/youtube-keyword-research) walks through the exact process.
 
-The goal is not to stop making educational content entirely. It is to shift your ratio. If 70% of your videos target buyer-intent topics and 30% target educational topics, you will see a very different pipeline than the reverse.
+The goal is not to stop making educational content entirely. It is to shift your ratio. A starting ratio of 70% buyer-intent video topics to 30% educational topics gives you a very different pipeline than the reverse.
 
 ### Search vs. Algorithm: Two Distribution Systems, Two Audiences
 
@@ -172,7 +174,7 @@ Good CTAs for B2B YouTube videos:
 
 The key is matching the CTA to the video's topic. A video about choosing a CRM should offer a CRM comparison checklist, not a generic newsletter signup.
 
-When should you deliver the CTA? At least twice. Once mid-video (right after you deliver a key insight, when trust is highest) and once at the end. The mid-video CTA is more effective than the end-screen CTA because 40% to 60% of viewers drop off before the final 30 seconds.
+When should you deliver the CTA? At least twice. Once mid-video (right after you deliver a key insight, when trust is highest) and once at the end. The mid-video CTA is more effective than the end-screen CTA because many viewers leave before the final 30 seconds.
 
 For a deeper breakdown of how to structure your videos for [YouTube lead generation](/blog/youtube-lead-generation), including lead magnet design and verbal CTA placement, check the full guide.
 
@@ -180,7 +182,7 @@ For a deeper breakdown of how to structure your videos for [YouTube lead generat
 
 Even when you include a CTA, YouTube works against you.
 
-Here is what happens on mobile (where 70% of YouTube views occur): the video description is collapsed by default. Viewers see the title, the channel name, and the first line of the description. That is it. Everything else requires tapping "Show more."
+Here is what happens on mobile (where most YouTube views happen): the video description is collapsed by default. Viewers see the title, the channel name, and the first line of the description. That is it. Everything else requires tapping "Show more."
 
 If your description starts with three paragraphs of context, your CTA link is invisible. The viewer never sees it. You could have the best offer in the world buried on line 12 of your description, and it would generate zero clicks.
 
@@ -198,11 +200,11 @@ That is the only line visible without clicking "Show more" on mobile. Make it co
 
 **Optimize your description for YouTube search with keywords, but keep the CTA above the fold.** You can use the [YouTube SEO Tool](/tools/youtube-seo-tool) to identify the right keywords for your descriptions. Just make sure the keyword-rich copy goes after line one, not before your CTA.
 
-When you fix your description structure across all your existing videos (not just new ones), you will often see description link clicks double within the first month.
+When you fix your description structure across all your existing videos (not just new ones), you will often see more description link clicks within the first month.
 
 ## 5. You're Measuring the Wrong Things
 
-You already know the saying: what gets measured gets managed. The corollary is equally true: what gets measured gets optimized.
+Whatever you measure is what you will optimize.
 
 If your YouTube analytics review consists of checking views, watch time, and subscriber count, you are optimizing for views, watch time, and subscriber count. These metrics will improve. Your lead count will not.
 
@@ -251,7 +253,7 @@ A SaaS company should make videos like "How to Fix [Specific Problem Your Produc
 If you are getting YouTube views but no leads, run through this checklist:
 
 1. **Intent gap check.** Are your topics designed for people who might buy, or people who are just curious?
-2. **Buyer-intent audit.** What percentage of your last 20 videos target buyer-stage keywords vs. informational keywords? Aim for 70/30.
+2. **Buyer-intent audit.** What percentage of your last 20 videos target buyer-stage keywords vs. informational keywords? Use 70/30 as a starting ratio.
 3. **CTA audit.** Does every video have one specific CTA tied to a lead capture mechanism? Is it mentioned verbally mid-video?
 4. **Description audit.** Is your CTA link on the first line of every description? Do you have a pinned comment?
 5. **Measurement audit.** Are you tracking description link clicks, form submissions, and branded search lift? Or just views and subscribers?
@@ -283,7 +285,11 @@ Your next video should not be the one that gets the most views. It should be the
 
 ## FAQ
 
-### How many YouTube views do you need to generate leads?
+### Our content gets views but no leads, what's wrong?
+
+Views without leads usually come from topics that attract learners instead of buyers, plus a missing or hidden next step. Fix the topics first, then give each video one call to action and put its link on the first line of the description. Track description link clicks and form submissions instead of views, and read your comments to check that buyers, not peers, are watching.
+
+### How many YouTube views do I need to generate leads?
 
 View count does not determine lead generation. A video with 200 views targeting a buyer-intent keyword like "best CRM for real estate agents" can generate more leads than a video with 50,000 views on a broad topic like "what is CRM." The difference is search intent, not volume.
 
@@ -303,6 +309,6 @@ Track click-through rate on description links (via UTM parameters), website visi
 
 Give a search-first YouTube strategy at least 90 days and 12 published videos before evaluating results. If you have been publishing for 6 months using a creator-style strategy (no keyword research, no buyer-intent topics), reset with a search-first approach and restart the 90-day clock.
 
-### Is YouTube marketing different for B2B vs B2C?
+### Should I run YouTube marketing differently for B2B than for B2C?
 
 Yes. B2C YouTube often works through the algorithm and viral content. B2B YouTube works through search. Your buyer is typing specific questions into YouTube before making a purchase decision. If your strategy optimizes for the algorithm instead of search, you are using the wrong playbook.
