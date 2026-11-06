@@ -23,6 +23,7 @@ export const footerData = {
       links: [
         { text: 'How It Works', href: getPermalink('/how-it-works') },
         { text: 'Pricing', href: getPermalink('/pricing') },
+        { text: 'AI SEO Services', href: getPermalink('/ai-seo') },
         { text: 'Book a Call', href: 'https://cal.com/gautham-8bdvdx/30min', target: '_blank', rel: 'noopener noreferrer' },
       ],
     },

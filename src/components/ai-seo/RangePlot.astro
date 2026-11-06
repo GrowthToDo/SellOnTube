@@ -1,0 +1,24 @@
+---
+// The rate as a dot on a 0 to 100 axis, with its likely range. Values are printed as text too.
+export interface Props {
+  low: number;
+  high: number;
+  point: number;
+  note: string;
+}
+
+const { low, high, point, note } = Astro.props;
+---
+
+<figure class="ais-range">
+  <p class="ais-range__title">How Sure Can I Be About {point}%?</p>
+  <div class="ais-range__axis" role="img" aria-label={`Rate of ${point}%, with a likely range of ${low}% to ${high}%.`}>
+    <span class="ais-range__label" style={`left: ${point}%`}>{point}%</span>
+    <span class="ais-range__span" style={`left: ${low}%; width: ${high - low}%`}></span>
+    <span class="ais-range__dot" style={`left: ${point}%`}></span>
+  </div>
+  <div class="ais-range__ticks" aria-hidden="true">
+    <span>0%</span><span>Likely range {low}% to {high}%</span><span>100%</span>
+  </div>
+  <figcaption class="ais-note">{note}</figcaption>
+</figure>

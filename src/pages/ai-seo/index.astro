@@ -1,0 +1,234 @@
+---
+import { Image } from 'astro:assets';
+import { SITE } from 'astrowind:config';
+import Layout from '~/layouts/PageLayout.astro';
+import AiSeoTheme from '~/components/ai-seo/AiSeoTheme.astro';
+import AiSeoHeader from '~/components/ai-seo/AiSeoHeader.astro';
+import AiSeoFooter from '~/components/ai-seo/AiSeoFooter.astro';
+import AiSeoTracking from '~/components/ai-seo/AiSeoTracking.astro';
+import AiSeoFlow from '~/components/ai-seo/AiSeoFlow.astro';
+import AnswerCheckForm from '~/components/ai-seo/AnswerCheckForm.astro';
+import ClientLogo from '~/components/ai-seo/ClientLogo.astro';
+import FounderFaces from '~/components/ai-seo/FounderFaces.astro';
+import ProofGrid from '~/components/ai-seo/ProofGrid.astro';
+import foundersPhoto from '~/assets/images/team/founders-group.jpg';
+import answerShot from '~/assets/images/case-studies/label-wizard-chatgpt-answer.png';
+import { AI_SEO_CAL_LINK, AI_SEO_PATH, caseStudyPath, featuredCaseStudy as study, landing } from '~/data/ai-seo';
+
+const description = study ? landing.descriptionWithProof : landing.descriptionPlain;
+
+const metadata = {
+  title: landing.title,
+  description,
+  openGraph: {
+    images: [{ url: '~/assets/images/og/ai-seo.jpg', width: 1200, height: 630 }],
+  },
+};
+
+const pageUrl = `${SITE.site}${AI_SEO_PATH}`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI SEO Services',
+  serviceType: 'AI SEO',
+  description: landing.descriptionPlain,
+  url: pageUrl,
+  provider: { '@type': 'Organization', name: 'SellOnTube', url: SITE.site },
+  audience: { '@type': 'BusinessAudience', name: 'B2B companies' },
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+  <Fragment slot="header"><AiSeoHeader /></Fragment>
+  <Fragment slot="footer"><AiSeoFooter /></Fragment>
+
+  <AiSeoTheme />
+  <AiSeoTracking />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <div class="ais">
+    <div id="ais-main">
+      <section class="ais-hero ais-band">
+        <div class:list={['ais-wrap', { 'ais-hero__grid': study }]}>
+          <div>
+            <p class="ais-eyebrow">{landing.eyebrow}</p>
+            <h1 class="ais-h1">{landing.headline}</h1>
+            <p class="ais-lede">{landing.subhead}</p>
+            <div class="ais-actions">
+              <a class="ais-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="hero">
+                Book a discovery call
+              </a>
+              <a class="ais-btn ais-btn--band-ghost" href="#check" data-ais-cta="hero-check">Get a free ChatGPT check</a>
+            </div>
+          </div>
+          {
+            study && (
+              <div>
+                <ClientLogo client={study.client} />
+                <figure class="ais-shot-card">
+                  <p class="ais-label">Buyer asks ChatGPT</p>
+                  <p class="ais-answer__question">{study.answers[0].shortQuestion}</p>
+                  <p class="ais-label">ChatGPT answers</p>
+                  <Image
+                    src={answerShot}
+                    alt="ChatGPT answer listing 1. Label Wizard, tagged Custom sizes supported, with set your own label dimensions, 400+ ready-made templates, custom layouts and PDF printing, by Left Foot Software"
+                    widths={[480, answerShot.width]}
+                    sizes="(min-width: 1000px) 28rem, 100vw"
+                    loading="eager"
+                  />
+                </figure>
+                <p class="ais-note ais-hero__note">{landing.heroAnswerNote}</p>
+              </div>
+            )
+          }
+        </div>
+      </section>
+
+      {
+        study && (
+          <section class="ais-section" aria-labelledby="proof-title">
+            <div class="ais-wrap ais-proof">
+              <ProofGrid
+                sessions={study.stats.sessions}
+                installEvents={study.stats.installEvents}
+                rate={study.stats.rate}
+                note={study.sourceNote}
+              />
+              <div>
+                <p class="ais-eyebrow">{study.clientLine}</p>
+                <h2 class="ais-h2" id="proof-title">
+                  {landing.proof.title}
+                </h2>
+                <div class="ais-prose">
+                  {landing.proof.text.map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+                <a class="ais-link" href={caseStudyPath(study.slug)} data-ais-case="proof">
+                  Read the {study.client} case study
+                </a>
+              </div>
+            </div>
+          </section>
+        )
+      }
+
+      <section class="ais-section ais-section--tint" aria-labelledby="team-title">
+        <div class="ais-wrap ais-team">
+          <Image
+            src={foundersPhoto}
+            alt="SellOnTube founders Gautham, Sathyanand and Pradeep Pandey standing together outdoors"
+            widths={[480, 800, 1120]}
+            sizes="(min-width: 900px) 34rem, 100vw"
+            loading="lazy"
+          />
+          <div>
+            <h2 class="ais-h2" id="team-title">{landing.team.title}</h2>
+            <div class="ais-prose">
+              {landing.team.text.map((p) => <p>{p}</p>)}
+              <p>{landing.team.fit}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ais-section ais-section--white" id="services" aria-labelledby="what-title">
+        <div class="ais-wrap">
+          <h2 class="ais-h2" id="what-title">{landing.what.title}</h2>
+          <div class="ais-prose">{landing.what.text.map((p) => <p>{p}</p>)}</div>
+          <AiSeoFlow steps={study ? study.flow : landing.flow} />
+          {study && <p class="ais-note ais-flow__note">{study.flowNote}</p>}
+
+          <h3 class="ais-h3 ais-tiles__title">{landing.servicesTitle}</h3>
+          <div class="ais-tiles">
+            {
+              landing.services.map((service) => (
+                <div class="ais-tile">
+                  <h4 class="ais-h4">{service.title}</h4>
+                  {service.text.map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+              ))
+            }
+          </div>
+          <p class="ais-optional">{landing.optionalLine}</p>
+        </div>
+      </section>
+
+      <section class="ais-band ais-band--rust ais-section" id="check" aria-labelledby="check-title">
+        <div class="ais-wrap ais-two">
+          <div>
+            <h2 class="ais-h2" id="check-title">{landing.check.title}</h2>
+            <div class="ais-prose">{landing.check.text.map((p) => <p>{p}</p>)}</div>
+          </div>
+          <AnswerCheckForm />
+        </div>
+      </section>
+
+      <section class="ais-section" aria-labelledby="know-title">
+        <div class="ais-wrap ais-two">
+          <div>
+            <h2 class="ais-h2" id="know-title">{landing.know.title}</h2>
+            <p class="ais-lede">{landing.know.text}</p>
+            <ol class="ais-ladder">
+              {
+                landing.measures.map((measure) => (
+                  <li>
+                    <strong>{measure.level}</strong>
+                    <span>{measure.items}</span>
+                  </li>
+                ))
+              }
+            </ol>
+            <p class="ais-note">{landing.measureNote}</p>
+          </div>
+          <div>
+            <h3 class="ais-h3">{landing.know.stepsTitle}</h3>
+            <ol class="ais-rail">
+              {
+                landing.steps.map((step) => (
+                  <li>
+                    <strong>{step.title}</strong>
+                    <span>{step.text}</span>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="ais-section ais-section--tint" aria-labelledby="faq-title">
+        <div class="ais-wrap">
+          <h2 class="ais-h2" id="faq-title">FAQ</h2>
+          <div class="ais-faq">
+            {
+              landing.faqs.map((faq) => (
+                <div class="ais-faq__item">
+                  <h3 class="ais-h3">{faq.q}</h3>
+                  <p>{faq.a}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="ais-band ais-section" aria-labelledby="closing-title">
+        <div class="ais-wrap">
+          <h2 class="ais-h2" id="closing-title">{landing.closing.title}</h2>
+          <p class="ais-lede">{landing.closing.text}</p>
+          <div class="ais-actions">
+            <a class="ais-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="closing">
+              Book a discovery call
+            </a>
+          </div>
+          <FounderFaces text={landing.closing.faces} />
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

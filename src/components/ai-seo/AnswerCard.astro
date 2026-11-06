@@ -1,0 +1,21 @@
+---
+// A recorded AI answer, set as text. It is labelled as a record, and it does not imitate
+// the ChatGPT interface, so nobody can mistake it for a screenshot.
+import type { RecordedAnswer } from '~/data/ai-seo';
+
+export interface Props {
+  answer: RecordedAnswer;
+}
+
+const { answer } = Astro.props;
+---
+
+<figure class="ais-answer">
+  <p class="ais-label">Buyer asks ChatGPT</p>
+  <p class="ais-answer__question">{answer.question}</p>
+  <p class="ais-label">ChatGPT answered</p>
+  <blockquote class="ais-answer__quote">
+    {answer.lines.map((line, i) => <p class:list={{ 'is-lead': i === 0 }}>{line}</p>)}
+  </blockquote>
+  <figcaption class="ais-answer__position">{answer.position}. Recorded October 31, 2026.</figcaption>
+</figure>

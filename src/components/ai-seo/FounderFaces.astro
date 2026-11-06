@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import sathyanand from '~/assets/images/team/sathya-portrait.jpg';
+import gautham from '~/assets/images/team/Gautham Profile Photo.jpg';
+import pradeep from '~/assets/images/team/pradeep-portrait.jpg';
+
+export interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const faces = [
+  { src: sathyanand, alt: 'Sathyanand S' },
+  { src: gautham, alt: 'Gautham' },
+  { src: pradeep, alt: 'Pradeep Pandey' },
+];
+---
+
+<div class="ais-faces">
+  <span class="ais-faces__row">
+    {faces.map((face) => <Image src={face.src} alt={face.alt} width={112} height={112} loading="lazy" />)}
+  </span>
+  <p>{text}</p>
+</div>

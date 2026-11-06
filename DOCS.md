@@ -22,6 +22,7 @@ All project documentation in one place. Start here.
 | [`growth-strategy.md`](growth-strategy.md) | **SINGLE SOURCE OF TRUTH** for growth strategy. Tools-first plan, tool specs, blog clusters, keyword tiers, backlink tactics, success metrics. |
 | [`traffic-reality-check.md`](traffic-reality-check.md) | **Active correction — read before scoping any traffic, keyword, or tool decision.** Live GSC/GA4 data showing most western impressions are bot traffic, not human demand; measure clicks and GA4 sessions, never impressions alone. |
 | [`seo-audit-log.md`](seo-audit-log.md) | Audit history, P0/P1/P2 fixes resolved, GSC indexation strategy. |
+| `research/private/ai-seo-evidence-register.md` | Git-ignored. Definition and source of every public number on `/ai-seo` pages. This repo is public, so never commit it. |
 
 ---
 

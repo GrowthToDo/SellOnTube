@@ -1,0 +1,17 @@
+---
+import { AI_SEO_CAL_LINK, AI_SEO_PATH, caseStudyPath, featuredCaseStudy } from '~/data/ai-seo';
+---
+
+<footer class="ais ais-footer">
+  <div class="ais-wrap ais-footer__row">
+    <a class="ais-wordmark" href="/">SellOn<span>Tube</span></a>
+    <nav aria-label="AI SEO footer">
+      <a href={`${AI_SEO_PATH}#services`}>Services</a>
+      {featuredCaseStudy && <a href={caseStudyPath(featuredCaseStudy.slug)}>{featuredCaseStudy.client} case study</a>}
+      <a href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="footer">Book a discovery call</a
+      >
+      <a href="/privacy-policy">Privacy</a>
+      <a href="/terms-of-service">Terms</a>
+    </nav>
+  </div>
+</footer>

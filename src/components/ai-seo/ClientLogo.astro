@@ -1,0 +1,15 @@
+---
+import { Image } from 'astro:assets';
+import logo from '~/assets/images/case-studies/label-wizard-logo.png';
+
+export interface Props {
+  client: string;
+}
+
+const { client } = Astro.props;
+---
+
+<p class="ais-logo">
+  <Image src={logo} alt="" width={32} height={28} loading="eager" />
+  <span>{client}</span>
+</p>

@@ -1,0 +1,21 @@
+---
+// Unit chart: one square per ChatGPT session. Filled squares equal the install-event count.
+// The numbers are printed beside the squares, so colour is never the only carrier.
+export interface Props {
+  sessions: number;
+  installEvents: number;
+  rate: string;
+  note: string;
+}
+
+const { sessions, installEvents, rate, note } = Astro.props;
+---
+
+<figure class="ais-grid-panel">
+  <p class="ais-grid-panel__rate">{rate}</p>
+  <p class="ais-grid-panel__line">{installEvents} install events from {sessions} ChatGPT sessions</p>
+  <div class="ais-grid-panel__cells" role="img" aria-label={`Grid of ${sessions} squares with ${installEvents} filled.`}>
+    {Array.from({ length: sessions }, (_, i) => <i class:list={{ 'is-on': i < installEvents }} />)}
+  </div>
+  <figcaption>Each square is one session, and filled squares show the count of install events. {note}</figcaption>
+</figure>
