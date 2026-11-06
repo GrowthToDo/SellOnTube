@@ -454,6 +454,7 @@ const faqs = [
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown, type ToolErrorClass } from '~/utils/track';
   // ===== CONSTANTS =====
 
   const EMAIL_KEY = 'sot_desc_extract_email_submitted';
@@ -730,12 +731,12 @@ const faqs = [
     btn.textContent = 'Extract Description →';
   }
 
-  function failExtract(message: string, reason: string, asNotice = false): void {
+  function failExtract(message: string, reason: string, asNotice = false, status?: number, errorClass?: ToolErrorClass): void {
     showStep('step-input');
     resetButton();
     if (asNotice) showToolNotice(message);
     else showFieldError('video-url-input', message);
-    track('tool_generate_error', { reason });
+    trackToolError(TOOL, reason, status, errorClass);
   }
 
   async function extract(): Promise<void> {
@@ -749,31 +750,37 @@ const faqs = [
     if (btn) { btn.disabled = true; btn.textContent = 'Extracting...'; }
     showStep('step-loading');
 
+    let httpStatus: number | undefined;
     try {
       const res = await fetch('/api/extract-video-metadata', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url }),
       });
+      httpStatus = res.ok ? undefined : res.status;
 
       if (res.status === 429) {
         const b = await res.json().catch(() => ({}));
         return failExtract(
           b.error || 'This tool has hit its daily limit. Nothing is wrong with your link. Please try again tomorrow.',
           b.code || 'quota_exceeded',
-          true
+          true,
+          429,
+          'quota'
         );
       }
       if (res.status === 503) {
         return failExtract(
           'YouTube is not responding right now. Nothing is wrong with your link. Please try again in a moment.',
           'upstream_unavailable',
-          true
+          true,
+          503,
+          'upstream'
         );
       }
       if (res.status === 400 || res.status === 422) {
         const b = await res.json().catch(() => ({}));
-        return failExtract(b.error || 'That video could not be read. Check the URL and try again.', b.code || 'bad_input');
+        return failExtract(b.error || 'That video could not be read. Check the URL and try again.', b.code || 'bad_input', false, res.status, 'validation');
       }
       if (!res.ok) throw new Error('Something went wrong on our end. Please try again in a moment.');
 
@@ -794,7 +801,8 @@ const faqs = [
       track('tool_generate_success');
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
-      failExtract(message, 'api_error');
+      if (httpStatus) failExtract(message, 'api_error_' + httpStatus, false, httpStatus);
+      else failExtract(message, err instanceof TypeError ? 'network_error' : 'invalid_response', false, undefined, classifyThrown(err));
     }
   }
 
@@ -864,12 +872,12 @@ const faqs = [
 
     const stale = () => requestId !== analysisRequestId;
 
-    const fail = (message: string, reason: string) => {
+    const fail = (message: string, reason: string, status?: number, errorClass?: ToolErrorClass) => {
       if (stale()) return;
       loadEl?.classList.add('hidden');
       if (btn) btn.disabled = false;
       if (errEl) { errEl.textContent = message; errEl.classList.remove('hidden'); }
-      track('tool_generate_error', { reason });
+      trackToolError(TOOL, reason, status, errorClass);
     };
 
     try {
@@ -885,15 +893,17 @@ const faqs = [
           b.code === 'budget_exhausted'
             ? 'This tool has reached its daily limit. The facts above are unaffected. Please try again tomorrow.'
             : 'The AI is at capacity right now. The facts above are unaffected. Please try again in a moment.',
-          b.code || 'quota_exceeded'
+          b.code || 'quota_exceeded',
+          429,
+          'quota'
         );
       }
-      if (res.status === 503) return fail('The analysis service is not responding right now. Everything above still works. Please try again in a moment.', 'upstream_unavailable');
+      if (res.status === 503) return fail('The analysis service is not responding right now. Everything above still works. Please try again in a moment.', 'upstream_unavailable', 503, 'upstream');
       if (res.status === 422) {
         const b = await res.json().catch(() => ({}));
-        return fail(b.error || 'This description could not be analysed.', b.code || 'unanalysable');
+        return fail(b.error || 'This description could not be analysed.', b.code || 'unanalysable', 422, 'validation');
       }
-      if (!res.ok) return fail('Something went wrong on our end. Please try again in a moment.', 'api_error');
+      if (!res.ok) return fail('Something went wrong on our end. Please try again in a moment.', 'api_error_' + res.status, res.status);
 
       const data = await res.json();
       if (stale()) return;
@@ -902,8 +912,8 @@ const faqs = [
       renderAnalysis(data.analysis ?? {});
       announce('Analysis ready.');
       track('tool_generate_success', { stage: 'analysis' });
-    } catch {
-      fail('Something went wrong on our end. Please try again in a moment.', 'api_error');
+    } catch (err) {
+      fail('Something went wrong on our end. Please try again in a moment.', err instanceof TypeError ? 'network_error' : 'invalid_response', undefined, classifyThrown(err));
     }
   }
 

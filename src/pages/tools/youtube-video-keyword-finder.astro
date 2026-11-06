@@ -567,6 +567,7 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
   // Window.dataLayer / Window.gtag are declared globally in src/env.d.ts
 
   interface KeywordResult {
@@ -1090,12 +1091,14 @@ const webAppSchema = {
   async function fetchKeywordReport(videoUrl: string): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
 
+    let httpStatus: number | undefined;
     try {
       const res = await fetch('/api/find-video-keywords', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ videoUrl }),
       });
+      httpStatus = res.status;
 
       stopLoadingMessages();
 
@@ -1109,8 +1112,7 @@ const webAppSchema = {
         } else {
           showError('AI analysis is at capacity right now. Free daily limit reached. Check back tomorrow.');
         }
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'video-keyword-finder', reason: 'quota_exceeded' });
+        trackToolError('video-keyword-finder', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
@@ -1144,14 +1146,19 @@ const webAppSchema = {
         ranking_count: report.summary.ranking,
       });
 
-    } catch {
+    } catch (err) {
       stopLoadingMessages();
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Find my ranking keywords →';
       showError('Something went wrong on our end. Try again in a moment.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'video-keyword-finder', reason: 'api_error' });
+      if (httpStatus && httpStatus >= 400) {
+        trackToolError('video-keyword-finder', 'api_error_' + httpStatus, httpStatus);
+      } else if (httpStatus) {
+        trackToolError('video-keyword-finder', 'invalid_response', undefined, 'unknown');
+      } else {
+        trackToolError('video-keyword-finder', 'network_error', undefined, classifyThrown(err));
+      }
     }
   }
 

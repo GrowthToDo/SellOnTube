@@ -672,6 +672,8 @@ const geoOptions = [
 
   <!-- Client-side JavaScript -->
   <script>
+    import { trackToolError, classifyThrown } from '~/utils/track';
+
     // Intent categories aligned with SellonTube's title generator video types
     // + video ideas generator BoFu patterns
     // Priority order: highest business value first
@@ -1281,20 +1283,15 @@ const geoOptions = [
             }
           } else if (clusterRes.status === 429) {
             console.warn('Cluster API quota exceeded');
-            if (typeof window !== 'undefined' && (window as any).dataLayer) {
-              window.gtag('event', 'tool_cluster_fallback', { tool: 'autocomplete-keywords', reason: 'quota_exceeded' });
-            }
+            trackToolError('autocomplete-keywords', 'quota_exceeded', clusterRes.status, 'quota');
           } else {
             console.warn('Cluster API error:', clusterRes.status);
-            if (typeof window !== 'undefined' && (window as any).dataLayer) {
-              window.gtag('event', 'tool_cluster_fallback', { tool: 'autocomplete-keywords', reason: 'api_error' });
-            }
+            trackToolError('autocomplete-keywords', 'api_error_' + clusterRes.status, clusterRes.status);
           }
         } catch (clusterErr) {
           console.warn('Cluster request failed:', clusterErr);
-          if (typeof window !== 'undefined' && (window as any).dataLayer) {
-            window.gtag('event', 'tool_cluster_fallback', { tool: 'autocomplete-keywords', reason: 'api_error' });
-          }
+          const clusterClass = classifyThrown(clusterErr);
+          trackToolError('autocomplete-keywords', clusterClass === 'network' ? 'network_error' : 'invalid_response', undefined, clusterClass);
         }
 
         // Fallback: raw keyword accordion

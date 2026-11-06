@@ -421,6 +421,7 @@ const faqs = [
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown, type ToolErrorClass } from '~/utils/track';
   import { checkChapters, extractTimestamps } from '../../../netlify/functions/lib/parsers.js';
   import { buildChapterLinks } from '../../../netlify/functions/lib/video-id.js';
 
@@ -733,12 +734,12 @@ const faqs = [
     btn.textContent = 'Generate Chapters →';
   }
 
-  function failGenerate(message: string, reason: string, asNotice = false): void {
+  function failGenerate(message: string, reason: string, asNotice = false, status?: number, errorClass?: ToolErrorClass): void {
     showStep('step-input');
     resetGenerateButton();
     if (asNotice) showToolNotice(message);
     else showFieldError('video-url-input', message);
-    track('tool_generate_error', { reason });
+    trackToolError(TOOL, reason, status, errorClass);
   }
 
   async function generate(): Promise<void> {
@@ -760,24 +761,26 @@ const faqs = [
     if (btn) { btn.disabled = true; btn.textContent = 'Generating...'; }
     showStep('step-loading');
 
+    let httpStatus: number | undefined;
     try {
       const res = await fetch('/api/generate-chapters', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url }),
       });
+      httpStatus = res.ok ? undefined : res.status;
 
       if (res.status === 429) {
         const b = await res.json().catch(() => ({}));
-        return failGenerate(b.error || 'Chapter generation has hit its limit right now. Please try again tomorrow.', b.code || 'quota_exceeded', true);
+        return failGenerate(b.error || 'Chapter generation has hit its limit right now. Please try again tomorrow.', b.code || 'quota_exceeded', true, 429, 'quota');
       }
       if (res.status === 503) {
         const b = await res.json().catch(() => ({}));
-        return failGenerate(b.error || 'The chapter writer is unavailable right now. Please try again in a moment.', 'upstream_unavailable', true);
+        return failGenerate(b.error || 'The chapter writer is unavailable right now. Please try again in a moment.', 'upstream_unavailable', true, 503, 'upstream');
       }
       if (res.status === 400 || res.status === 422) {
         const b = await res.json().catch(() => ({}));
-        return failGenerate(b.error || 'That video could not be read. Check the URL and try again.', b.code || 'bad_input');
+        return failGenerate(b.error || 'That video could not be read. Check the URL and try again.', b.code || 'bad_input', false, res.status, 'validation');
       }
       if (!res.ok) throw new Error('Something went wrong on our end. Please try again in a moment.');
 
@@ -799,7 +802,8 @@ const faqs = [
       track('tool_generate_success');
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
-      failGenerate(message, 'api_error');
+      if (httpStatus) failGenerate(message, 'api_error_' + httpStatus, false, httpStatus);
+      else failGenerate(message, err instanceof TypeError ? 'network_error' : 'invalid_response', false, undefined, classifyThrown(err));
     }
   }
 

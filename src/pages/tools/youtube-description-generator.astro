@@ -571,6 +571,8 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   // ===== CONSTANTS =====
 
   const RATE_LIMIT = 3;
@@ -736,6 +738,7 @@ const webAppSchema = {
 
   async function fetchDescription(videoUrl: string, ctaLink: string, addUtm: boolean): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    let httpStatus: number | undefined;
 
     try {
       const res = await fetch('/api/generate-description', {
@@ -749,12 +752,12 @@ const webAppSchema = {
         btn.disabled = false;
         btn.textContent = 'Generate Description \u2192';
         showFieldError('cta-link-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'youtube-description-generator', reason: 'quota_exceeded' });
+        trackToolError('youtube-description-generator', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
       if (!res.ok) {
+        httpStatus = res.status;
         const errData = await res.json().catch(() => ({}));
         const msg = errData?.error || 'API error ' + res.status;
         throw new Error(msg);
@@ -783,8 +786,13 @@ const webAppSchema = {
         ? err.message
         : 'Something went wrong on our end. Please try again in a moment.';
       showFieldError('video-url-input', message);
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'youtube-description-generator', reason: 'api_error' });
+      const errClass = classifyThrown(err);
+      trackToolError(
+        'youtube-description-generator',
+        httpStatus ? 'api_error_' + httpStatus : errClass === 'network' ? 'network_error' : 'invalid_response',
+        httpStatus,
+        httpStatus ? undefined : errClass
+      );
     }
   }
 

@@ -600,6 +600,8 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   // ===== CONSTANTS =====
 
   const RATE_LIMIT = 3;
@@ -1206,6 +1208,8 @@ const webAppSchema = {
 
   async function fetchTranscript(url: string): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    let httpStatus: number | undefined;
+    let invalidResponse = false;
 
     try {
       const res = await fetch('/api/get-transcript', {
@@ -1213,14 +1217,14 @@ const webAppSchema = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url }),
       });
+      httpStatus = res.ok ? undefined : res.status;
 
       if (res.status === 429) {
         showStep('step-input');
         btn.disabled = false;
         btn.textContent = 'Generate transcript \u2192';
         showFieldError('url-input', 'Service is at capacity. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: 'quota_exceeded' });
+        trackToolError('transcript-generator', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
@@ -1233,8 +1237,7 @@ const webAppSchema = {
         showToolNotice(
           'The transcript service is temporarily unavailable. Nothing is wrong with your link. Please try again later.'
         );
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: 'upstream_unavailable' });
+        trackToolError('transcript-generator', 'upstream_unavailable', res.status, 'upstream');
         return;
       }
 
@@ -1246,8 +1249,7 @@ const webAppSchema = {
         btn.disabled = false;
         btn.textContent = 'Generate transcript →';
         showFieldError('url-input', body.error || 'This video has no captions available.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: body.code || 'no_captions' });
+        trackToolError('transcript-generator', body.code || 'no_captions', res.status, 'validation');
         return;
       }
 
@@ -1261,6 +1263,7 @@ const webAppSchema = {
       const segments: Segment[] = Array.isArray(data.segments) ? data.segments : [];
 
       if (segments.length === 0) {
+        invalidResponse = true;
         throw new Error('No transcript found. The video may not have captions available.');
       }
 
@@ -1281,8 +1284,13 @@ const webAppSchema = {
       btn.textContent = 'Generate transcript \u2192';
       const message = err instanceof Error ? err.message : 'Something went wrong. Please try again.';
       showFieldError('url-input', message);
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'transcript-generator', reason: 'api_error' });
+      if (invalidResponse) {
+        trackToolError('transcript-generator', 'invalid_response', undefined, 'unknown');
+      } else if (httpStatus) {
+        trackToolError('transcript-generator', 'api_error_' + httpStatus, httpStatus);
+      } else {
+        trackToolError('transcript-generator', 'network_error', undefined, classifyThrown(err));
+      }
     }
   }
 

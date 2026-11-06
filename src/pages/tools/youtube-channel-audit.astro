@@ -92,7 +92,7 @@ const webAppSchema = {
         </p>
 
         <p class="mt-4 text-center text-xs leading-relaxed text-gray-500 dark:text-slate-400">
-          Paste a public channel URL, an @handle, or a channel ID. A bare name without @ returns an error. The audit scores four dimensions, each out of 25: Title Quality, Description Quality, Publishing Consistency, and SEO Optimization. You get an overall score out of 100, a good, fair, or poor rating for each video's title and description, and three recommendations. The first 3 audits need no signup. After that, a business email unlocks more audits. Gmail, Yahoo, and similar consumer addresses are not accepted.
+          Paste a public channel URL, an @handle, or a channel ID. A bare name without @ returns an error. The audit scores four dimensions, each out of 25: Title Quality, Description Quality, Publishing Consistency, and SEO Optimization. You get an overall score out of 100, a good, fair, or poor rating for each video's title and description, and three recommendations. The first 3 audits need no signup. After that, a free email address unlocks more audits.
         </p>
       </div>
 
@@ -116,14 +116,14 @@ const webAppSchema = {
         <div class="text-center mb-6">
           <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free audits</p>
           <p class="text-sm text-gray-500 dark:text-slate-400">
-            Enter your business email to keep auditing channels. It's free. Gmail and Yahoo addresses are not accepted.
+            Enter your email to keep auditing channels. It's free.
           </p>
         </div>
         <div id="gate-form" class="space-y-3">
           <input
             type="email"
             id="gate-email"
-            placeholder="your@company.com"
+            placeholder="you@example.com"
             class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                    focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
             aria-describedby="gate-email-error"
@@ -375,7 +375,7 @@ const webAppSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this free YouTube channel audit really free?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. You get 3 free audits per browser without any signup. After that, enter a business email to continue auditing channels at no cost. Gmail, Yahoo, Outlook, iCloud, and similar consumer addresses are not accepted, and the address joins SellonTube's content marketing emails. There is no paid tier.
+              Yes. You get 3 free audits per browser without any signup. After that, enter your email to continue auditing channels at no cost. Any working address is accepted, and it joins SellonTube's content marketing emails. There is no paid tier.
             </p>
           </div>
 
@@ -464,12 +464,13 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   // ===== CONSTANTS =====
 
   const RATE_LIMIT = 3;
   const COUNT_KEY = 'sot_audit_count';
   const EMAIL_KEY = 'sot_audit_email_submitted';
-  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
   const CAPTURE_URL = '/.netlify/functions/capture-email';
 
   // ===== STORAGE =====
@@ -702,6 +703,8 @@ const webAppSchema = {
 
   async function fetchAudit(channelInput: string): Promise<void> {
     const btn = document.getElementById('audit-btn') as HTMLButtonElement;
+    let httpStatus: number | undefined;
+    let invalidResponse = false;
 
     try {
       const res = await fetch('/api/channel-audit', {
@@ -710,18 +713,20 @@ const webAppSchema = {
         body: JSON.stringify({ channelInput }),
       });
 
+      httpStatus = res.ok ? undefined : res.status;
+
       if (res.status === 429) {
         showStep('step-input');
         btn.disabled = false;
         btn.textContent = 'Audit Channel \u2192';
         showFieldError('channel-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'youtube-channel-audit', reason: 'quota_exceeded' });
+        trackToolError('youtube-channel-audit', 'quota_exceeded', 429, 'quota');
         return;
       }
 
       if (res.status === 404) {
         const errData = await res.json();
+        trackToolError('youtube-channel-audit', 'channel_not_found', 404, 'validation');
         showStep('step-input');
         btn.disabled = false;
         btn.textContent = 'Audit Channel \u2192';
@@ -732,7 +737,10 @@ const webAppSchema = {
       if (!res.ok) throw new Error('API error ' + res.status);
 
       const data = await res.json();
-      if (!Array.isArray(data?.dimensions) || data.dimensions.length !== 4) throw new Error('Invalid audit structure');
+      if (!Array.isArray(data?.dimensions) || data.dimensions.length !== 4) {
+        invalidResponse = true;
+        throw new Error('Invalid audit structure');
+      }
 
       renderResults(data);
       incrementCount();
@@ -743,13 +751,14 @@ const webAppSchema = {
       window.dataLayer = window.dataLayer || [];
       window.gtag('event', 'tool_generate_success', { tool: 'youtube-channel-audit' });
 
-    } catch {
+    } catch (err) {
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Audit Channel \u2192';
       showFieldError('channel-input', 'Something went wrong on our end. Please try again in a moment.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'youtube-channel-audit', reason: 'api_error' });
+      if (invalidResponse) trackToolError('youtube-channel-audit', 'invalid_response', undefined, 'unknown');
+      else if (httpStatus) trackToolError('youtube-channel-audit', 'api_error_' + httpStatus, httpStatus);
+      else trackToolError('youtube-channel-audit', 'network_error', undefined, classifyThrown(err));
     }
   }
 
@@ -788,13 +797,9 @@ const webAppSchema = {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
-      return;
-    }
-
-    const domain = email.split('@')[1];
-    if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
+      if (errorEl) { errorEl.textContent = 'Please enter a valid email address.'; errorEl.classList.remove('hidden'); }
+      // Measures rejected gate entries. Only a fixed reason is sent, never the address.
+      window.gtag?.('event', 'tool_email_gate_invalid', { tool: 'youtube-channel-audit', reason: 'invalid_format' });
       return;
     }
 

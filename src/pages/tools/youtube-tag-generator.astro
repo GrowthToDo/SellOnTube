@@ -407,6 +407,8 @@ const faqs = [
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   // ===== CONSTANTS =====
 
   const RATE_LIMIT = 3;
@@ -592,6 +594,8 @@ const faqs = [
 
   async function fetchTags(videoUrl: string): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    let httpStatus: number | undefined;
+    let invalidResponse = false;
 
     try {
       const res = await fetch('/api/generate-tags', {
@@ -599,14 +603,14 @@ const faqs = [
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ videoUrl }),
       });
+      httpStatus = res.ok ? undefined : res.status;
 
       if (res.status === 429) {
         showStep('step-input');
         btn.disabled = false;
         btn.textContent = 'Generate Tags \u2192';
         showFieldError('video-url-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'youtube-tag-generator', reason: 'quota_exceeded' });
+        trackToolError('youtube-tag-generator', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
@@ -622,7 +626,10 @@ const faqs = [
       if (!res.ok) throw new Error('API error ' + res.status);
 
       const data = await res.json();
-      if (!Array.isArray(data?.suggestedTags) || data.suggestedTags.length === 0) throw new Error('Invalid response structure');
+      if (!Array.isArray(data?.suggestedTags) || data.suggestedTags.length === 0) {
+        invalidResponse = true;
+        throw new Error('Invalid response structure');
+      }
 
       renderResults(data);
       incrementCount();
@@ -633,13 +640,18 @@ const faqs = [
       window.dataLayer = window.dataLayer || [];
       window.gtag('event', 'tool_generate_success', { tool: 'youtube-tag-generator' });
 
-    } catch {
+    } catch (err) {
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Generate Tags \u2192';
       showFieldError('video-url-input', 'Something went wrong on our end. Please try again in a moment.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'youtube-tag-generator', reason: 'api_error' });
+      if (invalidResponse) {
+        trackToolError('youtube-tag-generator', 'invalid_response', undefined, 'unknown');
+      } else if (httpStatus) {
+        trackToolError('youtube-tag-generator', 'api_error_' + httpStatus, httpStatus);
+      } else {
+        trackToolError('youtube-tag-generator', 'network_error', undefined, classifyThrown(err));
+      }
     }
   }
 

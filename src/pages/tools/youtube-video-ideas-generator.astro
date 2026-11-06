@@ -539,6 +539,7 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
   // Window.dataLayer / Window.gtag are declared globally in src/env.d.ts
 
   // ===== CONSTANTS =====
@@ -695,20 +696,21 @@ const webAppSchema = {
   async function fetchVideoIdeas(product: string, url: string, targetCustomer: string, problemSolved: string): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
 
+    let httpStatus: number | undefined;
     try {
       const res = await fetch('/api/generate-video-ideas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ product, url, targetCustomer, problemSolved }),
       });
+      httpStatus = res.status;
 
       if (res.status === 429) {
         showStep('step-input');
         btn.disabled = false;
         btn.textContent = 'Generate My Video Ideas \u2192';
         showFieldError('problem-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'video-ideas-generator', reason: 'quota_exceeded' });
+        trackToolError('video-ideas-generator', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
@@ -726,13 +728,18 @@ const webAppSchema = {
       window.dataLayer = window.dataLayer || [];
       window.gtag('event', 'tool_generate_success', { tool: 'video-ideas-generator' });
 
-    } catch {
+    } catch (err) {
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Generate My Video Ideas \u2192';
       showFieldError('problem-input', 'Something went wrong on our end. Please try again in a moment.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'video-ideas-generator', reason: 'api_error' });
+      if (httpStatus && httpStatus >= 400) {
+        trackToolError('video-ideas-generator', 'api_error_' + httpStatus, httpStatus);
+      } else if (httpStatus) {
+        trackToolError('video-ideas-generator', 'invalid_response', undefined, 'unknown');
+      } else {
+        trackToolError('video-ideas-generator', 'network_error', undefined, classifyThrown(err));
+      }
     }
   }
 

@@ -847,6 +847,8 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   // ===== CONSTANTS =====
 
   const RATE_LIMIT = 3;
@@ -1008,6 +1010,8 @@ const webAppSchema = {
 
   async function fetchTitles(topic: string, videoType: string, targetCustomer: string): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    let httpStatus: number | undefined;
+    let invalidResponse = false;
 
     try {
       const res = await fetch('/api/generate-titles', {
@@ -1015,21 +1019,24 @@ const webAppSchema = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, videoType, targetCustomer }),
       });
+      httpStatus = res.ok ? undefined : res.status;
 
       if (res.status === 429) {
         showStep('step-input');
         btn.disabled = false;
         btn.textContent = 'Generate Titles \u2192';
         showFieldError('customer-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'youtube-title-generator', reason: 'quota_exceeded' });
+        trackToolError('youtube-title-generator', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
       if (!res.ok) throw new Error('API error ' + res.status);
 
       const data = await res.json();
-      if (!Array.isArray(data?.titles) || data.titles.length === 0) throw new Error('Empty titles array');
+      if (!Array.isArray(data?.titles) || data.titles.length === 0) {
+        invalidResponse = true;
+        throw new Error('Empty titles array');
+      }
 
       renderTitles(data.titles);
       incrementCount();
@@ -1040,13 +1047,18 @@ const webAppSchema = {
       window.dataLayer = window.dataLayer || [];
       window.gtag('event', 'tool_generate_success', { tool: 'youtube-title-generator' });
 
-    } catch {
+    } catch (err) {
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Generate Titles \u2192';
       showFieldError('customer-input', 'Something went wrong on our end. Please try again in a moment.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'youtube-title-generator', reason: 'api_error' });
+      if (invalidResponse) {
+        trackToolError('youtube-title-generator', 'invalid_response', undefined, 'unknown');
+      } else if (httpStatus) {
+        trackToolError('youtube-title-generator', 'api_error_' + httpStatus, httpStatus);
+      } else {
+        trackToolError('youtube-title-generator', 'network_error', undefined, classifyThrown(err));
+      }
     }
   }
 

@@ -739,6 +739,8 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   // ===== CONSTANTS =====
 
   const RATE_LIMIT = 3;
@@ -1015,6 +1017,7 @@ const webAppSchema = {
 
   async function fetchSeoAnalysis(videoUrl: string, websiteUrl: string): Promise<void> {
     const btn = document.getElementById('analyse-btn') as HTMLButtonElement;
+    let invalidResponse = false;
 
     try {
       const res = await fetch('/api/youtube-seo-tool', {
@@ -1028,8 +1031,7 @@ const webAppSchema = {
         btn.disabled = false;
         btn.textContent = 'Analyse My Video \u2192';
         showFieldError('video-url-input', 'AI analysis is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_analyse_error', { tool: 'youtube-seo-tool', reason: 'quota_exceeded' });
+        trackToolError('youtube-seo-tool', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
@@ -1043,13 +1045,15 @@ const webAppSchema = {
         btn.disabled = false;
         btn.textContent = 'Analyse My Video \u2192';
         showFieldError('video-url-input', errorMsg);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_analyse_error', { tool: 'youtube-seo-tool', reason: 'api_error_' + res.status });
+        trackToolError('youtube-seo-tool', 'api_error_' + res.status, res.status);
         return;
       }
 
       const data = await res.json() as SeoResult;
-      if (!data?.scores || typeof data?.total_score !== 'number') throw new Error('Invalid response structure');
+      if (!data?.scores || typeof data?.total_score !== 'number') {
+        invalidResponse = true;
+        throw new Error('Invalid response structure');
+      }
 
       // Check gate before showing results
       if (getCount() >= RATE_LIMIT && !isEmailSubmitted()) {
@@ -1073,13 +1077,16 @@ const webAppSchema = {
       window.dataLayer = window.dataLayer || [];
       window.gtag('event', 'tool_analyse_success', { tool: 'youtube-seo-tool' });
 
-    } catch {
+    } catch (err) {
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Analyse My Video \u2192';
       showFieldError('video-url-input', 'Something went wrong. Please try again.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_analyse_error', { tool: 'youtube-seo-tool', reason: 'api_error' });
+      if (invalidResponse) {
+        trackToolError('youtube-seo-tool', 'invalid_response', undefined, 'unknown');
+      } else {
+        trackToolError('youtube-seo-tool', 'network_error', undefined, classifyThrown(err));
+      }
     }
   }
 

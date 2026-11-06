@@ -657,6 +657,7 @@ const howToSchema = {
 </Layout>
 
 <script>
+  import { trackToolError } from '~/utils/track';
   // Window.dataLayer / Window.gtag are declared globally in src/env.d.ts
 
   // ===== SCORING ENGINE =====
@@ -1086,8 +1087,7 @@ const howToSchema = {
     // only failure mode. It previously fired no error event at all, making that path invisible
     // in GA4 alongside every other tool's tool_generate_error.
     if (!validateInputs()) {
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_evaluate_error', { tool: 'video-ideas-evaluator', reason: 'validation_failed' });
+      trackToolError('video-ideas-evaluator', 'validation_failed', undefined, 'validation');
       return;
     }
 

@@ -627,6 +627,8 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   const RATE_LIMIT = 3;
   const COUNT_KEY = 'sot_script_gen_count';
   const EMAIL_KEY = 'sot_script_gen_email_submitted';
@@ -927,6 +929,7 @@ const webAppSchema = {
 
   async function fetchScript(topic: string, videoType: string, targetCustomer: string, product: string, websiteUrl: string): Promise<void> {
     const btn = document.getElementById('generate-btn') as HTMLButtonElement;
+    let httpStatus: number | undefined;
 
     try {
       const payload: Record<string, string> = { topic, videoType, targetCustomer, product };
@@ -945,12 +948,14 @@ const webAppSchema = {
         btn.disabled = false;
         btn.textContent = 'Generate Script \u2192';
         showFieldError('product-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'youtube-script-generator', reason: 'quota_exceeded' });
+        trackToolError('youtube-script-generator', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
-      if (!res.ok) throw new Error('API error ' + res.status);
+      if (!res.ok) {
+        httpStatus = res.status;
+        throw new Error('API error ' + res.status);
+      }
 
       const data = await res.json();
       if (!data?.hook?.content || !Array.isArray(data?.body_sections) || !data?.full_script_text) throw new Error('Invalid script structure');
@@ -964,14 +969,19 @@ const webAppSchema = {
       window.dataLayer = window.dataLayer || [];
       window.gtag('event', 'tool_generate_success', { tool: 'youtube-script-generator' });
 
-    } catch {
+    } catch (err) {
       stopLoadingMessages();
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Generate Script \u2192';
       showFieldError('product-input', 'Something went wrong on our end. Please try again in a moment.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'youtube-script-generator', reason: 'api_error' });
+      const errClass = classifyThrown(err);
+      trackToolError(
+        'youtube-script-generator',
+        httpStatus ? 'api_error_' + httpStatus : errClass === 'network' ? 'network_error' : 'invalid_response',
+        httpStatus,
+        httpStatus ? undefined : errClass
+      );
     }
   }
 

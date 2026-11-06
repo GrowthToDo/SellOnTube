@@ -544,6 +544,8 @@ const webAppSchema = {
 </Layout>
 
 <script>
+  import { trackToolError, classifyThrown } from '~/utils/track';
+
   // ===== CONSTANTS =====
 
   const RATE_LIMIT = 1;
@@ -813,6 +815,7 @@ const webAppSchema = {
 
   async function fetchRankCheck(keyword: string, channelInput: string): Promise<void> {
     const btn = document.getElementById('check-btn') as HTMLButtonElement;
+    let httpStatus: number | undefined;
 
     try {
       const res = await fetch('/api/youtube-rank-check', {
@@ -826,12 +829,14 @@ const webAppSchema = {
         btn.disabled = false;
         btn.textContent = 'Check My Ranking \u2192';
         showFieldError('keyword-input', 'AI is at capacity right now. Free daily limit reached. Please try again in a moment.');
-        window.dataLayer = window.dataLayer || [];
-        window.gtag('event', 'tool_generate_error', { tool: 'youtube-ranking-checker', reason: 'quota_exceeded' });
+        trackToolError('youtube-ranking-checker', 'quota_exceeded', res.status, 'quota');
         return;
       }
 
-      if (!res.ok) throw new Error('API error ' + res.status);
+      if (!res.ok) {
+        httpStatus = res.status;
+        throw new Error('API error ' + res.status);
+      }
 
       const data: RankCheckResponse = await res.json();
       if (!Array.isArray(data?.results)) throw new Error('Invalid response structure');
@@ -846,13 +851,18 @@ const webAppSchema = {
       window.dataLayer = window.dataLayer || [];
       window.gtag('event', 'tool_generate_success', { tool: 'youtube-ranking-checker' });
 
-    } catch {
+    } catch (err) {
       showStep('step-input');
       btn.disabled = false;
       btn.textContent = 'Check My Ranking \u2192';
       showFieldError('keyword-input', 'Something went wrong on our end. Please try again in a moment.');
-      window.dataLayer = window.dataLayer || [];
-      window.gtag('event', 'tool_generate_error', { tool: 'youtube-ranking-checker', reason: 'api_error' });
+      const errClass = classifyThrown(err);
+      trackToolError(
+        'youtube-ranking-checker',
+        httpStatus ? 'api_error_' + httpStatus : errClass === 'network' ? 'network_error' : 'invalid_response',
+        httpStatus,
+        httpStatus ? undefined : errClass
+      );
     }
   }
 
