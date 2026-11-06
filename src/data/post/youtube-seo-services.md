@@ -1,7 +1,7 @@
 ---
 publishDate: 2026-06-25T00:00:00Z
 author: Sathyanand
-title: "YouTube SEO Services Cost $500 to $5,000/mo (Agency vs DIY)"
+title: "YouTube SEO Services: What They Include, What They Cost, and When to DIY"
 excerpt: "80% of what YouTube SEO agencies charge for can be done with free tools. Here is exactly what services include, what each tier costs, and how to decide if you need one."
 image: ~/assets/images/blog/youtube-seo-services-featured.png
 image_alt: "Comparison of YouTube SEO service tiers showing DIY, freelancer, and agency options with pricing and deliverables | SellonTube"
@@ -43,7 +43,9 @@ You posted 30 videos over six months. Each one got the same treatment: a decent 
 
 Here is the problem with buying YouTube SEO services: the industry has no standard scope. One agency calls "keyword research" a five-minute glance at TubeBuddy suggestions. Another spends 10 hours per month on competitive gap analysis, search volume validation, and topic clustering. Both charge roughly the same.
 
-This guide breaks down exactly what YouTube SEO services include at each price point, what you can handle yourself with free tools, and whether agency, freelancer, or DIY is the right call for your channel.
+Here is exactly what YouTube SEO services include at each price point, what you can handle yourself with free tools, and whether agency, freelancer, or DIY is the right call for your channel.
+
+**Disclosure:** SellOnTube also sells a managed YouTube marketing service for B2B companies. Our [pricing](/pricing) is public. We would rather you hire no one than the wrong provider, and the sections below say when DIY wins.
 
 <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem 1.75rem; margin: 2rem 0;">
 <p style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #64748b; margin: 0 0 0.75rem 0;">Quick Answer</p>
@@ -182,6 +184,8 @@ You have 50+ videos and no systematic keyword strategy. A channel audit from an 
 
 Your YouTube channel already generates leads but you want to scale. This is the clearest signal. If you know the channel works and you need to grow it faster, YouTube SEO services accelerate what is already proven. And if you are still deciding whether the channel model is worth the spend at all, read [how six B2B companies win customers from small YouTube channels](/blog/youtube-marketing-case-studies) before signing any retainer.
 
+If you decide you want help, see how SellOnTube's [managed B2B plans](/pricing) are priced, what each one includes, and the 4-month minimum.
+
 ## Free YouTube SEO Tools That Replace Most Agency Work
 
 Before committing to a monthly retainer, try handling YouTube SEO yourself with free tools. You might discover that you do not need to hire anyone.
@@ -205,7 +209,7 @@ The reality is this: YouTube SEO services exist on a spectrum. At one end, you h
 
 **2.** If you are DIY-ing, run your last three videos through the [YouTube SEO Tool](/tools/youtube-seo-tool) and fix whatever gaps it flags before you consider paying anyone.
 
-**3.** If you are close to hiring, write down the red flags and green flags from this guide. Ask every provider you are evaluating to address each one directly before you sign anything.
+**3.** If you are close to hiring, write down the red flags and green flags from the evaluation section above. Ask every provider you are evaluating to address each one directly before you sign anything.
 
 **4.** Revisit this decision when your publishing volume or customer lifetime value changes. The right tier for a channel publishing 4 videos a month is not the right tier for one publishing 8.
 </div>
