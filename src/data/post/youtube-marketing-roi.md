@@ -111,11 +111,7 @@ When you run Facebook or Google ads, you pay for every click. Stop paying, traff
 
 YouTube doesn't work that way. A video you publish in January keeps ranking in search, keeps appearing in suggested videos, and keeps driving traffic in June, September, and the following January. Your production cost is fixed, but the returns stretch over months, sometimes years.
 
-<<<<<<< HEAD
-This is why month-one YouTube ROI almost always looks terrible. You spent $2,000 on content and got 3 leads. But by month six, those same videos (plus the 20 others you've published since) are collectively driving 30-40 leads per month. Your per-lead cost has dropped by 90% while your ad-running competitor is still paying the same rate per click.
-=======
 This is why month-one YouTube ROI almost always looks terrible. You spent $2,000 on content and got 3 leads. But by month six, those same videos (plus the 20 others you've published since) are collectively driving 30-40 leads per month. Your per-lead cost has dropped by 90% while your ad-running competitor is still paying the same rate per click. The key is having a [YouTube lead generation system](/blog/youtube-lead-generation) that converts those views into pipeline, not just watch time.
->>>>>>> origin/main
 
 We wrote a full breakdown of this mechanism in [how four videos a month creates a compounding content engine](/blog/compounding-effect-four-videos-a-month), if you want to go deeper on the math behind it.
 
@@ -129,8 +125,6 @@ This compounding effect is what makes YouTube marketing ROI so counterintuitive.
 
 Let's walk through this step by step for four common business types.
 
-<<<<<<< HEAD
-=======
 | Business type | Customer LTV | YouTube ROI verdict |
 |---|---|---|
 | Coaches and consultants | $2,000-$10,000+ | Almost always worth it. One client per month likely covers the entire content budget. |
@@ -138,7 +132,6 @@ Let's walk through this step by step for four common business types.
 | SaaS companies | $500-$5,000+ | Works best for product-led content. Longer conversion path, but LTV usually justifies it. |
 | Agencies | $5,000-$50,000+ | Almost unfairly effective. A single client could fund six months of production. |
 
->>>>>>> origin/main
 ### Coaches and consultants (LTV: $2,000-$10,000+)
 
 YouTube is almost always worth it. Your margins are high, your audience needs to trust you before buying, and video builds that trust faster than any other medium. Even one client per month from YouTube likely covers your entire content budget.
@@ -205,11 +198,7 @@ If the numbers look strong and you want help building a YouTube strategy that ac
 
 ### How long does it take to see ROI from YouTube marketing?
 
-<<<<<<< HEAD
-Most businesses see meaningful returns between months 6-12. Early months are an investment period where you're building a library of searchable content. The compounding effect (where older videos continue driving traffic and leads) is what makes YouTube ROI improve dramatically over time rather than staying flat like paid advertising.
-=======
 B2B businesses typically see meaningful returns between months 6-12. Early months are an investment period where you're building a library of searchable content. The compounding effect (where older videos continue driving traffic and leads) is what makes YouTube ROI improve dramatically over time rather than staying flat like paid advertising.
->>>>>>> origin/main
 
 ### What is a good ROI for YouTube marketing?
 

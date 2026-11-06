@@ -7,6 +7,7 @@
  *   2. Sitemap integrity (every <loc> in sitemap XML resolves to a file in dist/)
  *   3. Draft/future leak detection (draft or future posts must NOT have HTML in dist/)
  *   4. Featured image existence (every published post's image: file must exist in src/)
+ *   5. Merge conflict markers (no <<<<<<< or >>>>>>> line in src/ or netlify/)
  *
  * Exit 0 = clean, Exit 1 = violations found.
  * Uses only Node.js built-in modules.
@@ -376,6 +377,39 @@ function checkFeaturedImages(postDir, srcDir) {
 }
 
 // ---------------------------------------------------------------------------
+// Check 5: Merge conflict markers
+//
+// Scans source, not dist/. Markdown renders these lines as encoded text and
+// nested blockquotes, so a dist/ grep for "<<<<<<<" returns a false zero.
+// ---------------------------------------------------------------------------
+
+const CONFLICT_SCAN_EXTS = new Set([
+  '.md', '.mdx', '.astro', '.ts', '.tsx', '.js', '.mjs', '.json', '.yaml', '.yml', '.css',
+]);
+const CONFLICT_MARKER = /^(<{7}|>{7})( |$)/;
+
+function checkConflictMarkers(scanDirs) {
+  const violations = [];
+  let filesScanned = 0;
+  for (const dir of scanDirs) {
+    if (!fs.existsSync(dir)) {
+      throw new Error(`Conflict marker scan directory is missing: ${dir}`);
+    }
+    for (const file of walkDir(dir)) {
+      if (!CONFLICT_SCAN_EXTS.has(path.extname(file).toLowerCase())) continue;
+      filesScanned += 1;
+      const lines = fs.readFileSync(file, 'utf-8').split(/\r?\n/);
+      lines.forEach((text, index) => {
+        if (CONFLICT_MARKER.test(text)) {
+          violations.push({ file: path.relative(path.dirname(SRC_DIR), file), line: index + 1, text });
+        }
+      });
+    }
+  }
+  return { violations, filesScanned };
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -481,6 +515,24 @@ function main() {
     }
   } else {
     console.log('  OK: All published posts have an existing featured image.');
+  }
+  console.log();
+
+  // -- Check 5: Merge conflict markers --
+  console.log('--- Check 5: Merge Conflict Markers ---');
+  const conflictResult = checkConflictMarkers([SRC_DIR, path.resolve(__dirname, '..', 'netlify')]);
+  console.log(`  Scanned ${conflictResult.filesScanned} source files.`);
+  if (conflictResult.filesScanned === 0) {
+    hasViolations = true;
+    console.log('  VIOLATIONS: scanned 0 files, so this check proved nothing.');
+  } else if (conflictResult.violations.length > 0) {
+    hasViolations = true;
+    console.log(`  VIOLATIONS: ${conflictResult.violations.length} merge conflict marker(s):\n`);
+    for (const v of conflictResult.violations) {
+      console.log(`    CONFLICT MARKER: ${v.file}:${v.line}  ${v.text}`);
+    }
+  } else {
+    console.log('  OK: No merge conflict markers found.');
   }
   console.log();
 
