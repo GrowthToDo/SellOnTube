@@ -1,0 +1,20 @@
+---
+// One cell per tracked question. Only the count is public, so the cells carry no question text.
+export interface Props {
+  tracked: number;
+  named: number;
+  client: string;
+}
+
+const { tracked, named, client } = Astro.props;
+---
+
+<figure class="ais-qmap">
+  <p class="ais-qmap__title">ChatGPT named {client} in {named} of {tracked} tracked questions</p>
+  <div class="ais-qmap__cells" role="img" aria-label={`${named} of ${tracked} squares filled.`}>
+    {Array.from({ length: tracked }, (_, i) => <i class:list={{ 'is-on': i < named }} />)}
+  </div>
+  <figcaption class="ais-note">
+    {named} named, {tracked - named} not named. Logged-out sessions, October 31, 2026.
+  </figcaption>
+</figure>

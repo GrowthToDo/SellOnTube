@@ -671,6 +671,7 @@ Every page has at least one self-contained answer block that directly answers th
 - Standalone paragraph, no dependency on surrounding context.
 - Placed in the first 30% of the page (AI weights early content).
 - Starts with the answer, not the question.
+- **Exception (owner, 2026-11-06):** `/ai-seo` and its case studies are sales pages first, so they use a definition of about 50 words in short lines. The citation effect is untested. Review by 2027-02-04.
 
 ### Rule 2 — Entity consistency
 Use identical phrasing for key concepts across every page. AI engines build entity graphs; inconsistent naming weakens the signal. Canonical terms (use these exact phrases):

@@ -1,22 +1,19 @@
 ---
-const steps = [
-  { title: 'A Buyer Asks', text: 'Which product fits this need?', work: 'We research these questions' },
-  { title: 'AI Answers', text: 'It explains options and may suggest products', work: 'We publish what it can draw on' },
-  { title: 'They Visit', text: 'They check your page, listing or video', work: 'We keep the facts current' },
-  { title: 'They Choose', text: 'A lead, demo, install or paying customer', work: 'We measure where data allows' },
-];
+import type { FlowStep } from '~/data/ai-seo';
+
+export interface Props {
+  steps: FlowStep[];
+}
+
+const { steps } = Astro.props;
 ---
 
 <ol class="ais-flow" aria-label="How a buyer moves from an AI question to becoming a customer">
   {
-    steps.map((step, i) => (
-      <li class="ais-flow__step">
-        <span class="ais-flow__n" aria-hidden="true">
-          {i + 1}
-        </span>
-        <h3 class="ais-h3">{step.title}</h3>
-        <p>{step.text}</p>
-        <p class="ais-flow__work">{step.work}</p>
+    steps.map((step) => (
+      <li>
+        <span class="ais-label">{step.label}</span>
+        <span class="ais-flow__text">{step.text}</span>
       </li>
     ))
   }

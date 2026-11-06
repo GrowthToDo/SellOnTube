@@ -11,9 +11,9 @@ const { answer } = Astro.props;
 ---
 
 <figure class="ais-answer">
-  <p class="ais-answer__label">Buyer asks ChatGPT</p>
+  <p class="ais-label">Buyer asks ChatGPT</p>
   <p class="ais-answer__question">{answer.question}</p>
-  <p class="ais-answer__label">ChatGPT answered</p>
+  <p class="ais-label">ChatGPT answered</p>
   <blockquote class="ais-answer__quote">
     {answer.lines.map((line, i) => <p class:list={{ 'is-lead': i === 0 }}>{line}</p>)}
   </blockquote>

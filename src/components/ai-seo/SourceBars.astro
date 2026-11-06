@@ -1,0 +1,33 @@
+---
+// Ranked bars on one shared scale. Rates only: the session counts stay private.
+import type { SourceRate } from '~/data/ai-seo';
+
+export interface Props {
+  rates: SourceRate[];
+  note: string;
+}
+
+const { rates, note } = Astro.props;
+const max = Math.max(...rates.map((source) => source.rate));
+---
+
+<figure class="ais-bars">
+  <p class="ais-bars__title">Install Rate by Source</p>
+  <ul>
+    {
+      rates.map((source) => (
+        <li>
+          <span class="ais-bars__label">{source.label}</span>
+          <span class="ais-bars__track" aria-hidden="true">
+            <span
+              class:list={['ais-bars__bar', { 'is-on': source.highlight }]}
+              style={`width: ${(source.rate / max) * 100}%`}
+            />
+          </span>
+          <span class="ais-bars__value">{source.rate}%</span>
+        </li>
+      ))
+    }
+  </ul>
+  <figcaption class="ais-note">{note}</figcaption>
+</figure>

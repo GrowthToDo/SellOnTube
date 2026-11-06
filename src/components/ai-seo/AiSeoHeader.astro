@@ -9,10 +9,10 @@ const servicesHref = `${AI_SEO_PATH}#services`;
   <div class="ais-wrap ais-header__row">
     <a class="ais-wordmark" href={AI_SEO_PATH} aria-label="SellOnTube AI SEO services">SellOn<span>Tube</span></a>
     <nav class="ais-nav" aria-label="AI SEO">
-      <a href={servicesHref}>Services</a>
+      <a class="ais-nav__services" href={servicesHref}>Services</a>
       {
         featuredCaseStudy && (
-          <a href={caseStudyPath(featuredCaseStudy.slug)} data-ais-case="header">
+          <a class="ais-nav__case" href={caseStudyPath(featuredCaseStudy.slug)} data-ais-case="header">
             Case study
           </a>
         )
@@ -24,7 +24,7 @@ const servicesHref = `${AI_SEO_PATH}#services`;
         rel="noopener noreferrer"
         data-ais-cta="header"
       >
-        Book a discovery call
+        Book a call
       </a>
     </nav>
   </div>

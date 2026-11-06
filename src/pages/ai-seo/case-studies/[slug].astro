@@ -6,9 +6,14 @@ import AiSeoTheme from '~/components/ai-seo/AiSeoTheme.astro';
 import AiSeoHeader from '~/components/ai-seo/AiSeoHeader.astro';
 import AiSeoFooter from '~/components/ai-seo/AiSeoFooter.astro';
 import AiSeoTracking from '~/components/ai-seo/AiSeoTracking.astro';
-import SessionUnits from '~/components/ai-seo/SessionUnits.astro';
 import AnswerCard from '~/components/ai-seo/AnswerCard.astro';
-import listingFrame from '~/assets/images/case-studies/label-wizard-listing.png';
+import ClientLogo from '~/components/ai-seo/ClientLogo.astro';
+import ProofGrid from '~/components/ai-seo/ProofGrid.astro';
+import QuestionMap from '~/components/ai-seo/QuestionMap.astro';
+import RangePlot from '~/components/ai-seo/RangePlot.astro';
+import SourceBars from '~/components/ai-seo/SourceBars.astro';
+import labelPhoto from '~/assets/images/case-studies/label-wizard-label.jpg';
+import fullShot from '~/assets/images/case-studies/label-wizard-chatgpt-full.png';
 import { authors } from '~/data/authors';
 import {
   AI_SEO_CAL_LINK,
@@ -87,39 +92,26 @@ const structuredData = [
 
   <div class="ais">
     <article id="ais-main">
-      <header class="ais-hero">
+      <header class="ais-hero ais-band">
         <div class="ais-wrap">
           <p class="ais-crumbs"><a href={AI_SEO_PATH}>AI SEO services</a> / {study.client} case study</p>
+          <ClientLogo client={study.client} />
           <p class="ais-eyebrow">{study.clientLine}</p>
           <h1 class="ais-h1 ais-h1--study">{study.headline}</h1>
-          <p class="ais-lede" style="margin-top: 1.5rem">{study.opening}</p>
+          <div class="ais-prose ais-hero__opening">{study.opening.map((p) => <p>{p}</p>)}</div>
 
           <dl class="ais-strip">
             <div>
+              <dd>{study.stats.installEvents}<span class="ais-strip__of">/{study.stats.sessions}</span></dd>
               <dt>Install events from ChatGPT sessions</dt>
-              <dd>{study.stats.installEvents}<span class="ais-proof__of">/{study.stats.sessions}</span></dd>
             </div>
             <div>
-              <dt>ChatGPT install rate</dt>
               <dd>{study.stats.rate}</dd>
-            </div>
-            <div>
-              <dt>{study.statQuote.label}</dt>
-              <dd class="is-quote">&ldquo;{study.statQuote.value}&rdquo;</dd>
+              <dt>ChatGPT install rate</dt>
             </div>
           </dl>
-          <p class="ais-note" style="margin-top: 1rem">
-            {study.period}, GA4. Recorded ChatGPT answer: October 31, 2026.
-          </p>
+          <p class="ais-note">{study.period}, GA4.</p>
 
-          <div class="ais-byline">
-            <Image src={author.photo} alt={author.photoAlt} width={96} height={96} loading="lazy" />
-            <p>
-              By <a class="ais-link" href={author.linkedin}>{author.name}</a>. Published {
-                formatDate(study.publishDate)
-              }. Data through {formatDate(study.dataThrough)}.
-            </p>
-          </div>
           <div class="ais-actions">
             <a
               class="ais-btn"
@@ -128,163 +120,139 @@ const structuredData = [
               rel="noopener noreferrer"
               data-ais-cta="case-study-top">Book a discovery call</a
             >
-            <a class="ais-btn ais-btn--ghost" href={`${AI_SEO_PATH}#check`} data-ais-cta="case-study-check-top">
-              Get a free AI answer check
+            <a class="ais-btn ais-btn--band-ghost" href={`${AI_SEO_PATH}#check`} data-ais-cta="case-study-check-top">
+              Get a free ChatGPT check
             </a>
+          </div>
+
+          <div class="ais-byline">
+            <Image src={author.photo} alt={author.photoAlt} width={96} height={96} loading="lazy" />
+            <p>
+              By <a href={author.linkedin}>{author.name}</a>. Published {formatDate(study.publishDate)}. Data through {
+                formatDate(study.dataThrough)
+              }.
+            </p>
           </div>
         </div>
       </header>
 
-      <section class="ais-section" aria-labelledby="answers-title">
+      <section class="ais-section ais-section--white" aria-labelledby="answers-title">
         <div class="ais-wrap">
-          <p class="ais-bridge">{study.bridges.answers}</p>
-          <h2 class="ais-h2" id="answers-title">What Does ChatGPT Say About {study.client}?</h2>
-          <div class="ais-answers">{study.answers.map((answer) => <AnswerCard answer={answer} />)}</div>
-          <p class="ais-note" style="margin-top: 1.25rem">{study.answerNote}</p>
-        </div>
-      </section>
-
-      <section class="ais-section" aria-labelledby="summary-title">
-        <div class="ais-wrap">
-          <p class="ais-bridge">{study.bridges.numbers}</p>
-          <h2 class="ais-h2" id="summary-title">What Did {study.client} Record?</h2>
-          <div class="ais-prose"><p>{study.answer}</p></div>
-          <p class="ais-bridge" style="margin-top: 2rem">{study.bridges.limits}</p>
-          <h3 class="ais-h3">How to Read This Result</h3>
-          <ul class="ais-list" style="margin-top: 0.75rem">{study.limits.map((item) => <li>{item}</li>)}</ul>
-        </div>
-      </section>
-
-      <section class="ais-section" aria-labelledby="context-title">
-        <div class="ais-wrap ais-two">
-          <div>
-            <h2 class="ais-h2" id="context-title">What Merchants Were Asking</h2>
-            <div class="ais-prose">
-              {study.context.map((p) => <p>{p}</p>)}
-              {study.challenge.map((p) => <p>{p}</p>)}
-            </div>
-          </div>
-          <figure class="ais-shot">
-            <Image
-              src={listingFrame}
-              alt="Label Wizard listing image showing a custom candle jar label with logo, price, SKU, barcode and QR code"
-              widths={[480, 800, 1200]}
-              sizes="(min-width: 768px) 34rem, 100vw"
-              loading="lazy"
-            />
-            <figcaption class="ais-note">An image from the {study.client} App Store listing.</figcaption>
+          <h2 class="ais-h2" id="answers-title">What Did ChatGPT Say About {study.client}?</h2>
+          <p class="ais-lede">{study.answersIntro}</p>
+          <figure class="ais-evidence">
+            <a href={fullShot.src} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={fullShot}
+                alt="ChatGPT screenshot. Asked Is there an app where I can set my own label size, it says yes, offers three options, and lists 1. Label Wizard by Left Foot Software, tagged Custom sizes supported"
+                widths={[480, 800, fullShot.width]}
+                sizes="(min-width: 1000px) 56rem, 100vw"
+                loading="lazy"
+              />
+            </a>
+            <figcaption class="ais-note">{study.screenshotNote} Tap to enlarge.</figcaption>
           </figure>
-        </div>
-      </section>
-
-      <section class="ais-section" aria-labelledby="work-title">
-        <div class="ais-wrap">
-          <h2 class="ais-h2" id="work-title">What Did My Team and I Do?</h2>
-          <ol class="ais-rows">
-            {
-              study.work.map((item, i) => (
-                <li>
-                  <span class="ais-rows__n" aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 class="ais-h3">{item.title}</h3>
-                  <p>{item.text}</p>
-                </li>
-              ))
-            }
-          </ol>
-          <div class="ais-sub">
-            <h3 class="ais-h3">How It Unfolded in 2026</h3>
-            <ol class="ais-timeline">
-              {
-                study.timeline.map((item) => (
-                  <li>
-                    <span class="ais-timeline__when">{item.when}</span>
-                    <span>{item.text}</span>
-                  </li>
-                ))
-              }
-            </ol>
-            <p class="ais-note" style="margin-top: 0.75rem">
-              The order of events does not prove that one caused the next.
-            </p>
+          <p class="ais-records-intro">{study.recordsIntro}</p>
+          <div class="ais-answers" role="region" aria-label="Recorded ChatGPT answers" tabindex="0">
+            {study.answers.map((answer) => <AnswerCard answer={answer} />)}
           </div>
+          <p class="ais-note ais-answers__note">{study.answerNote}</p>
+          <QuestionMap tracked={study.questions.tracked} named={study.questions.named} client={study.client} />
         </div>
       </section>
 
       <section class="ais-section" aria-labelledby="results-title">
         <div class="ais-wrap">
-          <h2 class="ais-h2" id="results-title">Did ChatGPT Sessions Convert Better Than Other Sources?</h2>
+          <h2 class="ais-h2" id="results-title">What Came In?</h2>
           <div class="ais-proof">
-            <SessionUnits sessions={study.stats.sessions} installEvents={study.stats.installEvents} />
-            <ul class="ais-list">{study.findings.map((item) => <li>{item}</li>)}</ul>
-          </div>
-
-          <div class="ais-sub">
-            <p class="ais-bridge">{study.bridges.growth}</p>
-            <h3 class="ais-h3">Growth Across All Channels</h3>
-            <div class="ais-growth">
-              {
-                study.growth.map((bar) => (
-                  <div class="ais-growth__row">
-                    <p class="ais-growth__label">
-                      {bar.label}: <strong>{bar.multiple}</strong>
-                    </p>
-                    <div class="ais-growth__bars" aria-hidden="true">
-                      <span class="ais-growth__bar is-before" style={`width: ${bar.startWidth}%`}>
-                        Early summer
-                      </span>
-                      <span class="ais-growth__bar is-after">Autumn</span>
-                    </div>
-                  </div>
-                ))
-              }
+            <ProofGrid
+              sessions={study.stats.sessions}
+              installEvents={study.stats.installEvents}
+              rate={study.stats.rate}
+              note={study.sourceNote}
+            />
+            <div>
+              <div class="ais-prose">{study.cameIn.first.map((p) => <p>{p}</p>)}</div>
+              <RangePlot
+                low={study.interval.low}
+                high={study.interval.high}
+                point={study.interval.point}
+                note={study.cameIn.rangeNote}
+              />
             </div>
-            <p class="ais-note" style="margin-top: 0.75rem">{study.growthNote}</p>
+          </div>
+          <div class="ais-proof ais-sub">
+            <div class="ais-prose">{study.cameIn.comparison.map((p) => <p>{p}</p>)}</div>
+            <SourceBars rates={study.sourceRates} note={study.sourceRatesNote} />
           </div>
         </div>
       </section>
 
-      <section class="ais-section" aria-labelledby="learn-title">
+      <section class="ais-section ais-section--tint" aria-labelledby="limits-title">
         <div class="ais-wrap">
-          <h2 class="ais-h2" id="learn-title">What Should You Take From This?</h2>
-          <p class="ais-lede">{landing.takeaway}</p>
-          <div class="ais-sub">
-            <p class="ais-bridge">{study.bridges.weak}</p>
-            <h3 class="ais-h3">The Weaker Signals</h3>
-            <ul class="ais-list" style="margin-top: 0.75rem">{study.readingNotes.map((item) => <li>{item}</li>)}</ul>
+          <p class="ais-eyebrow">But there's a catch</p>
+          <h2 class="ais-h2" id="limits-title">What Can't I Claim?</h2>
+          <div class="ais-two">
+            <div>
+              <h3 class="ais-h3">What This Data Can't Show</h3>
+              <ul class="ais-list">{study.cantProve.map((item) => <li>{item}</li>)}</ul>
+            </div>
+            <div>
+              <h3 class="ais-h3">What Didn't Go Well</h3>
+              <ul class="ais-list">{study.didntGoWell.map((item) => <li>{item}</li>)}</ul>
+              <p class="ais-limits-close">{study.limitsClose}</p>
+            </div>
           </div>
-          <details class="ais-details">
-            <summary>Five terms that are easy to confuse</summary>
-            <dl class="ais-defs">
+          <div class="ais-prompt">
+            <p>{landing.caseClosing.prompt}</p>
+            <a class="ais-btn" href={`${AI_SEO_PATH}#check`} data-ais-cta="case-study-check-mid">
+              Get a free ChatGPT check
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="ais-section ais-section--white" aria-labelledby="work-title">
+        <div class="ais-wrap ais-two">
+          <div>
+            <h2 class="ais-h2" id="work-title">What Did My Team Do?</h2>
+            <div class="ais-prose">{study.work.map((p) => <p>{p}</p>)}</div>
+            <figure class="ais-shot">
+              <Image
+                src={labelPhoto}
+                alt="Label Wizard listing image of a candle jar label with logo, price, barcode and QR code"
+                widths={[480, 800, 900]}
+                sizes="(min-width: 768px) 34rem, 100vw"
+                loading="lazy"
+              />
+              <figcaption class="ais-note">Cropped from an image on the {study.client} App Store listing.</figcaption>
+            </figure>
+          </div>
+          <div>
+            <h3 class="ais-h3">How It Unfolded in 2026</h3>
+            <ol class="ais-rail">
               {
-                study.definitions.map((definition) => (
-                  <>
-                    <dt>{definition.term}</dt>
-                    <dd>{definition.text}</dd>
-                  </>
+                study.timeline.map((item) => (
+                  <li class:list={{ 'is-on': item.highlight }}>
+                    <strong>{item.when}</strong>
+                    <span>{item.text}</span>
+                  </li>
                 ))
               }
-            </dl>
-          </details>
-          <details class="ais-details">
-            <summary>How I calculated these numbers</summary>
-            <ul class="ais-list" style="margin-top: 0.75rem">{study.method.map((item) => <li>{item}</li>)}</ul>
-          </details>
+            </ol>
+            <p class="ais-note">{study.timelineNote}</p>
+          </div>
         </div>
       </section>
 
       <section class="ais-band ais-section" aria-labelledby="closing-title">
         <div class="ais-wrap">
-          <h2 class="ais-h2" id="closing-title">{landing.closing.title}</h2>
-          <p class="ais-lede" style="color: inherit">
-            One client's result will not predict yours. Start with a free look at how ChatGPT answers your buyers, or
-            book a call.
-          </p>
+          <h2 class="ais-h2" id="closing-title">{landing.caseClosing.title}</h2>
+          <div class="ais-prose">{landing.caseClosing.text.map((p) => <p>{p}</p>)}</div>
           <div class="ais-actions">
-            <a class="ais-btn" href={`${AI_SEO_PATH}#check`} data-ais-cta="case-study-check"
-              >Get a free AI answer check</a
-            >
+            <a class="ais-btn" href={`${AI_SEO_PATH}#check`} data-ais-cta="case-study-check">
+              Get a free ChatGPT check
+            </a>
             <a
               class="ais-btn ais-btn--band-ghost"
               href={AI_SEO_CAL_LINK}
@@ -293,6 +261,15 @@ const structuredData = [
               data-ais-cta="case-study">Book a discovery call</a
             >
           </div>
+        </div>
+      </section>
+
+      <section class="ais-section ais-section--method" aria-label="Method">
+        <div class="ais-wrap">
+          <details class="ais-details">
+            <summary>How I calculated these numbers</summary>
+            <ul class="ais-list">{study.method.map((item) => <li>{item}</li>)}</ul>
+          </details>
         </div>
       </section>
     </article>

@@ -3,25 +3,17 @@
 //
 // `published` is the removal switch for a case study. Set it to false and the route is
 // not generated, and the proof, links and proof-based metadata leave the landing page.
-// For a full takedown, also delete src/assets/images/og/ai-seo-label-wizard.jpg and
-// src/assets/images/case-studies/label-wizard-listing.png, because Astro emits those
-// files to dist/_astro even when no page links to them.
+// For a full takedown, also delete src/assets/images/og/ai-seo-label-wizard.jpg,
+// src/assets/images/case-studies/label-wizard-logo.png, label-wizard-label.jpg and
+// label-wizard-chatgpt-full.png and label-wizard-chatgpt-answer.png, because
+// Astro emits those files to dist/_astro even when no page links to them.
 
 export const AI_SEO_PATH = '/ai-seo';
 export const AI_SEO_CAL_LINK = 'https://cal.com/gautham-8bdvdx/30min';
 
-export interface WorkType {
-  title: string;
-  text: string;
-}
-
-export interface Definition {
-  term: string;
-  text: string;
-}
-
 export interface RecordedAnswer {
   question: string;
+  shortQuestion?: string;
   lines: string[];
   position: string;
 }
@@ -29,12 +21,18 @@ export interface RecordedAnswer {
 export interface TimelineItem {
   when: string;
   text: string;
+  highlight?: boolean;
 }
 
-export interface GrowthBar {
+export interface SourceRate {
   label: string;
-  multiple: string;
-  startWidth: number;
+  rate: number;
+  highlight?: boolean;
+}
+
+export interface FlowStep {
+  label: string;
+  text: string;
 }
 
 export interface CaseStudy {
@@ -49,24 +47,26 @@ export interface CaseStudy {
   dataThrough: string;
   period: string;
   stats: { installEvents: number; sessions: number; rate: string };
-  proofLine: string;
+  questions: { tracked: number; named: number };
+  interval: { low: number; high: number; point: number };
   sourceNote: string;
-  answer: string;
-  limits: string[];
-  context: string[];
-  challenge: string[];
-  work: WorkType[];
-  timeline: TimelineItem[];
-  opening: string;
-  statQuote: { value: string; label: string };
-  bridges: { answers: string; numbers: string; limits: string; growth: string; weak: string };
+  opening: string[];
+  answersIntro: string;
+  screenshotNote: string;
+  recordsIntro: string;
   answerNote: string;
   answers: RecordedAnswer[];
-  findings: string[];
-  growth: GrowthBar[];
-  growthNote: string;
-  readingNotes: string[];
-  definitions: Definition[];
+  flow: FlowStep[];
+  flowNote: string;
+  cameIn: { first: string[]; comparison: string[]; rangeNote: string };
+  sourceRates: SourceRate[];
+  sourceRatesNote: string;
+  cantProve: string[];
+  didntGoWell: string[];
+  limitsClose: string;
+  work: string[];
+  timeline: TimelineItem[];
+  timelineNote: string;
   method: string[];
 }
 
@@ -83,64 +83,24 @@ const labelWizard: CaseStudy = {
   dataThrough: '2026-10-28',
   period: 'August 5 to October 28, 2026',
   stats: { installEvents: 22, sessions: 65, rate: '34%' },
-  proofLine: '22 install events from 65 ChatGPT sessions (34%)',
+  questions: { tracked: 15, named: 3 },
+  interval: { low: 23.5, high: 46, point: 34 },
   sourceNote:
-    'Source: GA4 on the Label Wizard App Store listing, August 5 to October 28, 2026. These are install events, not confirmed unique shops, in a small sample with no earlier ChatGPT baseline.',
-  answer:
-    "Label Wizard recorded 22 install events from 65 ChatGPT sessions on its Shopify App Store listing between August 5 and October 28, 2026, a rate of 34%. Label Wizard is a barcode label app from Left Foot Software, a SellOnTube client. On October 31, a logged-out ChatGPT session called Label Wizard its first recommendation for merchants who need a custom label size, and it linked to the Label Wizard guide when asked about printing sale prices. ChatGPT sessions also converted at a higher rate than direct and Google organic sessions in the same period, though ChatGPT visitors may simply arrive closer to a decision. The sample is small, and this data does not prove that SellOnTube's work caused these sessions or install events. It does show merchants reaching a niche Shopify app through ChatGPT, at an install rate worth measuring.",
-  limits: [
-    'The sample is small: 65 sessions, with no earlier ChatGPT baseline.',
-    "The data doesn't prove what caused these sessions. The listing, pricing and paid search changed in the same period.",
-    "One client doesn't predict another, and nobody can guarantee an AI recommendation.",
+    'Source: GA4 on the App Store listing, August 5 to October 28, 2026. Install events are not confirmed shops.',
+  opening: [
+    "I'm Sathyanand, and I run SellOnTube with two co-founders. Left Foot Software is our client.",
+    "Here's what ChatGPT said about its Label Wizard app, what came in, and what I wouldn't claim from it.",
   ],
-  context: [
-    'Label Wizard helps Shopify merchants design and print barcode and QR labels from their product data. Left Foot Software builds it, and it is one of several apps in the company portfolio.',
-  ],
-  challenge: [
-    "Merchants ask ChatGPT practical questions: which app fits a custom label size, or how to print a sale price with the old price crossed out. In my first dated checks, from October 2026, ChatGPT led some answers with printer brands and others with Shopify's own free label app.",
-    "ChatGPT answers draw on what's published, so I wanted clear, accurate pages for each of these jobs. My team wrote for specifics, like a custom label size or a crossed-out sale price.",
-  ],
-  work: [
-    {
-      title: 'Buying-Intent Content',
-      text: 'My team wrote a barcode label apps roundup, an alternative page for merchants leaving another label app, and how-to guides for specific label jobs.',
-    },
-    {
-      title: 'Ongoing Optimization',
-      text: 'We refreshed the roundup using Search Console data and added a demo video.',
-    },
-    {
-      title: 'Repeated AI Answer Checks',
-      text: 'I ask ChatGPT the same set of buying questions on set dates, to see where Label Wizard appears and what it says.',
-    },
-    {
-      title: 'Separate Listing Work',
-      text: 'App Store listing changes, which are not part of our AI SEO service. Not every change was ours. I mention them because the rate on this page is measured on that listing.',
-    },
-  ],
-  timeline: [
-    { when: 'July', text: 'App Store listing rewritten (separate listing work)' },
-    { when: 'August', text: 'First tracked ChatGPT session, then the rebuilt roundup goes live' },
-    { when: 'September', text: 'Label size and variant guides go live' },
-    { when: 'October', text: 'Alternative page and sale label guide go live, and the roundup is refreshed' },
-    { when: 'October 31', text: 'ChatGPT names Label Wizard in 3 of 15 tracked questions' },
-  ],
-  opening:
-    "I'm Sathyanand, and I run SellOnTube with two co-founders. Left Foot Software is our client. Here's what ChatGPT said about its Label Wizard app, what came in, and what I wouldn't claim from it.",
-  statQuote: { value: 'My first recommendation', label: 'What ChatGPT wrote for one tracked question, Oct 31' },
-  bridges: {
-    answers: "Here's what ChatGPT said when I asked.",
-    numbers: 'Nice answers. So what do the numbers show?',
-    limits: "But there's a catch.",
-    growth: "You'll see about 5x below. Don't credit ChatGPT or us for it.",
-    weak: "Here's what didn't go well.",
-  },
+  answersIntro: 'I asked the kind of question a merchant would ask. Here is one answer, as ChatGPT showed it.',
+  screenshotNote: 'Screenshot of a ChatGPT answer, cropped to the first of three apps it listed.',
+  recordsIntro: 'And these are from logged-out sessions on October 31, 2026.',
   answerNote:
-    'I recorded these from logged-out ChatGPT sessions on October 31, 2026, and shortened them to the parts about Label Wizard. You may see something different, because answers vary by person, place and time. On that date, ChatGPT named Label Wizard in 3 of the 15 tracked questions.',
+    'I shortened these to the parts about Label Wizard. You may see something different, because answers vary by person, place and time.',
   answers: [
     {
       question:
         "My labels don't fit any template in my Shopify label app. Is there an app where I can set my own label size?",
+      shortQuestion: 'Is there an app where I can set my own label size?',
       lines: ['1. Label Wizard: Print Barcodes', 'My first recommendation', 'Enter your own label dimensions.'],
       position: 'Listed first of three apps',
     },
@@ -155,38 +115,61 @@ const labelWizard: CaseStudy = {
       position: 'The only app named',
     },
   ],
-  findings: [
-    'ChatGPT sessions recorded a higher install rate than direct, Google organic and Google paid sessions in the same period. Someone who asks an assistant for a product may already be close to a decision, which could explain part of the gap.',
-    'The rate stayed in a similar range across the three months, on small monthly counts.',
+  flow: [
+    { label: '1. Ask', text: '"Is there an app where I can set my own label size?"' },
+    { label: '2. Answer', text: '"My first recommendation"' },
+    { label: '3. Visit', text: 'The Label Wizard App Store listing' },
+    { label: '4. Act', text: 'An install event in GA4' },
   ],
-  growth: [
-    { label: 'Install events a week', multiple: 'About 5x', startWidth: 20 },
-    { label: 'New paying shops a week', multiple: 'More than 6x', startWidth: 15 },
+  flowNote:
+    'Steps 1 and 2 come from a recorded answer about our client. Steps 3 and 4 show the general path, not one tracked buyer.',
+  cameIn: {
+    first: [
+      'Nice answers. So what do the numbers show?',
+      'Between August 5 and October 28, 65 ChatGPT sessions reached the Label Wizard listing. They recorded 22 install events.',
+    ],
+    comparison: [
+      'Is that good? It beat direct, Google organic and Google paid in the same period.',
+      'Someone who asks an assistant for a product may already be close to a decision. That could explain part of the gap.',
+    ],
+    rangeNote: '65 sessions is a small sample. The true rate could sit anywhere in this range (95% interval).',
+  },
+  sourceRates: [
+    { label: 'ChatGPT', rate: 33.8, highlight: true },
+    { label: 'Direct', rate: 14.5 },
+    { label: 'Google organic', rate: 12.4 },
+    { label: 'Google paid', rate: 4.2 },
   ],
-  growthNote:
-    'All channels, not only ChatGPT, from early summer to autumn 2026, in Shopify Partner data. Pricing, the App Store listing and paid search also changed, so this is context and not an AI result. Same-day uninstalls stayed about flat.',
-  readingNotes: [
-    'ChatGPT left Label Wizard out of most tracked questions on October 31, and ChatGPT sessions fell from September to October.',
-    "Most of the install events came before most of the posts were live, so I can't credit individual posts with them.",
+  sourceRatesNote: 'Install events per session, GA4, same period. ChatGPT has the smallest sample of the four.',
+  cantProve: [
+    "I can't tell you what caused this. Pricing, the listing and paid search all changed in the same period.",
+    "I have no earlier baseline. GA4 on this listing starts on August 5.",
+    "I can't credit individual posts. Most of the install events came before most of the posts were live.",
+    "I can't say these visitors make better customers. I have no activation, paid or retention data for them.",
+  ],
+  didntGoWell: [
+    'ChatGPT left Label Wizard out of 12 of the 15 tracked questions.',
+    'ChatGPT sessions fell from September to October.',
     'Another Left Foot Software app recorded a much lower ChatGPT rate over a longer period.',
-    "I have no activation, paid or retention data for the ChatGPT group, so I can't say these visitors make better customers.",
   ],
-  definitions: [
-    {
-      term: 'Citation',
-      text: 'A source link in an AI answer. In one October check, ChatGPT cited the Left Foot Software site in an answer that ranked a competitor first, so a citation is not a recommendation.',
-    },
-    { term: 'Mention', text: 'The AI answer names the brand, with or without a link.' },
-    { term: 'Recommendation', text: 'The AI answer suggests the product for a relevant need.' },
-    {
-      term: 'Referral',
-      text: 'A tracked visit from the AI assistant. It does not prove that any agency caused the visit.',
-    },
-    { term: 'Conversion', text: 'A defined customer action. Here, the shopify_app_install event in GA4.' },
+  limitsClose: "One client doesn't predict another, and nobody can guarantee an AI recommendation.",
+  work: [
+    'My team wrote a barcode label apps roundup, an alternative page for merchants leaving another label app, and how-to guides for specific label jobs.',
+    'We refreshed the roundup using Search Console data and added a demo video.',
+    'I ask ChatGPT the same buying questions on set dates, to see where Label Wizard appears and what it says.',
   ],
+  timeline: [
+    { when: 'July', text: 'App Store listing rewritten. This was separate work, not all of it ours.' },
+    { when: 'August', text: 'First tracked ChatGPT session, then the rebuilt roundup goes live', highlight: true },
+    { when: 'September', text: 'Label size and variant guides go live' },
+    { when: 'October', text: 'Alternative page and sale label guide go live, and the roundup is refreshed' },
+    { when: 'October 31', text: 'ChatGPT names Label Wizard in 3 of 15 tracked questions', highlight: true },
+  ],
+  timelineNote: "This shows the order of events. It doesn't show that one led to the next.",
   method: [
-    'A session counts as ChatGPT when its GA4 session source contains "chatgpt". GA4 on this listing starts on August 5, so no earlier baseline exists.',
-    'The rate divides shopify_app_install events by sessions, with a 95% interval of about 23.5% to 46.0%. GA4 misses some real installs, and this data does not screen out test stores or all bot traffic, so I use it for sources and rates, not as an install count.',
+    'A session counts as ChatGPT when its GA4 session source contains "chatgpt". GA4 does not match each event to a specific session.',
+    'The rate divides shopify_app_install events by sessions, with a 95% interval of about 23.5% to 46.0%.',
+    "GA4 misses some real installs, and this data doesn't screen out test stores or all bot traffic. So I use it for sources and rates, not as an install count.",
     'The figures are a frozen snapshot from October 29, 2026. I publish findings rather than the full dataset, to protect client data.',
   ],
 };
@@ -205,143 +188,126 @@ export const landing = {
     'AI SEO services that help B2B buyers find and choose your product in AI assistants like ChatGPT, through buying-intent content, YouTube and ongoing updates.',
   eyebrow: 'AI SEO services for B2B companies',
   headline: 'When your buyers ask ChatGPT what to use, does it name you?',
-  stakes:
-    "Your buyers may be asking ChatGPT about your category right now. You can't see those chats, and a competitor may get named instead of you.",
   subhead:
-    'We do AI SEO for B2B products. We work to get you recommended when your buyers ask ChatGPT, and we judge the work by your signups, leads and paying customers.',
-  methodLine:
-    'We find the questions your buyers ask, publish the answers, keep them current and show you what the data says.',
-  bridges: {
-    what: "You don't sell labels. So why should you care?",
-    services: "You can't buy your way into these answers. So here's what we do instead.",
-    check: "Not ready for a call? You don't need one.",
-    team: 'You may be wondering why a company called SellOnTube does AI SEO.',
-  },
-  answer:
-    'AI SEO is the work of making your product easier for AI assistants to find, understand and suggest when buyers ask for help choosing. Buyers ask tools like ChatGPT to explain their options, compare products and suggest a fit for a specific need. Those answers draw on what you and others publish about your product and category. We research the questions your buyers ask, check how AI assistants answer them today, and find where your product is missing or misunderstood. Then we publish and maintain the blog posts, comparison pages and YouTube videos that answer those questions accurately. We work toward a recommendation, and nobody can buy one. So we judge the work by your signups, leads, demos, installs, trials and paying customers where your data allows, and we never treat one AI answer as proof.',
-  services: [
-    {
-      title: 'Buying-Question Research',
-      text: 'We map the questions buyers ask before they choose, how ChatGPT and other AI tools answer them today, which products get suggested, and where good answers are missing. You see where a buyer might pick a competitor, and what you could publish in response.',
-    },
-    {
-      title: 'Buying-Intent Content',
-      text: 'We produce blog posts, comparison pages, alternatives pages and YouTube videos that answer product, evaluation and purchasing questions. Each piece says who the product suits, who it does not suit, and how it compares.',
-    },
-    {
-      title: 'Ongoing Optimization',
-      text: 'Products and competitors change, and pages go stale. We update pages when features, pricing, screenshots, comparisons or evidence change. A new date on old content is not a refresh, and we do not sell it as one.',
-    },
-    {
-      title: 'Measuring What Comes In',
-      text: 'We ask the same questions again over time, and we separate real recommendations from name-drops and source links. You also see referrals, signups and leads beside them, where your data allows.',
-    },
-  ],
-  check: {
-    title: 'See How ChatGPT Answers Your Buyers, Free',
-    text: "Send us your product. We'll ask ChatGPT the questions your buyers are likely to ask, then email you what it says about you and your competitors.",
+    'We do AI SEO for B2B products. We work to get you recommended, and we judge the work by your signups, leads and paying customers.',
+  heroAnswerNote: 'A real ChatGPT answer about our client, cropped to the first of three apps. Answers vary by person, place and time.',
+  proof: {
+    title: "What One Client's ChatGPT Sessions Recorded",
+    text: [
+      "You don't sell labels. But if your product does a specific job, ChatGPT can name it for that job. And you can often track what those visitors do next.",
+      "These numbers don't show what caused those sessions. The case study shows what we did, and what we can't claim.",
+    ],
   },
   team: {
     title: "Who You'll Work With",
     text: [
-      'Three founders run SellOnTube: Sathyanand S, Gautham and Pradeep Pandey. We started with YouTube acquisition for B2B companies, and we apply the same buying-intent research to AI answers.',
-      "You'll talk to a founder on the call. Gautham built the research framework we use, and he will tell you if AI SEO does not look worth it for your product.",
+      'Three founders run SellOnTube: Sathyanand S, Gautham and Pradeep Pandey. We started with YouTube acquisition for B2B companies, and we apply the same buying research to AI answers.',
+      "You'll talk to a founder on the call. If AI SEO doesn't look worth it for your product, we'll tell you.",
+    ],
+    fit: 'This fits you if your buyers compare products before they choose. Shopify apps are one example, and self-serve SaaS is another.',
+  },
+  what: {
+    title: 'What Is AI SEO?',
+    text: [
+      'AI SEO makes your product easier for ChatGPT and other AI assistants to find, understand and suggest.',
+      'Why now? Your buyers ask these tools for help choosing.',
+      'So we find those questions. Then we publish the pages and videos that answer them.',
+      'Nobody can buy a recommendation. We judge the work by your signups, leads and customers.',
     ],
   },
-  takeaway:
-    'If your product does a specific job, ChatGPT can name it for that job, and you can track those visits through to install events.',
-  optionalLine: 'Optional: relevant offsite mentions and outreach, scoped to your opportunities.',
-  topicTests:
-    'We choose topics by four tests: relevance to your product, evidence of buying intent, real customer problems, and where your product differs.',
-  illustrativeQuestions: ['Which tool fits our workflow?', 'X versus Y?', 'How can we solve this specific problem?'],
-  illustrativeNote: 'Illustrative questions only, not measured search volumes or customer quotes.',
-  steps: [
+  flow: [
+    { label: '1. Ask', text: 'A buyer asks which product fits their need' },
+    { label: '2. Answer', text: 'AI explains the options and may suggest products' },
+    { label: '3. Visit', text: 'They check your page, listing or video' },
+    { label: '4. Act', text: 'A lead, demo, install or paying customer' },
+  ] as FlowStep[],
+  servicesTitle: 'What Do Our AI SEO Services Include?',
+  services: [
     {
-      title: 'Understand the Product and Buyers',
-      text: 'We learn what you sell, who buys it, and what they compare it against.',
+      title: 'Buying-Question Research',
+      text: [
+        'What do your buyers ask before they choose? We list those questions and put each one to ChatGPT.',
+        'You see who gets named, and where a buyer might pick a competitor.',
+      ],
     },
     {
-      title: 'Set a Baseline',
-      text: 'We record how ChatGPT and other AI tools treat your category today, plus your signups and sales numbers where we can measure them.',
+      title: 'Buying-Intent Content',
+      text: [
+        'We write the blog posts, comparison pages, alternatives pages and YouTube videos your buyers look for.',
+        "Each one says who your product suits, who it doesn't suit, and how it compares.",
+      ],
     },
     {
-      title: 'Identify Opportunities',
-      text: 'We work out what to publish first, based on how close the buyer is to choosing.',
-    },
-    {
-      title: 'Create, Optimize and Publish',
-      text: 'We make the content, publish it and keep the facts current.',
-    },
-    {
-      title: 'Measure and Improve',
-      text: 'We read trends across repeated checks and do more of what works.',
+      title: 'Ongoing Optimization',
+      text: [
+        'Features, pricing and competitors change, and pages go stale. We update the page when the facts change.',
+        "A new date on old content doesn't count as a refresh.",
+      ],
     },
   ],
+  optionalLine: 'Optional: relevant offsite mentions and outreach, scoped to your opportunities.',
+  check: {
+    title: 'See How ChatGPT Answers Your Buyers, Free',
+    text: [
+      "Not ready for a call? You don't need one.",
+      "Send us your product. We'll ask ChatGPT the questions your buyers are likely to ask. Then we'll email you what it says about you and your competitors.",
+    ],
+  },
+  know: {
+    title: "How Will You Know It's Working?",
+    text: 'We count customers first. AI answers come second, because one answer can change the next day.',
+    stepsTitle: 'What Happens After You Say Yes?',
+  },
   measures: [
     { level: 'Customers and Revenue', items: 'Paying customers and attributed revenue' },
-    {
-      level: 'Signups and Leads',
-      items: 'Signups, leads, demos, installs, trials and paid activation, as they apply to you',
-    },
-    {
-      level: 'Early Signs',
-      items: 'Relevant AI recommendations, citations, referral visits and search performance',
-    },
+    { level: 'Signups and Leads', items: 'Signups, leads, demos, installs and trials' },
+    { level: 'Early Signs', items: 'AI recommendations, citations and referral visits' },
   ],
   measureNote: 'What we can measure depends on the data you can share.',
-  fit: 'This fits you if your buyers compare products before they choose. That includes self-serve SaaS and other B2B products.',
+  steps: [
+    { title: 'Learn', text: 'We learn what you sell, who buys it and what they compare it against.' },
+    { title: 'Set a Baseline', text: 'We record how AI tools treat your category today, plus your signups and sales.' },
+    { title: 'Prioritize', text: 'We work out what to publish first, based on how close the buyer is to choosing.' },
+    { title: 'Publish', text: 'We make the content, publish it and keep the facts current.' },
+    { title: 'Improve', text: 'We read trends across repeated checks and do more of what works.' },
+  ],
   faqs: [
     {
       q: 'What Do AI SEO, AEO and GEO Mean?',
-      a: 'AI SEO is the work of improving how your product is found and suggested in AI answers. AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) are overlapping industry terms for the same broad goal. We use AI SEO because it is the plainest of the three.',
+      a: "AI SEO improves how AI answers find and suggest your product. AEO (answer engine optimization) and GEO (generative engine optimization) are overlapping terms for the same goal.",
     },
     {
       q: "Isn't This Just SEO?",
-      a: "A lot of it is. Good SEO is the foundation, and you shouldn't let anyone tell you otherwise. We add research into what ChatGPT actually says, content built for buyers comparing products, and tracking of whether you get recommended. Good rankings help, but they don't ensure a recommendation.",
+      a: 'A lot of it is. Good SEO is the foundation. We add research into what ChatGPT says, content for buyers comparing products, and tracking of whether you get recommended.',
     },
     {
       q: 'Is SellOnTube AI Writing Software?',
-      a: "No. SellOnTube provides a marketing service. Our team does the research, content, optimization and measurement. You don't get a software login or an article generator.",
-    },
-    {
-      q: 'What Do I Get?',
-      a: 'You get buying-intent blog posts, comparison and alternatives pages, YouTube content, and substantive refreshes when features, pricing, screenshots, comparisons or evidence change. We agree the mix for your product on the call.',
+      a: "No. We're a marketing service, and our team does the research, content, optimization and measurement. You don't get a software login or an article generator.",
     },
     {
       q: 'Do You Do Offsite Mentions and Outreach?',
-      a: "Yes, as an optional addition with its own scope. It isn't part of every project. A brand mention can be linked or unlinked, and it's different from a backlink. We don't guarantee editorial placements or backlinks.",
-    },
-    {
-      q: "How Will I Know It's Working?",
-      a: 'We look first at your signups, leads, demos, installs, trials and paying customers, where your data allows. ChatGPT recommendations, citations and referral visits are early signs. We read them as trends across repeated checks, because one AI answer can change the next day.',
+      a: "Yes, as an optional addition with its own scope. It isn't part of every project. We don't guarantee editorial placements or backlinks.",
     },
     {
       q: 'Can You Guarantee AI Recommendations?',
-      a: "No. Nobody can buy, control or guarantee what an AI tool recommends. Publishing content doesn't automatically produce citations, recommendations or revenue. We work toward recommendations, and we show you what the data does and doesn't support.",
-    },
-    {
-      q: 'Can I Pay to Get Recommended by ChatGPT?',
-      a: "We can't sell you that, and neither can anyone else who's being straight with you. We can't buy, control or guarantee what ChatGPT recommends. What you can do is make sure clear, accurate information about your product exists where ChatGPT can find it.",
-    },
-    {
-      q: "Why Doesn't ChatGPT Mention My Product?",
-      a: "We can't see inside ChatGPT, so anyone who claims certainty is guessing. Common suspects are thin information about the specific job you solve, few mentions outside your own site, or pages it can't easily read. The free check is a good place to start.",
-    },
-    {
-      q: 'Is This Only for Shopify Apps?',
-      a: 'No. Shopify apps are one example. The service is for B2B companies whose buyers research and compare products, including self-serve SaaS.',
-    },
-    {
-      q: 'What Is the Free AI Answer Check?',
-      a: "We ask ChatGPT the questions your buyers are likely to ask, then email you what it says about your product and your competitors. There's no charge, and you don't have to book a call.",
+      a: "No. Nobody can buy, control or guarantee what an AI tool recommends. We work toward recommendations and show you what the data does and doesn't support.",
     },
     {
       q: 'How Much Does It Cost?',
-      a: "We price each project to your product and goals, and we'll give you the number on the call.",
+      a: "We price each project to your product and goals. You'll get the number on the call.",
     },
   ],
   closing: {
     title: 'See Whether ChatGPT Mentions Your Product',
     text: "Bring your product and the questions your buyers ask. We'll talk through where AI SEO could help, and where it might not.",
+    faces: "You'll talk to a founder.",
+  },
+  caseClosing: {
+    title: 'What Does This Mean for You?',
+    text: [
+      'If your product does a specific job, ChatGPT can name it for that job. You can often track those visits through to the action you care about.',
+      "You don't know yet what ChatGPT says to your buyers. Start with a free check, or book a call.",
+    ],
+    prompt: 'Curious what ChatGPT says about your product?',
   },
 };
