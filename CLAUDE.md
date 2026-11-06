@@ -76,9 +76,16 @@ verification lessons.
   cutoff (`setHours(23, 59, 59, 999)`). Raw UTC comparison disagrees with Astro and causes false build
   failures. Copy the logic; do not reimplement it.
 
-- **Never push to live without asking. This is the one repo here with a remote.** Show the commit
-  message, wait for an explicit "yes", then commit and push. Do not combine showing, committing and
-  pushing into one action.
+- **Never push to live without the owner's yes. One approval per batch (owner, 2026-11-06).** This
+  is the one repo here with a remote, and `main` deploys. Do the work and every check first: build,
+  `scripts/validate-build.js`, the post-quality hook, and an independent agent check for any claim
+  about a tool or its code. Then show ONE summary: what changed, the checks and their results, every
+  commit message in order, and what was left unchanged on purpose. One explicit "yes" covers
+  committing and pushing that whole batch. After the push, check the live pages and show proof.
+  Without that yes, do not push. This replaces the old two-step (show, commit, show, push).
+  **Always ask first, whatever the batch:** price or guarantee claims on `/pricing`, redirects and
+  `netlify.toml`, Netlify functions that spend a paid credit, free-use gate rules, deleting files,
+  force-push, and any `publishDate` change.
 
 - **Never return HTTP 502 from Netlify functions.** Cloudflare intercepts 502 and replaces the body
   with `error code: 502`, hiding the real error. Use 503 for upstream API failures.
