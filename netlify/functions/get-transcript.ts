@@ -89,7 +89,7 @@ export default async (request: Request) => {
         const messages: Record<string, string> = {
           'not-found': 'This video could not be found. It may be private, deleted, or the link may be incorrect.',
           'no-captions': 'This video has no captions available. Try a public video that shows a CC button on YouTube.',
-          'no-english': 'This video has captions, but not in English. English-only for now.',
+          'no-english': 'This video has captions, but we could not load them in any language. Try another public video.',
         };
         const reason = result.reason ?? 'no-captions';
         return new Response(

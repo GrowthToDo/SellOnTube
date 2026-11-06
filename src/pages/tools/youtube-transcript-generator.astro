@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'Free AI YouTube Transcript Generator, No Signup | SellOnTube',
+  title: 'Free AI YouTube Transcript Generator (3 Free, No Signup) | SellOnTube',
   description:
-    'Free AI YouTube transcript generator. Get clean text from any video in seconds. Study competitor scripts, extract keywords, and repurpose content. No signup.',
+    'Free YouTube transcript generator. Paste a link for a clean timestamped transcript and a competitor-research brief. 3 free, no signup, then a free email unlock.',
 };
 
 const breadcrumbSchema = {
@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Transcript Generator",
   "url": `${siteUrl}/tools/youtube-transcript-generator`,
-  "description": "Free AI YouTube transcript generator. Extract clean transcripts from any video in seconds. Study competitor scripts, analyze keyword usage, and extract content insights. No signup.",
+  "description": "Free YouTube transcript generator. Get a clean, timestamped transcript and a competitor-research brief for any public video that has captions. 3 free with no signup, then a free email unlock.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -441,61 +441,51 @@ const webAppSchema = {
             <thead>
               <tr class="border-b border-slate-200 dark:border-slate-700">
                 <th class="text-left py-3 pr-4 font-semibold text-gray-900 dark:text-white">Tool</th>
-                <th class="text-center py-3 px-3 font-semibold text-gray-900 dark:text-white">Free tier</th>
-                <th class="text-center py-3 px-3 font-semibold text-gray-900 dark:text-white">No signup</th>
-                <th class="text-center py-3 px-3 font-semibold text-gray-900 dark:text-white">Timestamps</th>
-                <th class="text-center py-3 pl-3 font-semibold text-gray-900 dark:text-white">AI summary</th>
+                <th class="text-left py-3 px-3 font-semibold text-gray-900 dark:text-white">Free limit</th>
+                <th class="text-left py-3 pl-3 font-semibold text-gray-900 dark:text-white">How it works</th>
               </tr>
             </thead>
             <tbody class="text-gray-600 dark:text-slate-400">
               <tr class="border-b border-slate-100 dark:border-slate-800 bg-emerald-500/5">
                 <td class="py-3 pr-4 font-semibold text-emerald-600 dark:text-emerald-400">SellonTube</td>
-                <td class="py-3 px-3 text-center">Unlimited</td>
-                <td class="py-3 px-3 text-center">3 free</td>
-                <td class="py-3 px-3 text-center">Yes</td>
-                <td class="py-3 pl-3 text-center">Yes</td>
+                <td class="py-3 px-3">3 free per browser with no signup, then a free email unlock</td>
+                <td class="py-3 pl-3">Reads the video's existing captions. Adds a competitor-research brief. Copy or download as .txt</td>
               </tr>
               <tr class="border-b border-slate-100 dark:border-slate-800">
-                <td class="py-3 pr-4 font-medium text-gray-900 dark:text-white">Tactiq</td>
-                <td class="py-3 px-3 text-center">10/mo</td>
-                <td class="py-3 px-3 text-center">No</td>
-                <td class="py-3 px-3 text-center">Yes</td>
-                <td class="py-3 pl-3 text-center">Yes</td>
+                <td class="py-3 pr-4 font-medium text-gray-900 dark:text-white">Tactiq (web tool)</td>
+                <td class="py-3 px-3">No limit stated</td>
+                <td class="py-3 pl-3">Paste a link, no email needed, .txt download</td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="py-3 pr-4 font-medium text-gray-900 dark:text-white">NoteGPT (web tool)</td>
+                <td class="py-3 px-3">"Unlimited" on its tool page</td>
+                <td class="py-3 pl-3">Paste a link, no login, .txt download with or without timestamps</td>
               </tr>
               <tr class="border-b border-slate-100 dark:border-slate-800">
                 <td class="py-3 pr-4 font-medium text-gray-900 dark:text-white">Notta</td>
-                <td class="py-3 px-3 text-center">Limited</td>
-                <td class="py-3 px-3 text-center">No</td>
-                <td class="py-3 px-3 text-center">Yes</td>
-                <td class="py-3 pl-3 text-center">Yes</td>
-              </tr>
-              <tr class="border-b border-slate-100 dark:border-slate-800">
-                <td class="py-3 pr-4 font-medium text-gray-900 dark:text-white">NoteGPT</td>
-                <td class="py-3 px-3 text-center">5/day</td>
-                <td class="py-3 px-3 text-center">No</td>
-                <td class="py-3 px-3 text-center">Yes</td>
-                <td class="py-3 pl-3 text-center">Yes</td>
+                <td class="py-3 px-3">120 minutes a month, up to 3 minutes per conversation</td>
+                <td class="py-3 pl-3">Speech-to-text on the audio</td>
               </tr>
               <tr class="border-b border-slate-100 dark:border-slate-800">
                 <td class="py-3 pr-4 font-medium text-gray-900 dark:text-white">Kapwing</td>
-                <td class="py-3 px-3 text-center">Limited</td>
-                <td class="py-3 px-3 text-center">No</td>
-                <td class="py-3 px-3 text-center">Yes</td>
-                <td class="py-3 pl-3 text-center">No</td>
+                <td class="py-3 px-3">10 credits, auto-subtitles up to 10 minutes</td>
+                <td class="py-3 pl-3">Auto-subtitles inside a video editor</td>
               </tr>
               <tr>
                 <td class="py-3 pr-4 font-medium text-gray-900 dark:text-white">YouTube (built-in)</td>
-                <td class="py-3 px-3 text-center">Unlimited</td>
-                <td class="py-3 px-3 text-center">Yes</td>
-                <td class="py-3 px-3 text-center">Yes</td>
-                <td class="py-3 pl-3 text-center">No</td>
+                <td class="py-3 px-3">Unlimited</td>
+                <td class="py-3 pl-3">Shows captions on the video page. You copy them by hand</td>
               </tr>
             </tbody>
           </table>
         </div>
 
+        <p class="text-gray-500 dark:text-slate-500 text-xs leading-relaxed mt-3">
+          Free limits checked on each vendor's own page on 2026-10-22. Vendors change these often, so check the vendor before you rely on a limit.
+        </p>
+
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed mt-6">
-          YouTube's built-in transcript is free but the output is unformatted, hard to copy, and lacks any analysis features. Paid tools like Sonix and Descript offer high accuracy but charge $10-24/month and are designed for audio transcription, not YouTube competitive research. For a detailed breakdown of all 9 tools, see our <a href="/blog/best-youtube-transcript-generators" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">comparison of YouTube transcript generators</a>.
+          SellonTube shows the same caption text YouTube holds for the video, so its transcript is as accurate as those captions. Sonix and Descript run speech-to-text on the audio instead, and charge by the hour or by monthly plan (Sonix from $10 per hour, Descript from $16 a month billed annually). They suit audio transcription more than YouTube competitive research. For a detailed breakdown of all 9 tools, see our <a href="/blog/best-youtube-transcript-generators" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">comparison of YouTube transcript generators</a>.
         </p>
       </div>
 
@@ -509,7 +499,7 @@ const webAppSchema = {
           <span class="font-medium text-gray-700 dark:text-slate-300">It does not generate original scripts.</span> This tool extracts existing transcripts. If you need to generate new scripts for your own videos, use the <a href="/tools/youtube-script-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">YouTube Script Generator</a> paired with the <a href="/tools/youtube-video-ideas-generator" class="text-emerald-600 dark:text-emerald-400 font-medium hover:underline">Video Ideas Generator</a>.
         </p>
         <p class="text-gray-600 dark:text-slate-400 leading-relaxed">
-          <span class="font-medium text-gray-700 dark:text-slate-300">It does not auto-translate.</span> Transcripts are extracted in the video's original language. Multi-language support is on the roadmap.
+          <span class="font-medium text-gray-700 dark:text-slate-300">It does not translate.</span> You get the English captions when the video has them. If it has none, you get the captions in the video's own language, and the tool says which language it shows.
         </p>
       </div>
 
