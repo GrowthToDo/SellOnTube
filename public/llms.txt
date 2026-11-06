@@ -25,6 +25,12 @@ Our approach: identify high-intent search queries on YouTube, create videos that
 - YouTube Timestamp Generator: https://sellontube.com/tools/youtube-timestamp-generator - Paste a video URL and get AI-written chapter timestamps checked against YouTube's three chapter rules, plus shareable links to each moment
 - YouTube ROI Calculator: https://sellontube.com/tools/youtube-roi-calculator - Calculate if YouTube makes financial sense for your business
 
+## AI SEO Services
+
+SellOnTube also offers AI SEO services for B2B companies: buying-question research, buying-intent content, ongoing optimization and acquisition measurement. AI recommendations cannot be guaranteed.
+
+- AI SEO Services: https://sellontube.com/ai-seo
+
 ## Key Pages
 
 - Free Tools: https://sellontube.com/tools

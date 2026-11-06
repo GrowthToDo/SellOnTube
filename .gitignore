@@ -35,6 +35,7 @@ scripts/seo_data/*.json
 # Keyword research — ignore binary Excel files, but commit CSVs (plain text, diffable)
 research/**/*.xlsx
 research/**/*.xls
+research/private/
 
 # Claude Code local settings — ignore tokens/config, but track shared commands
 .claude/*

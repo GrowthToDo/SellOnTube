@@ -1,0 +1,26 @@
+<script>
+  // One delegated listener, so it survives ClientRouter page swaps. Astro runs a bundled
+  // module script once per session. The global close_convert_lead event in Layout.astro
+  // still fires on Cal clicks; these events add where on the subsite the click came from.
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element) || typeof window.gtag !== 'function') return;
+
+    const cta = target.closest<HTMLElement>('[data-ais-cta]');
+    if (cta) {
+      window.gtag('event', 'ai_seo_cta_click', {
+        cta_location: cta.dataset.aisCta,
+        page_path: window.location.pathname,
+      });
+      return;
+    }
+
+    const caseLink = target.closest<HTMLElement>('[data-ais-case]');
+    if (caseLink) {
+      window.gtag('event', 'ai_seo_case_study_click', {
+        cta_location: caseLink.dataset.aisCase,
+        page_path: window.location.pathname,
+      });
+    }
+  });
+</script>

@@ -1,0 +1,300 @@
+---
+import { Image } from 'astro:assets';
+import { SITE } from 'astrowind:config';
+import Layout from '~/layouts/PageLayout.astro';
+import AiSeoTheme from '~/components/ai-seo/AiSeoTheme.astro';
+import AiSeoHeader from '~/components/ai-seo/AiSeoHeader.astro';
+import AiSeoFooter from '~/components/ai-seo/AiSeoFooter.astro';
+import AiSeoTracking from '~/components/ai-seo/AiSeoTracking.astro';
+import SessionUnits from '~/components/ai-seo/SessionUnits.astro';
+import AnswerCard from '~/components/ai-seo/AnswerCard.astro';
+import listingFrame from '~/assets/images/case-studies/label-wizard-listing.png';
+import { authors } from '~/data/authors';
+import {
+  AI_SEO_CAL_LINK,
+  AI_SEO_PATH,
+  caseStudyPath,
+  landing,
+  publishedCaseStudies,
+  type CaseStudy,
+} from '~/data/ai-seo';
+
+export function getStaticPaths() {
+  return publishedCaseStudies.map((study) => ({ params: { slug: study.slug }, props: { study } }));
+}
+
+export interface Props {
+  study: CaseStudy;
+}
+
+const { study } = Astro.props;
+const author = authors.Sathyanand;
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+const metadata = {
+  title: study.title,
+  ignoreTitleTemplate: true,
+  description: study.description,
+  openGraph: {
+    type: 'article',
+    images: [{ url: '~/assets/images/og/ai-seo-label-wizard.jpg', width: 1200, height: 630 }],
+  },
+};
+
+const landingUrl = `${SITE.site}${AI_SEO_PATH}`;
+const pageUrl = `${SITE.site}${caseStudyPath(study.slug)}`;
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: study.headline,
+    description: study.description,
+    url: pageUrl,
+    mainEntityOfPage: pageUrl,
+    datePublished: study.publishDate,
+    dateModified: study.publishDate,
+    author: { '@type': 'Person', name: author.name, url: author.linkedin },
+    publisher: { '@type': 'Organization', name: 'SellOnTube', url: SITE.site },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.site },
+      { '@type': 'ListItem', position: 2, name: 'AI SEO Services', item: landingUrl },
+      { '@type': 'ListItem', position: 3, name: `${study.client} Case Study`, item: pageUrl },
+    ],
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+  <Fragment slot="header"><AiSeoHeader /></Fragment>
+  <Fragment slot="footer"><AiSeoFooter /></Fragment>
+
+  <AiSeoTheme />
+  <AiSeoTracking />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <div class="ais">
+    <article id="ais-main">
+      <header class="ais-hero">
+        <div class="ais-wrap">
+          <p class="ais-crumbs"><a href={AI_SEO_PATH}>AI SEO services</a> / {study.client} case study</p>
+          <p class="ais-eyebrow">{study.clientLine}</p>
+          <h1 class="ais-h1 ais-h1--study">{study.headline}</h1>
+          <p class="ais-lede" style="margin-top: 1.5rem">{study.opening}</p>
+
+          <dl class="ais-strip">
+            <div>
+              <dt>Install events from ChatGPT sessions</dt>
+              <dd>{study.stats.installEvents}<span class="ais-proof__of">/{study.stats.sessions}</span></dd>
+            </div>
+            <div>
+              <dt>ChatGPT install rate</dt>
+              <dd>{study.stats.rate}</dd>
+            </div>
+            <div>
+              <dt>{study.statQuote.label}</dt>
+              <dd class="is-quote">&ldquo;{study.statQuote.value}&rdquo;</dd>
+            </div>
+          </dl>
+          <p class="ais-note" style="margin-top: 1rem">
+            {study.period}, GA4. Recorded ChatGPT answer: October 31, 2026.
+          </p>
+
+          <div class="ais-byline">
+            <Image src={author.photo} alt={author.photoAlt} width={96} height={96} loading="lazy" />
+            <p>
+              By <a class="ais-link" href={author.linkedin}>{author.name}</a>. Published {
+                formatDate(study.publishDate)
+              }. Data through {formatDate(study.dataThrough)}.
+            </p>
+          </div>
+          <div class="ais-actions">
+            <a
+              class="ais-btn"
+              href={AI_SEO_CAL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-ais-cta="case-study-top">Book a discovery call</a
+            >
+            <a class="ais-btn ais-btn--ghost" href={`${AI_SEO_PATH}#check`} data-ais-cta="case-study-check-top">
+              Get a free AI answer check
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section class="ais-section" aria-labelledby="answers-title">
+        <div class="ais-wrap">
+          <p class="ais-bridge">{study.bridges.answers}</p>
+          <h2 class="ais-h2" id="answers-title">What Does ChatGPT Say About {study.client}?</h2>
+          <div class="ais-answers">{study.answers.map((answer) => <AnswerCard answer={answer} />)}</div>
+          <p class="ais-note" style="margin-top: 1.25rem">{study.answerNote}</p>
+        </div>
+      </section>
+
+      <section class="ais-section" aria-labelledby="summary-title">
+        <div class="ais-wrap">
+          <p class="ais-bridge">{study.bridges.numbers}</p>
+          <h2 class="ais-h2" id="summary-title">What Did {study.client} Record?</h2>
+          <div class="ais-prose"><p>{study.answer}</p></div>
+          <p class="ais-bridge" style="margin-top: 2rem">{study.bridges.limits}</p>
+          <h3 class="ais-h3">How to Read This Result</h3>
+          <ul class="ais-list" style="margin-top: 0.75rem">{study.limits.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      </section>
+
+      <section class="ais-section" aria-labelledby="context-title">
+        <div class="ais-wrap ais-two">
+          <div>
+            <h2 class="ais-h2" id="context-title">What Merchants Were Asking</h2>
+            <div class="ais-prose">
+              {study.context.map((p) => <p>{p}</p>)}
+              {study.challenge.map((p) => <p>{p}</p>)}
+            </div>
+          </div>
+          <figure class="ais-shot">
+            <Image
+              src={listingFrame}
+              alt="Label Wizard listing image showing a custom candle jar label with logo, price, SKU, barcode and QR code"
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 768px) 34rem, 100vw"
+              loading="lazy"
+            />
+            <figcaption class="ais-note">An image from the {study.client} App Store listing.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="ais-section" aria-labelledby="work-title">
+        <div class="ais-wrap">
+          <h2 class="ais-h2" id="work-title">What Did My Team and I Do?</h2>
+          <ol class="ais-rows">
+            {
+              study.work.map((item, i) => (
+                <li>
+                  <span class="ais-rows__n" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 class="ais-h3">{item.title}</h3>
+                  <p>{item.text}</p>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="ais-sub">
+            <h3 class="ais-h3">How It Unfolded in 2026</h3>
+            <ol class="ais-timeline">
+              {
+                study.timeline.map((item) => (
+                  <li>
+                    <span class="ais-timeline__when">{item.when}</span>
+                    <span>{item.text}</span>
+                  </li>
+                ))
+              }
+            </ol>
+            <p class="ais-note" style="margin-top: 0.75rem">
+              The order of events does not prove that one caused the next.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ais-section" aria-labelledby="results-title">
+        <div class="ais-wrap">
+          <h2 class="ais-h2" id="results-title">Did ChatGPT Sessions Convert Better Than Other Sources?</h2>
+          <div class="ais-proof">
+            <SessionUnits sessions={study.stats.sessions} installEvents={study.stats.installEvents} />
+            <ul class="ais-list">{study.findings.map((item) => <li>{item}</li>)}</ul>
+          </div>
+
+          <div class="ais-sub">
+            <p class="ais-bridge">{study.bridges.growth}</p>
+            <h3 class="ais-h3">Growth Across All Channels</h3>
+            <div class="ais-growth">
+              {
+                study.growth.map((bar) => (
+                  <div class="ais-growth__row">
+                    <p class="ais-growth__label">
+                      {bar.label}: <strong>{bar.multiple}</strong>
+                    </p>
+                    <div class="ais-growth__bars" aria-hidden="true">
+                      <span class="ais-growth__bar is-before" style={`width: ${bar.startWidth}%`}>
+                        Early summer
+                      </span>
+                      <span class="ais-growth__bar is-after">Autumn</span>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+            <p class="ais-note" style="margin-top: 0.75rem">{study.growthNote}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ais-section" aria-labelledby="learn-title">
+        <div class="ais-wrap">
+          <h2 class="ais-h2" id="learn-title">What Should You Take From This?</h2>
+          <p class="ais-lede">{landing.takeaway}</p>
+          <div class="ais-sub">
+            <p class="ais-bridge">{study.bridges.weak}</p>
+            <h3 class="ais-h3">The Weaker Signals</h3>
+            <ul class="ais-list" style="margin-top: 0.75rem">{study.readingNotes.map((item) => <li>{item}</li>)}</ul>
+          </div>
+          <details class="ais-details">
+            <summary>Five terms that are easy to confuse</summary>
+            <dl class="ais-defs">
+              {
+                study.definitions.map((definition) => (
+                  <>
+                    <dt>{definition.term}</dt>
+                    <dd>{definition.text}</dd>
+                  </>
+                ))
+              }
+            </dl>
+          </details>
+          <details class="ais-details">
+            <summary>How I calculated these numbers</summary>
+            <ul class="ais-list" style="margin-top: 0.75rem">{study.method.map((item) => <li>{item}</li>)}</ul>
+          </details>
+        </div>
+      </section>
+
+      <section class="ais-band ais-section" aria-labelledby="closing-title">
+        <div class="ais-wrap">
+          <h2 class="ais-h2" id="closing-title">{landing.closing.title}</h2>
+          <p class="ais-lede" style="color: inherit">
+            One client's result will not predict yours. Start with a free look at how ChatGPT answers your buyers, or
+            book a call.
+          </p>
+          <div class="ais-actions">
+            <a class="ais-btn" href={`${AI_SEO_PATH}#check`} data-ais-cta="case-study-check"
+              >Get a free AI answer check</a
+            >
+            <a
+              class="ais-btn ais-btn--band-ghost"
+              href={AI_SEO_CAL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-ais-cta="case-study">Book a discovery call</a
+            >
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+</Layout>

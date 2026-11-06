@@ -20,6 +20,8 @@ High-quality = B2B founders, SaaS operators, and service businesses actively exp
 
 **No services/agency content.** SellonTube is a product company. All content builds traffic for the product, not for selling YouTube SEO services or agency work.
 
+**Exception (2026-11-06, owner decision):** `/ai-seo` and its case study are a sales subsite for AI SEO services, used for calls, outreach and referrals. They have no ranking target for 90 days and do not change the keyword rules below. Review body links and organic targeting around 2027-02-04.
+
 ---
 
 ## Core Principle

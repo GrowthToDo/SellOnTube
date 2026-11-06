@@ -90,7 +90,7 @@ Two distinct cases — never give blanket advice:
 
 - JSON-LD is in `src/components/common/JsonLd.astro`
 - Blog posts should have Article schema
-- FAQ sections should have FAQPage schema where present
+- Do not add FAQPage JSON-LD to new pages. Blog and 11 pages dropped it in `605c8d8`. Visible FAQs still matter (see `ai-seo-guide.md` §19)
 - pSEO pages should have WebPage schema
 
 ---
@@ -110,8 +110,8 @@ Full rules are canonical in `ai-seo-guide.md`: citability rules §16, citation-r
 ## Technical
 
 - Stack: Astro 5 (static), Tailwind, MDX, Netlify
-- Partytown runs GA4 — use `window.dataLayer.push()`, NOT `transport_type: 'beacon'`
-- Astro config: `astro.config.ts` — Partytown must have `forward: ['dataLayer.push']`
+- GA4 runs on the main thread, not in Partytown (`src/config.yaml`). Send events with `window.gtag('event', name, params)` (see `Analytics.astro`), not `window.dataLayer.push()`
+- Astro config: `astro.config.ts` — Partytown `forward` stays empty
 - Site config: `src/config.yaml`
 - Netlify config: `netlify.toml`
 

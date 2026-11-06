@@ -1,0 +1,31 @@
+---
+import { AI_SEO_CAL_LINK, AI_SEO_PATH, caseStudyPath, featuredCaseStudy } from '~/data/ai-seo';
+
+const servicesHref = `${AI_SEO_PATH}#services`;
+---
+
+<a class="ais ais-skip" href="#ais-main">Skip to content</a>
+<header class="ais ais-header">
+  <div class="ais-wrap ais-header__row">
+    <a class="ais-wordmark" href={AI_SEO_PATH} aria-label="SellOnTube AI SEO services">SellOn<span>Tube</span></a>
+    <nav class="ais-nav" aria-label="AI SEO">
+      <a href={servicesHref}>Services</a>
+      {
+        featuredCaseStudy && (
+          <a href={caseStudyPath(featuredCaseStudy.slug)} data-ais-case="header">
+            Case study
+          </a>
+        )
+      }
+      <a
+        class="ais-btn ais-btn--sm ais-header__cta"
+        href={AI_SEO_CAL_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-ais-cta="header"
+      >
+        Book a discovery call
+      </a>
+    </nav>
+  </div>
+</header>

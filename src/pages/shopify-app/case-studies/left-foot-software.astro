@@ -8,9 +8,7 @@ import gs1Logo from '~/assets/images/case-studies/gs1-assistant-logo.png';
 import builtForShopify from '~/assets/images/case-studies/gs1-built-for-shopify.png';
 import serpGs1App from '~/assets/images/case-studies/gs1-serp-gs1-app.jpg';
 import serpGs1Assistant from '~/assets/images/case-studies/gs1-serp-gs1-assistant.jpg';
-import gs1GtinFlow from '~/assets/images/case-studies/gs1-gtin-flow.png';
 import gs1Dashboard from '~/assets/images/case-studies/gs1-dashboard.png';
-import gs1Verified from '~/assets/images/case-studies/gs1-verified.png';
 
 const metadata = {
   title: 'Left Foot Software Case Study | Shopify App Growth | SellOnTube',
@@ -34,7 +32,7 @@ const challenges = [
 const results = [
   { big: 'Churn cut by 15 points', accent: true, d: '69.6% churn ratio down to 54.7% after the listing and screenshot rewrite. Effect was immediate: installs/day up 41% and churn down 18 points in the same month the new copy went live.' },
   { big: 'Rating went from 1.0 to 4.9', accent: false, d: 'Up from 1.0 stars in early 2025 to 4.9 across 11 reviews. "Hard to set up" mentions in reviews fell 71% once the new screenshots showed the setup clearly.' },
-  { big: 'Revenue up 66%, entirely organic', accent: false, d: '$1,491/mo to $2,474/mo over 12 months. Every install organic, zero paid acquisition spend. $27,123 in total revenue over the year.' },
+  { big: 'Revenue up 66%', accent: false, d: '$1,491/mo to $2,474/mo over 12 months. $27,123 in total revenue over the year.' },
   { big: 'A loyal core, not just installs', accent: false, d: '230 active subscribers, ~9 months average tenure, 69% still paying after 6+ months. Foundation phase done; monthly retainer now covers SEO content, review management, and strategy calls.' },
 ];
 ---
@@ -121,7 +119,7 @@ const results = [
             </div>
             <div class="py-8 sm:pl-10 sm:border-l" style="border-color: var(--border-soft); border-bottom: 1px solid var(--border-soft);">
               <p class="sfy-num text-4xl font-black">+66%</p>
-              <p class="text-sm mt-2" style="color: var(--muted);">revenue growth, 100% organic</p>
+              <p class="text-sm mt-2" style="color: var(--muted);">revenue growth</p>
             </div>
           </div>
         </div>
@@ -167,21 +165,15 @@ const results = [
           </div>
           <div class="lg:col-span-7">
             <figure class="sfy-shot">
-              <Image src={gs1GtinFlow} alt="GS1 Assistant listing - GTINs accepted on Amazon, Google and Walmart" width={800} height={450} class="w-full" loading="lazy" />
-              <figcaption>Listing creative from the rewrite: GTINs accepted on Amazon, Google and Walmart</figcaption>
+              <Image src={serpGs1Assistant} alt="Google results for gs1 assistant, with the app listing first" width={800} height={450} class="w-full" loading="lazy" />
+              <figcaption>Google results for &ldquo;gs1 assistant&rdquo; after the rewrite</figcaption>
             </figure>
           </div>
         </div>
 
         <!-- 2. Video (mirrored) -->
         <div class="sfy-reveal grid lg:grid-cols-12 gap-8 lg:gap-12 py-12" style="border-top: 1px solid var(--border);">
-          <div class="lg:col-span-7 order-2 lg:order-1">
-            <figure class="sfy-shot">
-              <Image src={gs1Verified} alt="GS1 Assistant demo slide: every barcode checked against GS1's official database" width={800} height={450} class="w-full" loading="lazy" />
-              <figcaption>A slide from the demo assets we produced</figcaption>
-            </figure>
-          </div>
-          <div class="lg:col-span-5 order-1 lg:order-2">
+          <div class="lg:col-span-12">
             <p class="sfy-num text-sm font-bold mb-4" style="color: var(--dim);">02 &middot; Discovery</p>
             <h3 class="text-2xl font-bold mb-4">Product demo video</h3>
             <p class="text-[0.95rem] leading-relaxed" style="color: var(--muted);">We scripted, recorded, and edited a professional product demo. The founder never touched a camera. The video now lives on the App Store listing, YouTube channel, and landing page. It shows merchants exactly how the app works before they commit to installing.</p>
