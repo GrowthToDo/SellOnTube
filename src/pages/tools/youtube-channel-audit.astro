@@ -26,7 +26,7 @@ const webAppSchema = {
   "@type": "WebApplication",
   "name": "SellonTube YouTube Channel Audit",
   "url": `${siteUrl}/tools/youtube-channel-audit`,
-  "description": "Free YouTube channel audit tool. Score your titles, descriptions, posting consistency, and SEO optimization across your last 10 videos. Built for business channels.",
+  "description": "Free YouTube channel audit tool. Score your titles, descriptions, posting consistency, and SEO optimization across up to the last 10 videos. The first 3 audits need no signup. Built for business channels.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -51,7 +51,7 @@ const webAppSchema = {
         YouTube Channel Audit Tool&#32;<br class="hidden sm:block" />for Business Channels
       </h1>
       <p class="text-gray-500 dark:text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-        A YouTube channel audit checks a channel's titles, descriptions, upload schedule, and search signals against a scoring rubric. This free audit reads a channel's last 10 public videos and scores four dimensions, each out of 25: Title Quality, Description Quality, Publishing Consistency, and SEO Optimization. You get an overall score out of 100, a good, fair, or poor rating for each video's title and description, and three recommendations. Paste a public channel URL, an @handle, or a channel ID. A bare name without @ returns an error. You can audit a competitor's public channel too. The first 3 audits need no signup. After that, a business email unlocks more audits. Gmail, Yahoo, and similar consumer addresses are not accepted.
+        A YouTube channel audit checks a channel's titles, descriptions, upload schedule, and search signals. This free audit scores up to the last 10 public videos of any public channel, yours or a competitor's. The first 3 audits need no signup.
       </p>
     </div>
   </section>
@@ -90,6 +90,10 @@ const webAppSchema = {
         <p id="counter-label" class="mt-3 text-center text-xs text-gray-400 dark:text-slate-600">
           3 free audits remaining
         </p>
+
+        <p class="mt-4 text-center text-xs leading-relaxed text-gray-500 dark:text-slate-400">
+          Paste a public channel URL, an @handle, or a channel ID. A bare name without @ returns an error. The audit scores four dimensions, each out of 25: Title Quality, Description Quality, Publishing Consistency, and SEO Optimization. You get an overall score out of 100, a good, fair, or poor rating for each video's title and description, and three recommendations. The first 3 audits need no signup. After that, a business email unlocks more audits. Gmail, Yahoo, and similar consumer addresses are not accepted.
+        </p>
       </div>
 
       <!-- Step: Loading -->
@@ -112,7 +116,7 @@ const webAppSchema = {
         <div class="text-center mb-6">
           <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free audits</p>
           <p class="text-sm text-gray-500 dark:text-slate-400">
-            Enter your business email to keep auditing channels. It's free.
+            Enter your business email to keep auditing channels. It's free. Gmail and Yahoo addresses are not accepted.
           </p>
         </div>
         <div id="gate-form" class="space-y-3">
@@ -238,7 +242,7 @@ const webAppSchema = {
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">1</div>
           <h3 class="text-gray-900 dark:text-white font-semibold mb-2">Paste your channel URL</h3>
-          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Enter any YouTube channel URL or @handle. The tool pulls your last 10 public videos automatically. No login required.</p>
+          <p class="text-sm text-gray-500 dark:text-slate-400 leading-relaxed">Enter any YouTube channel URL or @handle. The tool pulls up to your last 10 public videos automatically. No YouTube login is needed, and the first 3 audits need no signup.</p>
         </div>
         <div>
           <div class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-bold mb-4">2</div>
@@ -495,7 +499,7 @@ const webAppSchema = {
     const label = document.getElementById('counter-label');
     if (!label) return;
     if (isEmailSubmitted()) {
-      label.textContent = 'Unlimited audits unlocked';
+      label.textContent = 'Audits unlocked';
       return;
     }
     const remaining = Math.max(0, RATE_LIMIT - getCount());
