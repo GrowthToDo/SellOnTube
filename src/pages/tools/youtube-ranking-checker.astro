@@ -6,9 +6,9 @@ import { SITE } from 'astrowind:config';
 const siteUrl = SITE.site || 'https://sellontube.com';
 
 const metadata = {
-  title: 'Free YouTube Rank Checker & Tracker, No Signup',
+  title: 'YouTube Rank Checker: Free Video Keyword Ranking Tool',
   description:
-    'Free YouTube rank checker and tracker. See your exact position in the top 20 for any keyword, plus competing videos. No signup, no paid plan.',
+    'Free YouTube rank checker. See your exact position in the top 20 for any keyword, plus competing videos. 1 free check with no signup, then a free email unlock.',
 };
 
 const breadcrumbSchema = {
@@ -17,7 +17,7 @@ const breadcrumbSchema = {
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
     { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteUrl}/tools` },
-    { "@type": "ListItem", "position": 3, "name": "YouTube Rank Checker & Tracker", "item": `${siteUrl}/tools/youtube-ranking-checker` }
+    { "@type": "ListItem", "position": 3, "name": "YouTube Rank Checker", "item": `${siteUrl}/tools/youtube-ranking-checker` }
   ]
 };
 
@@ -897,7 +897,7 @@ const webAppSchema = {
     }
 
     // Free-email-domain rejection removed: this page's own meta description promises
-    // "No signup, no paid plan", and the audience (GA4: India/Bangladesh/Pakistan) transacts
+    // "1 free check with no signup, then a free email unlock", and the audience (GA4: India/Bangladesh/Pakistan) transacts
     // on gmail. Rejecting the visitor's real email loses the lead without a meaningful lift
     // in quality.
     if (errorEl) errorEl.classList.add('hidden');

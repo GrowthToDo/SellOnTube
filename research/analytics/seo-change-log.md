@@ -1,0 +1,17 @@
+# SEO change log
+
+One line per change to a title, meta, H1, on-page claim, internal link or indexing state. Add the line
+in the same commit as the change. Use the deploy date (when it went live), not the commit date.
+Read this first when clicks move, so the cause is known before it is guessed.
+
+Judge each change by clicks and engaged GA4 sessions (`date x page`), never impressions. A verdict needs
+a URL Inspection `lastCrawlTime` after the deploy date (see `mistakes-lessons.md` 2026-08-26).
+
+| Deploy date | Commit | URL(s) | Change | Why / hypothesis | Read on | Kill rule |
+|---|---|---|---|---|---|---|
+| 2026-09-07 | `c0aab0a` | `/tools/youtube-ranking-checker` | Title became "Free YouTube Rank Checker & Tracker, No Signup"; meta said "No signup, no paid plan" | Chase the rank-tracker query family | n/a (reverted below) | n/a |
+| 2026-09-07 | `301dfed` | `/blog/youtube-seo-services` | Title became "YouTube SEO Services Cost $500 to $5,000/mo (Agency vs DIY)" | CTR rewrite | pending WS4 | see plan WS4 |
+| 2026-10-15 | `605c8d8` | blog + 11 pages | FAQPage JSON-LD removed (visible FAQ kept) | Owner decision, schema policy | n/a | n/a |
+| 2026-11-06 | `3c57a2c` | `/blog/youtube-marketing-roi` | Resolved 3 unresolved merge-conflict blocks that rendered as `origin/main` text on the live page | Live defect since 2026-07-19 | 2026-12-04 | n/a (bug fix) |
+| 2026-11-06 | `a6d3368` | 13 `/tools/*` pages | Moved the space before the desktop `<br>` in the H1 (`&#32;`) | Mobile H1 ran words together | n/a | n/a (render fix) |
+| TBD on push | this branch | `/tools/youtube-ranking-checker`, `/tools` hub entry | Title back to "YouTube Rank Checker: Free Video Keyword Ranking Tool"; meta now "1 free check with no signup, then a free email unlock"; dropped "Tracker" from the breadcrumb schema name and the `/tools` hub name | The 2026-09-07 title coincides with clicks falling from about 58 to 8 per 28 days and `youtube rank checker` sliding from position 14 to 26. Unproven. The old meta also contradicted the FAQ. | 28 days after the first recrawl that shows the new title | Head queries (`youtube rank checker`, `youtube video rank checker`) gain under 5 positions: stop title work on this page |
