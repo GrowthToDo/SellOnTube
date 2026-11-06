@@ -3,7 +3,7 @@ publishDate: 2026-02-27T00:00:00Z
 author: Sathyanand
 title: "YouTube Marketing ROI: Formula + 6 Benchmarks"
 excerpt: "Calculate your YouTube ROI with the exact formula and benchmarks for 6 B2B business types. Real data: 3.25x more conversions than blogging."
-image: ~/assets/images/blog/youtube-marketing-roi-featured.svg
+image: ~/assets/images/blog/youtube-marketing-roi-featured.png
 image_alt: "Growth analytics dashboard displaying YouTube marketing ROI metrics, conversion data, and pipeline value for B2B channels | SellonTube"
 featuredImageWidth: 1200
 featuredImageHeight: 630
