@@ -7,15 +7,30 @@
   <div class="ais-check__fields">
     <div>
       <label for="ais-check-email">Work email</label>
-      <input id="ais-check-email" name="email" type="email" autocomplete="email" required />
+      <input
+        id="ais-check-email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        placeholder="you@company.com"
+        required
+      />
     </div>
     <div>
       <label for="ais-check-url">Product website</label>
-      <input id="ais-check-url" name="productUrl" type="url" inputmode="url" placeholder="https://" required />
+      <input
+        id="ais-check-url"
+        name="productUrl"
+        type="url"
+        inputmode="url"
+        autocomplete="url"
+        placeholder="https://yourproduct.com"
+        required
+      />
     </div>
   </div>
-  <button class="ais-btn" type="submit">Get my free check</button>
   <p class="ais-check__status" role="status" aria-live="polite" data-ais-check-status></p>
+  <button class="ais-btn" type="submit">Get a free ChatGPT check</button>
   <p class="ais-note" style="margin: 0.75rem 0 0">
     We use your email to send this check and follow up about it. See our <a href="/privacy-policy">privacy policy</a>.
   </p>
@@ -38,9 +53,18 @@
     const show = (message: string) => {
       if (status) status.textContent = message;
     };
+    const emailInput = form.querySelector<HTMLInputElement>('[name="email"]');
+    const urlInput = form.querySelector<HTMLInputElement>('[name="productUrl"]');
+    emailInput?.removeAttribute('aria-invalid');
+    urlInput?.removeAttribute('aria-invalid');
+    const reject = (input: HTMLInputElement | null, message: string) => {
+      input?.setAttribute('aria-invalid', 'true');
+      input?.focus();
+      show(message);
+    };
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return show('Please enter a valid email address.');
-    if (!productUrl.includes('.')) return show('Please enter your product website.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return reject(emailInput, 'Please enter a valid email address.');
+    if (!productUrl.includes('.')) return reject(urlInput, 'Please enter your product website.');
 
     if (button) button.disabled = true;
     show('Sending...');
