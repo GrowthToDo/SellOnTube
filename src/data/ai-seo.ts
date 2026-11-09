@@ -143,7 +143,7 @@ const labelWizard: CaseStudy = {
   sourceRatesNote: 'Install events per session, GA4, same period. ChatGPT has the smallest sample of the four.',
   cantProve: [
     "I can't tell you what caused this. Pricing, the listing and paid search all changed in the same period.",
-    "I have no earlier baseline. GA4 on this listing starts on August 5.",
+    'I have no earlier baseline. GA4 on this listing starts on August 5.',
     "I can't credit individual posts. Most of the install events came before most of the posts were live.",
     "I can't say these visitors make better customers. I have no activation, paid or retention data for them.",
   ],
@@ -190,7 +190,9 @@ export const landing = {
   headline: 'When your buyers ask ChatGPT what to use, does it name you?',
   subhead:
     'We do AI SEO for B2B products. We work to get you recommended, and we judge the work by your signups, leads and paying customers.',
-  heroAnswerNote: 'A real ChatGPT answer about our client, cropped to the first of three apps. Answers vary by person, place and time.',
+  deliverables: 'Buying-question research, buying-intent content and ongoing updates, measured by your signups.',
+  heroAnswerNote:
+    'A real ChatGPT answer about our client, cropped to the first of three apps. Answers vary by person, place and time.',
   proof: {
     title: "What One Client's ChatGPT Sessions Recorded",
     text: [
@@ -274,7 +276,7 @@ export const landing = {
   faqs: [
     {
       q: 'What Do AI SEO, AEO and GEO Mean?',
-      a: "AI SEO improves how AI answers find and suggest your product. AEO (answer engine optimization) and GEO (generative engine optimization) are overlapping terms for the same goal.",
+      a: 'AI SEO improves how AI answers find and suggest your product. AEO (answer engine optimization) and GEO (generative engine optimization) are overlapping terms for the same goal.',
     },
     {
       q: "Isn't This Just SEO?",

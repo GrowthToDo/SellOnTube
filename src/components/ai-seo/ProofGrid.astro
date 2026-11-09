@@ -13,9 +13,17 @@ const { sessions, installEvents, rate, note } = Astro.props;
 
 <figure class="ais-grid-panel">
   <p class="ais-grid-panel__rate">{rate}</p>
+  <p class="ais-grid-panel__label">install events per ChatGPT session</p>
   <p class="ais-grid-panel__line">{installEvents} install events from {sessions} ChatGPT sessions</p>
-  <div class="ais-grid-panel__cells" role="img" aria-label={`Grid of ${sessions} squares with ${installEvents} filled.`}>
+  <div
+    class="ais-grid-panel__cells"
+    role="img"
+    aria-label={`Grid of ${sessions} squares with ${installEvents} filled.`}
+  >
     {Array.from({ length: sessions }, (_, i) => <i class:list={{ 'is-on': i < installEvents }} />)}
   </div>
-  <figcaption>Each square is one session, and filled squares show the count of install events. {note}</figcaption>
+  <figcaption>
+    Each square is one session, and filled squares show the count of install events. Install events are not confirmed
+    shops. {note}
+  </figcaption>
 </figure>

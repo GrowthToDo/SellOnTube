@@ -56,11 +56,13 @@ const structuredData = {
             <p class="ais-eyebrow">{landing.eyebrow}</p>
             <h1 class="ais-h1">{landing.headline}</h1>
             <p class="ais-lede">{landing.subhead}</p>
+            <p class="ais-deliver">{landing.deliverables}</p>
             <div class="ais-actions">
               <a class="ais-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="hero">
                 Book a discovery call
               </a>
-              <a class="ais-btn ais-btn--band-ghost" href="#check" data-ais-cta="hero-check">Get a free ChatGPT check</a>
+              <a class="ais-btn ais-btn--band-ghost" href="#check" data-ais-cta="hero-check">Get a free ChatGPT check</a
+              >
             </div>
           </div>
           {
@@ -75,7 +77,7 @@ const structuredData = {
                     src={answerShot}
                     alt="ChatGPT answer listing 1. Label Wizard, tagged Custom sizes supported, with set your own label dimensions, 400+ ready-made templates, custom layouts and PDF printing, by Left Foot Software"
                     widths={[480, answerShot.width]}
-                    sizes="(min-width: 1000px) 28rem, 100vw"
+                    sizes="(min-width: 1000px) 30rem, calc(100vw - 4.5rem)"
                     loading="eager"
                   />
                 </figure>
@@ -109,6 +111,11 @@ const structuredData = {
                 <a class="ais-link" href={caseStudyPath(study.slug)} data-ais-case="proof">
                   Read the {study.client} case study
                 </a>
+                <div class="ais-actions">
+                  <a class="ais-btn" href="#check" data-ais-cta="proof-check">
+                    Get a free ChatGPT check
+                  </a>
+                </div>
               </div>
             </div>
           </section>
@@ -138,15 +145,15 @@ const structuredData = {
         <div class="ais-wrap">
           <h2 class="ais-h2" id="what-title">{landing.what.title}</h2>
           <div class="ais-prose">{landing.what.text.map((p) => <p>{p}</p>)}</div>
-          <AiSeoFlow steps={study ? study.flow : landing.flow} />
+          <AiSeoFlow steps={study ? study.flow : landing.flow} recordedCount={study ? 2 : 0} />
           {study && <p class="ais-note ais-flow__note">{study.flowNote}</p>}
 
-          <h3 class="ais-h3 ais-tiles__title">{landing.servicesTitle}</h3>
+          <h2 class="ais-h2 ais-tiles__title" id="services-title">{landing.servicesTitle}</h2>
           <div class="ais-tiles">
             {
               landing.services.map((service) => (
                 <div class="ais-tile">
-                  <h4 class="ais-h4">{service.title}</h4>
+                  <h3 class="ais-h4">{service.title}</h3>
                   {service.text.map((p) => (
                     <p>{p}</p>
                   ))}
@@ -155,6 +162,9 @@ const structuredData = {
             }
           </div>
           <p class="ais-optional">{landing.optionalLine}</p>
+          <div class="ais-actions">
+            <a class="ais-btn" href="#check" data-ais-cta="services-check">Get a free ChatGPT check</a>
+          </div>
         </div>
       </section>
 
@@ -225,6 +235,9 @@ const structuredData = {
             <a class="ais-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="closing">
               Book a discovery call
             </a>
+            <a class="ais-btn ais-btn--band-ghost" href="#check" data-ais-cta="closing-check"
+              >Get a free ChatGPT check</a
+            >
           </div>
           <FounderFaces text={landing.closing.faces} />
         </div>

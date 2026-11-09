@@ -3,17 +3,20 @@ import type { FlowStep } from '~/data/ai-seo';
 
 export interface Props {
   steps: FlowStep[];
+  /** How many leading steps come from a recorded answer. Later steps show the general path. */
+  recordedCount?: number;
 }
 
-const { steps } = Astro.props;
+const { steps, recordedCount = 0 } = Astro.props;
 ---
 
 <ol class="ais-flow" aria-label="How a buyer moves from an AI question to becoming a customer">
   {
-    steps.map((step) => (
-      <li>
+    steps.map((step, i) => (
+      <li class:list={{ 'is-typical': recordedCount > 0 && i >= recordedCount }}>
         <span class="ais-label">{step.label}</span>
         <span class="ais-flow__text">{step.text}</span>
+        {recordedCount > 0 && <span class="ais-flow__tag">{i < recordedCount ? 'Recorded' : 'Typical'}</span>}
       </li>
     ))
   }
