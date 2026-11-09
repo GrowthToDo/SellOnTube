@@ -419,3 +419,9 @@ Read this file at the start of work so past mistakes don't repeat.
 - **What happened:** Asked to register event-scoped custom dimensions, the API returned 403 PERMISSION_DENIED (the service account has read access only). The `mcp__claude-in-chrome__*` tools were absent from the session, so the Cal.com webhook log could not be viewed.
 - **Prevention rule:** Test write access with one call before promising a GA4 admin change. Check that the browser tools load (ToolSearch) before planning a logged-in dashboard step.
 - **Category:** tooling
+
+### 2026-11-09 - A log line that prints only a status code reads as success; a 202 from IndexNow proves nothing
+- **What happened:** `deploy-succeeded-background.ts` logged "IndexNow: Submitted N URLs. Response: 403", so every deploy looked like a submit. Tests showed api.indexnow.org returns 202 with an empty body for a bad key and even for example.com, yet 403 UserForbiddedToAccessSite for sellontube.com on both Bing endpoints, while Yandex returns 200 with the same key files. The 403 is host-specific on Bing's side, not a key-file, redirect or Cloudflare fault.
+- **Lesson:** Verification of a submit endpoint needs a known-bad control. A 202 is "queued", not "accepted". The GA4 service account is read-only, and no browser tools loaded again this session, so those steps stay owner clicks.
+- **Prevention rule:** Log status plus body slice and call `console.error` for any non-2xx. Before blaming a key file, curl it and compare with a second endpoint (Yandex) and a bad-key control.
+- **Category:** verification

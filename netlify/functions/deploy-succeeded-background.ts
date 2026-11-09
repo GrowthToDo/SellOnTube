@@ -44,7 +44,12 @@ export default async () => {
       body: JSON.stringify(body),
     });
 
-    console.log(`IndexNow: Submitted ${urls.length} URLs. Response: ${res.status}`);
+    // 200/202 means queued. Any other status is a failure and must not read as success.
+    if (res.status === 200 || res.status === 202) {
+      console.log(`IndexNow: Submitted ${urls.length} URLs. HTTP ${res.status}`);
+    } else {
+      console.error(`IndexNow: submission failed HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    }
   } catch (err) {
     console.error('IndexNow: Failed to submit URLs', err);
   }
