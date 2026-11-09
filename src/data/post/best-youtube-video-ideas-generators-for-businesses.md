@@ -16,7 +16,7 @@ tags:
 toolCta: video-ideas-generator
 faqs:
   - question: "What is the best YouTube video idea generator for small businesses?"
-    answer: "For small businesses, the SellonTube YouTube Video Ideas Generator is the strongest option because it maps ideas to buyer intent rather than trending topics, so the output is built around buyer-intent topic patterns. It is free, needs no account for the first 3 runs (then a free business email), and is built for business channels rather than creator channels. vidIQ and TubeBuddy are better if you already have an established channel with upload history and want data-backed, SEO-informed ideation."
+    answer: "For small businesses, the SellonTube YouTube Video Ideas Generator is the strongest option because it maps ideas to buyer intent rather than trending topics, so the output is built around buyer-intent topic patterns. It is free, needs no account for the first 3 runs (then a free email), and is built for business channels rather than creator channels. vidIQ and TubeBuddy are better if you already have an established channel with upload history and want data-backed, SEO-informed ideation."
   - question: "How do I come up with YouTube video ideas for my business?"
     answer: "Start with what your customers search before they buy, not with trending topics. Use a video ideas generator that accepts business context (your product, audience, and the problem you solve), not just a niche keyword. Describe your business model and the buying decision you want to influence. Tools like SellonTube, vidIQ, and TubeBuddy can turn that context into specific, filmable topics tied to customer acquisition rather than raw views."
   - question: "Are YouTube video idea generators free to use?"
@@ -550,7 +550,7 @@ Start with what your business actually needs from YouTube. Then pick the tool th
 
 #### What is the best YouTube video idea generator for small businesses?
 
-For small businesses, SellonTube's YouTube Video Ideas Generator is the strongest option because it maps ideas to buyer intent rather than trending topics, so the output is built around buyer-intent topic patterns. It is free, needs no account for the first 3 runs (then a free business email), and is built for business channels rather than creator channels. vidIQ and TubeBuddy are better if you already have an established channel and want data-backed, SEO-informed ideation. You can also browse our curated [YouTube video ideas for business owners](/youtube-video-ideas/business-youtube-video-ideas) for ready-to-film topic lists.
+For small businesses, SellonTube's YouTube Video Ideas Generator is the strongest option because it maps ideas to buyer intent rather than trending topics, so the output is built around buyer-intent topic patterns. It is free, needs no account for the first 3 runs (then a free email), and is built for business channels rather than creator channels. vidIQ and TubeBuddy are better if you already have an established channel and want data-backed, SEO-informed ideation. You can also browse our curated [YouTube video ideas for business owners](/youtube-video-ideas/business-youtube-video-ideas) for ready-to-film topic lists.
 
 #### How do I come up with YouTube video ideas for my business?
 

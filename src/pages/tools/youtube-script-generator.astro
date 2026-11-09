@@ -177,14 +177,14 @@ const webAppSchema = {
         <div class="text-center mb-6">
           <p class="text-base font-semibold text-gray-900 dark:text-white mb-2">You've used your 3 free generations</p>
           <p class="text-sm text-gray-500 dark:text-slate-400">
-            Enter your business email to keep generating scripts. It's free.
+            Enter your email to keep generating scripts. It's free.
           </p>
         </div>
         <div id="gate-form" class="space-y-3">
           <input
             type="email"
             id="gate-email"
-            placeholder="your@company.com"
+            placeholder="you@example.com"
             class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500
                    focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 outline-none"
             aria-describedby="gate-email-error"
@@ -545,7 +545,7 @@ const webAppSchema = {
           <div>
             <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-2">Is this YouTube script generator free?</h3>
             <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-              Yes. You get 3 free generations without any signup. After that, enter your business email to continue generating scripts at no cost. There is no paid tier.
+              Yes. You get 3 free generations without any signup. After that, enter your email to continue generating scripts at no cost. There is no paid tier.
             </p>
           </div>
 
@@ -632,7 +632,6 @@ const webAppSchema = {
   const RATE_LIMIT = 3;
   const COUNT_KEY = 'sot_script_gen_count';
   const EMAIL_KEY = 'sot_script_gen_email_submitted';
-  const GATE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'aol.com', 'protonmail.com', 'mail.com', 'ymail.com', 'live.com'];
   const CAPTURE_URL = '/.netlify/functions/capture-email';
 
   function getCount(): number { return parseInt(localStorage.getItem(COUNT_KEY) || '0', 10); }
@@ -1020,15 +1019,10 @@ const webAppSchema = {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      if (errorEl) { errorEl.textContent = 'Please enter a valid business email address.'; errorEl.classList.remove('hidden'); }
+      if (errorEl) { errorEl.textContent = 'Please enter a valid email address.'; errorEl.classList.remove('hidden'); }
       return;
     }
 
-    const domain = email.split('@')[1];
-    if (GATE_EMAIL_DOMAINS.includes(domain)) {
-      if (errorEl) { errorEl.textContent = 'Please use a business email address (not Gmail, Yahoo, etc.)'; errorEl.classList.remove('hidden'); }
-      return;
-    }
 
     if (errorEl) errorEl.classList.add('hidden');
 

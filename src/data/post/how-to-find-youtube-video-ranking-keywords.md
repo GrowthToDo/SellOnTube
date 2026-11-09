@@ -16,7 +16,7 @@ tags:
 toolCta: ranking-checker
 faqs:
   - question: "Can I check YouTube keyword rankings for free?"
-    answer: "Yes. YouTube Studio shows basic search terms data for free. For exact ranking positions, the SellonTube YouTube Ranking Checker lets you check where any video ranks for any keyword at no cost: 1 check with no login, then a free business email."
+    answer: "Yes. YouTube Studio shows basic search terms data for free. For exact ranking positions, the SellonTube YouTube Ranking Checker lets you check where any video ranks for any keyword at no cost: 1 check with no login, then a free email."
   - question: "How often do YouTube rankings change?"
     answer: "YouTube rankings shift faster than Google. A video at position 5 today can move to position 2 or drop to position 15 within a week. Check your most important keywords weekly and after any metadata updates."
   - question: "Does YouTube Studio show all my ranking keywords?"
@@ -202,7 +202,7 @@ The [YouTube Ranking Checker](/tools/youtube-ranking-checker) takes a different 
 
 **When this method fails:** When you need automated tracking for 50+ keywords with historical charts. This is a point-in-time tool. You check manually. For a business owner tracking 5-10 keywords weekly, that takes under 5 minutes. For someone managing hundreds of keywords across multiple channels, a paid tracker is the better fit.
 
-It is free. No login required for your first check. After that, enter a business email to keep checking at no cost. If you are looking for new keyword opportunities rather than checking an existing one, [the free video keyword finder](/tools/youtube-video-keyword-finder) is the companion tool for that.
+It is free. No login required for your first check. After that, enter your email to keep checking at no cost. If you are looking for new keyword opportunities rather than checking an existing one, [the free video keyword finder](/tools/youtube-video-keyword-finder) is the companion tool for that.
 
 <div style="overflow-x: auto; margin: 2rem 0;">
 <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
@@ -486,7 +486,7 @@ YouTube search and YouTube suggested are two completely different traffic source
 
 ### Can I check YouTube keyword rankings for free?
 
-Yes. YouTube Studio shows basic search terms data for free, though it hides your actual position. The [SellonTube YouTube Ranking Checker](/tools/youtube-ranking-checker) lets you check where any video ranks for any keyword at no cost: 1 check with no login, then a free business email.
+Yes. YouTube Studio shows basic search terms data for free, though it hides your actual position. The [SellonTube YouTube Ranking Checker](/tools/youtube-ranking-checker) lets you check where any video ranks for any keyword at no cost: 1 check with no login, then a free email.
 
 ### How often do YouTube rankings change?
 

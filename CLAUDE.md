@@ -144,5 +144,5 @@ verification lessons.
   them; never guess a size. Write a manual `## FAQ` heading with `### Question` H3s in the MDX body:
   frontmatter `faqs` renders nothing visible and no longer emits JSON-LD. FAQPage JSON-LD is off
   for all projects (decided 2026-10-15 by Sathya, `SEO_CONTEXT.md` Overrides); the blog layout
-  stopped emitting it 2026-10-15, and 13 tool pages still do until the tool-fix branch lands.
+  stopped emitting it 2026-10-15, and the 13 tool pages stopped emitting it 2026-11-06 (`d4154b6`; `dist/` has no FAQPage on any tool or blog page).
   The draft check (mode 04 and the post gate hook) runs before any draft is shown; final QA runs in mode 05.

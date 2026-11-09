@@ -192,7 +192,7 @@ Before committing to a monthly retainer, try handling YouTube SEO yourself with 
 
 **For keyword research:** YouTube's search suggest bar is underrated. Type your topic and note the autocomplete suggestions. These are real queries people search for. Combine this with Google Trends (set the dropdown to "YouTube Search") to compare relative volume across keyword candidates.
 
-**For title and metadata optimization:** Our [YouTube SEO Tool](/tools/youtube-seo-tool) analyzes your video's title, description, and tags against search demand and competition. It flags gaps and suggests improvements. Free: 3 analyses without signup, then a free business email.
+**For title and metadata optimization:** Our [YouTube SEO Tool](/tools/youtube-seo-tool) analyzes your video's title, description, and tags against search demand and competition. It flags gaps and suggests improvements. Free: 3 analyses without signup, then a free email.
 
 **For competitor analysis:** Search your target keyword on YouTube. Open the top five results. Read their titles, descriptions, and tags (view source or use a browser extension). Note what they cover and what they miss. Your video should fill those gaps.
 

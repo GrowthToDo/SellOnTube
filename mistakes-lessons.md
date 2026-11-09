@@ -408,3 +408,14 @@ Read this file at the start of work so past mistakes don't repeat.
 - **Lesson:** Overflow and contrast checks do not test whether a chart's marks match its numbers. A paragraph-length preference does not hold across a rewrite unless something measures it.
 - **Prevention rule:** For any data mark, avoid `min-width` on the bar itself and compare drawn ratios to data at phone width. Enforce copy limits with a script against `dist/`, and prove it with a self-test. A check that prints nothing is a failed check.
 - **Category:** verification
+
+### 2026-11-06 - Migrating tracking calls: a check that only passes once proves little, and status must mean failure
+- **What happened:** Moved ~35 inline GA4 error calls into `src/utils/track.ts` (`trackToolError`) with three parallel agents. An independent review then found real defects the agents' own greps passed: `httpStatus` set for 2xx responses (reported as `api_error_200`), a 404 branch that fired two events when the body was not JSON, and render-time TypeErrors labelled as network failures (any `TypeError` was classed `network`).
+- **Lesson:** Count-based checks ("zero inline calls left") prove removal, not correctness. A status variable captured right after `fetch` describes the response, not the failure. `err instanceof TypeError` does not identify a network error: our own render code throws TypeErrors too.
+- **Prevention rule:** Keep `httpStatus` undefined for `res.ok`. Classify a thrown error as network only when the message matches fetch failure text. Run `scripts/check-tool-error-tracking.mjs` (real browser, mocked API, built `dist/`) after any change to tool error handling, and mutation-test it by breaking one built string.
+- **Category:** verification
+
+### 2026-11-06 - Free GA4 service account cannot register custom dimensions; browser tools may not exist
+- **What happened:** Asked to register event-scoped custom dimensions, the API returned 403 PERMISSION_DENIED (the service account has read access only). The `mcp__claude-in-chrome__*` tools were absent from the session, so the Cal.com webhook log could not be viewed.
+- **Prevention rule:** Test write access with one call before promising a GA4 admin change. Check that the browser tools load (ToolSearch) before planning a logged-in dashboard step.
+- **Category:** tooling
