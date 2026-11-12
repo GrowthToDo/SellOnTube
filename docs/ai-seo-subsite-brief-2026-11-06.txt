@@ -1,0 +1,186 @@
+Build SellOnTube’s AI SEO services subsite
+Research-informed brief | 6 November 2026
+
+You are implementing a working agency subsite in the existing SellOnTube repository. Read AGENTS.md and inspect the framework, routing, styling, reusable components, assets, analytics, and deployment conventions first. Use the existing stack. Then build and verify the implementation; do not stop at a plan. Do not deploy or publish externally.
+
+BUSINESS AND OFFER
+
+SellOnTube offers AI SEO services to help B2B companies acquire customers through AI assistants. AI discovery, relevant recommendations, and customer acquisition are the customer-facing premise. Website content, YouTube content, search discoverability, and optional offsite coverage are methods supporting that goal; do not present Google and YouTube as equal headline acquisition promises. Keep the audience broad initially: self-serve B2B SaaS and other B2B products. Shopify apps are one client example, not the agency’s exclusive market.
+
+The ultimate business goal is client revenue. Relevant intermediate outcomes depend on the client: qualified leads, booked demos, installs, trials, paid activation, and paying customers. Do not present every intermediate outcome as revenue or guarantee performance.
+
+The confirmed service scope is:
+- Buying-intent blog content.
+- Comparison and alternatives pages.
+- YouTube content answering product, evaluation, and purchasing questions.
+- Ongoing content optimization and substantive refreshes.
+- Research into relevant buying questions, AI answers, competing recommendations, and content gaps.
+- Measurement of AI recommendations, referrals, and acquisition outcomes where client data permits.
+
+Package this as an AI SEO engagement, not a generic article-writing package. Explain the method after the outcome. Offsite brand mentions and relevant citation outreach are an OPTIONAL, SEPARATELY SCOPED ADDITION. Include a restrained line in the services section: “Optional: relevant offsite mentions and outreach, scoped to your opportunities.” Do not imply that outreach is included in every engagement or guarantee editorial placements, backlinks, or AI recommendations. Linked and unlinked brand mentions are distinct from backlinks. Do not silently add full technical SEO, paid placements, community management, custom analytics integrations, or other delivery commitments.
+
+Use “AI SEO” as the primary service term, prominently in the hero eyebrow, page title, and service explanation. Explain AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) briefly in the FAQ as overlapping industry terms for improving discovery in AI answers; avoid acronym-heavy headings. Make clear that we provide a marketing service, not AI writing software.
+
+POSITIONING AND HERO
+
+Hero eyebrow: “AI SEO services for B2B companies”
+Recommended headline:
+“Turn AI discovery into your next customers.”
+
+Supporting copy:
+“Help buyers discover and choose your product through AI assistants like ChatGPT—with a clear goal: more qualified leads, installs, and paying customers.”
+
+Supporting method line, placed below the main promise or in the next section:
+“We create and continually improve the content that helps buyers understand and choose your product.”
+
+Refine this copy for rhythm and clarity without changing the premise. The earlier “SEO isn’t dead” headline is retired. Do not use it as the hero or make the page a debate about SEO. Revenue is the ultimate objective; avoid guarantees or unsupported claims that we have already generated client revenue.
+
+Primary CTA: “Book a discovery call.”
+Secondary CTA: “Explore our services.”
+
+Explain the commercial relevance immediately. Do not spend several sections discussing the future of search before explaining the service.
+
+Describe recommendations as an objective we work toward, not something we can purchase, control, or guarantee. Avoid implying that AI assistants always recommend the best product, that our work retrains them, or that publishing content necessarily produces recommendations.
+
+STRATEGY CLAIMS: WHAT TO SAY AND WHAT TO AVOID
+
+Content-led SEO is a foundation for AI search work, but publishing BOFU content does not automatically cause citations, recommendations, or revenue. Keep the public page commercially clear rather than filled with methodological caveats. Put a concise no-guarantee answer in the FAQ and attribution context in the case study.
+
+Freshness means accurate and substantively current information, not changing dates or mass-republishing. Some observational studies find AI-cited pages newer on average than organic-search results; patterns differ by platform and do not establish that frequent refreshing causes more citations. Do not claim “AI always favors fresh content,” promise a freshness hack, or invent a universal refresh schedule.
+
+Track meaningful trends across repeated observations rather than treating one prompt or citation as proof. Separate genuine product recommendations from simple name mentions and citations. Keep acquired customers and revenue as outcomes to measure, not substitutes for visibility metrics.
+
+Background references for editorial judgment, not facts to crowd into the sales page:
+https://developers.google.com/search/docs/appearance/ai-features
+https://ahrefs.com/blog/do-ai-assistants-prefer-to-cite-fresh-content/
+https://ahrefs.com/blog/how-stable-are-ai-citations/
+https://ahrefs.com/blog/mention-types-ai-visibility/
+
+BENCHMARKS AND HOW TO USE THEM
+
+Study these pages if browsing is available. They are inspiration, not sources of SellOnTube proof. Do not copy their wording, layouts, logos, client results, proprietary framework names, or assets.
+
+1. Graphite
+https://graphite.io/aeo
+https://graphite.io/case-studies/webflow-llm-signups
+Take inspiration from the focused navigation, evidence-led service explanation, and case study opening with measurable outcomes. Its Webflow example reports free-account signups, not paying customers. The reported LLM signup share changes from 4% to 8%; do not reinterpret that as independently verified doubling of absolute signup volume.
+
+2. Omniscient Digital
+https://beomniscient.com/
+https://beomniscient.com/case-studies/onboardmeetings/
+Take inspiration from its connection between buyer consideration, AI discovery, and pipeline; clear discovery-call CTA; and named-client case study explaining measurement through GA4 and Salesforce. SellOnTube must not imply it already offers Omniscient’s broader service scope or instrumentation.
+
+3. Grow & Convert
+https://www.growandconvert.com/learn-more/
+Take inspiration from the clear commercial rationale for buying-intent content and emphasis on product expertise. Prioritize category evaluation, comparisons, alternatives, and specific problems the product solves. Do not copy categorical claims that one tactic is the only route to AI visibility.
+
+4. Optimist
+https://www.yesoptimist.com/case-study-aeo-chatgpt-revenue-retail-tech/
+https://www.yesoptimist.com/case-study-aeo-chatgpt-conversions/
+Take inspiration from concise problem/solution/outcome narratives, original expertise, and honest attribution limits. Do not borrow anonymous client results. Avoid percentage-growth headlines without baseline values and time periods.
+
+5. Citant
+https://citant.ai/case-study/
+Take inspiration only from evidence presentation: named client, dated exports, denominators, transaction-linked attribution descriptions, and reporting weaker results alongside stronger ones. Its small conversion sample should not be treated as a general benchmark.
+
+If external pages cannot be accessed, use these summaries and continue. Do not block implementation.
+
+SITE STRUCTURE
+
+Implement:
+- /ai-seo/
+- /ai-seo/case-studies/label-wizard/
+
+Use a shared subsite header, footer, design system, and maintainable content structure. Allow future services, pricing, and case-study index routes, but do not create empty pages or dead navigation links now. Services links should currently point to the landing-page services section.
+
+Keep the existing main website intact. Use its routing and trailing-slash convention consistently. Do not create a new domain.
+
+VISUAL DIRECTION
+
+Bold and editorial: expressive typography, generous white space, restrained palette, one accent, clear hierarchy, short readable sections, and prominent evidence. Reuse appropriate SellOnTube assets and branding from the repository. Give the subsite its own coherent treatment within the parent brand.
+
+Use Omniscient’s service-led conversion sequence as the structural reference: clear commercial promise, early proof, explanation of the approach, tangible services, engagement process, FAQ, final call CTA. Use Graphite for evidence hierarchy and editorial restraint. This is an adaptation of service-page patterns, not a claim that the exact layout is conversion-tested. Draft final copy rather than leaving generic instructions as visible page content.
+
+Create an original design. Avoid generic agency card grids, stock business meetings, AI robots, excessive gradients, giant decorative dashboards, and heavy motion. Make evidence more prominent than decoration.
+
+LANDING PAGE CONTENT
+
+1. Header: SellOnTube identity, Services anchor, case study access, discovery-call CTA. If the case study is still draft, do not advertise it as published proof; gate its public link behind publication readiness.
+
+2. Hero: headline and commercial supporting copy above; both CTAs. The visitor should understand the offer immediately.
+
+3. Featured client evidence: Label Wizard, a Shopify app from Leftfoot Software. When verified materials are available, show the strongest supported acquisition result, its date range, a readable evidence visual, and a full case-study link. Do not call it a revenue result if only installs are measured. When evidence is missing, show an editorial placeholder in preview only and suppress unsupported public claims.
+
+4. Why this matters: focus on buyers asking AI assistants to explain options, compare products, and suggest solutions for specific needs. Explain why relevant consideration matters to acquisition. Keep this concise. Website/search discoverability, video, and broader coverage belong in the method explanation, not as competing hero promises.
+
+5. How our AI SEO service works: present buying-question research, buying-intent content (blogs, comparisons, alternatives, and YouTube), ongoing optimization, and acquisition measurement as one coherent engagement. Explain how each helps buyers understand product fit and make a choice. Mention substantive refreshes of features, pricing, screenshots, comparisons, and evidence. Include the optional offsite outreach line without making it the focus. Use clearly illustrative examples, not invented client results. Do not reduce the service to article counts or make an unsupported promise of a fixed output cadence.
+
+6. How we choose topics: prioritize relevance to the product, evidence of buying intent, customer problems, and differentiation. Briefly show illustrative questions such as “Which tool fits our workflow?”, “X versus Y?”, and “How can we solve this specific problem?” Do not pretend these examples are measured search volumes or real customer quotes.
+
+7. How an engagement works: understand the product and buyers; establish a baseline for relevant AI discovery and acquisition where measurable; identify content opportunities; create, optimize, and publish; measure and improve. Do not invent quantities, deadlines, or contractual obligations.
+
+8. How we measure success: explain briefly, in business language, that we assess acquisition outcomes where data allows. Use a compact table if useful:
+   - Business outcomes: paying customers and attributed revenue.
+   - Acquisition outcomes: qualified leads, demos, installs, trials, paid activation, as appropriate.
+   - Supporting signals: relevant AI recommendations, citations, referral visits, and search performance.
+Do not portray this as a fixed linear funnel or imply every client will provide revenue data. Keep technical implementation details out of the sales copy.
+
+9. Fit: B2B businesses whose buyers research, compare, and evaluate products. Do not invent client size minimums or exclusions.
+
+10. FAQ: what AI SEO/AEO/GEO mean; relation to SEO; content and ongoing optimization included; optional offsite work; how success is measured; whether recommendations can be guaranteed; whether the service is only for Shopify apps. Explain honestly that recommendations cannot be guaranteed and Shopify is one example. Do not invent timing or pricing promises.
+
+11. Closing discovery-call CTA.
+
+CASE STUDY CONTENT AND EVIDENCE
+
+EVIDENCE SOURCE: The user confirms that screenshots, visits, installs, and supporting materials already exist in another local repository: Leftfoot Software. Treat that repository as the primary source for the Label Wizard case study. Access it read-only. Inspect the parent/sibling project directories and configured workspace roots for an identifiable Leftfoot Software repository, following applicable project instructions. If it is not accessible or multiple repositories are plausible, ask only for the exact local path; do not ask the user to recreate or manually transcribe existing evidence. Do not search unrelated personal folders or credentials. Do not modify the source repository.
+
+USER-REPORTED METRIC: 34% ChatGPT conversion rate. This is a supplied lead to verify, not yet a fully defined metric. Locate the matching analytics screenshot/export and confirm the product, reporting period, conversion event, numerator, denominator (sessions/users/visits as defined by the source), and attribution method. Do not assume it means paid conversion or that it represents a 34% increase. If the source differs, flag the discrepancy instead of choosing a convenient figure.
+
+If confirmed as visit-to-install conversion, the homepage proof may read “34% ChatGPT-to-install conversion rate” with the date range, underlying counts, and a concise source note. Link “Read the Label Wizard case study” to /ai-seo/case-studies/label-wizard/. Keep the full story and detailed evidence on that separate page. Use a different precise label if the conversion event or denominator is different.
+
+Copy only the selected, publication-appropriate evidence assets into the SellOnTube project; never import the whole repository, private exports, or credentials into the public build. Record source file paths and definitions in internal handoff notes. Do not infer additional numbers from memory, generate analytics screenshots, or use competitors’ results.
+
+Working title: “How Label Wizard attracted installs through ChatGPT.” Refine only after reviewing the evidence. Use “qualified” or “high-quality” only if quality has a documented definition, such as activation, paid conversion, retention, or ICP fit. Use “revenue” only when payment data supports it.
+
+Structure:
+- Headline and summary.
+- Evidence-backed result strip with date range and baseline.
+- Client/product context.
+- Acquisition challenge.
+- Work actually performed, with concrete examples where supplied.
+- Results, separating visits, installs, activation, paying customers, and revenue.
+- Readable screenshots/charts with captions and source notes.
+- What can reasonably be learned, plus relevant attribution limits.
+- Approved client quotation if supplied.
+- Discovery-call CTA.
+
+For every metric maintain: value, definition, period, denominator/sample size, source, baseline/comparison where relevant, and attribution method. Charts require real data; no invented intermediate values. Label each channel accurately: ChatGPT-specific results must not be inflated by combining unrelated AI sources.
+
+Distinguish citation (a source link), mention (brand named), recommendation (suggested for a relevant need), referral (tracked visit), and conversion (defined customer action). A citation does not necessarily mean the client was recommended. A referral does not prove agency causation. Before/after changes alone do not isolate our effect from platform adoption or other marketing activity.
+
+Small samples must retain absolute counts alongside conversion rates. Do not extrapolate one client’s rate into an agency-wide promise.
+
+Remove private customer details from public screenshots and confirm asset/publication permissions as a launch input. Do not invent testimonials.
+
+If evidence is missing, build the full case-study layout with obvious preview-only placeholders. Keep the route noindex and out of the sitemap, and suppress public proof links until ready. Use an explicit publication flag to control readiness. No unsupported claims should leak into metadata, JSON-LD, image alt text, or social cards. Robots directives are not access control; do not place confidential raw data in a public build.
+
+BOOKING AND COMMERCIAL DETAILS
+
+Reuse an appropriate real booking destination already configured in the project. If absent, centralize the setting and provide a clearly marked preview-only disabled state. Never use a fabricated URL or a form that pretends to submit. Flag the missing destination as a launch blocker.
+
+Do not invent pricing, packages, turnaround times, quotas, refund terms, guarantees, testimonials, client logos, or credentials. Pricing can be added later.
+
+IMPLEMENTATION AND QA
+
+Use semantic accessible HTML, keyboard navigation, visible focus, sufficient contrast, reduced-motion support, responsive images, stable layouts, and fast mobile rendering. Avoid horizontal overflow.
+
+Add unique factual titles, descriptions, canonicals, and social metadata. Follow existing sitemap/robots conventions. Only use structured data supported by actual content; no fabricated ratings or unsupported entities. Do not treat FAQ markup or llms.txt as a guarantee of AI visibility.
+
+Preserve analytics and consent behavior. If analytics exists, follow its conventions for CTA/case-study events without personal information. Do not add new vendors, new cookies, or custom CRM integrations without an established requirement. Treat CRM-linked revenue attribution and optional self-reported discovery source as measurement recommendations, not already implemented capabilities or delivery promises.
+
+Run relevant existing build, lint, and checks. Review mobile and desktop rendering with browser tooling when available. Verify links, anchors, CTA states, publication gating, evidence readability, metadata, accessibility basics, and lack of regressions to unrelated pages.
+
+HANDOFF
+
+Provide: what was built; routes and local preview instructions; checks performed; unresolved issues; and the exact inputs needed before launch. Specifically list missing booking configuration, evidence, approvals for client assets, and any unresolved commercial details. Do not claim external publication or measured business outcomes from this implementation.
