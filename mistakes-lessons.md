@@ -425,3 +425,14 @@ Read this file at the start of work so past mistakes don't repeat.
 - **Lesson:** Verification of a submit endpoint needs a known-bad control. A 202 is "queued", not "accepted". The GA4 service account is read-only, and no browser tools loaded again this session, so those steps stay owner clicks.
 - **Prevention rule:** Log status plus body slice and call `console.error` for any non-2xx. Before blaming a key file, curl it and compare with a second endpoint (Yandex) and a bad-key control.
 - **Category:** verification
+
+### 2026-11-09 - An agent's "ASSUMED" speed diagnosis was wrong; A/B it before shipping
+- **What happened:** A phone audit of `/ai-seo` suggested fonts and GA4 as the cause of a 3.1s FCP, marked ASSUMED. Local Lighthouse A/B on the built page showed neither moves FCP: a font preload gave 2.7s to 2.6s, and removing gtag left FCP at 2.7s (TBT fell 70ms to 10ms, score unchanged). The real blocker is the render-blocking global CSS (`_page_.*.css`, 141 KB, about 1 s estimated saving), which is a site-wide Tailwind issue.
+- **Prevention rule:** Measure a variant against a baseline (3 runs, same server) before shipping a speed fix. Never delay gtag for FCP: it does not block paint, and GA4 loading has broken events before (2026-07-21).
+- **Category:** verification
+
+### 2026-11-15 - Stats in an internal research brief failed a source check
+- **What happened:** The dental research PDF listed five survey stats. A source check kept two (DentalPost 59% and 29.5%). The survey ran in 2023, not 2024, and its respondents were individuals, not practices. MouthWatch 23.2% added a share of practices to a share of patients, 51.5% had only a secondary source, and 19.2% was not found anywhere.
+- **Lesson:** A stat in our own research doc is a lead, not a citation. Survey stats also hide their base (who answered).
+- **Prevention rule:** Verify each stat at the primary page before it goes on a live page: quote, date, sample and base. Drop what cannot be opened, and label survey shares with who answered.
+- **Category:** verification
