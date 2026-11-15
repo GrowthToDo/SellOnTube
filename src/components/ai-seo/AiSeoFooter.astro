@@ -4,9 +4,10 @@ export interface Props {
   servicesHref?: string;
   showCase?: boolean;
   label?: string;
+  callLabel?: string;
 }
 
-const { servicesHref = `${AI_SEO_PATH}#services`, showCase = true, label = 'AI SEO footer' } = Astro.props;
+const { servicesHref = `${AI_SEO_PATH}#services`, showCase = true, label = 'AI SEO footer', callLabel = 'Book a discovery call' } = Astro.props;
 ---
 
 <footer class="ais ais-footer">
@@ -15,7 +16,7 @@ const { servicesHref = `${AI_SEO_PATH}#services`, showCase = true, label = 'AI S
     <nav aria-label={label}>
       <a href={servicesHref}>Services</a>
       {showCase && featuredCaseStudy && <a href={caseStudyPath(featuredCaseStudy.slug)}>{featuredCaseStudy.client} case study</a>}
-      <a href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="footer">Book a discovery call</a
+      <a href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="footer">{callLabel}</a
       >
       <a href="/privacy-policy">Privacy</a>
       <a href="/terms-of-service">Terms</a>

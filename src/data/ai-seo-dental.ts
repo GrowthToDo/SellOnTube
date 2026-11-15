@@ -11,8 +11,8 @@
 //   https://sellontube.com/ai-seo/dental?utm_source=outreach&utm_medium=email&utm_campaign=dental-pilot&utm_content=austin
 //   utm_medium = email | linkedin | phone-followup; utm_content = the city slug.
 //
-// Photos: drop licensed stock files (with model releases) into src/assets/images/dental/ named
-// hero, maps, front-desk and reception (.jpg, .png or .webp). Each slot renders only when its
+// Photos: free Pexels images (Pexels license, commercial use, no attribution needed) live in src/assets/images/dental/ named
+// hero, front-desk and consult (.jpg, .png or .webp). Each slot renders only when its
 // file exists. Update the matching alt text in `photos` below to describe the photo you bought.
 
 export const DENTAL_PATH = '/ai-seo/dental';
@@ -32,10 +32,10 @@ export const dental = {
   description:
     'Local SEO, Google Ads and treatment pages for implant and cosmetic dental practices, with call and form tracking from the first search to the booked consultation.',
   headerSubline: 'Dental patient acquisition',
-  eyebrow: 'Dental patient acquisition by SellOnTube, a founder-led growth team',
-  headline: 'More implant and cosmetic consultations from Google, tracked call by call',
+  eyebrow: 'For independent implant and cosmetic practices',
+  headline: 'More implant consults, and proof of where each one came from',
   subhead:
-    'We run local SEO, Google Ads and treatment pages for established independent practices, and show you which channel booked each consultation.',
+    'We run local SEO, Google Ads and treatment pages for implant, full-arch and cosmetic cases, and show you which source booked each consult.',
   qualifier: 'Built for practices ready to invest in marketing alongside their ad budget.',
   trust: [
     'Founder-led: you talk to an owner',
@@ -44,10 +44,10 @@ export const dental = {
   ],
 
   photos: {
-    hero: { file: 'hero', alt: 'A dentist talks a patient through a treatment plan in a consultation room' },
-    maps: { file: 'maps', alt: 'A person searching for a dentist on a phone map' },
-    frontDesk: { file: 'front-desk', alt: 'A dental receptionist answering a phone call at the front desk' },
-    reception: { file: 'reception', alt: 'The reception area of an independent dental practice' },
+    // Pexels 5355709, 4269206, 12746003. Stock models, not clients.
+    hero: { file: 'hero', alt: 'A dentist shows a patient a treatment plan on a tablet' },
+    frontDesk: { file: 'front-desk', alt: 'A dental receptionist in scrubs holds a tablet at the front desk' },
+    consult: { file: 'consult', alt: 'A dentist explains a dental model to a patient' },
   },
 
   pain: {
@@ -89,24 +89,6 @@ export const dental = {
     ],
   },
 
-  data: {
-    lead: 'Part of the reason: marketing often sits with the front desk.',
-    chartTitle: 'How dental staff say their practice markets itself, DentalPost survey',
-    stats: [
-      {
-        label: 'Say the front office team markets the practice',
-        rate: 59,
-        source: 'DentalPost, fielded Aug to Oct 2023',
-      },
-      {
-        label: 'Say their practice uses an agency or consultant, alone or with in-house staff',
-        rate: 29.5,
-        source: 'DentalPost, fielded Aug to Oct 2023',
-        highlight: true,
-      },
-    ] as DentalStat[],
-    note: 'Share of respondents to a 2023 DentalPost survey. Respondents are individual dentists, hygienists, assistants and office staff, not a count of practices, and the two shares overlap. Treat them as direction, not a census.',
-  },
 
   system: {
     title: 'One System From First Search to Booked Consultation',
@@ -123,28 +105,29 @@ export const dental = {
     tilesTitle: 'What Do We Run?',
     tiles: [
       {
-        title: 'Be Found',
-        text: [
-          'Local SEO and your Google Business Profile, so you show up in Maps and local search.',
-          'Treatment pages for the cases you want more of.',
-        ],
+        title: 'Show Up in Maps',
+        text: ['Local SEO and your Google Business Profile, so nearby patients find you in Maps.'],
       },
       {
-        title: 'Get the Inquiry',
+        title: 'Turn Searches Into Calls',
         text: [
-          'Google Ads for high-intent treatment searches, sent to pages built to turn a visit into a call or form.',
+          'Google Ads for implant and veneer searches, and a page for each treatment that makes calling easy.',
           'Ad spend goes to Google. Our fee is separate.',
         ],
       },
       {
-        title: 'Know the Result',
+        title: 'Pre-Sell the Treatment',
+        text: ['Implant and full-arch explainer videos that answer patient questions before the consult.'],
+      },
+      {
+        title: 'See What Booked',
         text: [
-          'Call and form tracking, plus a report that follows each inquiry toward a booked consultation.',
-          'You see which channel earned it.',
+          'Call and form tracking, plus a monthly report that follows each inquiry to a booked consult.',
+          'Where your phone system allows, we flag missed calls each month.',
         ],
       },
     ],
-    optionalLine: 'When it fits: review management, patient education content and YouTube.',
+    optionalLine: 'When it fits: review management and patient education content.',
   },
 
   measure: {
@@ -224,7 +207,7 @@ export const dental = {
     ],
     exclusivity:
       'One practice per treatment in each city.',
-    length: 'Each pilot runs 90 days: enough for a baseline, setup and two full monthly reports.',
+    length: 'Each pilot runs 90 days: enough for a baseline, setup and two full monthly reports. After that it is month-to-month, with 30 days notice to leave.',
     getTitle: 'What You Get',
     get: [
       'A baseline of your Google presence before we start',
@@ -243,9 +226,10 @@ export const dental = {
   audit: {
     title: 'Get a Free Patient-Acquisition Audit',
     text: [
-      'Send your website and city. We review what a patient sees when they search for you.',
-      'Within 3 business days you get a short screen-recorded walkthrough and a one-page summary of the gaps. If it helps, we walk through them on a call.',
+      'Send your website and city. Within 3 business days you get a short screen-recorded walkthrough and a one-page summary of the gaps.',
     ],
+    videoLine: 'Already got our video on your practice?',
+    videoCta: 'Book 20 minutes to walk through the fixes',
     sample: {
       title: 'Sample audit summary',
       practice: 'Made-up practice, for illustration',
@@ -277,7 +261,7 @@ export const dental = {
     },
     {
       q: 'How Much Does It Cost?',
-      a: "We price each practice to its goals and market. Google Ads spend goes to Google and is separate from our fee. You'll get the number on the call.",
+      a: 'One fixed monthly fee, quoted after your free audit. Ad spend is paid to Google directly, separate from our fee.',
     },
     {
       q: 'Do I Need Both SEO and Google Ads?',
@@ -288,8 +272,20 @@ export const dental = {
       a: 'We install no tracking until you and your advisor approve it. Your advisor makes the compliance call, and we follow it.',
     },
     {
+      q: 'How Much of My Time Does This Take?',
+      a: 'One 45-minute kickoff, then a 20-minute review each month. Your front desk keeps working as usual.',
+    },
+    {
+      q: 'I Already Have an Agency. Can I Switch?',
+      a: "Yes. You keep ownership of your Google Business Profile, Ads account, website and tracking numbers. We review what's in place before anything moves.",
+    },
+    {
+      q: 'Do Most Practices Run Marketing In-House?',
+      a: 'Often. In a 2023 DentalPost survey, 59% of respondents said their front office team markets the practice, and 29.5% said their practice uses an agency or consultant. Respondents were dental staff, not practices, so treat it as direction.',
+    },
+    {
       q: 'Is There a Long Contract?',
-      a: 'The founding pilot runs 90 days. After that, we agree on the next step together based on the reports.',
+      a: 'No. The founding pilot runs 90 days. After that it is month-to-month, and you can leave with 30 days notice.',
     },
   ],
 
