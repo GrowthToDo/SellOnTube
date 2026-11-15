@@ -12,7 +12,7 @@
 `content-playbook.md`, `style-guide.md`, `blog-production-standard.md`, `seo-rules.md`,
 `content-depth-framework.md`, `mistakes-lessons.md`, the 11 `agents/*.md` specs, all `docs/sops/`
 and `docs/templates/` — plus all live site code (`src/`), `research/keywords/sot_master.csv`, and
-the `shopify-app-marketing/` product line. All still current and cross-referenced correctly.
+the `docs/shopify-app/` product line. All still current and cross-referenced correctly.
 
 **Security fix:** `scripts/zero_vol_research.py` had a live DataForSEO login/password hardcoded in
 plaintext (git-tracked). Rewritten to read from environment variables. The old credential remains

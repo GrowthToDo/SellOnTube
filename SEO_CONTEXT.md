@@ -27,7 +27,7 @@ pull against a single-dimension total; never use `page` x `country` for clicks (
 | GSC_ANALYSIS | `traffic-reality-check.md` (method under "How to reproduce"); `agents/01-gsc-intelligence.md` | EXISTS |
 | CUSTOMER_VOICE | `research/painpoint-briefs/`, `research/painpoint_seo_keyword_miner_v3.md` | PARTIAL |
 | COMPETITOR_SEO_ANALYSIS | `research/competitor-comparison-strategy.md`, `research/ahrefs report/`, `agents/references/backlink-analysis-skill.md` | PARTIAL |
-| SEARCH_OPPORTUNITY_MAP | `research/keywords/sot_master.csv` (DataForSEO volumes + KD tiers), `agents/02-keyword-researcher.md`, `growth-audit/page_opportunity_master.csv` | EXISTS, but scored before the bot correction |
+| SEARCH_OPPORTUNITY_MAP | `research/keywords/sot_master.csv` (DataForSEO volumes + KD tiers), `agents/02-keyword-researcher.md`, `research/analytics/growth-audit/page_opportunity_master.csv` | EXISTS, but scored before the bot correction |
 | CONTENT_PLAN | `research/publishing_calendar.md` (last updated 2026-05-27), `growth-strategy.md` "Blog Strategy", `agents/03-content-planner.md` | STALE: see owner decisions 3-4 |
 | ARTICLE_BRIEF | seo-content-system mode 03 (`FW/workflows/03-brief.md`); ST template `docs/templates/content-brief-template.md`; site detail `seo/site-kit/pipeline-notes.md` | EXISTS |
 | PUBLISH_CHECKLIST | `blog-production-standard.md` §9 (draft QA) + §9 pre-publish verification; `content-playbook.md` §9; `agents/05-content-qa.md`; `docs/sops/blog-publishing-sop.md`, `deploy-checklist.md` | EXISTS |

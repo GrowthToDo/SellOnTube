@@ -1,6 +1,6 @@
 # SellonTube Documentation Index
 
-All project documentation in one place. Start here.
+All project documentation in one place. Start here. For a per-site map of code, docs and research, see [`SITES.md`](SITES.md).
 
 ---
 

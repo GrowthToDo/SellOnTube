@@ -1,5 +1,5 @@
 // Content for /ai-seo/dental, a validation page for the US dental patient-acquisition offer.
-// Source research: "Dental AI SEO/Dental Practices - Research.pdf".
+// Source research: "research/ai-seo/dental/Dental Practices - Research.pdf".
 //
 // Rules for this page (owner decisions, 2026-11-15):
 // - No price, no guarantee, no dental client results, no competitor case-study numbers.

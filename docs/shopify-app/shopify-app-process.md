@@ -27,7 +27,7 @@ DECIDED
 - CS2 is a NATIVE rewrite of the YouTube-vs-blog data (not a redirect); Shopify CTAs only.
 - 3.25x locked: more conversions (attributed installs via GA) for a Shopify app company, YouTube vs blog, 12-month data.
 - noindex thin/empty hubs; launch one page at a time.
-- AI tools via Gemini Flash 2.5; ten-file namespaced structure; folder `/shopify-app-marketing/`.
+- AI tools via Gemini Flash 2.5; ten-file namespaced structure; folder `/docs/shopify-app/`.
 - Headline: "non-engineering half of your company" (hero), "content operating partner" (explainer). Resolved 2026-06-02.
 - American English spelling enforced (not British). Resolved 2026-06-02.
 - CS2 = different company from Left Foot, anonymous. Resolved 2026-06-02.

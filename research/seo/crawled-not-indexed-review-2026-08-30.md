@@ -1,6 +1,6 @@
 # Crawled-Not-Indexed Review — 2026-08-30
 
-Source: GSC export `crawled not indexed pages_30 Aug/Table.csv`, 45 URLs (as of last crawl
+Source: GSC export `research/analytics/crawled-not-indexed-2026-08-30/Table.csv`, 45 URLs (as of last crawl
 dates 2026-02-24 to 2026-08-22). Re-inspected live via GSC URL Inspection API on 2026-08-30.
 
 ## Methodology

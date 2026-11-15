@@ -7,6 +7,8 @@ B2B founders and SaaS operators evaluating YouTube for customer acquisition.
 pass all four. If it breaks one, push back with an alternative instead of building it. Prefer standard
 patterns; ask before adding complexity.
 
+**Where is X? Start at `SITES.md`** (site map: pages, code, docs, scripts, research per subsite).
+
 Definitions, LSP-first navigation, indexing rationale and expanded build standards:
 `docs/engineering-conventions.md`. Full doc index: `DOCS.md`.
 
