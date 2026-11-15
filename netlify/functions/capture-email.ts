@@ -82,8 +82,9 @@ const handler: Handler = async (event) => {
     loopsBody.cohort = 'live';
     loopsBody.eventProperties = { toolName: source, toolLabel };
   }
-  // The AI SEO answer check promises a manual reply only, so it stays out of Loops.
-  const loopsCall = loopsApiKey && source !== 'ai-seo-answer-check'
+  // The AI SEO answer check and the dental audit promise a manual reply only, so they stay out of Loops.
+  const MANUAL_REPLY_SOURCES = new Set(['ai-seo-answer-check', 'dental-ai-seo-audit']);
+  const loopsCall = loopsApiKey && !MANUAL_REPLY_SOURCES.has(source)
     ? fetch(loopsEndpoint, {
         method: enrollInNurture ? 'POST' : 'PUT',
         headers: {

@@ -5,12 +5,13 @@ export interface Props {
   steps: FlowStep[];
   /** How many leading steps come from a recorded answer. Later steps show the general path. */
   recordedCount?: number;
+  label?: string;
 }
 
-const { steps, recordedCount = 0 } = Astro.props;
+const { steps, recordedCount = 0, label = 'How a buyer moves from an AI question to becoming a customer' } = Astro.props;
 ---
 
-<ol class="ais-flow" aria-label="How a buyer moves from an AI question to becoming a customer">
+<ol class="ais-flow" aria-label={label}>
   {
     steps.map((step, i) => (
       <li class:list={{ 'is-typical': recordedCount > 0 && i >= recordedCount }}>

@@ -14,6 +14,7 @@ import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
+import { DENTAL_INDEXABLE, DENTAL_PATH } from './src/data/ai-seo-dental';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -52,7 +53,9 @@ export default defineConfig({
         !page.endsWith('/shopify-app/tools') &&
         !page.endsWith('/shopify-app/tools/') &&
         !page.includes('listing-grader/report') &&
-        !page.includes('/case-studies/left-foot-software/slides'),
+        !page.includes('/case-studies/left-foot-software/slides') &&
+        // A noindex page stays out of the sitemap. One switch in src/data/ai-seo-dental.ts controls both.
+        (DENTAL_INDEXABLE || !page.includes(DENTAL_PATH)),
       lastmod: new Date(),
       serialize(item) {
         const slug = item.url.match(/\/blog\/([^/]+)\/?$/)?.[1];

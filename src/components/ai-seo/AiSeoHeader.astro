@@ -1,18 +1,42 @@
 ---
 import { AI_SEO_CAL_LINK, AI_SEO_PATH, caseStudyPath, featuredCaseStudy } from '~/data/ai-seo';
 
-const servicesHref = `${AI_SEO_PATH}#services`;
+export interface Props {
+  /** Page the wordmark and anchors point at. Defaults to the AI SEO landing page. */
+  base?: string;
+  servicesId?: string;
+  checkId?: string;
+  checkLabel?: string;
+  label?: string;
+  showCase?: boolean;
+  /** A short line under the wordmark, e.g. the offer this subsite sells. */
+  subline?: string;
+}
+
+const {
+  base = AI_SEO_PATH,
+  servicesId = 'services',
+  checkId = 'check',
+  checkLabel = 'Free check',
+  label = 'SellOnTube AI SEO services',
+  showCase = true,
+  subline,
+} = Astro.props;
+
+const servicesHref = `${base}#${servicesId}`;
 ---
 
 <a class="ais ais-skip" href="#ais-main">Skip to content</a>
 <header class="ais ais-header">
   <div class="ais-wrap ais-header__row">
-    <a class="ais-wordmark" href={AI_SEO_PATH} aria-label="SellOnTube AI SEO services">SellOn<span>Tube</span></a>
-    <nav class="ais-nav" aria-label="AI SEO">
+    <a class="ais-wordmark" href={base} aria-label={label}
+      >SellOn<span>Tube</span>{subline && <small class="ais-wordmark__sub">{subline}</small>}</a
+    >
+    <nav class="ais-nav" aria-label={label}>
       <a class="ais-nav__services" href={servicesHref}>Services</a>
-      <a class="ais-nav__check" href={`${AI_SEO_PATH}#check`}>Free check</a>
+      <a class="ais-nav__check" href={`${base}#${checkId}`}>{checkLabel}</a>
       {
-        featuredCaseStudy && (
+        showCase && featuredCaseStudy && (
           <a class="ais-nav__case" href={caseStudyPath(featuredCaseStudy.slug)} data-ais-case="header">
             Case study
           </a>
@@ -30,3 +54,24 @@ const servicesHref = `${AI_SEO_PATH}#services`;
     </nav>
   </div>
 </header>
+
+<style>
+  .ais-wordmark__sub {
+    display: block;
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--rule);
+    font-family: var(--body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.2;
+    color: var(--ink-2);
+  }
+  /* Phones: the header row has no room, and the hero eyebrow says the same thing. */
+  @media (max-width: 559px) {
+    .ais-wordmark__sub {
+      display: none;
+    }
+  }
+</style>

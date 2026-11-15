@@ -1,0 +1,128 @@
+---
+// The free dental patient-acquisition audit. Posts to the existing capture-email function,
+// which writes to the leads sheet. The follow-up is manual, and this source joins no email
+// sequence. Business contact data only: no patient names, no health details.
+import { dental } from '~/data/ai-seo-dental';
+---
+
+<form class="ais-check" data-dental-audit data-astro-reload novalidate>
+  <div class="ais-check__fields">
+    <div>
+      <label for="dental-audit-email">Work email</label>
+      <input
+        id="dental-audit-email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        placeholder="you@yourpractice.com"
+        required
+      />
+    </div>
+    <div>
+      <label for="dental-audit-url">Practice website</label>
+      <input
+        id="dental-audit-url"
+        name="productUrl"
+        type="url"
+        inputmode="url"
+        autocomplete="url"
+        placeholder="https://yourpractice.com"
+        required
+      />
+    </div>
+    <div>
+      <label for="dental-audit-city">City and state</label>
+      <input
+        id="dental-audit-city"
+        name="city"
+        type="text"
+        autocomplete="address-level2"
+        placeholder="Austin, TX"
+        required
+      />
+    </div>
+    <div>
+      <label for="dental-audit-treatment">{dental.audit.treatmentLabel} (optional)</label>
+      <select id="dental-audit-treatment" name="treatment">
+        <option value="">Choose one</option>
+        {dental.audit.treatments.map((treatment) => <option value={treatment}>{treatment}</option>)}
+      </select>
+    </div>
+  </div>
+  <p class="ais-check__status" role="status" aria-live="polite" data-dental-audit-status></p>
+  <button class="ais-btn" type="submit">Get my free audit</button>
+  <p class="ais-note" style="margin: 0.75rem 0 0">
+    We use your email to send the audit and follow up about it. We do not need patient names or health details. See our
+    <a href="/privacy-policy">privacy policy</a>.
+  </p>
+</form>
+
+<script>
+  // Delegated, so it survives ClientRouter page swaps.
+  document.addEventListener('submit', async (event) => {
+    const form = event.target;
+    if (!(form instanceof HTMLFormElement) || !form.matches('[data-dental-audit]')) return;
+    event.preventDefault();
+
+    const status = form.querySelector<HTMLElement>('[data-dental-audit-status]');
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const data = new FormData(form);
+    const email = String(data.get('email') || '').trim();
+    let productUrl = String(data.get('productUrl') || '').trim();
+    const city = String(data.get('city') || '').trim();
+    const treatment = String(data.get('treatment') || '').trim();
+    if (productUrl && !/^https?:\/\//i.test(productUrl)) productUrl = `https://${productUrl}`;
+
+    const show = (message: string) => {
+      if (status) status.textContent = message;
+    };
+    const emailInput = form.querySelector<HTMLInputElement>('[name="email"]');
+    const urlInput = form.querySelector<HTMLInputElement>('[name="productUrl"]');
+    const cityInput = form.querySelector<HTMLInputElement>('[name="city"]');
+    [emailInput, urlInput, cityInput].forEach((input) => input?.removeAttribute('aria-invalid'));
+    const reject = (input: HTMLInputElement | null, message: string) => {
+      input?.setAttribute('aria-invalid', 'true');
+      input?.focus();
+      show(message);
+    };
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return reject(emailInput, 'Please enter a valid email address.');
+    if (!productUrl.includes('.')) return reject(urlInput, 'Please enter your practice website.');
+    if (city.length < 2) return reject(cityInput, 'Please enter your city and state.');
+
+    if (button) button.disabled = true;
+    show('Sending...');
+
+    try {
+      const response = await fetch('/.netlify/functions/capture-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, productUrl, city, treatment, source: 'dental-ai-seo-audit' }),
+      });
+      if (!response.ok) throw new Error(`Status ${response.status}`);
+
+      form.reset();
+      show('Thanks. We will email you the audit.');
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'dental_audit_submit', { page_path: window.location.pathname });
+      }
+    } catch {
+      show('That did not send. Please try again, or email hello@sellontube.com.');
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  select {
+    width: 100%;
+    min-height: 2.875rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--on-band-2);
+    border-radius: 3px;
+    background: var(--paper);
+    color: var(--ink);
+    font: inherit;
+  }
+</style>
