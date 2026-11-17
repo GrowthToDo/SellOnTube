@@ -22,14 +22,6 @@ export const DENTAL_INDEXABLE = false;
 export const DENTAL_CTA = 'Book a free discovery call';
 export const DENTAL_CTA_NOTE = '30 minutes. No pitch deck. No obligation.';
 
-/** Used only by the unused DentalStatBars component; kept so it compiles. */
-export interface DentalStat {
-  label: string;
-  rate: number;
-  source: string;
-  highlight?: boolean;
-}
-
 export interface ReportRow {
   channel: string;
   calls: number;
@@ -320,17 +312,5 @@ export const dental = {
   closing: {
     title: 'Find out how many more patients your practice could be reaching',
     text: "Book a free 30-minute discovery call. We'll look at how patients find you today on Google, Maps and AI search, talk through the treatments you want more of, and tell you plainly if we're not the right fit.",
-  },
-
-  // Not shown on the page (free audit removed 2026-11-17). Kept only so the unused
-  // DentalAuditForm component still compiles until the owner approves deleting it.
-  audit: {
-    treatmentLabel: 'Treatment you want more of',
-    treatments: ['Dental implants', 'Full-arch', 'Veneers and cosmetic', 'Invisalign and orthodontics', 'Other'],
-    marketingLabel: 'Do you pay for marketing today?',
-    marketing: ['Google Ads', 'An agency', 'Both', 'Neither yet'],
-    submit: 'Send my free audit',
-    success: 'Got it. Your walkthrough video arrives within 3 business days. Want to talk sooner?',
-    successCta: 'Book a call',
   },
 };
