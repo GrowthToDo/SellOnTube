@@ -1,0 +1,223 @@
+---
+/**
+ * DentalSystem: the patient acquisition system as one connected flow.
+ * Four steps joined by a connector with numbered nodes; the last step is
+ * emphasised because measurement is the differentiator.
+ * Desktop: one row of four. Tablet: 2x2. Phone: vertical timeline.
+ * Relies on the page's CSS custom properties (--ink, --accent, etc.).
+ */
+export interface Props {
+  steps: { title: string; items: string[] }[];
+  label: string;
+}
+
+const { steps, label } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<ol class="dsys" aria-label={label}>
+  {
+    steps.map((step, i) => (
+      <li class:list={['dsys-step', { 'dsys-step--last': i === steps.length - 1 }]}>
+        <span class="dsys-node" aria-hidden="true">
+          {pad(i + 1)}
+        </span>
+        <p class="dsys-kicker">Step {i + 1}</p>
+        <h3 class="dsys-title">{step.title}</h3>
+        <ul class="dsys-items">
+          {step.items.map((item) => (
+            <li class="dsys-item">{item}</li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .dsys {
+    --dsys-node: 40px;
+    --dsys-px: 28px;
+    --dsys-pt: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    font-family: var(--body);
+  }
+
+  .dsys-step {
+    position: relative;
+    margin: 0;
+    padding: var(--dsys-pt) var(--dsys-px) 36px;
+    min-width: 0;
+  }
+
+  /* Connector: from the right edge of this node to the left edge of the next node. */
+  .dsys-step::before {
+    content: '';
+    position: absolute;
+    top: calc(var(--dsys-pt) + var(--dsys-node) / 2 - 1px);
+    left: calc(var(--dsys-px) + var(--dsys-node) + 10px);
+    right: calc(-1 * var(--dsys-px) + 10px);
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent-bright), var(--accent));
+    opacity: 0.45;
+    z-index: 1;
+  }
+  .dsys-step--last::before {
+    display: none;
+  }
+
+  .dsys-step--last {
+    background: linear-gradient(180deg, var(--sky-tint) 0%, var(--wash) 100%);
+    box-shadow: inset 1px 0 0 var(--rule);
+  }
+
+  .dsys-node {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--dsys-node);
+    height: var(--dsys-node);
+    border-radius: 50%;
+    background: var(--white);
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--display);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .dsys-step--last .dsys-node {
+    background: var(--accent);
+    color: var(--white);
+    box-shadow: 0 0 0 5px var(--white), 0 0 0 6px var(--rule);
+  }
+
+  .dsys-kicker {
+    margin: 22px 0 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .dsys-title {
+    margin: 0 0 18px;
+    font-family: var(--display);
+    font-size: 1.1875rem;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .dsys-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dsys-item {
+    position: relative;
+    margin: 0;
+    padding: 11px 0 11px 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .dsys-item::before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: calc(11px + 0.75em - 3px);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-bright);
+  }
+  .dsys-step--last .dsys-item {
+    border-top-color: rgba(47, 111, 176, 0.18);
+    color: var(--ink);
+  }
+  .dsys-step--last .dsys-item::before {
+    background: var(--accent);
+  }
+
+  /* Tablet: 2x2, connector only within each row, numbers carry the sequence. */
+  @media (max-width: 959px) {
+    .dsys {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .dsys-step:nth-child(2n)::before {
+      display: none;
+    }
+    .dsys-step:nth-child(n + 3) {
+      border-top: 1px solid var(--rule);
+    }
+    .dsys-step--last {
+      box-shadow: inset 1px 0 0 var(--rule);
+    }
+  }
+
+  /* Phone: vertical timeline, connector runs down the left. */
+  @media (max-width: 639px) {
+    .dsys {
+      --dsys-node: 36px;
+      --dsys-pt: 26px;
+      grid-template-columns: minmax(0, 1fr);
+      border-radius: 16px;
+    }
+    .dsys-step {
+      padding: var(--dsys-pt) 20px 26px calc(20px + var(--dsys-node) + 16px);
+    }
+    .dsys-step:nth-child(n + 2) {
+      border-top: 0;
+    }
+    .dsys-step::before,
+    .dsys-step:nth-child(2n)::before {
+      display: block;
+      top: calc(var(--dsys-pt) + var(--dsys-node) + 8px);
+      bottom: calc(-1 * var(--dsys-pt) + 8px);
+      left: calc(20px + var(--dsys-node) / 2 - 1px);
+      right: auto;
+      width: 2px;
+      height: auto;
+      background: linear-gradient(180deg, var(--accent-bright), var(--accent));
+    }
+    .dsys-step.dsys-step--last::before {
+      display: none;
+    }
+    .dsys-step--last {
+      box-shadow: inset 0 1px 0 var(--rule);
+    }
+    .dsys-node {
+      position: absolute;
+      left: 20px;
+      top: var(--dsys-pt);
+    }
+    .dsys-kicker {
+      margin: 0 0 4px;
+      line-height: var(--dsys-node);
+      height: var(--dsys-node);
+      display: flex;
+      align-items: center;
+    }
+    .dsys-title {
+      margin-bottom: 12px;
+      font-size: 1.125rem;
+    }
+  }
+</style>

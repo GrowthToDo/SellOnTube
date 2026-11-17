@@ -1,34 +1,24 @@
 ---
 import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 import { SITE } from 'astrowind:config';
+import heroPhoto from '~/assets/images/dental/hero.jpg';
+import scanPhoto from '~/assets/images/dental/scan.jpg';
+import frontDeskPhoto from '~/assets/images/dental/front-desk-call.jpg';
+import consultPhoto from '~/assets/images/dental/consult.jpg';
 import Layout from '~/layouts/PageLayout.astro';
 import AiSeoTheme from '~/components/ai-seo/AiSeoTheme.astro';
 import AiSeoHeader from '~/components/ai-seo/AiSeoHeader.astro';
 import AiSeoFooter from '~/components/ai-seo/AiSeoFooter.astro';
 import AiSeoTracking from '~/components/ai-seo/AiSeoTracking.astro';
-import AiSeoFlow from '~/components/ai-seo/AiSeoFlow.astro';
-import FounderFaces from '~/components/ai-seo/FounderFaces.astro';
-import DentalAuditForm from '~/components/ai-seo/DentalAuditForm.astro';
-import DentalAuditSample from '~/components/ai-seo/DentalAuditSample.astro';
-import DentalSampleReport from '~/components/ai-seo/DentalSampleReport.astro';
-import DentalCompare from '~/components/ai-seo/DentalCompare.astro';
-import foundersPhoto from '~/assets/images/team/founders-group.jpg';
-import { AI_SEO_CAL_LINK } from '~/data/ai-seo';
-import { DENTAL_INDEXABLE, DENTAL_PATH, dental } from '~/data/ai-seo-dental';
+import DentalReportCard from '~/components/ai-seo/DentalReportCard.astro';
+import DentalSystem from '~/components/ai-seo/DentalSystem.astro';
+import DentalSearchPanels from '~/components/ai-seo/DentalSearchPanels.astro';
+import { AI_SEO_CAL_LINK, caseStudyPath, featuredCaseStudy } from '~/data/ai-seo';
+import { DENTAL_CTA, DENTAL_CTA_NOTE, DENTAL_INDEXABLE, DENTAL_PATH, dental } from '~/data/ai-seo-dental';
 
-// Stock photo slots. A slot renders only when its file exists in src/assets/images/dental/.
-const photoFiles = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/dental/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-});
-const photo = (slot: keyof typeof dental.photos) => {
-  const { file, alt } = dental.photos[slot];
-  const match = Object.entries(photoFiles).find(([path]) => path.split('/').pop()?.split('.')[0] === file);
-  return match ? { src: match[1].default, alt } : undefined;
-};
-const heroPhoto = photo('hero');
-const frontDeskPhoto = photo('frontDesk');
-const consultPhoto = photo('consult');
+/** Numbered section tags for owner review. Set to false before shipping. */
+const REVIEW_TAGS = false;
+const tag = (n: number) => (REVIEW_TAGS ? String(n) : undefined);
 
 const metadata = {
   title: dental.title,
@@ -42,14 +32,16 @@ const metadata = {
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Dental Patient Acquisition',
-  serviceType: 'Dental practice marketing',
+  name: 'Dental patient acquisition',
+  serviceType: 'Dental practice marketing: local SEO, Google Business Profile, Google Ads, treatment pages, AI search',
   description: dental.description,
   url: `${SITE.site}${DENTAL_PATH}`,
   areaServed: { '@type': 'Country', name: 'United States' },
   provider: { '@type': 'Organization', name: 'SellOnTube', url: SITE.site },
-  audience: { '@type': 'BusinessAudience', name: 'Dental practices' },
+  audience: { '@type': 'BusinessAudience', name: 'Independent dental practices and small dental groups' },
 };
+
+const caseHref = featuredCaseStudy ? caseStudyPath(featuredCaseStudy.slug) : undefined;
 ---
 
 <Layout metadata={metadata}>
@@ -57,9 +49,9 @@ const structuredData = {
   <Fragment slot="header">
     <AiSeoHeader
       base={DENTAL_PATH}
-      servicesId="system"
-      checkId="audit"
-      checkLabel="Free audit"
+      servicesId="services"
+      checkId="faq"
+      checkLabel="FAQ"
       label="SellOnTube dental patient acquisition"
       showCase={false}
       subline={dental.headerSubline}
@@ -67,181 +59,302 @@ const structuredData = {
   </Fragment>
   <Fragment slot="footer">
     <AiSeoFooter
-      servicesHref={`${DENTAL_PATH}#system`}
+      servicesHref={`${DENTAL_PATH}#services`}
       showCase={false}
       label="Dental patient acquisition footer"
       callLabel="Book a call"
+      homeHref={DENTAL_PATH}
     />
   </Fragment>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  />
   <AiSeoTheme />
   <AiSeoTracking />
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <div class="ais">
+  <div class="ais dl">
     <div id="ais-main">
-      <!-- 1. Hero. Phone order: copy, photo, actions. Desktop: copy and actions left, photo right. -->
-      <section class="ais-hero ais-band" data-dental-hero>
-        <div class="ais-wrap dental-hero">
-          <div class="dental-hero__copy">
-            <p class="ais-eyebrow">{dental.eyebrow}</p>
-            <h1 class="ais-h1">{dental.headline}</h1>
-            <p class="ais-lede">{dental.subhead}</p>
-          </div>
-          <div class="dental-hero__media">
-            {
-              heroPhoto ? (
-                <Image
-                  class="dental-hero__photo"
-                  src={heroPhoto.src}
-                  alt={heroPhoto.alt}
-                  widths={[480, 800, 1120]}
-                  sizes="(min-width: 1000px) 32rem, calc(100vw - 2rem)"
-                  loading="eager"
-                />
-              ) : (
-                <DentalAuditSample
-                  title={dental.audit.sample.title}
-                  practice={dental.audit.sample.practice}
-                  findings={dental.audit.sample.findings}
-                  note={dental.audit.sample.note}
-                />
-              )
-            }
-          </div>
-          <div class="dental-hero__actions">
-            <div class="ais-actions">
-              <a class="ais-btn" href="#audit" data-ais-cta="dental-hero-audit">Get a free audit</a>
-              <a
-                class="ais-btn ais-btn--band-ghost"
-                href={AI_SEO_CAL_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-ais-cta="dental-hero">Book a call</a
+      <!-- 1. Hero: copy left, sample report right. Phone: copy, CTA, report. -->
+      <section class="dl-hero" data-dental-hero data-review={tag(1)}>
+        <div class="ais-wrap dl-hero__grid">
+          <div class="dl-hero__copy">
+            <p class="dl-eyebrow">{dental.hero.eyebrow}</p>
+            <h1 class="dl-h1">{dental.hero.headline}</h1>
+            <p class="dl-lede">{dental.hero.subhead}</p>
+            <div class="dl-cta">
+              <a class="ais-btn dl-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="dental-hero"
+                >{DENTAL_CTA}</a
               >
+              <p class="dl-cta__note">{DENTAL_CTA_NOTE}</p>
             </div>
-            <ul class="dental-trust">
-              {dental.trust.map((item) => <li>{item}</li>)}
+            <ul class="dl-checks dl-hero__trust">
+              {dental.hero.trust.map((item) => <li>{item}</li>)}
             </ul>
-            <p class="ais-note">{dental.qualifier}</p>
-            <FounderFaces text="Run by founders Sathyanand, Gautham and Pradeep." />
+            <p class="dl-qualifier"><strong>Founding program:</strong> {dental.hero.qualifier.replace('Founding program: ', '')}</p>
           </div>
-        </div>
-      </section>
-
-      <!-- 2. Pain -->
-      <section class="ais-section" aria-labelledby="pain-title">
-        <div class="ais-wrap">
-          <h2 class="ais-h2" id="pain-title">{dental.pain.title}</h2>
-          <div class="ais-tiles dental-tiles--4">
-            {
-              dental.pain.items.map((item) => (
-                <div class="ais-tile">
-                  <h3 class="ais-h4">{item.title}</h3>
-                  <p>{item.text}</p>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. The system -->
-      <section class="ais-section ais-section--white" id="system" aria-labelledby="system-title">
-        <div class="ais-wrap">
-          <h2 class="ais-h2" id="system-title">{dental.system.title}</h2>
-          <div class="ais-prose">{dental.system.text.map((p) => <p>{p}</p>)}</div>
-          <AiSeoFlow steps={dental.system.flow} label={dental.system.flowLabel} />
-
-          <h2 class="ais-h2 ais-tiles__title" id="services-title">{dental.system.tilesTitle}</h2>
-          <div class="ais-tiles dental-tiles--4">
-            {
-              dental.system.tiles.map((tile) => (
-                <div class="ais-tile">
-                  <h3 class="ais-h4">{tile.title}</h3>
-                  {tile.text.map((p) => (
-                    <p>{p}</p>
-                  ))}
-                </div>
-              ))
-            }
-          </div>
-          <p class="ais-optional">{dental.system.optionalLine}</p>
-        </div>
-      </section>
-
-      <!-- 4. Measurement -->
-      <section class="ais-section" aria-labelledby="know-title">
-        <div class="ais-wrap">
-          <h2 class="ais-h2" id="know-title">{dental.measure.title}</h2>
-          <p class="ais-lede">{dental.measure.text}</p>
-          <table class="dental-vs">
-            <caption class="dental-sr">How most dental marketing reports compare with what we report</caption>
-            <thead>
-              <tr>
-                <th scope="col">{dental.contrast.oldTitle}</th>
-                <th scope="col" class="is-on">{dental.contrast.newTitle}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                dental.contrast.old.map((item, i) => (
-                  <tr>
-                    <td>{item}</td>
-                    <td class="is-on">{dental.contrast.new[i]}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-
-          <div class="ais-two ais-sub dental-center">
-            <div>
-              <ol class="ais-ladder">
-                {
-                  dental.measure.levels.map((level) => (
-                    <li>
-                      <strong>{level.level}</strong>
-                      <span>{level.items}</span>
-                    </li>
-                  ))
-                }
-              </ol>
-              <p class="ais-note">{dental.measure.note}</p>
+          <div class="dl-hero__media">
+            <Image
+              class="dl-hero__photo"
+              src={heroPhoto}
+              alt={dental.photos.hero.alt}
+              widths={[480, 720, 960, 1280]}
+              sizes="(min-width: 1040px) 34rem, calc(100vw - 2.5rem)"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="dl-chip" aria-label="Sample month, made-up numbers">
+              <span class="dl-chip__label">{dental.heroChip.label}</span>
+              <strong>{dental.heroChip.booked}</strong>
+              <span>{dental.heroChip.detail}</span>
+              <small>{dental.heroChip.note}</small>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1b. Sample report band -->
+      <section class="dl-report-band" aria-labelledby="report-title" data-review={REVIEW_TAGS ? '1b' : undefined}>
+        <div class="ais-wrap dl-report-band__grid">
+          <div>
+            <h2 class="dl-h2" id="report-title">{dental.reportBand.title}</h2>
+            <p class="dl-lede">{dental.reportBand.text}</p>
+          </div>
+          <DentalReportCard
+            title={dental.report.title}
+            subtitle={dental.report.subtitle}
+            sampleNote={dental.report.sampleNote}
+            columns={dental.report.columns}
+            rows={dental.report.rows}
+            noSpendLabel={dental.report.noSpendLabel}
+            footnote={dental.report.footnote}
+            alt={dental.report.alt}
+          />
+        </div>
+      </section>
+
+      <!-- 2. Trust strip -->
+      <div class="dl-strip" data-review={tag(2)}>
+        <ul class="ais-wrap dl-strip__list">
+          {dental.trustStrip.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+
+      <!-- 3. Problem -->
+      <section class="dl-section" aria-labelledby="problem-title" data-review={tag(3)}>
+        <div class="ais-wrap">
+          <div class="dl-photo-head">
+            <h2 class="dl-h2 dl-h2--wide" id="problem-title">{dental.problem.title}</h2>
+            <Image
+              class="dl-photo"
+              src={scanPhoto}
+              alt={dental.photos.scan.alt}
+              widths={[400, 640, 900]}
+              sizes="(min-width: 960px) 26rem, calc(100vw - 2.5rem)"
+              loading="lazy"
+            />
+          </div>
+          <ol class="dl-problems">
             {
-              frontDeskPhoto && (
-                <Image
-                  class="dental-photo"
-                  src={frontDeskPhoto.src}
-                  alt={frontDeskPhoto.alt}
-                  widths={[480, 800]}
-                  sizes="(min-width: 768px) 32rem, calc(100vw - 2rem)"
-                  loading="lazy"
-                />
-              )
+              dental.problem.items.map((item, i) => (
+                <li>
+                  <span class="dl-problems__n" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div>
+                    <h3 class="dl-h3">{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </section>
+
+      <!-- 4. The system -->
+      <section class="dl-section dl-section--wash" id="how" aria-labelledby="system-title" data-review={tag(4)}>
+        <div class="ais-wrap">
+          <div class="dl-split-head">
+            <h2 class="dl-h2" id="system-title">{dental.system.title}</h2>
+            <p class="dl-lede">{dental.system.lede}</p>
+          </div>
+          <DentalSystem steps={dental.system.steps} label="How the patient acquisition system works" />
+          <div class="dl-cta dl-cta--row">
+            <a class="ais-btn dl-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="dental-system"
+              >{DENTAL_CTA}</a
+            >
+            <p class="dl-cta__note">{DENTAL_CTA_NOTE}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. AI search -->
+      <section class="dl-section" aria-labelledby="ai-title" data-review={tag(5)}>
+        <div class="ais-wrap">
+          <div class="dl-split-head">
+            <h2 class="dl-h2" id="ai-title">{dental.aiSearch.title}</h2>
+            <div>
+              <p class="dl-lede">{dental.aiSearch.text}</p>
+              <p class="dl-honest">{dental.aiSearch.honest}</p>
+            </div>
+          </div>
+          <DentalSearchPanels query={dental.aiSearch.query} panelNote={dental.aiSearch.panelNote} />
+          {
+            caseHref && (
+              <aside class="dl-proof" aria-label="Proof from outside dental">
+                <span class="dl-proof__label">{dental.aiSearch.proof.label}</span>
+                <p>{dental.aiSearch.proof.text}</p>
+                <a href={caseHref} data-ais-case="dental">
+                  {dental.aiSearch.proof.cta} <span aria-hidden="true">&rarr;</span>
+                </a>
+              </aside>
+            )
+          }
+        </div>
+      </section>
+
+      <!-- 6. Services -->
+      <section class="dl-section dl-section--wash" id="services" aria-labelledby="services-title" data-review={tag(6)}>
+        <div class="ais-wrap">
+          <h2 class="dl-h2" id="services-title">{dental.services.title}</h2>
+          <div class="dl-services">
+            {
+              dental.services.groups.map((group) => (
+                <div class="dl-services__group">
+                  <p class="dl-services__name">{group.name}</p>
+                  <ul>
+                    {group.items.map((item) => (
+                      <li>
+                        <h3 class="dl-h3">{item.title}</h3>
+                        <p>{item.text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))
             }
           </div>
+          <div class="dl-cta dl-cta--row">
+            <a class="ais-btn dl-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="dental-services"
+              >{DENTAL_CTA}</a
+            >
+            <p class="dl-cta__note">{DENTAL_CTA_NOTE}</p>
+          </div>
+        </div>
+      </section>
 
-          <div class="dental-report ais-sub">
-            <p class="ais-lede">{dental.report.text}</p>
-            <DentalSampleReport
-              title={dental.report.tableTitle}
-              columns={dental.report.columns}
-              rows={dental.report.rows}
-              totalLabel={dental.report.totalLabel}
-              note={dental.report.note}
+      <!-- 7. How you will know it works -->
+      <section class="dl-section" aria-labelledby="measure-title" data-review={tag(7)}>
+        <div class="ais-wrap">
+          <div class="dl-split-head">
+            <h2 class="dl-h2" id="measure-title">{dental.measure.title}</h2>
+            <p class="dl-lede">{dental.measure.lede}</p>
+          </div>
+          <div class="dl-vs">
+            <div class="dl-vs__old">
+              <h3 class="dl-vs__title">{dental.measure.oldTitle}</h3>
+              <ul>{dental.measure.old.map((item) => <li>{item}</li>)}</ul>
+            </div>
+            <div class="dl-vs__new">
+              <h3 class="dl-vs__title">{dental.measure.newTitle}</h3>
+              <ul>{dental.measure.new.map((item) => <li>{item}</li>)}</ul>
+            </div>
+          </div>
+          <div class="dl-rules-row">
+            <div class="dl-rules">
+              <h3 class="dl-h3">{dental.measure.rulesTitle}</h3>
+              <ol>{dental.measure.rules.map((rule) => <li>{rule}</li>)}</ol>
+              <p class="dl-note">{dental.measure.note}</p>
+            </div>
+            <Image
+              class="dl-photo"
+              src={frontDeskPhoto}
+              alt={dental.photos.frontDesk.alt}
+              widths={[400, 640, 900]}
+              sizes="(min-width: 960px) 24rem, calc(100vw - 2.5rem)"
+              loading="lazy"
             />
           </div>
         </div>
       </section>
 
-      <!-- 5. Privacy, as a plain row -->
-      <section class="ais-section ais-section--white" aria-labelledby="privacy-title">
+      <!-- 8. Who we work with -->
+      <section class="dl-section dl-section--wash" aria-labelledby="audience-title" data-review={tag(8)}>
         <div class="ais-wrap">
-          <h2 class="ais-h2" id="privacy-title">{dental.privacy.title}</h2>
-          <p class="ais-lede">{dental.privacy.text}</p>
-          <ul class="dental-points">
+          <h2 class="dl-h2" id="audience-title">{dental.audience.title}</h2>
+          <div class="dl-audience">
+            <Image
+              class="dl-photo dl-audience__photo"
+              src={consultPhoto}
+              alt={dental.photos.consult.alt}
+              widths={[400, 640, 900]}
+              sizes="(min-width: 960px) 24rem, calc(100vw - 2.5rem)"
+              loading="lazy"
+            />
+            {
+              dental.audience.segments.map((segment, i) => (
+                <div class:list={['dl-audience__seg', { 'is-main': i === 0 }]}>
+                  <h3 class="dl-h3">{segment.title}</h3>
+                  <p>{segment.text}</p>
+                </div>
+              ))
+            }
+          </div>
+          <div class="dl-fit">
+            <div>
+              <h3 class="dl-fit__title">{dental.audience.fitTitle}</h3>
+              <ul class="dl-checks">{dental.audience.fit.map((item) => <li>{item}</li>)}</ul>
+            </div>
+            <div>
+              <h3 class="dl-fit__title">{dental.audience.notFitTitle}</h3>
+              <ul class="dl-crosses">{dental.audience.notFit.map((item) => <li>{item}</li>)}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. Founding program -->
+      <section class="dl-section" aria-labelledby="pilot-title" data-review={tag(9)}>
+        <div class="ais-wrap">
+          <div class="dl-split-head">
+            <h2 class="dl-h2" id="pilot-title">{dental.pilot.title}</h2>
+            <p class="dl-lede">{dental.pilot.text}</p>
+          </div>
+          <ol class="dl-timeline" aria-label="The first 90 days">
+            {
+              dental.pilot.steps.map((step, i) => (
+                <li>
+                  <span class="dl-timeline__node" aria-hidden="true">
+                    {i + 1}
+                  </span>
+                  <strong>{step.label}</strong>
+                  <span>{step.text}</span>
+                </li>
+              ))
+            }
+          </ol>
+          <div class="dl-cta dl-cta--row">
+            <a class="ais-btn dl-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="dental-pilot"
+              >{DENTAL_CTA}</a
+            >
+            <p class="dl-cta__note">{DENTAL_CTA_NOTE}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Privacy -->
+      <section class="dl-section dl-section--wash dl-section--tight" aria-labelledby="privacy-title" data-review={tag(10)}>
+        <div class="ais-wrap">
+          <div class="dl-split-head">
+            <h2 class="dl-h2 dl-h2--sm" id="privacy-title">{dental.privacy.title}</h2>
+            <p class="dl-lede">{dental.privacy.text}</p>
+          </div>
+          <ul class="dl-privacy">
             {
               dental.privacy.points.map((point) => (
                 <li>
@@ -251,138 +364,19 @@ const structuredData = {
               ))
             }
           </ul>
-          <p class="ais-note">{dental.privacy.note}</p>
+          <p class="dl-note">{dental.privacy.note}</p>
         </div>
       </section>
 
-      <!-- 6. Team -->
-      <section class="ais-section ais-section--tint" aria-labelledby="team-title">
-        <div class="ais-wrap ais-team">
-          <Image
-            src={foundersPhoto}
-            alt={dental.team.photoAlt}
-            widths={[480, 800, 1120]}
-            sizes="(min-width: 900px) 34rem, 100vw"
-            loading="lazy"
-          />
-          <div>
-            <h2 class="ais-h2" id="team-title">{dental.team.title}</h2>
-            <div class="ais-prose">{dental.team.text.map((p) => <p>{p}</p>)}</div>
-            <dl class="dental-roles">
-              {
-                dental.team.roles.map((person) => (
-                  <div>
-                    <dt>{person.name}</dt>
-                    <dd>{person.role}</dd>
-                  </div>
-                ))
-              }
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7. Founding practice program, with fit -->
-      <section class="ais-section" aria-labelledby="pilot-title">
+      <!-- 11. FAQ -->
+      <section class="dl-section" id="faq" aria-labelledby="faq-title" data-review={tag(11)}>
         <div class="ais-wrap">
-          <div class="ais-two dental-center">
-            <div>
-              <h2 class="ais-h2" id="pilot-title">{dental.pilot.title}</h2>
-              <div class="ais-prose">
-                {dental.pilot.text.map((p) => <p>{p}</p>)}
-                <p><strong>{dental.pilot.exclusivity}</strong></p>
-                <p>{dental.pilot.length}</p>
-              </div>
-              <h3 class="ais-h3">{dental.pilot.getTitle}</h3>
-              <ul class="dental-checks">
-                {dental.pilot.get.map((item) => <li>{item}</li>)}
-              </ul>
-            </div>
-            {
-              consultPhoto && (
-                <Image
-                  class="dental-photo"
-                  src={consultPhoto.src}
-                  alt={consultPhoto.alt}
-                  widths={[480, 800]}
-                  sizes="(min-width: 768px) 32rem, calc(100vw - 2rem)"
-                  loading="lazy"
-                />
-              )
-            }
-          </div>
-          <h3 class="ais-h3 ais-sub">{dental.pilot.stepsTitle}</h3>
-          <ol class="ais-rail dental-rail">
-            {
-              dental.pilot.steps.map((step) => (
-                <li>
-                  <strong>{step.title}</strong>
-                  <span>{step.text}</span>
-                </li>
-              ))
-            }
-          </ol>
-          <h3 class="ais-h3 ais-sub" id="fit-title">{dental.fit.title}</h3>
-          <DentalCompare
-            mode="fit"
-            leftTitle={dental.fit.yesTitle}
-            left={dental.fit.yes}
-            rightTitle={dental.fit.noTitle}
-            right={dental.fit.no}
-          />
-          <div class="ais-actions">
-            <a class="ais-btn" href="#audit" data-ais-cta="dental-pilot-audit">Get a free audit</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- 8. Free audit. Phone order: heading, form, details. -->
-      <section class="ais-band ais-section" id="audit" aria-labelledby="audit-title">
-        <div class="ais-wrap dental-audit">
-          <div class="dental-audit__head">
-            <h2 class="ais-h2" id="audit-title">{dental.audit.title}</h2>
-            <div class="ais-prose">{dental.audit.text.map((p) => <p>{p}</p>)}</div>
-            <p class="dental-video">
-              {dental.audit.videoLine}
-              <a href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="dental-video-walkthrough"
-                >{dental.audit.videoCta}</a
-              >
-            </p>
-          </div>
-          <div class="dental-audit__form">
-            <DentalAuditForm />
-          </div>
-          <div class="dental-audit__details">
-            <h3 class="ais-h4">{dental.audit.checklistTitle}</h3>
-            <ul class="dental-checks">
-              {dental.audit.checklist.map((item) => <li>{item}</li>)}
-            </ul>
-            <p class="ais-note">{dental.audit.limit}</p>
-            {
-              heroPhoto && (
-                <div class="dental-audit__sample">
-                  <DentalAuditSample
-                    title={dental.audit.sample.title}
-                    practice={dental.audit.sample.practice}
-                    findings={dental.audit.sample.findings}
-                    note={dental.audit.sample.note}
-                  />
-                </div>
-              )
-            }
-          </div>
-        </div>
-      </section>
-
-      <!-- 9. FAQ -->
-      <section class="ais-section ais-section--tint" aria-labelledby="faq-title">
-        <div class="ais-wrap">
-          <h2 class="ais-h2" id="faq-title">Questions Practices Ask Before Starting</h2>
-          <div class="ais-faq dental-faq">
+          <h2 class="dl-h2" id="faq-title">Questions practices ask before the call</h2>
+          <div class="dl-faq">
             {
               dental.faqs.map((faq) => (
-                <div class="ais-faq__item">
-                  <h3 class="ais-h3">{faq.q}</h3>
+                <div class="dl-faq__item">
+                  <h3 class="dl-h3">{faq.q}</h3>
                   <p>{faq.a}</p>
                 </div>
               ))
@@ -391,346 +385,864 @@ const structuredData = {
         </div>
       </section>
 
-      <!-- 10. Closing -->
-      <section class="ais-band ais-section" aria-labelledby="closing-title">
+      <!-- 12. Final CTA -->
+      <section class="dl-section dl-section--tight" aria-labelledby="closing-title" data-review={tag(12)}>
         <div class="ais-wrap">
-          <h2 class="ais-h2" id="closing-title">{dental.closing.title}</h2>
-          <p class="ais-lede">{dental.closing.text}</p>
-          <div class="ais-actions">
-            <a class="ais-btn" href="#audit" data-ais-cta="dental-closing-audit">Get a free audit</a>
-            <a
-              class="ais-btn ais-btn--band-ghost"
-              href={AI_SEO_CAL_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-ais-cta="dental-closing">Book a call</a
-            >
+          <div class="dl-close">
+            <div>
+              <h2 class="dl-h2" id="closing-title">{dental.closing.title}</h2>
+              <p class="dl-lede">{dental.closing.text}</p>
+            </div>
+            <div class="dl-cta">
+              <a class="ais-btn dl-btn" href={AI_SEO_CAL_LINK} target="_blank" rel="noopener noreferrer" data-ais-cta="dental-closing"
+                >{DENTAL_CTA}</a
+              >
+              <p class="dl-cta__note">{DENTAL_CTA_NOTE}</p>
+            </div>
           </div>
-          <FounderFaces text={dental.closing.faces} />
         </div>
       </section>
     </div>
 
-    <!-- Phone-only sticky actions. Hidden until the hero scrolls away, and while the audit form is on screen. -->
-    <div class="dental-sticky" data-dental-sticky hidden>
-      <a class="ais-btn" href="#audit" data-ais-cta="dental-sticky-audit">Get a free audit</a>
-      <a
-        class="ais-btn dental-sticky__call"
-        href={AI_SEO_CAL_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-ais-cta="dental-sticky-call">Book a call</a
-      >
-    </div>
+    <!-- No bottom sticky bar: the sticky header already keeps "Book a call" on screen. -->
   </div>
 </Layout>
 
-<script>
-  const setup = () => {
-    const bar = document.querySelector<HTMLElement>('[data-dental-sticky]');
-    const hero = document.querySelector('[data-dental-hero]');
-    const audit = document.querySelector('#audit');
-    if (!bar || !hero || !audit || !('IntersectionObserver' in window)) return;
-    let heroOn = true;
-    let auditOn = false;
-    const sync = () => {
-      bar.hidden = heroOn || auditOn;
-    };
-    new IntersectionObserver(([entry]) => {
-      heroOn = entry.isIntersecting;
-      sync();
-    }).observe(hero);
-    new IntersectionObserver(([entry]) => {
-      auditOn = entry.isIntersecting;
-      sync();
-    }).observe(audit);
-  };
-  setup();
-</script>
+<style is:global>
+  /* Page-only palette (owner decision 2026-11-17): navy and sky blue on white.
+     This stylesheet ships only with this route, so other AI SEO pages keep their palette.
+     The doubled class beats the base `.ais` rule in AiSeoTheme. */
+  .ais.ais {
+    --paper: #ffffff;
+    --tint: #eef2f7;
+    --white: #ffffff;
+    --wash: #f7f9fc;
+    --ink: #0e2a47;
+    --ink-2: #3a4f66;
+    --ink-3: #5a6b7e;
+    --rule: #e1e7ef;
+    --accent: #2f6fb0;
+    --accent-ink: #245a91;
+    --accent-bright: #5b9bd5;
+    --sky-tint: #e8f1fa;
+    --on-accent: #ffffff;
+    --band: #0e2a47;
+    --on-band: #ffffff;
+    --on-band-2: #c9d6e6;
+    --off-cell: #3a4f66;
+    --display: 'Plus Jakarta Sans', 'Inter Variable', system-ui, sans-serif;
+    --body: 'Plus Jakarta Sans', 'Inter Variable', system-ui, sans-serif;
+    --shadow-card: 0 1px 2px rgba(14, 42, 71, 0.06), 0 16px 40px rgba(14, 42, 71, 0.1);
+  }
+  .ais-header.ais {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(1.4) blur(8px);
+  }
+  .ais-header.ais .ais-btn {
+    border-color: var(--ink);
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+  }
+
+  /* Review tags: numbered badges so the owner can refer to sections by number. */
+  [data-review] {
+    position: relative;
+  }
+  [data-review]::before {
+    content: '\00a7' attr(data-review);
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 5;
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    background: #f59e0b;
+    color: #1f1300;
+    font: 700 0.8125rem/1.4 system-ui, sans-serif;
+  }
+</style>
 
 <style>
-  /* Hero */
-  .dental-hero {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-areas: 'copy' 'media' 'actions';
-  }
-  .dental-hero__copy {
-    grid-area: copy;
-  }
-  .dental-hero__media {
-    grid-area: media;
-  }
-  .dental-hero__actions {
-    grid-area: actions;
-  }
-  .dental-hero .ais-h1 {
-    font-size: clamp(2.125rem, 6vw, 3.75rem);
-  }
-  .dental-hero__photo {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  @media (min-width: 1000px) {
-    .dental-hero {
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      grid-template-areas: 'copy media' 'actions media';
-      column-gap: 3rem;
-      row-gap: 0.5rem;
-      align-items: start;
-    }
-    .dental-hero__media {
-      align-self: center;
-    }
-    .dental-hero__photo {
-      aspect-ratio: 4 / 5;
-      max-height: 36rem;
-    }
-  }
-  .dental-trust {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.25rem;
-    margin: 1.25rem 0 0.75rem;
-    padding: 0;
-    list-style: none;
-    font-size: 0.9375rem;
-    font-weight: 600;
-  }
-  .dental-trust li::before {
-    content: '\2713';
-    margin-right: 0.375rem;
-    color: var(--accent-bright);
-  }
-  .dental-hero__actions :global(.ais-faces) {
-    margin-top: 1.25rem;
+  .dl {
+    background: var(--paper);
+    color: var(--ink-2);
+    font-family: var(--body);
   }
 
-  /* Shared */
-  .dental-photo {
+  /* Type */
+  .dl-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1.25rem;
+    padding: 0.3125rem 0.75rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--accent-ink);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  .dl-eyebrow::before {
+    content: '';
+    width: 0.4375rem;
+    height: 0.4375rem;
+    border-radius: 50%;
+    background: var(--accent-bright);
+  }
+  .dl-h1 {
+    margin: 0;
+    max-width: 16ch;
+    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.25rem, 5.2vw, 3.625rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .dl-h2 {
+    margin: 0 0 1rem;
+    max-width: 22ch;
+    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .dl-h2--wide {
+    max-width: 30ch;
+  }
+  .dl-h2--sm {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+  }
+  .dl-h3 {
+    margin: 0 0 0.375rem;
+    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .dl-lede {
+    margin: 0;
+    max-width: 38rem;
+    color: var(--ink-2);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .dl-note {
+    margin: 1rem 0 0;
+    color: var(--ink-3);
+    font-size: 0.875rem;
+  }
+  .dl p {
+    text-wrap: pretty;
+  }
+
+  /* Buttons and CTA blocks */
+  .dl :global(.dl-btn) {
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    border-color: var(--ink);
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+  }
+  .dl :global(.dl-btn:hover) {
+    border-color: var(--accent-ink);
+    background: var(--accent-ink);
+  }
+  .dl-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    margin-top: 2rem;
+  }
+  .dl-cta--row {
+    margin-top: 2.5rem;
+  }
+  @media (min-width: 640px) {
+    .dl-cta--row {
+      flex-direction: row;
+      align-items: center;
+      gap: 1.25rem;
+    }
+  }
+  .dl-cta__note {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: 0.875rem;
+  }
+
+  /* Check and cross lists */
+  .dl-checks,
+  .dl-crosses {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .dl-checks li,
+  .dl-crosses li {
+    position: relative;
+    padding: 0.3125rem 0 0.3125rem 1.75rem;
+    line-height: 1.5;
+  }
+  .dl-checks li::before,
+  .dl-crosses li::before {
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    display: grid;
+    place-items: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 50%;
+    font-size: 0.6875rem;
+    font-weight: 800;
+  }
+  .dl-checks li::before {
+    content: '\2713';
+    background: var(--sky-tint);
+    color: var(--accent);
+  }
+  .dl-crosses li::before {
+    content: '\2715';
+    background: var(--tint);
+    color: var(--ink-3);
+  }
+
+  /* Sections */
+  .dl-section {
+    padding-block: clamp(4rem, 8vw, 6.5rem);
+  }
+  .dl-section--tight {
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+  .dl-section--wash {
+    background: var(--wash);
+    border-block: 1px solid var(--rule);
+  }
+  .dl-split-head {
+    display: grid;
+    gap: 1rem 4rem;
+    margin-bottom: 2.75rem;
+  }
+  @media (min-width: 960px) {
+    .dl-split-head {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: start;
+    }
+    .dl-split-head .dl-h2 {
+      margin: 0;
+    }
+  }
+  .dl-honest {
+    margin: 1rem 0 0;
+    padding-left: 0.875rem;
+    border-left: 3px solid var(--accent-bright);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* 1. Hero */
+  .dl-hero {
+    padding-block: clamp(3rem, 6vw, 5rem) clamp(3.5rem, 7vw, 5.5rem);
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, var(--sky-tint), transparent 70%),
+      var(--paper);
+  }
+  .dl-hero__grid {
+    display: grid;
+    gap: 2.75rem;
+  }
+  @media (min-width: 1040px) {
+    .dl-hero__grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      align-items: center;
+      gap: 3.5rem;
+    }
+  }
+  .dl-hero .dl-lede {
+    margin-top: 1.25rem;
+  }
+  .dl-hero__trust {
+    display: grid;
+    gap: 0.125rem;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+  .dl-qualifier {
+    margin: 1rem 0 0;
+    color: var(--ink-2);
+    font-size: 0.9375rem;
+  }
+  .dl-qualifier strong {
+    color: var(--ink);
+  }
+
+  /* Hero photo with floating sample chip */
+  .dl-hero__media {
+    position: relative;
+  }
+  .dl-hero__media :global(.dl-hero__photo) {
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 4px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 60% 40%;
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
   }
-  .dental-center {
+  @media (min-width: 1040px) {
+    .dl-hero__media :global(.dl-hero__photo) {
+      aspect-ratio: 5 / 6;
+      max-height: 38rem;
+      object-position: 62% 50%;
+    }
+  }
+  .dl-chip {
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    margin: -2.25rem 1rem 0 auto;
+    display: grid;
+    gap: 0.125rem;
+    max-width: 17rem;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: var(--shadow-card);
+    color: var(--ink-2);
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+  @media (min-width: 1040px) {
+    .dl-chip {
+      position: absolute;
+      left: -2rem;
+      bottom: 2.5rem;
+      margin: 0;
+    }
+  }
+  .dl-chip__label {
+    justify-self: start;
+    margin-bottom: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    background: #fffbeb;
+    color: #92400e;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .dl-chip strong {
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .dl-chip small {
+    color: var(--ink-3);
+    font-size: 0.75rem;
+  }
+
+  /* 1b. Report band */
+  .dl-report-band {
+    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    border-top: 1px solid var(--rule);
+    background: var(--wash);
+  }
+  .dl-report-band__grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 1040px) {
+    .dl-report-band__grid {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      align-items: center;
+      gap: 4rem;
+    }
+  }
+
+  /* Section photos */
+  .dl :global(.dl-photo) {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+  .dl-photo-head {
+    display: grid;
+    gap: 2rem;
     align-items: center;
   }
-  .dental-tiles--4 {
-    margin-top: 1.5rem;
+  @media (min-width: 960px) {
+    .dl-photo-head {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+    .dl-photo-head .dl-h2 {
+      margin: 0;
+    }
   }
-  @media (min-width: 768px) {
-    .dental-tiles--4 {
+  .dl-rules-row {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: stretch;
+  }
+  @media (min-width: 960px) {
+    .dl-rules-row {
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    }
+    .dl-rules-row :global(.dl-photo) {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+  }
+  .dl-rules-row .dl-rules {
+    margin-top: 0;
+  }
+
+  /* 2. Trust strip */
+  .dl-strip {
+    border-block: 1px solid var(--rule);
+    background: var(--white);
+  }
+  .dl-strip__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.5rem;
+    margin: 0 auto;
+    padding-block: 1.25rem;
+    list-style: none;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+  @media (min-width: 900px) {
+    .dl-strip__list {
+      grid-template-columns: repeat(4, auto);
+      justify-content: space-between;
+    }
+  }
+  .dl-strip__list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dl-strip__list li::before {
+    content: '';
+    flex: none;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* 3. Problem */
+  .dl-problems {
+    display: grid;
+    gap: 0;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+  }
+  @media (min-width: 860px) {
+    .dl-problems {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 4rem;
     }
   }
-  @media (min-width: 1100px) {
-    .dental-tiles--4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+  .dl-problems li {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--rule);
+  }
+  .dl-problems__n {
+    color: var(--accent);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .dl-problems p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* 5. Outside-dental proof */
+  .dl-proof {
+    display: grid;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: var(--white);
+  }
+  @media (min-width: 860px) {
+    .dl-proof {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
     }
   }
-  .dental-sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
+  .dl-proof__label {
+    justify-self: start;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    background: var(--tint);
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .dl-proof p {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .dl-proof a {
+    color: var(--accent-ink);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
     white-space: nowrap;
   }
 
-  /* Old way vs our report */
-  .dental-vs {
-    width: 100%;
-    margin-top: 1.5rem;
-    border-collapse: collapse;
-    table-layout: fixed;
-    font-size: 1rem;
-    line-height: 1.45;
-  }
-  .dental-vs th,
-  .dental-vs td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--rule);
-    text-align: left;
-    vertical-align: top;
-  }
-  .dental-vs th {
-    font-family: var(--display);
-    font-size: 1.0625rem;
-    color: var(--ink-2);
-  }
-  .dental-vs td {
-    color: var(--ink-3);
-  }
-  .dental-vs .is-on {
-    color: var(--ink);
-    background: var(--white);
-  }
-  .dental-vs th.is-on {
-    border-top: 4px solid var(--accent);
-  }
-
-  /* Sample report, full width */
-  .dental-report :global(.dsr) {
-    max-width: 48rem;
-  }
-  .dental-report :global(.dsr table) {
-    font-size: 1.0625rem;
-  }
-
-  /* Privacy points */
-  .dental-points {
+  /* 6. Services */
+  .dl-services {
     display: grid;
-    gap: 1.25rem;
-    margin: 1.5rem 0 1rem;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+  }
+  @media (min-width: 960px) {
+    .dl-services {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 3rem;
+    }
+  }
+  .dl-services__name {
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--ink);
+    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .dl-services ul {
+    margin: 0;
     padding: 0;
     list-style: none;
   }
-  @media (min-width: 768px) {
-    .dental-points {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+  .dl-services li {
+    padding-block: 1.125rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .dl-services li p {
+    margin: 0;
+    font-size: 0.9688rem;
+    line-height: 1.55;
+  }
+
+  /* 7. Comparison and reporting rules */
+  .dl-vs {
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+  }
+  @media (min-width: 860px) {
+    .dl-vs {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+  .dl-vs > div {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .dl-vs__old {
+    background: var(--wash);
+  }
+  .dl-vs__new {
+    background: var(--ink);
+    color: #fff;
+  }
+  .dl-vs__title {
+    margin: 0 0 1rem;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--ink);
+  }
+  .dl-vs__new .dl-vs__title {
+    color: #fff;
+  }
+  .dl-vs ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .dl-vs li {
+    position: relative;
+    padding: 0.875rem 0 0.875rem 1.875rem;
+    border-top: 1px solid var(--rule);
+    line-height: 1.45;
+  }
+  .dl-vs__old li {
+    color: var(--ink-3);
+    text-decoration: line-through;
+    text-decoration-color: rgba(90, 107, 126, 0.5);
+  }
+  .dl-vs__new li {
+    border-top-color: rgba(255, 255, 255, 0.14);
+    font-weight: 500;
+  }
+  .dl-vs li::before {
+    position: absolute;
+    left: 0;
+    top: 0.9375rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .dl-vs__old li::before {
+    content: '\2715';
+    color: var(--ink-3);
+  }
+  .dl-vs__new li::before {
+    content: '\2713';
+    color: var(--accent-bright);
+  }
+  .dl-rules {
+    margin-top: 2rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    border-radius: 14px;
+    background: var(--white);
+  }
+  .dl-rules ol {
+    display: grid;
+    gap: 0.625rem;
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
+    list-style: decimal;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .dl-rules li::marker {
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  /* 8. Audience */
+  .dl-audience {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  @media (min-width: 860px) {
+    .dl-audience {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+      grid-template-rows: auto auto;
+    }
+    .dl-audience :global(.dl-audience__photo) {
+      grid-row: 1 / span 2;
+      height: 100%;
+      aspect-ratio: auto;
+    }
+  }
+  .dl-audience__seg {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    background: var(--white);
+  }
+  .dl-audience__seg.is-main {
+    box-shadow: var(--shadow-card);
+  }
+  .dl-audience__seg p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  .dl-fit {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  @media (min-width: 860px) {
+    .dl-fit {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+  }
+  .dl-fit__title {
+    margin: 0 0 0.5rem;
+    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  /* 9. Timeline */
+  .dl-timeline {
+    display: grid;
+    gap: 1.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (min-width: 860px) {
+    .dl-timeline {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 2rem;
     }
   }
-  .dental-points li {
-    display: grid;
-    gap: 0.25rem;
-    padding-left: 1.75rem;
+  .dl-timeline li {
     position: relative;
+    display: grid;
+    align-content: start;
+    gap: 0.25rem;
+    padding-left: 3rem;
   }
-  .dental-points li::before {
-    content: '\2713';
+  @media (min-width: 860px) {
+    .dl-timeline li {
+      padding: 3.25rem 0 0;
+    }
+    .dl-timeline li::after {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      left: 2.25rem;
+      right: -2rem;
+      height: 2px;
+      background: var(--rule);
+    }
+    .dl-timeline li:last-child::after {
+      display: none;
+    }
+  }
+  .dl-timeline__node {
     position: absolute;
-    left: 0;
     top: 0;
-    font-weight: 700;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    background: var(--white);
     color: var(--accent);
+    font-weight: 800;
+    font-size: 0.875rem;
   }
-  .dental-points span {
-    color: var(--ink-2);
+  .dl-timeline li:last-child .dl-timeline__node {
+    background: var(--accent);
+    color: #fff;
+  }
+  .dl-timeline strong {
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.0625rem;
+  }
+  .dl-timeline span:not(.dl-timeline__node) {
+    line-height: 1.5;
   }
 
-  /* Team roles */
-  .dental-roles {
-    margin: 1.25rem 0 0;
-  }
-  .dental-roles div {
-    padding-block: 0.5rem;
-    border-top: 1px solid var(--rule);
-  }
-  .dental-roles dt {
-    font-weight: 700;
-  }
-  .dental-roles dd {
+  /* 10. Privacy */
+  .dl-privacy {
+    display: grid;
+    gap: 1.5rem;
     margin: 0;
-    color: var(--ink-2);
-  }
-
-  /* Check lists */
-  .dental-checks {
-    margin: 0.5rem 0 1rem;
     padding: 0;
     list-style: none;
   }
-  .dental-checks li {
-    position: relative;
-    padding: 0.25rem 0 0.25rem 1.625rem;
-    line-height: 1.45;
-  }
-  .dental-checks li::before {
-    content: '\2713';
-    position: absolute;
-    left: 0;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .ais-band .dental-checks li::before {
-    color: var(--accent-bright);
-  }
-  @media (min-width: 768px) {
-    .dental-rail {
-      display: grid;
+  @media (min-width: 860px) {
+    .dl-privacy {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
+      gap: 2.5rem;
     }
   }
-
-  /* Audit band */
-  .dental-audit {
+  .dl-privacy li {
     display: grid;
-    gap: 1.5rem;
-    grid-template-areas: 'head' 'form' 'details';
+    align-content: start;
+    gap: 0.375rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--accent-bright);
   }
-  .dental-audit__head {
-    grid-area: head;
+  .dl-privacy strong {
+    color: var(--ink);
+    font-family: var(--display);
   }
-  .dental-audit__form {
-    grid-area: form;
-  }
-  .dental-audit__details {
-    grid-area: details;
-  }
-  @media (min-width: 900px) {
-    .dental-audit {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      grid-template-areas: 'head form' 'details form';
-      column-gap: 3.5rem;
-      align-items: start;
-    }
-  }
-  .dental-video {
-    margin: 1rem 0 0;
-    font-weight: 600;
-  }
-  .dental-video a {
-    display: inline-block;
-    margin-left: 0.25rem;
-    color: var(--accent-bright);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .dental-audit__sample {
-    margin-top: 1.5rem;
+  .dl-privacy span {
+    line-height: 1.55;
   }
 
-  /* FAQ headings on phone */
-  @media (max-width: 767px) {
-    .dental-faq :global(.ais-h3) {
-      font-size: 1.125rem;
-    }
-  }
-
-  /* Sticky phone actions */
-  .dental-sticky {
-    position: fixed;
-    inset: auto 0 0 0;
-    z-index: 40;
+  /* 11. FAQ */
+  .dl-faq {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom));
-    background: var(--band);
-    border-top: 1px solid #3a352d;
+    gap: 0;
+    margin-top: 2.25rem;
   }
-  .dental-sticky[hidden] {
-    display: none;
+  @media (min-width: 860px) {
+    .dl-faq {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 4rem;
+    }
   }
-  .dental-sticky .ais-btn {
-    min-height: 2.75rem;
-    justify-content: center;
-    text-align: center;
+  .dl-faq__item {
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--rule);
   }
-  .dental-sticky .dental-sticky__call {
-    color: var(--on-band);
-    border-color: var(--on-band-2);
-    background: transparent;
+  .dl-faq__item p {
+    margin: 0;
+    line-height: 1.6;
   }
-  @media (min-width: 768px) {
-    .dental-sticky {
-      display: none !important;
+
+  /* 12. Close */
+  .dl-close {
+    display: grid;
+    gap: 1.5rem 3rem;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    border: 1px solid var(--rule);
+    border-radius: 24px;
+    background:
+      radial-gradient(40rem 20rem at 100% 0%, var(--sky-tint), transparent 70%),
+      var(--wash);
+  }
+  @media (min-width: 960px) {
+    .dl-close {
+      grid-template-columns: minmax(0, 1.5fr) auto;
+      align-items: center;
+    }
+    .dl-close .dl-cta {
+      margin-top: 0;
     }
   }
 </style>

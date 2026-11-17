@@ -65,8 +65,9 @@ Full doc index: `DOCS.md`. Rules: `CLAUDE.md`. Lessons: `mistakes-lessons.md`.
 - **Components:** `src/components/ai-seo/` (shell: Header, Footer, Theme, Tracking, Flow; dental: Dental*; shared: AnswerCheckForm, ProofGrid, charts)
 - **Data:** `src/data/ai-seo.ts`, `src/data/ai-seo-dental.ts`
 - **Dental switch:** `DENTAL_INDEXABLE` in `src/data/ai-seo-dental.ts` controls meta robots AND the sitemap filter in `astro.config.ts`. It is `false` (noindex) until the offer is validated.
-- **Dental rules:** no price, no guarantee, no dental client results, every stat names its source, outreach links carry UTMs. Header of `ai-seo-dental.ts` has the full list.
-- **Leads:** forms post to `netlify/functions/capture-email.ts`. Sources `ai-seo-answer-check` and `dental-ai-seo-audit` skip Loops and get a manual reply.
+- **Dental rules:** no price, no guarantee, no dental client results, no founder names or photos, every stat names its source, outreach links carry UTMs. One action only: "Book a free discovery call" (Cal); no free audit (2026-11-17). Page-only navy palette set in `dental.astro`. Header of `ai-seo-dental.ts` has the full list.
+- **Dental components in use:** `DentalReportCard`, `DentalSystem`, `DentalSearchPanels`. Unused since 2026-11-17 (kept until deletion is approved): `DentalAuditForm`, `DentalAuditSample`, `DentalCompare`, `DentalSampleReport`, `DentalStatBars`, photo `front-desk.jpg`.
+- **Leads:** forms post to `netlify/functions/capture-email.ts`. Sources `ai-seo-answer-check` and `dental-ai-seo-audit` skip Loops and get a manual reply (the dental form is no longer on the page).
 - **Docs:** `docs/ai-seo-subsite-brief-2026-11-06.txt`, `ai-seo-guide.md` (AEO SSOT), `docs/sops/monthly-ai-seo-checklist.md`
 - **Research:** `research/ai-seo/dental/` (source PDF), `research/private/ai-seo-evidence-register.md` (git-ignored, never commit)
 - **Verify after build:** `dist/` has the dental page with noindex and absent from the sitemap.

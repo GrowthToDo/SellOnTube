@@ -1,0 +1,588 @@
+---
+// Hero visual for /ai-seo/dental: a sample monthly report with made-up numbers.
+// It shows the shape of the deliverable, never a client result. The "Sample" chip,
+// the sample note and the footnote say so. Every figure is derived from `rows`.
+import type { ReportRow } from '~/data/ai-seo-dental';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  sampleNote: string;
+  columns: string[];
+  rows: ReportRow[];
+  noSpendLabel: string;
+  footnote: string;
+  alt: string;
+}
+
+const { title, subtitle, sampleNote, columns, rows, noSpendLabel, footnote, alt } = Astro.props;
+
+const usd = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
+const sum = (list: ReportRow[], key: 'calls' | 'forms' | 'booked' | 'spend') =>
+  list.reduce((total, row) => total + (row[key] ?? 0), 0);
+const hasSpend = (row: ReportRow) => typeof row.spend === 'number' && row.spend > 0;
+// "Google Ads" -> "Ads", "Google Maps" -> "Maps": short names for the stat labels.
+const short = (name: string) => name.replace(/^Google\s+/i, '');
+
+const total = {
+  calls: sum(rows, 'calls'),
+  forms: sum(rows, 'forms'),
+  booked: sum(rows, 'booked'),
+  spend: sum(rows, 'spend'),
+};
+const inquiries = total.calls + total.forms;
+
+const paid = rows.filter(hasSpend);
+const unpaid = rows.filter((row) => !hasSpend(row));
+const paidBooked = sum(paid, 'booked');
+const paidCost = paidBooked > 0 ? total.spend / paidBooked : 0;
+const unpaidBooked = sum(unpaid, 'booked');
+
+const joinNames = (names: string[]) =>
+  names.length < 2 ? names.join('') : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`;
+const paidLabel = joinNames(paid.map((row) => short(row.channel)));
+const unpaidLabel = joinNames(unpaid.map((row, i) => (i === 0 ? short(row.channel) : row.channel.toLowerCase())));
+
+const cost = (row: ReportRow) => (hasSpend(row) && row.booked > 0 ? usd((row.spend as number) / row.booked) : '');
+
+const maxBooked = Math.max(1, ...rows.map((row) => row.booked));
+const ranked = [...rows].sort((a, b) => b.booked - a.booked);
+const tone = (row: ReportRow) => {
+  const rank = ranked.indexOf(row);
+  return rank === 0 ? 'drc-fill--1' : rank === 1 ? 'drc-fill--2' : 'drc-fill--3';
+};
+
+const [, colCalls, colForms, colBooked, colSpend, colCost] = columns;
+---
+
+<figure class="drc" aria-label={alt}>
+  <figcaption class="drc-sr">{alt}</figcaption>
+
+  <div class="drc-top">
+    <div class="drc-titles">
+      <p class="drc-title">{title}</p>
+      <p class="drc-subtitle">{subtitle}</p>
+    </div>
+    <div class="drc-flag">
+      <span class="drc-chip">Sample</span>
+      <span class="drc-note">{sampleNote}</span>
+    </div>
+  </div>
+
+  <div class="drc-stats">
+    <div class="drc-stat">
+      <p class="drc-k">Booked consults</p>
+      <p class="drc-v drc-v--hero">{total.booked}</p>
+      <p class="drc-d">from {inquiries} calls and forms</p>
+    </div>
+    {
+      paid.length > 0 && (
+        <div class="drc-stat drc-stat--accent">
+          <p class="drc-k">Per booked consult, {paidLabel}</p>
+          <p class="drc-v drc-v--accent">{usd(paidCost)}</p>
+          <p class="drc-d">
+            {usd(total.spend)} spend, {paidBooked} booked
+          </p>
+        </div>
+      )
+    }
+    <div class="drc-stat">
+      <p class="drc-k">Booked with no ad spend</p>
+      <p class="drc-v">{unpaidBooked}</p>
+      <p class="drc-d">{unpaidLabel}</p>
+    </div>
+  </div>
+
+  <div class="drc-bars" aria-hidden="true">
+    <p class="drc-h">Booked consults by channel</p>
+    {
+      rows.map((row) => (
+        <div class="drc-bar">
+          <span class="drc-bar-name">{row.channel}</span>
+          <span class="drc-track">
+            <span class={`drc-fill ${tone(row)}`} style={`width:${((row.booked / maxBooked) * 100).toFixed(1)}%`} />
+          </span>
+          <span class="drc-bar-val">{row.booked}</span>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="drc-table-wrap">
+    <table class="drc-table">
+      <caption class="drc-sr">
+        {title}, sample with made-up numbers: {columns.join(', ')}
+      </caption>
+      <thead>
+        <tr>
+          {columns.map((column) => <th scope="col">{column}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map((row) => (
+            <tr>
+              <th scope="row">{row.channel}</th>
+              <td>{row.calls}</td>
+              <td>{row.forms}</td>
+              <td class="drc-strong">{row.booked}</td>
+              {hasSpend(row) ? <td>{usd(row.spend as number)}</td> : <td class="drc-muted">{noSpendLabel}</td>}
+              <td class="drc-cost">{cost(row)}</td>
+            </tr>
+          ))
+        }
+        <tr class="drc-total">
+          <th scope="row">Total</th>
+          <td>{total.calls}</td>
+          <td>{total.forms}</td>
+          <td>{total.booked}</td>
+          <td>{usd(total.spend)}</td>
+          <td />
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="drc-stack">
+    {
+      rows.map((row) => (
+        <div class="drc-item">
+          <p class="drc-item-name">{row.channel}</p>
+          <dl class="drc-item-grid">
+            <div>
+              <dt>{colCalls}</dt>
+              <dd>{row.calls}</dd>
+            </div>
+            <div>
+              <dt>{colForms}</dt>
+              <dd>{row.forms}</dd>
+            </div>
+            <div>
+              <dt>{colBooked}</dt>
+              <dd class="drc-strong">{row.booked}</dd>
+            </div>
+          </dl>
+          <dl class="drc-item-money">
+            <div>
+              <dt>{colSpend}</dt>
+              {hasSpend(row) ? <dd>{usd(row.spend as number)}</dd> : <dd class="drc-muted">{noSpendLabel}</dd>}
+            </div>
+            {hasSpend(row) && (
+              <div>
+                <dt>{colCost}</dt>
+                <dd class="drc-cost">{cost(row)}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+      ))
+    }
+    <div class="drc-item drc-item--total">
+      <p class="drc-item-name">Total</p>
+      <dl class="drc-item-grid">
+        <div>
+          <dt>{colCalls}</dt>
+          <dd>{total.calls}</dd>
+        </div>
+        <div>
+          <dt>{colForms}</dt>
+          <dd>{total.forms}</dd>
+        </div>
+        <div>
+          <dt>{colBooked}</dt>
+          <dd class="drc-strong">{total.booked}</dd>
+        </div>
+      </dl>
+      <dl class="drc-item-money">
+        <div>
+          <dt>{colSpend}</dt>
+          <dd>{usd(total.spend)}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <p class="drc-foot">{footnote}</p>
+</figure>
+
+<style>
+  .drc {
+    container: drc / inline-size;
+    margin: 0;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    font-family: var(--body);
+    color: var(--ink);
+    text-align: left;
+    min-width: 0;
+  }
+  .drc p,
+  .drc dl,
+  .drc dd {
+    margin: 0;
+  }
+  .drc-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Header */
+  .drc-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px 16px;
+    flex-wrap: wrap;
+    padding: 18px 22px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .drc-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .drc-subtitle {
+    margin-top: 2px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--ink-3);
+  }
+  .drc-flag {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    margin-left: auto;
+    padding-top: 1px;
+    text-align: right;
+  }
+  .drc-chip {
+    flex: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #92400e;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    padding: 2px 8px;
+    border-radius: 999px;
+    line-height: 1.5;
+  }
+  .drc-note {
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--ink-3);
+  }
+
+  /* Stat strip */
+  .drc-stats {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(3, auto);
+    border-bottom: 1px solid var(--rule);
+    font-variant-numeric: tabular-nums;
+  }
+  .drc-stat {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    align-content: start;
+    padding: 18px 22px 18px;
+    min-width: 0;
+  }
+  .drc-stat + .drc-stat {
+    border-left: 1px solid var(--rule);
+  }
+  .drc-stat--accent {
+    background: var(--sky-tint);
+  }
+  .drc-k {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--ink-3);
+  }
+  .drc-v {
+    align-self: end;
+    margin-top: 6px;
+    font-family: var(--display);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .drc-v--hero {
+    font-size: 40px;
+  }
+  .drc-v--accent {
+    font-size: 40px;
+    color: var(--accent);
+  }
+  .drc-d {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--ink-3);
+  }
+
+  /* Bars */
+  .drc-bars {
+    padding: 18px 22px 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .drc-h {
+    margin-bottom: 12px !important;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .drc-bar {
+    display: grid;
+    grid-template-columns: 108px minmax(0, 1fr) 24px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .drc-bar-name {
+    color: var(--ink-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .drc-track {
+    display: block;
+    height: 10px;
+    border-radius: 999px;
+    background: #eef2f7;
+    overflow: hidden;
+  }
+  .drc-fill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+  }
+  .drc-fill--1 {
+    background: var(--accent);
+  }
+  .drc-fill--2 {
+    background: var(--accent-bright);
+  }
+  .drc-fill--3 {
+    background: #a9cbea;
+  }
+  .drc-bar-val {
+    text-align: right;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* Table (wide cards) */
+  .drc-table-wrap {
+    padding-top: 6px;
+  }
+  .drc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  .drc-table th,
+  .drc-table td {
+    text-align: right;
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: middle;
+  }
+  .drc-table th:first-child {
+    text-align: left;
+    padding-left: 22px;
+  }
+  .drc-table th:last-child,
+  .drc-table td:last-child {
+    padding-right: 22px;
+  }
+  .drc-table thead th {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink-3);
+    background: var(--wash);
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  .drc-table thead th:last-child {
+    max-width: 96px;
+  }
+  .drc-table tbody th {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .drc-table td {
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+  .drc-strong {
+    font-weight: 700;
+    color: var(--ink) !important;
+  }
+  .drc-muted {
+    color: var(--ink-3) !important;
+    font-size: 12px;
+  }
+  .drc-cost {
+    font-weight: 700;
+    color: var(--accent) !important;
+  }
+  .drc-total th,
+  .drc-total td {
+    border-bottom: 0;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--wash);
+  }
+
+  /* Stacked blocks (narrow cards) */
+  .drc-stack {
+    display: none;
+  }
+
+  .drc-foot {
+    padding: 12px 22px 14px;
+    border-top: 1px solid var(--rule);
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--ink-3);
+  }
+
+  @container drc (max-width: 499px) {
+    .drc-top {
+      flex-direction: column;
+      padding: 16px 16px 14px;
+    }
+    .drc-flag {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      margin-left: 0;
+      text-align: left;
+    }
+    .drc-stats {
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+    }
+    .drc-stat {
+      grid-row: auto;
+      grid-template-rows: auto auto;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: 'k v' 'd v';
+      align-items: center;
+      column-gap: 12px;
+      padding: 12px 16px;
+    }
+    .drc-stat + .drc-stat {
+      border-left: 0;
+      border-top: 1px solid var(--rule);
+    }
+    .drc-k {
+      grid-area: k;
+      font-size: 12.5px;
+      color: var(--ink-2);
+      font-weight: 600;
+    }
+    .drc-d {
+      grid-area: d;
+      margin-top: 2px;
+    }
+    .drc-v,
+    .drc-v--hero,
+    .drc-v--accent {
+      grid-area: v;
+      margin-top: 0;
+      font-size: 30px;
+    }
+    .drc-v:not(.drc-v--hero):not(.drc-v--accent) {
+      font-size: 26px;
+    }
+    .drc-bars {
+      padding: 16px 16px 8px;
+    }
+    .drc-bar {
+      grid-template-columns: 96px minmax(0, 1fr) 22px;
+      gap: 10px;
+      font-size: 12.5px;
+    }
+    .drc-table-wrap {
+      display: none;
+    }
+    .drc-stack {
+      display: grid;
+      gap: 8px;
+      padding: 8px 16px 16px;
+      font-variant-numeric: tabular-nums;
+    }
+    .drc-item {
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 11px 12px 10px;
+    }
+    .drc-item--total {
+      background: var(--wash);
+    }
+    .drc-item-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px !important;
+    }
+    .drc-item dt {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink-3);
+      line-height: 1.3;
+    }
+    .drc-item dd {
+      margin-top: 2px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-2);
+    }
+    .drc-item-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .drc-item-money {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px !important;
+      padding-top: 8px;
+      border-top: 1px dashed var(--rule);
+    }
+    .drc-item-money .drc-muted {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .drc-foot {
+      padding: 12px 16px 14px;
+    }
+  }
+</style>

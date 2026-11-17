@@ -5,14 +5,22 @@ export interface Props {
   showCase?: boolean;
   label?: string;
   callLabel?: string;
+  /** Where the wordmark links. Subsites that should not send visitors to the main site set their own path. */
+  homeHref?: string;
 }
 
-const { servicesHref = `${AI_SEO_PATH}#services`, showCase = true, label = 'AI SEO footer', callLabel = 'Book a discovery call' } = Astro.props;
+const {
+  servicesHref = `${AI_SEO_PATH}#services`,
+  showCase = true,
+  label = 'AI SEO footer',
+  callLabel = 'Book a discovery call',
+  homeHref = '/',
+} = Astro.props;
 ---
 
 <footer class="ais ais-footer">
   <div class="ais-wrap ais-footer__row">
-    <a class="ais-wordmark" href="/">SellOn<span>Tube</span></a>
+    <a class="ais-wordmark" href={homeHref}>SellOn<span>Tube</span></a>
     <nav aria-label={label}>
       <a href={servicesHref}>Services</a>
       {showCase && featuredCaseStudy && <a href={caseStudyPath(featuredCaseStudy.slug)}>{featuredCaseStudy.client} case study</a>}

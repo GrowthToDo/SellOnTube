@@ -1,0 +1,364 @@
+---
+// An illustration, never a screenshot. Two stylised panels show one query in a local
+// map results view and in an AI assistant answer. No real practices, no logos, no
+// ratings or review counts: details are grey placeholder bars. The caption says so.
+export interface Props {
+  query: string; // 'Who does full-arch dental implants near me?'
+  panelNote: string; // 'Illustrative example, not a real search.'
+}
+
+const { query, panelNote } = Astro.props;
+const signals = ['Business Profile', 'Reviews', 'Implants page'];
+---
+
+<figure class="dsp">
+  <div class="dsp__grid">
+    <section class="dsp__panel" aria-label="Illustration of a map results view">
+      <div class="dsp__bar">
+        <span class="dsp__label">Google Maps</span>
+        <span class="dsp__tag">Illustration</span>
+      </div>
+      <div class="dsp__search">
+        <span class="dsp__search-icon" aria-hidden="true"></span>
+        <span class="dsp__search-text">{query}</span>
+      </div>
+      <div class="dsp__map" aria-hidden="true">
+        <span class="dsp__road dsp__road--h"></span>
+        <span class="dsp__road dsp__road--v"></span>
+        <span class="dsp__pin dsp__pin--you"></span>
+        <span class="dsp__pin dsp__pin--b"></span>
+        <span class="dsp__pin dsp__pin--c"></span>
+      </div>
+      <ul class="dsp__list">
+        <li class="dsp__row dsp__row--you">
+          <span class="dsp__dot" aria-hidden="true"></span>
+          <div class="dsp__row-body">
+            <p class="dsp__name">Your practice</p>
+            <ul class="dsp__chips" aria-label="Signals">
+              {signals.map((s) => <li class="dsp__chip">{s}</li>)}
+            </ul>
+          </div>
+        </li>
+        <li class="dsp__row">
+          <span class="dsp__dot" aria-hidden="true"></span>
+          <div class="dsp__row-body">
+            <p class="dsp__name">Practice B</p>
+            <span class="dsp__skel dsp__skel--md" aria-hidden="true"></span>
+          </div>
+        </li>
+        <li class="dsp__row">
+          <span class="dsp__dot" aria-hidden="true"></span>
+          <div class="dsp__row-body">
+            <p class="dsp__name">Practice C</p>
+            <span class="dsp__skel dsp__skel--sm" aria-hidden="true"></span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="dsp__panel" aria-label="Illustration of an AI assistant answer">
+      <div class="dsp__bar">
+        <span class="dsp__label">AI assistant</span>
+        <span class="dsp__tag">Illustration</span>
+      </div>
+      <div class="dsp__chat">
+        <p class="dsp__bubble dsp__bubble--user">{query}</p>
+        <div class="dsp__bubble dsp__bubble--ai">
+          <p>Here are practices nearby that list full-arch implants and explain the process on their site:</p>
+          <ol class="dsp__answers">
+            <li class="dsp__answer dsp__answer--you">
+              <p class="dsp__name">Your practice</p>
+              <p class="dsp__why">Has a page on full-arch implants and recent patient reviews.</p>
+              <ul class="dsp__chips" aria-label="Sources">
+                {signals.map((s) => <li class="dsp__chip">{s}</li>)}
+              </ul>
+            </li>
+            <li class="dsp__answer">
+              <p class="dsp__name">Practice B</p>
+              <span class="dsp__skel dsp__skel--lg" aria-hidden="true"></span>
+            </li>
+            <li class="dsp__answer">
+              <p class="dsp__name">Practice C</p>
+              <span class="dsp__skel dsp__skel--md" aria-hidden="true"></span>
+            </li>
+          </ol>
+          <p class="dsp__fine">Check each practice's site to confirm what they offer.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <figcaption class="dsp__caption">
+    <span class="dsp__tie">Same signals, two places patients look.</span>
+    <span class="dsp__note">{panelNote}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .dsp {
+    margin: 0;
+    padding: 14px;
+    background: var(--wash);
+    border: 1px solid var(--rule);
+    border-radius: 20px;
+    font-family: var(--body);
+    color: var(--ink);
+  }
+  .dsp__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  @media (min-width: 480px) {
+    .dsp { padding: 20px; }
+  }
+  @media (min-width: 860px) {
+    .dsp { padding: 28px; }
+    .dsp__panel { padding: 20px; }
+    .dsp__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+  }
+  .dsp__panel {
+    min-width: 0;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .dsp__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .dsp__label {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .dsp__tag {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--sky-tint);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+  .dsp p { margin: 0; }
+  .dsp ul, .dsp ol { list-style: none; margin: 0; padding: 0; }
+
+  /* Map panel */
+  .dsp__search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    min-width: 0;
+  }
+  .dsp__search-icon {
+    flex: none;
+    width: 11px;
+    height: 11px;
+    border: 2px solid var(--ink-3);
+    border-radius: 50%;
+    position: relative;
+  }
+  .dsp__search-icon::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 6px;
+    background: var(--ink-3);
+    right: -4px;
+    bottom: -5px;
+    transform: rotate(-45deg);
+    border-radius: 1px;
+  }
+  .dsp__search-text {
+    min-width: 0;
+    line-height: 1.4;
+  }
+  .dsp__map {
+    position: relative;
+    height: 132px;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    background-color: var(--wash);
+    background-image:
+      linear-gradient(var(--rule) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size: 26px 26px;
+    overflow: hidden;
+  }
+  .dsp__road {
+    position: absolute;
+    background: var(--white);
+    border: 1px solid var(--rule);
+  }
+  .dsp__road--h { left: -2px; right: -2px; top: 58%; height: 10px; }
+  .dsp__road--v { top: -2px; bottom: -2px; left: 38%; width: 10px; }
+  .dsp__pin {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: var(--ink-3);
+    opacity: 0.55;
+  }
+  .dsp__pin::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: var(--white);
+  }
+  .dsp__pin--you {
+    left: 46%;
+    top: 26%;
+    width: 22px;
+    height: 22px;
+    background: var(--accent);
+    opacity: 1;
+    box-shadow: 0 0 0 6px var(--sky-tint);
+  }
+  .dsp__pin--you::after { inset: 7px; }
+  .dsp__pin--b { left: 18%; top: 66%; }
+  .dsp__pin--c { left: 74%; top: 46%; }
+
+  .dsp__list { display: flex; flex-direction: column; gap: 8px; }
+  .dsp__row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+  }
+  .dsp__row--you {
+    border-color: var(--accent-bright);
+    background: var(--sky-tint);
+  }
+  .dsp__dot {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: var(--rule);
+  }
+  .dsp__row--you .dsp__dot { background: var(--accent); }
+  .dsp__row-body { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .dsp__name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .dsp__row:not(.dsp__row--you) .dsp__name,
+  .dsp__answer:not(.dsp__answer--you) .dsp__name { color: var(--ink-3); font-weight: 500; }
+
+  .dsp__chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .dsp__chip {
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--accent);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 3px 9px;
+  }
+  .dsp__skel {
+    display: block;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--rule);
+  }
+  .dsp__skel--sm { width: 40%; }
+  .dsp__skel--md { width: 58%; }
+  .dsp__skel--lg { width: 78%; }
+
+  /* Assistant panel */
+  .dsp__chat { display: flex; flex-direction: column; gap: 12px; }
+  .dsp__bubble {
+    font-size: 13.5px;
+    line-height: 1.55;
+    border-radius: 14px;
+    padding: 11px 14px;
+  }
+  .dsp__bubble--user {
+    align-self: flex-end;
+    max-width: 88%;
+    background: var(--ink);
+    color: var(--white);
+    border-bottom-right-radius: 4px;
+  }
+  .dsp__bubble--ai {
+    align-self: stretch;
+    background: var(--wash);
+    border: 1px solid var(--rule);
+    border-bottom-left-radius: 4px;
+    color: var(--ink-2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dsp__answers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    counter-reset: dsp;
+  }
+  .dsp__answer {
+    position: relative;
+    padding: 10px 12px 10px 36px;
+    border-radius: 10px;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    counter-increment: dsp;
+  }
+  .dsp__answer::before {
+    content: counter(dsp);
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--rule);
+    color: var(--ink-3);
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+  }
+  .dsp__answer--you { border-color: var(--accent-bright); }
+  .dsp__answer--you::before { background: var(--accent); color: var(--white); }
+  .dsp__answer--you .dsp__chip { background: var(--sky-tint); border-color: transparent; }
+  .dsp__why { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+  .dsp__fine { font-size: 12px; color: var(--ink-3); }
+
+  /* Caption */
+  .dsp__caption {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4px 16px;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .dsp__tie { font-weight: 600; color: var(--ink-2); }
+</style>

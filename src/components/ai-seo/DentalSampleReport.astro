@@ -4,12 +4,15 @@
 export interface Props {
   title: string;
   columns: string[];
-  rows: { channel: string; calls: number; forms: number; booked: number }[];
+  rows: { channel: string; calls: number; forms: number; booked: number; spend?: number }[];
+  noSpendLabel: string;
   totalLabel: string;
   note: string;
 }
 
-const { title, columns, rows, totalLabel, note } = Astro.props;
+const { title, columns, rows, noSpendLabel, totalLabel, note } = Astro.props;
+const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
+const totalSpend = rows.reduce((sum, row) => sum + (row.spend ?? 0), 0);
 const total = rows.reduce(
   (sum, row) => ({
     calls: sum.calls + row.calls,
@@ -25,8 +28,9 @@ const total = rows.reduce(
     <p class="ais-bars__title">{title}</p>
     <span class="dsr__tag">Sample</span>
   </div>
+  <div class="dsr__scroll">
   <table>
-    <caption class="dsr__sr">{title}: calls, forms and booked consultations by channel, with made-up numbers</caption>
+    <caption class="dsr__sr">{title}: calls, forms, booked consults, ad spend and cost per booked consult by channel, with made-up numbers</caption>
     <thead>
       <tr>
         {columns.map((column, i) => <th scope="col" class:list={{ 'is-num': i > 0 }}>{column}</th>)}
@@ -40,6 +44,8 @@ const total = rows.reduce(
             <td class="is-num">{row.calls}</td>
             <td class="is-num">{row.forms}</td>
             <td class="is-num is-key">{row.booked}</td>
+            <td class="is-num">{row.spend ? usd(row.spend) : noSpendLabel}</td>
+            <td class="is-num is-key">{row.spend && row.booked ? usd(Math.round(row.spend / row.booked)) : ''}</td>
           </tr>
         ))
       }
@@ -50,9 +56,12 @@ const total = rows.reduce(
         <td class="is-num">{total.calls}</td>
         <td class="is-num">{total.forms}</td>
         <td class="is-num is-key">{total.booked}</td>
+        <td class="is-num">{usd(totalSpend)}</td>
+        <td class="is-num"></td>
       </tr>
     </tfoot>
   </table>
+  </div>
   <figcaption class="ais-note">{note}</figcaption>
 </figure>
 
@@ -88,8 +97,12 @@ const total = rows.reduce(
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
+  .dsr__scroll {
+    overflow-x: auto;
+  }
   .dsr table {
     width: 100%;
+    min-width: 34rem;
     border-collapse: collapse;
     font-size: 1rem;
   }
